@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Markdown,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="(本文参考Markdown Tutorial) 1. 加粗与斜体 斜体：在文本两侧加上一个星号或一个下划线，例如：  1_unknown_或*unkown*  效果如下：unknown  加粗：在文本两侧加上两个星号或两个下划线, 例如：  1__unknown__或**unknown**  效果如下：unknown  注：斜体和加粗可以一起用，例如：  1**_of course_**  效果如">
+<meta name="keywords" content="Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法">
+<meta property="og:url" content="http://qypx.github.io/2019/06/27/Markdown语法/index.html">
+<meta property="og:site_name" content="qypx blog">
+<meta property="og:description" content="(本文参考Markdown Tutorial) 1. 加粗与斜体 斜体：在文本两侧加上一个星号或一个下划线，例如：  1_unknown_或*unkown*  效果如下：unknown  加粗：在文本两侧加上两个星号或两个下划线, 例如：  1__unknown__或**unknown**  效果如下：unknown  注：斜体和加粗可以一起用，例如：  1**_of course_**  效果如">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/a/a3/81_INF_DIV_SSI.jpg">
+<meta property="og:image" content="http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/256/22221-cat-icon.png">
+<meta property="og:updated_time" content="2019-06-27T06:16:52.083Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown语法">
+<meta name="twitter:description" content="(本文参考Markdown Tutorial) 1. 加粗与斜体 斜体：在文本两侧加上一个星号或一个下划线，例如：  1_unknown_或*unkown*  效果如下：unknown  加粗：在文本两侧加上两个星号或两个下划线, 例如：  1__unknown__或**unknown**  效果如下：unknown  注：斜体和加粗可以一起用，例如：  1**_of course_**  效果如">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qypx.github.io/2019/06/27/Markdown语法/">
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+
+  <title>Markdown语法 | qypx blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qypx blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Time is short - seize the day.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/27/Markdown语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Markdown语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-27T15:39:36+10:00">
+                2019-06-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-27T16:16:52+10:00">
+                2019-06-27
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>(本文参考<a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">Markdown Tutorial</a>)</p>
+<h4 id="1-加粗与斜体"><a href="#1-加粗与斜体" class="headerlink" title="1. 加粗与斜体"></a>1. 加粗与斜体</h4><ul>
+<li>斜体：在文本两侧加上一个星号或一个下划线，例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_unknown_或*unkown*</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<em>unknown</em></p>
+<ul>
+<li>加粗：在文本两侧加上两个星号或两个下划线, 例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__unknown__或**unknown**</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<strong>unknown</strong></p>
+<ul>
+<li>注：斜体和加粗可以一起用，例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**_of course_**</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<strong><em>of course</em></strong></p>
+<h4 id="2-标题-Headers"><a href="#2-标题-Headers" class="headerlink" title="2.标题(Headers)"></a>2.标题(Headers)</h4><p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（# 一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
+<blockquote>
+<h1 id="Header-one"><a href="#Header-one" class="headerlink" title="Header one"></a>Header one</h1><h2 id="Header-two"><a href="#Header-two" class="headerlink" title="Header two"></a>Header two</h2><h3 id="Header-three"><a href="#Header-three" class="headerlink" title="Header three"></a>Header three</h3><h4 id="Header-four"><a href="#Header-four" class="headerlink" title="Header four"></a>Header four</h4><h5 id="Header-five"><a href="#Header-five" class="headerlink" title="Header five"></a>Header five</h5><h6 id="Header-six"><a href="#Header-six" class="headerlink" title="Header six"></a>Header six</h6><p>plain text</p>
+</blockquote>
+<p>注：#号与文本之间有一个空格。</p>
+<h4 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h4><ul>
+<li><p>inline link</p>
+<p>语法如下：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Visit GitHub!](www.github.com)</span><br></pre></td></tr></table></figure>
+
+<p><a href="www.github.com">Visit GitHub!</a></p>
+<p>再比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Yo<span class="string">u're **really, really** going to see this.](www.dailykitten.com)</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="www.dailykitten.com">You’re <strong>really, really</strong> going to see this.</a></p>
+<ul>
+<li>reference link</li>
+</ul>
+<p>语法如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Do you want to [see something fun][a fun place]?  </span><br><span class="line"></span><br><span class="line">Well, I have [a website <span class="keyword">for</span> you][another fun place]!</span><br><span class="line"></span><br><span class="line">[a fun place]: www.zombo.com</span><br><span class="line">    </span><br><span class="line">[another fun place]: www.stumbleupon.com</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<br>Do you want to <a href="www.zombo.com">see something fun</a>?  </p>
+<p>Well, I have <a href="www.stumbleupon.com">a website for you</a>!</p>
+<p>一般可将链接地址写在Markdown文件的最后。使用refrence的好处是如果有许多链接都是指向一个地方，那么需要更改的时候只需要修改一次就行了。</p>
+<h4 id="4-图片"><a href="#4-图片" class="headerlink" title="4.图片"></a>4.图片</h4><ul>
+<li>inline link</li>
+</ul>
+<p>插入图片和插入链接类似，语法如下： </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![A pretty tiger](https://upload.wikimedia.org/wikipedia/commons/<span class="number">5</span>/<span class="number">56</span>/Tiger<span class="number">.50</span>.jpg)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg" alt="A pretty tiger"></p>
+<p>注：</p>
+<ol>
+<li>[ ]中的内容可以空着，当网络不好，图片无法显示时（或某些其它原因）会显示[ ]中的文字</li>
+<li>!和[ ]之间不要加空格</li>
+</ol>
+<ul>
+<li>reference link</li>
+</ul>
+<p>语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">![Black cat][Black]</span><br><span class="line"></span><br><span class="line">![Orange cat][Orange]</span><br><span class="line"></span><br><span class="line">[Black]: https://upload.wikimedia.org/wikipedia/commons/a/a3/<span class="number">81</span>_INF_DIV_SSI.jpg  </span><br><span class="line">        </span><br><span class="line">[Orange]:http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/<span class="number">256</span>/<span class="number">22221</span>-cat-icon.png</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/81_INF_DIV_SSI.jpg" alt="Black cat"></p>
+<p><img src="http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/256/22221-cat-icon.png" alt="Orange cat"></p>
+<h4 id="5-Blockquotes"><a href="#5-Blockquotes" class="headerlink" title="5.Blockquotes"></a>5.Blockquotes</h4><p>当想引用一段话并让读者注意到时，可以采用如下方法：在文本前加上”&gt;”</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="string">"In a few moments he was barefoot, his stockings folded in his pockets and his</span></span><br><span class="line"><span class="string">  canvas shoes dangling by their knotted laces over his shoulders and, picking a</span></span><br><span class="line"><span class="string">  pointed salt-eaten stick out of the jetsam among the rocks, he clambered down</span></span><br><span class="line"><span class="string">  the slope of the breakwater."</span></span><br></pre></td></tr></table></figure>
+
+<p> 效果如下：</p>
+<blockquote>
+<p>“In a few moments he was barefoot, his stockings folded in his pockets and his<br>  canvas shoes dangling by their knotted laces over his shoulders and, picking a<br>  pointed salt-eaten stick out of the jetsam among the rocks, he clambered down<br>  the slope of the breakwater.”</p>
+</blockquote>
+<p>当引用多段话时，可以在每一部分前加上”&gt;”，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; His words seemed to have struck some deep chord <span class="keyword">in</span> his own nature. Had he spoken</span><br><span class="line">of himself, of himself as he was or wished to be? Stephen watched his face for some</span><br><span class="line">moments <span class="keyword">in</span> silence. A cold sadness was there. He had spoken of himself, of his own</span><br><span class="line">loneliness which he feared.  </span><br><span class="line">&gt;  </span><br><span class="line">&gt; —Of whom are you speaking? Stephen asked at length.  </span><br><span class="line">&gt;  </span><br><span class="line">&gt; Cranly did <span class="keyword">not</span> answer.</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<blockquote>
+<p>His words seemed to have struck some deep chord in his own nature. Had he spoken<br>of himself, of himself as he was or wished to be? Stephen watched his face for some<br>moments in silence. A cold sadness was there. He had spoken of himself, of his own<br>loneliness which he feared.</p>
+<p>—Of whom are you speaking? Stephen asked at length.</p>
+<p>Cranly did not answer.</p>
+</blockquote>
+<p>Note: even blank lines must contain the caret character. This ensures that the entire blockquote is grouped together.</p>
+<h4 id="6-列表-Lists"><a href="#6-列表-Lists" class="headerlink" title="6.列表(Lists)"></a>6.列表(Lists)</h4><h4 id="unordered-list"><a href="#unordered-list" class="headerlink" title="* unordered list"></a>* unordered list</h4><p>在前面加星号：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* Milk  </span><br><span class="line">* Eggs  </span><br><span class="line">* Salmon  </span><br><span class="line">* Butter</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ul>
+<li>Milk</li>
+<li>Eggs</li>
+<li>Salmon</li>
+<li>Butter</li>
+</ul>
+<h5 id="odered-list"><a href="#odered-list" class="headerlink" title="* odered list"></a>* odered list</h5><p>在前面加数字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> Crack three eggs over a bowl</span><br><span class="line"><span class="number">2.</span> Pour a gallon of milk into the bowl</span><br><span class="line"><span class="number">3.</span> Rub the salmon vigorously <span class="keyword">with</span> butter</span><br><span class="line"><span class="number">4.</span> Drop the salmon into the egg-milk bowl</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ol>
+<li>Crack three eggs over a bowl</li>
+<li>Pour a gallon of milk into the bowl</li>
+<li>Rub the salmon vigorously with butter</li>
+<li>Drop the salmon into the egg-milk bowl</li>
+</ol>
+<h5 id="nest-one-list-within-another"><a href="#nest-one-list-within-another" class="headerlink" title="* nest one list within another"></a>* nest one list within another</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* Tintin</span><br><span class="line"> * A reporter</span><br><span class="line"> * Has poofy orange hair</span><br><span class="line"> * Friends <span class="keyword">with</span> the world<span class="string">'s most awesome dog</span></span><br><span class="line"><span class="string">* Haddock</span></span><br><span class="line"><span class="string"> * A sea captain</span></span><br><span class="line"><span class="string"> * Has a fantastic beard</span></span><br><span class="line"><span class="string"> * Loves whiskey</span></span><br><span class="line"><span class="string">   * Possibly also scotch?</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Tintin<ul>
+<li>A reporter</li>
+<li>Has poofy orange hair</li>
+<li>Friends with the world’s most awesome dog</li>
+</ul>
+</li>
+<li>Haddock<ul>
+<li>A sea captain</li>
+<li>Has a fantastic beard</li>
+<li>Loves whiskey<ul>
+<li>Possibly also scotch?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>建议最多建三层，否则文章结构会变得太混乱</p>
+<h4 id="7-段落"><a href="#7-段落" class="headerlink" title="7.段落"></a>7.段落</h4><ul>
+<li>hard break</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Do I contradict myself?</span><br><span class="line"></span><br><span class="line">Very well then I contradict myself,</span><br><span class="line"></span><br><span class="line">(I am large, I contain multitudes.)</span><br></pre></td></tr></table></figure>
+
+<p>想换行时，空一行。效果如下：</p>
+<p>Do I contradict myself?</p>
+<p>Very well then I contradict myself,</p>
+<p>(I am large, I contain multitudes.)</p>
+<ul>
+<li>soft break</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Do I contradict myself?··</span><br><span class="line">Very well then I contradict myself,··</span><br><span class="line">(I am large, I contain multitudes.)</span><br></pre></td></tr></table></figure>
+
+<p>想换行时，打两个空格。上面每个点 ( · ) 代表一个空格。效果如下：</p>
+<p>Do I contradict myself?<br>Very well then I contradict myself,<br>(I am large, I contain multitudes.)</p>
+<h4 id="8-LaTex数学表达式"><a href="#8-LaTex数学表达式" class="headerlink" title="8. LaTex数学表达式"></a>8. LaTex数学表达式</h4><p>在Markdown文档中，可以使用<a href="https://www.latex-project.org/" target="_blank" rel="noopener">LaTex</a>符号创建数学表达式。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">y = \frac&#123;a&#125;(b+c)</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+
+<p>注：可能有的Markdown软件不支持Latex公式。</p>
+<p>以上，本文介绍了一些基础的Markdown语法，想了解更多的Markdown知识可查询相关资料。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/27/Jupyter-Notebook中的快捷键/" rel="next" title="Jupyter Notebook中的快捷键">
+                <i class="fa fa-chevron-left"></i> Jupyter Notebook中的快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="qypx">
+            
+              <p class="site-author-name" itemprop="name">qypx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qypx" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-加粗与斜体"><span class="nav-number">1.</span> <span class="nav-text">1. 加粗与斜体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-标题-Headers"><span class="nav-number">2.</span> <span class="nav-text">2.标题(Headers)</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Header-one"><span class="nav-number"></span> <span class="nav-text">Header one</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Header-two"><span class="nav-number"></span> <span class="nav-text">Header two</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Header-three"><span class="nav-number"></span> <span class="nav-text">Header three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Header-four"><span class="nav-number">1.</span> <span class="nav-text">Header four</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Header-five"><span class="nav-number">1.1.</span> <span class="nav-text">Header five</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Header-six"><span class="nav-number">1.1.1.</span> <span class="nav-text">Header six</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-链接"><span class="nav-number">2.</span> <span class="nav-text">3.链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-图片"><span class="nav-number">3.</span> <span class="nav-text">4.图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Blockquotes"><span class="nav-number">4.</span> <span class="nav-text">5.Blockquotes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-列表-Lists"><span class="nav-number">5.</span> <span class="nav-text">6.列表(Lists)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unordered-list"><span class="nav-number">6.</span> <span class="nav-text">* unordered list</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#odered-list"><span class="nav-number">6.1.</span> <span class="nav-text">* odered list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nest-one-list-within-another"><span class="nav-number">6.2.</span> <span class="nav-text">* nest one list within another</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-段落"><span class="nav-number">7.</span> <span class="nav-text">7.段落</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-LaTex数学表达式"><span class="nav-number">8.</span> <span class="nav-text">8. LaTex数学表达式</span></a></li></ol></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qypx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
