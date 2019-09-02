@@ -374,7 +374,7 @@
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">"freqOf "</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
 
-<p><img src="//qypx.github.io/2019/09/02/dataframe-operation/outcome.jpg" alt="结果"></p>
+<p><img src="/2019/09/02/dataframe-operation/outcome.jpg" alt="结果"></p>
 <p>二、数据框拼接（ignore_index = True, 重新分配索引）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 两种方式，concat、 append都可以</span></span><br><span class="line">result = pd.concat([result1, result2], ignore_index = <span class="literal">True</span>) <span class="comment"># 默认axis = 0 -&gt; 粘贴行 </span></span><br><span class="line">result = result1.append(result2, ignore_index = <span class="literal">True</span>) <span class="comment"># 粘贴行</span></span><br><span class="line"></span><br><span class="line">RF_eval = pd.concat([RF_eval, eval_raw], axis = <span class="number">1</span>) <span class="comment"># 粘贴列</span></span><br></pre></td></tr></table></figure>
 
@@ -424,10 +424,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/02/数据框操作/" rel="prev" title="数据框操作">
-                数据框操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,7 +493,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
