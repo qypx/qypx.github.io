@@ -299,7 +299,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-02T19:41:21+10:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-02T19:47:12+10:00">
                 2019-09-02
               </time>
             
@@ -385,7 +385,11 @@
 </li>
 </ul>
 <ul>
-<li>法二<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_fwf(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>) </span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">* 法三</span><br><span class="line">```python</span><br><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>法二</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_fwf(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>法三</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ol start="2">
