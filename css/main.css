@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ade879;
+  background: #6ac7ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3247,6 +3247,13 @@ pre .javascript .function {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+.posts-expand .post-body img {
+  border: none;
+  padding: 0px;
+}
+.post-gallery .post-gallery-img img {
+  padding: 3px;
 }
 @-moz-keyframes pace-spinner {
   0% {
