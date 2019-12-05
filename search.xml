@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Data Preprocessing</title>
+    <url>/2019/09/21/Data-Preprocessing/</url>
+    <content><![CDATA[<p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/" target="_blank" rel="noopener"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
+<p><a href="https://www.superdatascience.com/pages/machine-learning" target="_blank" rel="noopener">datasets download</a></p>
+<p>使用数据：</p>
+<p><img src="/2019/09/21/Data-Preprocessing/data.JPG" alt="data"></p>
+<h2 id="1-Missing-data"><a href="#1-Missing-data" class="headerlink" title="1. Missing data"></a>1. Missing data</h2><p>Common strategy: raplace the missin daya by the mean, median, or most frequent value of the feature column.</p>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Importing the libraries</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'Data.csv'</span>)</span><br><span class="line">X = dataset.iloc[:, :<span class="number">-1</span>].values</span><br><span class="line">y = dataset.iloc[:, <span class="number">3</span>].values</span><br><span class="line"></span><br><span class="line"><span class="comment"># Taking care of missing data</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Imputer</span><br><span class="line">imputer = Imputer(missing_values = <span class="string">'NaN'</span>, strategy = <span class="string">'mean'</span>, axis = <span class="number">0</span>)</span><br><span class="line">imputer = imputer.fit(X[:, <span class="number">1</span>:<span class="number">3</span>])</span><br><span class="line">X[:, <span class="number">1</span>:<span class="number">3</span>] = imputer.transform(X[:, <span class="number">1</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="R"><a href="#R" class="headerlink" title="R"></a>R</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = read.csv(<span class="string">'Data.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Taking care of missing data</span></span><br><span class="line">dataset$Age = ifelse(is.na(dataset$Age),</span><br><span class="line">                     ave(dataset$Age, FUN = <span class="keyword">function</span>(x) mean(x, na.rm = <span class="literal">TRUE</span>)),</span><br><span class="line">                     dataset$Age)</span><br><span class="line">dataset$Salary = ifelse(is.na(dataset$Salary),</span><br><span class="line">                        ave(dataset$Salary, FUN = <span class="keyword">function</span>(x) mean(x, na.rm = <span class="literal">TRUE</span>)),</span><br><span class="line">                        dataset$Salary)</span><br><span class="line">                        </span><br><span class="line"><span class="comment"># 法二</span></span><br><span class="line">dataset$Age = ifelse(is.na(dataset$Age),</span><br><span class="line">                     mean(dataset$Age, na.rm = <span class="literal">TRUE</span>),</span><br><span class="line">                     dataset$Age)</span><br><span class="line"></span><br><span class="line">dataset$Salary = ifelse(is.na(dataset$Salary),</span><br><span class="line">                        mean(dataset$Salary, na.rm = <span class="literal">TRUE</span>),</span><br><span class="line">                        dataset$Salary)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Categorical-data"><a href="#2-Categorical-data" class="headerlink" title="2. Categorical data"></a>2. Categorical data</h2><h4 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'Data.csv'</span>)</span><br><span class="line">X = dataset.iloc[:, :<span class="number">-1</span>].values</span><br><span class="line">y = dataset.iloc[:, <span class="number">3</span>].values</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/21/Data-Preprocessing/pic1.JPG" alt="pic1"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line">labelencoder_X = LabelEncoder()</span><br><span class="line">X[:, <span class="number">0</span>] = labelencoder_X.fit_transform(X[:, <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/21/Data-Preprocessing/pic2.JPG" alt="pic2"></p>
+<p>But the model will think that France has higher value than Spain -&gt; that’s not the case, we have no order here. 如果是S, M, L of a T-shirt, 不必使用下面的OneHotEncoder方法</p>
+<p><img src="/2019/09/21/Data-Preprocessing/dummy-encoding.JPG" alt="dummy encoding"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder, OneHotEncoder</span><br><span class="line">labelencoder_X = LabelEncoder()</span><br><span class="line">X[:, <span class="number">0</span>] = labelencoder_X.fit_transform(X[:, <span class="number">0</span>])</span><br><span class="line">onehotencoder = OneHotEncoder(categorical_features = [<span class="number">0</span>])  <span class="comment"># which column you want to encode</span></span><br><span class="line">X = onehotencoder.fit_transform(X).toarray()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/21/Data-Preprocessing/result1.JPG" alt="result1"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Encoding the Dependent Variable</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">For the dependent variable, we are only going to use LabelEncoder, </span></span><br><span class="line"><span class="string">because since this is the dpendent variable, the machine learning model will know</span></span><br><span class="line"><span class="string">that it's a category, and that there is no oder between the two</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">labelencoder_y = LabelEncoder()</span><br><span class="line">y = labelencoder_y.fit_transform(y)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/21/Data-Preprocessing/result2.JPG" alt="result2"></p>
+<p>完整代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Importing the libraries</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'Data.csv'</span>)</span><br><span class="line">X = dataset.iloc[:, :<span class="number">-1</span>].values</span><br><span class="line">y = dataset.iloc[:, <span class="number">3</span>].values</span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoding categorical data</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoding the Independent Variable</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder, OneHotEncoder</span><br><span class="line">labelencoder_X = LabelEncoder()</span><br><span class="line">X[:, <span class="number">0</span>] = labelencoder_X.fit_transform(X[:, <span class="number">0</span>])</span><br><span class="line">onehotencoder = OneHotEncoder(categorical_features = [<span class="number">0</span>])  <span class="comment"># which column you want to encode</span></span><br><span class="line">X = onehotencoder.fit_transform(X).toarray()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Encoding the Dependent Variable</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">For the dependent variable, we are only going to use LabelEncoder, </span></span><br><span class="line"><span class="string">because since this is the dpendent variable, the machine learning model will know</span></span><br><span class="line"><span class="string">that it's a category, and that there is no oder between the two</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">labelencoder_y = LabelEncoder()</span><br><span class="line">y = labelencoder_y.fit_transform(y)</span><br></pre></td></tr></table></figure>
+
+<h4 id="R-1"><a href="#R-1" class="headerlink" title="R"></a>R</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Encoding categorical data</span></span><br><span class="line">dataset$Country = factor(dataset$Country,</span><br><span class="line">                         levels = c(<span class="string">'France'</span>, <span class="string">'Spain'</span>, <span class="string">'Germany'</span>),</span><br><span class="line">                         labels = c(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line">dataset$Purchased = factor(dataset$Purchased,</span><br><span class="line">                           levels = c(<span class="string">'No'</span>, <span class="string">'Yes'</span>),</span><br><span class="line">                           labels = c(<span class="number">0</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/21/Data-Preprocessing/result3.PNG" alt="result3"></p>
+<p><img src="/2019/09/21/Data-Preprocessing/result4.PNG" alt="result4"></p>
+<h2 id="3-train-test-split"><a href="#3-train-test-split" class="headerlink" title="3. train_test_split"></a>3. train_test_split</h2><h4 id="Python-2"><a href="#Python-2" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'Data.csv'</span>)</span><br><span class="line">X = dataset.iloc[:, :<span class="number">-1</span>].values <span class="comment"># :-1 -&gt; take all the column except the last one</span></span><br><span class="line">y = dataset.iloc[:, <span class="number">3</span>].values</span><br><span class="line"></span><br><span class="line"><span class="comment"># Splitting the dataset into the Training set and Test set</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="R-2"><a href="#R-2" class="headerlink" title="R"></a>R</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = read.csv(<span class="string">'Data.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Splitting the dataset into the Training set and Test set</span></span><br><span class="line"><span class="comment"># install.packages('caTools')</span></span><br><span class="line"><span class="keyword">library</span>(caTools)</span><br><span class="line">set.seed(<span class="number">123</span>)</span><br><span class="line">split = sample.split(dataset$Purchased, SplitRatio = <span class="number">0.8</span>) <span class="comment"># 这里取因变量</span></span><br><span class="line"><span class="comment"># spilt结果为TRUE,FALSE, TRUE -&gt; go to training set, FALSE -&gt; go to test set</span></span><br><span class="line">training_set = subset(dataset, split == <span class="literal">TRUE</span>)</span><br><span class="line">test_set = subset(dataset, split == <span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Feature-Scaling"><a href="#4-Feature-Scaling" class="headerlink" title="4. Feature Scaling"></a>4. Feature Scaling</h2><p>Lots of machine learning models are based on Euclidean distance. Since the salary has a much wider range of values, the eulidean distance will be dominated by the salary. </p>
+<p>Even if the machine learning models are not based on euclidean distance, we will still need to do feature scaling, because the algorithms will converge much faster, that will be the case for decision trees.</p>
+<p><strong><em>Feature Scaling:</em></strong> Putting our variables in the same range (in the same scale),  so that no varaible is dominated by the other.</p>
+<p><img src="/2019/09/21/Data-Preprocessing/feature-scaling.JPG" alt="feature scaling"></p>
+<p><strong><em>Question 1: Do we need to fit and transform dummy variables?</em></strong></p>
+<p><img src="/2019/09/21/Data-Preprocessing/show1.JPG" alt="show1"></p>
+<p>It depends on the context. Depends on how much you want to keep interpretation in your models. Because if we scale dummy variables, it will be good because everything will be on the same scale, it will be good for our predicitons, but we will lose interpretation of knowing which observation belongs to which country.</p>
+<p><strong><em>Qustion 2: Do we need to apply feature scaling to y?</em></strong></p>
+<p>we don’t need to do it if it is a classification problem  with categorical dependent variable. But for regression, where the dependent variable will take a huge range of values, we will need to apply feature scaling to y as well.</p>
+<h4 id="Python-3"><a href="#Python-3" class="headerlink" title="Python"></a>Python</h4><p>以下代码中scale了dummy variable</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'Data.csv'</span>)</span><br><span class="line">X = dataset.iloc[:, :<span class="number">-1</span>].values <span class="comment"># :-1 -&gt; take all the column except the last one</span></span><br><span class="line">y = dataset.iloc[:, <span class="number">3</span>].values</span><br><span class="line"></span><br><span class="line"><span class="comment"># Splitting the dataset into the Training set and Test set</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = <span class="number">0.2</span>, random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Feature Scaling</span></span><br><span class="line"><span class="comment"># most of time we don't need to do feature scaling, beacuse feature scaling is a tool</span></span><br><span class="line"><span class="comment"># included most of time in the machine learning libraries, </span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">sc_X = StandardScaler()</span><br><span class="line">X_train = sc_X.fit_transform(X_train)</span><br><span class="line">X_test = sc_X.transform(X_test)</span><br></pre></td></tr></table></figure>
+
+<p>Feature scaling on X_test is the same as the feature scaling on the X_train(scaled on the same bases)</p>
+<p><img src="/2019/09/21/Data-Preprocessing/result5.JPG" alt="result5"></p>
+<p>The result is between -1 and 1.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sc_y = StandardScaler()</span><br><span class="line">y_train = sc_y.fit_transform(y_train.reshape(<span class="number">-1</span>,<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<h4 id="R-3"><a href="#R-3" class="headerlink" title="R"></a>R</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Splitting the dataset into the Training set and Test set</span></span><br><span class="line"><span class="comment"># install.packages('caTools')</span></span><br><span class="line"><span class="keyword">library</span>(caTools)</span><br><span class="line">set.seed(<span class="number">123</span>)</span><br><span class="line">split = sample.split(dataset$Purchased, SplitRatio = <span class="number">0.8</span>)</span><br><span class="line"><span class="comment"># spilt结果为TRUE,FALSE, TRUE -&gt; go to training set, FALSE -&gt; go to test set</span></span><br><span class="line">training_set = subset(dataset, split == <span class="literal">TRUE</span>)</span><br><span class="line">test_set = subset(dataset, split == <span class="literal">FALSE</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Feature Scaling</span></span><br><span class="line">training_set = scale(training_set)</span><br><span class="line">test_set = scale(test_set)</span><br></pre></td></tr></table></figure>
+
+<p>直接这样运行会出错：</p>
+<p><img src="/2019/09/21/Data-Preprocessing/result6.JPG" alt="result6"></p>
+<p><img src="/2019/09/21/Data-Preprocessing/result7.JPG" alt="result7"></p>
+<p>We’re going to exclude categories from the feature scaling, we’re not going to apply feature scaling on those columns.</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">training_set[,<span class="number">2</span>:<span class="number">3</span>] = scale(training_set[,<span class="number">2</span>:<span class="number">3</span>])</span><br><span class="line">test_set[,<span class="number">2</span>:<span class="number">3</span>] = scale(test_set[,<span class="number">2</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>MachineLearningA-Z</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python working directory</title>
+    <url>/2019/09/17/Python-working-directory/</url>
+    <content><![CDATA[<ul>
+<li>更改当前路径</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">"E:/machine learning"</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取当前路径</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getcwd()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据框操作</title>
+    <url>/2019/09/02/dataframe-operation/</url>
+    <content><![CDATA[<p>一、创建dataframe</p>
+<ul>
+<li>法一</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dat = (&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">'string'</span>: [<span class="string">'a'</span>, <span class="string">'b'</span>,<span class="string">'c'</span>]&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>法二（若已有现成的list）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dat = pd.DataFrame([n_clusters_start, score], columns = [<span class="string">"分类数"</span>, <span class="string">"得分"</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'!'</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'?'</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">'EC'</span>:EC,<span class="string">'QC'</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">"freqOf "</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果"></p>
+<p>二、数据框拼接（ignore_index = True, 重新分配索引）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 两种方式，concat、 append都可以</span></span><br><span class="line">result = pd.concat([result1, result2], ignore_index = <span class="literal">True</span>) <span class="comment"># 默认axis = 0 -&gt; 粘贴行 </span></span><br><span class="line">result = result1.append(result2, ignore_index = <span class="literal">True</span>) <span class="comment"># 粘贴行</span></span><br><span class="line"></span><br><span class="line">RF_eval = pd.concat([RF_eval, eval_raw], axis = <span class="number">1</span>) <span class="comment"># 粘贴列</span></span><br></pre></td></tr></table></figure>
+
+<p>三、删掉列</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">RF_eval.drop([<span class="string">'raw'</span>], axis = <span class="number">1</span>, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>四、删掉行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dat = dat.drop(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>五、提取行索引</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">index0 = res.index[res[<span class="string">'label'</span>] == <span class="number">0</span>].tolist()</span><br><span class="line">X0 = X[index0] <span class="comment"># X为矩阵</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>读取与保存csv和txt文件</title>
+    <url>/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>一、csv文件</p>
+<ol>
+<li>读取</li>
+</ol>
+<ul>
+<li><p>法一</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">eval_raw = pd.read_csv(<span class="string">'eval-tweets.csv'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>)  <span class="comment">#若文件中无列表头 -&gt; header = None</span></span><br><span class="line">eval_raw.columns = [<span class="string">'ID'</span>, <span class="string">'tweet'</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>法二：用names指定需要的列表头</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">eval_raw = pd.read_csv(<span class="string">'eval-tweets.csv'</span>, sep = <span class="string">'\t'</span>, names = [<span class="string">'ID'</span>,<span class="string">'tweet'</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>保存<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">save = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">save.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", sep = '\t', index = False)</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>二、txt文件</p>
+<ol>
+<li>读取(注：法一和法二都有可能会造成行数缺少或数据分割不正确的现象，建议采用法三)</li>
+</ol>
+<ul>
+<li><p>法一</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_table(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>法二</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_fwf(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>法三</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">####### example 1 #########</span></span><br><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### example 2 #########</span></span><br><span class="line">stream = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'dataset.txt'</span>):</span><br><span class="line">    row = [eval(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.strip().split(<span class="string">' '</span>)]</span><br><span class="line">    stream.append(row)</span><br><span class="line">    </span><br><span class="line">arms = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">0</span>]</span><br><span class="line">    arms.append(temp)</span><br><span class="line">    </span><br><span class="line">rewards = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">1</span>]</span><br><span class="line">    rewards.append(temp)</span><br><span class="line">    </span><br><span class="line">contexts = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    contexts.append(stream[i][<span class="number">2</span>:])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>保存(方法同csv)<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">RF_test.to_csv(<span class="string">"RF_test.txt"</span>, sep = <span class="string">'\t'</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown语法</title>
+    <url>/2019/06/27/Markdown%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>(本文参考<a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">Markdown Tutorial</a>)</p>
+<h4 id="1-加粗与斜体"><a href="#1-加粗与斜体" class="headerlink" title="1. 加粗与斜体"></a>1. 加粗与斜体</h4><ul>
+<li>斜体：在文本两侧加上一个星号或一个下划线，例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_unknown_或*unkown*</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<em>unknown</em></p>
+<ul>
+<li>加粗：在文本两侧加上两个星号或两个下划线, 例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">__unknown__或**unknown**</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<strong>unknown</strong></p>
+<ul>
+<li>注：斜体和加粗可以一起用，例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">**_of course_**</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<strong><em>of course</em></strong></p>
+<h4 id="2-标题-Headers"><a href="#2-标题-Headers" class="headerlink" title="2.标题(Headers)"></a>2.标题(Headers)</h4><p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（# 一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
+<blockquote>
+<h1 id="Header-one"><a href="#Header-one" class="headerlink" title="Header one"></a>Header one</h1><h2 id="Header-two"><a href="#Header-two" class="headerlink" title="Header two"></a>Header two</h2><h3 id="Header-three"><a href="#Header-three" class="headerlink" title="Header three"></a>Header three</h3><h4 id="Header-four"><a href="#Header-four" class="headerlink" title="Header four"></a>Header four</h4><h5 id="Header-five"><a href="#Header-five" class="headerlink" title="Header five"></a>Header five</h5><h6 id="Header-six"><a href="#Header-six" class="headerlink" title="Header six"></a>Header six</h6><p>plain text</p>
+</blockquote>
+<p>注：#号与文本之间有一个空格。</p>
+<h4 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h4><ul>
+<li><p>inline link</p>
+<p>语法如下：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[Visit GitHub!](www.github.com)</span><br></pre></td></tr></table></figure>
+
+<p><a href="www.github.com">Visit GitHub!</a></p>
+<p>再比如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[Yo<span class="string">u're **really, really** going to see this.](www.dailykitten.com)</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="www.dailykitten.com">You’re <strong>really, really</strong> going to see this.</a></p>
+<ul>
+<li>reference link</li>
+</ul>
+<p>语法如下：  </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Do you want to [see something fun][a fun place]?  </span><br><span class="line"></span><br><span class="line">Well, I have [a website <span class="keyword">for</span> you][another fun place]!</span><br><span class="line"></span><br><span class="line">[a fun place]: www.zombo.com</span><br><span class="line">    </span><br><span class="line">[another fun place]: www.stumbleupon.com</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<br>Do you want to <a href="www.zombo.com">see something fun</a>?  </p>
+<p>Well, I have <a href="www.stumbleupon.com">a website for you</a>!</p>
+<p>一般可将链接地址写在Markdown文件的最后。使用refrence的好处是如果有许多链接都是指向一个地方，那么需要更改的时候只需要修改一次就行了。</p>
+<h4 id="4-图片"><a href="#4-图片" class="headerlink" title="4.图片"></a>4.图片</h4><ul>
+<li>inline link</li>
+</ul>
+<p>插入图片和插入链接类似，语法如下： </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">![A pretty tiger](https://upload.wikimedia.org/wikipedia/commons/<span class="number">5</span>/<span class="number">56</span>/Tiger<span class="number">.50</span>.jpg)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg" alt="A pretty tiger"></p>
+<p>注：</p>
+<ol>
+<li>[ ]中的内容可以空着，当网络不好，图片无法显示时（或某些其它原因）会显示[ ]中的文字</li>
+<li>!和[ ]之间不要加空格</li>
+</ol>
+<ul>
+<li>reference link</li>
+</ul>
+<p>语法如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">![Black cat][Black]</span><br><span class="line"></span><br><span class="line">![Orange cat][Orange]</span><br><span class="line"></span><br><span class="line">[Black]: https://upload.wikimedia.org/wikipedia/commons/a/a3/<span class="number">81</span>_INF_DIV_SSI.jpg  </span><br><span class="line">        </span><br><span class="line">[Orange]:http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/<span class="number">256</span>/<span class="number">22221</span>-cat-icon.png</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/81_INF_DIV_SSI.jpg" alt="Black cat"></p>
+<p><img src="http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/256/22221-cat-icon.png" alt="Orange cat"></p>
+<h4 id="5-Blockquotes"><a href="#5-Blockquotes" class="headerlink" title="5.Blockquotes"></a>5.Blockquotes</h4><p>当想引用一段话并让读者注意到时，可以采用如下方法：在文本前加上”&gt;”</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; <span class="string">"In a few moments he was barefoot, his stockings folded in his pockets and his</span></span><br><span class="line"><span class="string">  canvas shoes dangling by their knotted laces over his shoulders and, picking a</span></span><br><span class="line"><span class="string">  pointed salt-eaten stick out of the jetsam among the rocks, he clambered down</span></span><br><span class="line"><span class="string">  the slope of the breakwater."</span></span><br></pre></td></tr></table></figure>
+
+<p> 效果如下：</p>
+<blockquote>
+<p>“In a few moments he was barefoot, his stockings folded in his pockets and his<br>  canvas shoes dangling by their knotted laces over his shoulders and, picking a<br>  pointed salt-eaten stick out of the jetsam among the rocks, he clambered down<br>  the slope of the breakwater.”</p>
+</blockquote>
+<p>当引用多段话时，可以在每一部分前加上”&gt;”，例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; His words seemed to have struck some deep chord <span class="keyword">in</span> his own nature. Had he spoken</span><br><span class="line">of himself, of himself as he was or wished to be? Stephen watched his face for some</span><br><span class="line">moments <span class="keyword">in</span> silence. A cold sadness was there. He had spoken of himself, of his own</span><br><span class="line">loneliness which he feared.  </span><br><span class="line">&gt;  </span><br><span class="line">&gt; —Of whom are you speaking? Stephen asked at length.  </span><br><span class="line">&gt;  </span><br><span class="line">&gt; Cranly did <span class="keyword">not</span> answer.</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<blockquote>
+<p>His words seemed to have struck some deep chord in his own nature. Had he spoken<br>of himself, of himself as he was or wished to be? Stephen watched his face for some<br>moments in silence. A cold sadness was there. He had spoken of himself, of his own<br>loneliness which he feared.</p>
+<p>—Of whom are you speaking? Stephen asked at length.</p>
+<p>Cranly did not answer.</p>
+</blockquote>
+<p>Note: even blank lines must contain the caret character. This ensures that the entire blockquote is grouped together.</p>
+<h4 id="6-列表-Lists"><a href="#6-列表-Lists" class="headerlink" title="6.列表(Lists)"></a>6.列表(Lists)</h4><h4 id="unordered-list"><a href="#unordered-list" class="headerlink" title="* unordered list"></a>* unordered list</h4><p>在前面加星号：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">* Milk  </span><br><span class="line">* Eggs  </span><br><span class="line">* Salmon  </span><br><span class="line">* Butter</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ul>
+<li>Milk</li>
+<li>Eggs</li>
+<li>Salmon</li>
+<li>Butter</li>
+</ul>
+<h5 id="odered-list"><a href="#odered-list" class="headerlink" title="* odered list"></a>* odered list</h5><p>在前面加数字</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> Crack three eggs over a bowl</span><br><span class="line"><span class="number">2.</span> Pour a gallon of milk into the bowl</span><br><span class="line"><span class="number">3.</span> Rub the salmon vigorously <span class="keyword">with</span> butter</span><br><span class="line"><span class="number">4.</span> Drop the salmon into the egg-milk bowl</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ol>
+<li>Crack three eggs over a bowl</li>
+<li>Pour a gallon of milk into the bowl</li>
+<li>Rub the salmon vigorously with butter</li>
+<li>Drop the salmon into the egg-milk bowl</li>
+</ol>
+<h5 id="nest-one-list-within-another"><a href="#nest-one-list-within-another" class="headerlink" title="* nest one list within another"></a>* nest one list within another</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">* Tintin</span><br><span class="line"> * A reporter</span><br><span class="line"> * Has poofy orange hair</span><br><span class="line"> * Friends <span class="keyword">with</span> the world<span class="string">'s most awesome dog</span></span><br><span class="line"><span class="string">* Haddock</span></span><br><span class="line"><span class="string"> * A sea captain</span></span><br><span class="line"><span class="string"> * Has a fantastic beard</span></span><br><span class="line"><span class="string"> * Loves whiskey</span></span><br><span class="line"><span class="string">   * Possibly also scotch?</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Tintin<ul>
+<li>A reporter</li>
+<li>Has poofy orange hair</li>
+<li>Friends with the world’s most awesome dog</li>
+</ul>
+</li>
+<li>Haddock<ul>
+<li>A sea captain</li>
+<li>Has a fantastic beard</li>
+<li>Loves whiskey<ul>
+<li>Possibly also scotch?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>建议最多建三层，否则文章结构会变得太混乱</p>
+<h4 id="7-段落"><a href="#7-段落" class="headerlink" title="7.段落"></a>7.段落</h4><ul>
+<li>hard break</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Do I contradict myself?</span><br><span class="line"></span><br><span class="line">Very well then I contradict myself,</span><br><span class="line"></span><br><span class="line">(I am large, I contain multitudes.)</span><br></pre></td></tr></table></figure>
+
+<p>想换行时，空一行。效果如下：</p>
+<p>Do I contradict myself?</p>
+<p>Very well then I contradict myself,</p>
+<p>(I am large, I contain multitudes.)</p>
+<ul>
+<li>soft break</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Do I contradict myself?··</span><br><span class="line">Very well then I contradict myself,··</span><br><span class="line">(I am large, I contain multitudes.)</span><br></pre></td></tr></table></figure>
+
+<p>想换行时，打两个空格。上面每个点 ( · ) 代表一个空格。效果如下：</p>
+<p>Do I contradict myself?<br>Very well then I contradict myself,<br>(I am large, I contain multitudes.)</p>
+<h4 id="8-LaTex数学表达式"><a href="#8-LaTex数学表达式" class="headerlink" title="8. LaTex数学表达式"></a>8. LaTex数学表达式</h4><p>在Markdown文档中，可以使用<a href="https://www.latex-project.org/" target="_blank" rel="noopener">LaTex</a>符号创建数学表达式。例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">y = \frac&#123;a&#125;&#123;b+c&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+
+<p>注：可能有的Markdown软件不支持Latex公式。</p>
+<p>以上，本文介绍了一些基础的Markdown语法，想了解更多的Markdown知识可查询相关资料。</p>
+]]></content>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jupyter Notebook中的快捷键</title>
+    <url>/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<ul>
+<li>shift+enter: 运行代码块</li>
+<li>shift+tab: show the documentation pop up for the method</li>
+<li>Esc+m: markdown语句</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Jupyter Notebook</category>
+      </categories>
+      <tags>
+        <tag>Jupyter Notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Advanced Python Types</title>
+    <url>/2019/06/27/Advanced-Python-Types/</url>
+    <content><![CDATA[<ul>
+<li>List</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3]</code></pre><p>List的拼接</p>
+<p>注意：[1,2]是List不是Array（Array要用np.array()）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line">features = []</span><br><span class="line"><span class="keyword">for</span> (vec, wt) <span class="keyword">in</span> vecs_wt[<span class="number">0</span>:<span class="number">2</span>]:</span><br><span class="line">	features.append(vec)</span><br><span class="line">	newfeatures = list(chain(*features))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>] + [<span class="number">3</span>] + [<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3, 4]</code></pre><ul>
+<li>Array</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1 2]</code></pre><p>Array的合并</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.concatenate(要拼接的多个数组, axis = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<ul>
+<li>Dictionary</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d = &#123;<span class="string">'foo'</span>:<span class="number">1</span>, <span class="string">'bar'</span>:<span class="number">2.3</span>, <span class="string">'s'</span>:<span class="string">'my first dictionary'</span>&#125;</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<pre><code>{&apos;s&apos;: &apos;my first dictionary&apos;, &apos;bar&apos;: 2.3, &apos;foo&apos;: 1}</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(d[<span class="string">'foo'</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>1</code></pre>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python中的简单语法</title>
+    <url>/2019/06/27/basic-python-type/</url>
+    <content><![CDATA[<p><strong><em>缩进是python的灵魂</em></strong></p>
+<ul>
+<li>查看内置函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dir(__builtins)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>逻辑运算符</li>
+</ul>
+<p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>比较操作符</li>
+</ul>
+<blockquote>
+<p>&gt;, &lt;, &gt;=, &lt;=, ==, != </p>
+</blockquote>
+<ul>
+<li>Python中的双引号</li>
+</ul>
+<p>Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号</p>
+<ul>
+<li>type()函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">4</span></span><br><span class="line">type(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>int</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = <span class="literal">None</span></span><br><span class="line">type(n)</span><br></pre></td></tr></table></figure>
+
+<pre><code>NoneType</code></pre><ul>
+<li>dtype</li>
+</ul>
+<p>查看type</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>].dtype</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>dtype(‘O’)</p>
+</blockquote>
+<p>转换type</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>] = train[<span class="string">"ID"</span>].astype(np.int32)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test blog</title>
+    <url>/2019/06/26/test-blog/</url>
+    <content><![CDATA[<p>一篇测试文章.</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/06/26/hello-world/</url>
+    <content><![CDATA[<a id="more"></a>
+<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
