@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hadoop Introduction</title>
+    <url>/2019/12/15/Hadoop-Introduction/</url>
+    <content><![CDATA[<h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
+<h1 id="Hadoop-Ecosystem"><a href="#Hadoop-Ecosystem" class="headerlink" title="Hadoop Ecosystem"></a>Hadoop Ecosystem</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-ecosystem.JPG" alt="hadoop-ecosystem"></p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop Introduction</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Data Preprocessing</title>
     <url>/2019/09/21/Data-Preprocessing/</url>
     <content><![CDATA[<p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/" target="_blank" rel="noopener"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
