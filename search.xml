@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>最长公共子序列</title>
+    <url>/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-common-subsequence/" target="_blank" rel="noopener">最长公共子序列（难度：中等）</a></p>
+<p><img src="/2019/12/25/最长公共子序列/question.JPG" alt="题目"></p>
+<h3 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h3><p><img src="/2019/12/25/最长公共子序列/1.JPG" alt="图1"></p>
+<p><img src="/2019/12/25/最长公共子序列/2.JPG" alt="图2"></p>
+<p><img src="/2019/12/25/最长公共子序列/code.JPG" alt="code"></p>
+<p><img src="/2019/12/25/最长公共子序列/3.JPG" alt="图3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>&#39;HDFS-Overview&#39;</title>
+    <url>/2019/12/16/HDFS-Overview/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Hadoop Introduction</title>
     <url>/2019/12/15/Hadoop-Introduction/</url>
     <content><![CDATA[<h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
