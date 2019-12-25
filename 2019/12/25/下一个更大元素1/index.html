@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,链表,">
+  <meta name="keywords" content="leetcode,栈,">
 
 
 
@@ -79,24 +79,23 @@
 
 
 
-<meta name="description" content="删除排序链表中的重复元素2（难度：中等）  思路 画解 代码(Java)">
-<meta name="keywords" content="leetcode,链表">
+<meta name="description" content="下一个更大元素1（难度：简单）    图解">
+<meta name="keywords" content="leetcode,栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="删除排序链表中的重复元素2">
-<meta property="og:url" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/index.html">
+<meta property="og:title" content="下一个更大元素1">
+<meta property="og:url" content="http://qypx.github.io/2019/12/25/下一个更大元素1/index.html">
 <meta property="og:site_name" content="qypx blog">
-<meta property="og:description" content="删除排序链表中的重复元素2（难度：中等）  思路 画解 代码(Java)">
+<meta property="og:description" content="下一个更大元素1（难度：简单）    图解">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577278207894.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/20191225-210253.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577279243671.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577279306551.jpg">
-<meta property="og:updated_time" content="2019-12-25T13:11:09.815Z">
+<meta property="og:image" content="http://qypx.github.io/2019/12/25/下一个更大元素1/1577281453752.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/12/25/下一个更大元素1/1577281497407.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/12/25/下一个更大元素1/1577281548614.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/12/25/下一个更大元素1/20191225-215434.jpg">
+<meta property="og:updated_time" content="2019-12-25T13:57:35.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="删除排序链表中的重复元素2">
-<meta name="twitter:description" content="删除排序链表中的重复元素2（难度：中等）  思路 画解 代码(Java)">
-<meta name="twitter:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg">
+<meta name="twitter:title" content="下一个更大元素1">
+<meta name="twitter:description" content="下一个更大元素1（难度：简单）    图解">
+<meta name="twitter:image" content="http://qypx.github.io/2019/12/25/下一个更大元素1/1577281453752.jpg">
 
 
 
@@ -126,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/">
+  <link rel="canonical" href="http://qypx.github.io/2019/12/25/下一个更大元素1/">
 
 
 
@@ -135,7 +134,7 @@
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
 
-  <title>删除排序链表中的重复元素2 | qypx blog</title>
+  <title>下一个更大元素1 | qypx blog</title>
   
 
 
@@ -294,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/12/25/下一个更大元素1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qypx">
@@ -311,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">删除排序链表中的重复元素2</h1>
+          <h1 class="post-title" itemprop="name headline">下一个更大元素1</h1>
         
 
         <div class="post-meta">
@@ -323,7 +322,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T20:47:44+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T21:42:19+08:00">
                 2019-12-25
               </time>
             
@@ -339,7 +338,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-25T21:11:09+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-25T21:57:35+08:00">
                 2019-12-25
               </time>
             
@@ -395,13 +394,11 @@
       
 
       
-        <p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">删除排序链表中的重复元素2（难度：中等）</a></p>
-<p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278207894.jpg" alt="1577278207894"></p>
-<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/20191225-210253.jpg" alt="画解"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>(Java)</p>
-<p><img src="/2019/12/25/删除排序链表中的重复元素2/1577279243671.jpg" alt="code"></p>
-<p><img src="/2019/12/25/删除排序链表中的重复元素2/1577279306551.jpg" alt="结果"></p>
+        <p><a href="https://leetcode-cn.com/problems/next-greater-element-i/" target="_blank" rel="noopener">下一个更大元素1（难度：简单）</a></p>
+<p><img src="/2019/12/25/下一个更大元素1/1577281453752.jpg" alt="题目"></p>
+<p><img src="/2019/12/25/下一个更大元素1/1577281497407.jpg" alt="方法"></p>
+<p><img src="/2019/12/25/下一个更大元素1/1577281548614.jpg" alt="code"></p>
+<h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="/2019/12/25/下一个更大元素1/20191225-215434.jpg" alt="图解"></p>
 
       
     </div>
@@ -421,7 +418,7 @@
           
             <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
-            <a href="/tags/链表/" rel="tag"># 链表</a>
+            <a href="/tags/栈/" rel="tag"># 栈</a>
           
         </div>
       
@@ -434,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/25/删除排序链表中的重复元素/" rel="next" title="删除排序链表中的重复元素">
-                <i class="fa fa-chevron-left"></i> 删除排序链表中的重复元素
+              <a href="/2019/12/25/删除列表中的节点/" rel="next" title="删除列表中的节点">
+                <i class="fa fa-chevron-left"></i> 删除列表中的节点
               </a>
             
           </div>
@@ -443,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/25/删除列表中的节点/" rel="prev" title="删除列表中的节点">
-                删除列表中的节点 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画解"><span class="nav-number">2.</span> <span class="nav-text">画解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#图解"><span class="nav-number">1.</span> <span class="nav-text">图解</span></a></li></ol></div>
             
 
           </div>
