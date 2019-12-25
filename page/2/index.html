@@ -284,6 +284,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/27/Advanced-Python-Types/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/27/Advanced-Python-Types/" itemprop="url">Advanced Python Types</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-27T14:23:36+08:00">
+                2019-06-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-02T20:27:34+08:00">
+                2019-09-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>List</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3]</code></pre><p>List的拼接</p>
+<p>注意：[1,2]是List不是Array（Array要用np.array()）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line">features = []</span><br><span class="line"><span class="keyword">for</span> (vec, wt) <span class="keyword">in</span> vecs_wt[<span class="number">0</span>:<span class="number">2</span>]:</span><br><span class="line">	features.append(vec)</span><br><span class="line">	newfeatures = list(chain(*features))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>] + [<span class="number">3</span>] + [<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 2, 3, 4]</code></pre><ul>
+<li>Array</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1 2]</code></pre><p>Array的合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.concatenate(要拼接的多个数组, axis = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<ul>
+<li>Dictionary</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">'foo'</span>:<span class="number">1</span>, <span class="string">'bar'</span>:<span class="number">2.3</span>, <span class="string">'s'</span>:<span class="string">'my first dictionary'</span>&#125;</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<pre><code>{&apos;s&apos;: &apos;my first dictionary&apos;, &apos;bar&apos;: 2.3, &apos;foo&apos;: 1}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d[<span class="string">'foo'</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>1</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/27/basic-python-type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -816,7 +998,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -838,7 +1020,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
