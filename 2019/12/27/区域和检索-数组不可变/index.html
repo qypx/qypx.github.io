@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="区域和检索 - 数组不可变（难度：简单）   方法二： 缓存 1234567891011121314151617181920class NumArray &amp;#123;    private int[] sum;        public NumArray(int[] nums) &amp;#123;        sum = new int[nums.length+1]; // 多增加一位">
+<meta name="description" content="区域和检索 - 数组不可变（难度：简单）    方法二： 缓存 1234567891011121314151617181920class NumArray &amp;#123;    private int[] sum;        public NumArray(int[] nums) &amp;#123;        sum = new int[nums.length+1]; // 多增加一位">
 <meta name="keywords" content="leetcode,数组,动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="区域和检索 - 数组不可变">
 <meta property="og:url" content="http://qypx.github.io/2019/12/27/区域和检索-数组不可变/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="区域和检索 - 数组不可变（难度：简单）   方法二： 缓存 1234567891011121314151617181920class NumArray &amp;#123;    private int[] sum;        public NumArray(int[] nums) &amp;#123;        sum = new int[nums.length+1]; // 多增加一位">
+<meta property="og:description" content="区域和检索 - 数组不可变（难度：简单）    方法二： 缓存 1234567891011121314151617181920class NumArray &amp;#123;    private int[] sum;        public NumArray(int[] nums) &amp;#123;        sum = new int[nums.length+1]; // 多增加一位">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2019/12/27/区域和检索-数组不可变/1.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/12/27/区域和检索-数组不可变/2.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/12/27/区域和检索-数组不可变/3.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/12/27/区域和检索-数组不可变/4.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/12/27/区域和检索-数组不可变/5.jpg">
-<meta property="og:updated_time" content="2019-12-27T08:29:54.764Z">
+<meta property="og:updated_time" content="2019-12-28T09:06:21.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区域和检索 - 数组不可变">
-<meta name="twitter:description" content="区域和检索 - 数组不可变（难度：简单）   方法二： 缓存 1234567891011121314151617181920class NumArray &amp;#123;    private int[] sum;        public NumArray(int[] nums) &amp;#123;        sum = new int[nums.length+1]; // 多增加一位">
+<meta name="twitter:description" content="区域和检索 - 数组不可变（难度：简单）    方法二： 缓存 1234567891011121314151617181920class NumArray &amp;#123;    private int[] sum;        public NumArray(int[] nums) &amp;#123;        sum = new int[nums.length+1]; // 多增加一位">
 <meta name="twitter:image" content="http://qypx.github.io/2019/12/27/区域和检索-数组不可变/1.jpg">
 
 
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-27T16:29:54+08:00">
-                2019-12-27
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-28T17:06:21+08:00">
+                2019-12-28
               </time>
             
           </span>
@@ -398,6 +398,7 @@
         <p><a href="https://leetcode-cn.com/problems/range-sum-query-immutable/" target="_blank" rel="noopener">区域和检索 - 数组不可变（难度：简单）</a></p>
 <p><img src="/2019/12/27/区域和检索-数组不可变/1.jpg" alt="1"></p>
 <p><img src="/2019/12/27/区域和检索-数组不可变/2.jpg" alt="2"></p>
+<hr>
 <h5 id="方法二：-缓存"><a href="#方法二：-缓存" class="headerlink" title="方法二： 缓存"></a>方法二： 缓存</h5><p><img src="/2019/12/27/区域和检索-数组不可变/3.jpg" alt="3"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] sum;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NumArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        sum = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length+<span class="number">1</span>]; <span class="comment">// 多增加一位</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            sum[i+<span class="number">1</span>] = sum[i] + nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sum[j+<span class="number">1</span>] - sum[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your NumArray object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * NumArray obj = new NumArray(nums);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.sumRange(i,j);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 
@@ -531,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
