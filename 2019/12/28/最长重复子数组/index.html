@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,链表,">
+  <meta name="keywords" content="leetcode,数组,动态规划,">
 
 
 
@@ -79,24 +79,21 @@
 
 
 
-<meta name="description" content="删除排序链表中的重复元素2（难度：中等）  思路 画解 代码(Java)">
-<meta name="keywords" content="leetcode,链表">
+<meta name="description" content="最长重复子数组（难度：中等）  方法：动态规划 作者：LeetCode链接：https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/来源：力扣（LeetCode）  设 dp[i][j]为 A[i:] 和 B[j:]">
+<meta name="keywords" content="leetcode,数组,动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content="删除排序链表中的重复元素2">
-<meta property="og:url" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/index.html">
+<meta property="og:title" content="最长重复子数组">
+<meta property="og:url" content="http://qypx.github.io/2019/12/28/最长重复子数组/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="删除排序链表中的重复元素2（难度：中等）  思路 画解 代码(Java)">
+<meta property="og:description" content="最长重复子数组（难度：中等）  方法：动态规划 作者：LeetCode链接：https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/来源：力扣（LeetCode）  设 dp[i][j]为 A[i:] 和 B[j:]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577278207894.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/20191225-210253.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577279243671.jpg">
-<meta property="og:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577279306551.jpg">
-<meta property="og:updated_time" content="2019-12-25T13:11:09.815Z">
+<meta property="og:image" content="http://qypx.github.io/2019/12/28/最长重复子数组/1.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/12/28/最长重复子数组/2.jpg">
+<meta property="og:updated_time" content="2019-12-28T05:38:38.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="删除排序链表中的重复元素2">
-<meta name="twitter:description" content="删除排序链表中的重复元素2（难度：中等）  思路 画解 代码(Java)">
-<meta name="twitter:image" content="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg">
+<meta name="twitter:title" content="最长重复子数组">
+<meta name="twitter:description" content="最长重复子数组（难度：中等）  方法：动态规划 作者：LeetCode链接：https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/来源：力扣（LeetCode）  设 dp[i][j]为 A[i:] 和 B[j:]">
+<meta name="twitter:image" content="http://qypx.github.io/2019/12/28/最长重复子数组/1.jpg">
 
 
 
@@ -126,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/">
+  <link rel="canonical" href="http://qypx.github.io/2019/12/28/最长重复子数组/">
 
 
 
@@ -135,7 +132,7 @@
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
 
-  <title>删除排序链表中的重复元素2 | qypx の blog</title>
+  <title>最长重复子数组 | qypx の blog</title>
   
 
 
@@ -294,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/12/25/删除排序链表中的重复元素2/">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/12/28/最长重复子数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qypx">
@@ -311,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">删除排序链表中的重复元素2</h1>
+          <h1 class="post-title" itemprop="name headline">最长重复子数组</h1>
         
 
         <div class="post-meta">
@@ -323,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T20:47:44+08:00">
-                2019-12-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-28T13:28:27+08:00">
+                2019-12-28
               </time>
             
 
@@ -339,8 +336,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-25T21:11:09+08:00">
-                2019-12-25
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-28T13:38:38+08:00">
+                2019-12-28
               </time>
             
           </span>
@@ -395,13 +392,18 @@
       
 
       
-        <p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">删除排序链表中的重复元素2（难度：中等）</a></p>
-<p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278207894.jpg" alt="1577278207894"></p>
-<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/20191225-210253.jpg" alt="画解"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>(Java)</p>
-<p><img src="/2019/12/25/删除排序链表中的重复元素2/1577279243671.jpg" alt="code"></p>
-<p><img src="/2019/12/25/删除排序链表中的重复元素2/1577279306551.jpg" alt="结果"></p>
+        <p><a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/" target="_blank" rel="noopener">最长重复子数组（难度：中等）</a></p>
+<p><img src="/2019/12/28/最长重复子数组/1.jpg" alt="1"></p>
+<h4 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h4><blockquote>
+<p>作者：LeetCode<br>链接：<a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
+</blockquote>
+<p>设 <code>dp[i][j]</code>为 <code>A[i:]</code> 和 <code>B[j:]</code> 的最长公共前缀，那么答案为所有 <code>dp[i][j]</code> 中的最大值 <code>max(dp[i][j])</code>。若 <code>A[i] == B[j]</code>，状态转移方程为 <code>dp[i][j] = dp[i + 1][j + 1] + 1</code>，否则为 <code>dp[i][j] = 0</code>。</p>
+<p><strong>复杂度分析</strong></p>
+<p>时间复杂度：O(M*N)，其中 M和 N是数组 A 和 B 的长度。<br>空间复杂度：O(M*N)，即为数组 <code>dp</code> 使用的空间。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLength</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[A.length+<span class="number">1</span>][B.length+<span class="number">1</span>]; <span class="comment">// 长度加1是为了后面的dp[i+1][j+1]</span></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = A.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = B.length-<span class="number">1</span>; j&gt;=<span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">if</span>(A[i] == B[j])</span><br><span class="line">                    dp[i][j] = dp[i+<span class="number">1</span>][j+<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                res = Math.max(res,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/12/28/最长重复子数组/2.jpg" alt="2"></p>
 
       
     </div>
@@ -421,7 +423,9 @@
           
             <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
-            <a href="/tags/链表/" rel="tag"># 链表</a>
+            <a href="/tags/数组/" rel="tag"># 数组</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -434,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/25/删除排序链表中的重复元素/" rel="next" title="删除排序链表中的重复元素">
-                <i class="fa fa-chevron-left"></i> 删除排序链表中的重复元素
+              <a href="/2019/12/27/最大连续1的个数/" rel="next" title="最大连续1的个数">
+                <i class="fa fa-chevron-left"></i> 最大连续1的个数
               </a>
             
           </div>
@@ -443,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/25/删除列表中的节点/" rel="prev" title="删除列表中的节点">
-                删除列表中的节点 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画解"><span class="nav-number">2.</span> <span class="nav-text">画解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法：动态规划"><span class="nav-number">1.</span> <span class="nav-text">方法：动态规划</span></a></li></ol></div>
             
 
           </div>

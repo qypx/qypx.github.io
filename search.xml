@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>最长重复子数组</title>
+    <url>/2019/12/28/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/" target="_blank" rel="noopener">最长重复子数组（难度：中等）</a></p>
+<p><img src="/2019/12/28/最长重复子数组/1.jpg" alt="1"></p>
+<h4 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h4><blockquote>
+<p>作者：LeetCode<br>链接：<a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
+</blockquote>
+<p>设 <code>dp[i][j]</code>为 <code>A[i:]</code> 和 <code>B[j:]</code> 的最长公共前缀，那么答案为所有 <code>dp[i][j]</code> 中的最大值 <code>max(dp[i][j])</code>。若 <code>A[i] == B[j]</code>，状态转移方程为 <code>dp[i][j] = dp[i + 1][j + 1] + 1</code>，否则为 <code>dp[i][j] = 0</code>。</p>
+<p><strong>复杂度分析</strong></p>
+<p>时间复杂度：O(M*N)，其中 M和 N是数组 A 和 B 的长度。<br>空间复杂度：O(M*N)，即为数组 <code>dp</code> 使用的空间。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLength</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[A.length+<span class="number">1</span>][B.length+<span class="number">1</span>]; <span class="comment">// 长度加1是为了后面的dp[i+1][j+1]</span></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = A.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = B.length-<span class="number">1</span>; j&gt;=<span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">if</span>(A[i] == B[j])</span><br><span class="line">                    dp[i][j] = dp[i+<span class="number">1</span>][j+<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                res = Math.max(res,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/12/28/最长重复子数组/2.jpg" alt="2"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最大连续1的个数</title>
     <url>/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/max-consecutive-ones/" target="_blank" rel="noopener">最大连续1的个数（难度：简单）</a></p>
