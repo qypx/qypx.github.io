@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>回文链表</title>
+    <url>/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">回文链表（难度：简单）</a></p>
+<p><img src="/2019/12/29/回文链表/1.jpg" alt="1"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用快慢指针找到中点，对链表前半部分进行翻转。</p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="keyword">null</span> || head.next==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        ListNode slow = head, fast = head;</span><br><span class="line">        ListNode pre = head, prepre = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 一遍遍历实现翻转前半部分</span></span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            pre = slow;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next; <span class="comment">// 若链表长度为偶数，则fast最后会指向null，若为奇数，fast最后会指向最后一个元素</span></span><br><span class="line">            pre.next = prepre;</span><br><span class="line">            prepre = pre;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 循环结束后，若为偶数，slow指向后半部分第一个元素，若为奇数，slow指向中间的那个元素</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(fast != <span class="keyword">null</span>)</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(pre!=<span class="keyword">null</span> &amp;&amp; slow!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pre.val != slow.val)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            pre = pre.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/12/29/回文链表/2.jpg" alt="2"></p>
+<p><img src="/2019/12/29/回文链表/20191229-214756.jpg" alt="20191229-214756"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>翻转二叉树</title>
+    <url>/2019/12/29/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/invert-binary-tree/" target="_blank" rel="noopener">翻转二叉树（难度：简单）</a></p>
+<p><img src="/2019/12/29/翻转二叉树/1.jpg" alt="1"></p>
+<h4 id="方法：-递归"><a href="#方法：-递归" class="headerlink" title="方法： 递归"></a>方法： 递归</h4><h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n). 每个节点只被访问了一次。</p>
+<p>空间复杂度：最坏情况下栈内需要存放 O(h)个方法调用，其中 h是树的高度。由于 h<em>∈</em>O<em>(</em>n)，可得出空间复杂度为 O(n)。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        TreeNode temp = invertTree(root.left);</span><br><span class="line">        root.left = invertTree(root.right);</span><br><span class="line">        root.right = temp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/12/29/翻转二叉树/2.jpg" alt="2"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>存在重复元素2</title>
     <url>/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/contains-duplicate-ii/" target="_blank" rel="noopener">存在重复元素2（难度：简单）</a></p>
