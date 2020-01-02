@@ -1,6 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>正则表达式匹配</title>
+    <url>/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">正则表达式匹配（难度：困难）</a></p>
+<p><img src="/2020/01/02/正则表达式匹配/1.jpg" alt="1"></p>
+<p>转自：</p>
+<blockquote>
+<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/</a><br>来源：力扣（LeetCode）</p>
+</blockquote>
+<h4 id="一、处理点号「-」通配符"><a href="#一、处理点号「-」通配符" class="headerlink" title="一、处理点号「.」通配符"></a>一、处理点号「.」通配符</h4><p>点号可以匹配任意一个字符，其实是最简单的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(text, pattern)</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> pattern: <span class="keyword">return</span> <span class="keyword">not</span> text</span><br><span class="line">    first_match = bool(text) <span class="keyword">and</span> pattern[<span class="number">0</span>] <span class="keyword">in</span> &#123;text[<span class="number">0</span>], <span class="string">'.'</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+
+<h4 id="二、处理「-」通配符"><a href="#二、处理「-」通配符" class="headerlink" title="二、处理「*」通配符"></a>二、处理「*」通配符</h4><p>星号通配符可以让前一个字符重复任意次数，包括零次。那到底是重复几次呢？这需要计算机暴力穷举来算，假设重复 N 次吧。写递归的技巧是管好当下，之后的事抛给递归。具体到这里，不管 N 是多少，当前的选择只有两个：匹配 0 次、匹配 1 次。所以可以这样处理：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(text, pattern)</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> pattern: <span class="keyword">return</span> <span class="keyword">not</span> text</span><br><span class="line">    first_match = bool(text) <span class="keyword">and</span> pattern[<span class="number">0</span>] <span class="keyword">in</span> &#123;text[<span class="number">0</span>], <span class="string">'.'</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> len(pattern) &gt;= <span class="number">2</span> <span class="keyword">and</span> pattern[<span class="number">1</span>] == <span class="string">'*'</span>:</span><br><span class="line">        <span class="comment"># 发现 '*' 通配符</span></span><br><span class="line">        <span class="keyword">return</span> isMatch(text, pattern[<span class="number">2</span>:]) <span class="keyword">or</span> \</span><br><span class="line">                first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern)</span><br><span class="line">    	<span class="comment"># 解释：如果发现有字符和 '*' 结合，</span></span><br><span class="line">        	<span class="comment"># 或者匹配该字符 0 次，然后跳过该字符和 '*'</span></span><br><span class="line">        	<span class="comment"># 或者当 pattern[0] 和 text[0] 匹配后，移动 text</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，我们是通过保留 pattern 中的「*」，同时向后推移 text，来实现「*」将字符重复匹配多次的功能。</p>
+<h4 id="三、动态规划"><a href="#三、动态规划" class="headerlink" title="三、动态规划"></a>三、动态规划</h4><h5 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> p:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">not</span> s</span><br><span class="line">        </span><br><span class="line">        first = s <span class="keyword">and</span> p[<span class="number">0</span>] <span class="keyword">in</span> &#123;s[<span class="number">0</span>],<span class="string">'.'</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(p) &gt;= <span class="number">2</span> <span class="keyword">and</span> p[<span class="number">1</span>]==<span class="string">'*'</span>:</span><br><span class="line">            <span class="keyword">return</span> self.isMatch(s,p[<span class="number">2</span>:]) <span class="keyword">or</span> (first <span class="keyword">and</span> self.isMatch(s[<span class="number">1</span>:],p))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> first <span class="keyword">and</span> self.isMatch(s[<span class="number">1</span>:],p[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/正则表达式匹配/2.jpg" alt="2"></p>
+<h5 id="优化解法"><a href="#优化解法" class="headerlink" title="优化解法"></a>优化解法</h5><p>使用两个变量 <code>i</code>, <code>j</code> 记录当前匹配到的位置，从而避免使用子字符串切片，并且将 <code>i</code>, <code>j</code> 存入memo，避免重复计算。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        memo = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dp</span><span class="params">(i,j)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> (i,j) <span class="keyword">in</span> memo:</span><br><span class="line">                <span class="keyword">return</span> memo[(i,j)]</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> j==len(p):</span><br><span class="line">                <span class="keyword">return</span> i==len(s)</span><br><span class="line">            </span><br><span class="line">            first = i &lt; len(s) <span class="keyword">and</span> p[j] <span class="keyword">in</span> &#123;s[i],<span class="string">'.'</span>&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> len(p) &gt;= j+<span class="number">2</span> <span class="keyword">and</span> p[j+<span class="number">1</span>]==<span class="string">'*'</span>:</span><br><span class="line">                <span class="keyword">return</span> dp(i,j+<span class="number">2</span>) <span class="keyword">or</span> (first <span class="keyword">and</span> dp(i+<span class="number">1</span>,j))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> first <span class="keyword">and</span> dp(i+<span class="number">1</span>,j+<span class="number">1</span>)</span><br><span class="line">            </span><br><span class="line">            memo[(i,j)] = ans</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dp(<span class="number">0</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/正则表达式匹配/3.jpg" alt="3"></p>
+<h6 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h6><p>时间复杂度：用 T 和 P 分别表示匹配串和模式串的长度。对于 i=0, … , T 和 j=0, … , P 每一个 dp(i, j) 只会被计算一次，所以后面每次调用都是 O(1)的时间。因此，总时间复杂度为 O(TP) 。</p>
+<p>空间复杂度：我们用到的空间仅有 O(TP)个 boolean 类型的缓存变量。所以，空间复杂度为 O(TP) 。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单调递增的数字</title>
+    <url>/2020/01/02/%E5%8D%95%E8%B0%83%E9%80%92%E5%A2%9E%E7%9A%84%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/monotone-increasing-digits/" target="_blank" rel="noopener">单调递增的数字（难度：中等）</a></p>
+<p><img src="/2020/01/02/单调递增的数字/1.jpg" alt="1"></p>
+<h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><p><img src="/2020/01/02/单调递增的数字/2.jpg" alt="2"></p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">monotoneIncreasingDigits</span><span class="params">(self, N: int)</span> -&gt; int:</span></span><br><span class="line">        s = list(str(N))</span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &lt;= s[i]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> <span class="number">0</span> &lt; i &lt; len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &gt; s[i]:</span><br><span class="line">            s[i<span class="number">-1</span>] = str(int(s[i<span class="number">-1</span>])<span class="number">-1</span>)</span><br><span class="line">            i-=<span class="number">1</span></span><br><span class="line">        s[i+<span class="number">1</span>:] = <span class="string">'9'</span>*(len(s)-i<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> int(<span class="string">''</span>.join(s))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/单调递增的数字/3.jpg" alt="3"></p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(D)。其中 D≈logN，N 是数字的长度。<br>空间复杂度：O(D)。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>整数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>移掉K位数字</title>
+    <url>/2020/01/02/%E7%A7%BB%E6%8E%89K%E4%BD%8D%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/remove-k-digits/" target="_blank" rel="noopener">移掉K位数字（难度：中等）</a></p>
+<p><img src="/2020/01/02/移掉K位数字/1.jpg" alt="1"></p>
+<h4 id="方法：单调栈"><a href="#方法：单调栈" class="headerlink" title="方法：单调栈"></a>方法：单调栈</h4><p>维护一个递增栈，但当前元素小于栈顶元素，则移掉栈顶元素。</p>
+<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>转自</p>
+<blockquote>
+<p>作者：monkeybing<br>链接：<a href="https://leetcode-cn.com/problems/remove-k-digits/solution/cyu-yan-zhan-shi-xian-tan-xin-suan-fa-by-monkeybin/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-k-digits/solution/cyu-yan-zhan-shi-xian-tan-xin-suan-fa-by-monkeybin/</a><br>来源：力扣（LeetCode）</p>
+</blockquote>
+<p>本题采用贪心思路：</p>
+<ol>
+<li>如果字符串按照数字大小升序排列，只需要删除最后K个字符即可；</li>
+<li>如果非升序排列，需要从前到后遍历，删除字符串中每个逆序排列的字符。由于是从前到后遍历，所以先删除的一定是高位的数字，可以保证删除后得到的最终数字最小。</li>
+</ol>
+<p>举例来说：如果字符串num = “123456789”, k = 3，我们只需要删除最后3个数字，得到”123456”.<br>如果字符串num = “1432219”, k = 3，需要从前到后遍历查找逆序数字，进行删除，第一个逆序数字为’4’，第二个逆序数字为’3’，第三个逆序数字为第二个’2’，最后得到”1219”。</p>
+<p><strong>所以可以采用栈实现，每次遍历，判断如果栈非空，且当前数字大于栈顶数字，且k还有剩余（不为0），将栈顶数字出栈。最后将当前数字入栈。</strong><br>如果遍历完成后，k仍有剩余，则依次将栈顶数字出栈。最后栈中保存的数字即为所求。按照从栈底到栈顶输出即可。<br>注意：特判场景，如果最后所有数字均出栈，即栈为空，需要返回”0”。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeKdigits</span><span class="params">(self, num: str, k: int)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> num <span class="keyword">or</span> k &lt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> num</span><br><span class="line">        </span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> num:</span><br><span class="line">            <span class="keyword">while</span> stack <span class="keyword">and</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> stack[<span class="number">-1</span>] &gt; c:</span><br><span class="line">                stack.pop()</span><br><span class="line">                k -= <span class="number">1</span></span><br><span class="line">            stack.append(c)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> k &gt; <span class="number">0</span>:</span><br><span class="line">            stack.pop()</span><br><span class="line">            k -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> stack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> str(int(<span class="string">''</span>.join(stack)))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/移掉K位数字/2.jpg" alt="2"></p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n).</p>
+<p>空间复杂度：O(n).</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>栈</tag>
+        <tag>字符串</tag>
+        <tag>贪心算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>贪心算法</title>
     <url>/2020/01/01/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p>转自：</p>
