@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>有效的字母异位词</title>
+    <url>/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/valid-anagram/" target="_blank" rel="noopener">有效的字母异位词（难度：简单）</a></p>
+<p><img src="/2020/01/02/有效的字母异位词/1.jpg" alt="1"></p>
+<h4 id="方法一：哈希表"><a href="#方法一：哈希表" class="headerlink" title="方法一：哈希表"></a>方法一：哈希表</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ul>
+<li>首先判断两个字符串长度是否相等，不相等则直接返回 false。</li>
+<li>若相等，则初始化 26 个字母哈希表，遍历字符串 s 和 t</li>
+<li><strong>s 负责在对应位置增加，t 负责在对应位置减少，如果哈希表的值都为 0，则二者是字母异位词</strong></li>
+</ul>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。<br>空间复杂度：O(1)。尽管我们使用了额外的空间，但是空间的复杂性是 O(1)，因为无论 N 有多大，表的大小都保持不变。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>Java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() != t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] alpha = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            alpha[s.charAt(i) - <span class="string">'a'</span>]++;</span><br><span class="line">            alpha[t.charAt(i) - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i : alpha)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/有效的字母异位词/4.jpg" alt="4"></p>
+<hr>
+<h4 id="方法二：排序"><a href="#方法二：排序" class="headerlink" title="方法二：排序"></a>方法二：排序</h4><h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn)。</p>
+<p>空间复杂度：O(1)，空间取决于排序实现，如果使用 <code>heapsort</code>，通常需要 O(1)辅助空间。</p>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isAnagram</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">return</span> sorted(s) == sorted(t)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/有效的字母异位词/3.jpg" alt="3"></p>
+<hr>
+<h4 id="方法三：利用Python中的set"><a href="#方法三：利用Python中的set" class="headerlink" title="方法三：利用Python中的set()"></a>方法三：利用Python中的set()</h4><p>Python</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isAnagram</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span> len(s) != len(t):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        set1 = set(s)</span><br><span class="line">        set2 = set(t)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set1:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> set2:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set2:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> set1:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set1:</span><br><span class="line">            <span class="keyword">if</span> s.count(i) != t.count(i):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/有效的字母异位词/2.jpg" alt="2"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>加一</title>
+    <url>/2020/01/02/%E5%8A%A0%E4%B8%80/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">加一（难度：简单）</a></p>
+<p><img src="/2020/01/02/加一/1.jpg" alt="1"></p>
+<h4 id="方法：数组遍历"><a href="#方法：数组遍历" class="headerlink" title="方法：数组遍历"></a>方法：数组遍历</h4><p><img src="/2020/01/02/加一/2.jpg" alt="2"></p>
+<p>时间复杂度：O(n)</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            digits[i] = (digits[i]+<span class="number">1</span>) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(digits[i] != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        digits = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/加一/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电话号码的字母组合</title>
+    <url>/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">电话号码的字母组合（难度：中等）</a></p>
+<p><img src="/2020/01/02/电话号码的字母组合/1.jpg" alt="1"></p>
+<h4 id="方法：回溯"><a href="#方法：回溯" class="headerlink" title="方法：回溯"></a>方法：回溯</h4><p><img src="/2020/01/02/电话号码的字母组合/2.jpg" alt="2"></p>
+<p><img src="https://pic.leetcode-cn.com/0ac574ab37f620221e702f57d6c4ffd0ba246abe41c43f9fc9637ab8f3365377-image.png" alt="img"></p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">letterCombinations</span><span class="params">(self, digits: str)</span> -&gt; List[str]:</span></span><br><span class="line">        phone = &#123;<span class="string">'2'</span>:[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>],</span><br><span class="line">                <span class="string">'3'</span>:[<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>],</span><br><span class="line">                <span class="string">'4'</span>:[<span class="string">'g'</span>,<span class="string">'h'</span>,<span class="string">'i'</span>],</span><br><span class="line">                <span class="string">'5'</span>:[<span class="string">'j'</span>,<span class="string">'k'</span>,<span class="string">'l'</span>],</span><br><span class="line">                <span class="string">'6'</span>:[<span class="string">'m'</span>,<span class="string">'n'</span>,<span class="string">'o'</span>],</span><br><span class="line">                <span class="string">'7'</span>:[<span class="string">'p'</span>,<span class="string">'q'</span>,<span class="string">'r'</span>,<span class="string">'s'</span>],</span><br><span class="line">                <span class="string">'8'</span>:[<span class="string">'t'</span>,<span class="string">'u'</span>,<span class="string">'v'</span>],</span><br><span class="line">                <span class="string">'9'</span>:[<span class="string">'w'</span>,<span class="string">'x'</span>,<span class="string">'y'</span>,<span class="string">'z'</span>]&#125;</span><br><span class="line"></span><br><span class="line">        output = []</span><br><span class="line">        <span class="keyword">if</span> digits:</span><br><span class="line">            self.backtrack(<span class="string">""</span>, digits, phone, output)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(self, combination, digit, phone, output)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(digit)==<span class="number">0</span>:</span><br><span class="line">            output.append(combination)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> letter <span class="keyword">in</span> phone[digit[<span class="number">0</span>]]:</span><br><span class="line">            self.backtrack(combination+letter,digit[<span class="number">1</span>:], phone, output)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/电话号码的字母组合/4.jpg" alt="4"></p>
+<p><img src="/2020/01/02/电话号码的字母组合/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>回溯算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>盛最多水的容器</title>
+    <url>/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">盛最多水的容器（难度：中等）</a></p>
+<p><img src="/2020/01/02/盛最多水的容器/1.jpg" alt="1"></p>
+<h4 id="方法：双指针"><a href="#方法：双指针" class="headerlink" title="方法：双指针"></a>方法：双指针</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。</p>
+<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
+<li><strong>在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾</strong>。</li>
+<li>使用变量 max_area来持续存储到目前为止所获得的最大面积。 </li>
+<li>在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area，<strong>并将指向较短线段的指针向较长线段那端移动一步</strong>。</li>
+</ul>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，一次扫描。</p>
+<p>空间复杂度：O(1)，使用恒定的空间。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> max_area = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            max_area = Math.max(max_area, Math.min(height[left],height[right]) * (right-left));</span><br><span class="line">            <span class="keyword">if</span>(height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/02/盛最多水的容器/2.jpg" alt="2"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>正则表达式匹配</title>
     <url>/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">正则表达式匹配（难度：困难）</a></p>
@@ -681,8 +780,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>链表</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
