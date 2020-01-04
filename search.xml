@@ -1,6 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Top-N Recommender Architecture</title>
+    <url>/2020/01/03/Top-N-Recommender-Architecture/</url>
+    <content><![CDATA[<p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578052647526.jpg" alt="1578052647526"></p>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RecSys Course Overview</title>
+    <url>/2020/01/03/RecSys-Course-Overview/</url>
+    <content><![CDATA[<p><a href="https://www.udemy.com/share/10294MB0sdc1pQRHo=/" target="_blank" rel="noopener">课程：Building Recommender Systems with Machine Learning and AI</a></p>
+<p><a href="https://sundog-education.com/RecSys/" target="_blank" rel="noopener">Course Materials</a></p>
+<p><img src="/2020/01/03/RecSys-Course-Overview/1578048175249.jpg" alt="1578048175249"></p>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MapReduce</title>
+    <url>/2020/01/03/MapReduce/</url>
+    <content><![CDATA[<h4 id="1-MapReduce-fundamental-concepts"><a href="#1-MapReduce-fundamental-concepts" class="headerlink" title="1. MapReduce fundamental concepts"></a>1. MapReduce fundamental concepts</h4><p><img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1"></p>
+<p><img src="/2020/01/03/MapReduce/20200103-142610.jpg" alt="20200103-142610"></p>
+<p><img src="/2020/01/03/MapReduce/1578032937052.jpg" alt="1578032937052"></p>
+<h5 id="1-1-Mapper"><a href="#1-1-Mapper" class="headerlink" title="1.1 Mapper"></a>1.1 Mapper</h5><p><img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727"></p>
+<p><img src="/2020/01/03/MapReduce/20200103-143446.jpg" alt="20200103-143446"></p>
+<p><img src="/2020/01/03/MapReduce/1578033212508.jpg" alt="1578033212508"></p>
+<p><img src="/2020/01/03/MapReduce/1578033238182.jpg" alt="1578033238182"></p>
+<p>Mapper: Extract and organize what we care about.</p>
+<h5 id="1-2-Shuffle-and-Sort"><a href="#1-2-Shuffle-and-Sort" class="headerlink" title="1.2 Shuffle and Sort"></a>1.2 Shuffle and Sort</h5><p><img src="/2020/01/03/MapReduce/1578033463232.jpg" alt="1578033463232"></p>
+<p><img src="/2020/01/03/MapReduce/20200103-144645.jpg" alt="20200103-144645"></p>
+<h5 id="1-3-Reducer"><a href="#1-3-Reducer" class="headerlink" title="1.3 Reducer"></a>1.3 Reducer</h5><p><img src="/2020/01/03/MapReduce/1578034121206.jpg" alt="1578034121206"></p>
+<p><img src="/2020/01/03/MapReduce/20200103-144953.jpg" alt="20200103-144953"></p>
+<p><img src="/2020/01/03/MapReduce/1578034303323.jpg" alt="1578034303323"></p>
+<hr>
+<h4 id="2-How-MapReduce-distributes-processing"><a href="#2-How-MapReduce-distributes-processing" class="headerlink" title="2. How MapReduce distributes processing"></a>2. How MapReduce distributes processing</h4><p><img src="/2020/01/03/MapReduce/1578034389919.jpg" alt="1578034389919"></p>
+<p><img src="/2020/01/03/MapReduce/0002.jpg" alt="0002"></p>
+<hr>
+<h4 id="3-MapReduce-a-real-example"><a href="#3-MapReduce-a-real-example" class="headerlink" title="3. MapReduce: a real example"></a>3. MapReduce: a real example</h4><p><img src="/2020/01/03/MapReduce/1578035985411.jpg" alt="1578035985411"></p>
+<p><img src="/2020/01/03/MapReduce/1578036687341.jpg" alt="1578036687341"></p>
+<p>Sometimes, it’s not easy to try to force a problem into this way of thinking, and that’s a big reason why other frameworks like Spark or Hive, or other ways of processing SQL style queries have become a little bit more popular that just writing raw MapReduce code.</p>
+<p>But, still, if you can easily express something in terms of mapping and reducing, this can sometimes be the most efficient way of doing it.</p>
+<p><img src="/2020/01/03/MapReduce/1578037510439.jpg" alt="1578037510439"></p>
+<p>Then, the results all get passed into the MapReduce framework which does shuffle and sort for us. And then, we just have to write the Reducer.</p>
+<p><img src="/2020/01/03/MapReduce/1578038403968.jpg" alt="1578038403968"></p>
+<p>Here’s a complete Python MapReduce script.</p>
+<p><img src="/2020/01/03/MapReduce/1578039179773.jpg" alt="1578039179773"></p>
+<p>This is an entire MRJOB script in Python that would use MapReduce streaming to actually execute across a cluster.</p>
+<hr>
+<h4 id="4-Runing-MapReduce-with-MRJOB"><a href="#4-Runing-MapReduce-with-MRJOB" class="headerlink" title="4. Runing MapReduce with MRJOB"></a>4. Runing MapReduce with MRJOB</h4><p>首先需要安装一些东西</p>
+<p>Run our MapReduce job in our Hadoop installation.</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview</a></p>
+<p><img src="/2020/01/03/MapReduce/1578041252394.jpg" alt="1578041252394"></p>
+<p><img src="/2020/01/03/MapReduce/1578041273664.jpg" alt="1578041273664"></p>
+<p><img src="/2020/01/03/MapReduce/1578041300494.jpg" alt="1578041300494"></p>
+<hr>
+<h4 id="5-Challenge-Exercise"><a href="#5-Challenge-Exercise" class="headerlink" title="5. Challenge Exercise"></a>5. Challenge Exercise</h4><p><img src="/2020/01/03/MapReduce/1578043490000.jpg" alt="1578043490000"></p>
+<p><img src="/2020/01/03/MapReduce/1578043550225.jpg" alt="1578043550225"></p>
+<p><img src="/2020/01/03/MapReduce/1578043582794.jpg" alt="1578043582794"></p>
+<p><img src="/2020/01/03/MapReduce/1578043608450.jpg" alt="1578043608450"></p>
+<p><img src="/2020/01/03/MapReduce/1578043786325.jpg" alt="1578043786325"></p>
+<hr>
+<h4 id="6-Check-your-results"><a href="#6-Check-your-results" class="headerlink" title="6. Check your results"></a>6. Check your results</h4><p><img src="/2020/01/03/MapReduce/1578044582388.jpg" alt="1578044582388"></p>
+<p>结果：</p>
+<p><img src="/2020/01/03/MapReduce/1578044858078.jpg" alt="1578044858078"></p>
+<p>movieId 50 是最popular的电影。</p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>HDFS and MapReduce</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>有效的字母异位词</title>
     <url>/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/valid-anagram/" target="_blank" rel="noopener">有效的字母异位词（难度：简单）</a></p>
@@ -780,8 +863,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>链表</tag>
         <tag>栈</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -1034,9 +1117,17 @@
       </tags>
   </entry>
   <entry>
-    <title>&#39;HDFS-Overview&#39;</title>
+    <title>HDFS-Overview</title>
     <url>/2019/12/16/HDFS-Overview/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p><img src="/2019/12/16/HDFS-Overview/0001.jpg" alt="0001"></p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>HDFS and MapReduce</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hadoop Introduction</title>
@@ -1048,6 +1139,7 @@
         <category>Hadoop</category>
       </categories>
       <tags>
+        <tag>Hadoop</tag>
         <tag>Hadoop Introduction</tag>
       </tags>
   </entry>
