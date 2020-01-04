@@ -79,18 +79,25 @@
 
 
 
-<meta name="description" content="List  12l = [1,2,3]print(l)  [1, 2, 3]List的拼接 注意：[1,2]是List不是Array（Array要用np.array()） 12345from itertools import chainfeatures = []for (vec, wt) in vecs_wt[0:2]:	features.append(vec)	newfeatures = li">
+<meta name="description" content="List  12l = [1,2,3]print(l)  [1, 2, 3] List的拼接 注意：[1,2]是List不是Array（Array要用np.array()） 12345from itertools import chainfeatures = []for (vec, wt) in vecs_wt[0:2]:	features.append(vec)	newfeatures = l">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Advanced Python Types">
 <meta property="og:url" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="List  12l = [1,2,3]print(l)  [1, 2, 3]List的拼接 注意：[1,2]是List不是Array（Array要用np.array()） 12345from itertools import chainfeatures = []for (vec, wt) in vecs_wt[0:2]:	features.append(vec)	newfeatures = li">
+<meta property="og:description" content="List  12l = [1,2,3]print(l)  [1, 2, 3] List的拼接 注意：[1,2]是List不是Array（Array要用np.array()） 12345from itertools import chainfeatures = []for (vec, wt) in vecs_wt[0:2]:	features.append(vec)	newfeatures = l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-02T12:27:34.301Z">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1578053721585.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1578053775703.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1578054069373.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1578054637299.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1578054512678.jpg">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1578054588653.jpg">
+<meta property="og:updated_time" content="2020-01-03T12:32:27.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Advanced Python Types">
-<meta name="twitter:description" content="List  12l = [1,2,3]print(l)  [1, 2, 3]List的拼接 注意：[1,2]是List不是Array（Array要用np.array()） 12345from itertools import chainfeatures = []for (vec, wt) in vecs_wt[0:2]:	features.append(vec)	newfeatures = li">
+<meta name="twitter:description" content="List  12l = [1,2,3]print(l)  [1, 2, 3] List的拼接 注意：[1,2]是List不是Array（Array要用np.array()） 12345from itertools import chainfeatures = []for (vec, wt) in vecs_wt[0:2]:	features.append(vec)	newfeatures = l">
+<meta name="twitter:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1578053721585.jpg">
 
 
 
@@ -333,8 +340,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-02T20:27:34+08:00">
-                2019-09-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-03T20:32:27+08:00">
+                2020-01-03
               </time>
             
           </span>
@@ -394,31 +401,47 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
 
-<pre><code>[1, 2, 3]</code></pre><p>List的拼接</p>
+<pre><code>[1, 2, 3]</code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578053721585.jpg" alt="1578053721585"></p>
+<p>List的拼接</p>
 <p>注意：[1,2]是List不是Array（Array要用np.array()）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line">features = []</span><br><span class="line"><span class="keyword">for</span> (vec, wt) <span class="keyword">in</span> vecs_wt[<span class="number">0</span>:<span class="number">2</span>]:</span><br><span class="line">	features.append(vec)</span><br><span class="line">	newfeatures = list(chain(*features))</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>] + [<span class="number">3</span>] + [<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
 
-<pre><code>[1, 2, 3, 4]</code></pre><ul>
-<li>Array</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1 2]</code></pre><p>Array的合并</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.concatenate(要拼接的多个数组, axis = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
+<pre><code>[1, 2, 3, 4]</code></pre><p>排序：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578053775703.jpg" alt="1578053775703"></p>
 <ul>
-<li>Dictionary</li>
+<li><p>Tuple</p>
+<p>Tuples are a lot like lists, but the main difference is that they are <strong>immutable</strong>. Once you create a tuple, you can’t change them.</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054069373.jpg" alt="1578054069373"></p>
+</li>
+</ul>
+<ul>
+<li><p>Dictionary</p>
+<p>In other languages, you might know this as a map, or a hash table. It’s basically a lookup table, where you store values associated with some unique set of key values.</p>
+</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">'foo'</span>:<span class="number">1</span>, <span class="string">'bar'</span>:<span class="number">2.3</span>, <span class="string">'s'</span>:<span class="string">'my first dictionary'</span>&#125;</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
 
 <pre><code>{&apos;s&apos;: &apos;my first dictionary&apos;, &apos;bar&apos;: 2.3, &apos;foo&apos;: 1}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d[<span class="string">'foo'</span>])</span><br></pre></td></tr></table></figure>
 
-<pre><code>1</code></pre>
+<pre><code>1</code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg" alt="1578054637299"></p>
+<p>If you try to retrieve a value for a key that doesn’t exist, you will get an exception. </p>
+<p>One way to avoid that is to use the <em>get</em> function on the dictionary:</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg" alt="1578054512678"></p>
+<p>Iterate:</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg" alt="1578054588653"></p>
+<ul>
+<li>Array</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 2]</span><br></pre></td></tr></table></figure>
+
+<p>Array的合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.concatenate(要拼接的多个数组, axis = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -530,7 +553,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

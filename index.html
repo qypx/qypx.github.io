@@ -284,6 +284,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/04/Evaluate-Recommender-System/" itemprop="url">Evaluate Recommender System</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T13:34:04+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-04T16:27:41+08:00">
+                2020-01-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-The-methodology-for-testing-recommender-systems-offline"><a href="#1-The-methodology-for-testing-recommender-systems-offline" class="headerlink" title="1. The methodology for testing recommender systems offline."></a>1. The methodology for testing recommender systems offline.</h4><ul>
+<li>train/test split</li>
+</ul>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
+<p>You measure your recommender system’s ability to predict how people rated things in the past.</p>
+<p>If you do this over enough people, you can end up with a meaningful number that tells you <strong>how good your recommender system is at recommending things, or more specifically, recommending things people already watched and rated.</strong> That’s really all you can do, if you can’t test things out in an online system.</p>
+<ul>
+<li>k-fold cross-validation</li>
+</ul>
+<p>If you really want to get fancy, it’s possible to improve on a single train/test split by using  a technique called k-fold cross validation.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578116897885.jpg" alt="1578116897885"></p>
+<p>Instead of a single training set, we create many randomly assigned training sets. Each individual training set, or fold, is used to train your recommender system independently, and then we measure the accuracy of the resulting systems against your test set. So we end up with a score of how accurate each fold ends up predicting user ratings, and we can average them together.</p>
+<p>This obviously takes a lot more computing power to do, but the advantage is that you don’t end up over-fitting to a single training set.</p>
+<blockquote>
+<p>注：By using train/test, all we can do is test our ability to predict how people rated movies they already saw. That’s not the point of a recommender system.  We want to recommend new things to people that they haven’t seen, but find interesting. However, that’s fundamentally impossible to test offline.</p>
+</blockquote>
+<p>We haven’t talked about how to actually come up with an accuracy metric when testing our recommender systems, so let’s cover a couple of different ways to do it.</p>
+<h4 id="2-Accuracy-Metrics-RMSE-MAE"><a href="#2-Accuracy-Metrics-RMSE-MAE" class="headerlink" title="2. Accuracy Metrics (RMSE, MAE)"></a>2. Accuracy Metrics (RMSE, MAE)</h4><ul>
+<li>MAE</li>
+</ul>
+<p>We want to minimize MAE.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578117806539.JPG" alt="1578117806539"></p>
+<ul>
+<li>RMSE</li>
+</ul>
+<p>We want to minimize RMSE.</p>
+<p>This is a more popular metric for a few reasons, but one is that <strong>it penalizes you more when your rating prediction is way off, and penalizes you less when your are reasonably close.</strong></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578117900853.jpg" alt="1578117900853"></p>
+<blockquote>
+<p>注：就推荐系统而言，RMSE just doesn’t matter much in the real world. 人们并不关心你的系统对他们已经看过的电影的评分预测是否准确。What does matter is which movie you put in front of users in a top-N recommender list, and how those users react to those movies when they see them recommended.</p>
+</blockquote>
+<h4 id="3-Top-N-Hit-Rate-Many-Ways"><a href="#3-Top-N-Hit-Rate-Many-Ways" class="headerlink" title="3. Top-N Hit Rate - Many Ways"></a>3. Top-N Hit Rate - Many Ways</h4><p>Different ways to measure the effectivenss of top-n recommenders offline:</p>
+<ul>
+<li>Hit Rate</li>
+</ul>
+<p>You generate top-n recommendations for all of the users in your test set. <strong>If one of the recommendations in a user’s top-n recommendations is something  they actually rated, you consider that a hit.</strong> You actually managed to show the user something that they found interesting enough to watch on their own already, so we consider that a success. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578119273699.jpg" alt="1578119273699"></p>
+<p>How to measure hit rate? Use leave-one-out cross validation.</p>
+<ul>
+<li>leave-one-out cross validation</li>
+</ul>
+<p>What we do is compute the top-n recommendations for each user in our training data, and intentionally remove one of those items from that user’s training data. We then test our recommender system’s ability to recommend that item that was left out in the top-n results it creates for that user in the testing phase.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/C:%5CUsers%5Czhu_r%5CDesktop%5Ctest%5Cblog%5Csource_posts%5CEvaluate-Recommender-System%5C1578120352619.jpg" alt="1578120352619"></p>
+<p>The trouble is that it’s a lot harder to get one specific movie right while testing than to just get one of the n recommendations. So “hit rate” with “leave-one-out” tends to be very small and difficult to measure, unless you have a very large data set to work with. But it’s a much more <strong>user focused metric</strong> when you know your recommender system will be producing top-n lists in the real world, which most of them do. </p>
+<ul>
+<li>ARHR</li>
+</ul>
+<p>This metric is just like “hit rate”, but it accounts for where in the top-n list you hits appear. Instead of summing up the number of hits, we sum up the reciprocal ranking of each hit.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578122155631.jpg" alt="1578122155631"></p>
+<p>You end up getting more credit for successfully recommending an item in the top slot than in the bottom slot. Again, this is a more <strong>user focused metric</strong>, since users tend to focus on the beginning of lists. </p>
+<ul>
+<li>cHR</li>
+</ul>
+<p>Throw away hits if our predicted rating is below some threshold.</p>
+<p>The idea is that we shouldn’t get credit for recommending items to a user that we think they won’t actually enjoy. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578122704818.jpg" alt="1578122704818"></p>
+<p>In this example, if we had a cutoff of three stars, we throw away the hits for the second and fourth items in these test results and our hit rate metric wouldn’t count them at all. </p>
+<ul>
+<li>rHR</li>
+</ul>
+<p>Another way to look at hit rate is to break it down by predicted rating score.</p>
+<p>It can be a good way to get an idea of the distribution of how good your algorithm thinks recommended movies are that actually get a hit.  Ideally, you want to recommend movies that they actually like, and breaking down the distribution gives you some sense of how well you’re doing in more detail.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/C:%5CUsers%5Czhu_r%5CDesktop%5Ctest%5Cblog%5Csource_posts%5CEvaluate-Recommender-System%5C1578123016707.jpg" alt="1578123016707"></p>
+<h4 id="4-Coverage-Diversity-and-Novelty"><a href="#4-Coverage-Diversity-and-Novelty" class="headerlink" title="4. Coverage, Diversity and Novelty"></a>4. Coverage, Diversity and Novelty</h4><p>Accuracy isn’t the only thing that matters.</p>
+<ul>
+<li>Coverage</li>
+</ul>
+<p>The percentage of possible recommendations that your system is able to provide. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150"></p>
+<p>It’s worth noting that coverage can be at odds with accuracy. If you enforce a higher quality threshold on the recommendations you make, then you might improve your accuracy at the expense of coverage. Finding the balance of where exactly you’re better off recommending nothing at all can be delicate. </p>
+<p>Coverage can also be important to watch, because it gives you a sense of how quickly new items in your catalog will start to appear in your recommendations. When a new book come out on Amazon, it won’t appear in recommendations until at least a few people buy it, therefore establishing patterns with the purchase of other items. Until those patterns exist, that new book will reduce Amazon’s coverage metric.</p>
+<ul>
+<li>Diversity</li>
+</ul>
+<p>You can think of this as measure of how broad a variety of items your recommender system is putting in front of people. An example of low diversity would be a recommender system that just recommends the next books in a series that you’ve started reading, but doesn’t recommend book from different authors, or movies related to what you’ve read.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578124451718.jpg" alt="1578124451718"></p>
+<p>Diversity, at least in the context of recommender systems, isn’t always a good thing. You can achieve very high diversity by just recommending completely random items. Unusually high diversity scores mean that you just have bad recommendations more often than not. You always need to look at diversity alongside metrics that measure the quality of the recommendations as well. </p>
+<ul>
+<li>Novelty</li>
+</ul>
+<p>Similarly, novelty sounds like a good thing, but often it isn’t. Novelty is a measure of how popular the items are that you are recommending. And again, just recommending random stuff would yield very high novelty scores, since the vast majority of items are not top sellers. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578124908363.jpg" alt="1578124908363"></p>
+<p>Although novelty is measurable, what to do with it is in many ways subjective. There’s a concept of user trust in a recommender system. People want to see at least a few familiar items in their recommendations that make them say, “Yeah, that’s a good recommendation for me. The system seems good”. If you only recommend things people never heard of, they may conclude that your system doesn’t really know them. Also, popular items are usually popular for a reason. They’re enjoyable by a large segment of the population, so you would expect them to be good recommendations for a large segment of the population who hasn’t read or watched them yet. If you’re not recommending some popular items, you should probably question whether your recommender system is really working as it should.</p>
+<p><strong>You need to strike a balance between familiar, popular items and what we call serendipitous discovery of new items that user has never heard of before. (balance between novelty and trust)</strong>. The familiar items establish trust with the user, and the new ones allow the user to discover entirely new things that they might love. </p>
+<p>Novelty is important, because the whole point of recommender systems is to surface items in what we call “the long tail”.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578125635846.jpg" alt="1578125635846"></p>
+<p>Imagine this is a plot of the sales of every item in you catalog, sorted by sales. Y 轴代表sales (popularity)，X轴代表products. Most of sales来自于一小部分items，但是”long tail” makes up a large amount of sales as well. 黄色部分的item代表了人们各自感兴趣的东西. Recommender systems can help people discover those items in the long tail that are relevant to their own unique niche interests. If you can do that successfully, then the recommendations your system makes can help new authors get discovered, can help people explore their own passions, and make money for whoever you’re building the system for as well. Everybody wins.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/03/Top-N-Recommender-Architecture/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1777,178 +2017,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/移掉K位数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/移掉K位数字/" itemprop="url">移掉K位数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T12:40:42+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T12:57:24+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/remove-k-digits/" target="_blank" rel="noopener">移掉K位数字（难度：中等）</a></p>
-<p><img src="/2020/01/02/移掉K位数字/1.jpg" alt="1"></p>
-<h4 id="方法：单调栈"><a href="#方法：单调栈" class="headerlink" title="方法：单调栈"></a>方法：单调栈</h4><p>维护一个递增栈，但当前元素小于栈顶元素，则移掉栈顶元素。</p>
-<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>转自</p>
-<blockquote>
-<p>作者：monkeybing<br>链接：<a href="https://leetcode-cn.com/problems/remove-k-digits/solution/cyu-yan-zhan-shi-xian-tan-xin-suan-fa-by-monkeybin/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-k-digits/solution/cyu-yan-zhan-shi-xian-tan-xin-suan-fa-by-monkeybin/</a><br>来源：力扣（LeetCode）</p>
-</blockquote>
-<p>本题采用贪心思路：</p>
-<ol>
-<li>如果字符串按照数字大小升序排列，只需要删除最后K个字符即可；</li>
-<li>如果非升序排列，需要从前到后遍历，删除字符串中每个逆序排列的字符。由于是从前到后遍历，所以先删除的一定是高位的数字，可以保证删除后得到的最终数字最小。</li>
-</ol>
-<p>举例来说：如果字符串num = “123456789”, k = 3，我们只需要删除最后3个数字，得到”123456”.<br>如果字符串num = “1432219”, k = 3，需要从前到后遍历查找逆序数字，进行删除，第一个逆序数字为’4’，第二个逆序数字为’3’，第三个逆序数字为第二个’2’，最后得到”1219”。</p>
-<p><strong>所以可以采用栈实现，每次遍历，判断如果栈非空，且当前数字大于栈顶数字，且k还有剩余（不为0），将栈顶数字出栈。最后将当前数字入栈。</strong><br>如果遍历完成后，k仍有剩余，则依次将栈顶数字出栈。最后栈中保存的数字即为所求。按照从栈底到栈顶输出即可。<br>注意：特判场景，如果最后所有数字均出栈，即栈为空，需要返回”0”。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeKdigits</span><span class="params">(self, num: str, k: int)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> num <span class="keyword">or</span> k &lt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> num</span><br><span class="line">        </span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> num:</span><br><span class="line">            <span class="keyword">while</span> stack <span class="keyword">and</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> stack[<span class="number">-1</span>] &gt; c:</span><br><span class="line">                stack.pop()</span><br><span class="line">                k -= <span class="number">1</span></span><br><span class="line">            stack.append(c)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> k &gt; <span class="number">0</span>:</span><br><span class="line">            stack.pop()</span><br><span class="line">            k -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> stack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> str(int(<span class="string">''</span>.join(stack)))</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/移掉K位数字/2.jpg" alt="2"></p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n).</p>
-<p>空间复杂度：O(n).</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2001,7 +2069,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
