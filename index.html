@@ -331,7 +331,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-04T16:27:41+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-04T17:34:57+08:00">
                 2020-01-04
               </time>
             
@@ -389,16 +389,10 @@
       
         
           
-            <h4 id="1-The-methodology-for-testing-recommender-systems-offline"><a href="#1-The-methodology-for-testing-recommender-systems-offline" class="headerlink" title="1. The methodology for testing recommender systems offline."></a>1. The methodology for testing recommender systems offline.</h4><ul>
-<li>train/test split</li>
-</ul>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
+            <h3 id="1-The-methodology-for-testing-recommender-systems-offline"><a href="#1-The-methodology-for-testing-recommender-systems-offline" class="headerlink" title="1. The methodology for testing recommender systems offline."></a>1. The methodology for testing recommender systems offline.</h3><h4 id="1-1-train-test-split"><a href="#1-1-train-test-split" class="headerlink" title="1.1 train/test split"></a>1.1 train/test split</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
 <p>You measure your recommender system’s ability to predict how people rated things in the past.</p>
 <p>If you do this over enough people, you can end up with a meaningful number that tells you <strong>how good your recommender system is at recommending things, or more specifically, recommending things people already watched and rated.</strong> That’s really all you can do, if you can’t test things out in an online system.</p>
-<ul>
-<li>k-fold cross-validation</li>
-</ul>
-<p>If you really want to get fancy, it’s possible to improve on a single train/test split by using  a technique called k-fold cross validation.</p>
+<h4 id="1-2-k-fold-cross-validation"><a href="#1-2-k-fold-cross-validation" class="headerlink" title="1.2 k-fold cross-validation"></a>1.2 k-fold cross-validation</h4><p>If you really want to get fancy, it’s possible to improve on a single train/test split by using  a technique called k-fold cross validation.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578116897885.jpg" alt="1578116897885"></p>
 <p>Instead of a single training set, we create many randomly assigned training sets. Each individual training set, or fold, is used to train your recommender system independently, and then we measure the accuracy of the resulting systems against your test set. So we end up with a score of how accurate each fold ends up predicting user ratings, and we can average them together.</p>
 <p>This obviously takes a lot more computing power to do, but the advantage is that you don’t end up over-fitting to a single training set.</p>
@@ -406,76 +400,71 @@
 <p>注：By using train/test, all we can do is test our ability to predict how people rated movies they already saw. That’s not the point of a recommender system.  We want to recommend new things to people that they haven’t seen, but find interesting. However, that’s fundamentally impossible to test offline.</p>
 </blockquote>
 <p>We haven’t talked about how to actually come up with an accuracy metric when testing our recommender systems, so let’s cover a couple of different ways to do it.</p>
-<h4 id="2-Accuracy-Metrics-RMSE-MAE"><a href="#2-Accuracy-Metrics-RMSE-MAE" class="headerlink" title="2. Accuracy Metrics (RMSE, MAE)"></a>2. Accuracy Metrics (RMSE, MAE)</h4><ul>
-<li>MAE</li>
-</ul>
-<p>We want to minimize MAE.</p>
+<h3 id="2-Accuracy-Metrics-RMSE-MAE"><a href="#2-Accuracy-Metrics-RMSE-MAE" class="headerlink" title="2. Accuracy Metrics (RMSE, MAE)"></a>2. Accuracy Metrics (RMSE, MAE)</h3><h4 id="2-1-MAE"><a href="#2-1-MAE" class="headerlink" title="2.1 MAE"></a>2.1 MAE</h4><p>We want to minimize MAE.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578117806539.JPG" alt="1578117806539"></p>
-<ul>
-<li>RMSE</li>
-</ul>
-<p>We want to minimize RMSE.</p>
+<h4 id="2-2-RMSE"><a href="#2-2-RMSE" class="headerlink" title="2.2 RMSE"></a>2.2 RMSE</h4><p>We want to minimize RMSE.</p>
 <p>This is a more popular metric for a few reasons, but one is that <strong>it penalizes you more when your rating prediction is way off, and penalizes you less when your are reasonably close.</strong></p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578117900853.jpg" alt="1578117900853"></p>
 <blockquote>
 <p>注：就推荐系统而言，RMSE just doesn’t matter much in the real world. 人们并不关心你的系统对他们已经看过的电影的评分预测是否准确。What does matter is which movie you put in front of users in a top-N recommender list, and how those users react to those movies when they see them recommended.</p>
 </blockquote>
-<h4 id="3-Top-N-Hit-Rate-Many-Ways"><a href="#3-Top-N-Hit-Rate-Many-Ways" class="headerlink" title="3. Top-N Hit Rate - Many Ways"></a>3. Top-N Hit Rate - Many Ways</h4><p>Different ways to measure the effectivenss of top-n recommenders offline:</p>
-<ul>
-<li>Hit Rate</li>
-</ul>
-<p>You generate top-n recommendations for all of the users in your test set. <strong>If one of the recommendations in a user’s top-n recommendations is something  they actually rated, you consider that a hit.</strong> You actually managed to show the user something that they found interesting enough to watch on their own already, so we consider that a success. </p>
+<h3 id="3-Top-N-Hit-Rate-Many-Ways"><a href="#3-Top-N-Hit-Rate-Many-Ways" class="headerlink" title="3. Top-N Hit Rate - Many Ways"></a>3. Top-N Hit Rate - Many Ways</h3><p>Different ways to measure the effectivenss of top-n recommenders offline:</p>
+<h4 id="3-1-Hit-Rate"><a href="#3-1-Hit-Rate" class="headerlink" title="3.1 Hit Rate"></a>3.1 Hit Rate</h4><p>You generate top-n recommendations for all of the users in your test set. <strong>If one of the recommendations in a user’s top-n recommendations is something  they actually rated, you consider that a hit.</strong> You actually managed to show the user something that they found interesting enough to watch on their own already, so we consider that a success. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578119273699.jpg" alt="1578119273699"></p>
 <p>How to measure hit rate? Use leave-one-out cross validation.</p>
-<ul>
-<li>leave-one-out cross validation</li>
-</ul>
-<p>What we do is compute the top-n recommendations for each user in our training data, and intentionally remove one of those items from that user’s training data. We then test our recommender system’s ability to recommend that item that was left out in the top-n results it creates for that user in the testing phase.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/C:%5CUsers%5Czhu_r%5CDesktop%5Ctest%5Cblog%5Csource_posts%5CEvaluate-Recommender-System%5C1578120352619.jpg" alt="1578120352619"></p>
+<h4 id="3-2-leave-one-out-cross-validation"><a href="#3-2-leave-one-out-cross-validation" class="headerlink" title="3.2 leave-one-out cross validation"></a>3.2 leave-one-out cross validation</h4><p>What we do is compute the top-n recommendations for each user in our training data, and intentionally remove one of those items from that user’s training data. We then test our recommender system’s ability to recommend that item that was left out in the top-n results it creates for that user in the testing phase.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578120352619.jpg" alt="1578120352619"></p>
 <p>The trouble is that it’s a lot harder to get one specific movie right while testing than to just get one of the n recommendations. So “hit rate” with “leave-one-out” tends to be very small and difficult to measure, unless you have a very large data set to work with. But it’s a much more <strong>user focused metric</strong> when you know your recommender system will be producing top-n lists in the real world, which most of them do. </p>
-<ul>
-<li>ARHR</li>
-</ul>
-<p>This metric is just like “hit rate”, but it accounts for where in the top-n list you hits appear. Instead of summing up the number of hits, we sum up the reciprocal ranking of each hit.</p>
+<h4 id="3-3-ARHR"><a href="#3-3-ARHR" class="headerlink" title="3.3 ARHR"></a>3.3 ARHR</h4><p>This metric is just like “hit rate”, but it accounts for where in the top-n list you hits appear. Instead of summing up the number of hits, we sum up the reciprocal ranking of each hit.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578122155631.jpg" alt="1578122155631"></p>
 <p>You end up getting more credit for successfully recommending an item in the top slot than in the bottom slot. Again, this is a more <strong>user focused metric</strong>, since users tend to focus on the beginning of lists. </p>
-<ul>
-<li>cHR</li>
-</ul>
-<p>Throw away hits if our predicted rating is below some threshold.</p>
+<h4 id="3-4-cHR"><a href="#3-4-cHR" class="headerlink" title="3.4 cHR"></a>3.4 cHR</h4><p>Throw away hits if our predicted rating is below some threshold.</p>
 <p>The idea is that we shouldn’t get credit for recommending items to a user that we think they won’t actually enjoy. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578122704818.jpg" alt="1578122704818"></p>
 <p>In this example, if we had a cutoff of three stars, we throw away the hits for the second and fourth items in these test results and our hit rate metric wouldn’t count them at all. </p>
-<ul>
-<li>rHR</li>
-</ul>
-<p>Another way to look at hit rate is to break it down by predicted rating score.</p>
+<h4 id="3-5-rHR"><a href="#3-5-rHR" class="headerlink" title="3.5 rHR"></a>3.5 rHR</h4><p>Another way to look at hit rate is to break it down by predicted rating score.</p>
 <p>It can be a good way to get an idea of the distribution of how good your algorithm thinks recommended movies are that actually get a hit.  Ideally, you want to recommend movies that they actually like, and breaking down the distribution gives you some sense of how well you’re doing in more detail.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/C:%5CUsers%5Czhu_r%5CDesktop%5Ctest%5Cblog%5Csource_posts%5CEvaluate-Recommender-System%5C1578123016707.jpg" alt="1578123016707"></p>
-<h4 id="4-Coverage-Diversity-and-Novelty"><a href="#4-Coverage-Diversity-and-Novelty" class="headerlink" title="4. Coverage, Diversity and Novelty"></a>4. Coverage, Diversity and Novelty</h4><p>Accuracy isn’t the only thing that matters.</p>
-<ul>
-<li>Coverage</li>
-</ul>
-<p>The percentage of possible recommendations that your system is able to provide. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578123016707.jpg" alt="1578123016707"></p>
+<h3 id="4-Coverage-Diversity-and-Novelty"><a href="#4-Coverage-Diversity-and-Novelty" class="headerlink" title="4. Coverage, Diversity and Novelty"></a>4. Coverage, Diversity and Novelty</h3><p>Accuracy isn’t the only thing that matters.</p>
+<h4 id="4-1-Coverage"><a href="#4-1-Coverage" class="headerlink" title="4.1 Coverage"></a>4.1 Coverage</h4><p>The percentage of possible recommendations that your system is able to provide. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150"></p>
 <p>It’s worth noting that coverage can be at odds with accuracy. If you enforce a higher quality threshold on the recommendations you make, then you might improve your accuracy at the expense of coverage. Finding the balance of where exactly you’re better off recommending nothing at all can be delicate. </p>
 <p>Coverage can also be important to watch, because it gives you a sense of how quickly new items in your catalog will start to appear in your recommendations. When a new book come out on Amazon, it won’t appear in recommendations until at least a few people buy it, therefore establishing patterns with the purchase of other items. Until those patterns exist, that new book will reduce Amazon’s coverage metric.</p>
-<ul>
-<li>Diversity</li>
-</ul>
-<p>You can think of this as measure of how broad a variety of items your recommender system is putting in front of people. An example of low diversity would be a recommender system that just recommends the next books in a series that you’ve started reading, but doesn’t recommend book from different authors, or movies related to what you’ve read.</p>
+<h4 id="4-2-Diversity"><a href="#4-2-Diversity" class="headerlink" title="4.2 Diversity"></a>4.2 Diversity</h4><p>You can think of this as measure of how broad a variety of items your recommender system is putting in front of people. An example of low diversity would be a recommender system that just recommends the next books in a series that you’ve started reading, but doesn’t recommend book from different authors, or movies related to what you’ve read.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578124451718.jpg" alt="1578124451718"></p>
 <p>Diversity, at least in the context of recommender systems, isn’t always a good thing. You can achieve very high diversity by just recommending completely random items. Unusually high diversity scores mean that you just have bad recommendations more often than not. You always need to look at diversity alongside metrics that measure the quality of the recommendations as well. </p>
-<ul>
-<li>Novelty</li>
-</ul>
-<p>Similarly, novelty sounds like a good thing, but often it isn’t. Novelty is a measure of how popular the items are that you are recommending. And again, just recommending random stuff would yield very high novelty scores, since the vast majority of items are not top sellers. </p>
+<h4 id="4-3-Novelty"><a href="#4-3-Novelty" class="headerlink" title="4.3 Novelty"></a>4.3 Novelty</h4><p>Similarly, novelty sounds like a good thing, but often it isn’t. Novelty is a measure of how popular the items are that you are recommending. And again, just recommending random stuff would yield very high novelty scores, since the vast majority of items are not top sellers. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578124908363.jpg" alt="1578124908363"></p>
 <p>Although novelty is measurable, what to do with it is in many ways subjective. There’s a concept of user trust in a recommender system. People want to see at least a few familiar items in their recommendations that make them say, “Yeah, that’s a good recommendation for me. The system seems good”. If you only recommend things people never heard of, they may conclude that your system doesn’t really know them. Also, popular items are usually popular for a reason. They’re enjoyable by a large segment of the population, so you would expect them to be good recommendations for a large segment of the population who hasn’t read or watched them yet. If you’re not recommending some popular items, you should probably question whether your recommender system is really working as it should.</p>
 <p><strong>You need to strike a balance between familiar, popular items and what we call serendipitous discovery of new items that user has never heard of before. (balance between novelty and trust)</strong>. The familiar items establish trust with the user, and the new ones allow the user to discover entirely new things that they might love. </p>
 <p>Novelty is important, because the whole point of recommender systems is to surface items in what we call “the long tail”.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578125635846.jpg" alt="1578125635846"></p>
 <p>Imagine this is a plot of the sales of every item in you catalog, sorted by sales. Y 轴代表sales (popularity)，X轴代表products. Most of sales来自于一小部分items，但是”long tail” makes up a large amount of sales as well. 黄色部分的item代表了人们各自感兴趣的东西. Recommender systems can help people discover those items in the long tail that are relevant to their own unique niche interests. If you can do that successfully, then the recommendations your system makes can help new authors get discovered, can help people explore their own passions, and make money for whoever you’re building the system for as well. Everybody wins.</p>
+<h3 id="5-Churn-Responsiveness-and-A-B-Tests"><a href="#5-Churn-Responsiveness-and-A-B-Tests" class="headerlink" title="5. Churn, Responsiveness, and A/B Tests"></a>5. Churn, Responsiveness, and A/B Tests</h3><h4 id="5-1-Churn"><a href="#5-1-Churn" class="headerlink" title="5.1 Churn"></a>5.1 Churn</h4><p>Another thing we can measure is Churn. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578127764650.jpg" alt="1578127764650"></p>
+<p>Churn can measure how sensitive your recommender system is to new user behavior. 如果用户rate了一部新电影，会使得他的推荐内容发生很大的变化吗？If so, your churn score will be high. Maybe just showing the same recommendations too many times is a bad idea itself. 如果一个用户总是看到相同的推荐，但是不点击进去，在某个时候你应该停止推荐它而给用户推荐其他的东西。Sometimes, a little bit of randomization in your top-n recommendations can keep them looking fresh, and expose your users to more items.</p>
+<p>But, just like diversity and novelty, high churn is not in itself a good thing. You could maximize your churn metric by just recommending items completely at random, 但显然这不是好的推荐。</p>
+<p>*<em>All these metrics need to be looked at together, and you need to understand the trade-offs between them. *</em></p>
+<h4 id="5-2-Responsiveness"><a href="#5-2-Responsiveness" class="headerlink" title="5.2 Responsiveness"></a>5.2 Responsiveness</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578128338650.jpg" alt="1578128338650"></p>
+<p>If you rate  a new movie, does it affect your recommendations immediately or next day after some nightly job runs? More responsiveness would always seem to be a good thing, but in the world of business, you have to decide how responsive your recommender really needs to be, since recommender systems that have instantaneous responsiveness are complex, difficult to maintain, and expensive to build. You need to strike your own balance between responsiveness and simplicity.</p>
+<blockquote>
+<p> ? What’s important</p>
+<p>前面讲了许多evaluate推荐系统的方法：MAE, RMSE, Hit rate in various forms, coverage, diversity, novelty, churn, and responsiveness.</p>
+<p>So how do you know what to focus on? It depends.</p>
+<p>It may even depend on cultural factors. Some cultures may want more diversity and novelty, while other cultures may want to stick to things that are familiar with them. </p>
+<p>It also depends on what you’re trying to achieve as a business. And usually,  a business is just trying to make money, which leads to one more way to evaluate recommender systems that is arguably the most important of all: online A/B tests!</p>
+</blockquote>
+<h4 id="5-3-Online-A-B-Tests"><a href="#5-3-Online-A-B-Tests" class="headerlink" title="5.3 Online A/B Tests"></a>5.3 Online A/B Tests</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578129032852.jpg" alt="1578129032852"></p>
+<p>Doing online A/B tests to tune your recommender system using your real customers, and measuring how they react to your recommendations. You can put recommendations from different algorithms in front of different sets of users, and measure if they actually buy, watch, or otherwise indicate interest in the recommendations you’ve presented. </p>
+<p>By always testing changes to your recommender system using controlled, online experiments, you can see if they actually cause people to discover and purchase more new things than they would have otherwise.</p>
+<p>None of the metrics we’ve discussed matter more than how real customers react to the recommendations you produce in the real world. You can have the most accurate rating predictions in the world, but if customers can’t find new items to buy or watch from your system, it will be worthless from a practical standpoint. </p>
+<p>Online tests can help you to avoid introducing complexity that adds no value, and remember, complex systems are difficult to maintain.</p>
+<p>SO REMEMBER, offline metrics such as accuracy, diversity, and novelty can all be indicators you can look at while developing recommender systems offline, but you should never declare victory until you’ve measured a real impact on real users from your work. <strong>User behavior is the ultimate test of your work.</strong></p>
+<p><strong>Accurately predicted ratings don’t necessarily make for good video recommendations. At the end of the day, the results of online A/B tests are the only evaluation that matters for your recommender system.</strong></p>
+<p>Another thing you can do is just straight up ask your users, if they think specific recommendations are good. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg" alt="1578129889414"></p>
+<p>In practice though, it’s a tough thing to do. Users will probably be confused over whether you’re asking them to rate the item or rate the recommendation, so you won’t really know how to interpret this data. It also requires extra work form your customers with no clear payoff for them, so you’re unlikely to get enough ratings on your recommendations to be useful. </p>
+<p>It’s best to just stick with online A/B tests, and measure how your customers vote with their wallets on the quality of your recommendations.</p>
 
           
         
