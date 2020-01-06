@@ -1,6 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Content-Based Filtering</title>
+    <url>/2020/01/06/Content-Based-Filtering/</url>
+    <content><![CDATA[<p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
+<h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
+<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
+<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
+<p>How do we assign a similarity score based on release years alone?</p>
+<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
+<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
+<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
+<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
+<h3 id="K-nearest-neighbors"><a href="#K-nearest-neighbors" class="headerlink" title="K-nearest-neighbors"></a>K-nearest-neighbors</h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
+<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>ContentBased里的文件：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
+<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
+<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><blockquote>
+<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
+<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
+</blockquote>
+<h4 id="mise-en-scene"><a href="#mise-en-scene" class="headerlink" title="mise en scene"></a>mise en scene</h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
+<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
+<p>What sort of attributes are we talking about：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
+<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
+<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
+<p>更改代码：</p>
+<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
+<p>再运行ContentRec.py，可得到结果如下：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
+<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
+<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
+<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
+<p>Here’s a reference to the original research paper:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><ul>
+<li>Use genre, release year, and mise en scene data independently.</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
+<ul>
+<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
+<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>A Recommender Engine Framework</title>
+    <url>/2020/01/05/A-Recommender-Engine-Framework/</url>
+    <content><![CDATA[<p>What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867"></p>
+<h3 id="1-Our-Recommender-Engine-Architecture"><a href="#1-Our-Recommender-Engine-Architecture" class="headerlink" title="1. Our Recommender Engine Architecture"></a>1. Our Recommender Engine Architecture</h3><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375"></p>
+<p>Object oriented design allows us to have base classes, for example, AlgoBase, that contain functions and variables that can be shared by other classes that inherit from that base class. 例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
+<p>Custom指的是any custom algorithm we might develop (自己写的recommender system), and make them part of the supriselib framework.</p>
+<h4 id="Create-a-custom-algorithm"><a href="#Create-a-custom-algorithm" class="headerlink" title="Create a custom algorithm"></a>Create a custom algorithm</h4><p>So, how do you write your own recommender algorithm that’s compatible with surpiselib?</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207092161.png" alt="1578207092161"></p>
+<p>All you have to do is create a new class that inherits form AlgoBase, and as far as supriselib is concerned, your algorithm has one job: to predict ratings.</p>
+<blockquote>
+<p>As we mentioned, supriselib is built around the architecture of predicting the ratings of every movie for every user, and giving back the top predictions as your recommendations. </p>
+</blockquote>
+<p>Your class have to implement an estimate function.</p>
+<p>When estimate is called by supriselib framework, it’s asking you to predict a rating for the user and item passed in. </p>
+<blockquote>
+<p>注：这里的user id和item id是inner id. Must be mapped back to the raw user and item ids in your source data.</p>
+</blockquote>
+<ul>
+<li>Now, we want to do more than just predict ratings. 我们想要很简单的将之前在<code>RecommenderMetrics</code>中实现的不同的evaluation metrics应用到algorithms we work with. </li>
+</ul>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207683880.png" alt="1578207683880"></p>
+<p>为了做到这一点，我们将创建一个新的class叫做<code>EvaluatedAlgoritm</code>，里面创建了一个新的函数叫做<code>Evaluate</code>，that runs all the metrics in RecommenderMetrics on that algorithm. So this class makes it easy to measure accuracy, coverage, diversity and everything else on a given algorithm.</p>
+<ul>
+<li><p>不同的评估方法，要求对数据集的不同分割方式，于是我们创建了另一个新的class: <code>EvaluationData</code>来做到这一点。</p>
+</li>
+<li><p>如何连接这一切？</p>
+</li>
+</ul>
+<p>We create an <code>EvaluationData</code> instance with our data set, create an <code>EvaluatedAlgorithm</code> for each algorithm we want to evaluate, and call <code>Evaluate</code> on each algorithm using the same <code>EvaluationData</code>. Under the hood, <code>EvaluatedAlgorithm</code> will use all the functions we defined in <code>RecommenderMetrics</code> to measure accuracy, hit rate, diversity, novelty, and coverage.</p>
+<ul>
+<li>Since what we generally want to do is 比较不同推荐系统, we can make life even easier by writing a class that takes care of all the comparison for us. 于是我们创建了新的class：<code>Evaluator</code>.</li>
+</ul>
+<p>Ideally, we want to just submit algorithms we want to evaluate against each other into this class, and let it do everything from there.</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208719473.png" alt="1578208719473"></p>
+<p>The beauty of this is that you don’t even have to use the <code>EvalutedAlgorithm</code> or <code>EvaluatedData</code> classed at all, when you want to start playing around with new algorithms and testing them against each other. All you need to do is use this <code>Evaluator</code> class, which has a really simple interface.</p>
+<p>将上述framework写好后，如下这是我们比较SVD算法与random算法所需要的所有代码：</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208901255.png" alt="1578208901255"></p>
+<h3 id="2-Code-Walkthrough"><a href="#2-Code-Walkthrough" class="headerlink" title="2. Code Walkthrough"></a>2. Code Walkthrough</h3><p>Framework文件夹里：</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578209106245.png" alt="1578209106245"></p>
+<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578283638478.png" alt="1578283638478"></p>
+<p>我们比较的是SVD和随机推荐。SVD is one of the best algorithms available right now, so it shouldn’t be surprise that SVD beats random recommendation in accuracy and hit rate no matter how we measure it.</p>
+<ul>
+<li>RMSE和MAE: lower is better.</li>
+<li>Hit rate,包括cHR, ARHR: higher is better.</li>
+<li>Coverage, diversity, novelty: need to apply some common sense to, as it’s not a clear higher-is-better sort of thing. There are trade-offs involved with these metrics.</li>
+</ul>
+<p>就Coverage而言，SVD的要低一些: that’s just because we are enforcing a quality threshold on the top-N recommendations we’re making with SVD, while our random recommender isn’t actually making totally random recommendations, it’s predicting movie ratings using what’s called a normal distribution centered around the average rating value, which ends up meaning all of the rating predictions it makes fall above our rating threshold, giving us 100% coverage. Having 100% coverage at the expense of having bad recommendations isn’t a trade-off worth making.</p>
+<p>就Diversity和Novelty而言，SVD的都要低一些，这是我们所预期会出现的。</p>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Evaluate Recommender System</title>
     <url>/2020/01/04/Evaluate-Recommender-System/</url>
     <content><![CDATA[<h3 id="1-The-methodology-for-testing-recommender-systems-offline"><a href="#1-The-methodology-for-testing-recommender-systems-offline" class="headerlink" title="1. The methodology for testing recommender systems offline."></a>1. The methodology for testing recommender systems offline.</h3><h4 id="1-1-train-test-split"><a href="#1-1-train-test-split" class="headerlink" title="1.1 train/test split"></a>1.1 train/test split</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
@@ -39,6 +161,7 @@
 <h4 id="3-5-rHR"><a href="#3-5-rHR" class="headerlink" title="3.5 rHR"></a>3.5 rHR</h4><p>Another way to look at hit rate is to break it down by predicted rating score.</p>
 <p>It can be a good way to get an idea of the distribution of how good your algorithm thinks recommended movies are that actually get a hit.  Ideally, you want to recommend movies that they actually like, and breaking down the distribution gives you some sense of how well you’re doing in more detail.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578123016707.jpg" alt="1578123016707"></p>
+<p>对每一个rating type (1,2,3,4,5), print out its hit rate.</p>
 <h3 id="4-Coverage-Diversity-and-Novelty"><a href="#4-Coverage-Diversity-and-Novelty" class="headerlink" title="4. Coverage, Diversity and Novelty"></a>4. Coverage, Diversity and Novelty</h3><p>Accuracy isn’t the only thing that matters.</p>
 <h4 id="4-1-Coverage"><a href="#4-1-Coverage" class="headerlink" title="4.1 Coverage"></a>4.1 Coverage</h4><p>The percentage of possible recommendations that your system is able to provide. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150"></p>
@@ -79,6 +202,40 @@
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg" alt="1578129889414"></p>
 <p>In practice though, it’s a tough thing to do. Users will probably be confused over whether you’re asking them to rate the item or rate the recommendation, so you won’t really know how to interpret this data. It also requires extra work form your customers with no clear payoff for them, so you’re unlikely to get enough ratings on your recommendations to be useful. </p>
 <p>It’s best to just stick with online A/B tests, and measure how your customers vote with their wallets on the quality of your recommendations.</p>
+<h3 id="Quiz"><a href="#Quiz" class="headerlink" title="Quiz"></a>Quiz</h3><p><img src="/2020/01/04/Evaluate-Recommender-System/1578196100106.jpg" alt="1578196100106"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196212178.jpg" alt="1578196212178"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196333798.jpg" alt="1578196333798"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196377981.jpg" alt="1578196377981"></p>
+<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>使用Python中的library: Suprise. <a href="supriselib.com">SupriseLib’s documentation online</a></p>
+<p>Suprise is built around measuring the accuracy of recommender systems. Although this is the wrong thing to focus on, it’s really the best we can do without access to a real, large-scale website of our own.</p>
+<p>Evaluating文件夹里的：</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201480503.jpg" alt="1578201480503"></p>
+<p>RecommenderMetrics中实现了前面讲到的用来evaluate recommender system的各种metrics.</p>
+<p>TestMetrics中调用了RecommenderMetrics中的方法来实现一个real recommender system并evaluate it.</p>
+<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578201799750.jpg" alt="1578201799750"></p>
+<ul>
+<li><p>RMSE大概0.9，MAE大概0.7。</p>
+<p>On average, our guess of rating for a given movie for a given user, was off by about 0.7 stars. RMSE is higher, meaning that we got penalized for being way off more often than we’d like.</p>
+<p>Remember, error metrics are bad.  你想要RMSE与MAE越低越好，if accuracy is your goal.</p>
+</li>
+</ul>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201882902.jpg" alt="1578201882902"></p>
+<ul>
+<li>Hit Rate大概 3%，which actually isn’t that bad, considering that only one movie was left out from each user’s rating to test with. 这个数值本身很难解释是好是坏，除非有其他的推荐系统可供比较。</li>
+<li>If we break it down by rating value, you can see that our hit rate did better at higher rating predictions, which make sense and it’s what we want to see. Hit Rate在评分越高的类型中表现得更好（例如，在评分为5的电影中，Hit Rate为 6%）。</li>
+<li>Cumulative Hit Rate with a 4.0 threshold isn’t much lower than the raw hit rate, meaning that we’re doing a good job of recommending items we think are good recommendations.</li>
+<li>ARHR is 0.01. It takes the ranking of the hits into account. Again, it has no real value until we have other recommender systems to compare it against.</li>
+</ul>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578203470922.jpg" alt="1578203470922"></p>
+<ul>
+<li><p>We look at user coverage for which we have at least one 4-star rating prediction, ant it’s pretty high. That’s good.</p>
+</li>
+<li><p>Diversity is really high at 0.96, and novelty seems pretty high, with an average popularity rank of 491. Remember there are only a few thousand movies in our data set to begin with. </p>
+<p>This tells us that our algorithm is going pretty deep into the long tail to get its recommendations and that could be a problem in the real world. Novelty比较高（平均受欢迎程度排名比较靠后），说明推荐的都是比较小众的电影（long tail）.</p>
+</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>So even though our accuracy metrics look okay here, diversity and novelty is telling us that we’re recommending a lot of really obscure stuff. And that could be an issue when trying to establish user trust in the system. People generally want to see a few things that at least look familiar. So I would expect this particular algorithm wouldn’t do that well in an online A/B test, but you can never really know until  you actually try it. </p>
+<p>Anyhow, we now have working code now for evaluating real recommender systems!</p>
 ]]></content>
       <categories>
         <category>Recommender System</category>

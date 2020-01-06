@@ -104,7 +104,15 @@
 <meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578128338650.jpg">
 <meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578129032852.jpg">
 <meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg">
-<meta property="og:updated_time" content="2020-01-04T09:34:57.976Z">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578196100106.jpg">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578196212178.jpg">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578196333798.jpg">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578196377981.jpg">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578201480503.jpg">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578201799750.jpg">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578201882902.jpg">
+<meta property="og:image" content="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/1578203470922.jpg">
+<meta property="og:updated_time" content="2020-01-05T06:19:16.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Evaluate Recommender System">
 <meta name="twitter:description" content="1. The methodology for testing recommender systems offline.1.1 train/test split You measure your recommender system’s ability to predict how people rated things in the past. If you do this over enough">
@@ -351,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-04T17:34:57+08:00">
-                2020-01-04
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-05T14:19:16+08:00">
+                2020-01-05
               </time>
             
           </span>
@@ -443,6 +451,7 @@
 <h4 id="3-5-rHR"><a href="#3-5-rHR" class="headerlink" title="3.5 rHR"></a>3.5 rHR</h4><p>Another way to look at hit rate is to break it down by predicted rating score.</p>
 <p>It can be a good way to get an idea of the distribution of how good your algorithm thinks recommended movies are that actually get a hit.  Ideally, you want to recommend movies that they actually like, and breaking down the distribution gives you some sense of how well you’re doing in more detail.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578123016707.jpg" alt="1578123016707"></p>
+<p>对每一个rating type (1,2,3,4,5), print out its hit rate.</p>
 <h3 id="4-Coverage-Diversity-and-Novelty"><a href="#4-Coverage-Diversity-and-Novelty" class="headerlink" title="4. Coverage, Diversity and Novelty"></a>4. Coverage, Diversity and Novelty</h3><p>Accuracy isn’t the only thing that matters.</p>
 <h4 id="4-1-Coverage"><a href="#4-1-Coverage" class="headerlink" title="4.1 Coverage"></a>4.1 Coverage</h4><p>The percentage of possible recommendations that your system is able to provide. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150"></p>
@@ -483,6 +492,40 @@
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg" alt="1578129889414"></p>
 <p>In practice though, it’s a tough thing to do. Users will probably be confused over whether you’re asking them to rate the item or rate the recommendation, so you won’t really know how to interpret this data. It also requires extra work form your customers with no clear payoff for them, so you’re unlikely to get enough ratings on your recommendations to be useful. </p>
 <p>It’s best to just stick with online A/B tests, and measure how your customers vote with their wallets on the quality of your recommendations.</p>
+<h3 id="Quiz"><a href="#Quiz" class="headerlink" title="Quiz"></a>Quiz</h3><p><img src="/2020/01/04/Evaluate-Recommender-System/1578196100106.jpg" alt="1578196100106"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196212178.jpg" alt="1578196212178"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196333798.jpg" alt="1578196333798"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196377981.jpg" alt="1578196377981"></p>
+<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>使用Python中的library: Suprise. <a href="supriselib.com">SupriseLib’s documentation online</a></p>
+<p>Suprise is built around measuring the accuracy of recommender systems. Although this is the wrong thing to focus on, it’s really the best we can do without access to a real, large-scale website of our own.</p>
+<p>Evaluating文件夹里的：</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201480503.jpg" alt="1578201480503"></p>
+<p>RecommenderMetrics中实现了前面讲到的用来evaluate recommender system的各种metrics.</p>
+<p>TestMetrics中调用了RecommenderMetrics中的方法来实现一个real recommender system并evaluate it.</p>
+<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578201799750.jpg" alt="1578201799750"></p>
+<ul>
+<li><p>RMSE大概0.9，MAE大概0.7。</p>
+<p>On average, our guess of rating for a given movie for a given user, was off by about 0.7 stars. RMSE is higher, meaning that we got penalized for being way off more often than we’d like.</p>
+<p>Remember, error metrics are bad.  你想要RMSE与MAE越低越好，if accuracy is your goal.</p>
+</li>
+</ul>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201882902.jpg" alt="1578201882902"></p>
+<ul>
+<li>Hit Rate大概 3%，which actually isn’t that bad, considering that only one movie was left out from each user’s rating to test with. 这个数值本身很难解释是好是坏，除非有其他的推荐系统可供比较。</li>
+<li>If we break it down by rating value, you can see that our hit rate did better at higher rating predictions, which make sense and it’s what we want to see. Hit Rate在评分越高的类型中表现得更好（例如，在评分为5的电影中，Hit Rate为 6%）。</li>
+<li>Cumulative Hit Rate with a 4.0 threshold isn’t much lower than the raw hit rate, meaning that we’re doing a good job of recommending items we think are good recommendations.</li>
+<li>ARHR is 0.01. It takes the ranking of the hits into account. Again, it has no real value until we have other recommender systems to compare it against.</li>
+</ul>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578203470922.jpg" alt="1578203470922"></p>
+<ul>
+<li><p>We look at user coverage for which we have at least one 4-star rating prediction, ant it’s pretty high. That’s good.</p>
+</li>
+<li><p>Diversity is really high at 0.96, and novelty seems pretty high, with an average popularity rank of 491. Remember there are only a few thousand movies in our data set to begin with. </p>
+<p>This tells us that our algorithm is going pretty deep into the long tail to get its recommendations and that could be a problem in the real world. Novelty比较高（平均受欢迎程度排名比较靠后），说明推荐的都是比较小众的电影（long tail）.</p>
+</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>So even though our accuracy metrics look okay here, diversity and novelty is telling us that we’re recommending a lot of really obscure stuff. And that could be an issue when trying to establish user trust in the system. People generally want to see a few things that at least look familiar. So I would expect this particular algorithm wouldn’t do that well in an online A/B test, but you can never really know until  you actually try it. </p>
+<p>Anyhow, we now have working code now for evaluating real recommender systems!</p>
 
       
     </div>
@@ -522,6 +565,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/05/A-Recommender-Engine-Framework/" rel="prev" title="A Recommender Engine Framework">
+                A Recommender Engine Framework <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -600,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -665,7 +712,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-The-methodology-for-testing-recommender-systems-offline"><span class="nav-number">1.</span> <span class="nav-text">1. The methodology for testing recommender systems offline.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-train-test-split"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 train/test split</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-k-fold-cross-validation"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 k-fold cross-validation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Accuracy-Metrics-RMSE-MAE"><span class="nav-number">2.</span> <span class="nav-text">2. Accuracy Metrics (RMSE, MAE)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-MAE"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 MAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-RMSE"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 RMSE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Top-N-Hit-Rate-Many-Ways"><span class="nav-number">3.</span> <span class="nav-text">3. Top-N Hit Rate - Many Ways</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Hit-Rate"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Hit Rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-leave-one-out-cross-validation"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 leave-one-out cross validation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-ARHR"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 ARHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-cHR"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 cHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-rHR"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 rHR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Coverage-Diversity-and-Novelty"><span class="nav-number">4.</span> <span class="nav-text">4. Coverage, Diversity and Novelty</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Coverage"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Coverage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-Diversity"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Diversity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Novelty"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Novelty</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Churn-Responsiveness-and-A-B-Tests"><span class="nav-number">5.</span> <span class="nav-text">5. Churn, Responsiveness, and A/B Tests</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-Churn"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Churn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-Responsiveness"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Responsiveness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-Online-A-B-Tests"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 Online A/B Tests</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-The-methodology-for-testing-recommender-systems-offline"><span class="nav-number">1.</span> <span class="nav-text">1. The methodology for testing recommender systems offline.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-train-test-split"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 train/test split</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-k-fold-cross-validation"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 k-fold cross-validation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Accuracy-Metrics-RMSE-MAE"><span class="nav-number">2.</span> <span class="nav-text">2. Accuracy Metrics (RMSE, MAE)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-MAE"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 MAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-RMSE"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 RMSE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Top-N-Hit-Rate-Many-Ways"><span class="nav-number">3.</span> <span class="nav-text">3. Top-N Hit Rate - Many Ways</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Hit-Rate"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Hit Rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-leave-one-out-cross-validation"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 leave-one-out cross validation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-ARHR"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 ARHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-cHR"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 cHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-rHR"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 rHR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Coverage-Diversity-and-Novelty"><span class="nav-number">4.</span> <span class="nav-text">4. Coverage, Diversity and Novelty</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Coverage"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Coverage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-Diversity"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Diversity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Novelty"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Novelty</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Churn-Responsiveness-and-A-B-Tests"><span class="nav-number">5.</span> <span class="nav-text">5. Churn, Responsiveness, and A/B Tests</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-Churn"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Churn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-Responsiveness"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Responsiveness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-Online-A-B-Tests"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 Online A/B Tests</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quiz"><span class="nav-number">6.</span> <span class="nav-text">Quiz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Walkthrough"><span class="nav-number">7.</span> <span class="nav-text">Code Walkthrough</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结果分析"><span class="nav-number">7.1.</span> <span class="nav-text">结果分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">7.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
