@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>两数之和</title>
+    <url>/2020/01/12/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">两数之和（难度：简单）</a></p>
+<p><img src="/2020/01/12/两数之和/1578808347100.png" alt="1578808347100"></p>
+<h4 id="方法一：暴力法"><a href="#方法一：暴力法" class="headerlink" title="方法一：暴力法"></a>方法一：暴力法</h4><p>遍历每个元素 x，并查找是否存在一个值与 target - x相等的目标元素。\</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] == target - nums[i]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, j &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n^2)</p>
+<p>空间复杂度：O(1)</p>
+<hr>
+<h4 id="方法二：两遍哈希表"><a href="#方法二：两遍哈希表" class="headerlink" title="方法二：两遍哈希表"></a>方法二：两遍哈希表</h4><p>为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。</p>
+<p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)降低到 O(1)。<strong>哈希表正是为此目的而构建的，它支持以 近似恒定的时间进行快速查找</strong>。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)。</p>
+<p><strong>使用两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target - nums[i]）是否存在于表中。</strong>注意，该目标元素不能是 nums[i]本身！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> complement = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, map.get(complement) &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，遍历两次，由于哈希表将查找时间缩短到 O(1) ，所以时间复杂度为 O(n)。</p>
+<p>空间复杂度：O(n)，所需的额外空间取决于哈希表中存储的元素数量。</p>
+<hr>
+<h4 id="方法三：一遍哈希表"><a href="#方法三：一遍哈希表" class="headerlink" title="方法三：一遍哈希表"></a>方法三：一遍哈希表</h4><p>在进行迭代并将元素插入到表中的同时，回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target - nums[i]))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;map.get(target - nums[i]), i&#125;;</span><br><span class="line">            map.put(nums[i],i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，只遍历一次。</p>
+<p>空间复杂度：O(n)。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>哈希表</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最长连续递增序列</title>
+    <url>/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/" target="_blank" rel="noopener">最长连续递增序列（难度：简单）</a></p>
+<p><img src="/2020/01/12/最长连续递增序列/1578807734778.png" alt="1578807734778"></p>
+<p><img src="/2020/01/12/最长连续递增序列/1578807775519.png" alt="1578807775519"></p>
+<p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLengthOfLCIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length&lt;=<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                count++;</span><br><span class="line">                max = Math.max(max,count);</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                count=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/12/最长连续递增序列/1578807884555.png" alt="1578807884555"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>排序算法</title>
     <url>/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p><img src="/2020/01/10/排序算法/1578640411160.png" alt="1578640411160"></p>
@@ -1311,8 +1364,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>数组</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -1424,8 +1477,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>数组</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
