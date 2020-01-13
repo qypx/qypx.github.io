@@ -284,6 +284,1566 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/10/排序算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/10/排序算法/" itemprop="url">排序算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T15:12:00+08:00">
+                2020-01-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-10T15:19:10+08:00">
+                2020-01-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2020/01/10/排序算法/1578640411160.png" alt="1578640411160"></p>
+<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/09/Matrix-Factorization-Methods/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/09/Matrix-Factorization-Methods/" itemprop="url">Matrix Factorization Methods</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-09T12:13:54+08:00">
+                2020-01-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-10T15:11:41+08:00">
+                2020-01-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Collaborative Filtering has been criticized as having limited scalability, since computing similarity matrices on very large sets of items or users can take a lot of computing horsepower. I don’t really buy this, however. Technologies such as Apache Spark allow you to distribute the construction of this matrix across a cluster if you need to. *<em>A legitimate problem with collaborative filtering is that it’s sensitive to noisy data and sparse data. You’ll only get really good results if you have a large data set to work with that’s nice and clean. *</em></p>
+<p>接下来介绍一些<strong>Model-based methods</strong>. Instead of 寻找相似的物品或相似的用户, we apply data science and machine learning techniques to extract predictions from our ratings data.</p>
+<p><img src="/2020/01/09/Matrix-Factorization-Methods/1578547347570.png" alt="1578547347570"></p>
+<p>There are a wide variety of techniques that fall under the category of matrix factorization. They managed to find broader features of users and items on their own, like action movies or romantic. They are described by matrices. The general idea is to describe users and movies as combinations of different amounts of each feature. For example, Bob is defined as being 80% an action fan and 20% a comedy fan. We’d then know to match him up with movies that are blend about 80% action and 20% comedy. </p>
+<p><img src="/2020/01/09/Matrix-Factorization-Methods/1578559424817.png" alt="1578559424817"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/07/Neighborhood-Based-Collaborative-Filtering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/" itemprop="url">Neighborhood-Based Collaborative Filtering</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-07T12:37:30+08:00">
+                2020-01-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-09T12:13:20+08:00">
+                2020-01-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>This is the idea of leveraging the behavior of others to inform what you might enjoy. At a very high level, it means finding other people like you and recommending stuff they liked. Or it might mean finding other things similar to the thing that you like. </p>
+<p>That’s why we call it collaborative filtering. It’s recommending stuff based on other people’s collaborative behavior. </p>
+<p>The heart of neighborhood-based collaborative filtering is the ability to find people similar to you, or items similar to items you’ve liked.</p>
+<h3><span id="measuring-similarity-and-sparsity">Measuring Similarity, and Sparsity</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372454415.png" alt="1578372454415"></p>
+<p>这里的余弦相似度和前面content-based中的余弦相似度的区别在于：Our dimensions would be things like his: Did this user like this thing? Or was this thing liked by this user? So every user or every thing might constitute its own dimension, and the dimensions are based on user behavior instead of content attributes.</p>
+<p>The big challenge in measuring these similarities based on behavior data is the <strong>sparsity</strong> of the data we’re working with. This means that it’s tough for collaborative filtering to work well unless you have a lot of user behavior data to work with. You can’t compute a meaningful cosine similarity between two people when they have nothing in common, or between two items when they have no people in common. </p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578373973291.png" alt="1578373973291"></p>
+<p>This is why collaborative filtering works well for big companies like Amazon and Netflix. They have millions of users and so they have enough data to generate meaningful relations in spite of the data sparsity. </p>
+<p>Sparsity also introduces some computational challenges. You don’t want to waste time storing and processing all of that missing data, so under the hood we end up using structures like <strong>sparse arrays</strong> that avoid storing all that empty spaces in this matrix. </p>
+<h3><span id="similarity-metrics">Similarity Metrics</span></h3><h4><span id="adjusted-cosine">Adjusted Cosine</span></h4><p>It’s applicable mostly to measuring the similarity between users based on their ratings. It’s based on the idea that different people might have different baselines. What Bob considers a three star movie, maybe different from what Alice considers a three star movie. </p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578374644148.png" alt="1578374644148"></p>
+<p>Adjusted cosine attempts to normalize these differences. Instead of measuring similarities between people based on their raw rating values, we instead measure similarities based on the difference between a user’s rating for an item and their average rating for all items. </p>
+<p>Now this sounds good on paper, but in practice, data sparsity can really mess you up here. You can only get a meaningful average, or a baseline of an individual’s ratings if they have rated a lot of stuff for you to take the average of in the first place. 若有许多用户只评价了一部电影，then that data will be totally wasted with the adjusted cosine metric. 不管他们评了多少分，the difference between it and that user’s mean will be zero at that point. </p>
+<p>So, adjusted cosine might be worth experimenting with, but only if you know that most of your users have rated a lot of stuff implicitly or explicitly. And if you have that much data to begin with, these differences between individuals will start to work themselves out anyway. So, you’re not likely to see as much of a difference as you might expect when using adjusted cosine. </p>
+<h4><span id="item-based-pearson-similarity">(item-based) pearson similarity</span></h4><p>与adjusted cosine的区别在于, we look at the difference between rating and the average from all users for that given item.  </p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376440604.png" alt="1578376440604"></p>
+<p>You can think of pearson similarity as measuring the similarity between people by how much they diverge from the average person’s behavior. 例如，假设大多数人都喜欢Star Wars, people who hate Star Wars are going to get a very strong similarity score from pearson similarity, because they share opinions that are not mainstream.</p>
+<p>Note that the only difference between this and adjusted cosine is whether we’re talking about users or items. 这门课使用的suprise library, refers to adjusted cosine as user-based pearson similarity, because it’s basically the same thing.</p>
+<h4><span id="spearman-rank-correlation">spearman rank correlation</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376851254.png" alt="1578376851254"></p>
+<ul>
+<li>Instead of using an average rating value for a movie, 我们使用 its rank amongst all movies based on their average rating. </li>
+<li>Instead of individual ratings for a movie, we’d rank that movie amongst all that individual’s ratings. </li>
+</ul>
+<p>Spearman的主要优势在于 it can deal with ordinal data effectively. 例如，if you had a rating scale, where the difference in meaning between different rating values were not the same. I’ve never seen this actually used in real world applications, but you may encounter it in the academic literature.</p>
+<h4><span id="mean-squared-difference">mean squared difference</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578377776225.png" alt="1578377776225"></p>
+<p>另一方面，我们可以将它应用到item上：x和y指两个不同的item, and then we’d be looking at the differences in ratings from the people these items have in common (所有评价过这两个item的人对这两个item评分的差异).</p>
+<p>There are two ways of doing collaborative filtering, item based and user based, and it’s important to remember that most of these similarity metrics can apply to either approach. </p>
+<p>MSD 要比余弦相似度更好理解， 但 in practice, 你通常会发现cosine works better.</p>
+<h4><span id="jaccard-similarity">jaccard similarity</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385168727.png" alt="1578385168727"></p>
+<p>jaccard similarity 没有使用实际的rating vlaue. If you are dealing with implicit ratings, for example, just the fact that somebody watched something, in this case, Jaccard can be a reasonable choice that’s very fast to compute. </p>
+<h4><span id="recap">Recap</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385386398.png" alt="1578385386398"></p>
+<ul>
+<li>Cosine similarity is almost always a reasonable thing to start with.</li>
+<li>Adjust cosine and Pearson are two different terms for basically the same thing. It’s mean centered cosine similarities. The idea is to deal with unusual rating behavior that deviates from the mean, but in practice, it can sometimes do more harm than good.</li>
+<li>Spearman ranking correlation is the same idea as Pearson, using ranking instead of raw ratings, and it’s not something you are likely to be using in practice.</li>
+<li>MSD is mean squared difference, which is just an easier similarity metric to warp your head around than cosine similarity, but in practice, it usually doesn’t perform better.</li>
+<li>Jaccard similarity is just looking at how many items two users have in common, or how many users two items have in common, divided by how many items or users they have between both of them. It’s really simple and well suited to implicit ratings, like binary actions, like purchasing or view something. But you can also apply cosine similarities to implicit ratings too.</li>
+<li>So, and the end of the day, cosine similarity remains my default go to similarity metric. </li>
+</ul>
+<h3><span id="user-based-collaborative-filtering">User-based Collaborative Filtering</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386125836.png" alt="1578386125836"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386158223.png" alt="1578386158223"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455133171.png" alt="1578455133171"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455288882.png" alt="1578455288882"></p>
+<ul>
+<li>每个人和自己的余弦相似度是1</li>
+<li>Bob 和 Ted的余弦相似度是0，因为他们没有评价过相同的电影</li>
+<li>矩阵的上三角部分和下三角部分是对称的</li>
+<li>对于 Bob 和 Ann, 虽然他们评价过不同的电影，当我们考虑相似度时，我们只看他们共同评价过的电影。在这个例子中，他们共同评价过的电影只有一部，并且评分都为5，所以他们的相似度得分为1 (100%)。</li>
+</ul>
+<blockquote>
+<p>注：两个用户的相似度为100%并不一定代表他们喜欢相同的东西，也可以代表他们都讨厌相同的东西（例如，若 Bob 和 Ann 都给Star Wars打1分，他们仍然是100% similar）。事实上，the math behind cosine similarity works out such that *<em>if you only have one movie in common, you end up with 100% similarity no matter what. *</em>Even if Bob loved Star Wars and Ann hated it, in a sparse data situation, they both end up 100% similar. Sparse data is a huge problem with collaborative filtering, and it can lead to weird results. And sometimes, you need to enforce a minimum threshold on how many movies users have in common before you consider them at all.</p>
+</blockquote>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578456962753.png" alt="1578456962753"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457107702.png" alt="1578457107702"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457502291.png" alt="1578457502291"></p>
+<p>除了normalizing, 还可以例如将评分为1、2的转换成negative score, 方法不唯一，没有标准的方法，可通过试验看 what works best for the data you have.</p>
+<p>应该adding in the score for a given movie if we encounter it more than once.</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457620591.png" alt="1578457620591"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457759908.png" alt="1578457759908"></p>
+<h4><span id="recap">Recap</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457999015.png" alt="1578457999015"></p>
+<h4><span id="user-based-collaborative-filtering-hands-on">User-based Collaborative Filtering, Hands-On</span></h4><p>code walkthrough</p>
+<p>CollaborativeFiltering文件夹里的：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
+<p>运行SimpleUserCF.py</p>
+<h3><span id="item-based-collaborative-filtering">Item-based Collaborative Filtering</span></h3><p>Look at the things you liked, and recommend stuff that’s similar to those things. </p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458842316.png" alt="1578458842316"></p>
+<p>一些原因为什么使用物品之间的相似度可能比使用用户之间的相似度更好：</p>
+<ul>
+<li>Items tend to be of a more permanent nature than people. An individual’s test may change very quickly over the span of their lives. Your math book will always be similar to other math books. As such, you can get away with computing an item similarity matrix less often than user similarities, because it won’t change very quickly.</li>
+<li>You usually have far fewer items to deal with than people. There are way more people than there are things to recommend to them in most cases. 即物品相似度矩阵会比用户相似度矩阵会小很多，这样不仅 make it simpler to store that matrix, it makes faster to compute as well. And when you’re dealing with massive systems like Amazon and Netflix, computational efficiency is very important. Not only does it require fewer resources, it means you can regenerate your similarities between items more often, making your system more responsive when new items are introduced.</li>
+<li>使用 item similarities also makes for a better experience for new users. 一个新用户只要表现出了对某个物品的兴趣，你可以推荐与那个物品相似的物品给该用户，而使用基于用户的协同过滤，you wouldn’t have any recommendations for a new user at all until they make it into the next build of your user similarity matrix.</li>
+</ul>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463648320.png" alt="1578463648320"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463881122.png" alt="1578463881122"></p>
+<p>在这个例子中，所有的相似度都为0或1，是因为数据量比较小。In the real world, you’d see more interesting and meaningful numbers here.</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578464579773.png" alt="1578464579773"></p>
+<h4><span id="item-based-collaborative-filtering-hands-on">Item-based Collaborative Filtering, Hands-On</span></h4><p>code walkthrough</p>
+<p>CollaborativeFiltering文件夹里的：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
+<p>运行SimpleItemCF.py</p>
+<p>Item-based collaborative filtering is what Amazon used with outstanding success.</p>
+<p>You need to test it out on several real people if possible, and then move to a large scale A/B test to see if this algorithm really is better or worse than whatever you might have today.</p>
+<h3><span id="exercise">Exercise</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468263883.png" alt="1578468263883"></p>
+<p>我们之前是选取的top-n，例如item-based: 选择用户评价前10的电影，再找similar items；user-based: 选择与用户相似度排前10的用户，再…</p>
+<p>Maybe it would be better if instead of taking the top k sources for recommendation candidates, we just use any source above some given quality threshold. 例如，用户评价4星以上的电影 should generate item-based recommendation candidates, no matter how many or how few of them there may be.</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468513742.png" alt="1578468513742"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468541742.png" alt="1578468541742"></p>
+<p>可以发现一个小的改变可以使得结果很不一样。Often, you don’t just want to test different recommendation algorithms, you want to test different variations and parameters on those algorithms. In this case, I not only want to test the idea of using a threshold instead of a top k approach, I’d also want to test many different threshold values to find the best one. In the real world, you’ll find that your biggest problem is just not having enough time to run all of the different experiments you want to run to make your recommendations  better. </p>
+<h3><span id="evaluating-collaborative-filtering-systems-offline">Evaluating Collaborative Filtering Systems Offline</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469111053.png" alt="1578469111053"></p>
+<p>Now, although <strong>we can’t measure accuracy with user based or item based collaborative filtering, because they don’t making rating predictions</strong>, we can still measure hit rate, because it is still a top-N recommender.</p>
+<h4><span id="code-walkthrough">code walkthrough</span></h4><p>CollaborativeFiltering文件夹里的：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
+<p>运行EvaluateUserCF.py</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469413099.png" alt="1578469413099"></p>
+<p>That was surprisingly fast. One really nice property of collaborative filtering is how quickly it can generate recommendations for any given individual, once we’ve built up the similarity matrix.</p>
+<p>结果5.5% is pretty good.</p>
+<h4><span id="exercise">Exercise</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469688733.png" alt="1578469688733"></p>
+<p>与EvaluateUserCF.py相比需要改变的地方：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578470341309.png" alt="1578470341309"></p>
+<p>item-based的hit rate只有0.5%，相比user-based的5.5%，要差一点。</p>
+<p>Item-based should be a superior approach, and that’s been proven in industry. 这里item-based要差一点应该是数据的原因。而且这只是offline evaluation. If we were to test both algorithms on real-world people using real-world data in an A/B test, the results could end up being very different.</p>
+<h3><span id="knn-recommenders">KNN Recommenders</span></h3><p>The concept of collaborative filtering has been applied to recommender systems that do make rating predictions, and these are generally referred to in the literature as KNN recommenders.</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578471356190.png" alt="1578471356190"></p>
+<p>In this sort of system, we generate recommendation candidates by predicting the ratings of everything a user hasn’t already rated, and selecting the top k items with the highest predicted ratings. This obviously isn’t a terribly efficient approach, but since we’re predicting rating values, we can measure the offline accuracy of the system using train/test or cross-validation, which is useful in the research world.</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578478326957.png" alt="1578478326957"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479201990.png" alt="1578479201990"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479315924.png" alt="1578479315924"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479574982.png" alt="1578479574982"></p>
+<h4><span id="running-user-and-item-based-knn-on-movielens">Running User and Item-based KNN on MovieLens</span></h4><p>code walkthrough</p>
+<p>CollaborativeFiltering文件夹里的：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
+<p>运行KNNBakeOff.py</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479972763.png" alt="1578479972763"></p>
+<p>如果只看accuracy, KNN recommendation看上去是一个好方法，但是如果看 top-n recommendations, item-based和user-based推荐的都是些没听说过的电影 (obscure)，反而 random recommendation looks a lot better from a subjective standpoint.</p>
+<p>So, on the surface, it looks like we may have made a system that’s pretty good at predicting ratings of movies people have already seen, but might not be very good at producing top-n recommendations.</p>
+<h4><span id="exercise">Exercise</span></h4><p>Experiment with different KNN parameters.</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480409983.png" alt="1578480409983"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480533805.png" alt="1578480533805"></p>
+<p>虽然msd比cosine的RMSE要低一点，但它们推荐的内容是一样的</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480727372.png" alt="1578480727372"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480843642.png" alt="1578480843642"></p>
+<p>Well, it’s actually pretty well known that KNN doesn’t work well in practice. Unfortunately, some people conclude that collaborative filtering in general is some naive approach that should be replaced with completely different techniques. But as we’ve seen, collaborative filtering isn’t the problem, it’s forcing collaborative filtering to make rating predictions – that’s the problem. We had some pretty exciting results when we just focused on making top-N recommendations, and completely forgot about optimizing for rating accuracy, and it turns out that’s what at the heart of the problem. <strong>使用user-based CF和item-based CF,   top-N 推荐结果都是不错的。</strong></p>
+<p>Ratings are not continuous in nature, and KNN treats them as though they are continuous values that can be predicted on a continuous scale. If you really want to go with KNN, it would be more appropriate to treat it as a rating classification problem than as a rating prediction problem. KNN is also very sensitive to sparse data.</p>
+<p>The most fundamental thing is that accuracy isn’t everything. The main reason KNN produces underwhelming results is because it’s trying to solve the wrong problem. <strong>KNN recommender之所以推荐结果不好，是因为它解决的是rating prediction的问题，而不是推荐问题</strong>。</p>
+<h3><span id="bleeding-edge-alert">Bleeding Edge Alert</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491659157.png" alt="1578491659157"></p>
+<p>The idea behind it is that users are modeled as vectors moving from one item to another in a multidimensional space. And you can predict sequences of events, like which movie a user is likely to watch next, by modeling these vectors.</p>
+<p>The reason this paper is exciting is because it outperformed all of the best existing methods for recommending sequences of events in all but one case in one data set.</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491938065.png" alt="1578491938065"></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578492119528.png" alt="1578492119528"></p>
+<p>Basic idea: You position individual items, like movies, in a transition space, where neighborhoods within this   space represent similarity between items. So items close together in this space are similar to each other. The dimensions corresponds to complex transition relationships between items. Since this technique depends on arranging items together into local, similar neighborhoods, I still classify it as a neighborhood -based method. </p>
+<p>In this space, we can learn the vectors associated with individual users. Maybe a user who watches a Tom Cruise movie, is likely to move along to the next Tom Cruise movie, for example, and that transition would be represented by a vector in this space. We can then predict the next movie a user is like to watch by extrapolating along the vector we’ve associated with that user.</p>
+<p>The paper provide the code in C++.</p>
+<p>It’s all very advanced stuff, but it seems to work. So if you find yourself in the situation where you need to predict a sequence of events, like which movies or videos a person is likely to watch next given theirs past history, you might wanna do a search for translation-based recommendations and how it’s coming along in the real world.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/06/Content-Based-Filtering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/06/Content-Based-Filtering/" itemprop="url">Content-Based Filtering</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-06T13:25:00+08:00">
+                2020-01-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-06T21:03:04+08:00">
+                2020-01-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
+<h3><span id="cosine-similarity">Cosine Similarity</span></h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
+<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
+<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
+<p>How do we assign a similarity score based on release years alone?</p>
+<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
+<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
+<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
+<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
+<h3><span id="k-nearest-neighbors">K-nearest-neighbors</span></h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
+<h3><span id="code-walkthrough">Code Walkthrough</span></h3><p>ContentBased里的文件：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
+<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
+<h3><span id="bleeding-edge-alert">Bleeding Edge Alert</span></h3><blockquote>
+<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
+<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
+</blockquote>
+<h4><span id="mise-en-scene">mise en scene</span></h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
+<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
+<p>What sort of attributes are we talking about：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
+<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
+<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
+<p>更改代码：</p>
+<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
+<p>再运行ContentRec.py，可得到结果如下：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
+<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
+<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
+<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
+<p>Here’s a reference to the original research paper:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
+<h3><span id="exercise">Exercise</span></h3><ul>
+<li>Use genre, release year, and mise en scene data independently.</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
+<ul>
+<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
+<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/05/A-Recommender-Engine-Framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/A-Recommender-Engine-Framework/" itemprop="url">A Recommender Engine Framework</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T14:19:43+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-06T12:22:48+08:00">
+                2020-01-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867"></p>
+<h3><span id="1-our-recommender-engine-architecture">1. Our Recommender Engine Architecture</span></h3><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375"></p>
+<p>Object oriented design allows us to have base classes, for example, AlgoBase, that contain functions and variables that can be shared by other classes that inherit from that base class. 例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
+<p>Custom指的是any custom algorithm we might develop (自己写的recommender system), and make them part of the supriselib framework.</p>
+<h4><span id="create-a-custom-algorithm">Create a custom algorithm</span></h4><p>So, how do you write your own recommender algorithm that’s compatible with surpiselib?</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207092161.png" alt="1578207092161"></p>
+<p>All you have to do is create a new class that inherits form AlgoBase, and as far as supriselib is concerned, your algorithm has one job: to predict ratings.</p>
+<blockquote>
+<p>As we mentioned, supriselib is built around the architecture of predicting the ratings of every movie for every user, and giving back the top predictions as your recommendations. </p>
+</blockquote>
+<p>Your class have to implement an estimate function.</p>
+<p>When estimate is called by supriselib framework, it’s asking you to predict a rating for the user and item passed in. </p>
+<blockquote>
+<p>注：这里的user id和item id是inner id. Must be mapped back to the raw user and item ids in your source data.</p>
+</blockquote>
+<ul>
+<li>Now, we want to do more than just predict ratings. 我们想要很简单的将之前在<code>RecommenderMetrics</code>中实现的不同的evaluation metrics应用到algorithms we work with. </li>
+</ul>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207683880.png" alt="1578207683880"></p>
+<p>为了做到这一点，我们将创建一个新的class叫做<code>EvaluatedAlgoritm</code>，里面创建了一个新的函数叫做<code>Evaluate</code>，that runs all the metrics in RecommenderMetrics on that algorithm. So this class makes it easy to measure accuracy, coverage, diversity and everything else on a given algorithm.</p>
+<ul>
+<li><p>不同的评估方法，要求对数据集的不同分割方式，于是我们创建了另一个新的class: <code>EvaluationData</code>来做到这一点。</p>
+</li>
+<li><p>如何连接这一切？</p>
+</li>
+</ul>
+<p>We create an <code>EvaluationData</code> instance with our data set, create an <code>EvaluatedAlgorithm</code> for each algorithm we want to evaluate, and call <code>Evaluate</code> on each algorithm using the same <code>EvaluationData</code>. Under the hood, <code>EvaluatedAlgorithm</code> will use all the functions we defined in <code>RecommenderMetrics</code> to measure accuracy, hit rate, diversity, novelty, and coverage.</p>
+<ul>
+<li>Since what we generally want to do is 比较不同推荐系统, we can make life even easier by writing a class that takes care of all the comparison for us. 于是我们创建了新的class：<code>Evaluator</code>.</li>
+</ul>
+<p>Ideally, we want to just submit algorithms we want to evaluate against each other into this class, and let it do everything from there.</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208719473.png" alt="1578208719473"></p>
+<p>The beauty of this is that you don’t even have to use the <code>EvalutedAlgorithm</code> or <code>EvaluatedData</code> classed at all, when you want to start playing around with new algorithms and testing them against each other. All you need to do is use this <code>Evaluator</code> class, which has a really simple interface.</p>
+<p>将上述framework写好后，如下这是我们比较SVD算法与random算法所需要的所有代码：</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208901255.png" alt="1578208901255"></p>
+<h3><span id="2-code-walkthrough">2. Code Walkthrough</span></h3><p>Framework文件夹里：</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578209106245.png" alt="1578209106245"></p>
+<h4><span id="结果分析">结果分析</span></h4><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578283638478.png" alt="1578283638478"></p>
+<p>我们比较的是SVD和随机推荐。SVD is one of the best algorithms available right now, so it shouldn’t be surprise that SVD beats random recommendation in accuracy and hit rate no matter how we measure it.</p>
+<ul>
+<li>RMSE和MAE: lower is better.</li>
+<li>Hit rate,包括cHR, ARHR: higher is better.</li>
+<li>Coverage, diversity, novelty: need to apply some common sense to, as it’s not a clear higher-is-better sort of thing. There are trade-offs involved with these metrics.</li>
+</ul>
+<p>就Coverage而言，SVD的要低一些: that’s just because we are enforcing a quality threshold on the top-N recommendations we’re making with SVD, while our random recommender isn’t actually making totally random recommendations, it’s predicting movie ratings using what’s called a normal distribution centered around the average rating value, which ends up meaning all of the rating predictions it makes fall above our rating threshold, giving us 100% coverage. Having 100% coverage at the expense of having bad recommendations isn’t a trade-off worth making.</p>
+<p>就Diversity和Novelty而言，SVD的都要低一些，这是我们所预期会出现的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/04/Evaluate-Recommender-System/" itemprop="url">Evaluate Recommender System</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T13:34:04+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-05T14:19:16+08:00">
+                2020-01-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3><span id="1-the-methodology-for-testing-recommender-systems-offline">1. The methodology for testing recommender systems offline.</span></h3><h4><span id="11-traintest-split">1.1 train/test split</span></h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
+<p>You measure your recommender system’s ability to predict how people rated things in the past.</p>
+<p>If you do this over enough people, you can end up with a meaningful number that tells you <strong>how good your recommender system is at recommending things, or more specifically, recommending things people already watched and rated.</strong> That’s really all you can do, if you can’t test things out in an online system.</p>
+<h4><span id="12-k-fold-cross-validation">1.2 k-fold cross-validation</span></h4><p>If you really want to get fancy, it’s possible to improve on a single train/test split by using  a technique called k-fold cross validation.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578116897885.jpg" alt="1578116897885"></p>
+<p>Instead of a single training set, we create many randomly assigned training sets. Each individual training set, or fold, is used to train your recommender system independently, and then we measure the accuracy of the resulting systems against your test set. So we end up with a score of how accurate each fold ends up predicting user ratings, and we can average them together.</p>
+<p>This obviously takes a lot more computing power to do, but the advantage is that you don’t end up over-fitting to a single training set.</p>
+<blockquote>
+<p>注：By using train/test, all we can do is test our ability to predict how people rated movies they already saw. That’s not the point of a recommender system.  We want to recommend new things to people that they haven’t seen, but find interesting. However, that’s fundamentally impossible to test offline.</p>
+</blockquote>
+<p>We haven’t talked about how to actually come up with an accuracy metric when testing our recommender systems, so let’s cover a couple of different ways to do it.</p>
+<h3><span id="2-accuracy-metrics-rmse-mae">2. Accuracy Metrics (RMSE, MAE)</span></h3><h4><span id="21-mae">2.1 MAE</span></h4><p>We want to minimize MAE.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578117806539.JPG" alt="1578117806539"></p>
+<h4><span id="22-rmse">2.2 RMSE</span></h4><p>We want to minimize RMSE.</p>
+<p>This is a more popular metric for a few reasons, but one is that <strong>it penalizes you more when your rating prediction is way off, and penalizes you less when your are reasonably close.</strong></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578117900853.jpg" alt="1578117900853"></p>
+<blockquote>
+<p>注：就推荐系统而言，RMSE just doesn’t matter much in the real world. 人们并不关心你的系统对他们已经看过的电影的评分预测是否准确。What does matter is which movie you put in front of users in a top-N recommender list, and how those users react to those movies when they see them recommended.</p>
+</blockquote>
+<h3><span id="3-top-n-hit-rate-many-ways">3. Top-N Hit Rate - Many Ways</span></h3><p>Different ways to measure the effectivenss of top-n recommenders offline:</p>
+<h4><span id="31-hit-rate">3.1 Hit Rate</span></h4><p>You generate top-n recommendations for all of the users in your test set. <strong>If one of the recommendations in a user’s top-n recommendations is something  they actually rated, you consider that a hit.</strong> You actually managed to show the user something that they found interesting enough to watch on their own already, so we consider that a success. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578119273699.jpg" alt="1578119273699"></p>
+<p>How to measure hit rate? Use leave-one-out cross validation.</p>
+<h4><span id="32-leave-one-out-cross-validation">3.2 leave-one-out cross validation</span></h4><p>What we do is compute the top-n recommendations for each user in our training data, and intentionally remove one of those items from that user’s training data. We then test our recommender system’s ability to recommend that item that was left out in the top-n results it creates for that user in the testing phase.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578120352619.jpg" alt="1578120352619"></p>
+<p>The trouble is that it’s a lot harder to get one specific movie right while testing than to just get one of the n recommendations. So “hit rate” with “leave-one-out” tends to be very small and difficult to measure, unless you have a very large data set to work with. But it’s a much more <strong>user focused metric</strong> when you know your recommender system will be producing top-n lists in the real world, which most of them do. </p>
+<h4><span id="33-arhr">3.3 ARHR</span></h4><p>This metric is just like “hit rate”, but it accounts for where in the top-n list you hits appear. Instead of summing up the number of hits, we sum up the reciprocal ranking of each hit.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578122155631.jpg" alt="1578122155631"></p>
+<p>You end up getting more credit for successfully recommending an item in the top slot than in the bottom slot. Again, this is a more <strong>user focused metric</strong>, since users tend to focus on the beginning of lists. </p>
+<h4><span id="34-chr">3.4 cHR</span></h4><p>Throw away hits if our predicted rating is below some threshold.</p>
+<p>The idea is that we shouldn’t get credit for recommending items to a user that we think they won’t actually enjoy. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578122704818.jpg" alt="1578122704818"></p>
+<p>In this example, if we had a cutoff of three stars, we throw away the hits for the second and fourth items in these test results and our hit rate metric wouldn’t count them at all. </p>
+<h4><span id="35-rhr">3.5 rHR</span></h4><p>Another way to look at hit rate is to break it down by predicted rating score.</p>
+<p>It can be a good way to get an idea of the distribution of how good your algorithm thinks recommended movies are that actually get a hit.  Ideally, you want to recommend movies that they actually like, and breaking down the distribution gives you some sense of how well you’re doing in more detail.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578123016707.jpg" alt="1578123016707"></p>
+<p>对每一个rating type (1,2,3,4,5), print out its hit rate.</p>
+<h3><span id="4-coverage-diversity-and-novelty">4. Coverage, Diversity and Novelty</span></h3><p>Accuracy isn’t the only thing that matters.</p>
+<h4><span id="41-coverage">4.1 Coverage</span></h4><p>The percentage of possible recommendations that your system is able to provide. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150"></p>
+<p>It’s worth noting that coverage can be at odds with accuracy. If you enforce a higher quality threshold on the recommendations you make, then you might improve your accuracy at the expense of coverage. Finding the balance of where exactly you’re better off recommending nothing at all can be delicate. </p>
+<p>Coverage can also be important to watch, because it gives you a sense of how quickly new items in your catalog will start to appear in your recommendations. When a new book come out on Amazon, it won’t appear in recommendations until at least a few people buy it, therefore establishing patterns with the purchase of other items. Until those patterns exist, that new book will reduce Amazon’s coverage metric.</p>
+<h4><span id="42-diversity">4.2 Diversity</span></h4><p>You can think of this as measure of how broad a variety of items your recommender system is putting in front of people. An example of low diversity would be a recommender system that just recommends the next books in a series that you’ve started reading, but doesn’t recommend book from different authors, or movies related to what you’ve read.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578124451718.jpg" alt="1578124451718"></p>
+<p>Diversity, at least in the context of recommender systems, isn’t always a good thing. You can achieve very high diversity by just recommending completely random items. Unusually high diversity scores mean that you just have bad recommendations more often than not. You always need to look at diversity alongside metrics that measure the quality of the recommendations as well. </p>
+<h4><span id="43-novelty">4.3 Novelty</span></h4><p>Similarly, novelty sounds like a good thing, but often it isn’t. Novelty is a measure of how popular the items are that you are recommending. And again, just recommending random stuff would yield very high novelty scores, since the vast majority of items are not top sellers. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578124908363.jpg" alt="1578124908363"></p>
+<p>Although novelty is measurable, what to do with it is in many ways subjective. There’s a concept of user trust in a recommender system. People want to see at least a few familiar items in their recommendations that make them say, “Yeah, that’s a good recommendation for me. The system seems good”. If you only recommend things people never heard of, they may conclude that your system doesn’t really know them. Also, popular items are usually popular for a reason. They’re enjoyable by a large segment of the population, so you would expect them to be good recommendations for a large segment of the population who hasn’t read or watched them yet. If you’re not recommending some popular items, you should probably question whether your recommender system is really working as it should.</p>
+<p><strong>You need to strike a balance between familiar, popular items and what we call serendipitous discovery of new items that user has never heard of before. (balance between novelty and trust)</strong>. The familiar items establish trust with the user, and the new ones allow the user to discover entirely new things that they might love. </p>
+<p>Novelty is important, because the whole point of recommender systems is to surface items in what we call “the long tail”.</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578125635846.jpg" alt="1578125635846"></p>
+<p>Imagine this is a plot of the sales of every item in you catalog, sorted by sales. Y 轴代表sales (popularity)，X轴代表products. Most of sales来自于一小部分items，但是”long tail” makes up a large amount of sales as well. 黄色部分的item代表了人们各自感兴趣的东西. Recommender systems can help people discover those items in the long tail that are relevant to their own unique niche interests. If you can do that successfully, then the recommendations your system makes can help new authors get discovered, can help people explore their own passions, and make money for whoever you’re building the system for as well. Everybody wins.</p>
+<h3><span id="5-churn-responsiveness-and-ab-tests">5. Churn, Responsiveness, and A/B Tests</span></h3><h4><span id="51-churn">5.1 Churn</span></h4><p>Another thing we can measure is Churn. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578127764650.jpg" alt="1578127764650"></p>
+<p>Churn can measure how sensitive your recommender system is to new user behavior. 如果用户rate了一部新电影，会使得他的推荐内容发生很大的变化吗？If so, your churn score will be high. Maybe just showing the same recommendations too many times is a bad idea itself. 如果一个用户总是看到相同的推荐，但是不点击进去，在某个时候你应该停止推荐它而给用户推荐其他的东西。Sometimes, a little bit of randomization in your top-n recommendations can keep them looking fresh, and expose your users to more items.</p>
+<p>But, just like diversity and novelty, high churn is not in itself a good thing. You could maximize your churn metric by just recommending items completely at random, 但显然这不是好的推荐。</p>
+<p>*<em>All these metrics need to be looked at together, and you need to understand the trade-offs between them. *</em></p>
+<h4><span id="52-responsiveness">5.2 Responsiveness</span></h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578128338650.jpg" alt="1578128338650"></p>
+<p>If you rate  a new movie, does it affect your recommendations immediately or next day after some nightly job runs? More responsiveness would always seem to be a good thing, but in the world of business, you have to decide how responsive your recommender really needs to be, since recommender systems that have instantaneous responsiveness are complex, difficult to maintain, and expensive to build. You need to strike your own balance between responsiveness and simplicity.</p>
+<blockquote>
+<p> ? What’s important</p>
+<p>前面讲了许多evaluate推荐系统的方法：MAE, RMSE, Hit rate in various forms, coverage, diversity, novelty, churn, and responsiveness.</p>
+<p>So how do you know what to focus on? It depends.</p>
+<p>It may even depend on cultural factors. Some cultures may want more diversity and novelty, while other cultures may want to stick to things that are familiar with them. </p>
+<p>It also depends on what you’re trying to achieve as a business. And usually,  a business is just trying to make money, which leads to one more way to evaluate recommender systems that is arguably the most important of all: online A/B tests!</p>
+</blockquote>
+<h4><span id="53-online-ab-tests">5.3 Online A/B Tests</span></h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578129032852.jpg" alt="1578129032852"></p>
+<p>Doing online A/B tests to tune your recommender system using your real customers, and measuring how they react to your recommendations. You can put recommendations from different algorithms in front of different sets of users, and measure if they actually buy, watch, or otherwise indicate interest in the recommendations you’ve presented. </p>
+<p>By always testing changes to your recommender system using controlled, online experiments, you can see if they actually cause people to discover and purchase more new things than they would have otherwise.</p>
+<p>None of the metrics we’ve discussed matter more than how real customers react to the recommendations you produce in the real world. You can have the most accurate rating predictions in the world, but if customers can’t find new items to buy or watch from your system, it will be worthless from a practical standpoint. </p>
+<p>Online tests can help you to avoid introducing complexity that adds no value, and remember, complex systems are difficult to maintain.</p>
+<p>SO REMEMBER, offline metrics such as accuracy, diversity, and novelty can all be indicators you can look at while developing recommender systems offline, but you should never declare victory until you’ve measured a real impact on real users from your work. <strong>User behavior is the ultimate test of your work.</strong></p>
+<p><strong>Accurately predicted ratings don’t necessarily make for good video recommendations. At the end of the day, the results of online A/B tests are the only evaluation that matters for your recommender system.</strong></p>
+<p>Another thing you can do is just straight up ask your users, if they think specific recommendations are good. </p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg" alt="1578129889414"></p>
+<p>In practice though, it’s a tough thing to do. Users will probably be confused over whether you’re asking them to rate the item or rate the recommendation, so you won’t really know how to interpret this data. It also requires extra work form your customers with no clear payoff for them, so you’re unlikely to get enough ratings on your recommendations to be useful. </p>
+<p>It’s best to just stick with online A/B tests, and measure how your customers vote with their wallets on the quality of your recommendations.</p>
+<h3><span id="quiz">Quiz</span></h3><p><img src="/2020/01/04/Evaluate-Recommender-System/1578196100106.jpg" alt="1578196100106"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196212178.jpg" alt="1578196212178"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196333798.jpg" alt="1578196333798"></p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196377981.jpg" alt="1578196377981"></p>
+<h3><span id="code-walkthrough">Code Walkthrough</span></h3><p>使用Python中的library: Suprise. <a href="supriselib.com">SupriseLib’s documentation online</a></p>
+<p>Suprise is built around measuring the accuracy of recommender systems. Although this is the wrong thing to focus on, it’s really the best we can do without access to a real, large-scale website of our own.</p>
+<p>Evaluating文件夹里的：</p>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201480503.jpg" alt="1578201480503"></p>
+<p>RecommenderMetrics中实现了前面讲到的用来evaluate recommender system的各种metrics.</p>
+<p>TestMetrics中调用了RecommenderMetrics中的方法来实现一个real recommender system并evaluate it.</p>
+<h4><span id="结果分析">结果分析</span></h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578201799750.jpg" alt="1578201799750"></p>
+<ul>
+<li><p>RMSE大概0.9，MAE大概0.7。</p>
+<p>On average, our guess of rating for a given movie for a given user, was off by about 0.7 stars. RMSE is higher, meaning that we got penalized for being way off more often than we’d like.</p>
+<p>Remember, error metrics are bad.  你想要RMSE与MAE越低越好，if accuracy is your goal.</p>
+</li>
+</ul>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201882902.jpg" alt="1578201882902"></p>
+<ul>
+<li>Hit Rate大概 3%，which actually isn’t that bad, considering that only one movie was left out from each user’s rating to test with. 这个数值本身很难解释是好是坏，除非有其他的推荐系统可供比较。</li>
+<li>If we break it down by rating value, you can see that our hit rate did better at higher rating predictions, which make sense and it’s what we want to see. Hit Rate在评分越高的类型中表现得更好（例如，在评分为5的电影中，Hit Rate为 6%）。</li>
+<li>Cumulative Hit Rate with a 4.0 threshold isn’t much lower than the raw hit rate, meaning that we’re doing a good job of recommending items we think are good recommendations.</li>
+<li>ARHR is 0.01. It takes the ranking of the hits into account. Again, it has no real value until we have other recommender systems to compare it against.</li>
+</ul>
+<p><img src="/2020/01/04/Evaluate-Recommender-System/1578203470922.jpg" alt="1578203470922"></p>
+<ul>
+<li><p>We look at user coverage for which we have at least one 4-star rating prediction, ant it’s pretty high. That’s good.</p>
+</li>
+<li><p>Diversity is really high at 0.96, and novelty seems pretty high, with an average popularity rank of 491. Remember there are only a few thousand movies in our data set to begin with. </p>
+<p>This tells us that our algorithm is going pretty deep into the long tail to get its recommendations and that could be a problem in the real world. Novelty比较高（平均受欢迎程度排名比较靠后），说明推荐的都是比较小众的电影（long tail）.</p>
+</li>
+</ul>
+<h4><span id="总结">总结</span></h4><p>So even though our accuracy metrics look okay here, diversity and novelty is telling us that we’re recommending a lot of really obscure stuff. And that could be an issue when trying to establish user trust in the system. People generally want to see a few things that at least look familiar. So I would expect this particular algorithm wouldn’t do that well in an online A/B test, but you can never really know until  you actually try it. </p>
+<p>Anyhow, we now have working code now for evaluating real recommender systems!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/03/Top-N-Recommender-Architecture/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/03/Top-N-Recommender-Architecture/" itemprop="url">Top-N Recommender Architecture</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-03T19:56:48+08:00">
+                2020-01-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-08T16:13:42+08:00">
+                2020-01-08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578052647526.jpg" alt="1578052647526"></p>
+<p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578471196924.png" alt="1578471196924"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/03/RecSys-Course-Overview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/03/RecSys-Course-Overview/" itemprop="url">RecSys Course Overview</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-03T18:39:13+08:00">
+                2020-01-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-03T19:55:52+08:00">
+                2020-01-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.udemy.com/share/10294MB0sdc1pQRHo=/" target="_blank" rel="noopener">课程：Building Recommender Systems with Machine Learning and AI</a></p>
+<p><a href="https://sundog-education.com/RecSys/" target="_blank" rel="noopener">Course Materials</a></p>
+<p><img src="/2020/01/03/RecSys-Course-Overview/1578048175249.jpg" alt="1578048175249"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/03/MapReduce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,24 +1949,24 @@
       
         
           
-            <h4 id="1-MapReduce-fundamental-concepts"><a href="#1-MapReduce-fundamental-concepts" class="headerlink" title="1. MapReduce fundamental concepts"></a>1. MapReduce fundamental concepts</h4><p><img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1"></p>
+            <h4><span id="1-mapreduce-fundamental-concepts">1. MapReduce fundamental concepts</span></h4><p><img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1"></p>
 <p><img src="/2020/01/03/MapReduce/20200103-142610.jpg" alt="20200103-142610"></p>
 <p><img src="/2020/01/03/MapReduce/1578032937052.jpg" alt="1578032937052"></p>
-<h5 id="1-1-Mapper"><a href="#1-1-Mapper" class="headerlink" title="1.1 Mapper"></a>1.1 Mapper</h5><p><img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727"></p>
+<h5><span id="11-mapper">1.1 Mapper</span></h5><p><img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727"></p>
 <p><img src="/2020/01/03/MapReduce/20200103-143446.jpg" alt="20200103-143446"></p>
 <p><img src="/2020/01/03/MapReduce/1578033212508.jpg" alt="1578033212508"></p>
 <p><img src="/2020/01/03/MapReduce/1578033238182.jpg" alt="1578033238182"></p>
 <p>Mapper: Extract and organize what we care about.</p>
-<h5 id="1-2-Shuffle-and-Sort"><a href="#1-2-Shuffle-and-Sort" class="headerlink" title="1.2 Shuffle and Sort"></a>1.2 Shuffle and Sort</h5><p><img src="/2020/01/03/MapReduce/1578033463232.jpg" alt="1578033463232"></p>
+<h5><span id="12-shuffle-and-sort">1.2 Shuffle and Sort</span></h5><p><img src="/2020/01/03/MapReduce/1578033463232.jpg" alt="1578033463232"></p>
 <p><img src="/2020/01/03/MapReduce/20200103-144645.jpg" alt="20200103-144645"></p>
-<h5 id="1-3-Reducer"><a href="#1-3-Reducer" class="headerlink" title="1.3 Reducer"></a>1.3 Reducer</h5><p><img src="/2020/01/03/MapReduce/1578034121206.jpg" alt="1578034121206"></p>
+<h5><span id="13-reducer">1.3 Reducer</span></h5><p><img src="/2020/01/03/MapReduce/1578034121206.jpg" alt="1578034121206"></p>
 <p><img src="/2020/01/03/MapReduce/20200103-144953.jpg" alt="20200103-144953"></p>
 <p><img src="/2020/01/03/MapReduce/1578034303323.jpg" alt="1578034303323"></p>
 <hr>
-<h4 id="2-How-MapReduce-distributes-processing"><a href="#2-How-MapReduce-distributes-processing" class="headerlink" title="2. How MapReduce distributes processing"></a>2. How MapReduce distributes processing</h4><p><img src="/2020/01/03/MapReduce/1578034389919.jpg" alt="1578034389919"></p>
+<h4><span id="2-how-mapreduce-distributes-processing">2. How MapReduce distributes processing</span></h4><p><img src="/2020/01/03/MapReduce/1578034389919.jpg" alt="1578034389919"></p>
 <p><img src="/2020/01/03/MapReduce/0002.jpg" alt="0002"></p>
 <hr>
-<h4 id="3-MapReduce-a-real-example"><a href="#3-MapReduce-a-real-example" class="headerlink" title="3. MapReduce: a real example"></a>3. MapReduce: a real example</h4><p><img src="/2020/01/03/MapReduce/1578035985411.jpg" alt="1578035985411"></p>
+<h4><span id="3-mapreduce-a-real-example">3. MapReduce: a real example</span></h4><p><img src="/2020/01/03/MapReduce/1578035985411.jpg" alt="1578035985411"></p>
 <p><img src="/2020/01/03/MapReduce/1578036687341.jpg" alt="1578036687341"></p>
 <p>Sometimes, it’s not easy to try to force a problem into this way of thinking, and that’s a big reason why other frameworks like Spark or Hive, or other ways of processing SQL style queries have become a little bit more popular that just writing raw MapReduce code.</p>
 <p>But, still, if you can easily express something in terms of mapping and reducing, this can sometimes be the most efficient way of doing it.</p>
@@ -417,20 +1977,20 @@
 <p><img src="/2020/01/03/MapReduce/1578039179773.jpg" alt="1578039179773"></p>
 <p>This is an entire MRJOB script in Python that would use MapReduce streaming to actually execute across a cluster.</p>
 <hr>
-<h4 id="4-Runing-MapReduce-with-MRJOB"><a href="#4-Runing-MapReduce-with-MRJOB" class="headerlink" title="4. Runing MapReduce with MRJOB"></a>4. Runing MapReduce with MRJOB</h4><p>首先需要安装一些东西</p>
+<h4><span id="4-runing-mapreduce-with-mrjob">4. Runing MapReduce with MRJOB</span></h4><p>首先需要安装一些东西</p>
 <p>Run our MapReduce job in our Hadoop installation.</p>
 <p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview</a></p>
 <p><img src="/2020/01/03/MapReduce/1578041252394.jpg" alt="1578041252394"></p>
 <p><img src="/2020/01/03/MapReduce/1578041273664.jpg" alt="1578041273664"></p>
 <p><img src="/2020/01/03/MapReduce/1578041300494.jpg" alt="1578041300494"></p>
 <hr>
-<h4 id="5-Challenge-Exercise"><a href="#5-Challenge-Exercise" class="headerlink" title="5. Challenge Exercise"></a>5. Challenge Exercise</h4><p><img src="/2020/01/03/MapReduce/1578043490000.jpg" alt="1578043490000"></p>
+<h4><span id="5-challenge-exercise">5. Challenge Exercise</span></h4><p><img src="/2020/01/03/MapReduce/1578043490000.jpg" alt="1578043490000"></p>
 <p><img src="/2020/01/03/MapReduce/1578043550225.jpg" alt="1578043550225"></p>
 <p><img src="/2020/01/03/MapReduce/1578043582794.jpg" alt="1578043582794"></p>
 <p><img src="/2020/01/03/MapReduce/1578043608450.jpg" alt="1578043608450"></p>
 <p><img src="/2020/01/03/MapReduce/1578043786325.jpg" alt="1578043786325"></p>
 <hr>
-<h4 id="6-Check-your-results"><a href="#6-Check-your-results" class="headerlink" title="6. Check your results"></a>6. Check your results</h4><p><img src="/2020/01/03/MapReduce/1578044582388.jpg" alt="1578044582388"></p>
+<h4><span id="6-check-your-results">6. Check your results</span></h4><p><img src="/2020/01/03/MapReduce/1578044582388.jpg" alt="1578044582388"></p>
 <p>结果：</p>
 <p><img src="/2020/01/03/MapReduce/1578044858078.jpg" alt="1578044858078"></p>
 <p>movieId 50 是最popular的电影。</p>
@@ -589,1355 +2149,27 @@
           
             <p><a href="https://leetcode-cn.com/problems/valid-anagram/" target="_blank" rel="noopener">有效的字母异位词（难度：简单）</a></p>
 <p><img src="/2020/01/02/有效的字母异位词/1.jpg" alt="1"></p>
-<h4 id="方法一：哈希表"><a href="#方法一：哈希表" class="headerlink" title="方法一：哈希表"></a>方法一：哈希表</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ul>
+<h4><span id="方法一哈希表">方法一：哈希表</span></h4><h5><span id="思路">思路</span></h5><ul>
 <li>首先判断两个字符串长度是否相等，不相等则直接返回 false。</li>
 <li>若相等，则初始化 26 个字母哈希表，遍历字符串 s 和 t</li>
 <li><strong>s 负责在对应位置增加，t 负责在对应位置减少，如果哈希表的值都为 0，则二者是字母异位词</strong></li>
 </ul>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。<br>空间复杂度：O(1)。尽管我们使用了额外的空间，但是空间的复杂性是 O(1)，因为无论 N 有多大，表的大小都保持不变。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>Java</p>
+<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n)。<br>空间复杂度：O(1)。尽管我们使用了额外的空间，但是空间的复杂性是 O(1)，因为无论 N 有多大，表的大小都保持不变。</p>
+<h5><span id="代码">代码</span></h5><p>Java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() != t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] alpha = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            alpha[s.charAt(i) - <span class="string">'a'</span>]++;</span><br><span class="line">            alpha[t.charAt(i) - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i : alpha)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2020/01/02/有效的字母异位词/4.jpg" alt="4"></p>
 <hr>
-<h4 id="方法二：排序"><a href="#方法二：排序" class="headerlink" title="方法二：排序"></a>方法二：排序</h4><h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn)。</p>
+<h4><span id="方法二排序">方法二：排序</span></h4><h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(nlogn)。</p>
 <p>空间复杂度：O(1)，空间取决于排序实现，如果使用 <code>heapsort</code>，通常需要 O(1)辅助空间。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isAnagram</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">return</span> sorted(s) == sorted(t)</span><br></pre></td></tr></table></figure>
+<h5><span id="代码">代码</span></h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isAnagram</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">return</span> sorted(s) == sorted(t)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2020/01/02/有效的字母异位词/3.jpg" alt="3"></p>
 <hr>
-<h4 id="方法三：利用Python中的set"><a href="#方法三：利用Python中的set" class="headerlink" title="方法三：利用Python中的set()"></a>方法三：利用Python中的set()</h4><p>Python</p>
+<h4><span id="方法三利用python中的set">方法三：利用Python中的set()</span></h4><p>Python</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isAnagram</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span> len(s) != len(t):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        set1 = set(s)</span><br><span class="line">        set2 = set(t)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set1:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> set2:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set2:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> set1:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set1:</span><br><span class="line">            <span class="keyword">if</span> s.count(i) != t.count(i):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/2020/01/02/有效的字母异位词/2.jpg" alt="2"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/加一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/加一/" itemprop="url">加一</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T22:56:37+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T23:02:15+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">加一（难度：简单）</a></p>
-<p><img src="/2020/01/02/加一/1.jpg" alt="1"></p>
-<h4 id="方法：数组遍历"><a href="#方法：数组遍历" class="headerlink" title="方法：数组遍历"></a>方法：数组遍历</h4><p><img src="/2020/01/02/加一/2.jpg" alt="2"></p>
-<p>时间复杂度：O(n)</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            digits[i] = (digits[i]+<span class="number">1</span>) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(digits[i] != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        digits = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/加一/3.jpg" alt="3"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/电话号码的字母组合/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/电话号码的字母组合/" itemprop="url">电话号码的字母组合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T19:40:12+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T22:34:49+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">电话号码的字母组合（难度：中等）</a></p>
-<p><img src="/2020/01/02/电话号码的字母组合/1.jpg" alt="1"></p>
-<h4 id="方法：回溯"><a href="#方法：回溯" class="headerlink" title="方法：回溯"></a>方法：回溯</h4><p><img src="/2020/01/02/电话号码的字母组合/2.jpg" alt="2"></p>
-<p><img src="https://pic.leetcode-cn.com/0ac574ab37f620221e702f57d6c4ffd0ba246abe41c43f9fc9637ab8f3365377-image.png" alt="img"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">letterCombinations</span><span class="params">(self, digits: str)</span> -&gt; List[str]:</span></span><br><span class="line">        phone = &#123;<span class="string">'2'</span>:[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>],</span><br><span class="line">                <span class="string">'3'</span>:[<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>],</span><br><span class="line">                <span class="string">'4'</span>:[<span class="string">'g'</span>,<span class="string">'h'</span>,<span class="string">'i'</span>],</span><br><span class="line">                <span class="string">'5'</span>:[<span class="string">'j'</span>,<span class="string">'k'</span>,<span class="string">'l'</span>],</span><br><span class="line">                <span class="string">'6'</span>:[<span class="string">'m'</span>,<span class="string">'n'</span>,<span class="string">'o'</span>],</span><br><span class="line">                <span class="string">'7'</span>:[<span class="string">'p'</span>,<span class="string">'q'</span>,<span class="string">'r'</span>,<span class="string">'s'</span>],</span><br><span class="line">                <span class="string">'8'</span>:[<span class="string">'t'</span>,<span class="string">'u'</span>,<span class="string">'v'</span>],</span><br><span class="line">                <span class="string">'9'</span>:[<span class="string">'w'</span>,<span class="string">'x'</span>,<span class="string">'y'</span>,<span class="string">'z'</span>]&#125;</span><br><span class="line"></span><br><span class="line">        output = []</span><br><span class="line">        <span class="keyword">if</span> digits:</span><br><span class="line">            self.backtrack(<span class="string">""</span>, digits, phone, output)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(self, combination, digit, phone, output)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(digit)==<span class="number">0</span>:</span><br><span class="line">            output.append(combination)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> letter <span class="keyword">in</span> phone[digit[<span class="number">0</span>]]:</span><br><span class="line">            self.backtrack(combination+letter,digit[<span class="number">1</span>:], phone, output)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/电话号码的字母组合/4.jpg" alt="4"></p>
-<p><img src="/2020/01/02/电话号码的字母组合/3.jpg" alt="3"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/盛最多水的容器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/盛最多水的容器/" itemprop="url">盛最多水的容器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T18:56:33+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T19:02:48+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">盛最多水的容器（难度：中等）</a></p>
-<p><img src="/2020/01/02/盛最多水的容器/1.jpg" alt="1"></p>
-<h4 id="方法：双指针"><a href="#方法：双指针" class="headerlink" title="方法：双指针"></a>方法：双指针</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。</p>
-<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
-<li><strong>在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾</strong>。</li>
-<li>使用变量 max_area来持续存储到目前为止所获得的最大面积。 </li>
-<li>在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area，<strong>并将指向较短线段的指针向较长线段那端移动一步</strong>。</li>
-</ul>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，一次扫描。</p>
-<p>空间复杂度：O(1)，使用恒定的空间。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> max_area = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            max_area = Math.max(max_area, Math.min(height[left],height[right]) * (right-left));</span><br><span class="line">            <span class="keyword">if</span>(height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/盛最多水的容器/2.jpg" alt="2"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/正则表达式匹配/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/正则表达式匹配/" itemprop="url">正则表达式匹配</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T18:11:51+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T18:36:26+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">正则表达式匹配（难度：困难）</a></p>
-<p><img src="/2020/01/02/正则表达式匹配/1.jpg" alt="1"></p>
-<p>转自：</p>
-<blockquote>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/</a><br>来源：力扣（LeetCode）</p>
-</blockquote>
-<h4 id="一、处理点号「-」通配符"><a href="#一、处理点号「-」通配符" class="headerlink" title="一、处理点号「.」通配符"></a>一、处理点号「.」通配符</h4><p>点号可以匹配任意一个字符，其实是最简单的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(text, pattern)</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> pattern: <span class="keyword">return</span> <span class="keyword">not</span> text</span><br><span class="line">    first_match = bool(text) <span class="keyword">and</span> pattern[<span class="number">0</span>] <span class="keyword">in</span> &#123;text[<span class="number">0</span>], <span class="string">'.'</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
-
-<h4 id="二、处理「-」通配符"><a href="#二、处理「-」通配符" class="headerlink" title="二、处理「*」通配符"></a>二、处理「*」通配符</h4><p>星号通配符可以让前一个字符重复任意次数，包括零次。那到底是重复几次呢？这需要计算机暴力穷举来算，假设重复 N 次吧。写递归的技巧是管好当下，之后的事抛给递归。具体到这里，不管 N 是多少，当前的选择只有两个：匹配 0 次、匹配 1 次。所以可以这样处理：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(text, pattern)</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> pattern: <span class="keyword">return</span> <span class="keyword">not</span> text</span><br><span class="line">    first_match = bool(text) <span class="keyword">and</span> pattern[<span class="number">0</span>] <span class="keyword">in</span> &#123;text[<span class="number">0</span>], <span class="string">'.'</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> len(pattern) &gt;= <span class="number">2</span> <span class="keyword">and</span> pattern[<span class="number">1</span>] == <span class="string">'*'</span>:</span><br><span class="line">        <span class="comment"># 发现 '*' 通配符</span></span><br><span class="line">        <span class="keyword">return</span> isMatch(text, pattern[<span class="number">2</span>:]) <span class="keyword">or</span> \</span><br><span class="line">                first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern)</span><br><span class="line">    	<span class="comment"># 解释：如果发现有字符和 '*' 结合，</span></span><br><span class="line">        	<span class="comment"># 或者匹配该字符 0 次，然后跳过该字符和 '*'</span></span><br><span class="line">        	<span class="comment"># 或者当 pattern[0] 和 text[0] 匹配后，移动 text</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，我们是通过保留 pattern 中的「*」，同时向后推移 text，来实现「*」将字符重复匹配多次的功能。</p>
-<h4 id="三、动态规划"><a href="#三、动态规划" class="headerlink" title="三、动态规划"></a>三、动态规划</h4><h5 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> p:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">not</span> s</span><br><span class="line">        </span><br><span class="line">        first = s <span class="keyword">and</span> p[<span class="number">0</span>] <span class="keyword">in</span> &#123;s[<span class="number">0</span>],<span class="string">'.'</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(p) &gt;= <span class="number">2</span> <span class="keyword">and</span> p[<span class="number">1</span>]==<span class="string">'*'</span>:</span><br><span class="line">            <span class="keyword">return</span> self.isMatch(s,p[<span class="number">2</span>:]) <span class="keyword">or</span> (first <span class="keyword">and</span> self.isMatch(s[<span class="number">1</span>:],p))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> first <span class="keyword">and</span> self.isMatch(s[<span class="number">1</span>:],p[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/正则表达式匹配/2.jpg" alt="2"></p>
-<h5 id="优化解法"><a href="#优化解法" class="headerlink" title="优化解法"></a>优化解法</h5><p>使用两个变量 <code>i</code>, <code>j</code> 记录当前匹配到的位置，从而避免使用子字符串切片，并且将 <code>i</code>, <code>j</code> 存入memo，避免重复计算。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        memo = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dp</span><span class="params">(i,j)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> (i,j) <span class="keyword">in</span> memo:</span><br><span class="line">                <span class="keyword">return</span> memo[(i,j)]</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> j==len(p):</span><br><span class="line">                <span class="keyword">return</span> i==len(s)</span><br><span class="line">            </span><br><span class="line">            first = i &lt; len(s) <span class="keyword">and</span> p[j] <span class="keyword">in</span> &#123;s[i],<span class="string">'.'</span>&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> len(p) &gt;= j+<span class="number">2</span> <span class="keyword">and</span> p[j+<span class="number">1</span>]==<span class="string">'*'</span>:</span><br><span class="line">                <span class="keyword">return</span> dp(i,j+<span class="number">2</span>) <span class="keyword">or</span> (first <span class="keyword">and</span> dp(i+<span class="number">1</span>,j))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> first <span class="keyword">and</span> dp(i+<span class="number">1</span>,j+<span class="number">1</span>)</span><br><span class="line">            </span><br><span class="line">            memo[(i,j)] = ans</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dp(<span class="number">0</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/正则表达式匹配/3.jpg" alt="3"></p>
-<h6 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h6><p>时间复杂度：用 T 和 P 分别表示匹配串和模式串的长度。对于 i=0, … , T 和 j=0, … , P 每一个 dp(i, j) 只会被计算一次，所以后面每次调用都是 O(1)的时间。因此，总时间复杂度为 O(TP) 。</p>
-<p>空间复杂度：我们用到的空间仅有 O(TP)个 boolean 类型的缓存变量。所以，空间复杂度为 O(TP) 。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/单调递增的数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/单调递增的数字/" itemprop="url">单调递增的数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T14:46:09+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T15:02:16+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/monotone-increasing-digits/" target="_blank" rel="noopener">单调递增的数字（难度：中等）</a></p>
-<p><img src="/2020/01/02/单调递增的数字/1.jpg" alt="1"></p>
-<h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><p><img src="/2020/01/02/单调递增的数字/2.jpg" alt="2"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">monotoneIncreasingDigits</span><span class="params">(self, N: int)</span> -&gt; int:</span></span><br><span class="line">        s = list(str(N))</span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &lt;= s[i]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> <span class="number">0</span> &lt; i &lt; len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &gt; s[i]:</span><br><span class="line">            s[i<span class="number">-1</span>] = str(int(s[i<span class="number">-1</span>])<span class="number">-1</span>)</span><br><span class="line">            i-=<span class="number">1</span></span><br><span class="line">        s[i+<span class="number">1</span>:] = <span class="string">'9'</span>*(len(s)-i<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> int(<span class="string">''</span>.join(s))</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/单调递增的数字/3.jpg" alt="3"></p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(D)。其中 D≈logN，N 是数字的长度。<br>空间复杂度：O(D)。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/移掉K位数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/移掉K位数字/" itemprop="url">移掉K位数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T12:40:42+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T12:57:24+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/remove-k-digits/" target="_blank" rel="noopener">移掉K位数字（难度：中等）</a></p>
-<p><img src="/2020/01/02/移掉K位数字/1.jpg" alt="1"></p>
-<h4 id="方法：单调栈"><a href="#方法：单调栈" class="headerlink" title="方法：单调栈"></a>方法：单调栈</h4><p>维护一个递增栈，但当前元素小于栈顶元素，则移掉栈顶元素。</p>
-<h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>转自</p>
-<blockquote>
-<p>作者：monkeybing<br>链接：<a href="https://leetcode-cn.com/problems/remove-k-digits/solution/cyu-yan-zhan-shi-xian-tan-xin-suan-fa-by-monkeybin/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-k-digits/solution/cyu-yan-zhan-shi-xian-tan-xin-suan-fa-by-monkeybin/</a><br>来源：力扣（LeetCode）</p>
-</blockquote>
-<p>本题采用贪心思路：</p>
-<ol>
-<li>如果字符串按照数字大小升序排列，只需要删除最后K个字符即可；</li>
-<li>如果非升序排列，需要从前到后遍历，删除字符串中每个逆序排列的字符。由于是从前到后遍历，所以先删除的一定是高位的数字，可以保证删除后得到的最终数字最小。</li>
-</ol>
-<p>举例来说：如果字符串num = “123456789”, k = 3，我们只需要删除最后3个数字，得到”123456”.<br>如果字符串num = “1432219”, k = 3，需要从前到后遍历查找逆序数字，进行删除，第一个逆序数字为’4’，第二个逆序数字为’3’，第三个逆序数字为第二个’2’，最后得到”1219”。</p>
-<p><strong>所以可以采用栈实现，每次遍历，判断如果栈非空，且当前数字大于栈顶数字，且k还有剩余（不为0），将栈顶数字出栈。最后将当前数字入栈。</strong><br>如果遍历完成后，k仍有剩余，则依次将栈顶数字出栈。最后栈中保存的数字即为所求。按照从栈底到栈顶输出即可。<br>注意：特判场景，如果最后所有数字均出栈，即栈为空，需要返回”0”。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeKdigits</span><span class="params">(self, num: str, k: int)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> num <span class="keyword">or</span> k &lt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> num</span><br><span class="line">        </span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> num:</span><br><span class="line">            <span class="keyword">while</span> stack <span class="keyword">and</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> stack[<span class="number">-1</span>] &gt; c:</span><br><span class="line">                stack.pop()</span><br><span class="line">                k -= <span class="number">1</span></span><br><span class="line">            stack.append(c)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> k &gt; <span class="number">0</span>:</span><br><span class="line">            stack.pop()</span><br><span class="line">            k -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> stack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'0'</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> str(int(<span class="string">''</span>.join(stack)))</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/02/移掉K位数字/2.jpg" alt="2"></p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n).</p>
-<p>空间复杂度：O(n).</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/01/贪心算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/01/贪心算法/" itemprop="url">贪心算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-01T23:47:36+08:00">
-                2020-01-01
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-01T23:49:35+08:00">
-                2020-01-01
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>转自：</p>
-<blockquote>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/</a><br>来源：力扣（LeetCode）</p>
-</blockquote>
-<p>什么是贪心算法呢？贪心算法可以认为是动态规划算法的一个特例，相比动态规划，使用贪心算法需要满足更多的条件（贪心选择性质），但是效率比动态规划要高。</p>
-<p>比如说一个算法问题使用暴力解法需要指数级时间，如果能使用动态规划消除重叠子问题，就可以降到多项式级别的时间，如果满足贪心选择性质，那么可以进一步降低时间复杂度，达到线性级别的。</p>
-<p>什么是贪心选择性质呢，简单说就是：每一步都做出一个局部最优的选择，最终的结果就是全局最优。注意哦，这是一种特殊性质，其实只有一部分问题拥有这个性质。</p>
-<p>比如你面前放着 100 张人民币，你只能拿十张，怎么才能拿最多的面额？显然每次选择剩下钞票中面值最大的一张，最后你的选择一定是最优的。</p>
-<p>然而，大部分问题明显不具有贪心选择性质。比如打牌，对手出对儿三，按照贪心策略，你应该出尽可能小的牌刚好压制住对方，但现实情况我们甚至可能会出王炸。这种情况就不能用贪心算法，而得使用动态规划解决，参见前文<a href="https://leetcode-cn.com/problems/stone-game/solution/jie-jue-bo-yi-wen-ti-de-dong-tai-gui-hua-tong-yong/" target="_blank" rel="noopener">动态规划解决博弈问题</a>。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/01/无重叠区间/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/01/无重叠区间/" itemprop="url">无重叠区间</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-01T23:33:51+08:00">
-                2020-01-01
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-01T23:47:27+08:00">
-                2020-01-01
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener">无重叠区间（难度：中等）</a></p>
-<p><img src="/2020/01/01/无重叠区间/1.jpg" alt="1"></p>
-<p>转自：</p>
-<blockquote>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/</a><br>来源：力扣（LeetCode）</p>
-</blockquote>
-<p>本文解决一个很经典的贪心算法问题 Interval Scheduling（区间调度问题）。给你很多形如 <code>[start, end]</code>的闭区间，请你设计一个算法，算出这些区间中最多有几个互不相交的区间。<br>举个例子，<code>intvs = [[1,3], [2,4], [3,6]]</code>，这些区间最多有 2 个区间互不相交，即 <code>[[1,3], [3,6]]</code>，你的算法应该返回 2。注意边界相同并不算相交。</p>
-<p>这个问题在生活中的应用广泛，比如你今天有好几个活动，每个活动都可以用区间 [start, end] 表示开始和结束的时间，请问你今天最多能参加几个活动呢？显然你一个人不能同时参加两个活动，所以说这个问题就是求这些时间区间的最大不相交子集。</p>
-<h4 id="方法：贪心算法"><a href="#方法：贪心算法" class="headerlink" title="方法：贪心算法"></a>方法：贪心算法</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ol>
-<li>从区间集合 intvs 中选择一个区间 x，这个 x 是在当前所有区间中结束最早的（end 最小）。</li>
-<li>把所有与 x 区间相交的区间从区间集合 intvs 中删除。</li>
-<li>重复步骤 1 和 2，直到 intvs 为空为止。之前选出的那些 x 就是最大不相交子集。</li>
-</ol>
-<p><img src="https://pic.leetcode-cn.com/678752f150168fc2e53a36d30e589b76ef81a95943c018b01bef6a548bfafeeb-file_1566313617208" alt="1"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">eraseOverlapIntervals</span><span class="params">(<span class="keyword">int</span>[][] intervals)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 按区间的end升序排列</span></span><br><span class="line">        Arrays.sort(intervals, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span>[] b)</span></span>&#123;</span><br><span class="line">                <span class="keyword">return</span> a[<span class="number">1</span>] - b[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> x_end = intervals[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] intv:intervals)&#123;</span><br><span class="line">            <span class="keyword">int</span> start = intv[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(x_end &lt;= start)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                x_end = intv[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intervals.length - count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn). 排序需要O(nlogn)的时间。</p>
-<p>空间复杂度：O(1). 不需要额外空间。</p>
-<p><img src="/2020/01/01/无重叠区间/2.jpg" alt="2"></p>
 
           
         
@@ -1977,7 +2209,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2025,7 +2257,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2036,7 +2268,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2047,7 +2279,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
