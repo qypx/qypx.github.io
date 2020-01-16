@@ -1,6 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Using relational data stores with Hadoop —— Hive &amp; Sqoop</title>
+    <url>/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#hive">HIVE</a><ul>
+<li><a href="#what-is-hive">What is Hive?</a><ul>
+<li><a href="#why-hive">Why Hive</a></li>
+<li><a href="#why-not-hive">Why not Hive</a></li>
+<li><a href="#hiveql">HiveQL</a></li>
+</ul>
+</li>
+<li><a href="#activity-use-hive-to-find-the-most-popular-movie">[Activity] Use Hive to find the most popular movie</a></li>
+<li><a href="#how-hive-works">How Hive works?</a><ul>
+<li><a href="#schema-on-read">Schema on read</a></li>
+<li><a href="#where-is-the-data-内部表与外部表">Where is the data? (内部表与外部表)</a></li>
+<li><a href="#partitioning-分区">Partitioning 分区</a></li>
+<li><a href="#ways-to-use-hive">Ways to use Hive</a></li>
+</ul>
+</li>
+<li><a href="#activity-use-hive-to-find-the-movie-with-the-highest-average-rating">[Activity] Use Hive to find the movie with the highest average rating</a></li>
+</ul>
+</li>
+<li><a href="#sqoop">Sqoop</a><ul>
+<li><a href="#integrating-mysql-with-hadoop">Integrating MySQL with Hadoop</a></li>
+<li><a href="#importexport-data-mysql-hdfshadoop">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</a></li>
+<li><a href="#play-with-mysql-and-sqoop">Play with MySQL and Sqoop</a><ul>
+<li><a href="#activity-install-mysql-and-import-our-movie-data">[Activity] Install MySQL and import our movie data</a></li>
+<li><a href="#activity-use-sqoop-to-import-data-from-mysql-to-hdfshive">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</a></li>
+<li><a href="#activity-use-sqoop-tp-export-data-from-hadoop-to-mysql">[Activity] Use Sqoop tp export data from Hadoop to MySQL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#结语">结语</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="hive">HIVE</span></h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png" alt="1579064046135"></p>
+<h3><span id="what-is-hive">What is Hive?</span></h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064255091.png" alt="1579064255091"></p>
+<h4><span id="why-hive">Why Hive</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579082214734.png" alt="1579082214734"></p>
+<h4><span id="why-not-hive">Why not Hive</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579083363568.png" alt="1579083363568"></p>
+<p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
+<p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
+<a id="more"></a>
+
+<h4><span id="hiveql">HiveQL</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579084456353.png" alt="1579084456353"></p>
+<h3><span id="activity-use-hive-to-find-the-most-popular-movie">[Activity] Use Hive to find the most popular movie</span></h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview</a></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085359675.png" alt="1579085359675"></p>
+<p>或写成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT title, COUNT(movieID) AS ratingCount</span><br><span class="line">FROM ratings JOIN names ON ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">ORDER BY ratingCount DESC;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085980578.png" alt="1579085980578"></p>
+<p>We used views in Hive to split up a more complicated query into something more readable and more manageable.</p>
+<p>执行时会花一点时间，remember this isn’t really a relational database, so things like joins are kind of painful when you’re not dealing with normalized data.</p>
+<p>执行后会发现新创建的view出现在了Database里：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085692727.png" alt="1579085692727"></p>
+<p>Your views are persistent, they’re stored to disk.</p>
+<p>若此时再执行会出错，可写成： <code>CREATE VIEW IF NOT EXISTS topMovieIDs ...</code></p>
+<p>Just to clean up our mess and not leave that around: <code>DROP VIEW topMovieIDs;</code></p>
+<h3><span id="how-hive-works">How Hive works?</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579086892876.png" alt="1579086892876"></p>
+<h4><span id="schema-on-read">Schema on read</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579087836551.png" alt="1579087836551"></p>
+<p>One of the basic concepts pf Hive is something called <em>schema on read</em>, and this is what separates it from a more traditional database. With a real relational database, it uses something called <em>schema on write</em> where you define the schema of your database before you load the data into it, and it’s actually enforced at the time that you write the data to disk. </p>
+<p>Hive flips that on its head. It takes unstructured data and just sort of applies a schema to it as it’s being read instead.</p>
+<p>So, Hive isn’t creating some structured relational database under the hood, that would be very inefficient, it’s just taking the existing data that you have on your cluster and imparting a schema to it when it’s read in.</p>
+<h4><span id="where-is-the-data-内部表与外部表">Where is the data? (内部表与外部表)</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579089471741.png" alt="1579089471741"></p>
+<p>对于 managed table, if you do a “DROP TABLE” command from Hive, then that data is gone.</p>
+<p>But sometimes you want to share that data with other systems that are outside of Hive. So that’s where external tables come in. “CREATE EXTERNAL TABLE” with “Location” says, “I’m going to use Hive on this data here, but I’m not going to own it anymore”. So I drop this table, it’s going to drop the metadata, 但是原数据不会被删除。</p>
+<h4><span id="partitioning-分区">Partitioning 分区</span></h4><p>If you do have a massive dataset and your queries tend to be on a specific partition of that data, partitioning in Hive can be a very important optimization. </p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579096514448.png" alt="1579096514448"></p>
+<p>We wouldn’t have to scan over the entire customer database, we could just scan over the actual files that are specific to the country that I’m interested in.</p>
+<h4><span id="ways-to-use-hive">Ways to use Hive</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579096909189.png" alt="1579096909189"></p>
+<h3><span id="activity-use-hive-to-find-the-movie-with-the-highest-average-rating">[Activity] Use Hive to find the movie with the highest average rating</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579149719149.png" alt="1579149719149"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579097528758.png" alt="1579097528758"></p>
+<p>或写成：？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT title, AVG(rating) as avgRating</span><br><span class="line">FROM ratings JOIN names on ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">HAVING COUNT(ratings.movieID)  &gt; 10</span><br><span class="line">ORDER BY avgRating DESC;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="sqoop">Sqoop</span></h2><h3><span id="integrating-mysql-with-hadoop">Integrating MySQL with Hadoop</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579149997458.png" alt="1579149997458"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150738331.png" alt="1579150738331"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150774304.png" alt="1579150774304"></p>
+<h3><span id="importexport-data-mysql-lt-gt-hdfshadoop">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579151204058.png" alt="1579151204058"></p>
+<p>Export data from your database into Hadoop:</p>
+<ol>
+<li>kick off a bunch of mappers (只有mappers, all we’re doing is moving data and transforming it from one place to another, there’s no real reduce going on here.)</li>
+<li>all these mappers are going to talk to your HDFS cluster on your Hadoop cluster and populate a big old table on HDFS, which is a giant text file (例如逗号分隔的数据), and from there, you can use tools like Hive or Pig on it.</li>
+</ol>
+<p>REMEMBER, the power of HDFS is that file might be distributed across many different hosts, blocks, and also stored redundantly. We’ve done more than just dump our database to a file here - we’ve dumped it into HDFS, which opens up a whole world of possibilities for analyzing it in a robust, scalable and a manner that can be resilient to failure.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579156422401.png" alt="1579156422401"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579157592193.png" alt="1579157592193"></p>
+<p>与导入HDFS一样，导入Hive同样会kick off a MapReduce job.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579154105803.png" alt="1579154105803"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159508995.png" alt="1579159508995"></p>
+<h3><span id="play-with-mysql-and-sqoop">Play with MySQL and Sqoop</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579154231118.png" alt="1579154231118"></p>
+<h4><span id="activity-install-mysql-and-import-our-movie-data">[Activity] Install MySQL and import our movie data</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview</a></p>
+<h4><span id="activity-use-sqoop-to-import-data-from-mysql-to-hdfshive">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview</a></p>
+<p>由 MySQL 导入 HDFS 后：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579156905400.png" alt="1579156905400"></p>
+<p>由 MySQL 导入Hive后：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579157822360.png" alt="1579157822360"></p>
+<blockquote>
+<p>注：These sorts of tools that we’re using with Hadoop are really intended for big datasets, so there’s a lot of overhead for doing what’s actually a pretty simple operation. It doesn’t make sense if you’re using small datasets. 如果数据集很小，在一个host就能装下，没必要用这些工具，用MySQL就足够了。</p>
+</blockquote>
+<h4><span id="activity-use-sqoop-tp-export-data-from-hadoop-to-mysql">[Activity] Use Sqoop tp export data from Hadoop to MySQL</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview</a></p>
+<ol>
+<li>首先需要知道 where the data in Hive actually resides. REMEMBER, Hive is just a schema-on-read sort of deal. The actual data itself if just stored as a plain old text somewhere, and all Hive is doing is imparting structure to it when it’s being read. </li>
+</ol>
+<p>On Hortonworks:</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158771230.png" alt="1579158771230"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158823550.png" alt="1579158823550"></p>
+<p>不是靠逗号分隔的，Hive actually uses low ASCII values, like 1 and 2 and 3, to delimit its data. </p>
+<ol start="2">
+<li>在导入前，MySQL中要先有 target table</li>
+</ol>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159104056.png" alt="1579159104056"></p>
+<p>3.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159601163.png" alt="1579159601163"></p>
+<p>和import一样，export也会kick off a bunch of mappers using MapReduce.</p>
+<blockquote>
+<p>什么时候需要从Hive导入MySQL: From a practical standpoint, if you need to expose your data to a database that’s more well-suited for OLTP. Sometimes you’ll be doing some huge operation using Hive or some other tool on your cluster, but the output of that operation might be small enough to fit on a single database.</p>
+</blockquote>
+<h2><span id="结语">结语</span></h2><p>We talked about making your Hadoop cluster look like a MySQL database or a SQL database, using Hive.</p>
+<p>And we also talked about using your Hadoop cluster with a real MySQL database as well. Kind of two different directions there.</p>
+<p>Next, let’s talk about <strong>NoSQL</strong>. Sometimes you actually want to expose your data in a way that’s more amenable to <strong>real-time queries</strong>, and there’s a bunch of ways to do that and also ways of integrating Hadoop with systems that are more real-time in nature.</p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>Hive</tag>
+        <tag>Sqoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop Course Overview</title>
+    <url>/2020/01/14/Hadoop-Course-Overview/</url>
+    <content><![CDATA[<p>课程：</p>
+<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=996228" target="_blank" rel="noopener"><img src="https://i.udemycdn.com/course/240x135/996228_af5f_3.jpg" alt="The Ultimate Hands-On Hadoop - Tame your Big Data!"></a><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/" target="_blank" rel="noopener"><strong>The Ultimate Hands-On Hadoop - Tame your Big Data!</strong></a></p>
+<p><a href="https://sundog-education.com/hadoop-materials/" target="_blank" rel="noopener">Course Materials</a></p>
+<h4><span id="what-youll-learn">What you’ll learn</span></h4><ul>
+<li>Design distributed systems that manage “big data” using Hadoop and related technologies.</li>
+<li>Use HDFS and MapReduce for storing and analyzing data at scale.</li>
+<li>Use Pig and Spark to create scripts to process data on a Hadoop cluster in more complex ways.</li>
+<li>Analyze relational data using Hive and MySQL</li>
+<li>Analyze non-relational data using HBase, Cassandra, and MongoDB</li>
+<li>Query data interactively with Drill, Phoenix, and Presto</li>
+<li>Choose an appropriate data storage technology for your application</li>
+<li>Understand how Hadoop clusters are managed by YARN, Tez, Mesos, Zookeeper, Zeppelin, Hue, and Oozie.</li>
+<li>Publish data to your Hadoop cluster using Kafka, Sqoop, and Flume</li>
+<li>Consume streaming data using Spark Streaming, Flink, and Storm</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spark</title>
+    <url>/2020/01/14/Spark/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#introduction-to-spark">Introduction to Spark</a><ul>
+<li><a href="#scalable">Scalable</a></li>
+<li><a href="#fast">Fast</a></li>
+<li><a href="#hot">Hot</a></li>
+<li><a href="#not-that-hard-可使用的语言rdd">Not that hard (可使用的语言，RDD)</a></li>
+<li><a href="#components-of-spark">Components of Spark</a></li>
+<li><a href="#这门课将使用的语言及scala">这门课将使用的语言及Scala</a></li>
+</ul>
+</li>
+<li><a href="#rdd-the-resilient-distributed-dataset">RDD (The Resilient Distributed Dataset)</a><ul>
+<li><a href="#what-is-rdd">What is RDD?</a></li>
+<li><a href="#how-do-you-make-rdd">How do you make RDD</a></li>
+<li><a href="#create-rdd">Create RDD</a></li>
+<li><a href="#transform-rdd">Transform RDD</a></li>
+<li><a href="#rdd-actions">RDD actions</a></li>
+<li><a href="#lazy-evaluation">Lazy evaluation</a></li>
+<li><a href="#using-rdds-in-spark">Using RDD’s in Spark</a></li>
+</ul>
+</li>
+<li><a href="#spark-sql-dataframes-and-datasets">Spark SQL (DataFrames and DataSets)</a><ul>
+<li><a href="#using-datasets-in-spark-2">Using DataSets in Spark 2</a></li>
+</ul>
+</li>
+<li><a href="#using-mllib-in-spark">Using MLLib in Spark</a></li>
+<li><a href="#exercise">Exercise</a></li>
+</ul>
+<!-- tocstop -->
+
+<h3><span id="introduction-to-spark">Introduction to Spark</span></h3><p><img src="/2020/01/14/Spark/1578976053911.png" alt="1578976053911"></p>
+<p><img src="/2020/01/14/Spark/1578976261212.png" alt="1578976261212"></p>
+<p>There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data.</p>
+<h4><span id="scalable">Scalable</span></h4><p><img src="/2020/01/14/Spark/%E6%8D%95%E8%8E%B7.JPG" alt="捕获"></p>
+<h4><span id="fast">Fast</span></h4><p><img src="/2020/01/14/Spark/1578977218206.png" alt="1578977218206"></p>
+<p>Spark除了比MapReduce更快以外，还有一个优势：MapReduce is very limited in what it can do. You have to think about things in terms of mappers and reducers, whereas Spark provides a framework for removing that level of though from you, you can just think more about your end results and program toward that and think less about how to actual distribute it across the cluster.</p>
+<a id="more"></a>
+
+
+
+<h4><span id="hot">Hot</span></h4><p><img src="/2020/01/14/Spark/1578977501017.png" alt="1578977501017"></p>
+<h4><span id="not-that-hard-可使用的语言rdd">Not that hard (可使用的语言，RDD)</span></h4><p><img src="/2020/01/14/Spark/1578977890605.png" alt="1578977890605"></p>
+<p>A few lines of code can actually kick off some very complex analysis on a cluster.</p>
+<p>Spark 2.0 which came out in 2006, they’ve built on top of RDDs to produce something called a data set. That’s a little bit more of a SQL focused take on an RDD, but at the end of the day, it’s still built around the RDD.</p>
+<h4><span id="components-of-spark">Components of Spark</span></h4><p><img src="/2020/01/14/Spark/1578978133377.png" alt="1578978133377"></p>
+<p>Spark has a lot of depth to it, so while you could just program at the RDD level within <strong>Spark Core</strong>, there are also libraries built on top of Spark that are part of Spark itself.</p>
+<p><strong>Spark Streaming</strong>: Instead of doing batch processing of data, you can actually input data in real time. Data can be ingested as it’s being produced, and then Spark can analyze it across some window of time, and you can output the results of that analysis to a database or some NoSQL data store, all within a few lines of code.</p>
+<p><strong>Spark SQL</strong>: Very hot area right now. It’s basically a SQL interface to Spark. You can write SQL queries against your data using Spark SQL. It allows us to do more optimizations beyond the directed acyclic graph, because it can do SQL optimizations on the queries that you’re actually running.</p>
+<p><strong>MLLib</strong>: An entire library of machine learning and data mining tools that you can run on a data set that’s in Spark.</p>
+<p><strong>GraphX</strong>: That’s the graph in terms of graph theory. Imagine for example, you have a social network graph, and you want to analyze the properties of that graph, and see who’s connected to who and what way, and what are the shortest path and things like that, GraphX provides a very extensible way of doing that.</p>
+<p>SO, very rich ecosystem surrounding Spark that lets you do a wide variety of tasks on big data across the cluster.</p>
+<h4><span id="这门课将使用的语言及scala">这门课将使用的语言及Scala</span></h4><p><img src="/2020/01/14/Spark/1578979417251.png" alt="1578979417251"></p>
+<p>If you do want to end up using Spark in production in the real world, Python is OK to start with, but you probably want to move to Scala. </p>
+<p><img src="/2020/01/14/Spark/1578979634184.png" alt="1578979634184"></p>
+<p>It’s not very hard to move from Python to Scala. </p>
+<h3><span id="rdd-the-resilient-distributed-dataset">RDD (The Resilient Distributed Dataset)</span></h3><p><img src="/2020/01/14/Spark/1578989468387.png" alt="1578989468387"></p>
+<h4><span id="what-is-rdd">What is RDD?</span></h4><p><img src="/2020/01/14/Spark/1578989673088.png" alt="1578989673088"></p>
+<p>It’s an abstraction across all the nastiness that happens under the hood to actually make sure your job is evenly distributed across your cluster that it can handle failures in a resilient manner, and at the end of the day, it just looks like a dataset to you.</p>
+<p>From a programming standpoint, an RDD is just a dataset to you. But under the hood, it’s resilient and distributed and you don’t have to think about that very much.</p>
+<h4><span id="how-do-you-make-rdd">How do you make RDD</span></h4><p><img src="/2020/01/14/Spark/1578989938843.png" alt="1578989938843"></p>
+<p>The SparkContext is sort of the environment that your driver program runs within Spark, and it is what creates RDDs.</p>
+<h4><span id="create-rdd">Create RDD</span></h4><p><img src="/2020/01/14/Spark/1578990141827.png" alt="1578990141827"></p>
+<p><img src="/2020/01/14/Spark/1579012530332.png" alt="1579012530332"></p>
+<p><img src="/2020/01/14/Spark/1578990969096.png" alt="1578990969096"></p>
+<p>Once you have an RDD, what do you do with it?</p>
+<h4><span id="transform-rdd">Transform RDD</span></h4><p><img src="/2020/01/14/Spark/1579008653516.png" alt="1579008653516"></p>
+<p><em>map</em>: apply some function to every input row of your RDD and create a new RDD that is transformed in some way. Map is used when you have a one to one relationship </p>
+<p><em>flatmap</em>: 与map的区别在于，使用map, input于output是一对一的关系，使用flatmap, can have any relationship, where your input lines may or may not result in one or more output lines. 例如，maybe you want to split out each input line into multiple rows, or maybe you want to discard some of the input lines if they’re invalid.</p>
+<p><em>filter</em>: can be used to take stuff out of an RDD so you can provide that with some function that determines whether or not a row survives.</p>
+<p><em>distinct</em>: gives you back the distinct unique values in an RDD. </p>
+<p><em>sample</em>: sample them randomly.</p>
+<p><img src="/2020/01/14/Spark/1579008991727.png" alt="1579008991727"></p>
+<p><img src="/2020/01/14/Spark/1579009321705.png" alt="1579009321705"></p>
+<h4><span id="rdd-actions">RDD actions</span></h4><p><img src="/2020/01/14/Spark/1579009474269.png" alt="1579009474269"></p>
+<h4><span id="lazy-evaluation">Lazy evaluation</span></h4><p><img src="/2020/01/14/Spark/1579009528882.png" alt="1579009528882"></p>
+<p>So basically, as you go through this script and transform your RDD’s, until you hit an action, all that’s doing is building up this graph, this chain of dependencies within your driver script, and only when that action is called does it actually figure out the quickest path through those dependencies. And it’s at that point that it actually kicks off the job on your cluster.</p>
+<h4><span id="using-rdds-in-spark">Using RDD’s in Spark</span></h4><p>Find the movie with the lowest average rating - with RDD’s.</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6082670#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6082670#overview</a></p>
+<p><img src="/2020/01/14/Spark/1579014872589.png" alt="1579014872589"></p>
+<h3><span id="spark-sql-dataframes-and-datasets">Spark SQL (DataFrames and DataSets)</span></h3><p><img src="/2020/01/14/Spark/1579012722667.png" alt="1579012722667"></p>
+<p>Now, let’s talk about Spark SQL and the Spark 2.0 way of doing things using dataframes and datasets.</p>
+<p><img src="/2020/01/14/Spark/1579012953410.png" alt="1579012953410"></p>
+<p><img src="/2020/01/14/Spark/1579013215223.png" alt="1579013215223"></p>
+<p><img src="/2020/01/14/Spark/1579013233354.png" alt="1579013233354"></p>
+<p><img src="/2020/01/14/Spark/1579013961536.png" alt="1579013961536"></p>
+<p>DataFrame is really a dataset of row objects, and DataSet is a more general term that can contain any sort of typed information, not necessarily a row like you have in a DataFrame.</p>
+<p><img src="/2020/01/14/Spark/1579014168231.png" alt="1579014168231"></p>
+<p><img src="/2020/01/14/Spark/1579014221441.png" alt="1579014221441"></p>
+<p>Spark SQL is very extensible, you can create user defined functions that plug into a SQL and create your own functions you can use within your SQL queries.</p>
+<p>SO, this is the power of DataFrames and DataSets in Spark 2.0 and Spark SQL. The other thing that’s worth noting is that this is sort of the unified API between different subsystems of Spark going forward. You’ll see that in Spark 2 the MLLib machine learning library of the Spark streaming library, all now have DataSet based APIs that you can use, so DataSets are kind of the common denominator between these different systems that allow you to pass data between them. </p>
+<p>So, not only do you get performance benefits by using DataSets in Spark 2, you also get easier ways of actually using all these capabilities built on top of Spark we can mix and match them in interesting ways.</p>
+<h4><span id="using-datasets-in-spark-2">Using DataSets in Spark 2</span></h4><p>Find the movie with lowest average rating - with DataFrames.</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963108#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963108#overview</a></p>
+<p><img src="/2020/01/14/Spark/1579014920753.png" alt="1579014920753"></p>
+<h3><span id="using-mllib-in-spark">Using MLLib in Spark</span></h3><p>movie recommendations (通过predict rating)</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963112#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963112#overview</a></p>
+<p><img src="/2020/01/14/Spark/1579059887637.png" alt="1579059887637"></p>
+<h3><span id="exercise">Exercise</span></h3><p><img src="/2020/01/14/Spark/1579060756315.png" alt="1579060756315"></p>
+<p><img src="/2020/01/14/Spark/1579062594969.png" alt="1579062594969"></p>
+<p><img src="/2020/01/14/Spark/1579062687242.png" alt="1579062687242"></p>
+<p>check your result</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6115596#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6115596#overview</a></p>
+<p>The DataFrame approach is a lot easier to use, and when you’re running it at a large scale it’s going to be faster as well.</p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>存储过程</title>
     <url>/2020/01/13/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<p>存储过程（Stored Procedure）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。</p>
@@ -68,6 +346,8 @@
 <p><img src="/2020/01/13/事务与锁/1578904033183.png" alt="1578904033183"></p>
 <p><img src="/2020/01/13/事务与锁/1578904133622.png" alt="1578904133622"></p>
 <p><img src="/2020/01/13/事务与锁/1578904156358.png" alt="1578904156358"></p>
+<a id="more"></a>
+
 <p><img src="/2020/01/13/事务与锁/1578904553025.png" alt="1578904553025"></p>
 <p><img src="/2020/01/13/事务与锁/1578904582538.png" alt="1578904582538"></p>
 <p><img src="/2020/01/13/事务与锁/1578904641058.png" alt="1578904641058"></p>
@@ -204,6 +484,8 @@
 
 <p><strong>插入数据的其他方式：</strong></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">插入数据的方式：</span><br><span class="line">	1、<span class="keyword">insert</span> 新数据</span><br><span class="line">	<span class="number">2</span>、<span class="keyword">load</span></span><br><span class="line">	<span class="number">3</span>、查询其他表数据 <span class="keyword">insert</span> 到新表中</span><br><span class="line">	模板：</span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...)] </span><br><span class="line">		select_statement1 <span class="keyword">FROM</span> from_statement;</span><br><span class="line">		</span><br><span class="line">		FROM from_statement</span><br><span class="line">		<span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...) </span><br><span class="line">		[<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] select_statement1</span><br><span class="line"></span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">table</span>;</span><br><span class="line">		</span><br><span class="line">		习惯写法 from提前  减少SQL代码的冗余</span><br><span class="line">		from day_hour_table</span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest </span><br><span class="line">			<span class="keyword">select</span> <span class="keyword">count</span>(*) ;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <h4><span id="2-外部表">2. 外部表</span></h4><p>数据存储位置由用户自己指定，由HDFS管理，<strong>删除外部表时仅仅会删除元数据，存储数据不会受到影响。</strong></p>
 <ul>
@@ -363,6 +645,8 @@
 <p>D. 是一种NoSQL数据库</p>
 </li>
 </ul>
+<a id="more"></a>
+
 <hr>
 <ul>
 <li><p>HBase依靠（）存储底层数据 A</p>
@@ -635,7 +919,7 @@
 
 <ul>
 <li><a href="#ddl与dml">DDL与DML</a><ul>
-<li><a href="#insert-1578900159995sql语言1578900159995png">INSERT <img src="/2020/01/12/sql语言/1578900159995.png" alt="1578900159995"></a></li>
+<li><a href="#insert">INSERT</a></li>
 <li><a href="#delete">DELETE</a></li>
 <li><a href="#update">UPDATE</a></li>
 <li><a href="#create">CREATE</a></li>
@@ -651,7 +935,10 @@
 <h3><span id="ddl与dml">DDL与DML</span></h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
 <p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
 <p><img src="/2020/01/12/sql语言/1578825616684.png" alt="1578825616684"></p>
-<h5><span id="insert">INSERT    <img src="/2020/01/12/sql语言/1578900159995.png" alt="1578900159995"></span></h5><blockquote>
+<a id="more"></a>
+
+<h5><span id="insert">INSERT</span></h5><p><img src="/2020/01/12/sql语言/1578900159995.png" alt="1578900159995"></p>
+<blockquote>
 <p>注：字符为单引号</p>
 </blockquote>
 <p><code>INSERT INTO tablename {column1,column2,…}values(exp1,exp2,…);</code>  //插入</p>
@@ -665,7 +952,7 @@
 <p><img src="/2020/01/12/sql语言/1578901179360.png" alt="1578901179360"></p>
 <h5><span id="rename">RENAME</span></h5><p><img src="/2020/01/12/sql语言/1578901685944.png" alt="1578901685944"></p>
 <h3><span id="语法顺序与执行顺序">语法顺序与执行顺序</span></h3><p><img src="/2020/01/12/sql语言/1578825674160.png" alt="1578825674160"></p>
-<p><img src="/2020/01/12/sql语言/C:%5CUsers%5Czhu_r%5CDesktop%5Ctest%5Cblog%5Csource_posts%5Csql%E8%AF%AD%E8%A8%80%5C1578825736061.png" alt="1578825736061"></p>
+<p><img src="/2020/01/12/sql语言/1578825736061.png" alt="1578825736061"></p>
 <p>相当于就是 SELECT [DISTINCT] 的顺序换了一下。</p>
 ]]></content>
       <categories>
@@ -1209,7 +1496,8 @@
   <entry>
     <title>RecSys Course Overview</title>
     <url>/2020/01/03/RecSys-Course-Overview/</url>
-    <content><![CDATA[<p><a href="https://www.udemy.com/share/10294MB0sdc1pQRHo=/" target="_blank" rel="noopener">课程：Building Recommender Systems with Machine Learning and AI</a></p>
+    <content><![CDATA[<p>课程：</p>
+<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=1726410" target="_blank" rel="noopener"><img src="https://i.udemycdn.com/course/240x135/1726410_7b86.jpg" alt="Building Recommender Systems with Machine Learning and AI"></a><a href="https://www.udemy.com/course/building-recommender-systems-with-machine-learning-and-ai/learn/" target="_blank" rel="noopener"><strong>Building Recommender Systems with Machine Learning and AI</strong> </a></p>
 <p><a href="https://sundog-education.com/RecSys/" target="_blank" rel="noopener">Course Materials</a></p>
 <p><img src="/2020/01/03/RecSys-Course-Overview/1578048175249.jpg" alt="1578048175249"></p>
 ]]></content>

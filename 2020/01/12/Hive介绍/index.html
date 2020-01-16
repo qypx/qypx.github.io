@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="参考： https://blog.csdn.net/PowerBlogger/article/details/83626449 https://blog.csdn.net/u010886217/article/details/83796151    什么是Hive？ Hive的原理 Hive中表的类型 1. 内部表 2. 外部表 3. 临时表 4. 分区表 5. 分桶表      什么是Hive？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-12T14:14:30.728Z">
+<meta property="og:updated_time" content="2020-01-13T15:15:10.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hive介绍">
 <meta name="twitter:description" content="参考： https://blog.csdn.net/PowerBlogger/article/details/83626449 https://blog.csdn.net/u010886217/article/details/83796151    什么是Hive？ Hive的原理 Hive中表的类型 1. 内部表 2. 外部表 3. 临时表 4. 分区表 5. 分桶表      什么是Hive？">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-12T22:14:30+08:00">
-                2020-01-12
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T23:15:10+08:00">
+                2020-01-13
               </time>
             
           </span>
@@ -426,6 +426,8 @@
 
 <p><strong>插入数据的其他方式：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">插入数据的方式：</span><br><span class="line">	1、<span class="keyword">insert</span> 新数据</span><br><span class="line">	<span class="number">2</span>、<span class="keyword">load</span></span><br><span class="line">	<span class="number">3</span>、查询其他表数据 <span class="keyword">insert</span> 到新表中</span><br><span class="line">	模板：</span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...)] </span><br><span class="line">		select_statement1 <span class="keyword">FROM</span> from_statement;</span><br><span class="line">		</span><br><span class="line">		FROM from_statement</span><br><span class="line">		<span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...) </span><br><span class="line">		[<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] select_statement1</span><br><span class="line"></span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">table</span>;</span><br><span class="line">		</span><br><span class="line">		习惯写法 from提前  减少SQL代码的冗余</span><br><span class="line">		from day_hour_table</span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest </span><br><span class="line">			<span class="keyword">select</span> <span class="keyword">count</span>(*) ;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <h4><span id="2-外部表">2. 外部表</span></h4><p>数据存储位置由用户自己指定，由HDFS管理，<strong>删除外部表时仅仅会删除元数据，存储数据不会受到影响。</strong></p>
 <ul>
@@ -622,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -644,7 +646,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

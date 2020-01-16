@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop,Hive,Sqoop,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [">
+<meta name="keywords" content="Hadoop,Hive,Sqoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using relational data stores with Hadoop —— Hive &amp; Sqoop">
+<meta property="og:url" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064255091.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579082214734.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579083363568.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579084456353.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085359675.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085980578.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085692727.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579086892876.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579087836551.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579089471741.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579096514448.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579096909189.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579149719149.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579097528758.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579149997458.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150738331.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150774304.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579151204058.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579156422401.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579157592193.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579154105803.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159508995.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579154231118.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579156905400.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579157822360.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158771230.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158823550.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159104056.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159601163.png">
+<meta property="og:updated_time" content="2020-01-16T07:39:33.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Using relational data stores with Hadoop —— Hive &amp; Sqoop">
+<meta name="twitter:description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [">
+<meta name="twitter:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/">
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+
+  <title>Using relational data stores with Hadoop —— Hive & Sqoop | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qypx の blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">机会是留给有准备的人的.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Using relational data stores with Hadoop —— Hive & Sqoop</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-15T12:50:44+08:00">
+                2020-01-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-16T15:39:33+08:00">
+                2020-01-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#hive">HIVE</a><ul>
+<li><a href="#what-is-hive">What is Hive?</a><ul>
+<li><a href="#why-hive">Why Hive</a></li>
+<li><a href="#why-not-hive">Why not Hive</a></li>
+<li><a href="#hiveql">HiveQL</a></li>
+</ul>
+</li>
+<li><a href="#activity-use-hive-to-find-the-most-popular-movie">[Activity] Use Hive to find the most popular movie</a></li>
+<li><a href="#how-hive-works">How Hive works?</a><ul>
+<li><a href="#schema-on-read">Schema on read</a></li>
+<li><a href="#where-is-the-data-内部表与外部表">Where is the data? (内部表与外部表)</a></li>
+<li><a href="#partitioning-分区">Partitioning 分区</a></li>
+<li><a href="#ways-to-use-hive">Ways to use Hive</a></li>
+</ul>
+</li>
+<li><a href="#activity-use-hive-to-find-the-movie-with-the-highest-average-rating">[Activity] Use Hive to find the movie with the highest average rating</a></li>
+</ul>
+</li>
+<li><a href="#sqoop">Sqoop</a><ul>
+<li><a href="#integrating-mysql-with-hadoop">Integrating MySQL with Hadoop</a></li>
+<li><a href="#importexport-data-mysql-hdfshadoop">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</a></li>
+<li><a href="#play-with-mysql-and-sqoop">Play with MySQL and Sqoop</a><ul>
+<li><a href="#activity-install-mysql-and-import-our-movie-data">[Activity] Install MySQL and import our movie data</a></li>
+<li><a href="#activity-use-sqoop-to-import-data-from-mysql-to-hdfshive">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</a></li>
+<li><a href="#activity-use-sqoop-tp-export-data-from-hadoop-to-mysql">[Activity] Use Sqoop tp export data from Hadoop to MySQL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#结语">结语</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="hive">HIVE</span></h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png" alt="1579064046135"></p>
+<h3><span id="what-is-hive">What is Hive?</span></h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064255091.png" alt="1579064255091"></p>
+<h4><span id="why-hive">Why Hive</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579082214734.png" alt="1579082214734"></p>
+<h4><span id="why-not-hive">Why not Hive</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579083363568.png" alt="1579083363568"></p>
+<p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
+<p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
+<a id="more"></a>
+
+<h4><span id="hiveql">HiveQL</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579084456353.png" alt="1579084456353"></p>
+<h3><span id="activity-use-hive-to-find-the-most-popular-movie">[Activity] Use Hive to find the most popular movie</span></h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview</a></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085359675.png" alt="1579085359675"></p>
+<p>或写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT title, COUNT(movieID) AS ratingCount</span><br><span class="line">FROM ratings JOIN names ON ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">ORDER BY ratingCount DESC;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085980578.png" alt="1579085980578"></p>
+<p>We used views in Hive to split up a more complicated query into something more readable and more manageable.</p>
+<p>执行时会花一点时间，remember this isn’t really a relational database, so things like joins are kind of painful when you’re not dealing with normalized data.</p>
+<p>执行后会发现新创建的view出现在了Database里：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085692727.png" alt="1579085692727"></p>
+<p>Your views are persistent, they’re stored to disk.</p>
+<p>若此时再执行会出错，可写成： <code>CREATE VIEW IF NOT EXISTS topMovieIDs ...</code></p>
+<p>Just to clean up our mess and not leave that around: <code>DROP VIEW topMovieIDs;</code></p>
+<h3><span id="how-hive-works">How Hive works?</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579086892876.png" alt="1579086892876"></p>
+<h4><span id="schema-on-read">Schema on read</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579087836551.png" alt="1579087836551"></p>
+<p>One of the basic concepts pf Hive is something called <em>schema on read</em>, and this is what separates it from a more traditional database. With a real relational database, it uses something called <em>schema on write</em> where you define the schema of your database before you load the data into it, and it’s actually enforced at the time that you write the data to disk. </p>
+<p>Hive flips that on its head. It takes unstructured data and just sort of applies a schema to it as it’s being read instead.</p>
+<p>So, Hive isn’t creating some structured relational database under the hood, that would be very inefficient, it’s just taking the existing data that you have on your cluster and imparting a schema to it when it’s read in.</p>
+<h4><span id="where-is-the-data-内部表与外部表">Where is the data? (内部表与外部表)</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579089471741.png" alt="1579089471741"></p>
+<p>对于 managed table, if you do a “DROP TABLE” command from Hive, then that data is gone.</p>
+<p>But sometimes you want to share that data with other systems that are outside of Hive. So that’s where external tables come in. “CREATE EXTERNAL TABLE” with “Location” says, “I’m going to use Hive on this data here, but I’m not going to own it anymore”. So I drop this table, it’s going to drop the metadata, 但是原数据不会被删除。</p>
+<h4><span id="partitioning-分区">Partitioning 分区</span></h4><p>If you do have a massive dataset and your queries tend to be on a specific partition of that data, partitioning in Hive can be a very important optimization. </p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579096514448.png" alt="1579096514448"></p>
+<p>We wouldn’t have to scan over the entire customer database, we could just scan over the actual files that are specific to the country that I’m interested in.</p>
+<h4><span id="ways-to-use-hive">Ways to use Hive</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579096909189.png" alt="1579096909189"></p>
+<h3><span id="activity-use-hive-to-find-the-movie-with-the-highest-average-rating">[Activity] Use Hive to find the movie with the highest average rating</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579149719149.png" alt="1579149719149"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579097528758.png" alt="1579097528758"></p>
+<p>或写成：？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT title, AVG(rating) as avgRating</span><br><span class="line">FROM ratings JOIN names on ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">HAVING COUNT(ratings.movieID)  &gt; 10</span><br><span class="line">ORDER BY avgRating DESC;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="sqoop">Sqoop</span></h2><h3><span id="integrating-mysql-with-hadoop">Integrating MySQL with Hadoop</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579149997458.png" alt="1579149997458"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150738331.png" alt="1579150738331"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150774304.png" alt="1579150774304"></p>
+<h3><span id="importexport-data-mysql-lt-gt-hdfshadoop">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579151204058.png" alt="1579151204058"></p>
+<p>Export data from your database into Hadoop:</p>
+<ol>
+<li>kick off a bunch of mappers (只有mappers, all we’re doing is moving data and transforming it from one place to another, there’s no real reduce going on here.)</li>
+<li>all these mappers are going to talk to your HDFS cluster on your Hadoop cluster and populate a big old table on HDFS, which is a giant text file (例如逗号分隔的数据), and from there, you can use tools like Hive or Pig on it.</li>
+</ol>
+<p>REMEMBER, the power of HDFS is that file might be distributed across many different hosts, blocks, and also stored redundantly. We’ve done more than just dump our database to a file here - we’ve dumped it into HDFS, which opens up a whole world of possibilities for analyzing it in a robust, scalable and a manner that can be resilient to failure.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579156422401.png" alt="1579156422401"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579157592193.png" alt="1579157592193"></p>
+<p>与导入HDFS一样，导入Hive同样会kick off a MapReduce job.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579154105803.png" alt="1579154105803"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159508995.png" alt="1579159508995"></p>
+<h3><span id="play-with-mysql-and-sqoop">Play with MySQL and Sqoop</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579154231118.png" alt="1579154231118"></p>
+<h4><span id="activity-install-mysql-and-import-our-movie-data">[Activity] Install MySQL and import our movie data</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview</a></p>
+<h4><span id="activity-use-sqoop-to-import-data-from-mysql-to-hdfshive">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview</a></p>
+<p>由 MySQL 导入 HDFS 后：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579156905400.png" alt="1579156905400"></p>
+<p>由 MySQL 导入Hive后：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579157822360.png" alt="1579157822360"></p>
+<blockquote>
+<p>注：These sorts of tools that we’re using with Hadoop are really intended for big datasets, so there’s a lot of overhead for doing what’s actually a pretty simple operation. It doesn’t make sense if you’re using small datasets. 如果数据集很小，在一个host就能装下，没必要用这些工具，用MySQL就足够了。</p>
+</blockquote>
+<h4><span id="activity-use-sqoop-tp-export-data-from-hadoop-to-mysql">[Activity] Use Sqoop tp export data from Hadoop to MySQL</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview</a></p>
+<ol>
+<li>首先需要知道 where the data in Hive actually resides. REMEMBER, Hive is just a schema-on-read sort of deal. The actual data itself if just stored as a plain old text somewhere, and all Hive is doing is imparting structure to it when it’s being read. </li>
+</ol>
+<p>On Hortonworks:</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158771230.png" alt="1579158771230"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158823550.png" alt="1579158823550"></p>
+<p>不是靠逗号分隔的，Hive actually uses low ASCII values, like 1 and 2 and 3, to delimit its data. </p>
+<ol start="2">
+<li>在导入前，MySQL中要先有 target table</li>
+</ol>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159104056.png" alt="1579159104056"></p>
+<p>3.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159601163.png" alt="1579159601163"></p>
+<p>和import一样，export也会kick off a bunch of mappers using MapReduce.</p>
+<blockquote>
+<p>什么时候需要从Hive导入MySQL: From a practical standpoint, if you need to expose your data to a database that’s more well-suited for OLTP. Sometimes you’ll be doing some huge operation using Hive or some other tool on your cluster, but the output of that operation might be small enough to fit on a single database.</p>
+</blockquote>
+<h2><span id="结语">结语</span></h2><p>We talked about making your Hadoop cluster look like a MySQL database or a SQL database, using Hive.</p>
+<p>And we also talked about using your Hadoop cluster with a real MySQL database as well. Kind of two different directions there.</p>
+<p>Next, let’s talk about <strong>NoSQL</strong>. Sometimes you actually want to expose your data in a way that’s more amenable to <strong>real-time queries</strong>, and there’s a bunch of ways to do that and also ways of integrating Hadoop with systems that are more real-time in nature.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/Hive/" rel="tag"># Hive</a>
+          
+            <a href="/tags/Sqoop/" rel="tag"># Sqoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/14/Hadoop-Course-Overview/" rel="next" title="Hadoop Course Overview">
+                <i class="fa fa-chevron-left"></i> Hadoop Course Overview
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="qypx">
+            
+              <p class="site-author-name" itemprop="name">qypx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qypx" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">HIVE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">What is Hive?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.</span> <span class="nav-text">Why Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.2.</span> <span class="nav-text">Why not Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.3.</span> <span class="nav-text">HiveQL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">[Activity] Use Hive to find the most popular movie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">How Hive works?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.1.</span> <span class="nav-text">Schema on read</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.2.</span> <span class="nav-text">Where is the data? (内部表与外部表)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.3.</span> <span class="nav-text">Partitioning 分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.4.</span> <span class="nav-text">Ways to use Hive</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">[Activity] Use Hive to find the movie with the highest average rating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">Integrating MySQL with Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">Play with MySQL and Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.1.</span> <span class="nav-text">[Activity] Install MySQL and import our movie data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.2.</span> <span class="nav-text">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.3.</span> <span class="nav-text">[Activity] Use Sqoop tp export data from Hadoop to MySQL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qypx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
