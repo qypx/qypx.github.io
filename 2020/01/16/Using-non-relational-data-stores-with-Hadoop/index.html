@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop,HBase,MongoDB,NoSQL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Re">
+<meta name="keywords" content="Hadoop,HBase,MongoDB,NoSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using non-relational data stores with Hadoop - NoSQL &amp; HBase &amp; MongoDB">
+<meta property="og:url" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Re">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579162098786.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579162897675.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579163190865.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579163943922.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579165798303.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579165874566.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579166108894.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579170600274.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579170812851.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579171017155.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172096734.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172733321.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579174693898.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579175017006.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579174915921.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579178657253.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579179141807.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579179897880.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579180346655.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579180457304.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579235814767.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579236174990.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579238197250.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579250924977.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254081608.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254450944.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254879640.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579255204023.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579255278039.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579328591006.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406411404.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579331041897.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579331085161.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579405319292.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579405698972.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579405757587.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406239652.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406303820.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406708880.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406971416.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407277634.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407517312.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408720595.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408982980.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409021695.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409163590.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409497341.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409662825.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409873125.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579410043297.png">
+<meta property="og:updated_time" content="2020-01-19T06:29:20.240Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Using non-relational data stores with Hadoop - NoSQL &amp; HBase &amp; MongoDB">
+<meta name="twitter:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Re">
+<meta name="twitter:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/">
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+
+  <title>Using non-relational data stores with Hadoop - NoSQL & HBase & MongoDB | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qypx の blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">机会是留给有准备的人的.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Using non-relational data stores with Hadoop - NoSQL & HBase & MongoDB</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-16T15:52:41+08:00">
+                2020-01-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-19T14:29:20+08:00">
+                2020-01-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#why-nosql">Why NoSQL?</a></li>
+<li><a href="#what-is-hbase">What is HBase</a><ul>
+<li><a href="#crud">CRUD</a></li>
+<li><a href="#hbase-architecture">HBase architecture</a></li>
+<li><a href="#hbase-data-model">HBase data model</a></li>
+<li><a href="#ways-to-access-hbase">Ways to access HBase</a></li>
+</ul>
+</li>
+<li><a href="#activity-import-movie-ratings-into-hbase">[Activity] Import movie ratings into HBase</a></li>
+<li><a href="#mongodb-overview">MongoDB Overview</a><ul>
+<li><a href="#document-based-data-model">Document-based data model</a></li>
+<li><a href="#mongodb-terminology">MongoDB terminology</a></li>
+<li><a href="#replication-sets">Replication Sets</a></li>
+<li><a href="#sharding-how-mongodb-handles-big-data">Sharding (How MongoDB handles big data)</a></li>
+<li><a href="#neat-things-about-mongodb">Neat Things about MongoDB</a></li>
+</ul>
+</li>
+<li><a href="#activity-install-mongodb-and-integrate-spark-with-mongodb">[Activity] Install MongoDB and integrate Spark with MongoDB</a></li>
+<li><a href="#activity-using-the-mongodb-shell">[Activity] Using the MongoDB Shell</a></li>
+<li><a href="#choosing-a-database-technology">Choosing a database technology</a><ul>
+<li><a href="#integration-considerations">Integration considerations</a></li>
+<li><a href="#scaling-requirements">Scaling requirements</a></li>
+<li><a href="#support-considerations">Support considerations</a></li>
+<li><a href="#cap-considerations">CAP considerations</a></li>
+<li><a href="#simplicity">Simplicity</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h3><span id="why-nosql">Why NoSQL?</span></h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So *<em>if you’re doing analytic work, relational databases are awesome. *</em>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
+<p>BUT let’s imagine you need to take things up to the next level. You’re going to start to run into some limitations with SQL and relational database systems.</p>
+<p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to *<em>very quickly answer a specific question *</em>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
+<p>And if you need to do that <strong>at a very large scale very quickly across a massive dataset</strong>, something like MySQL might not cut it. You know, if you’re an Amazon or a Google, you might need something that can even <strong>handle tens of thousands of transactions per second without breaking a sweat. And that’s where NoSQL comes in.</strong></p>
+<p>These are alternative database systems that <em>give up</em> a rich query language like SQL <em>for</em> the ability to very quickly and at great scale answer very simple questions. So for systems like that you want something called NoSQL, also known as non-relational databases, or not only SQL - that’s a term that comes up sometimes, too. And <strong>these systems are built to scale horizontally forever, and also built to be very fast and very resilient.</strong></p>
+<p>Up first, let’s talk about HBase. HBase is actually built on top of HDFS, so it allows you to have a very fast, very scalable transactional system to query your data that’s stored on a horizontally partitioned HDFS file system. So if you need to expose your massive data that’s sitting on your Hadoop cluster, Hbase can be a great way to expose that data to a web service, to web applications, anything that needs to operate very quickly and at a very high scale.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png" alt="1579161940219"></p>
+<a id="more"></a>
+
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579162098786.png" alt="1579162098786"></p>
+<p>if you think about things like Amazon or Google, people are always buying new things or always searching for new things, new web sites are always coming out, so this data is always just getting bigger and bigger and bigger over time. So that has to live on some sort of a distributed cluster, like a Hadoop cluster. You’re just not going to fit that into a single hard drive on a single database. You need something that’s more horizontally scalable, where you can keep on adding capacity as your data continues to grow over time.</p>
+<p>It’s not just about random access to planet-size data - it’s also planet-size access to that data. Imagine you’re running a web site like Amazon, where you need to very quickly retrieve the list of things people ordered, or the things they looked at, or what movies they should be recommended, or on Google - what they searched for in the past. That all has to happen at extremely large scale. Tens of thousands of people per second might be hitting your service to actually retrieve this information in real time.</p>
+<p>Again, a single Oracle database or MySQL database is not gonna cut it, when you’re talking about that kind of transaction rates on that large of a data set.</p>
+<p>过去没有NoSQL, Hadoop时，采用的方法：</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579162897675.png" alt="1579162897675"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579163190865.png" alt="1579163190865"></p>
+<p>All you need is an API that says, “given this customer ID, give me back this list of information”, or “given</p>
+<p>this item identifier, give me back this information about this item”. So, more often than not, all you really need at runtime is a simple API that allows you to get information for a given key or put information into a given key.</p>
+<p>These are basically, key-value data stores at a high level. And if that’s all you need, then you don’t need a big fancy relational database. All you need is a more scalable system that can be very easily horizontally partitioned for given key ranges, that just answers the question: “Give me this stuff for this key”.</p>
+<p>And you can always do both, too. For example, you can have a Hadoop cluster that you’re running Hive on, or Pig, or Spark, to actually answer the more complex questions that you have, but for the things you are doing at a very high scale, at very high transaction rates, you can bolt on a NoSQL database to actually handle that part of the problem. It’s not a question of one or the other - it’s about having the right tools in place for the right jobs.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579163943922.png" alt="1579163943922"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579165798303.png" alt="1579165798303"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579165874566.png" alt="1579165874566"></p>
+<h3><span id="what-is-hbase">What is HBase</span></h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579166108894.png" alt="1579166108894"></p>
+<p>HBase is built on top of HDFS. So if you’re storing massive datasets on an HDFS file system, HBase can be used to actually vend that to the outside world at a very large scale.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579170600274.png" alt="1579170600274"></p>
+<p>Just like every other NoSQL solution, it <strong>does not have a query language, but it does have an API</strong> that can very quickly answer the question “what are the values for this key?” or “store this value for this key”.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579170812851.png" alt="1579170812851"></p>
+<h4><span id="crud">CRUD</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579171017155.png" alt="1579171017155"></p>
+<h4><span id="hbase-architecture">HBase architecture</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172096734.png" alt="1579172096734"></p>
+<p>Basically, it’s split up into different region servers. This is the core of HBase itself. When we talk about regions, we’re talking about ranges of keys, so it’s just like sharding or range partitioning in more traditional database systems. But the magic of it all is that it can automatically adapt, so, as your data grows, it can automatically repartition things, and if you add more servers to the mix, it can automatically deal with that at runtime.</p>
+<p>So there’s a very complex mechanism that involves write-ahead commit logs and, merging things together over time asynchronously. But you don’t have to worry about those details - HBase does it for you. All you need to know is that it can automatically distribute your data amongst a fleet of region servers, so an entire cluster, if you will.</p>
+<p>Now, when you have an application that’s actually talking to HBase - a web application or a web server - it’s not actually going to talk to these master nodes directly, it’s going to be talking to region servers directly.</p>
+<h4><span id="hbase-data-model">HBase data model</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172733321.png" alt="1579172733321"></p>
+<p>What’s different about HBase is that it has the concept of column families. So you don’t define a fixed set of columns for each row in your database. Instead you define column families, and each column family can contain a very large number of individual columns.</p>
+<p>This comes in handy where you have cases of sparse data.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579174693898.png" alt="1579174693898"></p>
+<h4><span id="ways-to-access-hbase">Ways to access HBase</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579175017006.png" alt="1579175017006"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579174915921.png" alt="1579174915921"></p>
+<h3><span id="activity-import-movie-ratings-into-hbase">[Activity] Import movie ratings into HBase</span></h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579178657253.png" alt="1579178657253"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579179141807.png" alt="1579179141807"></p>
+<p>Now we’re going to run a REST service on top of HBase. It’s just a service that you can query through</p>
+<p>HTTP requests, and we’re going to write a client that actually queries that service to store and retrieve</p>
+<p>data through the REST service.</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963426#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963426#overview</a></p>
+<p>返回结果：</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579179897880.png" alt="1579179897880"></p>
+<h3><span id="mongodb-overview">MongoDB Overview</span></h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579180346655.png" alt="1579180346655"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579180457304.png" alt="1579180457304"></p>
+<p>CAP theorem: <strong>MongoDB chooses consistency and partition-tolerance.</strong></p>
+<p>Since it dose have to deal with big data, partition-tolerance is something is has to do, and MongoDB chooses consistency over availability.</p>
+<p>So MongoDB has a single master, a single primary database that you have to talk to all the time to ensure consistency. But if that master goes down, it will result in a period of unavailability, while a new primary database is put into place.</p>
+<h4><span id="document-based-data-model">Document-based data model</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579235814767.png" alt="1579235814767"></p>
+<p>The big thing that’s different about MongoDB is that you can stick pretty much anything you want into MongoDB - basically, any JSON blob of data you can shove into a document in MongoDB. It doesn’t have to be structured, you don’t have to have the same schema across each document. You can put whatever you want in there.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579236174990.png" alt="1579236174990"></p>
+<p>You still need to think about what the queries are you going to be performing on this database and design your database schema accordingly. Think about what indices you might need for fast lookups for the queries you’re going to do. At the end of the day, it’s still a NoSQL database, so you cannot do joins efficiently, so you want to make sure your schema is denormalized as much as you can. </p>
+<h4><span id="mongodb-terminology">MongoDB terminology</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579238197250.png" alt="1579238197250"></p>
+<p>在MongoDB中我们讨论 Databse, Collection, 和 Document, 而不是 Database, Table, 和 Row.</p>
+<p>A MongoDB database contains collections, and a collection contains a collection of documents.</p>
+<p>And the main restriction here is simply that you cannot move data between collections across different databases, so if you do need to reference data between different collections, they do need to be within the same database.</p>
+<h4><span id="replication-sets">Replication Sets</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579250924977.png" alt="1579250924977"></p>
+<p>MongoDB has a single-master architecture, the idea being that we want to have consistency over availability, but you can have these secondary databases that maintain copies over time from your primary database, so, as writes happen to your primary database, those writes get replicated through an operation log to any secondary nodes that you might have attached to it.</p>
+<p>The way that replication chain works is kind of arbitrary. It actually just tries to figure out which server can it talk to most quickly.</p>
+<p>And I want to stress again that we haven’t even talked about big data yet. What we’re talking about here in replica sets is just having a single monolithic MongoDB server, where all of the data sits on that single server, and we’re replicating that data to backup servers.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254081608.png" alt="1579254081608"></p>
+<h4><span id="sharding-how-mongodb-handles-big-data">Sharding (How MongoDB handles big data)</span></h4><p>For actually scaling out data across more than one server with MongoDB, we need to set up something called sharding.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254450944.png" alt="1579254450944"></p>
+<p>The way sharding works is that we actually have multiple replica sets, where each replica set is responsible for some range of values on some indexed value in my database. So in order to get sharding to work, it requires that you set up an index on some unique value on your collection, and that index is used to actually balance the load of information among multiple replica sets, and then on each application server, whatever you’re using to talk to MongoDB, you’ll run a process called “mongos”, and “mongos” talks to exactly three configuration servers that you have running somewhere that knows about how things are partitioned and then uses that to figure out which replica set do I talk to to get the information that I want.</p>
+<p>“mongos” is running something called a balancer in the background. So, over time, if it finds that it actually doesn’t have an even distribution of values in whatever field you’re partitioning on, it can rebalance things across your replica sets in real time over time.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254879640.png" alt="1579254879640"></p>
+<h4><span id="neat-things-about-mongodb">Neat Things about MongoDB</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579255204023.png" alt="1579255204023"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579255278039.png" alt="1579255278039"></p>
+<h3><span id="activity-install-mongodb-and-integrate-spark-with-mongodb">[Activity] Install MongoDB and integrate Spark with MongoDB</span></h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963458#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963458#overview</a></p>
+<p>We’re going to read in the “u.user” data file from the MovieLens dataset, convert that into a dataframe in Spark and then write that dataframe out to MongoDB, and then we’re going to read it back and do a little query on it.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579328591006.png" alt="1579328591006"></p>
+<p>What we’re not doing is loading this data into Spark locally and then running a query on it - what it’s</p>
+<p>actually doing is figuring out how do I translate this SQL query into a MongoDB query and actually</p>
+<p>execute that on MongoDB and return the results back from MongoDB.</p>
+<h3><span id="activity-using-the-mongodb-shell">[Activity] Using the MongoDB Shell</span></h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963462#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963462#overview</a></p>
+<p>启动MongoDB Shell:</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406411404.png" alt="1579406411404"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579331041897.png" alt="1579331041897"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579331085161.png" alt="1579331085161"></p>
+<p>注意一点：we never set up an index. So when I said, “go find user ID 100”, it couldn’t do that very efficiently, and I actually had to do a full table scan, because MongoDB doesn’t automatically index things for you.</p>
+<p>I can do <code>db.users.explain().find( {user_id: 100} )</code> , and that will do an explain on the query, telling you what it will do under the hood to actually execute the command “find” on the expression “{user_id: 100}”. And you can see here all it’s doing is a scan on the “winningPlan”, looking for user ID 100 going forward. So it’s kind of just starts at the beginning of the entire database and chugs through it forward one record, one document at a time, until it stumbles across user ID 100, so, obviously, not the most efficient way of doing a lookup.</p>
+<p>So to fix that, let’s make an index. To do that, I can say, <code>db.users.createIndex( {user_id: 1} )</code> -and what this means is I want to create an index on the “user_id” field and the “1” just means it’s ascending. So that’s going to give you back a sort order that’s in ascending order, if you want to optimize sorts as well.</p>
+<p>Once it has its index on the “user_id” field, it can much more quickly look up where to find a given document for that user ID.</p>
+<p><strong>MongoDB does not set up an index for you on your primary key. You have to do it by hand, and if you forget to do it, your database is going to be horribly inefficient when you do lookups.</strong></p>
+<p>Let’s aggregate all of the users by occupation and figure out the average age for each occupation.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579405319292.png" alt="1579405319292"></p>
+<p>In MongoDB things that start with a dollar sign mean that this has some sort of a special meaning to MongoDB, so “$group” is a command that MongoDB recognizes.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579405698972.png" alt="1579405698972"></p>
+<p>How many users are in our database?</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579405757587.png" alt="1579405757587"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406239652.png" alt="1579406239652"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406303820.png" alt="1579406303820"></p>
+<h3><span id="choosing-a-database-technology">Choosing a database technology</span></h3><h4><span id="integration-considerations">Integration considerations</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406708880.png" alt="1579406708880"></p>
+<p>Different technologies have different connectors for different other technologies. </p>
+<p>例如, if you have a big analytics job that’s currently running in Apache Spark, then you probably want to limit yourself to external databases that can connect easily to Apache Spark.</p>
+<p>又例如, Maybe you have some front-end system that actually depends on having a SQL interface to a back-end database, and you’re thinking about moving from a monolithic relational database to a distributed non-relational database. In that case, it might make life a lot easier if the non-relational database you’re moving to offers some sort of SQL-like interface that can be easily migrated to from your front-end application.</p>
+<h4><span id="scaling-requirements">Scaling requirements</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406971416.png" alt="1579406971416"></p>
+<p>How much data are you really talking about? Is it going to grow unbounded over time?</p>
+<p>If so, then you need some sort of a database technology that is not limited to the data that you can store on one PC, right? You’re going to have to look at something like Cassandra or MongoDB or HBase, where you can actually distribute the storage of your data across an entire cluster and scale horizontally instead of vertically.</p>
+<p>Think, too, about your transaction rates: how many requests do you intend to get per second? You know, if we’re talking about thousands, then, again, a single database server is not going to cut it. You need something that’s distributed, where you can spread out the load of those transactions more evenly.</p>
+<h4><span id="support-considerations">Support considerations</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407277634.png" alt="1579407277634"></p>
+<p>So do you actually have the in-house expertise to spin up this new technology and actually configure it properly? It’s going to be harder than you think, especially if you’re using this in the real world or in any sort of situation, where you have personally identifiable information in the mix from your end users. In that case, you need to make sure you’re thinking very deeply about the <strong>security</strong> of your system, and the truth is most of the NoSQL databases we talked about, if you just configure them with their default settings, there’ll be no security at all. Anybody at all can connect to these things and retrieve data or write data into them, so you need to make sure you have someone available who knows what they’re doing for setting this up in a secure manner.</p>
+<p>That might mean if you are in a big organization that has these experts in house, that’s great, don’t even think about it - but if you’re in a smaller organization, you might want to consider: does this technology I’m choosing actually offer professional paid support that will help guide me through these setup decisions and the initial administration of my server over time? Or are there administrators that I can outsource the ongoing administration to over time? So in this case, you know, a more corporate solution like MongoDB might actually be a good choice, because, you know, they have paid support, and even for the more open-source Apache projects, there are companies out there that do offer paid professional support for them as well, so do your homework and try to figure out: can I really do this on my own, and if not, what resources are out there in the marketplace to help me? </p>
+<h4><span id="cap-considerations">CAP considerations</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407517312.png" alt="1579407517312"></p>
+<p>So again, the way to think about this is when you’re thinking about the scale of your requirements, do you need to have partition tolerance? Do you have sufficient scale, where you know you’re going to eventually need more than one server serving up the data just for handling the transactions you’re talking about, and also for the scale of the data that you’re talking about? If so, partition tolerance is non-negotiable, you need that one, and your only real choice in that case is consistency or availability.</p>
+<p>And that will determine which one of these sides of the triangle you might want to lean toward. So the type of application will determine what you want there. Is it actually OK if your system goes down for a few seconds or a few minutes? If not, then availability’s going to be your prime concern. Is it OK if you have eventual consistency, where, if you write something, people might get the old value back on subsequent reads for a few seconds? If so, who cares about consistency, right? Again, I would take availability instead. But if you’re dealing with something that’s dealing with real transactional information like, you know, stock transactions or some sort of financial transactions, you might value consistency above all else, and in that case, you want to really focus on that corner of the triangle.</p>
+<blockquote>
+<p>注：Now, I should point out that the CAP theorem isn’t really a hard-and-fast rule. The reality is these tradeoffs have become a little bit more loose in recent years. For example, consider Cassandra: is it really trading off consistency for availability and partition tolerance? Well, you can actually configure the amount of consistency that you want from Cassandra - you can tell it, “I want to make sure I get back the same result from every replica of this data before I actually consider that transaction to be final”, and if you’re running it in that mode, you’re kind of getting all three.</p>
+<p>The lines are getting blurred between these different tradeoffs over time. So the honest truth is any of these technologies can be made to work in pretty much any situation, if you try hard enough. It’s really a question of choosing the technology that’s best suited to the tradeoffs that you want to make.</p>
+</blockquote>
+<h4><span id="simplicity">Simplicity</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408720595.png" alt="1579408720595"></p>
+<p>If you don’t need to set up a highly complex NoSQL cluster and something that needs a lot of maintenance, like, you know, MongoDB or HBase, where you have all these external servers that maintain its configuration, don’t do it, if you don’t need to. </p>
+<p><strong>Think about the minimum requirements that you need for your system and keep it as simple as possible.</strong></p>
+<p>If you don’t need to deal with massive scale, don’t deploy a NoSQL database, if you don’t already have one, right? Just use a MySQL instance somewhere, it will be fine.</p>
+<p>So keep it simple, do not deploy a whole new system that does not have good expertise within your organization, unless you really need to. Simple technologies and simple architectures are going to be a lot easier to maintain.</p>
+<h4><span id="examples">Examples</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408982980.png" alt="1579408982980"></p>
+<p>Go with MySQL.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409021695.png" alt="1579409021695"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409163590.png" alt="1579409163590"></p>
+<p>Well, first of all, step back and ask yourself, “do I even have enough scale here to warrant a non-relational database at all? Why am I even thinking about this question - right? - if all I’m doing is analytics, that’s what Hadoop is for, that’s what Spark is for.”</p>
+<p>如果只是需要分析：You can import this data into HDFS on your cluster and analyze it offline. </p>
+<p>如果是想要很快的得到结果：If we’re not talking about high transaction rates here, where we care about very quickly getting the answer to a specific query over and over and over again, thousands of times per second, - that’s the sort of a problem that NoSQL databases are meant for.</p>
+<p>You could solve this problem just by importing your log data into HDFS, but it doesn’t involve external databases at all. Once that data is residing on my HDFS cluster, I can write a Spark job that mines that data, assigns the appropriate structure to it, and it can actually run machine learning algorithms on it even using Spark’s MLlib.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409497341.png" alt="1579409497341"></p>
+<p>Just use your Hadoop cluster and the capabilities that the Hadoop ecosystem gives you, without resorting to outside database technologies.</p>
+<p>There’s no need here to set up an external database at all necessarily, unless you need to vend this data to a very large audience externally. So if you were actually building Google Analytics for real, where you had, you know, millions of people that wanted to hit it and get answers from it at once, then, sure, you’d want to expose that through some sort of an external database system that’s integrated with your cluster.</p>
+<p>But if you’re just using this internally for analytic use, there’s no need to even talk about things like NoSQL or Mongo or Cassandra or something like that.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409662825.png" alt="1579409662825"></p>
+<p>Consistency:  it’s OK if, for a few seconds after new recommendations have been computed for a user, that you’re still getting the old recommendations.</p>
+<p>So, thinking back to the CAP theorem, we care about availability, we care about partition tolerance very much, the thing that we’re willing to give up, maybe, is consistency.</p>
+<p>In that case, Cassandra might be a good choice. </p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409873125.png" alt="1579409873125"></p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579410043297.png" alt="1579410043297"></p>
+<p>We posed this scenario, where you’re building a massive stock trading system, where maybe you want to run a big analytics job on Hadoop or Spark in the background, but you still need to have some sort of a front-end interface to the actual stock trades themselves, so what would be a good choice of a database in this situation?</p>
+<p>选择 MongoDB 或者 HBase 都可以。对于 MongoDB, there is a big company behind it that makes its living selling support for it. 另一方面，Now, there are other companies out there that do specialize in offering support for things like HBase or other Apache projects, so don’t make that a hard decision there.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/HBase/" rel="tag"># HBase</a>
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
+            <a href="/tags/NoSQL/" rel="tag"># NoSQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/" rel="next" title="Using relational data stores with Hadoop —— Hive & Sqoop">
+                <i class="fa fa-chevron-left"></i> Using relational data stores with Hadoop —— Hive & Sqoop
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/" rel="prev" title="Feeding Data to your Cluster - Kafka">
+                Feeding Data to your Cluster - Kafka <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="qypx">
+            
+              <p class="site-author-name" itemprop="name">qypx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qypx" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Why NoSQL?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">What is HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">CRUD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">HBase architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">HBase data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.4.</span> <span class="nav-text">Ways to access HBase</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">[Activity] Import movie ratings into HBase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">MongoDB Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.1.</span> <span class="nav-text">Document-based data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.2.</span> <span class="nav-text">MongoDB terminology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.3.</span> <span class="nav-text">Replication Sets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.4.</span> <span class="nav-text">Sharding (How MongoDB handles big data)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.5.</span> <span class="nav-text">Neat Things about MongoDB</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">[Activity] Install MongoDB and integrate Spark with MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">[Activity] Using the MongoDB Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">Choosing a database technology</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.1.</span> <span class="nav-text">Integration considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.2.</span> <span class="nav-text">Scaling requirements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.3.</span> <span class="nav-text">Support considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.4.</span> <span class="nav-text">CAP considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.5.</span> <span class="nav-text">Simplicity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.6.</span> <span class="nav-text">Examples</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qypx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

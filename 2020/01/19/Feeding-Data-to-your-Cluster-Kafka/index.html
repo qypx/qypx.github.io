@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop,Kafka,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Kafka What is streaming? Enter Kafka Kafka architecture How Kafka scales   Let’s play [Activity] Setting up Kafka, and publishing some data [Activity] Publishing web logs with Kafka   Flume What is">
+<meta name="keywords" content="Hadoop,Kafka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Feeding Data to your Cluster - Kafka">
+<meta property="og:url" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="Kafka What is streaming? Enter Kafka Kafka architecture How Kafka scales   Let’s play [Activity] Setting up Kafka, and publishing some data [Activity] Publishing web logs with Kafka   Flume What is">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417930302.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579418299281.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419075767.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419261062.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419425921.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579420886266.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422270057.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422355086.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422381621.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422490612.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579423582139.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579423781528.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425760102.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425301835.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579424846813.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579424947616.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425396680.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425190618.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425924768.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579427003629.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425361515.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579426725240.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579426873190.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579427060001.png">
+<meta property="og:updated_time" content="2020-01-19T09:50:39.832Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Feeding Data to your Cluster - Kafka">
+<meta name="twitter:description" content="Kafka What is streaming? Enter Kafka Kafka architecture How Kafka scales   Let’s play [Activity] Setting up Kafka, and publishing some data [Activity] Publishing web logs with Kafka   Flume What is">
+<meta name="twitter:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/">
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+
+  <title>Feeding Data to your Cluster - Kafka | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qypx の blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">机会是留给有准备的人的.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Feeding Data to your Cluster - Kafka</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-19T14:48:52+08:00">
+                2020-01-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-19T17:50:39+08:00">
+                2020-01-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#kafka">Kafka</a><ul>
+<li><a href="#what-is-streaming">What is streaming?</a></li>
+<li><a href="#enter-kafka">Enter Kafka</a></li>
+<li><a href="#kafka-architecture">Kafka architecture</a></li>
+<li><a href="#how-kafka-scales">How Kafka scales</a></li>
+</ul>
+</li>
+<li><a href="#lets-play">Let’s play</a><ul>
+<li><a href="#activity-setting-up-kafka-and-publishing-some-data">[Activity] Setting up Kafka, and publishing some data</a></li>
+<li><a href="#activity-publishing-web-logs-with-kafka">[Activity] Publishing web logs with Kafka</a></li>
+</ul>
+</li>
+<li><a href="#flume">Flume</a><ul>
+<li><a href="#what-is-flume">What is Flume?</a></li>
+<li><a href="#flume-agent">Flume Agent</a></li>
+<li><a href="#built-in-source-types">Built-in Source Types</a></li>
+<li><a href="#built-in-sink-types">Built-in Sink Types</a></li>
+</ul>
+</li>
+<li><a href="#lets-play-1">Let’s play</a><ul>
+<li><a href="#activity-set-up-flume-and-publish-logs-with-it">[Activity] Set up Flume and publish logs with it</a></li>
+<li><a href="#activity-set-up-flume-to-monitor-a-directory-and-store-its-data-in-hdfs">[Activity] Set up Flume to monitor a directory and store its data in HDFS</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h3><span id="kafka">Kafka</span></h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png" alt="1579416693703"></p>
+<h4><span id="what-is-streaming">What is streaming?</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png" alt="1579417084705"></p>
+<p>With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it into HBase or some other database or maybe you’ll actually process it in real time as it comes in.</p>
+<p>Usually when we’re talking about Big Data, there’s a big flow of it coming in all the time and you want to be dealing with it as it comes instead of storing it up and dealing with it in batches. </p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417930302.png" alt="1579417930302"></p>
+<h4><span id="enter-kafka">Enter Kafka</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579418299281.png" alt="1579418299281"></p>
+<p>The good thing is that Kafka because it stores it, consumers can catch up from where they last left off, so it will maintain the point where each consumer left off and allow them to just pick up whenever they want to. So it can publish data in real time to your consumers, but if your consumer goes off line or just wants to catch up from some point in the past, it can do that too.</p>
+<a id="more"></a>
+
+<h4><span id="kafka-architecture">Kafka architecture</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419075767.png" alt="1579419075767"></p>
+<p>Even though it says app, that doesn’t necessarily mean you’re going to be developing an app in order to use Kafka, often there are ones you can just use off the shelf and Kafka even comes with some built-in that might serve your purposes.</p>
+<p>You can make these pretty fancy systems that are very scalable, very fast, that can transform data and store it, and do whatever you want with it really, as it comes in.</p>
+<h4><span id="how-kafka-scales">How Kafka scales</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419261062.png" alt="1579419261062"></p>
+<h3><span id="lets-play">Let’s play</span></h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419425921.png" alt="1579419425921"></p>
+<h4><span id="activity-setting-up-kafka-and-publishing-some-data">[Activity] Setting up Kafka, and publishing some data</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963832#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963832#overview</a></p>
+<p>Kafka depends on ZooKeeper to keep track of what topics exists.</p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579420886266.png" alt="1579420886266"></p>
+<p>in the real world, this would be massive floods of data coming in from massive web server fleets and things. It can handle that and publish it scalably and reliably to wherever it needs to go. So that’s really what it’s all about, it’s a scalable and reliable mechanism for publishing and subscribing to massive data streams.</p>
+<h4><span id="activity-publishing-web-logs-with-kafka">[Activity] Publishing web logs with Kafka</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963846#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963846#overview</a></p>
+<p>So let’s do something a little bit closer to what you might do in reality. Let’s use a built-in Kafka connector to actually monitor a file and publish new lines on that file to a given Kafka topic that then get written out to some other file somewhere else.</p>
+<p>使用的一些Linux语句：</p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422270057.png" alt="1579422270057"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422355086.png" alt="1579422355086"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422381621.png" alt="1579422381621"></p>
+<h3><span id="flume">Flume</span></h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422490612.png" alt="1579422490612"></p>
+<h4><span id="what-is-flume">What is Flume?</span></h4><p>You can really think of Flume as a bonafide part of the Hadoop ecosystem, as opposed to Kafka which is much more general purpose in its design.</p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579423582139.png" alt="1579423582139"></p>
+<p>Now you might think to yourself “Why can’t I just directly transfer data across to my HDFS cluster?” Well, you need some sort of a buffer in between these two things.</p>
+<h4><span id="flume-agent">Flume Agent</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579423781528.png" alt="1579423781528"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425760102.png" alt="1579425760102"></p>
+<p>Flume与Kafka的一个区别：It’s not really like Kafka where Kafka just stores up data indefinitely and people can pull that data in whenever they want to. Kafka does expire data after some amount of time, but with Flume, basically your sink grabs data from Flume and once it’s been grabbed from the channel it gets deleted, so flume does not hang onto your messages or your events any longer than it needs to, as soon as your sync processes it, it throws it away. Kafka is a little bit more easier to set up if you have data going to multiple different places that might be pulling at different rates.</p>
+<h4><span id="built-in-source-types">Built-in Source Types</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425301835.png" alt="1579425301835"></p>
+<h4><span id="built-in-sink-types">Built-in Sink Types</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579424846813.png" alt="1579424846813"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579424947616.png" alt="1579424947616"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425396680.png" alt="1579425396680"></p>
+<p>It’s basically a way of smoothing out the traffic between the data coming in from your logs or whatever your source might be and where you’re writing it to.</p>
+<h3><span id="lets-play">Let’s play</span></h3><h4><span id="activity-set-up-flume-and-publish-logs-with-it">[Activity] Set up Flume and publish logs with it</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963868#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963868#overview</a></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425190618.png" alt="1579425190618"></p>
+<p>All you really need to do to get Flume running is write a configuration file that defines what sources channels and sinks are associated with each agent that you want in your Flume setup.</p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425924768.png" alt="1579425924768"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579427003629.png" alt="1579427003629"></p>
+<h4><span id="activity-set-up-flume-to-monitor-a-directory-and-store-its-data-in-hdfs">[Activity] Set up Flume to monitor a directory and store its data in HDFS</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425361515.png" alt="1579425361515"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579426725240.png" alt="1579426725240"></p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579426873190.png" alt="1579426873190"></p>
+<p>What ends up happening is that we get new subdirectories being generated for each 10 minute interval that goes by.</p>
+<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579427060001.png" alt="1579427060001"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/" rel="next" title="Using non-relational data stores with Hadoop - NoSQL & HBase & MongoDB">
+                <i class="fa fa-chevron-left"></i> Using non-relational data stores with Hadoop - NoSQL & HBase & MongoDB
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="qypx">
+            
+              <p class="site-author-name" itemprop="name">qypx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qypx" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">What is streaming?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">Enter Kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">Kafka architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">How Kafka scales</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">Let’s play</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">[Activity] Setting up Kafka, and publishing some data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">[Activity] Publishing web logs with Kafka</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">Flume</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">What is Flume?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">Flume Agent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.3.</span> <span class="nav-text">Built-in Source Types</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.4.</span> <span class="nav-text">Built-in Sink Types</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">Let’s play</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.1.</span> <span class="nav-text">[Activity] Set up Flume and publish logs with it</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.2.</span> <span class="nav-text">[Activity] Set up Flume to monitor a directory and store its data in HDFS</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qypx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
