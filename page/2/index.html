@@ -284,6 +284,551 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/" itemprop="url">Using non-relational data stores with Hadoop - NoSQL & HBase & MongoDB</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-16T15:52:41+08:00">
+                2020-01-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-19T14:29:20+08:00">
+                2020-01-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!-- toc -->
+
+<ul>
+<li><a href="#why-nosql">Why NoSQL?</a></li>
+<li><a href="#what-is-hbase">What is HBase</a><ul>
+<li><a href="#crud">CRUD</a></li>
+<li><a href="#hbase-architecture">HBase architecture</a></li>
+<li><a href="#hbase-data-model">HBase data model</a></li>
+<li><a href="#ways-to-access-hbase">Ways to access HBase</a></li>
+</ul>
+</li>
+<li><a href="#activity-import-movie-ratings-into-hbase">[Activity] Import movie ratings into HBase</a></li>
+<li><a href="#mongodb-overview">MongoDB Overview</a><ul>
+<li><a href="#document-based-data-model">Document-based data model</a></li>
+<li><a href="#mongodb-terminology">MongoDB terminology</a></li>
+<li><a href="#replication-sets">Replication Sets</a></li>
+<li><a href="#sharding-how-mongodb-handles-big-data">Sharding (How MongoDB handles big data)</a></li>
+<li><a href="#neat-things-about-mongodb">Neat Things about MongoDB</a></li>
+</ul>
+</li>
+<li><a href="#activity-install-mongodb-and-integrate-spark-with-mongodb">[Activity] Install MongoDB and integrate Spark with MongoDB</a></li>
+<li><a href="#activity-using-the-mongodb-shell">[Activity] Using the MongoDB Shell</a></li>
+<li><a href="#choosing-a-database-technology">Choosing a database technology</a><ul>
+<li><a href="#integration-considerations">Integration considerations</a></li>
+<li><a href="#scaling-requirements">Scaling requirements</a></li>
+<li><a href="#support-considerations">Support considerations</a></li>
+<li><a href="#cap-considerations">CAP considerations</a></li>
+<li><a href="#simplicity">Simplicity</a></li>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h3 id="Why-NoSQL"><a href="#Why-NoSQL" class="headerlink" title="Why NoSQL?"></a>Why NoSQL?</h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So *<em>if you’re doing analytic work, relational databases are awesome. *</em>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
+<p>BUT let’s imagine you need to take things up to the next level. You’re going to start to run into some limitations with SQL and relational database systems.</p>
+<p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to *<em>very quickly answer a specific question *</em>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
+<p>And if you need to do that <strong>at a very large scale very quickly across a massive dataset</strong>, something like MySQL might not cut it. You know, if you’re an Amazon or a Google, you might need something that can even <strong>handle tens of thousands of transactions per second without breaking a sweat. And that’s where NoSQL comes in.</strong></p>
+<p>These are alternative database systems that <em>give up</em> a rich query language like SQL <em>for</em> the ability to very quickly and at great scale answer very simple questions. So for systems like that you want something called NoSQL, also known as non-relational databases, or not only SQL - that’s a term that comes up sometimes, too. And <strong>these systems are built to scale horizontally forever, and also built to be very fast and very resilient.</strong></p>
+<p>Up first, let’s talk about HBase. HBase is actually built on top of HDFS, so it allows you to have a very fast, very scalable transactional system to query your data that’s stored on a horizontally partitioned HDFS file system. So if you need to expose your massive data that’s sitting on your Hadoop cluster, Hbase can be a great way to expose that data to a web service, to web applications, anything that needs to operate very quickly and at a very high scale.</p>
+<p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png" alt="1579161940219"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/" itemprop="url">Using relational data stores with Hadoop —— Hive & Sqoop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-15T12:50:44+08:00">
+                2020-01-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-16T15:39:33+08:00">
+                2020-01-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!-- toc -->
+
+<ul>
+<li><a href="#hive">HIVE</a><ul>
+<li><a href="#what-is-hive">What is Hive?</a><ul>
+<li><a href="#why-hive">Why Hive</a></li>
+<li><a href="#why-not-hive">Why not Hive</a></li>
+<li><a href="#hiveql">HiveQL</a></li>
+</ul>
+</li>
+<li><a href="#activity-use-hive-to-find-the-most-popular-movie">[Activity] Use Hive to find the most popular movie</a></li>
+<li><a href="#how-hive-works">How Hive works?</a><ul>
+<li><a href="#schema-on-read">Schema on read</a></li>
+<li><a href="#where-is-the-data-内部表与外部表">Where is the data? (内部表与外部表)</a></li>
+<li><a href="#partitioning-分区">Partitioning 分区</a></li>
+<li><a href="#ways-to-use-hive">Ways to use Hive</a></li>
+</ul>
+</li>
+<li><a href="#activity-use-hive-to-find-the-movie-with-the-highest-average-rating">[Activity] Use Hive to find the movie with the highest average rating</a></li>
+</ul>
+</li>
+<li><a href="#sqoop">Sqoop</a><ul>
+<li><a href="#integrating-mysql-with-hadoop">Integrating MySQL with Hadoop</a></li>
+<li><a href="#importexport-data-mysql-hdfshadoop">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</a></li>
+<li><a href="#play-with-mysql-and-sqoop">Play with MySQL and Sqoop</a><ul>
+<li><a href="#activity-install-mysql-and-import-our-movie-data">[Activity] Install MySQL and import our movie data</a></li>
+<li><a href="#activity-use-sqoop-to-import-data-from-mysql-to-hdfshive">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</a></li>
+<li><a href="#activity-use-sqoop-tp-export-data-from-hadoop-to-mysql">[Activity] Use Sqoop tp export data from Hadoop to MySQL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#结语">结语</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png" alt="1579064046135"></p>
+<h3 id="What-is-Hive"><a href="#What-is-Hive" class="headerlink" title="What is Hive?"></a>What is Hive?</h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064255091.png" alt="1579064255091"></p>
+<h4 id="Why-Hive"><a href="#Why-Hive" class="headerlink" title="Why Hive"></a>Why Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579082214734.png" alt="1579082214734"></p>
+<h4 id="Why-not-Hive"><a href="#Why-not-Hive" class="headerlink" title="Why not Hive"></a>Why not Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579083363568.png" alt="1579083363568"></p>
+<p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
+<p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/14/Hadoop-Course-Overview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/14/Hadoop-Course-Overview/" itemprop="url">Hadoop Course Overview</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T21:56:54+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-14T22:00:49+08:00">
+                2020-01-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>课程：</p>
+<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=996228" target="_blank" rel="noopener"><img src="https://i.udemycdn.com/course/240x135/996228_af5f_3.jpg" alt="The Ultimate Hands-On Hadoop - Tame your Big Data!"></a><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/" target="_blank" rel="noopener"><strong>The Ultimate Hands-On Hadoop - Tame your Big Data!</strong></a></p>
+<p><a href="https://sundog-education.com/hadoop-materials/" target="_blank" rel="noopener">Course Materials</a></p>
+<h4><span id="what-youll-learn">What you’ll learn</span></h4><ul>
+<li>Design distributed systems that manage “big data” using Hadoop and related technologies.</li>
+<li>Use HDFS and MapReduce for storing and analyzing data at scale.</li>
+<li>Use Pig and Spark to create scripts to process data on a Hadoop cluster in more complex ways.</li>
+<li>Analyze relational data using Hive and MySQL</li>
+<li>Analyze non-relational data using HBase, Cassandra, and MongoDB</li>
+<li>Query data interactively with Drill, Phoenix, and Presto</li>
+<li>Choose an appropriate data storage technology for your application</li>
+<li>Understand how Hadoop clusters are managed by YARN, Tez, Mesos, Zookeeper, Zeppelin, Hue, and Oozie.</li>
+<li>Publish data to your Hadoop cluster using Kafka, Sqoop, and Flume</li>
+<li>Consume streaming data using Spark Streaming, Flink, and Storm</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/14/Spark/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1570,546 +2115,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/sql语言/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/sql语言/" itemprop="url">sql语言</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T18:37:37+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T23:19:38+08:00">
-                2020-01-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- toc -->
-
-<ul>
-<li><a href="#ddl与dml">DDL与DML</a><ul>
-<li><a href="#insert">INSERT</a></li>
-<li><a href="#delete">DELETE</a></li>
-<li><a href="#update">UPDATE</a></li>
-<li><a href="#create">CREATE</a></li>
-<li><a href="#drop">DROP</a></li>
-<li><a href="#alter">ALTER</a></li>
-<li><a href="#rename">RENAME</a></li>
-</ul>
-</li>
-<li><a href="#语法顺序与执行顺序">语法顺序与执行顺序</a></li>
-</ul>
-<!-- tocstop -->
-
-<h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
-<p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
-<p><img src="/2020/01/12/sql语言/1578825616684.png" alt="1578825616684"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/12/sql语言/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/sql语句中的drop-truncate-delete/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/sql语句中的drop-truncate-delete/" itemprop="url">sql语句中的drop, truncate, delete</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T18:34:28+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T15:57:00+08:00">
-                2020-01-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考：</p>
-<p><a href="https://blog.csdn.net/lovezhaohaimig/article/details/80184994" target="_blank" rel="noopener">https://blog.csdn.net/lovezhaohaimig/article/details/80184994</a></p>
-<p><a href="https://www.cnblogs.com/xianyao/p/11613021.html" target="_blank" rel="noopener">https://www.cnblogs.com/xianyao/p/11613021.html</a></p>
-<ol>
-<li><code>drop table 表名称</code></li>
-</ol>
-<p>作用：删除内容和定义，释放空间。简单来说就是把整个表去掉.以后要新增数据是不可能的,除非新增一个表。</p>
-<p>把表的结构也删除了 下次要使用的时候要重新创建表的结构再插入数据。</p>
-<p><strong>即删除表内容及表结构（或表定义）</strong>。</p>
-<p><strong>不能回滚</strong></p>
-<ol start="2">
-<li><code>truncate table 表名称</code></li>
-</ol>
-<p>作用：删除内容、释放空间但不删除定义。与drop不同的是,他只是清空表数据而已,不删除表结构。</p>
-<p>truncate table test 后，向test表添加数据，id标识列连续了(体现了truncate删除是释放空间）</p>
-<p>插入的字段的id重新从1开始递增 1、2、3…..<br><strong>即删除表内容，不删除表结构</strong>。</p>
-<p><strong>in MySQL, resets auto_increment PKs</strong></p>
-<p><strong>不能回滚</strong></p>
-<ol start="3">
-<li><code>delete from 表名称 where 列名称 = 值</code></li>
-</ol>
-<p>作用：删除整表中的行，表结构不会删除。</p>
-<p>删除内容不删除定义，不释放空间。</p>
-<p>用delete删除数据，然后添加。可以看到添加之后id标识不连续。（说明delete删除不释放空间）</p>
-<p>如果重新插入数据时对应的id在上次基础之上递增 4、5、6….</p>
-<p>delete语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存,以便进行回滚操作。</p>
-<p><strong>即不带where的delete: 删除表内容，不删除表结构</strong></p>
-<p><strong>可回滚</strong></p>
-<ul>
-<li><p>执行速度，一般来说: drop&gt; truncate &gt; delete。</p>
-</li>
-<li><p>delete语句是数据库操作语言(dml)，这个操作会放到 rollback segment中，事务提交之后才生效；如果有相应的 trigger，执行的时候将被触发。</p>
-</li>
-<li><p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/两数之和/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/两数之和/" itemprop="url">两数之和</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T13:50:20+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-12T16:00:37+08:00">
-                2020-01-12
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">两数之和（难度：简单）</a></p>
-<p><img src="/2020/01/12/两数之和/1578808347100.png" alt="1578808347100"></p>
-<h4><span id="方法一暴力法">方法一：暴力法</span></h4><p>遍历每个元素 x，并查找是否存在一个值与 target - x相等的目标元素。\</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] == target - nums[i]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, j &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n^2)</p>
-<p>空间复杂度：O(1)</p>
-<hr>
-<h4><span id="方法二两遍哈希表">方法二：两遍哈希表</span></h4><p>为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。</p>
-<p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)降低到 O(1)。<strong>哈希表正是为此目的而构建的，它支持以 近似恒定的时间进行快速查找</strong>。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)。</p>
-<p><strong>使用两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target - nums[i]）是否存在于表中。</strong>注意，该目标元素不能是 nums[i]本身！</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> complement = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, map.get(complement) &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n)，遍历两次，由于哈希表将查找时间缩短到 O(1) ，所以时间复杂度为 O(n)。</p>
-<p>空间复杂度：O(n)，所需的额外空间取决于哈希表中存储的元素数量。</p>
-<hr>
-<h4><span id="方法三一遍哈希表">方法三：一遍哈希表</span></h4><p>在进行迭代并将元素插入到表中的同时，回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target - nums[i]))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;map.get(target - nums[i]), i&#125;;</span><br><span class="line">            map.put(nums[i],i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n)，只遍历一次。</p>
-<p>空间复杂度：O(n)。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2162,7 +2167,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">84</span>
+                  <span class="site-state-item-count">87</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2184,7 +2189,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>RNN相关资料（LSTM, GRU）</title>
+    <url>/2020/02/15/RNN%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
+    <content><![CDATA[<h4><span id="pdf">pdf：</span></h4><p><a href="https://www.aclweb.org/anthology/C16-1311.pdf" target="_blank" rel="noopener">Effective LSTMs for Target-Dependent Sentiment Classification</a></p>
+<h4><span id="网页">网页：</span></h4><p><a href="https://www.jianshu.com/p/95d5c461924c" target="_blank" rel="noopener">【译】理解LSTM（通俗易懂版）</a></p>
+<p><a href="https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be" target="_blank" rel="noopener">Understanding GRU Networks</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/32481747" target="_blank" rel="noopener">人人都能看懂的GRU</a></p>
+<p><a href="https://www.cnblogs.com/jiangxinyang/p/9376021.html" target="_blank" rel="noopener">深度学习之GRU网络</a></p>
+<p><a href="https://www.jianshu.com/p/3774d46b665e" target="_blank" rel="noopener">lstm和gru结构的再理解</a></p>
+<p><a href="http://www.sohu.com/a/336551522_99979179" target="_blank" rel="noopener">图解LSTM与GRU单元的各个公式和区别 </a></p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>RNN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CNN相关资料</title>
+    <url>/2020/02/15/CNN%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
+    <content><![CDATA[<h4><span id="pdf">pdf：</span></h4><p><a href="https://www.aclweb.org/anthology/D14-1181.pdf" target="_blank" rel="noopener">Convolutional Neural Networks for Sentence Classification</a></p>
+<h4><span id="网页">网页：</span></h4><p><a href="https://www.cnblogs.com/yelbosh/p/5808706.html" target="_blank" rel="noopener">卷积神经网络CNN在自然语言处理中的应用</a></p>
+<h4><span id="卷积与矩阵乘法">卷积与矩阵乘法：</span></h4><p><img src="/2020/02/15/CNN相关资料/%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.jpg" alt="卷积与矩阵乘法"></p>
+<p><img src="/2020/02/15/CNN相关资料/example.jpg" alt="example"></p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>CNN</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>移动零</title>
+    <url>/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">移动零（难度：简答）</a></p>
+<p><img src="/2020/02/05/移动零/1580888243775.png" alt="1580888243775"></p>
+<p>问题的两个要求是：</p>
+<ul>
+<li>将所有 0 移动到数组末尾。</li>
+<li>所有非零元素必须保持其原始顺序。</li>
+</ul>
+<p>这里很好地认识到这两个需求是相互排斥的，也就是说，你可以解决单独的子问题，然后将它们组合在一起以得到最终的解决方案。</p>
+<h4><span id="方法">方法：</span></h4><ul>
+<li>一个指针<code>i</code>从前到后遍历数组，每当遇到非0数时，令 <code>nums[cur] = nums[i]; cur++;</code>，<code>cur</code>是另一个指针（从0开始），记录当前位置。</li>
+<li>当<code>i</code>遍历完后，此时<code>cur</code>指向的位置到数组的末尾全赋为0即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">                nums[cur] = nums[i];</span><br><span class="line">                cur++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(cur &lt; nums.length)&#123;</span><br><span class="line">            nums[cur] = <span class="number">0</span>;</span><br><span class="line">            cur++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/02/05/移动零/1580890229187.png" alt="1580890229187"></p>
+<p><strong>复杂度</strong></p>
+<ul>
+<li>时间复杂度：O(n)。</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>最小覆盖子串</title>
     <url>/2020/01/28/%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">最小覆盖子串（难度：困难）</a></p>
