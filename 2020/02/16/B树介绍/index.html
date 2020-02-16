@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：      定义任意非叶子结点最多只">
+<meta name="description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
 <meta name="keywords" content="B树,知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="B树介绍">
 <meta property="og:url" content="http://qypx.github.io/2020/02/16/B树介绍/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：      定义任意非叶子结点最多只">
+<meta property="og:description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190817142029576.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190817142644325.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="http://qypx.github.io/2020/02/16/B树介绍/1581863461822.png">
-<meta property="og:updated_time" content="2020-02-16T14:42:38.202Z">
+<meta property="og:updated_time" content="2020-02-16T15:02:27.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="B树介绍">
-<meta name="twitter:description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：      定义任意非叶子结点最多只">
+<meta name="twitter:description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70">
 
 
@@ -338,7 +338,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-16T22:42:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-16T23:02:27+08:00">
                 2020-02-16
               </time>
             
@@ -384,6 +384,7 @@
 
 <blockquote>
 <p>参考：<a href="https://blog.csdn.net/A_zhangq/article/details/99662693" target="_blank" rel="noopener">https://blog.csdn.net/A_zhangq/article/details/99662693</a></p>
+<p><a href="https://blog.csdn.net/qq_35571554/article/details/82759668" target="_blank" rel="noopener">漫画叙述B+树和B-树，很值得看!</a></p>
 </blockquote>
 <h3><span id="b树">B树</span></h3><p>B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。<strong>B-树就是指的B树</strong>。</p>
 <p>B-树是一种多路搜索树（并不是二叉的）：    </p>
