@@ -284,6 +284,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/02/16/B树介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/16/B树介绍/" itemprop="url">B树介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T19:02:44+08:00">
+                2020-02-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-16T22:42:38+08:00">
+                2020-02-16
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!-- toc -->
+
+<ul>
+<li><a href="#b树">B树</a></li>
+<li><a href="#b树">B+树</a></li>
+<li><a href="#b树">B*树</a></li>
+<li><a href="#总结">总结</a></li>
+</ul>
+<!-- tocstop -->
+
+<blockquote>
+<p>参考：<a href="https://blog.csdn.net/A_zhangq/article/details/99662693" target="_blank" rel="noopener">https://blog.csdn.net/A_zhangq/article/details/99662693</a></p>
+</blockquote>
+<h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p>B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。<strong>B-树就是指的B树</strong>。</p>
+<p>B-树是一种多路搜索树（并不是二叉的）：    </p>
+<ol>
+<li><p>定义任意非叶子结点最多只有M个儿子，且M&gt;2；    </p>
+</li>
+<li><p>根结点的儿子数为 [2, M]；    </p>
+</li>
+<li><p>除根结点以外的非叶子结点的儿子数为 [M/2, M]；    </p>
+</li>
+<li><p>每个结点存放至少 M/2-1（取上整）和至多  M-1 个关键字；（至少 2个关键字）    </p>
+</li>
+<li><p>非叶子结点的关键字个数 = 指向儿子的指针个数 - 1；    </p>
+</li>
+<li><p>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且 K[i] &lt; K[i+1] ；    </p>
+</li>
+<li><p>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1] 指向关键字小于 K[1] 的子树，P[M] 指向关键字大于            K[M-1] 的子树，其它 P[i] 指向关键字属于(K[i-1], K[i]) 的子树；    </p>
+</li>
+<li><p>所有叶子结点位于同一层；    </p>
+</li>
+</ol>
+<p>如 (M = 3)：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>B-树的搜索：</strong></p>
+<p>从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点；重复，直到所对应的儿子指针为空，或已经是叶子结点.</p>
+<p><strong>B-树的特性：</strong></p>
+<ul>
+<li>关键字集合分布在整颗树中；</li>
+<li>任何一个关键字出现且只出现在一个结点中；</li>
+<li>搜索有可能在非叶子结点结束；</li>
+<li>其搜索性能等价于在关键字全集内做一次二分查找；</li>
+<li>自动层次控制；</li>
+</ul>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/16/B树介绍/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/02/15/RNN相关资料/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1802,200 +1983,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/" itemprop="url">Feeding Data to your Cluster - Kafka & Flume</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-19T14:48:52+08:00">
-                2020-01-19
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-19T17:53:02+08:00">
-                2020-01-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- toc -->
-
-<ul>
-<li><a href="#kafka">Kafka</a><ul>
-<li><a href="#what-is-streaming">What is streaming?</a></li>
-<li><a href="#enter-kafka">Enter Kafka</a></li>
-<li><a href="#kafka-architecture">Kafka architecture</a></li>
-<li><a href="#how-kafka-scales">How Kafka scales</a></li>
-</ul>
-</li>
-<li><a href="#lets-play">Let’s play</a><ul>
-<li><a href="#activity-setting-up-kafka-and-publishing-some-data">[Activity] Setting up Kafka, and publishing some data</a></li>
-<li><a href="#activity-publishing-web-logs-with-kafka">[Activity] Publishing web logs with Kafka</a></li>
-</ul>
-</li>
-<li><a href="#flume">Flume</a><ul>
-<li><a href="#what-is-flume">What is Flume?</a></li>
-<li><a href="#flume-agent">Flume Agent</a></li>
-<li><a href="#built-in-source-types">Built-in Source Types</a></li>
-<li><a href="#built-in-sink-types">Built-in Sink Types</a></li>
-</ul>
-</li>
-<li><a href="#lets-play-1">Let’s play</a><ul>
-<li><a href="#activity-set-up-flume-and-publish-logs-with-it">[Activity] Set up Flume and publish logs with it</a></li>
-<li><a href="#activity-set-up-flume-to-monitor-a-directory-and-store-its-data-in-hdfs">[Activity] Set up Flume to monitor a directory and store its data in HDFS</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png" alt="1579416693703"></p>
-<h4 id="What-is-streaming"><a href="#What-is-streaming" class="headerlink" title="What is streaming?"></a>What is streaming?</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png" alt="1579417084705"></p>
-<p>With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it into HBase or some other database or maybe you’ll actually process it in real time as it comes in.</p>
-<p>Usually when we’re talking about Big Data, there’s a big flow of it coming in all the time and you want to be dealing with it as it comes instead of storing it up and dealing with it in batches. </p>
-<p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417930302.png" alt="1579417930302"></p>
-<h4 id="Enter-Kafka"><a href="#Enter-Kafka" class="headerlink" title="Enter Kafka"></a>Enter Kafka</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579418299281.png" alt="1579418299281"></p>
-<p>The good thing is that Kafka because it stores it, consumers can catch up from where they last left off, so it will maintain the point where each consumer left off and allow them to just pick up whenever they want to. So it can publish data in real time to your consumers, but if your consumer goes off line or just wants to catch up from some point in the past, it can do that too.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2048,7 +2035,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2070,7 +2057,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

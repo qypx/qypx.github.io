@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。 1.  移动平均法 (MA)">
+<meta name="description" content="Hbase HFile   SQL面试题     时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点">
 <meta name="keywords" content="知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笔试知识点">
 <meta property="og:url" content="http://qypx.github.io/2020/01/12/笔试知识点/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。 1.  移动平均法 (MA)">
+<meta property="og:description" content="Hbase HFile   SQL面试题     时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-13T15:16:39.354Z">
+<meta property="og:updated_time" content="2020-02-16T10:52:40.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试知识点">
-<meta name="twitter:description" content="时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。 1.  移动平均法 (MA)">
+<meta name="twitter:description" content="Hbase HFile   SQL面试题     时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点">
 
 
 
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T23:16:39+08:00">
-                2020-01-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-16T18:52:40+08:00">
+                2020-02-16
               </time>
             
           </span>
@@ -389,7 +389,18 @@
       
 
       
-        <ul>
+        <!-- toc -->
+
+<ul>
+<li><a href="#hbase">Hbase</a><ul>
+<li><a href="#hfile">HFile</a></li>
+</ul>
+</li>
+<li><a href="#sql面试题">SQL面试题</a></li>
+</ul>
+<!-- tocstop -->
+
+<ul>
 <li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
 <p>A. AR模型</p>
 <p>B. MA模型</p>
@@ -712,16 +723,9 @@
 <ul>
 <li><p>什么叫视图？游标是什么？</p>
 <p>视图是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，视图通常是有一个表或者多个表的行或列的子集。对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表查询。</p>
-<p>游标：是对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。游标用于定位结果集的行。9</p>
+<p>游标：是对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。游标用于定位结果集的行。</p>
 </li>
 </ul>
-<p>B 二级索引概念是相应Rowkey这个“一级”索引</p>
-<p>C 二级索引使用平衡二叉树</p>
-<p>D 二级索引使用LSM结构</p>
-<p>B Coprocessor</p>
-<p>(HBase在0.92之后引入了协处理器(coprocessors)，实现一些激动人心的新特性：可以轻易建立二次索引、复杂过滤器(谓词下推)以及訪问控制等)</p>
-<p>C Bloom Filter</p>
-<p>D Filter</p>
 
       
     </div>
@@ -843,7 +847,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -865,7 +869,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

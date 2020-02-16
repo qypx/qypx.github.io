@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>B树介绍</title>
+    <url>/2020/02/16/B%E6%A0%91%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#b树">B树</a></li>
+<li><a href="#b树">B+树</a></li>
+<li><a href="#b树">B*树</a></li>
+<li><a href="#总结">总结</a></li>
+</ul>
+<!-- tocstop -->
+
+<blockquote>
+<p>参考：<a href="https://blog.csdn.net/A_zhangq/article/details/99662693" target="_blank" rel="noopener">https://blog.csdn.net/A_zhangq/article/details/99662693</a></p>
+</blockquote>
+<h3><span id="b树">B树</span></h3><p>B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。<strong>B-树就是指的B树</strong>。</p>
+<p>B-树是一种多路搜索树（并不是二叉的）：    </p>
+<ol>
+<li><p>定义任意非叶子结点最多只有M个儿子，且M&gt;2；    </p>
+</li>
+<li><p>根结点的儿子数为 [2, M]；    </p>
+</li>
+<li><p>除根结点以外的非叶子结点的儿子数为 [M/2, M]；    </p>
+</li>
+<li><p>每个结点存放至少 M/2-1（取上整）和至多  M-1 个关键字；（至少 2个关键字）    </p>
+</li>
+<li><p>非叶子结点的关键字个数 = 指向儿子的指针个数 - 1；    </p>
+</li>
+<li><p>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且 K[i] &lt; K[i+1] ；    </p>
+</li>
+<li><p>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1] 指向关键字小于 K[1] 的子树，P[M] 指向关键字大于            K[M-1] 的子树，其它 P[i] 指向关键字属于(K[i-1], K[i]) 的子树；    </p>
+</li>
+<li><p>所有叶子结点位于同一层；    </p>
+</li>
+</ol>
+<p>如 (M = 3)：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>B-树的搜索：</strong></p>
+<p>从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点；重复，直到所对应的儿子指针为空，或已经是叶子结点.</p>
+<p><strong>B-树的特性：</strong></p>
+<ul>
+<li>关键字集合分布在整颗树中；</li>
+<li>任何一个关键字出现且只出现在一个结点中；</li>
+<li>搜索有可能在非叶子结点结束；</li>
+<li>其搜索性能等价于在关键字全集内做一次二分查找；</li>
+<li>自动层次控制；</li>
+</ul>
+<hr>
+<a id="more"></a>
+
+<h3><span id="b树">B+树</span></h3><p>B+树是B-树的变体，也是一种多路搜索树：</p>
+<p>其定义基本与B-树同，除了：</p>
+<ol>
+<li>非叶子结点的子树指针与关键字个数相同；</li>
+<li>非叶子结点的子树指针P[i]，指向关键字值属于[K[i], K[i+1]]的子树（B-树是开区间）；</li>
+<li>为所有叶子结点增加一个链指针；</li>
+<li>所有关键字都在叶子结点出现；</li>
+</ol>
+<p>如（M=3）:</p>
+<p><img src="https://img-blog.csdnimg.cn/20190817142029576.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><strong>B+树的搜索</strong>：</p>
+<p>与B-树基本相同，区别是B+树只有达到叶子结点才命中（B-树可以在非叶子结点命中），其性能也等价于在关键字全集做一次二分查找；</p>
+<p><strong>B+树的特性：</strong></p>
+<ul>
+<li>所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是<strong>有序</strong>的；</li>
+<li>不可能在非叶子结点命中；</li>
+<li>非叶子结点相当于是叶子结点的索引（稀疏索引），叶子结点相当于是存储（关键字）数据的数据层；</li>
+<li>更适合文件索引系统；</li>
+</ul>
+<blockquote>
+<p>关于稠密索引与稀疏索引：<a href="https://blog.csdn.net/Qmen_Crow/article/details/51052160" target="_blank" rel="noopener">https://blog.csdn.net/Qmen_Crow/article/details/51052160</a></p>
+</blockquote>
+<p><strong>B+树的分裂：</strong></p>
+<p>当一个结点满时，分配一个新的结点，并将原结点中1/2的数据复制到新结点，最后在父结点中增加新结点的指针；B+树的分裂只影响原结点和父结点，而不会影响兄弟结点，所以它不需要指向兄弟的指针。</p>
+<hr>
+<h3><span id="b树">B*树</span></h3><p>B*树是B+树的一种变形，它是在B+树的基础上，将索引层以指针连接起来（在B+树的非根和非叶子结点再增加指向兄弟的指针），使搜索取值更加快捷。 </p>
+<p>如下图（M = 3）：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190817142644325.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>B*树在B+树的基础上产生了一系列的变化，如下：</p>
+<ol>
+<li>B*树定义了非叶子结点关键字个数至少为(2/3)M，即块的最低使用率为2/3（代替B+树的1/2）；</li>
+<li><strong>B *树的分裂：</strong>当一个结点满时，如果它的下一个兄弟结点未满，那么将一部分数据移到兄弟结点中，再在原结点插入关键字，最后修改父结点中兄弟结点的关键字（因为兄弟结点的关键字范围改变了）；如果兄弟也满了，则在原结点与兄弟结点之间增加新结点，并各复制1/3的数据到新结点，最后在父结点增加新结点的指针。</li>
+</ol>
+<p>B*树相对于B+树，空间利用率上有所提高，查询速率也有所提高。</p>
+<hr>
+<h3><span id="总结">总结</span></h3><ul>
+<li><p>二叉搜索树：二叉树，每个结点只存储一个关键字且值大于左子树，小于右子树。</p>
+</li>
+<li><p>B（B-）树：多路搜索树，每个结点存储 M/2-1 到 M - 1 个关键字，非叶子结点存储指向关键字范围的子结点； 所有关键字在整颗树中出现，且只出现一次，非叶子结点可以命中；</p>
+</li>
+<li><p>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</p>
+</li>
+<li><p>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</p>
+</li>
+</ul>
+<p><img src="/2020/02/16/B树介绍/1581863461822.png" alt="1581863461822"></p>
+<p>这两种树都是平衡的多分树，它们都可以用于文件的索引结构，但B树只能支持随机检索，而B+树是有序的树，既能支持随机检索，又能支持顺序检索。</p>
+]]></content>
+      <tags>
+        <tag>B树</tag>
+        <tag>知识点</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RNN相关资料（LSTM, GRU）</title>
     <url>/2020/02/15/RNN%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
     <content><![CDATA[<h4><span id="pdf">pdf：</span></h4><p><a href="https://www.aclweb.org/anthology/C16-1311.pdf" target="_blank" rel="noopener">Effective LSTMs for Target-Dependent Sentiment Classification</a></p>
@@ -261,8 +365,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>HashSet</tag>
         <tag>知识点</tag>
+        <tag>HashSet</tag>
       </tags>
   </entry>
   <entry>
@@ -1109,7 +1213,18 @@
   <entry>
     <title>笔试知识点</title>
     <url>/2020/01/12/%E7%AC%94%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#hbase">Hbase</a><ul>
+<li><a href="#hfile">HFile</a></li>
+</ul>
+</li>
+<li><a href="#sql面试题">SQL面试题</a></li>
+</ul>
+<!-- tocstop -->
+
+<ul>
 <li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
 <p>A. AR模型</p>
 <p>B. MA模型</p>
@@ -1432,16 +1547,9 @@
 <ul>
 <li><p>什么叫视图？游标是什么？</p>
 <p>视图是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，视图通常是有一个表或者多个表的行或列的子集。对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表查询。</p>
-<p>游标：是对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。游标用于定位结果集的行。9</p>
+<p>游标：是对查询出来的结果集作为一个单元来有效的处理。游标可以定在该单元中的特定行，从结果集的当前行检索一行或多行。可以对结果集当前行做修改。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。游标用于定位结果集的行。</p>
 </li>
 </ul>
-<p>B 二级索引概念是相应Rowkey这个“一级”索引</p>
-<p>C 二级索引使用平衡二叉树</p>
-<p>D 二级索引使用LSM结构</p>
-<p>B Coprocessor</p>
-<p>(HBase在0.92之后引入了协处理器(coprocessors)，实现一些激动人心的新特性：可以轻易建立二次索引、复杂过滤器(谓词下推)以及訪问控制等)</p>
-<p>C Bloom Filter</p>
-<p>D Filter</p>
 ]]></content>
       <categories>
         <category>笔试</category>
