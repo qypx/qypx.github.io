@@ -401,9 +401,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">eval_raw = pd.read_csv(<span class="string">'eval-tweets.csv'</span>, sep = <span class="string">'\t'</span>, names = [<span class="string">'ID'</span>,<span class="string">'tweet'</span>])</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol start="2">
+<ol>
 <li>保存<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">save = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">save.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", sep = '\t', index = False)</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 <p>二、txt文件</p>
@@ -421,7 +420,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### example 1 #########</span></span><br><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### example 2 #########</span></span><br><span class="line">stream = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'dataset.txt'</span>):</span><br><span class="line">    row = [eval(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.strip().split(<span class="string">' '</span>)]</span><br><span class="line">    stream.append(row)</span><br><span class="line">    </span><br><span class="line">arms = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">0</span>]</span><br><span class="line">    arms.append(temp)</span><br><span class="line">    </span><br><span class="line">rewards = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">1</span>]</span><br><span class="line">    rewards.append(temp)</span><br><span class="line">    </span><br><span class="line">contexts = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    contexts.append(stream[i][<span class="number">2</span>:])</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol start="2">
+<ol>
 <li>保存(方法同csv)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RF_test.to_csv(<span class="string">"RF_test.txt"</span>, sep = <span class="string">'\t'</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
@@ -536,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -547,7 +546,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -558,7 +557,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1116,6 +1115,8 @@
   
 
   
+  
+
 
   
 

@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Re">
+<meta name="description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Rep">
 <meta name="keywords" content="Hadoop,HBase,MongoDB,NoSQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using non-relational data stores with Hadoop - NoSQL &amp; HBase &amp; MongoDB">
 <meta property="og:url" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Re">
+<meta property="og:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Rep">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579162098786.png">
@@ -141,7 +141,7 @@
 <meta property="og:updated_time" content="2020-01-19T06:29:20.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Using non-relational data stores with Hadoop - NoSQL &amp; HBase &amp; MongoDB">
-<meta name="twitter:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Re">
+<meta name="twitter:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Rep">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png">
 
 
@@ -420,7 +420,6 @@
 
       
         <!-- toc -->
-
 <ul>
 <li><a href="#why-nosql">Why NoSQL?</a></li>
 <li><a href="#what-is-hbase">What is HBase</a><ul>
@@ -452,16 +451,14 @@
 </li>
 </ul>
 <!-- tocstop -->
-
-<h3><span id="why-nosql">Why NoSQL?</span></h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So *<em>if you’re doing analytic work, relational databases are awesome. *</em>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
+<h3><span id="why-nosql">Why NoSQL?</span></h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So <strong>if you’re doing analytic work, relational databases are awesome. </strong>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
 <p>BUT let’s imagine you need to take things up to the next level. You’re going to start to run into some limitations with SQL and relational database systems.</p>
-<p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to *<em>very quickly answer a specific question *</em>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
+<p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to <strong>very quickly answer a specific question </strong>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
 <p>And if you need to do that <strong>at a very large scale very quickly across a massive dataset</strong>, something like MySQL might not cut it. You know, if you’re an Amazon or a Google, you might need something that can even <strong>handle tens of thousands of transactions per second without breaking a sweat. And that’s where NoSQL comes in.</strong></p>
 <p>These are alternative database systems that <em>give up</em> a rich query language like SQL <em>for</em> the ability to very quickly and at great scale answer very simple questions. So for systems like that you want something called NoSQL, also known as non-relational databases, or not only SQL - that’s a term that comes up sometimes, too. And <strong>these systems are built to scale horizontally forever, and also built to be very fast and very resilient.</strong></p>
 <p>Up first, let’s talk about HBase. HBase is actually built on top of HDFS, so it allows you to have a very fast, very scalable transactional system to query your data that’s stored on a horizontally partitioned HDFS file system. So if you need to expose your massive data that’s sitting on your Hadoop cluster, Hbase can be a great way to expose that data to a web service, to web applications, anything that needs to operate very quickly and at a very high scale.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png" alt="1579161940219"></p>
 <a id="more"></a>
-
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579162098786.png" alt="1579162098786"></p>
 <p>if you think about things like Amazon or Google, people are always buying new things or always searching for new things, new web sites are always coming out, so this data is always just getting bigger and bigger and bigger over time. So that has to live on some sort of a distributed cluster, like a Hadoop cluster. You’re just not going to fit that into a single hard drive on a single database. You need something that’s more horizontally scalable, where you can keep on adding capacity as your data continues to grow over time.</p>
 <p>It’s not just about random access to planet-size data - it’s also planet-size access to that data. Imagine you’re running a web site like Amazon, where you need to very quickly retrieve the list of things people ordered, or the things they looked at, or what movies they should be recommended, or on Google - what they searched for in the past. That all has to happen at extremely large scale. Tens of thousands of people per second might be hitting your service to actually retrieve this information in real time.</p>
@@ -719,7 +716,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -730,7 +727,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -741,7 +738,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -784,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Why NoSQL?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">What is HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">CRUD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">HBase architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">HBase data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.4.</span> <span class="nav-text">Ways to access HBase</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">[Activity] Import movie ratings into HBase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">MongoDB Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.1.</span> <span class="nav-text">Document-based data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.2.</span> <span class="nav-text">MongoDB terminology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.3.</span> <span class="nav-text">Replication Sets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.4.</span> <span class="nav-text">Sharding (How MongoDB handles big data)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.5.</span> <span class="nav-text">Neat Things about MongoDB</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">[Activity] Install MongoDB and integrate Spark with MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">[Activity] Using the MongoDB Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">Choosing a database technology</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.1.</span> <span class="nav-text">Integration considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.2.</span> <span class="nav-text">Scaling requirements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.3.</span> <span class="nav-text">Support considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.4.</span> <span class="nav-text">CAP considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.5.</span> <span class="nav-text">Simplicity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.6.</span> <span class="nav-text">Examples</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Why NoSQL?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">What is HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">CRUD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">HBase architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">HBase data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Ways to access HBase</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Import movie ratings into HBase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">MongoDB Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Document-based data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">MongoDB terminology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Replication Sets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Sharding (How MongoDB handles big data)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Neat Things about MongoDB</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Install MongoDB and integrate Spark with MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Using the MongoDB Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Choosing a database technology</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Integration considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Scaling requirements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Support considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">CAP considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Simplicity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Examples</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1315,6 +1312,8 @@
   
 
   
+  
+
 
   
 

@@ -284,6 +284,341 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/21/Data-Preprocessing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/Data-Preprocessing/" itemprop="url">Data Preprocessing</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T13:56:34+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-15T17:08:09+08:00">
+                2020-02-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/" target="_blank" rel="noopener"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
+<p><a href="https://www.superdatascience.com/pages/machine-learning" target="_blank" rel="noopener">datasets download</a></p>
+<p>使用数据：</p>
+<p><img src="/2019/09/21/Data-Preprocessing/data.JPG" alt="data"></p>
+<h2 id="1-Missing-data"><a href="#1-Missing-data" class="headerlink" title="1. Missing data"></a>1. Missing data</h2><p>Common strategy: replace the missing data by the mean, median, or most frequent value of the feature column.</p>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Importing the libraries</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'Data.csv'</span>)</span><br><span class="line">X = dataset.iloc[:, :<span class="number">-1</span>].values</span><br><span class="line">y = dataset.iloc[:, <span class="number">3</span>].values</span><br><span class="line"></span><br><span class="line"><span class="comment"># Taking care of missing data</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Imputer</span><br><span class="line">imputer = Imputer(missing_values = <span class="string">'NaN'</span>, strategy = <span class="string">'mean'</span>, axis = <span class="number">0</span>)</span><br><span class="line">imputer = imputer.fit(X[:, <span class="number">1</span>:<span class="number">3</span>])</span><br><span class="line">X[:, <span class="number">1</span>:<span class="number">3</span>] = imputer.transform(X[:, <span class="number">1</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<h4 id="R"><a href="#R" class="headerlink" title="R"></a>R</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = read.csv(<span class="string">'Data.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Taking care of missing data</span></span><br><span class="line">dataset$Age = ifelse(is.na(dataset$Age),</span><br><span class="line">                     ave(dataset$Age, FUN = <span class="keyword">function</span>(x) mean(x, na.rm = <span class="literal">TRUE</span>)),</span><br><span class="line">                     dataset$Age)</span><br><span class="line">dataset$Salary = ifelse(is.na(dataset$Salary),</span><br><span class="line">                        ave(dataset$Salary, FUN = <span class="keyword">function</span>(x) mean(x, na.rm = <span class="literal">TRUE</span>)),</span><br><span class="line">                        dataset$Salary)</span><br><span class="line">                        </span><br><span class="line"><span class="comment"># 法二</span></span><br><span class="line">dataset$Age = ifelse(is.na(dataset$Age),</span><br><span class="line">                     mean(dataset$Age, na.rm = <span class="literal">TRUE</span>),</span><br><span class="line">                     dataset$Age)</span><br><span class="line"></span><br><span class="line">dataset$Salary = ifelse(is.na(dataset$Salary),</span><br><span class="line">                        mean(dataset$Salary, na.rm = <span class="literal">TRUE</span>),</span><br><span class="line">                        dataset$Salary)</span><br></pre></td></tr></table></figure>
+<h2 id="2-Categorical-data"><a href="#2-Categorical-data" class="headerlink" title="2. Categorical data"></a>2. Categorical data</h2><h4 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'Data.csv'</span>)</span><br><span class="line">X = dataset.iloc[:, :<span class="number">-1</span>].values</span><br><span class="line">y = dataset.iloc[:, <span class="number">3</span>].values</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/21/Data-Preprocessing/pic1.JPG" alt="pic1"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line">labelencoder_X = LabelEncoder()</span><br><span class="line">X[:, <span class="number">0</span>] = labelencoder_X.fit_transform(X[:, <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/21/Data-Preprocessing/pic2.JPG" alt="pic2"></p>
+<p>But the model will think that France has higher value than Spain -&gt; that’s not the case, we have no order here. 如果是S, M, L of a T-shirt, 不必使用下面的OneHotEncoder方法</p>
+<p><img src="/2019/09/21/Data-Preprocessing/dummy-encoding.JPG" alt="dummy encoding"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder, OneHotEncoder</span><br><span class="line">labelencoder_X = LabelEncoder()</span><br><span class="line">X[:, <span class="number">0</span>] = labelencoder_X.fit_transform(X[:, <span class="number">0</span>])</span><br><span class="line">onehotencoder = OneHotEncoder(categorical_features = [<span class="number">0</span>])  <span class="comment"># which column you want to encode</span></span><br><span class="line">X = onehotencoder.fit_transform(X).toarray()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/21/Data-Preprocessing/result1.JPG" alt="result1"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Encoding the Dependent Variable</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">For the dependent variable, we are only going to use LabelEncoder, </span></span><br><span class="line"><span class="string">because since this is the dpendent variable, the machine learning model will know</span></span><br><span class="line"><span class="string">that it's a category, and that there is no oder between the two</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">labelencoder_y = LabelEncoder()</span><br><span class="line">y = labelencoder_y.fit_transform(y)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/21/Data-Preprocessing/result2.JPG" alt="result2"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/21/Data-Preprocessing/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/17/Python-working-directory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/17/Python-working-directory/" itemprop="url">Python working directory</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T18:40:10+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-17T16:43:59+08:00">
+                2019-09-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>更改当前路径</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">"E:/machine learning"</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取当前路径</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getcwd()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/02/dataframe-operation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -394,28 +729,18 @@
 <li>法一</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = (&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">'string'</span>: [<span class="string">'a'</span>, <span class="string">'b'</span>,<span class="string">'c'</span>]&#125;)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>法二（若已有现成的list）</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = pd.DataFrame([n_clusters_start, score], columns = [<span class="string">"分类数"</span>, <span class="string">"得分"</span>])</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'!'</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'?'</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">'EC'</span>:EC,<span class="string">'QC'</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">"freqOf "</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
-
 <p><img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果"></p>
-<p>二、数据框拼接（ignore_index = True, 重新分配索引）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 两种方式，concat、 append都可以</span></span><br><span class="line">result = pd.concat([result1, result2], ignore_index = <span class="literal">True</span>) <span class="comment"># 默认axis = 0 -&gt; 粘贴行 </span></span><br><span class="line">result = result1.append(result2, ignore_index = <span class="literal">True</span>) <span class="comment"># 粘贴行</span></span><br><span class="line"></span><br><span class="line">RF_eval = pd.concat([RF_eval, eval_raw], axis = <span class="number">1</span>) <span class="comment"># 粘贴列</span></span><br></pre></td></tr></table></figure>
+<p>二、数据框拼接（ignore_index = True, 重新分配索引）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 两种方式，concat、 append都可以</span></span><br><span class="line">result = pd.concat([result1, result2], ignore_index = <span class="literal">True</span>) <span class="comment"># 默认axis = 0 -&gt; 粘贴行 </span></span><br><span class="line">result = result1.append(result2, ignore_index = <span class="literal">True</span>) <span class="comment"># 粘贴行</span></span><br><span class="line"></span><br><span class="line">RF_eval = pd.concat([RF_eval, eval_raw], axis = <span class="number">1</span>) <span class="comment"># 粘贴列</span></span><br></pre></td></tr></table></figure></p>
+<p>三、删掉列<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RF_eval.drop([<span class="string">'raw'</span>], axis = <span class="number">1</span>, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure></p>
+<p>四、删掉行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = dat.drop(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>五、提取行索引<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index0 = res.index[res[<span class="string">'label'</span>] == <span class="number">0</span>].tolist()</span><br><span class="line">X0 = X[index0] <span class="comment"># X为矩阵</span></span><br></pre></td></tr></table></figure></p>
 
-<p>三、删掉列</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RF_eval.drop([<span class="string">'raw'</span>], axis = <span class="number">1</span>, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<p>四、删掉行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = dat.drop(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<p>五、提取行索引</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index0 = res.index[res[<span class="string">'label'</span>] == <span class="number">0</span>].tolist()</span><br><span class="line">X0 = X[index0] <span class="comment"># X为矩阵</span></span><br></pre></td></tr></table></figure>
           
         
       
@@ -580,9 +905,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">eval_raw = pd.read_csv(<span class="string">'eval-tweets.csv'</span>, sep = <span class="string">'\t'</span>, names = [<span class="string">'ID'</span>,<span class="string">'tweet'</span>])</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol start="2">
+<ol>
 <li>保存<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">save = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">save.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", sep = '\t', index = False)</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 <p>二、txt文件</p>
@@ -600,7 +924,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### example 1 #########</span></span><br><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### example 2 #########</span></span><br><span class="line">stream = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'dataset.txt'</span>):</span><br><span class="line">    row = [eval(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.strip().split(<span class="string">' '</span>)]</span><br><span class="line">    stream.append(row)</span><br><span class="line">    </span><br><span class="line">arms = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">0</span>]</span><br><span class="line">    arms.append(temp)</span><br><span class="line">    </span><br><span class="line">rewards = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">1</span>]</span><br><span class="line">    rewards.append(temp)</span><br><span class="line">    </span><br><span class="line">contexts = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    contexts.append(stream[i][<span class="number">2</span>:])</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol start="2">
+<ol>
 <li>保存(方法同csv)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RF_test.to_csv(<span class="string">"RF_test.txt"</span>, sep = <span class="string">'\t'</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
@@ -698,8 +1022,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-12T22:28:39+08:00">
-                2020-01-12
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-17T23:24:55+08:00">
+                2020-02-17
               </time>
             
           </span>
@@ -738,20 +1062,17 @@
 <li>斜体：在文本两侧加上一个星号或一个下划线，例如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_unknown_或*unkown*</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：<em>unknown</em></p>
+<p>效果如下：_unknown_</p>
 <ul>
 <li>加粗：在文本两侧加上两个星号或两个下划线, 例如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__unknown__或**unknown**</span><br></pre></td></tr></table></figure>
-
 <p>效果如下：<strong>unknown</strong></p>
 <ul>
 <li>注：斜体和加粗可以一起用，例如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**_of course_**</span><br></pre></td></tr></table></figure>
-
-<p>效果如下：<strong><em>of course</em></strong></p>
+<p>效果如下：<strong>_of course_</strong></p>
 <h4 id="2-标题-Headers"><a href="#2-标题-Headers" class="headerlink" title="2.标题(Headers)"></a>2.标题(Headers)</h4><p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（# 一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
 <blockquote>
 <h1 id="Header-one"><a href="#Header-one" class="headerlink" title="Header one"></a>Header one</h1><h2 id="Header-two"><a href="#Header-two" class="headerlink" title="Header two"></a>Header two</h2><h3 id="Header-three"><a href="#Header-three" class="headerlink" title="Header three"></a>Header three</h3><h4 id="Header-four"><a href="#Header-four" class="headerlink" title="Header four"></a>Header four</h4><h5 id="Header-five"><a href="#Header-five" class="headerlink" title="Header five"></a>Header five</h5><h6 id="Header-six"><a href="#Header-six" class="headerlink" title="Header six"></a>Header six</h6><p>plain text</p>
@@ -763,18 +1084,15 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Visit GitHub!](www.github.com)</span><br></pre></td></tr></table></figure>
-
 <p><a href="www.github.com">Visit GitHub!</a></p>
 <p>再比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Yo<span class="string">u're **really, really** going to see this.](www.dailykitten.com)</span></span><br></pre></td></tr></table></figure>
-
 <p><a href="www.dailykitten.com">You’re <strong>really, really</strong> going to see this.</a></p>
 <ul>
 <li>reference link</li>
 </ul>
 <p>语法如下：  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Do you want to [see something fun][a fun place]?  </span><br><span class="line"></span><br><span class="line">Well, I have [a website <span class="keyword">for</span> you][another fun place]!</span><br><span class="line"></span><br><span class="line">[a fun place]: www.zombo.com</span><br><span class="line">    </span><br><span class="line">[another fun place]: www.stumbleupon.com</span><br></pre></td></tr></table></figure>
-
 <p>效果如下：<br>Do you want to <a href="www.zombo.com">see something fun</a>?  </p>
 <p>Well, I have <a href="www.stumbleupon.com">a website for you</a>!</p>
 <p>一般可将链接地址写在Markdown文件的最后。使用refrence的好处是如果有许多链接都是指向一个地方，那么需要更改的时候只需要修改一次就行了。</p>
@@ -1103,15 +1421,13 @@
 <li>List</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1, 2, 3]</code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578053721585.jpg" alt="1578053721585"></p>
+<pre><code>[1, 2, 3]
+</code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578053721585.jpg" alt="1578053721585"></p>
 <p>List的拼接</p>
-<p>注意：[1,2]是List不是Array（Array要用np.array()）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line">features = []</span><br><span class="line"><span class="keyword">for</span> (vec, wt) <span class="keyword">in</span> vecs_wt[<span class="number">0</span>:<span class="number">2</span>]:</span><br><span class="line">	features.append(vec)</span><br><span class="line">	newfeatures = list(chain(*features))</span><br></pre></td></tr></table></figure>
-
+<p>注意：[1,2]是List不是Array（Array要用np.array()）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line">features = []</span><br><span class="line"><span class="keyword">for</span> (vec, wt) <span class="keyword">in</span> vecs_wt[<span class="number">0</span>:<span class="number">2</span>]:</span><br><span class="line">	features.append(vec)</span><br><span class="line">	newfeatures = list(chain(*features))</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>] + [<span class="number">3</span>] + [<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1, 2, 3, 4]</code></pre><p>排序：</p>
+<pre><code>[1, 2, 3, 4]
+</code></pre><p>排序：</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578053775703.jpg" alt="1578053775703"></p>
 <ul>
 <li><p>Tuple</p>
@@ -1125,12 +1441,12 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">'foo'</span>:<span class="number">1</span>, <span class="string">'bar'</span>:<span class="number">2.3</span>, <span class="string">'s'</span>:<span class="string">'my first dictionary'</span>&#125;</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-
-<pre><code>{&apos;s&apos;: &apos;my first dictionary&apos;, &apos;bar&apos;: 2.3, &apos;foo&apos;: 1}</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d[<span class="string">'foo'</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>1</code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg" alt="1578054637299"></p>
+<pre><code>{&#39;s&#39;: &#39;my first dictionary&#39;, &#39;bar&#39;: 2.3, &#39;foo&#39;: 1}
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d[<span class="string">'foo'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>1
+</code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg" alt="1578054637299"></p>
 <p>If you try to retrieve a value for a key that doesn’t exist, you will get an exception. </p>
-<p>One way to avoid that is to use the <em>get</em> function on the dictionary:</p>
+<p>One way to avoid that is to use the _get_ function on the dictionary:</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg" alt="1578054512678"></p>
 <p>Iterate:</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg" alt="1578054588653"></p>
@@ -1138,12 +1454,9 @@
 <li>Array</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 2]</span><br></pre></td></tr></table></figure>
-
 <p>Array的合并</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.concatenate(要拼接的多个数组, axis = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
 
           
         
@@ -1297,23 +1610,21 @@
       
         
           
-            <p><strong><em>缩进是python的灵魂</em></strong></p>
+            <p><strong>_缩进是python的灵魂_</strong></p>
 <ul>
 <li>查看内置函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir(__builtins)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>逻辑运算符</li>
 </ul>
 <p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>比较操作符</li>
 </ul>
 <blockquote>
-<p>&gt;, &lt;, &gt;=, &lt;=, ==, != </p>
+<p>>, &lt;, &gt;=, &lt;=, ==, != </p>
 </blockquote>
 <ul>
 <li>Python中的双引号</li>
@@ -1323,21 +1634,17 @@
 <li>type()函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">4</span></span><br><span class="line">type(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>int</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="literal">None</span></span><br><span class="line">type(n)</span><br></pre></td></tr></table></figure>
-
-<pre><code>NoneType</code></pre><ul>
+<pre><code>int
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="literal">None</span></span><br><span class="line">type(n)</span><br></pre></td></tr></table></figure>
+<pre><code>NoneType
+</code></pre><ul>
 <li>dtype</li>
 </ul>
-<p>查看type</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>].dtype</span><br></pre></td></tr></table></figure>
-
+<p>查看type<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>].dtype</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>dtype(‘O’)</p>
 </blockquote>
-<p>转换type</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>] = train[<span class="string">"ID"</span>].astype(np.int32)</span><br></pre></td></tr></table></figure>
-
+<p>转换type<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>] = train[<span class="string">"ID"</span>].astype(np.int32)</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1626,16 +1933,12 @@
             <a id="more"></a>
 <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
@@ -1724,7 +2027,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1735,7 +2038,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1746,7 +2049,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2300,6 +2603,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

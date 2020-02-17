@@ -284,6 +284,323 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/20/最长连续序列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/20/最长连续序列/" itemprop="url">最长连续序列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-20T17:41:34+08:00">
+                2020-01-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-20T17:51:54+08:00">
+                2020-01-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://leetcode-cn.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener">最长连续序列（难度：困难）</a></p>
+<p><img src="/2020/01/20/最长连续序列/1579513410172.png" alt="1579513410172"></p>
+<h4><span id="方法哈希表hashset">方法：哈希表（HashSet）</span></h4><p>因为一个序列可能在 <code>nums</code> 数组的任意一个数字开始，我们可以枚举每个数字作为序列的第一个数字，搜索所有的可能性 （暴力法）。优化：将数组中的数字用HashSet保存，实现O(1)的时间查询，同时，我们只对 <code>当前数字 - 1</code> 不在哈希表里的数字，作为连续序列的第一个数字去找对应的最长序列，这是因为其他数字一定已经出现在了某个序列里。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">            </span><br><span class="line">        HashSet&lt;Integer&gt; hashSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)</span><br><span class="line">            hashSet.add(num);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> maxLen = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> curLen = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(!hashSet.contains(nums[i]-<span class="number">1</span>))&#123;</span><br><span class="line">                <span class="keyword">int</span> curNum = nums[i];</span><br><span class="line">                <span class="keyword">while</span>(hashSet.contains(curNum+<span class="number">1</span>))&#123;</span><br><span class="line">                    curLen++;</span><br><span class="line">                    curNum++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            maxLen = Math.max(maxLen,curLen);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLen;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n)。尽管在 for 循环中嵌套了一个 while 循环，时间复杂度看起来像是二次方级别的。但其实它是线性的算法。因为只有当 curNum 遇到了一个序列的开始， while 循环才会被执行（也就是 curNum-1 不在数组 nums 里）， while 循环在整个运行过程中只会被迭代 n 次。这意味着尽管看起来时间复杂度为 O(n⋅n) ，实际这个嵌套循环只会运行O(n+n)=O(n) 次。所有的计算都是线性时间的，所以总的时间复杂度是 O(n)的。</p>
+<p>空间复杂度：O(n)。为了实现 O(1)的查询，我们对哈希表分配线性空间，以保存 nums 数组中的 O(n)个数字。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/20/HashSet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/20/HashSet/" itemprop="url">HashSet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-20T17:11:38+08:00">
+                2020-01-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-20T17:14:26+08:00">
+                2020-01-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>无序列表HashSet是采用hash表来实现的。其中的元素没有按顺序排列，add()、remove()以及contains()等方法都是复杂度为O(1)的方法。 </li>
+<li>无序列表列表TreeSet是采用树结构实现(红黑树算法)。元素是按顺序进行排列，但是add()、remove()以及contains()等方法都是复杂度为O(log (n))的方法。它还提供了一些方法来处理排序的set，如first(), last(), headSet(), tailSet()等等</li>
+</ul>
+<p><a href="https://leetcode-cn.com/problems/longest-consecutive-sequence/solution/zui-chang-lian-xu-xu-lie-by-leetcode/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-consecutive-sequence/solution/zui-chang-lian-xu-xu-lie-by-leetcode/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,7 +706,6 @@
       
         
           <!-- toc -->
-
 <ul>
 <li><a href="#kafka">Kafka</a><ul>
 <li><a href="#what-is-streaming">What is streaming?</a></li>
@@ -417,7 +733,6 @@
 </li>
 </ul>
 <!-- tocstop -->
-
 <h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png" alt="1579416693703"></p>
 <h4 id="What-is-streaming"><a href="#What-is-streaming" class="headerlink" title="What is streaming?"></a>What is streaming?</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png" alt="1579417084705"></p>
 <p>With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it into HBase or some other database or maybe you’ll actually process it in real time as it comes in.</p>
@@ -561,7 +876,6 @@
       
         
           <!-- toc -->
-
 <ul>
 <li><a href="#why-nosql">Why NoSQL?</a></li>
 <li><a href="#what-is-hbase">What is HBase</a><ul>
@@ -593,10 +907,9 @@
 </li>
 </ul>
 <!-- tocstop -->
-
-<h3 id="Why-NoSQL"><a href="#Why-NoSQL" class="headerlink" title="Why NoSQL?"></a>Why NoSQL?</h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So *<em>if you’re doing analytic work, relational databases are awesome. *</em>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
+<h3 id="Why-NoSQL"><a href="#Why-NoSQL" class="headerlink" title="Why NoSQL?"></a>Why NoSQL?</h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So <strong>if you’re doing analytic work, relational databases are awesome. </strong>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
 <p>BUT let’s imagine you need to take things up to the next level. You’re going to start to run into some limitations with SQL and relational database systems.</p>
-<p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to *<em>very quickly answer a specific question *</em>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
+<p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to <strong>very quickly answer a specific question </strong>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
 <p>And if you need to do that <strong>at a very large scale very quickly across a massive dataset</strong>, something like MySQL might not cut it. You know, if you’re an Amazon or a Google, you might need something that can even <strong>handle tens of thousands of transactions per second without breaking a sweat. And that’s where NoSQL comes in.</strong></p>
 <p>These are alternative database systems that <em>give up</em> a rich query language like SQL <em>for</em> the ability to very quickly and at great scale answer very simple questions. So for systems like that you want something called NoSQL, also known as non-relational databases, or not only SQL - that’s a term that comes up sometimes, too. And <strong>these systems are built to scale horizontally forever, and also built to be very fast and very resilient.</strong></p>
 <p>Up first, let’s talk about HBase. HBase is actually built on top of HDFS, so it allows you to have a very fast, very scalable transactional system to query your data that’s stored on a horizontally partitioned HDFS file system. So if you need to expose your massive data that’s sitting on your Hadoop cluster, Hbase can be a great way to expose that data to a web service, to web applications, anything that needs to operate very quickly and at a very high scale.</p>
@@ -759,7 +1072,6 @@
       
         
           <!-- toc -->
-
 <ul>
 <li><a href="#hive">HIVE</a><ul>
 <li><a href="#what-is-hive">What is Hive?</a><ul>
@@ -793,7 +1105,6 @@
 <li><a href="#结语">结语</a></li>
 </ul>
 <!-- tocstop -->
-
 <h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png" alt="1579064046135"></p>
 <h3 id="What-is-Hive"><a href="#What-is-Hive" class="headerlink" title="What is Hive?"></a>What is Hive?</h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
@@ -1128,7 +1439,6 @@
       
         
           <!-- toc -->
-
 <ul>
 <li><a href="#introduction-to-spark">Introduction to Spark</a><ul>
 <li><a href="#scalable">Scalable</a></li>
@@ -1157,11 +1467,10 @@
 <li><a href="#exercise">Exercise</a></li>
 </ul>
 <!-- tocstop -->
-
 <h3 id="Introduction-to-Spark"><a href="#Introduction-to-Spark" class="headerlink" title="Introduction to Spark"></a>Introduction to Spark</h3><p><img src="/2020/01/14/Spark/1578976053911.png" alt="1578976053911"></p>
 <p><img src="/2020/01/14/Spark/1578976261212.png" alt="1578976261212"></p>
 <p>There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data.</p>
-<h4 id="Scalable"><a href="#Scalable" class="headerlink" title="Scalable"></a>Scalable</h4><p><img src="/2020/01/14/Spark/%E6%8D%95%E8%8E%B7.JPG" alt="捕获"></p>
+<h4 id="Scalable"><a href="#Scalable" class="headerlink" title="Scalable"></a>Scalable</h4><p><img src="/2020/01/14/Spark/捕获.JPG" alt="捕获"></p>
 <h4 id="Fast"><a href="#Fast" class="headerlink" title="Fast"></a>Fast</h4><p><img src="/2020/01/14/Spark/1578977218206.png" alt="1578977218206"></p>
 <p>Spark除了比MapReduce更快以外，还有一个优势：MapReduce is very limited in what it can do. You have to think about things in terms of mappers and reducers, whereas Spark provides a framework for removing that level of though from you, you can just think more about your end results and program toward that and think less about how to actual distribute it across the cluster.</p>
           <!--noindex-->
@@ -1343,12 +1652,9 @@
 </li>
 <li><p>可保证数据的安全性和完整性。通过存储过程可以使没有权限的用户在控制之下间接地存取数据库，从而保证数据的安全。通过存储过程可以使相关的动作在一起发生，从而可以维护数据库的完整性。</p>
 </li>
-<li><p>可以降低网络的通信量。存储过程主要是在服务器上运行，减少对客户机的压力。</p>
-</li>
-<li><p>存储过程可以接受参数、输出参数、返回单个或多个结果集以及返回值。可以向程序返回错误原因</p>
-</li>
-<li><p>存储过程可以包含程序流、逻辑以及对数据库的查询。同时可以实体封装和隐藏数据逻辑。</p>
-</li>
+<li>可以降低网络的通信量。存储过程主要是在服务器上运行，减少对客户机的压力。</li>
+<li>存储过程可以接受参数、输出参数、返回单个或多个结果集以及返回值。可以向程序返回错误原因</li>
+<li>存储过程可以包含程序流、逻辑以及对数据库的查询。同时可以实体封装和隐藏数据逻辑。</li>
 </ol>
 
           
@@ -1503,7 +1809,6 @@
       
         
           <!-- toc -->
-
 <ul>
 <li><a href="#事务-transaction">事务 Transaction</a></li>
 <li><a href="#并发控制-concurrency-control">并发控制 Concurrency Control</a><ul>
@@ -1514,7 +1819,6 @@
 </li>
 </ul>
 <!-- tocstop -->
-
 <h4 id="事务-Transaction"><a href="#事务-Transaction" class="headerlink" title="事务 Transaction"></a>事务 Transaction</h4><p>事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。</p>
 <p>事务性质：(<span style="color:red">ACID</span>)</p>
 <ul>
@@ -1726,358 +2030,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/13/视图View/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/13/视图View/" itemprop="url">视图View</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T15:57:23+08:00">
-                2020-01-13
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T16:14:01+08:00">
-                2020-01-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/2020/01/13/视图View/1578902313361.png" alt="1578902313361"></p>
-<p><img src="/2020/01/13/视图View/1578902382330.png" alt="1578902382330"></p>
-<p><img src="/2020/01/13/视图View/1578902994931.png" alt="1578902994931"></p>
-<p><img src="/2020/01/13/视图View/1578903023109.png" alt="1578903023109"></p>
-<p><code>INSERT INTO Viewname {column1,column2,…} values(exp1,exp2,…);</code>//插入视图实际影响表</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/Hive介绍/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/Hive介绍/" itemprop="url">Hive介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T20:26:40+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T23:15:10+08:00">
-                2020-01-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>参考：</p>
-<p><a href="https://blog.csdn.net/PowerBlogger/article/details/83626449" target="_blank" rel="noopener">https://blog.csdn.net/PowerBlogger/article/details/83626449</a></p>
-<p><a href="https://blog.csdn.net/u010886217/article/details/83796151" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83796151</a></p>
-<!-- toc -->
-
-<ul>
-<li><a href="#什么是hive">什么是Hive？</a></li>
-<li><a href="#hive的原理">Hive的原理</a></li>
-<li><a href="#hive中表的类型">Hive中表的类型</a><ul>
-<li><a href="#1-内部表">1. 内部表</a></li>
-<li><a href="#2-外部表">2. 外部表</a></li>
-<li><a href="#3-临时表">3. 临时表</a></li>
-<li><a href="#4-分区表">4. 分区表</a></li>
-<li><a href="#5-分桶表">5. 分桶表</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<h3 id="什么是Hive？"><a href="#什么是Hive？" class="headerlink" title="什么是Hive？"></a>什么是Hive？</h3><p>Hive是建立在Hadoop上的，用来构建数据仓库的工具，里面有表的概念，可以使用SQL语句实现存储、查询和分析存储在 HDFS上的数据，这些SQL语句在Hive中称为HQL，语法和SQL语句基本一样。<br>由于数据是杂乱无章的，所以Hive需要一份关于这些数据的元数据来管理和操作这些数据。这份元数据包括：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">元数据（</span><br><span class="line">行的分隔符（在映射成表的时候知道在哪里分行显示）</span><br><span class="line">字段分隔符（在映射成表的时候知道在哪里分列显示）</span><br><span class="line">字段的类型</span><br><span class="line">字段的名称</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
-
-<p>在Hive中，我们把数据存储在HDFS中，元数据默认存储在Hive自带的Derby数据库中，由于Derby不能实现并发访问，所以我们一般使用mysql进行替换。</p>
-<h3 id="Hive的原理"><a href="#Hive的原理" class="headerlink" title="Hive的原理"></a>Hive的原理</h3><p><strong>Hive 将用户的 HQL 语句进行解析，优化，最终把一个个的HQL语句转换为 MapReduce 作业提交到 Hadoop 集群上，Hadoop进行作业的调度及监控，作业完成后将执行结果返回给用户。</strong>所以，<strong>Hive并不进行计算，只是把HQL解析为MapperReduce在HDFS集群中运行而已</strong>，所以Hive的效率并不高。</p>
-<h3 id="Hive中表的类型"><a href="#Hive中表的类型" class="headerlink" title="Hive中表的类型"></a>Hive中表的类型</h3><p>Hive中有5种表：内部表，外部表，临时表，分区表，桶表（分桶表）</p>
-<h4 id="1-内部表"><a href="#1-内部表" class="headerlink" title="1. 内部表"></a>1. 内部表</h4><p>数据默认存储在/user/hive/warehouse，由Hive自身管理，删除内部表会同时删除存储数据和元数据。</p>
-<p><strong>建表：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 建表方式一</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">	    <span class="keyword">id</span>	<span class="built_in">INT</span>，</span><br><span class="line">	    <span class="keyword">name</span> <span class="keyword">STRING</span>，</span><br><span class="line">	    age <span class="built_in">INT</span>,</span><br><span class="line">		gfs <span class="built_in">ARRAY</span>&lt;<span class="keyword">STRING</span>&gt;,</span><br><span class="line">		address <span class="keyword">MAP</span>&lt;<span class="keyword">STRING</span>,<span class="keyword">STRING</span>&gt;,</span><br><span class="line">		info <span class="keyword">STRUCT</span>&lt;country:<span class="keyword">String</span>,province:<span class="keyword">String</span>,shi:<span class="keyword">String</span>&gt;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span> </span><br><span class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">' '</span> </span><br><span class="line">COLLECTION ITEMS <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span></span><br><span class="line"><span class="keyword">MAP</span> <span class="keyword">KEYS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">':'</span> </span><br><span class="line"><span class="keyword">LINES</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\n'</span></span><br><span class="line">LOCATION <span class="string">"/test"</span>;//可以设置源数据的位置，若不设置默认就在Hive的工作目录区</span><br><span class="line"></span><br><span class="line">// 建表方式二</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl1 <span class="keyword">like</span> gfstbl;只是创建表结构</span><br><span class="line"></span><br><span class="line">// 建表方式三</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl2 <span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">name</span>,gfs,address <span class="keyword">from</span> gfstbl; </span><br><span class="line">  会创建相应的表结构，并且插入数据，相当于完整的赋值</span><br></pre></td></tr></table></figure>
-
-<p><strong>加载数据：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">'/root/gfs.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> gfstbl;</span><br></pre></td></tr></table></figure>
-
-<p><strong>查看表描述信息：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span> [<span class="keyword">EXTENDED</span>|FORMATTED] table_name</span><br><span class="line"><span class="keyword">EXTENDED</span> 极简的方式显示</span><br><span class="line">FORMATTED 格式化方式来显示</span><br><span class="line"><span class="keyword">DESCRIBE</span> <span class="keyword">EXTENDED</span> gfstbl;默认就是EXTENDED</span><br><span class="line"><span class="keyword">DESCRIBE</span> FORMATTED gfstbl;</span><br></pre></td></tr></table></figure>
-
-<p><strong>插入数据的其他方式：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">插入数据的方式：</span><br><span class="line">	1、<span class="keyword">insert</span> 新数据</span><br><span class="line">	<span class="number">2</span>、<span class="keyword">load</span></span><br><span class="line">	<span class="number">3</span>、查询其他表数据 <span class="keyword">insert</span> 到新表中</span><br><span class="line">	模板：</span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...)] </span><br><span class="line">		select_statement1 <span class="keyword">FROM</span> from_statement;</span><br><span class="line">		</span><br><span class="line">		FROM from_statement</span><br><span class="line">		<span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...) </span><br><span class="line">		[<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] select_statement1</span><br><span class="line"></span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">table</span>;</span><br><span class="line">		</span><br><span class="line">		习惯写法 from提前  减少SQL代码的冗余</span><br><span class="line">		from day_hour_table</span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest </span><br><span class="line">			<span class="keyword">select</span> <span class="keyword">count</span>(*) ;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/12/Hive介绍/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2130,7 +2082,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2141,7 +2093,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2152,7 +2104,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2706,6 +2658,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

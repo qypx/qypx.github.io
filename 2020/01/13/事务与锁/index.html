@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁      事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分">
+<meta name="description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁     事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事务与锁">
 <meta property="og:url" content="http://qypx.github.io/2020/01/13/事务与锁/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁      事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分">
+<meta property="og:description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁     事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578903852566.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578903920125.png">
@@ -112,7 +112,7 @@
 <meta property="og:updated_time" content="2020-01-13T15:13:52.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务与锁">
-<meta name="twitter:description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁      事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分">
+<meta name="twitter:description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁     事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578903852566.png">
 
 
@@ -413,7 +413,6 @@
 
       
         <!-- toc -->
-
 <ul>
 <li><a href="#事务-transaction">事务 Transaction</a></li>
 <li><a href="#并发控制-concurrency-control">并发控制 Concurrency Control</a><ul>
@@ -424,7 +423,6 @@
 </li>
 </ul>
 <!-- tocstop -->
-
 <h4><span id="事务-transaction">事务 Transaction</span></h4><p>事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。</p>
 <p>事务性质：(<span style="color:red">ACID</span>)</p>
 <ul>
@@ -439,7 +437,6 @@
 <p><img src="/2020/01/13/事务与锁/1578904133622.png" alt="1578904133622"></p>
 <p><img src="/2020/01/13/事务与锁/1578904156358.png" alt="1578904156358"></p>
 <a id="more"></a>
-
 <p><img src="/2020/01/13/事务与锁/1578904553025.png" alt="1578904553025"></p>
 <p><img src="/2020/01/13/事务与锁/1578904582538.png" alt="1578904582538"></p>
 <p><img src="/2020/01/13/事务与锁/1578904641058.png" alt="1578904641058"></p>
@@ -617,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -628,7 +625,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -639,7 +636,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -682,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">事务 Transaction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">并发控制 Concurrency Control</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">共享锁与排他锁（或叫互斥锁）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">两段锁协议（Two-Phase Locking —— 2PL）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">死锁</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">事务 Transaction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">并发控制 Concurrency Control</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">共享锁与排他锁（或叫互斥锁）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">两段锁协议（Two-Phase Locking —— 2PL）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">死锁</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1213,6 +1210,8 @@
   
 
   
+  
+
 
   
 

@@ -471,7 +471,7 @@
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578127764650.jpg" alt="1578127764650"></p>
 <p>Churn can measure how sensitive your recommender system is to new user behavior. 如果用户rate了一部新电影，会使得他的推荐内容发生很大的变化吗？If so, your churn score will be high. Maybe just showing the same recommendations too many times is a bad idea itself. 如果一个用户总是看到相同的推荐，但是不点击进去，在某个时候你应该停止推荐它而给用户推荐其他的东西。Sometimes, a little bit of randomization in your top-n recommendations can keep them looking fresh, and expose your users to more items.</p>
 <p>But, just like diversity and novelty, high churn is not in itself a good thing. You could maximize your churn metric by just recommending items completely at random, 但显然这不是好的推荐。</p>
-<p>*<em>All these metrics need to be looked at together, and you need to understand the trade-offs between them. *</em></p>
+<p><strong>All these metrics need to be looked at together, and you need to understand the trade-offs between them. </strong></p>
 <h4><span id="52-responsiveness">5.2 Responsiveness</span></h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578128338650.jpg" alt="1578128338650"></p>
 <p>If you rate  a new movie, does it affect your recommendations immediately or next day after some nightly job runs? More responsiveness would always seem to be a good thing, but in the world of business, you have to decide how responsive your recommender really needs to be, since recommender systems that have instantaneous responsiveness are complex, difficult to maintain, and expensive to build. You need to strike your own balance between responsiveness and simplicity.</p>
 <blockquote>
@@ -647,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -658,7 +658,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -669,7 +669,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -712,7 +712,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">1. The methodology for testing recommender systems offline.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 train/test split</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 k-fold cross-validation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">2. Accuracy Metrics (RMSE, MAE)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 MAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 RMSE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">3. Top-N Hit Rate - Many Ways</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Hit Rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 leave-one-out cross validation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 ARHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 cHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 rHR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">4. Coverage, Diversity and Novelty</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Coverage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Diversity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Novelty</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">5. Churn, Responsiveness, and A/B Tests</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Churn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Responsiveness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 Online A/B Tests</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">Quiz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">Code Walkthrough</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.1.</span> <span class="nav-text">结果分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">1. The methodology for testing recommender systems offline.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">1.1 train/test split</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">1.2 k-fold cross-validation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">2. Accuracy Metrics (RMSE, MAE)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">2.1 MAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">2.2 RMSE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">3. Top-N Hit Rate - Many Ways</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">3.1 Hit Rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">3.2 leave-one-out cross validation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">3.3 ARHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">3.4 cHR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">3.5 rHR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">4. Coverage, Diversity and Novelty</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">4.1 Coverage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">4.2 Diversity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">4.3 Novelty</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">5. Churn, Responsiveness, and A/B Tests</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">5.1 Churn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">5.2 Responsiveness</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">5.3 Online A/B Tests</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Quiz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Code Walkthrough</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">结果分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1243,6 +1243,8 @@
   
 
   
+  
+
 
   
 

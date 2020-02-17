@@ -489,7 +489,7 @@
 <li>对于 Bob 和 Ann, 虽然他们评价过不同的电影，当我们考虑相似度时，我们只看他们共同评价过的电影。在这个例子中，他们共同评价过的电影只有一部，并且评分都为5，所以他们的相似度得分为1 (100%)。</li>
 </ul>
 <blockquote>
-<p>注：两个用户的相似度为100%并不一定代表他们喜欢相同的东西，也可以代表他们都讨厌相同的东西（例如，若 Bob 和 Ann 都给Star Wars打1分，他们仍然是100% similar）。事实上，the math behind cosine similarity works out such that *<em>if you only have one movie in common, you end up with 100% similarity no matter what. *</em>Even if Bob loved Star Wars and Ann hated it, in a sparse data situation, they both end up 100% similar. Sparse data is a huge problem with collaborative filtering, and it can lead to weird results. And sometimes, you need to enforce a minimum threshold on how many movies users have in common before you consider them at all.</p>
+<p>注：两个用户的相似度为100%并不一定代表他们喜欢相同的东西，也可以代表他们都讨厌相同的东西（例如，若 Bob 和 Ann 都给Star Wars打1分，他们仍然是100% similar）。事实上，the math behind cosine similarity works out such that <strong>if you only have one movie in common, you end up with 100% similarity no matter what. </strong>Even if Bob loved Star Wars and Ann hated it, in a sparse data situation, they both end up 100% similar. Sparse data is a huge problem with collaborative filtering, and it can lead to weird results. And sometimes, you need to enforce a minimum threshold on how many movies users have in common before you consider them at all.</p>
 </blockquote>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578456962753.png" alt="1578456962753"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457107702.png" alt="1578457107702"></p>
@@ -560,7 +560,7 @@
 <p>虽然msd比cosine的RMSE要低一点，但它们推荐的内容是一样的</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480727372.png" alt="1578480727372"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480843642.png" alt="1578480843642"></p>
-<p>Well, it’s actually pretty well known that KNN doesn’t work well in practice. Unfortunately, some people conclude that collaborative filtering in general is some naive approach that should be replaced with completely different techniques. But as we’ve seen, collaborative filtering isn’t the problem, it’s forcing collaborative filtering to make rating predictions – that’s the problem. We had some pretty exciting results when we just focused on making top-N recommendations, and completely forgot about optimizing for rating accuracy, and it turns out that’s what at the heart of the problem. <strong>使用user-based CF和item-based CF,   top-N 推荐结果都是不错的。</strong></p>
+<p>Well, it’s actually pretty well known that KNN doesn’t work well in practice. Unfortunately, some people conclude that collaborative filtering in general is some naive approach that should be replaced with completely different techniques. But as we’ve seen, collaborative filtering isn’t the problem, it’s forcing collaborative filtering to make rating predictions — that’s the problem. We had some pretty exciting results when we just focused on making top-N recommendations, and completely forgot about optimizing for rating accuracy, and it turns out that’s what at the heart of the problem. <strong>使用user-based CF和item-based CF,   top-N 推荐结果都是不错的。</strong></p>
 <p>Ratings are not continuous in nature, and KNN treats them as though they are continuous values that can be predicted on a continuous scale. If you really want to go with KNN, it would be more appropriate to treat it as a rating classification problem than as a rating prediction problem. KNN is also very sensitive to sparse data.</p>
 <p>The most fundamental thing is that accuracy isn’t everything. The main reason KNN produces underwhelming results is because it’s trying to solve the wrong problem. <strong>KNN recommender之所以推荐结果不好，是因为它解决的是rating prediction的问题，而不是推荐问题</strong>。</p>
 <h3><span id="bleeding-edge-alert">Bleeding Edge Alert</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381"></p>
@@ -694,7 +694,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -705,7 +705,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -716,7 +716,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -759,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Measuring Similarity, and Sparsity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">Similarity Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">Adjusted Cosine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">(item-based) pearson similarity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">spearman rank correlation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.4.</span> <span class="nav-text">mean squared difference</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.5.</span> <span class="nav-text">jaccard similarity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.6.</span> <span class="nav-text">Recap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">User-based Collaborative Filtering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">Recap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">User-based Collaborative Filtering, Hands-On</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">Item-based Collaborative Filtering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">4.1.</span> <span class="nav-text">Item-based Collaborative Filtering, Hands-On</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">Exercise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">Evaluating Collaborative Filtering Systems Offline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">6.1.</span> <span class="nav-text">code walkthrough</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">6.2.</span> <span class="nav-text">Exercise</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">KNN Recommenders</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.1.</span> <span class="nav-text">Running User and Item-based KNN on MovieLens</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">7.2.</span> <span class="nav-text">Exercise</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">8.</span> <span class="nav-text">Bleeding Edge Alert</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Measuring Similarity, and Sparsity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Similarity Metrics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Adjusted Cosine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">(item-based) pearson similarity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">spearman rank correlation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">mean squared difference</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">jaccard similarity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Recap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">User-based Collaborative Filtering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Recap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">User-based Collaborative Filtering, Hands-On</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Item-based Collaborative Filtering</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Item-based Collaborative Filtering, Hands-On</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Exercise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Evaluating Collaborative Filtering Systems Offline</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">code walkthrough</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Exercise</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">KNN Recommenders</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Running User and Item-based KNN on MovieLens</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Exercise</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Bleeding Edge Alert</span></a></li></ol></div>
             
 
           </div>
@@ -1290,6 +1290,8 @@
   
 
   
+  
+
 
   
 

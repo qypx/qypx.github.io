@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
+<meta name="description" content="B树 B+树 B*树 总结    参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
 <meta name="keywords" content="B树,知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="B树介绍">
 <meta property="og:url" content="http://qypx.github.io/2020/02/16/B树介绍/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
+<meta property="og:description" content="B树 B+树 B*树 总结    参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190817142029576.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70">
@@ -94,7 +94,7 @@
 <meta property="og:updated_time" content="2020-02-16T15:02:27.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="B树介绍">
-<meta name="twitter:description" content="B树 B+树 B*树 总结     参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
+<meta name="twitter:description" content="B树 B+树 B*树 总结    参考：https://blog.csdn.net/A_zhangq/article/details/99662693 漫画叙述B+树和B-树，很值得看!  B树B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。B-树就是指的B树。 B-树是一种多路搜索树（并不是二叉的）：">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70">
 
 
@@ -373,7 +373,6 @@
 
       
         <!-- toc -->
-
 <ul>
 <li><a href="#b树">B树</a></li>
 <li><a href="#b树">B+树</a></li>
@@ -381,7 +380,6 @@
 <li><a href="#总结">总结</a></li>
 </ul>
 <!-- tocstop -->
-
 <blockquote>
 <p>参考：<a href="https://blog.csdn.net/A_zhangq/article/details/99662693" target="_blank" rel="noopener">https://blog.csdn.net/A_zhangq/article/details/99662693</a></p>
 <p><a href="https://blog.csdn.net/qq_35571554/article/details/82759668" target="_blank" rel="noopener">漫画叙述B+树和B-树，很值得看!</a></p>
@@ -420,7 +418,6 @@
 </ul>
 <hr>
 <a id="more"></a>
-
 <h3><span id="b树">B+树</span></h3><p>B+树是B-树的变体，也是一种多路搜索树：</p>
 <p>其定义基本与B-树同，除了：</p>
 <ol>
@@ -461,10 +458,8 @@
 </li>
 <li><p>B（B-）树：多路搜索树，每个结点存储 M/2-1 到 M - 1 个关键字，非叶子结点存储指向关键字范围的子结点； 所有关键字在整颗树中出现，且只出现一次，非叶子结点可以命中；</p>
 </li>
-<li><p>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</p>
-</li>
-<li><p>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</p>
-</li>
+<li>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</li>
+<li>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</li>
 </ul>
 <p><img src="/2020/02/16/B树介绍/1581863461822.png" alt="1581863461822"></p>
 <p>这两种树都是平衡的多分树，它们都可以用于文件的索引结构，但B树只能支持随机检索，而B+树是有序的树，既能支持随机检索，又能支持顺序检索。</p>
@@ -509,6 +504,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/17/Computer-Vision/" rel="prev" title="Computer Vision">
+                Computer Vision <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -587,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -598,7 +597,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -609,7 +608,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -652,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">B树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">B+树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">B*树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">B树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">B+树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">B*树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1183,6 +1182,8 @@
   
 
   
+  
+
 
   
 

@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [">
+<meta name="description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [A">
 <meta name="keywords" content="Hadoop,Hive,Sqoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using relational data stores with Hadoop —— Hive &amp; Sqoop">
 <meta property="og:url" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [">
+<meta property="og:description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [A">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064255091.png">
@@ -120,7 +120,7 @@
 <meta property="og:updated_time" content="2020-01-16T07:39:33.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Using relational data stores with Hadoop —— Hive &amp; Sqoop">
-<meta name="twitter:description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [">
+<meta name="twitter:description" content="HIVE What is Hive? Why Hive Why not Hive HiveQL   [Activity] Use Hive to find the most popular movie How Hive works? Schema on read Where is the data? (内部表与外部表) Partitioning 分区 Ways to use Hive   [A">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png">
 
 
@@ -421,7 +421,6 @@
 
       
         <!-- toc -->
-
 <ul>
 <li><a href="#hive">HIVE</a><ul>
 <li><a href="#what-is-hive">What is Hive?</a><ul>
@@ -455,7 +454,6 @@
 <li><a href="#结语">结语</a></li>
 </ul>
 <!-- tocstop -->
-
 <h2><span id="hive">HIVE</span></h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png" alt="1579064046135"></p>
 <h3><span id="what-is-hive">What is Hive?</span></h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
@@ -465,13 +463,11 @@
 <p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
 <p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
 <a id="more"></a>
-
 <h4><span id="hiveql">HiveQL</span></h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579084456353.png" alt="1579084456353"></p>
 <h3><span id="activity-use-hive-to-find-the-most-popular-movie">[Activity] Use Hive to find the most popular movie</span></h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview</a></p>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085359675.png" alt="1579085359675"></p>
 <p>或写成：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT title, COUNT(movieID) AS ratingCount</span><br><span class="line">FROM ratings JOIN names ON ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">ORDER BY ratingCount DESC;</span><br></pre></td></tr></table></figure>
-
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579085980578.png" alt="1579085980578"></p>
 <p>We used views in Hive to split up a more complicated query into something more readable and more manageable.</p>
 <p>执行时会花一点时间，remember this isn’t really a relational database, so things like joins are kind of painful when you’re not dealing with normalized data.</p>
@@ -496,7 +492,6 @@
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579097528758.png" alt="1579097528758"></p>
 <p>或写成：？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT title, AVG(rating) as avgRating</span><br><span class="line">FROM ratings JOIN names on ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">HAVING COUNT(ratings.movieID)  &gt; 10</span><br><span class="line">ORDER BY avgRating DESC;</span><br></pre></td></tr></table></figure>
-
 <h2><span id="sqoop">Sqoop</span></h2><h3><span id="integrating-mysql-with-hadoop">Integrating MySQL with Hadoop</span></h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579149997458.png" alt="1579149997458"></p>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150738331.png" alt="1579150738331"></p>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579150774304.png" alt="1579150774304"></p>
@@ -530,7 +525,7 @@
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158771230.png" alt="1579158771230"></p>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579158823550.png" alt="1579158823550"></p>
 <p>不是靠逗号分隔的，Hive actually uses low ASCII values, like 1 and 2 and 3, to delimit its data. </p>
-<ol start="2">
+<ol>
 <li>在导入前，MySQL中要先有 target table</li>
 </ol>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579159104056.png" alt="1579159104056"></p>
@@ -668,7 +663,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -679,7 +674,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -690,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -733,7 +728,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">HIVE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">What is Hive?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.</span> <span class="nav-text">Why Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.2.</span> <span class="nav-text">Why not Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.1.3.</span> <span class="nav-text">HiveQL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">[Activity] Use Hive to find the most popular movie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">How Hive works?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.1.</span> <span class="nav-text">Schema on read</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.2.</span> <span class="nav-text">Where is the data? (内部表与外部表)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.3.</span> <span class="nav-text">Partitioning 分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">1.3.4.</span> <span class="nav-text">Ways to use Hive</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">[Activity] Use Hive to find the movie with the highest average rating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">Integrating MySQL with Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">2.3.</span> <span class="nav-text">Play with MySQL and Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.1.</span> <span class="nav-text">[Activity] Install MySQL and import our movie data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.2.</span> <span class="nav-text">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-number">2.3.3.</span> <span class="nav-text">[Activity] Use Sqoop tp export data from Hadoop to MySQL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-text">HIVE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">What is Hive?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Why Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Why not Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">HiveQL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Use Hive to find the most popular movie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">How Hive works?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Schema on read</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Where is the data? (内部表与外部表)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Partitioning 分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Ways to use Hive</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Use Hive to find the movie with the highest average rating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-text">Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Integrating MySQL with Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Play with MySQL and Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Install MySQL and import our movie data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Use Sqoop tp export data from Hadoop to MySQL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
@@ -1264,6 +1259,8 @@
   
 
   
+  
+
 
   
 
