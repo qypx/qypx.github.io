@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="DDL与DML INSERT DELETE UPDATE CREATE DROP ALTER RENAME   语法顺序与执行顺序   DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSER">
+<meta name="description" content="DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)">
 <meta name="keywords" content="数据库,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql语言">
 <meta property="og:url" content="http://qypx.github.io/2020/01/12/sql语言/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="DDL与DML INSERT DELETE UPDATE CREATE DROP ALTER RENAME   语法顺序与执行顺序   DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSER">
+<meta property="og:description" content="DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1578825616684.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1578900159995.png">
@@ -100,7 +100,7 @@
 <meta property="og:updated_time" content="2020-01-13T15:19:38.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql语言">
-<meta name="twitter:description" content="DDL与DML INSERT DELETE UPDATE CREATE DROP ALTER RENAME   语法顺序与执行顺序   DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSER">
+<meta name="twitter:description" content="DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/12/sql语言/1578825616684.png">
 
 
@@ -109,7 +109,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -401,39 +401,25 @@
 
       
         <!-- toc -->
-<ul>
-<li><a href="#ddl与dml">DDL与DML</a><ul>
-<li><a href="#insert">INSERT</a></li>
-<li><a href="#delete">DELETE</a></li>
-<li><a href="#update">UPDATE</a></li>
-<li><a href="#create">CREATE</a></li>
-<li><a href="#drop">DROP</a></li>
-<li><a href="#alter">ALTER</a></li>
-<li><a href="#rename">RENAME</a></li>
-</ul>
-</li>
-<li><a href="#语法顺序与执行顺序">语法顺序与执行顺序</a></li>
-</ul>
-<!-- tocstop -->
-<h3><span id="ddl与dml">DDL与DML</span></h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
+<h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
 <p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
 <p><img src="/2020/01/12/sql语言/1578825616684.png" alt="1578825616684"></p>
 <a id="more"></a>
-<h5><span id="insert">INSERT</span></h5><p><img src="/2020/01/12/sql语言/1578900159995.png" alt="1578900159995"></p>
+<h5 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h5><p><img src="/2020/01/12/sql语言/1578900159995.png" alt="1578900159995"></p>
 <blockquote>
 <p>注：字符为单引号</p>
 </blockquote>
 <p><code>INSERT INTO tablename {column1,column2,…}values(exp1,exp2,…);</code>  //插入</p>
-<h5><span id="delete">DELETE</span></h5><p><img src="/2020/01/12/sql语言/1578900315795.png" alt="1578900315795"></p>
-<h5><span id="update">UPDATE</span></h5><p><img src="/2020/01/12/sql语言/1578900364614.png" alt="1578900364614"></p>
-<h5><span id="create">CREATE</span></h5><p><img src="/2020/01/12/sql语言/1578899962419.png" alt="1578899962419"></p>
+<h5 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h5><p><img src="/2020/01/12/sql语言/1578900315795.png" alt="1578900315795"></p>
+<h5 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h5><p><img src="/2020/01/12/sql语言/1578900364614.png" alt="1578900364614"></p>
+<h5 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h5><p><img src="/2020/01/12/sql语言/1578899962419.png" alt="1578899962419"></p>
 <p><strong>CREATE的时候，先CREATE没有外键的表，最后CREATE右外键的表</strong></p>
-<h5><span id="drop">DROP</span></h5><p><img src="/2020/01/12/sql语言/1578900950689.png" alt="1578900950689"></p>
+<h5 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h5><p><img src="/2020/01/12/sql语言/1578900950689.png" alt="1578900950689"></p>
 <p><strong>DROP的时候，先DROP有外键的表，最后DROP没有外键的表</strong></p>
-<h5><span id="alter">ALTER</span></h5><p>例如增加一列</p>
+<h5 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h5><p>例如增加一列</p>
 <p><img src="/2020/01/12/sql语言/1578901179360.png" alt="1578901179360"></p>
-<h5><span id="rename">RENAME</span></h5><p><img src="/2020/01/12/sql语言/1578901685944.png" alt="1578901685944"></p>
-<h3><span id="语法顺序与执行顺序">语法顺序与执行顺序</span></h3><p><img src="/2020/01/12/sql语言/1578825674160.png" alt="1578825674160"></p>
+<h5 id="RENAME"><a href="#RENAME" class="headerlink" title="RENAME"></a>RENAME</h5><p><img src="/2020/01/12/sql语言/1578901685944.png" alt="1578901685944"></p>
+<h3 id="语法顺序与执行顺序"><a href="#语法顺序与执行顺序" class="headerlink" title="语法顺序与执行顺序"></a>语法顺序与执行顺序</h3><p><img src="/2020/01/12/sql语言/1578825674160.png" alt="1578825674160"></p>
 <p><img src="/2020/01/12/sql语言/1578825736061.png" alt="1578825736061"></p>
 <p>相当于就是 SELECT [DISTINCT] 的顺序换了一下。</p>
 
@@ -603,13 +589,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -624,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">DDL与DML</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">INSERT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">CREATE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">ALTER</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">RENAME</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">语法顺序与执行顺序</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DDL与DML"><span class="nav-text">DDL与DML</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#INSERT"><span class="nav-text">INSERT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DELETE"><span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UPDATE"><span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CREATE"><span class="nav-text">CREATE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DROP"><span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ALTER"><span class="nav-text">ALTER</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RENAME"><span class="nav-text">RENAME</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#语法顺序与执行顺序"><span class="nav-text">语法顺序与执行顺序</span></a></li></div>
             
 
           </div>
@@ -662,7 +661,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -768,13 +767,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="hexo中无法显示数学公式： 参考 成功解决在hexo中无法显示数学公式的问题  hexo的NexT主题，怎么取消“文章目录”对标题的自动编号？  markdown页面内跳转  设置文章封面： 参考 https://www.zhihu.com/tardis/sogou/art/60424755  修改主题页面布局为圆角 参考https://wugenqiang.github.io/article">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo相关问题">
 <meta property="og:url" content="http://qypx.github.io/2020/02/17/hexo相关问题/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="hexo中无法显示数学公式： 参考 成功解决在hexo中无法显示数学公式的问题  hexo的NexT主题，怎么取消“文章目录”对标题的自动编号？  markdown页面内跳转  设置文章封面： 参考 https://www.zhihu.com/tardis/sogou/art/60424755  修改主题页面布局为圆角 参考https://wugenqiang.github.io/article">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-17T17:00:22.584Z">
+<meta property="og:image" content="http://qypx.github.io/2020/02/17/hexo相关问题/1582012566416.png">
+<meta property="og:updated_time" content="2020-02-18T08:09:27.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo相关问题">
-<meta name="twitter:description" content="hexo中无法显示数学公式： 参考 成功解决在hexo中无法显示数学公式的问题  hexo的NexT主题，怎么取消“文章目录”对标题的自动编号？  markdown页面内跳转  设置文章封面： 参考 https://www.zhihu.com/tardis/sogou/art/60424755  修改主题页面布局为圆角 参考https://wugenqiang.github.io/article">
+<meta name="twitter:image" content="http://qypx.github.io/2020/02/17/hexo相关问题/1582012566416.png">
 
 
 
@@ -98,7 +97,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -333,7 +332,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T01:00:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T16:09:27+08:00">
                 2020-02-18
               </time>
             
@@ -399,12 +398,27 @@
 </li>
 <li><p>设置文章封面：</p>
 <p>参考 <a href="https://www.zhihu.com/tardis/sogou/art/60424755" target="_blank" rel="noopener">https://www.zhihu.com/tardis/sogou/art/60424755</a></p>
+<p><code>&lt;!-- less --&gt;</code>: 点击阅读全文后不显示<code>&lt;!-- less --&gt;</code> 以上的内容</p>
+<p><code>&lt;!-- more --&gt;</code>: 要显示</p>
 </li>
 <li><p>修改主题页面布局为圆角</p>
 <p>参考<a href="https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2" target="_blank" rel="noopener">https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2</a></p>
 </li>
+<li><p>添加背景音乐：</p>
+<p><a href="https://www.cnblogs.com/Guhongying/p/10461970.html" target="_blank" rel="noopener">Hexo 的next主题下添加网易云音乐作BGM</a></p>
+<p>网易云音乐无法生成外链：</p>
+<p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
+<p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
+<p>（==更新==：参考以上方法时，无法播放音乐？）</p>
+<p>另一个方法参考：<a href="https://blog.csdn.net/qq_35859750/article/details/91452615" target="_blank" rel="noopener">hexo添加音乐</a></p>
+<p>安装aplayer: <code>npm install --save hexo-tag-aplayer</code></p>
+<p>粘贴以下内容到 \themes\next\layout\_macro\sidebar.swig</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 新增的内容 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- require APlayer --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- require MetingJS --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meting-js</span></span></span><br><span class="line"><span class="tag"><span class="attr">server</span>=<span class="string">"netease"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">type</span>=<span class="string">"song"</span></span></span><br><span class="line"><span class="tag"><span class="attr">id</span>=<span class="string">"188376"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">meting-js</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 新增的内容end --&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<p>  <img src="/2020/02/17/hexo相关问题/1582012566416.png" alt="1582012566416"></p>
+<p>即可.</p>
+<p>其中server, type, id等根据具体情况修改.</p>
       
     </div>
     
@@ -556,13 +570,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -599,7 +626,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -705,13 +732,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

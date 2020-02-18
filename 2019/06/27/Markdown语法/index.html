@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -102,7 +102,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -372,7 +372,7 @@
 
       
         <p>(本文参考<a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">Markdown Tutorial</a>)</p>
-<h4><span id="1-加粗与斜体">1. 加粗与斜体</span></h4><ul>
+<h4 id="1-加粗与斜体"><a href="#1-加粗与斜体" class="headerlink" title="1. 加粗与斜体"></a>1. 加粗与斜体</h4><ul>
 <li>斜体：在文本两侧加上一个星号或一个下划线，例如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_unknown_或*unkown*</span><br></pre></td></tr></table></figure>
@@ -387,12 +387,12 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**_of course_**</span><br></pre></td></tr></table></figure>
 <p>效果如下：<strong>_of course_</strong></p>
-<h4><span id="2标题headers">2.标题(Headers)</span></h4><p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（# 一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
+<h4 id="2-标题-Headers"><a href="#2-标题-Headers" class="headerlink" title="2.标题(Headers)"></a>2.标题(Headers)</h4><p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（# 一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
 <blockquote>
-<h1><span id="header-one">Header one</span></h1><h2><span id="header-two">Header two</span></h2><h3><span id="header-three">Header three</span></h3><h4><span id="header-four">Header four</span></h4><h5><span id="header-five">Header five</span></h5><h6><span id="header-six">Header six</span></h6><p>plain text</p>
+<h1 id="Header-one"><a href="#Header-one" class="headerlink" title="Header one"></a>Header one</h1><h2 id="Header-two"><a href="#Header-two" class="headerlink" title="Header two"></a>Header two</h2><h3 id="Header-three"><a href="#Header-three" class="headerlink" title="Header three"></a>Header three</h3><h4 id="Header-four"><a href="#Header-four" class="headerlink" title="Header four"></a>Header four</h4><h5 id="Header-five"><a href="#Header-five" class="headerlink" title="Header five"></a>Header five</h5><h6 id="Header-six"><a href="#Header-six" class="headerlink" title="Header six"></a>Header six</h6><p>plain text</p>
 </blockquote>
 <p>注：#号与文本之间有一个空格。</p>
-<h4><span id="3链接">3.链接</span></h4><ul>
+<h4 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h4><ul>
 <li><p>inline link</p>
 <p>语法如下：</p>
 </li>
@@ -410,7 +410,7 @@
 <p>效果如下：<br>Do you want to <a href="www.zombo.com">see something fun</a>?  </p>
 <p>Well, I have <a href="www.stumbleupon.com">a website for you</a>!</p>
 <p>一般可将链接地址写在Markdown文件的最后。使用refrence的好处是如果有许多链接都是指向一个地方，那么需要更改的时候只需要修改一次就行了。</p>
-<h4><span id="4图片">4.图片</span></h4><ul>
+<h4 id="4-图片"><a href="#4-图片" class="headerlink" title="4.图片"></a>4.图片</h4><ul>
 <li>inline link</li>
 </ul>
 <p>插入图片和插入链接类似，语法如下： </p>
@@ -429,7 +429,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">![Black cat][Black]</span><br><span class="line"></span><br><span class="line">![Orange cat][Orange]</span><br><span class="line"></span><br><span class="line">[Black]: https://upload.wikimedia.org/wikipedia/commons/a/a3/<span class="number">81</span>_INF_DIV_SSI.jpg  </span><br><span class="line">        </span><br><span class="line">[Orange]:http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/<span class="number">256</span>/<span class="number">22221</span>-cat-icon.png</span><br></pre></td></tr></table></figure>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/81_INF_DIV_SSI.jpg" alt="Black cat"></p>
 <p><img src="http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/256/22221-cat-icon.png" alt="Orange cat"></p>
-<h4><span id="5blockquotes">5.Blockquotes</span></h4><p>当想引用一段话并让读者注意到时，可以采用如下方法：在文本前加上”&gt;”</p>
+<h4 id="5-Blockquotes"><a href="#5-Blockquotes" class="headerlink" title="5.Blockquotes"></a>5.Blockquotes</h4><p>当想引用一段话并让读者注意到时，可以采用如下方法：在文本前加上”&gt;”</p>
 <p>例如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="string">"In a few moments he was barefoot, his stockings folded in his pockets and his</span></span><br><span class="line"><span class="string">  canvas shoes dangling by their knotted laces over his shoulders and, picking a</span></span><br><span class="line"><span class="string">  pointed salt-eaten stick out of the jetsam among the rocks, he clambered down</span></span><br><span class="line"><span class="string">  the slope of the breakwater."</span></span><br></pre></td></tr></table></figure>
 <p> 效果如下：</p>
@@ -445,7 +445,7 @@
 <p>Cranly did not answer.</p>
 </blockquote>
 <p>Note: even blank lines must contain the caret character. This ensures that the entire blockquote is grouped together.</p>
-<h4><span id="6列表lists">6.列表(Lists)</span></h4><h5><span id="unordered-list">* unordered list</span></h5><p>在前面加星号：</p>
+<h4 id="6-列表-Lists"><a href="#6-列表-Lists" class="headerlink" title="6.列表(Lists)"></a>6.列表(Lists)</h4><h5 id="unordered-list"><a href="#unordered-list" class="headerlink" title="* unordered list"></a>* unordered list</h5><p>在前面加星号：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* Milk  </span><br><span class="line">* Eggs  </span><br><span class="line">* Salmon  </span><br><span class="line">* Butter</span><br></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <ul>
@@ -454,7 +454,7 @@
 <li>Salmon</li>
 <li>Butter</li>
 </ul>
-<h5><span id="odered-list">* odered list</span></h5><p>在前面加数字</p>
+<h5 id="odered-list"><a href="#odered-list" class="headerlink" title="* odered list"></a>* odered list</h5><p>在前面加数字</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> Crack three eggs over a bowl</span><br><span class="line"><span class="number">2.</span> Pour a gallon of milk into the bowl</span><br><span class="line"><span class="number">3.</span> Rub the salmon vigorously <span class="keyword">with</span> butter</span><br><span class="line"><span class="number">4.</span> Drop the salmon into the egg-milk bowl</span><br></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <ol>
@@ -463,7 +463,7 @@
 <li>Rub the salmon vigorously with butter</li>
 <li>Drop the salmon into the egg-milk bowl</li>
 </ol>
-<h5><span id="nest-one-list-within-another">* nest one list within another</span></h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* Tintin</span><br><span class="line"> * A reporter</span><br><span class="line"> * Has poofy orange hair</span><br><span class="line"> * Friends <span class="keyword">with</span> the world<span class="string">'s most awesome dog</span></span><br><span class="line"><span class="string">* Haddock</span></span><br><span class="line"><span class="string"> * A sea captain</span></span><br><span class="line"><span class="string"> * Has a fantastic beard</span></span><br><span class="line"><span class="string"> * Loves whiskey</span></span><br><span class="line"><span class="string">   * Possibly also scotch?</span></span><br></pre></td></tr></table></figure>
+<h5 id="nest-one-list-within-another"><a href="#nest-one-list-within-another" class="headerlink" title="* nest one list within another"></a>* nest one list within another</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* Tintin</span><br><span class="line"> * A reporter</span><br><span class="line"> * Has poofy orange hair</span><br><span class="line"> * Friends <span class="keyword">with</span> the world<span class="string">'s most awesome dog</span></span><br><span class="line"><span class="string">* Haddock</span></span><br><span class="line"><span class="string"> * A sea captain</span></span><br><span class="line"><span class="string"> * Has a fantastic beard</span></span><br><span class="line"><span class="string"> * Loves whiskey</span></span><br><span class="line"><span class="string">   * Possibly also scotch?</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Tintin<ul>
 <li>A reporter</li>
@@ -482,7 +482,7 @@
 </li>
 </ul>
 <p>建议最多建三层，否则文章结构会变得太混乱</p>
-<h4><span id="7段落">7.段落</span></h4><ul>
+<h4 id="7-段落"><a href="#7-段落" class="headerlink" title="7.段落"></a>7.段落</h4><ul>
 <li>hard break</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Do I contradict myself?</span><br><span class="line"></span><br><span class="line">Very well then I contradict myself,</span><br><span class="line"></span><br><span class="line">(I am large, I contain multitudes.)</span><br></pre></td></tr></table></figure>
@@ -496,10 +496,10 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Do I contradict myself?··</span><br><span class="line">Very well then I contradict myself,··</span><br><span class="line">(I am large, I contain multitudes.)</span><br></pre></td></tr></table></figure>
 <p>想换行时，打两个空格。上面每个点 ( · ) 代表一个空格。效果如下：</p>
 <p>Do I contradict myself?<br>Very well then I contradict myself,<br>(I am large, I contain multitudes.)</p>
-<h4><span id="8-latex数学表达式">8. LaTex数学表达式</span></h4><p>在Markdown文档中，可以使用<a href="https://www.latex-project.org/" target="_blank" rel="noopener">LaTex</a>符号创建数学表达式。例如：</p>
+<h4 id="8-LaTex数学表达式"><a href="#8-LaTex数学表达式" class="headerlink" title="8. LaTex数学表达式"></a>8. LaTex数学表达式</h4><p>在Markdown文档中，可以使用<a href="https://www.latex-project.org/" target="_blank" rel="noopener">LaTex</a>符号创建数学表达式。例如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">y = \frac&#123;a&#125;&#123;b+c&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
-y = \frac{a}{b+c}</script><h4><span id="9-typora中字体颜色">9. Typora中，字体颜色</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style=&apos;color:red&apos;&gt;This is red&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora中，字体颜色" class="headerlink" title="9. Typora中，字体颜色"></a>9. Typora中，字体颜色</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style=&apos;color:red&apos;&gt;This is red&lt;/span&gt;</span><br></pre></td></tr></table></figure>
 <p><span style="color:red">This is red</span></p>
 <p>以上，本文介绍了一些基础的Markdown语法，想了解更多的Markdown知识可查询相关资料。</p>
 
@@ -667,13 +667,26 @@ y = \frac{a}{b+c}</script><h4><span id="9-typora中字体颜色">9. Typora中，
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -688,7 +701,7 @@ y = \frac{a}{b+c}</script><h4><span id="9-typora中字体颜色">9. Typora中，
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">1. 加粗与斜体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">2.标题(Headers)</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-text">Header one</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-text">Header two</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Header three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Header four</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">Header five</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#null"><span class="nav-text">Header six</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">3.链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">4.图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">5.Blockquotes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">6.列表(Lists)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">* unordered list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">* odered list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">* nest one list within another</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">7.段落</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">8. LaTex数学表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">9. Typora中，字体颜色</span></a></li></ol></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-加粗与斜体"><span class="nav-text">1. 加粗与斜体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-标题-Headers"><span class="nav-text">2.标题(Headers)</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Header-one"><span class="nav-text">Header one</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Header-two"><span class="nav-text">Header two</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Header-three"><span class="nav-text">Header three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Header-four"><span class="nav-text">Header four</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Header-five"><span class="nav-text">Header five</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Header-six"><span class="nav-text">Header six</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-链接"><span class="nav-text">3.链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-图片"><span class="nav-text">4.图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Blockquotes"><span class="nav-text">5.Blockquotes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-列表-Lists"><span class="nav-text">6.列表(Lists)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#unordered-list"><span class="nav-text">* unordered list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#odered-list"><span class="nav-text">* odered list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nest-one-list-within-another"><span class="nav-text">* nest one list within another</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-段落"><span class="nav-text">7.段落</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-LaTex数学表达式"><span class="nav-text">8. LaTex数学表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Typora中，字体颜色"><span class="nav-text">9. Typora中，字体颜色</span></a></li></ol></li></ol></li></ol></li></div>
             
 
           </div>
@@ -726,7 +739,7 @@ y = \frac{a}{b+c}</script><h4><span id="9-typora中字体颜色">9. Typora中，
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -832,13 +845,6 @@ y = \frac{a}{b+c}</script><h4><span id="9-typora中字体颜色">9. Typora中，
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

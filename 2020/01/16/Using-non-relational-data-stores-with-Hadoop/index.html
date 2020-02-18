@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Rep">
+<meta name="description" content="Why NoSQL?We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich">
 <meta name="keywords" content="Hadoop,HBase,MongoDB,NoSQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using non-relational data stores with Hadoop - NoSQL &amp; HBase &amp; MongoDB">
 <meta property="og:url" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Rep">
+<meta property="og:description" content="Why NoSQL?We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579162098786.png">
@@ -141,7 +141,7 @@
 <meta property="og:updated_time" content="2020-01-19T06:29:20.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Using non-relational data stores with Hadoop - NoSQL &amp; HBase &amp; MongoDB">
-<meta name="twitter:description" content="Why NoSQL? What is HBase CRUD HBase architecture HBase data model Ways to access HBase   [Activity] Import movie ratings into HBase MongoDB Overview Document-based data model MongoDB terminology Rep">
+<meta name="twitter:description" content="Why NoSQL?We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579161940219.png">
 
 
@@ -150,7 +150,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -420,38 +420,7 @@
 
       
         <!-- toc -->
-<ul>
-<li><a href="#why-nosql">Why NoSQL?</a></li>
-<li><a href="#what-is-hbase">What is HBase</a><ul>
-<li><a href="#crud">CRUD</a></li>
-<li><a href="#hbase-architecture">HBase architecture</a></li>
-<li><a href="#hbase-data-model">HBase data model</a></li>
-<li><a href="#ways-to-access-hbase">Ways to access HBase</a></li>
-</ul>
-</li>
-<li><a href="#activity-import-movie-ratings-into-hbase">[Activity] Import movie ratings into HBase</a></li>
-<li><a href="#mongodb-overview">MongoDB Overview</a><ul>
-<li><a href="#document-based-data-model">Document-based data model</a></li>
-<li><a href="#mongodb-terminology">MongoDB terminology</a></li>
-<li><a href="#replication-sets">Replication Sets</a></li>
-<li><a href="#sharding-how-mongodb-handles-big-data">Sharding (How MongoDB handles big data)</a></li>
-<li><a href="#neat-things-about-mongodb">Neat Things about MongoDB</a></li>
-</ul>
-</li>
-<li><a href="#activity-install-mongodb-and-integrate-spark-with-mongodb">[Activity] Install MongoDB and integrate Spark with MongoDB</a></li>
-<li><a href="#activity-using-the-mongodb-shell">[Activity] Using the MongoDB Shell</a></li>
-<li><a href="#choosing-a-database-technology">Choosing a database technology</a><ul>
-<li><a href="#integration-considerations">Integration considerations</a></li>
-<li><a href="#scaling-requirements">Scaling requirements</a></li>
-<li><a href="#support-considerations">Support considerations</a></li>
-<li><a href="#cap-considerations">CAP considerations</a></li>
-<li><a href="#simplicity">Simplicity</a></li>
-<li><a href="#examples">Examples</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h3><span id="why-nosql">Why NoSQL?</span></h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So <strong>if you’re doing analytic work, relational databases are awesome. </strong>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
+<h3 id="Why-NoSQL"><a href="#Why-NoSQL" class="headerlink" title="Why NoSQL?"></a>Why NoSQL?</h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So <strong>if you’re doing analytic work, relational databases are awesome. </strong>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
 <p>BUT let’s imagine you need to take things up to the next level. You’re going to start to run into some limitations with SQL and relational database systems.</p>
 <p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to <strong>very quickly answer a specific question </strong>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
 <p>And if you need to do that <strong>at a very large scale very quickly across a massive dataset</strong>, something like MySQL might not cut it. You know, if you’re an Amazon or a Google, you might need something that can even <strong>handle tens of thousands of transactions per second without breaking a sweat. And that’s where NoSQL comes in.</strong></p>
@@ -473,23 +442,23 @@
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579163943922.png" alt="1579163943922"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579165798303.png" alt="1579165798303"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579165874566.png" alt="1579165874566"></p>
-<h3><span id="what-is-hbase">What is HBase</span></h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579166108894.png" alt="1579166108894"></p>
+<h3 id="What-is-HBase"><a href="#What-is-HBase" class="headerlink" title="What is HBase"></a>What is HBase</h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579166108894.png" alt="1579166108894"></p>
 <p>HBase is built on top of HDFS. So if you’re storing massive datasets on an HDFS file system, HBase can be used to actually vend that to the outside world at a very large scale.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579170600274.png" alt="1579170600274"></p>
 <p>Just like every other NoSQL solution, it <strong>does not have a query language, but it does have an API</strong> that can very quickly answer the question “what are the values for this key?” or “store this value for this key”.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579170812851.png" alt="1579170812851"></p>
-<h4><span id="crud">CRUD</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579171017155.png" alt="1579171017155"></p>
-<h4><span id="hbase-architecture">HBase architecture</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172096734.png" alt="1579172096734"></p>
+<h4 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579171017155.png" alt="1579171017155"></p>
+<h4 id="HBase-architecture"><a href="#HBase-architecture" class="headerlink" title="HBase architecture"></a>HBase architecture</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172096734.png" alt="1579172096734"></p>
 <p>Basically, it’s split up into different region servers. This is the core of HBase itself. When we talk about regions, we’re talking about ranges of keys, so it’s just like sharding or range partitioning in more traditional database systems. But the magic of it all is that it can automatically adapt, so, as your data grows, it can automatically repartition things, and if you add more servers to the mix, it can automatically deal with that at runtime.</p>
 <p>So there’s a very complex mechanism that involves write-ahead commit logs and, merging things together over time asynchronously. But you don’t have to worry about those details - HBase does it for you. All you need to know is that it can automatically distribute your data amongst a fleet of region servers, so an entire cluster, if you will.</p>
 <p>Now, when you have an application that’s actually talking to HBase - a web application or a web server - it’s not actually going to talk to these master nodes directly, it’s going to be talking to region servers directly.</p>
-<h4><span id="hbase-data-model">HBase data model</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172733321.png" alt="1579172733321"></p>
+<h4 id="HBase-data-model"><a href="#HBase-data-model" class="headerlink" title="HBase data model"></a>HBase data model</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579172733321.png" alt="1579172733321"></p>
 <p>What’s different about HBase is that it has the concept of column families. So you don’t define a fixed set of columns for each row in your database. Instead you define column families, and each column family can contain a very large number of individual columns.</p>
 <p>This comes in handy where you have cases of sparse data.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579174693898.png" alt="1579174693898"></p>
-<h4><span id="ways-to-access-hbase">Ways to access HBase</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579175017006.png" alt="1579175017006"></p>
+<h4 id="Ways-to-access-HBase"><a href="#Ways-to-access-HBase" class="headerlink" title="Ways to access HBase"></a>Ways to access HBase</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579175017006.png" alt="1579175017006"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579174915921.png" alt="1579174915921"></p>
-<h3><span id="activity-import-movie-ratings-into-hbase">[Activity] Import movie ratings into HBase</span></h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579178657253.png" alt="1579178657253"></p>
+<h3 id="Activity-Import-movie-ratings-into-HBase"><a href="#Activity-Import-movie-ratings-into-HBase" class="headerlink" title="[Activity] Import movie ratings into HBase"></a>[Activity] Import movie ratings into HBase</h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579178657253.png" alt="1579178657253"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579179141807.png" alt="1579179141807"></p>
 <p>Now we’re going to run a REST service on top of HBase. It’s just a service that you can query through</p>
 <p>HTTP requests, and we’re going to write a client that actually queries that service to store and retrieve</p>
@@ -497,38 +466,38 @@
 <p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963426#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963426#overview</a></p>
 <p>返回结果：</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579179897880.png" alt="1579179897880"></p>
-<h3><span id="mongodb-overview">MongoDB Overview</span></h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579180346655.png" alt="1579180346655"></p>
+<h3 id="MongoDB-Overview"><a href="#MongoDB-Overview" class="headerlink" title="MongoDB Overview"></a>MongoDB Overview</h3><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579180346655.png" alt="1579180346655"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579180457304.png" alt="1579180457304"></p>
 <p>CAP theorem: <strong>MongoDB chooses consistency and partition-tolerance.</strong></p>
 <p>Since it dose have to deal with big data, partition-tolerance is something is has to do, and MongoDB chooses consistency over availability.</p>
 <p>So MongoDB has a single master, a single primary database that you have to talk to all the time to ensure consistency. But if that master goes down, it will result in a period of unavailability, while a new primary database is put into place.</p>
-<h4><span id="document-based-data-model">Document-based data model</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579235814767.png" alt="1579235814767"></p>
+<h4 id="Document-based-data-model"><a href="#Document-based-data-model" class="headerlink" title="Document-based data model"></a>Document-based data model</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579235814767.png" alt="1579235814767"></p>
 <p>The big thing that’s different about MongoDB is that you can stick pretty much anything you want into MongoDB - basically, any JSON blob of data you can shove into a document in MongoDB. It doesn’t have to be structured, you don’t have to have the same schema across each document. You can put whatever you want in there.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579236174990.png" alt="1579236174990"></p>
 <p>You still need to think about what the queries are you going to be performing on this database and design your database schema accordingly. Think about what indices you might need for fast lookups for the queries you’re going to do. At the end of the day, it’s still a NoSQL database, so you cannot do joins efficiently, so you want to make sure your schema is denormalized as much as you can. </p>
-<h4><span id="mongodb-terminology">MongoDB terminology</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579238197250.png" alt="1579238197250"></p>
+<h4 id="MongoDB-terminology"><a href="#MongoDB-terminology" class="headerlink" title="MongoDB terminology"></a>MongoDB terminology</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579238197250.png" alt="1579238197250"></p>
 <p>在MongoDB中我们讨论 Databse, Collection, 和 Document, 而不是 Database, Table, 和 Row.</p>
 <p>A MongoDB database contains collections, and a collection contains a collection of documents.</p>
 <p>And the main restriction here is simply that you cannot move data between collections across different databases, so if you do need to reference data between different collections, they do need to be within the same database.</p>
-<h4><span id="replication-sets">Replication Sets</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579250924977.png" alt="1579250924977"></p>
+<h4 id="Replication-Sets"><a href="#Replication-Sets" class="headerlink" title="Replication Sets"></a>Replication Sets</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579250924977.png" alt="1579250924977"></p>
 <p>MongoDB has a single-master architecture, the idea being that we want to have consistency over availability, but you can have these secondary databases that maintain copies over time from your primary database, so, as writes happen to your primary database, those writes get replicated through an operation log to any secondary nodes that you might have attached to it.</p>
 <p>The way that replication chain works is kind of arbitrary. It actually just tries to figure out which server can it talk to most quickly.</p>
 <p>And I want to stress again that we haven’t even talked about big data yet. What we’re talking about here in replica sets is just having a single monolithic MongoDB server, where all of the data sits on that single server, and we’re replicating that data to backup servers.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254081608.png" alt="1579254081608"></p>
-<h4><span id="sharding-how-mongodb-handles-big-data">Sharding (How MongoDB handles big data)</span></h4><p>For actually scaling out data across more than one server with MongoDB, we need to set up something called sharding.</p>
+<h4 id="Sharding-How-MongoDB-handles-big-data"><a href="#Sharding-How-MongoDB-handles-big-data" class="headerlink" title="Sharding (How MongoDB handles big data)"></a>Sharding (How MongoDB handles big data)</h4><p>For actually scaling out data across more than one server with MongoDB, we need to set up something called sharding.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254450944.png" alt="1579254450944"></p>
 <p>The way sharding works is that we actually have multiple replica sets, where each replica set is responsible for some range of values on some indexed value in my database. So in order to get sharding to work, it requires that you set up an index on some unique value on your collection, and that index is used to actually balance the load of information among multiple replica sets, and then on each application server, whatever you’re using to talk to MongoDB, you’ll run a process called “mongos”, and “mongos” talks to exactly three configuration servers that you have running somewhere that knows about how things are partitioned and then uses that to figure out which replica set do I talk to to get the information that I want.</p>
 <p>“mongos” is running something called a balancer in the background. So, over time, if it finds that it actually doesn’t have an even distribution of values in whatever field you’re partitioning on, it can rebalance things across your replica sets in real time over time.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579254879640.png" alt="1579254879640"></p>
-<h4><span id="neat-things-about-mongodb">Neat Things about MongoDB</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579255204023.png" alt="1579255204023"></p>
+<h4 id="Neat-Things-about-MongoDB"><a href="#Neat-Things-about-MongoDB" class="headerlink" title="Neat Things about MongoDB"></a>Neat Things about MongoDB</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579255204023.png" alt="1579255204023"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579255278039.png" alt="1579255278039"></p>
-<h3><span id="activity-install-mongodb-and-integrate-spark-with-mongodb">[Activity] Install MongoDB and integrate Spark with MongoDB</span></h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963458#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963458#overview</a></p>
+<h3 id="Activity-Install-MongoDB-and-integrate-Spark-with-MongoDB"><a href="#Activity-Install-MongoDB-and-integrate-Spark-with-MongoDB" class="headerlink" title="[Activity] Install MongoDB and integrate Spark with MongoDB"></a>[Activity] Install MongoDB and integrate Spark with MongoDB</h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963458#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963458#overview</a></p>
 <p>We’re going to read in the “u.user” data file from the MovieLens dataset, convert that into a dataframe in Spark and then write that dataframe out to MongoDB, and then we’re going to read it back and do a little query on it.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579328591006.png" alt="1579328591006"></p>
 <p>What we’re not doing is loading this data into Spark locally and then running a query on it - what it’s</p>
 <p>actually doing is figuring out how do I translate this SQL query into a MongoDB query and actually</p>
 <p>execute that on MongoDB and return the results back from MongoDB.</p>
-<h3><span id="activity-using-the-mongodb-shell">[Activity] Using the MongoDB Shell</span></h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963462#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963462#overview</a></p>
+<h3 id="Activity-Using-the-MongoDB-Shell"><a href="#Activity-Using-the-MongoDB-Shell" class="headerlink" title="[Activity] Using the MongoDB Shell"></a>[Activity] Using the MongoDB Shell</h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963462#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963462#overview</a></p>
 <p>启动MongoDB Shell:</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406411404.png" alt="1579406411404"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579331041897.png" alt="1579331041897"></p>
@@ -546,30 +515,30 @@
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579405757587.png" alt="1579405757587"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406239652.png" alt="1579406239652"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406303820.png" alt="1579406303820"></p>
-<h3><span id="choosing-a-database-technology">Choosing a database technology</span></h3><h4><span id="integration-considerations">Integration considerations</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406708880.png" alt="1579406708880"></p>
+<h3 id="Choosing-a-database-technology"><a href="#Choosing-a-database-technology" class="headerlink" title="Choosing a database technology"></a>Choosing a database technology</h3><h4 id="Integration-considerations"><a href="#Integration-considerations" class="headerlink" title="Integration considerations"></a>Integration considerations</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406708880.png" alt="1579406708880"></p>
 <p>Different technologies have different connectors for different other technologies. </p>
 <p>例如, if you have a big analytics job that’s currently running in Apache Spark, then you probably want to limit yourself to external databases that can connect easily to Apache Spark.</p>
 <p>又例如, Maybe you have some front-end system that actually depends on having a SQL interface to a back-end database, and you’re thinking about moving from a monolithic relational database to a distributed non-relational database. In that case, it might make life a lot easier if the non-relational database you’re moving to offers some sort of SQL-like interface that can be easily migrated to from your front-end application.</p>
-<h4><span id="scaling-requirements">Scaling requirements</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406971416.png" alt="1579406971416"></p>
+<h4 id="Scaling-requirements"><a href="#Scaling-requirements" class="headerlink" title="Scaling requirements"></a>Scaling requirements</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579406971416.png" alt="1579406971416"></p>
 <p>How much data are you really talking about? Is it going to grow unbounded over time?</p>
 <p>If so, then you need some sort of a database technology that is not limited to the data that you can store on one PC, right? You’re going to have to look at something like Cassandra or MongoDB or HBase, where you can actually distribute the storage of your data across an entire cluster and scale horizontally instead of vertically.</p>
 <p>Think, too, about your transaction rates: how many requests do you intend to get per second? You know, if we’re talking about thousands, then, again, a single database server is not going to cut it. You need something that’s distributed, where you can spread out the load of those transactions more evenly.</p>
-<h4><span id="support-considerations">Support considerations</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407277634.png" alt="1579407277634"></p>
+<h4 id="Support-considerations"><a href="#Support-considerations" class="headerlink" title="Support considerations"></a>Support considerations</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407277634.png" alt="1579407277634"></p>
 <p>So do you actually have the in-house expertise to spin up this new technology and actually configure it properly? It’s going to be harder than you think, especially if you’re using this in the real world or in any sort of situation, where you have personally identifiable information in the mix from your end users. In that case, you need to make sure you’re thinking very deeply about the <strong>security</strong> of your system, and the truth is most of the NoSQL databases we talked about, if you just configure them with their default settings, there’ll be no security at all. Anybody at all can connect to these things and retrieve data or write data into them, so you need to make sure you have someone available who knows what they’re doing for setting this up in a secure manner.</p>
 <p>That might mean if you are in a big organization that has these experts in house, that’s great, don’t even think about it - but if you’re in a smaller organization, you might want to consider: does this technology I’m choosing actually offer professional paid support that will help guide me through these setup decisions and the initial administration of my server over time? Or are there administrators that I can outsource the ongoing administration to over time? So in this case, you know, a more corporate solution like MongoDB might actually be a good choice, because, you know, they have paid support, and even for the more open-source Apache projects, there are companies out there that do offer paid professional support for them as well, so do your homework and try to figure out: can I really do this on my own, and if not, what resources are out there in the marketplace to help me? </p>
-<h4><span id="cap-considerations">CAP considerations</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407517312.png" alt="1579407517312"></p>
+<h4 id="CAP-considerations"><a href="#CAP-considerations" class="headerlink" title="CAP considerations"></a>CAP considerations</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579407517312.png" alt="1579407517312"></p>
 <p>So again, the way to think about this is when you’re thinking about the scale of your requirements, do you need to have partition tolerance? Do you have sufficient scale, where you know you’re going to eventually need more than one server serving up the data just for handling the transactions you’re talking about, and also for the scale of the data that you’re talking about? If so, partition tolerance is non-negotiable, you need that one, and your only real choice in that case is consistency or availability.</p>
 <p>And that will determine which one of these sides of the triangle you might want to lean toward. So the type of application will determine what you want there. Is it actually OK if your system goes down for a few seconds or a few minutes? If not, then availability’s going to be your prime concern. Is it OK if you have eventual consistency, where, if you write something, people might get the old value back on subsequent reads for a few seconds? If so, who cares about consistency, right? Again, I would take availability instead. But if you’re dealing with something that’s dealing with real transactional information like, you know, stock transactions or some sort of financial transactions, you might value consistency above all else, and in that case, you want to really focus on that corner of the triangle.</p>
 <blockquote>
 <p>注：Now, I should point out that the CAP theorem isn’t really a hard-and-fast rule. The reality is these tradeoffs have become a little bit more loose in recent years. For example, consider Cassandra: is it really trading off consistency for availability and partition tolerance? Well, you can actually configure the amount of consistency that you want from Cassandra - you can tell it, “I want to make sure I get back the same result from every replica of this data before I actually consider that transaction to be final”, and if you’re running it in that mode, you’re kind of getting all three.</p>
 <p>The lines are getting blurred between these different tradeoffs over time. So the honest truth is any of these technologies can be made to work in pretty much any situation, if you try hard enough. It’s really a question of choosing the technology that’s best suited to the tradeoffs that you want to make.</p>
 </blockquote>
-<h4><span id="simplicity">Simplicity</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408720595.png" alt="1579408720595"></p>
+<h4 id="Simplicity"><a href="#Simplicity" class="headerlink" title="Simplicity"></a>Simplicity</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408720595.png" alt="1579408720595"></p>
 <p>If you don’t need to set up a highly complex NoSQL cluster and something that needs a lot of maintenance, like, you know, MongoDB or HBase, where you have all these external servers that maintain its configuration, don’t do it, if you don’t need to. </p>
 <p><strong>Think about the minimum requirements that you need for your system and keep it as simple as possible.</strong></p>
 <p>If you don’t need to deal with massive scale, don’t deploy a NoSQL database, if you don’t already have one, right? Just use a MySQL instance somewhere, it will be fine.</p>
 <p>So keep it simple, do not deploy a whole new system that does not have good expertise within your organization, unless you really need to. Simple technologies and simple architectures are going to be a lot easier to maintain.</p>
-<h4><span id="examples">Examples</span></h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408982980.png" alt="1579408982980"></p>
+<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579408982980.png" alt="1579408982980"></p>
 <p>Go with MySQL.</p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409021695.png" alt="1579409021695"></p>
 <p><img src="/2020/01/16/Using-non-relational-data-stores-with-Hadoop/1579409163590.png" alt="1579409163590"></p>
@@ -760,13 +729,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -781,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Why NoSQL?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">What is HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">CRUD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">HBase architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">HBase data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Ways to access HBase</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Import movie ratings into HBase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">MongoDB Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Document-based data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">MongoDB terminology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Replication Sets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Sharding (How MongoDB handles big data)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Neat Things about MongoDB</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Install MongoDB and integrate Spark with MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Using the MongoDB Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Choosing a database technology</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Integration considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Scaling requirements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Support considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">CAP considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Simplicity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Examples</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-NoSQL"><span class="nav-text">Why NoSQL?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-HBase"><span class="nav-text">What is HBase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CRUD"><span class="nav-text">CRUD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HBase-architecture"><span class="nav-text">HBase architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HBase-data-model"><span class="nav-text">HBase data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ways-to-access-HBase"><span class="nav-text">Ways to access HBase</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-Import-movie-ratings-into-HBase"><span class="nav-text">[Activity] Import movie ratings into HBase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-Overview"><span class="nav-text">MongoDB Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Document-based-data-model"><span class="nav-text">Document-based data model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB-terminology"><span class="nav-text">MongoDB terminology</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Replication-Sets"><span class="nav-text">Replication Sets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sharding-How-MongoDB-handles-big-data"><span class="nav-text">Sharding (How MongoDB handles big data)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Neat-Things-about-MongoDB"><span class="nav-text">Neat Things about MongoDB</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-Install-MongoDB-and-integrate-Spark-with-MongoDB"><span class="nav-text">[Activity] Install MongoDB and integrate Spark with MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-Using-the-MongoDB-Shell"><span class="nav-text">[Activity] Using the MongoDB Shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Choosing-a-database-technology"><span class="nav-text">Choosing a database technology</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Integration-considerations"><span class="nav-text">Integration considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scaling-requirements"><span class="nav-text">Scaling requirements</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Support-considerations"><span class="nav-text">Support considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CAP-considerations"><span class="nav-text">CAP considerations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Simplicity"><span class="nav-text">Simplicity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Examples"><span class="nav-text">Examples</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -819,7 +801,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -925,13 +907,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

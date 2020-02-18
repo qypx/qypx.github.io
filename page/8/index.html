@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,7 +93,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -391,7 +391,7 @@
           
             <p><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/" target="_blank" rel="noopener">两数相加2（难度：中等）</a></p>
 <p><img src="/2019/12/26/两数相加2/1577344361644.jpg" alt="题目"></p>
-<h4><span id="方法双栈-头插法">方法：双栈 + 头插法</span></h4><p><img src="/2019/12/26/两数相加2/1577344797002.jpg" alt="code"></p>
+<h4 id="方法：双栈-头插法"><a href="#方法：双栈-头插法" class="headerlink" title="方法：双栈 + 头插法"></a>方法：双栈 + 头插法</h4><p><img src="/2019/12/26/两数相加2/1577344797002.jpg" alt="code"></p>
 
           
         
@@ -549,9 +549,9 @@
 <p><img src="/2019/12/25/下一个更大元素1/1577281453752.jpg" alt="题目"></p>
 <p><img src="/2019/12/25/下一个更大元素1/1577281497407.jpg" alt="方法"></p>
 <p><img src="/2019/12/25/下一个更大元素1/1577281548614.jpg" alt="code"></p>
-<h4><span id="图解">图解</span></h4><p><img src="/2019/12/25/下一个更大元素1/20191225-215434.jpg" alt="图解"></p>
+<h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="/2019/12/25/下一个更大元素1/20191225-215434.jpg" alt="图解"></p>
 <hr>
-<h4><span id="另一种写法从后往前">另一种写法（从后往前）</span></h4><p>转自：</p>
+<h4 id="另一种写法（从后往前）"><a href="#另一种写法（从后往前）" class="headerlink" title="另一种写法（从后往前）"></a>另一种写法（从后往前）</h4><p>转自：</p>
 <blockquote>
 <p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/</a><br>来源：力扣（LeetCode）</p>
 </blockquote>
@@ -561,7 +561,7 @@
 <p>for 循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。while 循环是把两个“高个”元素之间的元素排除，因为他们的存在没有意义，前面挡着个“更高”的元素，所以他们不可能被作为后续进来的元素的 Next Great Number 了。</p>
 <p>这个算法的时间复杂度不是那么直观，如果你看到 for 循环嵌套 while 循环，可能认为这个算法的复杂度也是 O(n^2)，但是实际上这个算法的复杂度只有 O(n)。</p>
 <p>分析它的时间复杂度，要从整体来看：总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop 一次，没有任何冗余操作。所以总的计算规模是和元素规模 n 成正比的，也就是 O(n) 的复杂度。</p>
-<h5><span id="本题代码">本题代码</span></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElement(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[nums1.length];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = nums2.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123; <span class="comment">// 倒着往栈里放</span></span><br><span class="line">            <span class="keyword">while</span>(!stack.empty() &amp;&amp; nums2[i]&gt;=stack.peek())&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums2[i],stack.empty()?-<span class="number">1</span>:stack.peek());</span><br><span class="line">            stack.push(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums1.length; i++)</span><br><span class="line">            res[i] = map.get(nums1[i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="本题代码"><a href="#本题代码" class="headerlink" title="本题代码"></a>本题代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElement(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[nums1.length];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = nums2.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123; <span class="comment">// 倒着往栈里放</span></span><br><span class="line">            <span class="keyword">while</span>(!stack.empty() &amp;&amp; nums2[i]&gt;=stack.peek())&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums2[i],stack.empty()?-<span class="number">1</span>:stack.peek());</span><br><span class="line">            stack.push(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums1.length; i++)</span><br><span class="line">            res[i] = map.get(nums1[i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -873,9 +873,9 @@
           
             <p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">删除排序链表中的重复元素2（难度：中等）</a></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg" alt="题目"></p>
-<h4><span id="思路">思路</span></h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278207894.jpg" alt="1577278207894"></p>
-<h4><span id="画解">画解</span></h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/20191225-210253.jpg" alt="画解"></p>
-<h4><span id="代码">代码</span></h4><p>(Java)</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278207894.jpg" alt="1577278207894"></p>
+<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/20191225-210253.jpg" alt="画解"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>(Java)</p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素2/1577279243671.jpg" alt="code"></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素2/1577279306551.jpg" alt="结果"></p>
 
@@ -1033,11 +1033,11 @@
           
             <p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">删除排序链表中的重复元素（难度：简单）</a></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素/1577268363569.jpg" alt="题目"></p>
-<h4><span id="思路">思路</span></h4><p><img src="/2019/12/25/删除排序链表中的重复元素/1577268482086.jpg" alt="思路"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/删除排序链表中的重复元素/1577268482086.jpg" alt="思路"></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素/1577268503067.jpg" alt="1577268503067"></p>
-<h4><span id="代码">代码</span></h4><p><img src="/2019/12/25/删除排序链表中的重复元素/1577268572469.jpg" alt="1577268572469"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/25/删除排序链表中的重复元素/1577268572469.jpg" alt="1577268572469"></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素/1577268850082.jpg" alt="结果"></p>
-<h4><span id="画解">画解</span></h4><p><img src="/2019/12/25/删除排序链表中的重复元素/1577268614488.jpg" alt="画解1"></p>
+<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/删除排序链表中的重复元素/1577268614488.jpg" alt="画解1"></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素/1577268643223.jpg" alt="画解2"></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素/1577268718737.jpg" alt="画解3"></p>
 
@@ -1509,20 +1509,20 @@
           
             <p><a href="https://leetcode-cn.com/problems/longest-common-subsequence/" target="_blank" rel="noopener">最长公共子序列（难度：中等）</a></p>
 <p><img src="/2019/12/25/最长公共子序列/question.JPG" alt="题目"></p>
-<h3><span id="方法动态规划">方法：动态规划</span></h3><p><img src="/2019/12/25/最长公共子序列/1.JPG" alt="图1"></p>
+<h3 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h3><p><img src="/2019/12/25/最长公共子序列/1.JPG" alt="图1"></p>
 <p><img src="/2019/12/25/最长公共子序列/2.JPG" alt="图2"></p>
-<h5><span id="代码">代码</span></h5><p><img src="/2019/12/25/最长公共子序列/code.JPG" alt="code"></p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p><img src="/2019/12/25/最长公共子序列/code.JPG" alt="code"></p>
 <p><img src="/2019/12/25/最长公共子序列/3.JPG" alt="图3"></p>
-<h5><span id="复杂度">复杂度</span></h5><p>数据复杂度：O(mn)</p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>数据复杂度：O(mn)</p>
 <p>空间复杂度：O(mn)</p>
 <hr>
-<h4><span id="最长公共子串">最长公共子串</span></h4><p>最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： <strong>子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续</strong>。例如X = {a, Q, 1, 1}; Y = {a, 1, 1, d, f}那么，{a, 1, 1}是X和Y的最长公共子序列，但不是它们的最长公共字串。</p>
+<h4 id="最长公共子串"><a href="#最长公共子串" class="headerlink" title="最长公共子串"></a>最长公共子串</h4><p>最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： <strong>子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续</strong>。例如X = {a, Q, 1, 1}; Y = {a, 1, 1, d, f}那么，{a, 1, 1}是X和Y的最长公共子序列，但不是它们的最长公共字串。</p>
 <p><strong>描述：</strong></p>
 <p>计算两个字符串的最大公共子串（Longest Common Substring）的长度，字符不区分大小写。</p>
 <p><strong>方法</strong></p>
 <p>求子串的方法和求子序列方法类似：</p>
 <p><img src="/2019/12/25/最长公共子序列/1578644196190.png" alt="1578644196190"></p>
-<h5><span id="代码">代码</span></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestCommonSubsequence</span><span class="params">(String text1, String text2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = text1.length();</span><br><span class="line">        <span class="keyword">int</span> n2 = text2.length();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> dp[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n1+<span class="number">1</span>][n2+<span class="number">1</span>]; <span class="comment">//多增加一行一列</span></span><br><span class="line">        <span class="keyword">int</span> longest = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(text1.charAt(i-<span class="number">1</span>) == text2.charAt(j-<span class="number">1</span>))</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                    longest = Math.max(longest,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestCommonSubsequence</span><span class="params">(String text1, String text2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n1 = text1.length();</span><br><span class="line">        <span class="keyword">int</span> n2 = text2.length();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> dp[][] = <span class="keyword">new</span> <span class="keyword">int</span>[n1+<span class="number">1</span>][n2+<span class="number">1</span>]; <span class="comment">//多增加一行一列</span></span><br><span class="line">        <span class="keyword">int</span> longest = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(text1.charAt(i-<span class="number">1</span>) == text2.charAt(j-<span class="number">1</span>))</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                    longest = Math.max(longest,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1830,8 +1830,8 @@
       
         
           
-            <h1><span id="history">History</span></h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
-<h1><span id="hadoop-ecosystem">Hadoop Ecosystem</span></h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-ecosystem.JPG" alt="hadoop-ecosystem"></p>
+            <h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
+<h1 id="Hadoop-Ecosystem"><a href="#Hadoop-Ecosystem" class="headerlink" title="Hadoop Ecosystem"></a>Hadoop Ecosystem</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-ecosystem.JPG" alt="hadoop-ecosystem"></p>
 
           
         
@@ -1963,13 +1963,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -2006,7 +2019,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -2112,13 +2125,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 

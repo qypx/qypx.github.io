@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁     事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性">
+<meta name="description" content="事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性，事务要么全部被执行，要么就全部不被执行。 一致性或可串性（consistency）。事务的执行使得数据库从一种正确状态转换成另一种正确状态。 隔离性（isolation）。在事务正确提交之">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事务与锁">
 <meta property="og:url" content="http://qypx.github.io/2020/01/13/事务与锁/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁     事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性">
+<meta property="og:description" content="事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性，事务要么全部被执行，要么就全部不被执行。 一致性或可串性（consistency）。事务的执行使得数据库从一种正确状态转换成另一种正确状态。 隔离性（isolation）。在事务正确提交之">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578903852566.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578903920125.png">
@@ -112,7 +112,7 @@
 <meta property="og:updated_time" content="2020-01-13T15:13:52.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务与锁">
-<meta name="twitter:description" content="事务 Transaction 并发控制 Concurrency Control 共享锁与排他锁（或叫互斥锁） 两段锁协议（Two-Phase Locking —— 2PL） 死锁     事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性">
+<meta name="twitter:description" content="事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性，事务要么全部被执行，要么就全部不被执行。 一致性或可串性（consistency）。事务的执行使得数据库从一种正确状态转换成另一种正确状态。 隔离性（isolation）。在事务正确提交之">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578903852566.png">
 
 
@@ -121,7 +121,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -413,17 +413,7 @@
 
       
         <!-- toc -->
-<ul>
-<li><a href="#事务-transaction">事务 Transaction</a></li>
-<li><a href="#并发控制-concurrency-control">并发控制 Concurrency Control</a><ul>
-<li><a href="#共享锁与排他锁或叫互斥锁">共享锁与排他锁（或叫互斥锁）</a></li>
-<li><a href="#两段锁协议two-phase-locking-2pl">两段锁协议（Two-Phase Locking —— 2PL）</a></li>
-<li><a href="#死锁">死锁</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h4><span id="事务-transaction">事务 Transaction</span></h4><p>事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。</p>
+<h4 id="事务-Transaction"><a href="#事务-Transaction" class="headerlink" title="事务 Transaction"></a>事务 Transaction</h4><p>事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。</p>
 <p>事务性质：(<span style="color:red">ACID</span>)</p>
 <ul>
 <li>原子性（atomicity）。即不可分割性，事务要么全部被执行，要么就全部不被执行。</li>
@@ -444,14 +434,14 @@
 <p><img src="/2020/01/13/事务与锁/1578904679577.png" alt="1578904679577"></p>
 <p><code>可串行化</code>：多个事务的并发执行是正确的，当且仅当其结果与某一次序串行地执行它们时的结果相同，称这种调度策略是可串行化调度。</p>
 <p><img src="/2020/01/13/事务与锁/1578904744883.png" alt="1578904744883"></p>
-<h4><span id="并发控制-concurrency-control">并发控制 Concurrency Control</span></h4><p><strong>并发控制：</strong> 所谓并发控制，是指多用户共享的系统中，许多用户可能同时对同一数据进行操作。</p>
+<h4 id="并发控制-Concurrency-Control"><a href="#并发控制-Concurrency-Control" class="headerlink" title="并发控制 Concurrency Control"></a>并发控制 Concurrency Control</h4><p><strong>并发控制：</strong> 所谓并发控制，是指多用户共享的系统中，许多用户可能同时对同一数据进行操作。</p>
 <p><img src="/2020/01/13/事务与锁/1578904973251.png" alt="1578904973251"></p>
 <p><img src="/2020/01/13/事务与锁/1578905068177.png" alt="1578905068177"></p>
 <p><img src="/2020/01/13/事务与锁/1578905172492.png" alt="1578905172492"></p>
 <p><img src="/2020/01/13/事务与锁/1578905192362.png" alt="1578905192362"></p>
-<h5><span id="共享锁与排他锁或叫互斥锁">共享锁与排他锁（或叫互斥锁）</span></h5><p><img src="/2020/01/13/事务与锁/1578905290193.png" alt="1578905290193"></p>
+<h5 id="共享锁与排他锁（或叫互斥锁）"><a href="#共享锁与排他锁（或叫互斥锁）" class="headerlink" title="共享锁与排他锁（或叫互斥锁）"></a>共享锁与排他锁（或叫互斥锁）</h5><p><img src="/2020/01/13/事务与锁/1578905290193.png" alt="1578905290193"></p>
 <p><img src="/2020/01/13/事务与锁/1578905458095.png" alt="1578905458095"></p>
-<h5><span id="两段锁协议two-phase-locking-2pl">两段锁协议（Two-Phase Locking —— 2PL）</span></h5><p><a href="https://www.jianshu.com/p/5c78f5c4d57b" target="_blank" rel="noopener">https://www.jianshu.com/p/5c78f5c4d57b</a></p>
+<h5 id="两段锁协议（Two-Phase-Locking-——-2PL）"><a href="#两段锁协议（Two-Phase-Locking-——-2PL）" class="headerlink" title="两段锁协议（Two-Phase Locking —— 2PL）"></a>两段锁协议（Two-Phase Locking —— 2PL）</h5><p><a href="https://www.jianshu.com/p/5c78f5c4d57b" target="_blank" rel="noopener">https://www.jianshu.com/p/5c78f5c4d57b</a></p>
 <p>两段锁协议规定所有的事务应遵守的规则：</p>
 <p>① 在对任何数据进行读、写操作之前，首先要申请并获得对该数据的封锁。</p>
 <p>② 在释放一个封锁之后，事务不再申请和获得其它任何封锁。</p>
@@ -480,7 +470,7 @@
 <p>也就是说，完成这次交易，需要 update 两条记录， insert 一条记录。当然为了保证交易的原子性，我们需要这三个操作放在一个事务中。与此同时，还有顾客 userB 也在影院购买电影票，那么你会怎样安排这三个语句在事务中的顺序呢？</p>
 <p>首先发现冲突的部分是语句 2，就是两个事务都要给 cinema 的账户余额增加电影票价。根据两阶段协议，不论怎么安排语句，所有的操作需要的行锁都是在事务提交的时候才释放的，要想使行锁在事务中不会停留太长时间，最大程度的减少事务之间的锁等待，应该把语句 2 放在最后面。如下图所示：</p>
 <p><img src="https://img-blog.csdnimg.cn/20190516203204823.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODExODAxNg==,size_16,color_FFFFFF,t_70" alt="img"></p>
-<h5><span id="死锁">死锁</span></h5><p>死锁：事务循环等待数据锁，则会死锁。<br>死锁处理：预防死锁协议，死锁恢复机制。</p>
+<h5 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h5><p>死锁：事务循环等待数据锁，则会死锁。<br>死锁处理：预防死锁协议，死锁恢复机制。</p>
 <p><img src="/2020/01/13/事务与锁/1578905609640.png" alt="1578905609640"></p>
 <p><a href="https://blog.csdn.net/weixin_38118016/article/details/90271468" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38118016/article/details/90271468</a></p>
 <p>如下图所示，事务 A 在等待事务 B 释放 id = 2 的行锁，而事务 B 在等待 事务 A 释放 id = 1 的行锁，事务 A 和事务 B 在互相等待对方的资源释放，就是进入了死锁状态。</p>
@@ -658,13 +648,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -679,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">事务 Transaction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">并发控制 Concurrency Control</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">共享锁与排他锁（或叫互斥锁）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">两段锁协议（Two-Phase Locking —— 2PL）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">死锁</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#事务-Transaction"><span class="nav-text">事务 Transaction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发控制-Concurrency-Control"><span class="nav-text">并发控制 Concurrency Control</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#共享锁与排他锁（或叫互斥锁）"><span class="nav-text">共享锁与排他锁（或叫互斥锁）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#两段锁协议（Two-Phase-Locking-——-2PL）"><span class="nav-text">两段锁协议（Two-Phase Locking —— 2PL）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁"><span class="nav-text">死锁</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -717,7 +720,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -823,13 +826,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,7 +100,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -393,9 +393,9 @@
       
         <p><a href="https://leetcode-cn.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener">最长连续序列（难度：困难）</a></p>
 <p><img src="/2020/01/20/最长连续序列/1579513410172.png" alt="1579513410172"></p>
-<h4><span id="方法哈希表hashset">方法：哈希表（HashSet）</span></h4><p>因为一个序列可能在 <code>nums</code> 数组的任意一个数字开始，我们可以枚举每个数字作为序列的第一个数字，搜索所有的可能性 （暴力法）。优化：将数组中的数字用HashSet保存，实现O(1)的时间查询，同时，我们只对 <code>当前数字 - 1</code> 不在哈希表里的数字，作为连续序列的第一个数字去找对应的最长序列，这是因为其他数字一定已经出现在了某个序列里。</p>
+<h4 id="方法：哈希表（HashSet）"><a href="#方法：哈希表（HashSet）" class="headerlink" title="方法：哈希表（HashSet）"></a>方法：哈希表（HashSet）</h4><p>因为一个序列可能在 <code>nums</code> 数组的任意一个数字开始，我们可以枚举每个数字作为序列的第一个数字，搜索所有的可能性 （暴力法）。优化：将数组中的数字用HashSet保存，实现O(1)的时间查询，同时，我们只对 <code>当前数字 - 1</code> 不在哈希表里的数字，作为连续序列的第一个数字去找对应的最长序列，这是因为其他数字一定已经出现在了某个序列里。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">            </span><br><span class="line">        HashSet&lt;Integer&gt; hashSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)</span><br><span class="line">            hashSet.add(num);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> maxLen = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> curLen = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(!hashSet.contains(nums[i]-<span class="number">1</span>))&#123;</span><br><span class="line">                <span class="keyword">int</span> curNum = nums[i];</span><br><span class="line">                <span class="keyword">while</span>(hashSet.contains(curNum+<span class="number">1</span>))&#123;</span><br><span class="line">                    curLen++;</span><br><span class="line">                    curNum++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            maxLen = Math.max(maxLen,curLen);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLen;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n)。尽管在 for 循环中嵌套了一个 while 循环，时间复杂度看起来像是二次方级别的。但其实它是线性的算法。因为只有当 curNum 遇到了一个序列的开始， while 循环才会被执行（也就是 curNum-1 不在数组 nums 里）， while 循环在整个运行过程中只会被迭代 n 次。这意味着尽管看起来时间复杂度为 O(n⋅n) ，实际这个嵌套循环只会运行O(n+n)=O(n) 次。所有的计算都是线性时间的，所以总的时间复杂度是 O(n)的。</p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。尽管在 for 循环中嵌套了一个 while 循环，时间复杂度看起来像是二次方级别的。但其实它是线性的算法。因为只有当 curNum 遇到了一个序列的开始， while 循环才会被执行（也就是 curNum-1 不在数组 nums 里）， while 循环在整个运行过程中只会被迭代 n 次。这意味着尽管看起来时间复杂度为 O(n⋅n) ，实际这个嵌套循环只会运行O(n+n)=O(n) 次。所有的计算都是线性时间的，所以总的时间复杂度是 O(n)的。</p>
 <p>空间复杂度：O(n)。为了实现 O(1)的查询，我们对哈希表分配线性空间，以保存 nums 数组中的 O(n)个数字。</p>
 
       
@@ -564,13 +564,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -585,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">方法：哈希表（HashSet）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null"><span class="nav-text">复杂度</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法：哈希表（HashSet）"><span class="nav-text">方法：哈希表（HashSet）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#复杂度"><span class="nav-text">复杂度</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -623,7 +636,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -729,13 +742,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

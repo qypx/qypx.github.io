@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="Kafka What is streaming? Enter Kafka Kafka architecture How Kafka scales   Let’s play [Activity] Setting up Kafka, and publishing some data [Activity] Publishing web logs with Kafka   Flume What is">
+<meta name="description" content="Kafka What is streaming? With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it i">
 <meta name="keywords" content="Hadoop,Kafka,Flume">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Feeding Data to your Cluster - Kafka &amp; Flume">
 <meta property="og:url" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="Kafka What is streaming? Enter Kafka Kafka architecture How Kafka scales   Let’s play [Activity] Setting up Kafka, and publishing some data [Activity] Publishing web logs with Kafka   Flume What is">
+<meta property="og:description" content="Kafka What is streaming? With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it i">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png">
@@ -116,7 +116,7 @@
 <meta property="og:updated_time" content="2020-01-19T09:53:02.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Feeding Data to your Cluster - Kafka &amp; Flume">
-<meta name="twitter:description" content="Kafka What is streaming? Enter Kafka Kafka architecture How Kafka scales   Let’s play [Activity] Setting up Kafka, and publishing some data [Activity] Publishing web logs with Kafka   Flume What is">
+<meta name="twitter:description" content="Kafka What is streaming? With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it i">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png">
 
 
@@ -125,7 +125,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -417,74 +417,47 @@
 
       
         <!-- toc -->
-<ul>
-<li><a href="#kafka">Kafka</a><ul>
-<li><a href="#what-is-streaming">What is streaming?</a></li>
-<li><a href="#enter-kafka">Enter Kafka</a></li>
-<li><a href="#kafka-architecture">Kafka architecture</a></li>
-<li><a href="#how-kafka-scales">How Kafka scales</a></li>
-</ul>
-</li>
-<li><a href="#lets-play">Let’s play</a><ul>
-<li><a href="#activity-setting-up-kafka-and-publishing-some-data">[Activity] Setting up Kafka, and publishing some data</a></li>
-<li><a href="#activity-publishing-web-logs-with-kafka">[Activity] Publishing web logs with Kafka</a></li>
-</ul>
-</li>
-<li><a href="#flume">Flume</a><ul>
-<li><a href="#what-is-flume">What is Flume?</a></li>
-<li><a href="#flume-agent">Flume Agent</a></li>
-<li><a href="#built-in-source-types">Built-in Source Types</a></li>
-<li><a href="#built-in-sink-types">Built-in Sink Types</a></li>
-</ul>
-</li>
-<li><a href="#lets-play-1">Let’s play</a><ul>
-<li><a href="#activity-set-up-flume-and-publish-logs-with-it">[Activity] Set up Flume and publish logs with it</a></li>
-<li><a href="#activity-set-up-flume-to-monitor-a-directory-and-store-its-data-in-hdfs">[Activity] Set up Flume to monitor a directory and store its data in HDFS</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-<h3><span id="kafka">Kafka</span></h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png" alt="1579416693703"></p>
-<h4><span id="what-is-streaming">What is streaming?</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png" alt="1579417084705"></p>
+<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png" alt="1579416693703"></p>
+<h4 id="What-is-streaming"><a href="#What-is-streaming" class="headerlink" title="What is streaming?"></a>What is streaming?</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png" alt="1579417084705"></p>
 <p>With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it into HBase or some other database or maybe you’ll actually process it in real time as it comes in.</p>
 <p>Usually when we’re talking about Big Data, there’s a big flow of it coming in all the time and you want to be dealing with it as it comes instead of storing it up and dealing with it in batches. </p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417930302.png" alt="1579417930302"></p>
-<h4><span id="enter-kafka">Enter Kafka</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579418299281.png" alt="1579418299281"></p>
+<h4 id="Enter-Kafka"><a href="#Enter-Kafka" class="headerlink" title="Enter Kafka"></a>Enter Kafka</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579418299281.png" alt="1579418299281"></p>
 <p>The good thing is that Kafka because it stores it, consumers can catch up from where they last left off, so it will maintain the point where each consumer left off and allow them to just pick up whenever they want to. So it can publish data in real time to your consumers, but if your consumer goes off line or just wants to catch up from some point in the past, it can do that too.</p>
 <a id="more"></a>
-<h4><span id="kafka-architecture">Kafka architecture</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419075767.png" alt="1579419075767"></p>
+<h4 id="Kafka-architecture"><a href="#Kafka-architecture" class="headerlink" title="Kafka architecture"></a>Kafka architecture</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419075767.png" alt="1579419075767"></p>
 <p>Even though it says app, that doesn’t necessarily mean you’re going to be developing an app in order to use Kafka, often there are ones you can just use off the shelf and Kafka even comes with some built-in that might serve your purposes.</p>
 <p>You can make these pretty fancy systems that are very scalable, very fast, that can transform data and store it, and do whatever you want with it really, as it comes in.</p>
-<h4><span id="how-kafka-scales">How Kafka scales</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419261062.png" alt="1579419261062"></p>
-<h3><span id="lets-play">Let’s play</span></h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419425921.png" alt="1579419425921"></p>
-<h4><span id="activity-setting-up-kafka-and-publishing-some-data">[Activity] Setting up Kafka, and publishing some data</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963832#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963832#overview</a></p>
+<h4 id="How-Kafka-scales"><a href="#How-Kafka-scales" class="headerlink" title="How Kafka scales"></a>How Kafka scales</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419261062.png" alt="1579419261062"></p>
+<h3 id="Let’s-play"><a href="#Let’s-play" class="headerlink" title="Let’s play"></a>Let’s play</h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579419425921.png" alt="1579419425921"></p>
+<h4 id="Activity-Setting-up-Kafka-and-publishing-some-data"><a href="#Activity-Setting-up-Kafka-and-publishing-some-data" class="headerlink" title="[Activity] Setting up Kafka, and publishing some data"></a>[Activity] Setting up Kafka, and publishing some data</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963832#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963832#overview</a></p>
 <p>Kafka depends on ZooKeeper to keep track of what topics exists.</p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579420886266.png" alt="1579420886266"></p>
 <p>in the real world, this would be massive floods of data coming in from massive web server fleets and things. It can handle that and publish it scalably and reliably to wherever it needs to go. So that’s really what it’s all about, it’s a scalable and reliable mechanism for publishing and subscribing to massive data streams.</p>
-<h4><span id="activity-publishing-web-logs-with-kafka">[Activity] Publishing web logs with Kafka</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963846#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963846#overview</a></p>
+<h4 id="Activity-Publishing-web-logs-with-Kafka"><a href="#Activity-Publishing-web-logs-with-Kafka" class="headerlink" title="[Activity] Publishing web logs with Kafka"></a>[Activity] Publishing web logs with Kafka</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963846#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963846#overview</a></p>
 <p>So let’s do something a little bit closer to what you might do in reality. Let’s use a built-in Kafka connector to actually monitor a file and publish new lines on that file to a given Kafka topic that then get written out to some other file somewhere else.</p>
 <p>使用的一些Linux语句：</p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422270057.png" alt="1579422270057"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422355086.png" alt="1579422355086"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422381621.png" alt="1579422381621"></p>
-<h3><span id="flume">Flume</span></h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422490612.png" alt="1579422490612"></p>
-<h4><span id="what-is-flume">What is Flume?</span></h4><p>You can really think of Flume as a bonafide part of the Hadoop ecosystem, as opposed to Kafka which is much more general purpose in its design.</p>
+<h3 id="Flume"><a href="#Flume" class="headerlink" title="Flume"></a>Flume</h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579422490612.png" alt="1579422490612"></p>
+<h4 id="What-is-Flume"><a href="#What-is-Flume" class="headerlink" title="What is Flume?"></a>What is Flume?</h4><p>You can really think of Flume as a bonafide part of the Hadoop ecosystem, as opposed to Kafka which is much more general purpose in its design.</p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579423582139.png" alt="1579423582139"></p>
 <p>Now you might think to yourself “Why can’t I just directly transfer data across to my HDFS cluster?” Well, you need some sort of a buffer in between these two things.</p>
-<h4><span id="flume-agent">Flume Agent</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579423781528.png" alt="1579423781528"></p>
+<h4 id="Flume-Agent"><a href="#Flume-Agent" class="headerlink" title="Flume Agent"></a>Flume Agent</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579423781528.png" alt="1579423781528"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425760102.png" alt="1579425760102"></p>
 <p>Flume与Kafka的一个区别：It’s not really like Kafka where Kafka just stores up data indefinitely and people can pull that data in whenever they want to. Kafka does expire data after some amount of time, but with Flume, basically your sink grabs data from Flume and once it’s been grabbed from the channel it gets deleted, so flume does not hang onto your messages or your events any longer than it needs to, as soon as your sync processes it, it throws it away. Kafka is a little bit more easier to set up if you have data going to multiple different places that might be pulling at different rates.</p>
-<h4><span id="built-in-source-types">Built-in Source Types</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425301835.png" alt="1579425301835"></p>
-<h4><span id="built-in-sink-types">Built-in Sink Types</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579424846813.png" alt="1579424846813"></p>
+<h4 id="Built-in-Source-Types"><a href="#Built-in-Source-Types" class="headerlink" title="Built-in Source Types"></a>Built-in Source Types</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425301835.png" alt="1579425301835"></p>
+<h4 id="Built-in-Sink-Types"><a href="#Built-in-Sink-Types" class="headerlink" title="Built-in Sink Types"></a>Built-in Sink Types</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579424846813.png" alt="1579424846813"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579424947616.png" alt="1579424947616"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425396680.png" alt="1579425396680"></p>
 <p>It’s basically a way of smoothing out the traffic between the data coming in from your logs or whatever your source might be and where you’re writing it to.</p>
-<h3><span id="lets-play">Let’s play</span></h3><h4><span id="activity-set-up-flume-and-publish-logs-with-it">[Activity] Set up Flume and publish logs with it</span></h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963868#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963868#overview</a></p>
+<h3 id="Let’s-play-1"><a href="#Let’s-play-1" class="headerlink" title="Let’s play"></a>Let’s play</h3><h4 id="Activity-Set-up-Flume-and-publish-logs-with-it"><a href="#Activity-Set-up-Flume-and-publish-logs-with-it" class="headerlink" title="[Activity] Set up Flume and publish logs with it"></a>[Activity] Set up Flume and publish logs with it</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963868#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963868#overview</a></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425190618.png" alt="1579425190618"></p>
 <p>All you really need to do to get Flume running is write a configuration file that defines what sources channels and sinks are associated with each agent that you want in your Flume setup.</p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425924768.png" alt="1579425924768"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579427003629.png" alt="1579427003629"></p>
-<h4><span id="activity-set-up-flume-to-monitor-a-directory-and-store-its-data-in-hdfs">[Activity] Set up Flume to monitor a directory and store its data in HDFS</span></h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425361515.png" alt="1579425361515"></p>
+<h4 id="Activity-Set-up-Flume-to-monitor-a-directory-and-store-its-data-in-HDFS"><a href="#Activity-Set-up-Flume-to-monitor-a-directory-and-store-its-data-in-HDFS" class="headerlink" title="[Activity] Set up Flume to monitor a directory and store its data in HDFS"></a>[Activity] Set up Flume to monitor a directory and store its data in HDFS</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579425361515.png" alt="1579425361515"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579426725240.png" alt="1579426725240"></p>
 <p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579426873190.png" alt="1579426873190"></p>
 <p>What ends up happening is that we get new subdirectories being generated for each 10 minute interval that goes by.</p>
@@ -658,13 +631,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -679,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">What is streaming?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Enter Kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Kafka architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">How Kafka scales</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Let’s play</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Setting up Kafka, and publishing some data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Publishing web logs with Kafka</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Flume</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">What is Flume?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Flume Agent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Built-in Source Types</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">Built-in Sink Types</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text">Let’s play</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Set up Flume and publish logs with it</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">[Activity] Set up Flume to monitor a directory and store its data in HDFS</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka"><span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-streaming"><span class="nav-text">What is streaming?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enter-Kafka"><span class="nav-text">Enter Kafka</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka-architecture"><span class="nav-text">Kafka architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-Kafka-scales"><span class="nav-text">How Kafka scales</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Let’s-play"><span class="nav-text">Let’s play</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Setting-up-Kafka-and-publishing-some-data"><span class="nav-text">[Activity] Setting up Kafka, and publishing some data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Publishing-web-logs-with-Kafka"><span class="nav-text">[Activity] Publishing web logs with Kafka</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flume"><span class="nav-text">Flume</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-Flume"><span class="nav-text">What is Flume?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flume-Agent"><span class="nav-text">Flume Agent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Built-in-Source-Types"><span class="nav-text">Built-in Source Types</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Built-in-Sink-Types"><span class="nav-text">Built-in Sink Types</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Let’s-play-1"><span class="nav-text">Let’s play</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Set-up-Flume-and-publish-logs-with-it"><span class="nav-text">[Activity] Set up Flume and publish logs with it</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Set-up-Flume-to-monitor-a-directory-and-store-its-data-in-HDFS"><span class="nav-text">[Activity] Set up Flume to monitor a directory and store its data in HDFS</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -717,7 +703,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -823,13 +809,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

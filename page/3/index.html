@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,7 +93,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -550,19 +550,6 @@
 <p><a href="https://blog.csdn.net/PowerBlogger/article/details/83626449" target="_blank" rel="noopener">https://blog.csdn.net/PowerBlogger/article/details/83626449</a></p>
 <p><a href="https://blog.csdn.net/u010886217/article/details/83796151" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83796151</a></p>
 <!-- toc -->
-<ul>
-<li><a href="#什么是hive">什么是Hive？</a></li>
-<li><a href="#hive的原理">Hive的原理</a></li>
-<li><a href="#hive中表的类型">Hive中表的类型</a><ul>
-<li><a href="#1-内部表">1. 内部表</a></li>
-<li><a href="#2-外部表">2. 外部表</a></li>
-<li><a href="#3-临时表">3. 临时表</a></li>
-<li><a href="#4-分区表">4. 分区表</a></li>
-<li><a href="#5-分桶表">5. 分桶表</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
 <h3 id="什么是Hive？"><a href="#什么是Hive？" class="headerlink" title="什么是Hive？"></a>什么是Hive？</h3><p>Hive是建立在Hadoop上的，用来构建数据仓库的工具，里面有表的概念，可以使用SQL语句实现存储、查询和分析存储在 HDFS上的数据，这些SQL语句在Hive中称为HQL，语法和SQL语句基本一样。<br>由于数据是杂乱无章的，所以Hive需要一份关于这些数据的元数据来管理和操作这些数据。这份元数据包括：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">元数据（</span><br><span class="line">行的分隔符（在映射成表的时候知道在哪里分行显示）</span><br><span class="line">字段分隔符（在映射成表的时候知道在哪里分列显示）</span><br><span class="line">字段的类型</span><br><span class="line">字段的名称</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
 <p>在Hive中，我们把数据存储在HDFS中，元数据默认存储在Hive自带的Derby数据库中，由于Derby不能实现并发访问，所以我们一般使用mysql进行替换。</p>
@@ -735,15 +722,6 @@
       
         
           <!-- toc -->
-<ul>
-<li><a href="#hbase">Hbase</a><ul>
-<li><a href="#hfile">HFile</a></li>
-</ul>
-</li>
-<li><a href="#sql面试题">SQL面试题</a></li>
-<li><a href="#算法工程师能力评估牛客">算法工程师能力评估（牛客）</a></li>
-</ul>
-<!-- tocstop -->
 <ul>
 <li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
 <p>A. AR模型</p>
@@ -976,20 +954,6 @@
       
         
           <!-- toc -->
-<ul>
-<li><a href="#ddl与dml">DDL与DML</a><ul>
-<li><a href="#insert">INSERT</a></li>
-<li><a href="#delete">DELETE</a></li>
-<li><a href="#update">UPDATE</a></li>
-<li><a href="#create">CREATE</a></li>
-<li><a href="#drop">DROP</a></li>
-<li><a href="#alter">ALTER</a></li>
-<li><a href="#rename">RENAME</a></li>
-</ul>
-</li>
-<li><a href="#语法顺序与执行顺序">语法顺序与执行顺序</a></li>
-</ul>
-<!-- tocstop -->
 <h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
 <p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
 <p><img src="/2020/01/12/sql语言/1578825616684.png" alt="1578825616684"></p>
@@ -1342,21 +1306,21 @@
           
             <p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">两数之和（难度：简单）</a></p>
 <p><img src="/2020/01/12/两数之和/1578808347100.png" alt="1578808347100"></p>
-<h4><span id="方法一暴力法">方法一：暴力法</span></h4><p>遍历每个元素 x，并查找是否存在一个值与 target - x相等的目标元素。\</p>
+<h4 id="方法一：暴力法"><a href="#方法一：暴力法" class="headerlink" title="方法一：暴力法"></a>方法一：暴力法</h4><p>遍历每个元素 x，并查找是否存在一个值与 target - x相等的目标元素。\</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] == target - nums[i]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, j &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n^2)</p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n^2)</p>
 <p>空间复杂度：O(1)</p>
 <hr>
-<h4><span id="方法二两遍哈希表">方法二：两遍哈希表</span></h4><p>为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。</p>
+<h4 id="方法二：两遍哈希表"><a href="#方法二：两遍哈希表" class="headerlink" title="方法二：两遍哈希表"></a>方法二：两遍哈希表</h4><p>为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。</p>
 <p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)降低到 O(1)。<strong>哈希表正是为此目的而构建的，它支持以 近似恒定的时间进行快速查找</strong>。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)。</p>
 <p><strong>使用两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target - nums[i]）是否存在于表中。</strong>注意，该目标元素不能是 nums[i]本身！</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> complement = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, map.get(complement) &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n)，遍历两次，由于哈希表将查找时间缩短到 O(1) ，所以时间复杂度为 O(n)。</p>
+<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，遍历两次，由于哈希表将查找时间缩短到 O(1) ，所以时间复杂度为 O(n)。</p>
 <p>空间复杂度：O(n)，所需的额外空间取决于哈希表中存储的元素数量。</p>
 <hr>
-<h4><span id="方法三一遍哈希表">方法三：一遍哈希表</span></h4><p>在进行迭代并将元素插入到表中的同时，回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
+<h4 id="方法三：一遍哈希表"><a href="#方法三：一遍哈希表" class="headerlink" title="方法三：一遍哈希表"></a>方法三：一遍哈希表</h4><p>在进行迭代并将元素插入到表中的同时，回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target - nums[i]))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;map.get(target - nums[i]), i&#125;;</span><br><span class="line">            map.put(nums[i],i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5><span id="复杂度">复杂度</span></h5><p>时间复杂度：O(n)，只遍历一次。</p>
+<h5 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，只遍历一次。</p>
 <p>空间复杂度：O(n)。</p>
 
           
@@ -1964,35 +1928,35 @@
             <p>This is the idea of leveraging the behavior of others to inform what you might enjoy. At a very high level, it means finding other people like you and recommending stuff they liked. Or it might mean finding other things similar to the thing that you like. </p>
 <p>That’s why we call it collaborative filtering. It’s recommending stuff based on other people’s collaborative behavior. </p>
 <p>The heart of neighborhood-based collaborative filtering is the ability to find people similar to you, or items similar to items you’ve liked.</p>
-<h3><span id="measuring-similarity-and-sparsity">Measuring Similarity, and Sparsity</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962"></p>
+<h3 id="Measuring-Similarity-and-Sparsity"><a href="#Measuring-Similarity-and-Sparsity" class="headerlink" title="Measuring Similarity, and Sparsity"></a>Measuring Similarity, and Sparsity</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372454415.png" alt="1578372454415"></p>
 <p>这里的余弦相似度和前面content-based中的余弦相似度的区别在于：Our dimensions would be things like his: Did this user like this thing? Or was this thing liked by this user? So every user or every thing might constitute its own dimension, and the dimensions are based on user behavior instead of content attributes.</p>
 <p>The big challenge in measuring these similarities based on behavior data is the <strong>sparsity</strong> of the data we’re working with. This means that it’s tough for collaborative filtering to work well unless you have a lot of user behavior data to work with. You can’t compute a meaningful cosine similarity between two people when they have nothing in common, or between two items when they have no people in common. </p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578373973291.png" alt="1578373973291"></p>
 <p>This is why collaborative filtering works well for big companies like Amazon and Netflix. They have millions of users and so they have enough data to generate meaningful relations in spite of the data sparsity. </p>
 <p>Sparsity also introduces some computational challenges. You don’t want to waste time storing and processing all of that missing data, so under the hood we end up using structures like <strong>sparse arrays</strong> that avoid storing all that empty spaces in this matrix. </p>
-<h3><span id="similarity-metrics">Similarity Metrics</span></h3><h4><span id="adjusted-cosine">Adjusted Cosine</span></h4><p>It’s applicable mostly to measuring the similarity between users based on their ratings. It’s based on the idea that different people might have different baselines. What Bob considers a three star movie, maybe different from what Alice considers a three star movie. </p>
+<h3 id="Similarity-Metrics"><a href="#Similarity-Metrics" class="headerlink" title="Similarity Metrics"></a>Similarity Metrics</h3><h4 id="Adjusted-Cosine"><a href="#Adjusted-Cosine" class="headerlink" title="Adjusted Cosine"></a>Adjusted Cosine</h4><p>It’s applicable mostly to measuring the similarity between users based on their ratings. It’s based on the idea that different people might have different baselines. What Bob considers a three star movie, maybe different from what Alice considers a three star movie. </p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578374644148.png" alt="1578374644148"></p>
 <p>Adjusted cosine attempts to normalize these differences. Instead of measuring similarities between people based on their raw rating values, we instead measure similarities based on the difference between a user’s rating for an item and their average rating for all items. </p>
 <p>Now this sounds good on paper, but in practice, data sparsity can really mess you up here. You can only get a meaningful average, or a baseline of an individual’s ratings if they have rated a lot of stuff for you to take the average of in the first place. 若有许多用户只评价了一部电影，then that data will be totally wasted with the adjusted cosine metric. 不管他们评了多少分，the difference between it and that user’s mean will be zero at that point. </p>
 <p>So, adjusted cosine might be worth experimenting with, but only if you know that most of your users have rated a lot of stuff implicitly or explicitly. And if you have that much data to begin with, these differences between individuals will start to work themselves out anyway. So, you’re not likely to see as much of a difference as you might expect when using adjusted cosine. </p>
-<h4><span id="item-based-pearson-similarity">(item-based) pearson similarity</span></h4><p>与adjusted cosine的区别在于, we look at the difference between rating and the average from all users for that given item.  </p>
+<h4 id="item-based-pearson-similarity"><a href="#item-based-pearson-similarity" class="headerlink" title="(item-based) pearson similarity"></a>(item-based) pearson similarity</h4><p>与adjusted cosine的区别在于, we look at the difference between rating and the average from all users for that given item.  </p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376440604.png" alt="1578376440604"></p>
 <p>You can think of pearson similarity as measuring the similarity between people by how much they diverge from the average person’s behavior. 例如，假设大多数人都喜欢Star Wars, people who hate Star Wars are going to get a very strong similarity score from pearson similarity, because they share opinions that are not mainstream.</p>
 <p>Note that the only difference between this and adjusted cosine is whether we’re talking about users or items. 这门课使用的suprise library, refers to adjusted cosine as user-based pearson similarity, because it’s basically the same thing.</p>
-<h4><span id="spearman-rank-correlation">spearman rank correlation</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376851254.png" alt="1578376851254"></p>
+<h4 id="spearman-rank-correlation"><a href="#spearman-rank-correlation" class="headerlink" title="spearman rank correlation"></a>spearman rank correlation</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376851254.png" alt="1578376851254"></p>
 <ul>
 <li>Instead of using an average rating value for a movie, 我们使用 its rank amongst all movies based on their average rating. </li>
 <li>Instead of individual ratings for a movie, we’d rank that movie amongst all that individual’s ratings. </li>
 </ul>
 <p>Spearman的主要优势在于 it can deal with ordinal data effectively. 例如，if you had a rating scale, where the difference in meaning between different rating values were not the same. I’ve never seen this actually used in real world applications, but you may encounter it in the academic literature.</p>
-<h4><span id="mean-squared-difference">mean squared difference</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578377776225.png" alt="1578377776225"></p>
+<h4 id="mean-squared-difference"><a href="#mean-squared-difference" class="headerlink" title="mean squared difference"></a>mean squared difference</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578377776225.png" alt="1578377776225"></p>
 <p>另一方面，我们可以将它应用到item上：x和y指两个不同的item, and then we’d be looking at the differences in ratings from the people these items have in common (所有评价过这两个item的人对这两个item评分的差异).</p>
 <p>There are two ways of doing collaborative filtering, item based and user based, and it’s important to remember that most of these similarity metrics can apply to either approach. </p>
 <p>MSD 要比余弦相似度更好理解， 但 in practice, 你通常会发现cosine works better.</p>
-<h4><span id="jaccard-similarity">jaccard similarity</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385168727.png" alt="1578385168727"></p>
+<h4 id="jaccard-similarity"><a href="#jaccard-similarity" class="headerlink" title="jaccard similarity"></a>jaccard similarity</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385168727.png" alt="1578385168727"></p>
 <p>jaccard similarity 没有使用实际的rating vlaue. If you are dealing with implicit ratings, for example, just the fact that somebody watched something, in this case, Jaccard can be a reasonable choice that’s very fast to compute. </p>
-<h4><span id="recap">Recap</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385386398.png" alt="1578385386398"></p>
+<h4 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385386398.png" alt="1578385386398"></p>
 <ul>
 <li>Cosine similarity is almost always a reasonable thing to start with.</li>
 <li>Adjust cosine and Pearson are two different terms for basically the same thing. It’s mean centered cosine similarities. The idea is to deal with unusual rating behavior that deviates from the mean, but in practice, it can sometimes do more harm than good.</li>
@@ -2001,7 +1965,7 @@
 <li>Jaccard similarity is just looking at how many items two users have in common, or how many users two items have in common, divided by how many items or users they have between both of them. It’s really simple and well suited to implicit ratings, like binary actions, like purchasing or view something. But you can also apply cosine similarities to implicit ratings too.</li>
 <li>So, and the end of the day, cosine similarity remains my default go to similarity metric. </li>
 </ul>
-<h3><span id="user-based-collaborative-filtering">User-based Collaborative Filtering</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386125836.png" alt="1578386125836"></p>
+<h3 id="User-based-Collaborative-Filtering"><a href="#User-based-Collaborative-Filtering" class="headerlink" title="User-based Collaborative Filtering"></a>User-based Collaborative Filtering</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386125836.png" alt="1578386125836"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386158223.png" alt="1578386158223"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455133171.png" alt="1578455133171"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455288882.png" alt="1578455288882"></p>
@@ -2021,12 +1985,12 @@
 <p>应该adding in the score for a given movie if we encounter it more than once.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457620591.png" alt="1578457620591"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457759908.png" alt="1578457759908"></p>
-<h4><span id="recap">Recap</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457999015.png" alt="1578457999015"></p>
-<h4><span id="user-based-collaborative-filtering-hands-on">User-based Collaborative Filtering, Hands-On</span></h4><p>code walkthrough</p>
+<h4 id="Recap-1"><a href="#Recap-1" class="headerlink" title="Recap"></a>Recap</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457999015.png" alt="1578457999015"></p>
+<h4 id="User-based-Collaborative-Filtering-Hands-On"><a href="#User-based-Collaborative-Filtering-Hands-On" class="headerlink" title="User-based Collaborative Filtering, Hands-On"></a>User-based Collaborative Filtering, Hands-On</h4><p>code walkthrough</p>
 <p>CollaborativeFiltering文件夹里的：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
 <p>运行SimpleUserCF.py</p>
-<h3><span id="item-based-collaborative-filtering">Item-based Collaborative Filtering</span></h3><p>Look at the things you liked, and recommend stuff that’s similar to those things. </p>
+<h3 id="Item-based-Collaborative-Filtering"><a href="#Item-based-Collaborative-Filtering" class="headerlink" title="Item-based Collaborative Filtering"></a>Item-based Collaborative Filtering</h3><p>Look at the things you liked, and recommend stuff that’s similar to those things. </p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458842316.png" alt="1578458842316"></p>
 <p>一些原因为什么使用物品之间的相似度可能比使用用户之间的相似度更好：</p>
 <ul>
@@ -2038,46 +2002,46 @@
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463881122.png" alt="1578463881122"></p>
 <p>在这个例子中，所有的相似度都为0或1，是因为数据量比较小。In the real world, you’d see more interesting and meaningful numbers here.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578464579773.png" alt="1578464579773"></p>
-<h4><span id="item-based-collaborative-filtering-hands-on">Item-based Collaborative Filtering, Hands-On</span></h4><p>code walkthrough</p>
+<h4 id="Item-based-Collaborative-Filtering-Hands-On"><a href="#Item-based-Collaborative-Filtering-Hands-On" class="headerlink" title="Item-based Collaborative Filtering, Hands-On"></a>Item-based Collaborative Filtering, Hands-On</h4><p>code walkthrough</p>
 <p>CollaborativeFiltering文件夹里的：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
 <p>运行SimpleItemCF.py</p>
 <p>Item-based collaborative filtering is what Amazon used with outstanding success.</p>
 <p>You need to test it out on several real people if possible, and then move to a large scale A/B test to see if this algorithm really is better or worse than whatever you might have today.</p>
-<h3><span id="exercise">Exercise</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468263883.png" alt="1578468263883"></p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468263883.png" alt="1578468263883"></p>
 <p>我们之前是选取的top-n，例如item-based: 选择用户评价前10的电影，再找similar items；user-based: 选择与用户相似度排前10的用户，再…</p>
 <p>Maybe it would be better if instead of taking the top k sources for recommendation candidates, we just use any source above some given quality threshold. 例如，用户评价4星以上的电影 should generate item-based recommendation candidates, no matter how many or how few of them there may be.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468513742.png" alt="1578468513742"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468541742.png" alt="1578468541742"></p>
 <p>可以发现一个小的改变可以使得结果很不一样。Often, you don’t just want to test different recommendation algorithms, you want to test different variations and parameters on those algorithms. In this case, I not only want to test the idea of using a threshold instead of a top k approach, I’d also want to test many different threshold values to find the best one. In the real world, you’ll find that your biggest problem is just not having enough time to run all of the different experiments you want to run to make your recommendations  better. </p>
-<h3><span id="evaluating-collaborative-filtering-systems-offline">Evaluating Collaborative Filtering Systems Offline</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469111053.png" alt="1578469111053"></p>
+<h3 id="Evaluating-Collaborative-Filtering-Systems-Offline"><a href="#Evaluating-Collaborative-Filtering-Systems-Offline" class="headerlink" title="Evaluating Collaborative Filtering Systems Offline"></a>Evaluating Collaborative Filtering Systems Offline</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469111053.png" alt="1578469111053"></p>
 <p>Now, although <strong>we can’t measure accuracy with user based or item based collaborative filtering, because they don’t making rating predictions</strong>, we can still measure hit rate, because it is still a top-N recommender.</p>
-<h4><span id="code-walkthrough">code walkthrough</span></h4><p>CollaborativeFiltering文件夹里的：</p>
+<h4 id="code-walkthrough"><a href="#code-walkthrough" class="headerlink" title="code walkthrough"></a>code walkthrough</h4><p>CollaborativeFiltering文件夹里的：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
 <p>运行EvaluateUserCF.py</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469413099.png" alt="1578469413099"></p>
 <p>That was surprisingly fast. One really nice property of collaborative filtering is how quickly it can generate recommendations for any given individual, once we’ve built up the similarity matrix.</p>
 <p>结果5.5% is pretty good.</p>
-<h4><span id="exercise">Exercise</span></h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469688733.png" alt="1578469688733"></p>
+<h4 id="Exercise-1"><a href="#Exercise-1" class="headerlink" title="Exercise"></a>Exercise</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469688733.png" alt="1578469688733"></p>
 <p>与EvaluateUserCF.py相比需要改变的地方：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578470341309.png" alt="1578470341309"></p>
 <p>item-based的hit rate只有0.5%，相比user-based的5.5%，要差一点。</p>
 <p>Item-based should be a superior approach, and that’s been proven in industry. 这里item-based要差一点应该是数据的原因。而且这只是offline evaluation. If we were to test both algorithms on real-world people using real-world data in an A/B test, the results could end up being very different.</p>
-<h3><span id="knn-recommenders">KNN Recommenders</span></h3><p>The concept of collaborative filtering has been applied to recommender systems that do make rating predictions, and these are generally referred to in the literature as KNN recommenders.</p>
+<h3 id="KNN-Recommenders"><a href="#KNN-Recommenders" class="headerlink" title="KNN Recommenders"></a>KNN Recommenders</h3><p>The concept of collaborative filtering has been applied to recommender systems that do make rating predictions, and these are generally referred to in the literature as KNN recommenders.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578471356190.png" alt="1578471356190"></p>
 <p>In this sort of system, we generate recommendation candidates by predicting the ratings of everything a user hasn’t already rated, and selecting the top k items with the highest predicted ratings. This obviously isn’t a terribly efficient approach, but since we’re predicting rating values, we can measure the offline accuracy of the system using train/test or cross-validation, which is useful in the research world.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578478326957.png" alt="1578478326957"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479201990.png" alt="1578479201990"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479315924.png" alt="1578479315924"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479574982.png" alt="1578479574982"></p>
-<h4><span id="running-user-and-item-based-knn-on-movielens">Running User and Item-based KNN on MovieLens</span></h4><p>code walkthrough</p>
+<h4 id="Running-User-and-Item-based-KNN-on-MovieLens"><a href="#Running-User-and-Item-based-KNN-on-MovieLens" class="headerlink" title="Running User and Item-based KNN on MovieLens"></a>Running User and Item-based KNN on MovieLens</h4><p>code walkthrough</p>
 <p>CollaborativeFiltering文件夹里的：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
 <p>运行KNNBakeOff.py</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479972763.png" alt="1578479972763"></p>
 <p>如果只看accuracy, KNN recommendation看上去是一个好方法，但是如果看 top-n recommendations, item-based和user-based推荐的都是些没听说过的电影 (obscure)，反而 random recommendation looks a lot better from a subjective standpoint.</p>
 <p>So, on the surface, it looks like we may have made a system that’s pretty good at predicting ratings of movies people have already seen, but might not be very good at producing top-n recommendations.</p>
-<h4><span id="exercise">Exercise</span></h4><p>Experiment with different KNN parameters.</p>
+<h4 id="Exercise-2"><a href="#Exercise-2" class="headerlink" title="Exercise"></a>Exercise</h4><p>Experiment with different KNN parameters.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480409983.png" alt="1578480409983"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480533805.png" alt="1578480533805"></p>
 <p>虽然msd比cosine的RMSE要低一点，但它们推荐的内容是一样的</p>
@@ -2086,7 +2050,7 @@
 <p>Well, it’s actually pretty well known that KNN doesn’t work well in practice. Unfortunately, some people conclude that collaborative filtering in general is some naive approach that should be replaced with completely different techniques. But as we’ve seen, collaborative filtering isn’t the problem, it’s forcing collaborative filtering to make rating predictions — that’s the problem. We had some pretty exciting results when we just focused on making top-N recommendations, and completely forgot about optimizing for rating accuracy, and it turns out that’s what at the heart of the problem. <strong>使用user-based CF和item-based CF,   top-N 推荐结果都是不错的。</strong></p>
 <p>Ratings are not continuous in nature, and KNN treats them as though they are continuous values that can be predicted on a continuous scale. If you really want to go with KNN, it would be more appropriate to treat it as a rating classification problem than as a rating prediction problem. KNN is also very sensitive to sparse data.</p>
 <p>The most fundamental thing is that accuracy isn’t everything. The main reason KNN produces underwhelming results is because it’s trying to solve the wrong problem. <strong>KNN recommender之所以推荐结果不好，是因为它解决的是rating prediction的问题，而不是推荐问题</strong>。</p>
-<h3><span id="bleeding-edge-alert">Bleeding Edge Alert</span></h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381"></p>
+<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491659157.png" alt="1578491659157"></p>
 <p>The idea behind it is that users are modeled as vectors moving from one item to another in a multidimensional space. And you can predict sequences of events, like which movie a user is likely to watch next, by modeling these vectors.</p>
 <p>The reason this paper is exciting is because it outperformed all of the best existing methods for recommending sequences of events in all but one case in one data set.</p>
@@ -2227,13 +2191,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -2270,7 +2247,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -2376,13 +2353,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
 

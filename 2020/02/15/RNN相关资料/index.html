@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -389,8 +389,8 @@
       
 
       
-        <h4><span id="pdf">pdf：</span></h4><p><a href="https://www.aclweb.org/anthology/C16-1311.pdf" target="_blank" rel="noopener">Effective LSTMs for Target-Dependent Sentiment Classification</a></p>
-<h4><span id="网页">网页：</span></h4><p><a href="https://www.jianshu.com/p/95d5c461924c" target="_blank" rel="noopener">【译】理解LSTM（通俗易懂版）</a></p>
+        <h4 id="pdf："><a href="#pdf：" class="headerlink" title="pdf："></a>pdf：</h4><p><a href="https://www.aclweb.org/anthology/C16-1311.pdf" target="_blank" rel="noopener">Effective LSTMs for Target-Dependent Sentiment Classification</a></p>
+<h4 id="网页："><a href="#网页：" class="headerlink" title="网页："></a>网页：</h4><p><a href="https://www.jianshu.com/p/95d5c461924c" target="_blank" rel="noopener">【译】理解LSTM（通俗易懂版）</a></p>
 <p><a href="https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be" target="_blank" rel="noopener">Understanding GRU Networks</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/32481747" target="_blank" rel="noopener">人人都能看懂的GRU</a></p>
 <p><a href="https://www.cnblogs.com/jiangxinyang/p/9376021.html" target="_blank" rel="noopener">深度学习之GRU网络</a></p>
@@ -563,13 +563,26 @@
             </div>
           
 
-          
-          
 
           
           
 
           
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
 
         </div>
       </section>
@@ -584,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">pdf：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null"><span class="nav-text">网页：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#pdf："><span class="nav-text">pdf：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网页："><span class="nav-text">网页：</span></a></li></ol></div>
             
 
           </div>
@@ -622,7 +635,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -728,13 +741,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
