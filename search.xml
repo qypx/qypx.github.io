@@ -1,52 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo相关问题</title>
-    <url>/2020/02/17/hexo%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li><p>hexo中无法显示数学公式：</p>
-<p>参考 <a href="[https://runninggump.github.io/2018/12/05/%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E5%9C%A8hexo%E4%B8%AD%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/]">成功解决在hexo中无法显示数学公式的问题</a></p>
-</li>
-<li><p><a href="https://segmentfault.com/q/1010000008494901" target="_blank" rel="noopener">hexo的NexT主题，怎么取消“文章目录”对标题的自动编号？</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/triple-y/p/10780644.html" target="_blank" rel="noopener">markdown页面内跳转</a></p>
-</li>
-<li><p>设置文章封面：</p>
-<p>参考 <a href="https://www.zhihu.com/tardis/sogou/art/60424755" target="_blank" rel="noopener">https://www.zhihu.com/tardis/sogou/art/60424755</a></p>
-<p><code>&lt;!-- less --&gt;</code>: 点击阅读全文后不显示<code>&lt;!-- less --&gt;</code> 以上的内容</p>
-<p><code>&lt;!-- more --&gt;</code>: 要显示</p>
-</li>
-<li><p>修改主题页面布局为圆角</p>
-<p>参考<a href="https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2" target="_blank" rel="noopener">https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2</a></p>
-</li>
-<li><p>添加背景音乐：</p>
-<p><a href="https://www.cnblogs.com/Guhongying/p/10461970.html" target="_blank" rel="noopener">Hexo 的next主题下添加网易云音乐作BGM</a></p>
-<p>网易云音乐无法生成外链：</p>
-<p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
-<p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
-<p>（==更新==：参考以上方法时，无法播放音乐？）</p>
-<p>另一个方法参考：<a href="https://blog.csdn.net/qq_35859750/article/details/91452615" target="_blank" rel="noopener">hexo添加音乐</a></p>
-<p>安装aplayer: <code>npm install --save hexo-tag-aplayer</code></p>
-<p>粘贴以下内容到 \themes\next\layout\_macro\sidebar.swig</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 新增的内容 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- require APlayer --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- require MetingJS --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meting-js</span></span></span><br><span class="line"><span class="tag"><span class="attr">server</span>=<span class="string">"netease"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">type</span>=<span class="string">"song"</span></span></span><br><span class="line"><span class="tag"><span class="attr">id</span>=<span class="string">"188376"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">meting-js</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 新增的内容end --&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>  <img src="/2020/02/17/hexo相关问题/1582012566416.png" alt="1582012566416"></p>
-<p>即可.</p>
-<p>其中server, type, id等根据具体情况修改.</p>]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Computer Vision</title>
-    <url>/2020/02/17/Computer-Vision/</url>
-    <content><![CDATA[<p>来源于<a href="https://www.analyticsvidhya.com/blog/2020/01/computer-vision-learning-path-2020/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+AnalyticsVidhya+(Analytics+Vidhya" target="_blank" rel="noopener">Here’s your Learning Path to Master Computer Vision in 2020</a>)</p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><h3 id="Face-Recognition"><a href="#Face-Recognition" class="headerlink" title="Face Recognition"></a>Face Recognition</h3><p><img src="/2020/02/17/Computer-Vision/1581936373011.png" alt="1581936373011"></p>
-<h3 id="Types-of-computer-vision"><a href="#Types-of-computer-vision" class="headerlink" title="Types of computer vision"></a>Types of computer vision</h3><p><img src="/2020/02/17/Computer-Vision/1581936472914.png" alt="1581936472914"></p>
+    <url>/2020/02/18/Computer-Vision/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>来源于<a href="https://www.analyticsvidhya.com/blog/2020/01/computer-vision-learning-path-2020/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+AnalyticsVidhya+(Analytics+Vidhya" target="_blank" rel="noopener">Here’s your Learning Path to Master Computer Vision in 2020</a>)</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><h3 id="Face-Recognition"><a href="#Face-Recognition" class="headerlink" title="Face Recognition"></a>Face Recognition</h3><p><img src="/2020/02/18/Computer-Vision/1581936373011.png" alt="1581936373011"></p>
+<h3 id="Types-of-computer-vision"><a href="#Types-of-computer-vision" class="headerlink" title="Types of computer vision"></a>Types of computer vision</h3><p><img src="/2020/02/18/Computer-Vision/1581936472914.png" alt="1581936472914"></p>
 <h2 id="2-Image-Preprocessing"><a href="#2-Image-Preprocessing" class="headerlink" title="2. Image Preprocessing"></a>2. Image Preprocessing</h2><h3 id="2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images"><a href="#2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images" class="headerlink" title="2.1 Three Beginner-Friendly Techniques to Extract Features from Images"></a>2.1 Three Beginner-Friendly Techniques to Extract Features from Images</h3><p><a href="https://www.analyticsvidhya.com/blog/2019/08/3-techniques-extract-features-from-image-data-machine-learning-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/08/3-techniques-extract-features-from-image-data-machine-learning-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
 <h4 id="2-1-1-How-do-Machines-Store-Images"><a href="#2-1-1-How-do-Machines-Store-Images" class="headerlink" title="2.1.1 How do Machines Store Images?"></a>2.1.1 How do Machines Store Images?</h4><p>Machines store images in the form of a matrix of numbers. The size of this matrix depends on the number of pixels we have in any given image.</p>
 <blockquote>
@@ -97,7 +56,7 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">features = np.reshape(feature_matrix, (<span class="number">660</span>*<span class="number">450</span>)) </span><br><span class="line">features.shape</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(297000,)</span><br></pre></td></tr></table></figure>
 <h4 id="2-1-5-Method-3-Extracting-Edge-Features"><a href="#2-1-5-Method-3-Extracting-Edge-Features" class="headerlink" title="2.1.5 Method #3: Extracting Edge Features"></a>2.1.5 Method #3: Extracting Edge Features</h4><p>Consider that we are given the below image and we need to identify the objects present in it:</p>
-<p><img src="/2020/02/17/Computer-Vision/article-image-71.webp" alt="article-image-71"></p>
+<p><img src="/2020/02/18/Computer-Vision/article-image-71.webp" alt="article-image-71"></p>
 <p>You must have recognized the objects in an instant – a dog, a car and a cat. What are the features that you considered while differentiating each of these images? The shape could be one important factor, followed by color, or size. What if the machine could also identify the shape as we do?</p>
 <p>A similar idea is to <strong>extract edges as features and use that as the input for the model.</strong> I want you to think about this for a moment – how can we identify edges in an image? <strong>Edge is basically where there is a sharp change in color</strong>. Look at the below image:</p>
 <p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-81.png" alt="edge features"></p>
@@ -109,9 +68,9 @@
 <p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-101.png" alt="img"></p>
 <p>Since the difference between the values on either side of this pixel is large, we can conclude that there is a significant transition at this pixel and hence it is an edge. Now the question is, do we have to do this step manually?</p>
 <p>No! <strong>There are various kernels that can be used to highlight the edges in an image.</strong> The method we just discussed can also be achieved using the Prewitt kernel (in the x-direction). Given below is the Prewitt kernel:</p>
-<p><img src="/2020/02/17/Computer-Vision/article-image-132-300x159.webp" alt="article-image-132-300x159"></p>
+<p><img src="/2020/02/18/Computer-Vision/article-image-132-300x159.webp" alt="article-image-132-300x159"></p>
 <p>We take the values surrounding the selected pixel and multiply it with the selected kernel (Prewitt kernel). We can then add the resulting values to get a final value. Since we already have -1 in one column and 1 in the other column, adding the values is equivalent to taking the difference.</p>
-<p><img src="/2020/02/17/Computer-Vision/article-image-111.webp" alt="article-image-111"></p>
+<p><img src="/2020/02/18/Computer-Vision/article-image-111.webp" alt="article-image-111"></p>
 <p>There are various other kernels and I have mentioned four most popularly used ones below:</p>
 <p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-121.png" alt="kernels"></p>
 <p>Let’s now go back to the notebook and generate edge features for the same image:</p>
@@ -128,11 +87,11 @@
 </blockquote>
 <p>There are a number of feature descriptors out there. Here are a few of the most popular ones:</p>
 <ul>
-<li>HOG: Histogram of Oriented Gradients</li>
-<li>SIFT: Scale Invariant Feature Transform</li>
+<li><a href="#jumpHOG">HOG: Histogram of Oriented Gradients</a></li>
+<li><a href="#jumpSIFT">SIFT: Scale Invariant Feature Transform</a></li>
 <li>SURF: Speeded-Up Robust Feature</li>
 </ul>
-<h4 id="2-2-2-Introduction-to-the-HOG-Feature-Descriptor"><a href="#2-2-2-Introduction-to-the-HOG-Feature-Descriptor" class="headerlink" title="2.2.2 Introduction to the HOG Feature Descriptor"></a>2.2.2 Introduction to the HOG Feature Descriptor</h4><p>HOG, or Histogram of Oriented Gradients, is a feature descriptor that is often used to extract features from image data. It is widely used in <a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2/?utm_source=blog&amp;utm_medium=understand-math-HOG-feature-descriptor" target="_blank" rel="noopener">computer vision</a> tasks for <a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=understand-math-HOG-feature-descriptor" target="_blank" rel="noopener">object detection</a>.</p>
+<h4 id="2-2-2-Introduction-to-the-HOG-Feature-Descriptor"><a href="#2-2-2-Introduction-to-the-HOG-Feature-Descriptor" class="headerlink" title="2.2.2 Introduction to the HOG Feature Descriptor"></a><span id="jumpHOG">2.2.2 Introduction to the HOG Feature Descriptor</span></h4><p>HOG, or Histogram of Oriented Gradients, is a feature descriptor that is often used to extract features from image data. It is widely used in <a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2/?utm_source=blog&amp;utm_medium=understand-math-HOG-feature-descriptor" target="_blank" rel="noopener">computer vision</a> tasks for <a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=understand-math-HOG-feature-descriptor" target="_blank" rel="noopener">object detection</a>.</p>
 <p>Let’s look at some important aspects of HOG that makes it different from other feature descriptors:</p>
 <ul>
 <li>The HOG descriptor focuses on the <strong>structure or the shape</strong> of an object. Now you might ask, how is this different from the edge features we extract for images? In the case of edge features, we only identify if the pixel is an edge or not. HOG is able to provide the edge direction as well. This is done by extracting the <strong>gradient and orientation</strong> (or you can say magnitude and direction) of the edges</li>
@@ -167,12 +126,432 @@
 <p>As expected, we have 3,780 features for the image and this verifies the calculations we did in step 7 earlier. You can choose to change the values of the hyperparameters and that will give you a feature matrix of different sizes.</p>
 <p>Let’s finally look at the HOG image:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fig, (ax1, ax2) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">16</span>, <span class="number">8</span>), sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>) </span><br><span class="line"></span><br><span class="line">ax1.imshow(resized_img, cmap=plt.cm.gray) </span><br><span class="line">ax1.set_title(<span class="string">'Input image'</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># Rescale histogram for better display </span></span><br><span class="line">hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(<span class="number">0</span>, <span class="number">10</span>)) </span><br><span class="line"></span><br><span class="line">ax2.imshow(hog_image_rescaled, cmap=plt.cm.gray) </span><br><span class="line">ax2.set_title(<span class="string">'Histogram of Oriented Gradients'</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_9.png" alt="hog_features"></p>]]></content>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_9.png" alt="hog_features"></p>
+<h3 id="2-3-SIFT-Scale-Invariant-Feature-Transform-features"><a href="#2-3-SIFT-Scale-Invariant-Feature-Transform-features" class="headerlink" title="2.3 SIFT (Scale Invariant Feature Transform) features"></a><span id="jumpSIFT">2.3 SIFT (Scale Invariant Feature Transform) features</span></h3><p><a href="https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>Take a look at the below collection of images and think of the common element between them:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-20-17-49-55.png" alt="SIFT"></p>
+<p>The resplendent Eiffel Tower, of course! We naturally understand that the scale or angle of the image may change but the object remains the same.</p>
+<p>But machines have an almighty struggle with the same idea. It’s a challenge for them to identify the object in an image if we change certain things (like the angle or the scale). Here’s the good news – machines are super flexible and we can teach them to identify images at an almost human-level.</p>
+<p>So, in this article, we will talk about an <span style="color:red">image matching algorithm</span> that <strong>identifies the key features from the images and is able to match these features to a new image of the same object.</strong></p>
+<h4 id="2-3-1-Introduciton-to-SIFT"><a href="#2-3-1-Introduciton-to-SIFT" class="headerlink" title="2.3.1 Introduciton to SIFT"></a>2.3.1 Introduciton to SIFT</h4><blockquote>
+<p><em>SIFT, or Scale Invariant Feature Transform, is a feature detection algorithm in Computer Vision.</em></p>
+</blockquote>
+<p>SIFT helps locate the local features in an image, commonly known as the <span style="color:red">‘<em>keypoints</em>‘ </span>of the image. These keypoints are <strong>scale &amp; rotation invariant</strong> that can be used for various computer vision applications, like image matching, object detection, scene detection, etc.</p>
+<p>在模型训练过程中，我们也可以使用SIFT生成的关键点作为图像的特征。<strong>The major advantage of SIFT features, over edge features or hog features, is that they are not affected by the size or orientation of the image.</strong></p>
+<p>For example, here is another image of the Eiffel Tower along with its smaller version. The keypoints of the object in the first image are matched with the keypoints found in the second image. The same goes for two images when the object in the other image is slightly rotated. Amazing, right?</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/10/Screenshot-from-2019-10-01-16-08-16-300x282.png" alt="SIFT"></p>
+<p>Let’s understand how these keypoints are identified and what are the techniques used to ensure the scale and rotation invariance. Broadly speaking, the entire process can be divided into 4 parts:</p>
+<ul>
+<li><strong><a href="#jump2.3.2">Constructing a Scale Space:</a></strong> To make sure that features are scale-independent</li>
+<li><strong><a href="#jump2.3.3">Keypoint Localisation (关键点定位):</a></strong> Identifying the suitable features or keypoints</li>
+<li><strong><a href="#jump2.3.4">Orientation Assignment:</a></strong> Ensure the keypoints are rotation invariant</li>
+<li><strong><a href="#jump2.3.5">Keypoint Descriptor:</a></strong> Assign a unique fingerprint to each keypoint</li>
+</ul>
+<p>Finally, we can use these keypoints for feature matching!</p>
+<p><em>This article is based on the original paper by David G. Lowe. Here is the link: <a href="https://people.eecs.berkeley.edu/~malik/cs294/lowe-ijcv04.pdf" target="_blank" rel="noopener">Distinctive Image Features from Scale-Invariant Keypoints.</a></em></p>
+<h4 id="2-3-2-Constructing-the-Scale-Space"><a href="#2-3-2-Constructing-the-Scale-Space" class="headerlink" title="2.3.2 Constructing the Scale Space"></a><span id="jump2.3.2">2.3.2 Constructing the Scale Space</span></h4><p>We need to identify the most distinct features in a given image while ignoring any noise. Additionally, we need to ensure that the features are not scale-dependent.</p>
+<p>1.reduce the noise</p>
+<blockquote>
+<p><em>We use the</em> <strong>Gaussian Blurring technique</strong> <em>to reduce the noise in an image.</em></p>
+</blockquote>
+<p>So, for every pixel in an image, the Gaussian Blur calculates a value based on its neighboring pixels. Below is an example of image before and after applying the Gaussian Blur. As you can see, the texture and minor details are removed from the image and only the relevant information like the shape and edges remain:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/index_110.png" alt="gaussian blur"></p>
+<p>2.ensure the features are not scale-dependent</p>
+<p>Gaussian Blur successfully removed the noise from the images and we have highlighted the important features of the image. Now, <em>we need to ensure that these features must not be scale-dependent.</em> This means we will be searching for these features on multiple scales, by creating a ‘scale space’.</p>
+<blockquote>
+<p><em>Scale space is a collection of images having different scales, generated from a single image.</em></p>
+</blockquote>
+<p>To create a new set of images of different scales, we will take the original image and <strong>reduce the scale by half</strong>. For each new image, we will create blur versions as we saw above.</p>
+<p>例：We have the original image of size (275, 183) and a scaled image of dimension (138, 92). For both the images, two blur images are created:</p>
+<p><img src="/2020/02/18/Computer-Vision/1582017369109.png" alt="1582017369109"></p>
+<p>How many times do we need to scale the image and how many subsequent blur images need to be created for each scaled image? <strong>The ideal number of octaves should be four</strong>, and for each octave, the number of blur images should be five.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-24-18-27-46.png" alt="sift octave"></p>
+<h5 id="Difference-of-Gaussian"><a href="#Difference-of-Gaussian" class="headerlink" title="Difference of Gaussian"></a>Difference of Gaussian</h5><p>So far we have created images of multiple scales (often represented by σ) and used Gaussian blur for each of them to reduce the noise in the image. Next, we will try to enhance the features using a technique called Difference of Gaussians or DoG.</p>
+<blockquote>
+<p><em>Difference of Gaussian is a <span style="color:red">feature enhancement</span> algorithm that involves the subtraction of one blurred version of an original image from another, less blurred version of the original.</em></p>
+</blockquote>
+<p>DoG creates another set of images, for each octave, by subtracting every image from the previous image in the same scale. </p>
+<p>Let us create the DoG for the images in scale space. 如下图所示，On the left, we have 5 images, all from the first octave (thus having the same scale). Each subsequent image is created by applying the Gaussian blur over the previous image. On the right, we have four images generated by subtracting the consecutive Gaussians. The results are jaw-dropping (让人吃惊)!</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-25-14-18-26.png" alt="difference of gaussian"></p>
+<p>Now that we have a new set of images, we are going to use this to find the important keypoints.</p>
+<h4 id="2-3-3-Keypoint-Localization-关键点定位"><a href="#2-3-3-Keypoint-Localization-关键点定位" class="headerlink" title="2.3.3 Keypoint Localization (关键点定位)"></a><span id="jump2.3.3">2.3.3 Keypoint Localization (关键点定位)</span></h4><p>Once the images have been created, the next step is to find the important keypoints from the image that can be used for feature matching. <strong>The idea is to find the local maxima and minima for the images.</strong> This part is divided into two steps:</p>
+<ol>
+<li><a href="#jump2.3.3.1">Find the local maxima and minima</a></li>
+<li><a href="#jump2.3.3.2">Remove low contrast keypoints (keypoint selection)</a></li>
+</ol>
+<h5 id="Local-Maxima-and-Local-Minima"><a href="#Local-Maxima-and-Local-Minima" class="headerlink" title="Local Maxima and Local Minima"></a><span id="jump2.3.3.1">Local Maxima and Local Minima</span></h5><blockquote>
+<p><em>To locate the local maxima and minima, we go through every pixel in the image and compare it with its neighboring pixels.</em></p>
+</blockquote>
+<p>When I say ‘neighboring’, this not only includes the surrounding pixels of that image (in which the pixel lies), but also the nine pixels for the previous and next image in the octave.</p>
+<p>This means that every pixel value is compared with 26 other pixel values to find whether it is the local maxima/minima. For example, in the below diagram, we have three images from the first octave. The pixel marked <em>x</em> is compared with the neighboring pixels (in green) and is selected as a keypoint if it is the highest or lowest among the neighbors:</p>
+<p><img src="/2020/02/18/Computer-Vision/Screenshot-from-2019-09-25-16-50-01-300x207.webp" alt="Screenshot-from-2019-09-25-16-50-01-300x207"></p>
+<p>We now have potential keypoints that represent the images and are scale-invariant. We will apply the last check over the selected keypoints to ensure that these are the most accurate keypoints to represent the image. ( 因为some of these keypoints may not be robust to noise. )</p>
+<h5 id="Keypoint-Selection"><a href="#Keypoint-Selection" class="headerlink" title="Keypoint Selection"></a><span id="jump2.3.3.2">Keypoint Selection</span></h5><p><strong>we will eliminate the keypoints that have low contrast, or lie very close to the edge.</strong></p>
+<p>To deal with the low contrast keypoints, <strong>a second-order Taylor expansion</strong> is computed for each keypoint. If the resulting value is less than 0.03 (in magnitude), we reject the keypoint.</p>
+<p>So what do we do about the remaining keypoints? Well, we perform a check to identify the poorly located keypoints. 这些是接近边缘的关键点，具有高边缘响应，但可能对少量噪声不够稳健。<strong>A second-order Hessian matrix</strong> is used to identify such keypoints. </p>
+<p>Now that we have performed both the <span style="color:red">contrast test</span> and the <span style="color:red">edge test</span> to reject the unstable keypoints, we will now assign an orientation value for each keypoint to make the rotation invariant.</p>
+<h4 id="2-3-4-Orientation-Assignment"><a href="#2-3-4-Orientation-Assignment" class="headerlink" title="2.3.4 Orientation Assignment"></a><span id="jump2.3.4">2.3.4 Orientation Assignment</span></h4><p>At this stage, we have a set of stable keypoints for the images. We will now assign an orientation to each of these keypoints so that they are invariant to rotation. We can again divide this step into two smaller steps:</p>
+<ol>
+<li>Calculate the magnitude and orientation</li>
+<li>Create a histogram for magnitude and orientation</li>
+</ol>
+<p>计算magnitude和orientation的方法与 HOG中的计算方法类似，具体计算过程见<a href="https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a>.</p>
+<blockquote>
+<p><em>The magnitude represents the intensity of the pixel and the orientation gives the direction for the same.</em></p>
+</blockquote>
+<h5 id="Creating-a-Histogram-for-Magnitude-and-Orientation"><a href="#Creating-a-Histogram-for-Magnitude-and-Orientation" class="headerlink" title="Creating a Histogram for Magnitude and Orientation"></a>Creating a Histogram for Magnitude and Orientation</h5><p>On the x-axis, we will have bins for angle values, like 0-9, 10 – 19, 20-29, up to 360. Since our angle value is 57, it will fall in the 6th bin. The 6th bin value will be in proportion to the magnitude of the pixel, i.e. 16.64.  We will do this for all the pixels around the keypoint.</p>
+<p>This is how we get the below histogram:</p>
+<p><img src="/2020/02/18/Computer-Vision/Screenshot-from-2019-09-26-18-53-12.webp" alt="Screenshot-from-2019-09-26-18-53-12"></p>
+<p><em>You can refer to this article for a much detailed explanation for calculating the gradient, magnitude, orientation and plotting histogram – <a href="https://www.analyticsvidhya.com/blog/2019/09/feature-engineering-images-introduction-hog-feature-descriptor/" target="_blank" rel="noopener">A Valuable Introduction to the Histogram of Oriented Gradients.</a></em></p>
+<p>This histogram would peak at some point. <strong>The bin at which we see the peak will be the orientation for the keypoint.</strong> Additionally, if there is another significant peak (seen between 80 – 100%), then another keypoint is generated with the magnitude and scale the same as the keypoint used to generate the histogram. And the angle or orientation will be equal to the new bin that has the peak.</p>
+<p>Effectively at this point, we can say that there can be a small increase in the number of keypoints.</p>
+<h4 id="2-3-5-Keypoint-Descriptor"><a href="#2-3-5-Keypoint-Descriptor" class="headerlink" title="2.3.5 Keypoint Descriptor"></a><span id="jump2.3.5">2.3.5 Keypoint Descriptor</span></h4><p>This is the final step for SIFT. So far, we have stable keypoints that are scale-invariant and rotation invariant. In this section, we will use the neighboring pixels, their orientations, and magnitude, to generate a unique fingerprint for this keypoint called a ‘descriptor’.</p>
+<p>Additionally, since we use the surrounding pixels, the descriptors will be partially invariant to illumination or brightness of the images.</p>
+<p>We will first take a 16×16 neighborhood around the keypoint. This 16×16 block is further divided into 4×4 sub-blocks and for each of these sub-blocks, we generate the histogram using magnitude and orientation.</p>
+<p><img src="/2020/02/18/Computer-Vision/Screenshot-from-2019-09-26-20-10-52.webp" alt="Screenshot-from-2019-09-26-20-10-52"></p>
+<p>At this stage, the bin size is increased and we take only 8 bins (not 36). Each of these arrows represents the 8 bins and the length of the arrows define the magnitude. So, we will have a total of 128 bin values for every keypoint.</p>
+<p>Here is an example:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment">#reading image</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line"><span class="comment">#keypoints</span></span><br><span class="line">sift = cv2.xfeatures2d.SIFT_create()</span><br><span class="line">keypoints_1, descriptors_1 = sift.detectAndCompute(img1,<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">img_1 = cv2.drawKeypoints(gray1,keypoints_1,img1)</span><br><span class="line">plt.imshow(img_1)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/18/Computer-Vision/index_41.webp" alt="index_41"></p>
+<h4 id="2-3-6-Feature-Matching-代码"><a href="#2-3-6-Feature-Matching-代码" class="headerlink" title="2.3.6 Feature Matching (代码)"></a>2.3.6 Feature Matching (代码)</h4><p>We will now use the SIFT features for feature matching. For this purpose, I have downloaded two images of the Eiffel Tower, taken from different positions. You can try it with any two images that you want. <br>Here are the two images that I have used:</p>
+<p><span style="background:yellow">reading_image_eiffel.py</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># read images</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">img2 = cv2.imread(<span class="string">'eiffel_1.jpg'</span>) </span><br><span class="line"></span><br><span class="line">img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">figure, ax = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">16</span>, <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">ax[<span class="number">0</span>].imshow(img1, cmap=<span class="string">'gray'</span>)</span><br><span class="line">ax[<span class="number">1</span>].imshow(img2, cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/18/Computer-Vision/index_71.png" alt="index_71"></p>
+<p>Now, for both these images, we are going to generate the SIFT features. First, we have to construct a SIFT object and then use the function <em>detectAndCompute</em> to get the keypoints. It will return two values – the keypoints and the descriptors.</p>
+<p>Let’s determine the keypoints and print the total number of keypoints found in each image:</p>
+<p><span style="background:yellow">keypoints_shape.py</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># read images</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">img2 = cv2.imread(<span class="string">'eiffel_1.jpg'</span>) </span><br><span class="line"></span><br><span class="line">img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line"><span class="comment">#sift</span></span><br><span class="line">sift = cv2.xfeatures2d.SIFT_create()</span><br><span class="line"></span><br><span class="line">keypoints_1, descriptors_1 = sift.detectAndCompute(img1,<span class="literal">None</span>)</span><br><span class="line">keypoints_2, descriptors_2 = sift.detectAndCompute(img2,<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">len(keypoints_1), len(keypoints_2)</span><br></pre></td></tr></table></figure>
+<p>283, 540</p>
+<p>Next, let’s try and match the features from image 1 with features from image 2. We will be using the function <em>match()</em> from the <em>BFmatcher</em> (brute force match) module. Also, we will draw lines between the features that match in both the images. This can be done using the <em>drawMatches</em> function in OpenCV.</p>
+<p><span style="background:yellow">feature_matching.py</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># read images</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">img2 = cv2.imread(<span class="string">'eiffel_1.jpg'</span>) </span><br><span class="line"></span><br><span class="line">img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line"><span class="comment">#sift</span></span><br><span class="line">sift = cv2.xfeatures2d.SIFT_create()</span><br><span class="line"></span><br><span class="line">keypoints_1, descriptors_1 = sift.detectAndCompute(img1,<span class="literal">None</span>)</span><br><span class="line">keypoints_2, descriptors_2 = sift.detectAndCompute(img2,<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#feature matching</span></span><br><span class="line">bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">matches = bf.match(descriptors_1,descriptors_2)</span><br><span class="line">matches = sorted(matches, key = <span class="keyword">lambda</span> x:x.distance)</span><br><span class="line"></span><br><span class="line">img3 = cv2.drawMatches(img1, keypoints_1, img2, keypoints_2, matches[:<span class="number">50</span>], img2, flags=<span class="number">2</span>)</span><br><span class="line">plt.imshow(img3),plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/18/Computer-Vision/index_61.webp" alt="index_61"></p>
+<p>I have plotted only 50 matches here for clarity’s sake. You can increase the number according to what you prefer. To find out how many keypoints are matched, we can print the length of the variable <em>matches</em>. In this case, the answer would be 190.</p>
+<h4 id="2-3-7-End-Notes"><a href="#2-3-7-End-Notes" class="headerlink" title="2.3.7 End Notes"></a>2.3.7 End Notes</h4><p>In this article, we discussed the SIFT feature matching algorithm in detail. Here is a site that provides excellent visualization for each step of SIFT. You can add your own image and it will create the keypoints for that image as well. Check it out <a href="http://weitz.de/sift/" target="_blank" rel="noopener">here</a>.</p>
+<p>Another popular feature matching algorithm is SURF (Speeded Up Robust Feature), which is simply a faster version of SIFT. I would encourage you to go ahead and explore it as well.</p>
+<p>And if you’re new to the world of computer vision and image data, I recommend checking out the below course:</p>
+<ul>
+<li><a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2?utm_source=blog&amp;utm_medium=detailed-guide-powerful-sift-technique-image-matching-python" target="_blank" rel="noopener">Computer Vision using Deep Learning 2.0</a></li>
+</ul>
+<h2 id="3-Image-Classification-using-Logistic-Regression"><a href="#3-Image-Classification-using-Logistic-Regression" class="headerlink" title="3. Image Classification using Logistic Regression"></a>3. Image Classification using Logistic Regression</h2><ul>
+<li><p>Python:</p>
+<p>kaggle kernel: used grid search method in logistic regression to classify rooms as messy or clean.</p>
+</li>
+</ul>
+<p>完整代码见：<a href="https://www.kaggle.com/gulsahdemiryurek/image-classification-with-logistic-regression/notebook" target="_blank" rel="noopener">https://www.kaggle.com/gulsahdemiryurek/image-classification-with-logistic-regression/notebook</a></p>
+<p>对图片的大致处理：（在这里，先不纠结train/val/test等）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np <span class="comment"># linear algebra</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment"># data processing, CSV file I/O (e.g. pd.read_csv)</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> shuffle </span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm </span><br><span class="line"></span><br><span class="line">train_messy = <span class="string">"../input/images/images/train/messy"</span></span><br><span class="line">train_clean= <span class="string">"../input/images/images/train/clean"</span></span><br><span class="line">test_messy= <span class="string">"../input/images/images/val/messy"</span></span><br><span class="line">test_clean= <span class="string">"../input/images/images/val/clean"</span></span><br><span class="line">image_size = <span class="number">128</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_data</span><span class="params">()</span>:</span></span><br><span class="line">    train_data_messy = [] </span><br><span class="line">    train_data_clean=[]</span><br><span class="line">    <span class="keyword">for</span> image1 <span class="keyword">in</span> tqdm(os.listdir(train_messy)): </span><br><span class="line">        path = os.path.join(train_messy, image)</span><br><span class="line">        img1 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img1 = cv2.resize(img1, (image_size, image_size))</span><br><span class="line">        train_data_messy.append(img1) </span><br><span class="line">    <span class="keyword">for</span> image2 <span class="keyword">in</span> tqdm(os.listdir(train_clean)): </span><br><span class="line">        path = os.path.join(train_clean, image)</span><br><span class="line">        img2 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img2 = cv2.resize(img2, (image_size, image_size))</span><br><span class="line">        train_data_clean.append(img2) </span><br><span class="line">    </span><br><span class="line">    train_data= np.concatenate((np.asarray(train_data_messy),np.asarray(train_data_clean)),axis=<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> train_data </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_data</span><span class="params">()</span>:</span></span><br><span class="line">    test_data_messy = [] </span><br><span class="line">    test_data_clean=[]</span><br><span class="line">    <span class="keyword">for</span> image1 <span class="keyword">in</span> tqdm(os.listdir(test_messy)): </span><br><span class="line">        path = os.path.join(test_messy, image1)</span><br><span class="line">        img1 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img1 = cv2.resize(img1, (image_size, image_size))</span><br><span class="line">        test_data_messy.append(img1) </span><br><span class="line">    <span class="keyword">for</span> image2 <span class="keyword">in</span> tqdm(os.listdir(test_clean)): </span><br><span class="line">        path = os.path.join(test_clean, image2)</span><br><span class="line">        img2 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img2 = cv2.resize(img2, (image_size, image_size))</span><br><span class="line">        test_data_clean.append(img2) </span><br><span class="line">    </span><br><span class="line">    test_data= np.concatenate((np.asarray(test_data_messy),np.asarray(test_data_clean)),axis=<span class="number">0</span>) </span><br><span class="line">    <span class="keyword">return</span> test_data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train_data = train_data() </span><br><span class="line">test_data = test_data()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x_train_flatten = train_data.reshape(train_data.shape[<span class="number">0</span>],train_data.shape[<span class="number">1</span>]*train_data.shape[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<p>Grid search:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line">grid=&#123;<span class="string">"C"</span>:np.logspace(<span class="number">-3</span>,<span class="number">3</span>,<span class="number">7</span>),<span class="string">"penalty"</span>:[<span class="string">"l1"</span>,<span class="string">"l2"</span>]&#125;,</span><br><span class="line">logistic_regression=LogisticRegression(random_state=<span class="number">42</span>)</span><br><span class="line">log_reg_cv=GridSearchCV(logistic_regression,grid,cv=<span class="number">10</span>)</span><br><span class="line">log_reg_cv.fit(x_train_flatten, y_train)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>C: <a href="https://mmlind.github.io/Using_Logistic_Regression_to_solve_MNIST/" target="_blank" rel="noopener">Using Logistic regression to classify images</a> (MNIST data)</li>
+</ul>
+<h2 id="4-Project-1-Identify-the-Apparels-服装"><a href="#4-Project-1-Identify-the-Apparels-服装" class="headerlink" title="4. Project 1- Identify the Apparels (服装)"></a>4. Project 1- Identify the Apparels (服装)</h2><p><a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-apparels/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-apparels/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p><img src="/2020/02/18/Computer-Vision/1582027636102.png" alt="1582027636102"></p>
+<p>More than 25% of entire revenue in E-Commerce is attributed to apparels &amp; accessories. A major problem they face is categorizing these apparels from just the images especially when the categories provided by the brands are inconsistent. This poses an interesting computer vision problem which has caught the eyes of several deep learning researchers.</p>
+<p>Fashion MNIST is a drop-in replacement for the very well known, machine learning hello world - MNIST dataset which can be checked out at <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="noopener">‘Identify the digits’</a> practice problem. Instead of digits, the images show a type of apparel e.g. T-shirt, trousers, bag, etc. The dataset used in this problem was created by Zalando Research. More details can be found at this <a href="https://github.com/zalandoresearch/fashion-mnist" target="_blank" rel="noopener">link</a>.</p>
+<h2 id="5-Introduction-to-Keras-amp-Neural-Networks"><a href="#5-Introduction-to-Keras-amp-Neural-Networks" class="headerlink" title="5. Introduction to Keras &amp; Neural Networks"></a>5. Introduction to Keras &amp; Neural Networks</h2><h3 id="5-1-Keras"><a href="#5-1-Keras" class="headerlink" title="5.1 Keras"></a>5.1 Keras</h3><p>Keras is one of the most commonly used deep learning tools.</p>
+<ul>
+<li><a href="https://keras.io/" target="_blank" rel="noopener">Keras Documentation</a> (Keras官方文档)</li>
+<li><a href="https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Neural Networks using Keras</a> (MNIST)</li>
+</ul>
+<h3 id="5-2-Neural-Network"><a href="#5-2-Neural-Network" class="headerlink" title="5.2 Neural Network"></a>5.2 Neural Network</h3><ul>
+<li><p><a href="https://www.analyticsvidhya.com/blog/2017/05/neural-network-from-scratch-in-python-and-r/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Neural Networks from Scratch</a></p>
+</li>
+<li><p>Introduction to Neural Networks by Stanford:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d14TUNcbn1k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</li>
+</ul>
+<ul>
+<li><p>Neural Networks by 3Blue1Brown:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aircAruvnKk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</li>
+</ul>
+<h2 id="6-Project-1-Identify-the-Apparels"><a href="#6-Project-1-Identify-the-Apparels" class="headerlink" title="6. Project 1 - Identify the Apparels"></a>6. Project 1 - Identify the Apparels</h2><p>同第4部分</p>
+<h2 id="7-Understanding-Convolutional-Neural-Networks-CNNs-Transfer-Learning"><a href="#7-Understanding-Convolutional-Neural-Networks-CNNs-Transfer-Learning" class="headerlink" title="7. Understanding Convolutional Neural Networks (CNNs), Transfer Learning"></a>7. Understanding Convolutional Neural Networks (CNNs), Transfer Learning</h2><h3 id="7-1-Introduction-to-Convolutional-Neural-Networks-CNNs"><a href="#7-1-Introduction-to-Convolutional-Neural-Networks-CNNs" class="headerlink" title="7.1 Introduction to Convolutional Neural Networks (CNNs):"></a>7.1 <strong>Introduction to Convolutional Neural Networks (CNNs):</strong></h3><ul>
+<li><p><a href="https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Convolutional Neural Networks (CNNs) Simplified</a></p>
+</li>
+<li><p>Convolutional Neural Networks by Stanford:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bNb2fEVKeEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+</li>
+</ul>
+<h3 id="7-2-Introduction-to-Transfer-Learning"><a href="#7-2-Introduction-to-Transfer-Learning" class="headerlink" title="7.2 Introduction to Transfer Learning:"></a>7.2 <strong>Introduction to Transfer Learning:</strong></h3><h4 id="7-2-1-Master-Transfer-Learning"><a href="#7-2-1-Master-Transfer-Learning" class="headerlink" title="7.2.1 Master Transfer Learning"></a>7.2.1 Master Transfer Learning</h4><p><a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>训练神经网络有时需要很多的资源（RAM, GPUs）, RAM on a machine is cheap and is available in plenty, but access to GPUs is not that cheap. </p>
+<p>Now, that may change in future. But for now, it means that we have to be smarter about the way we use our resources in solving Deep Learning problems. Especially so, when we try to solve complex real life problems on areas like image and voice recognition. Once you have a few hidden layers in your model, adding another layer of hidden layer would need immense resources.</p>
+<p>Thankfully, there is something called “Transfer Learning” which enables us to <strong>use pre-trained models from other people by making small changes.</strong> In this article, I am going to tell how we can use pre-trained models to accelerate our solutions.</p>
+<ul>
+<li><strong>What is transfer learning?</strong></li>
+</ul>
+<p>A neural network is trained on a data. This network gains knowledge from this data, which is compiled as “weights” of the network. <span style="color:red">These weights can be extracted and then transferred to any other neural network.</span> Instead of training the other neural network from scratch, we <strong>“transfer”</strong> the learned features.</p>
+<ul>
+<li><strong>What is a Pre-trained Model?</strong></li>
+</ul>
+<p>Simply put, a pre-trained model is a model created by some one else to solve a similar problem. Instead of building a model from scratch to solve a similar problem, you use the model trained on other problem as a starting point.<br>For example, if you want to build a self learning car. You can spend years to build a decent image recognition algorithm from scratch or you can take inception model (a pre-trained model) from Google which was built on ImageNet data to identify images in those pictures.<br>A pre-trained model may not be 100% accurate in your application, but it saves huge efforts required to re-invent the wheel. </p>
+<p>使用pre-trained model不仅能节约训练时间，还能得到更高的准确率</p>
+<ul>
+<li><strong>How can I use Pre-trained Models?</strong></li>
+</ul>
+<p> By using pre-trained models which have been previously trained on large datasets, we can directly use the weights and architecture obtained and apply the learning on our problem statement. This is known as transfer learning. We “transfer the learning” of the pre-trained model to our specific problem statement.</p>
+<p>You should be very careful while choosing what pre-trained model you should use in your case. If the problem statement we have at hand is very different from the one on which the pre-trained model was trained – the prediction we would get would be very inaccurate. For example, a model previously trained for speech recognition would work horribly if we try to use it to identify objects using it.</p>
+<p>We are lucky that many pre-trained architectures are directly available for us in the Keras library. <strong>Imagenet</strong> data set has been widely used to build various architectures since it is large enough (1.2M images) to create a generalized model. The problem statement is to train a model that can correctly classify the images into 1,000 separate object categories. These 1,000 image categories represent object classes that we come across in our day-to-day lives, such as species of dogs, cats, various household objects, vehicle types etc.</p>
+<p>These pre-trained networks demonstrate a strong ability to generalize to images outside the ImageNet dataset via transfer learning. <strong>We make modifications in the pre-existing model by fine-tuning the model. </strong>Since we assume that the pre-trained network has been trained quite well, we would not want to modify the weights too soon and too much. While modifying we generally use a learning rate smaller than the one used for initially training the model.</p>
+<ul>
+<li><p><strong>Ways to Fine tune the model</strong></p>
+<ol>
+<li><strong>Feature extraction</strong> – We can use a pre-trained model as a feature extraction mechanism. What we can do is that we can remove the output layer( the one which gives the probabilities for being in each of the 1000 classes) and then use the entire network as a fixed feature extractor for the new data set.</li>
+<li><strong>Use the Architecture of the pre-trained model –</strong> What we can do is that we use architecture of the model while we initialize all the weights randomly and train the model according to our dataset again.</li>
+<li><strong>Train some layers while freeze others</strong> – Another way to use a pre-trained model is to train is partially. What we can do is we keep the weights of initial layers of the model frozen while we retrain only the higher layers. We can try and test as to how many layers to be frozen and how many to be trained.</li>
+</ol>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2017/05/31112715/finetune1-300x270.jpg"></p>
+</li>
+</ul>
+<p><strong>Scenario 1 – Size of the Data set is small while the Data similarity is very high –</strong> In this case, since the data similarity is very high, we do not need to retrain the model. All we need to do is to customize and modify the output layers according to our problem statement. We use the pretrained model as a feature extractor. Suppose we decide to use models trained on Imagenet to identify if the new set of images have cats or dogs. Here the images we need to identify would be similar to imagenet, however we just need two categories as my output – cats or dogs. In this case all we do is just modify the dense layers and the final softmax layer to output 2 categories instead of a 1000.</p>
+<p><strong>Scenario 2 – Size of the data is small as well as data similarity is very low</strong> – In this case we can freeze the initial (let’s say k) layers of the pretrained model and train just the remaining(n-k) layers again. The top layers would then be customized to the new data set. Since the new data set has low similarity it is significant to retrain and customize the higher layers according to the new dataset.  The small size of the data set is compensated by the fact that the initial layers are kept pretrained(which have been trained on a large dataset previously) and the weights for those layers are frozen.</p>
+<p><strong>Scenario 3 – Size of the data set is large however the Data similarity is very low</strong> – In this case, since we have a large dataset, our neural network training would be effective. However, since the data we have is very different as compared to the data used for training our pretrained models. The predictions made using pretrained models would not be effective. Hence, its best to train the neural network from scratch according to your data.</p>
+<p><strong>Scenario 4 – Size of the data is large as well as there is high data similarity –</strong> This is the ideal situation. In this case the pretrained model should be most effective. The best way to use the model is to retain the architecture of the model and the initial weights of the model. Then we can retrain this model using the weights as initialized in the pre-trained model.</p>
+<blockquote>
+<p>There are various architectures that have been trained on the imageNet data set. You can go through various architectures <a href="http://www.pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/" target="_blank" rel="noopener">here</a>.</p>
+</blockquote>
+<p><span style="background:yellow">代码示例</span>： se the pre-trained models to identify handwritten digits. 见<a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a></p>
+<h4 id="7-2-2-ConvNets-in-Practice-by-Stanford"><a href="#7-2-2-ConvNets-in-Practice-by-Stanford" class="headerlink" title="7.2.2 ConvNets in Practice by Stanford:"></a>7.2.2 ConvNets in Practice by Stanford:</h4><iframe width="560" height="315" src="https://www.youtube.com/embed/dUTzeP_HTZg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+<h2 id="8-Project-2-Idendify-the-Digits"><a href="#8-Project-2-Idendify-the-Digits" class="headerlink" title="8. Project 2 - Idendify the Digits"></a>8. Project 2 - Idendify the Digits</h2><p><a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>Automatic digit recognition is of popular interest today. Deep Learning techniques makes it possible for object recognition in image data . This practice problem is meant to give you a kick start in deep learning. As usual, we will not only provide you with the challenge and a solution checker, but also a set of tutorials to get you off the ground!</p>
+<p>The data set used for this problem is from the populat MNIST data set. Developed by Yann LeCun, Corina Cortes and Christopher Burger for evaluating machine learning model on the handwritten digit classification problem. It is a widely used data set in the machine learning community. For more details about the data set, read here <a href="http://bit.ly/1REjJgL" target="_blank" rel="noopener">http://bit.ly/1REjJgL</a></p>
+<h2 id="9-Build-your-profile-Participate-in-competitions"><a href="#9-Build-your-profile-Participate-in-competitions" class="headerlink" title="9. Build your profile: Participate in competitions"></a>9. <strong>Build your profile: Participate in competitions</strong></h2><ul>
+<li><a href="https://datahack.analyticsvidhya.com/contest/all/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">DataHack</a></li>
+<li><a href="https://www.kaggle.com/competitions" target="_blank" rel="noopener">Kaggle</a></li>
+</ul>
+<h2 id="10-Solving-Object-Detection-problems"><a href="#10-Solving-Object-Detection-problems" class="headerlink" title="10. Solving Object Detection problems"></a>10. Solving Object Detection problems</h2><h3 id="10-1-Step-by-Step-Introduction-to-Object-Detection-Techniques"><a href="#10-1-Step-by-Step-Introduction-to-Object-Detection-Techniques" class="headerlink" title="10.1 Step-by-Step Introduction to Object Detection Techniques"></a>10.1 Step-by-Step Introduction to Object Detection Techniques</h3><p><a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>The below image is a popular example of illustrating how an object detection algorithm works. Each object in the image, from a person to a kite, have been located and identified with a certain level of precision.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/06/OD.png" alt="img"></p>
+<p>Let’s look at how we can solve a general object detection problem using a CNN.</p>
+<ol>
+<li><p>First, we take an image as input:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/I1_2009_09_08_drive_0012_001351-768x223.png" alt="img"></p>
+</li>
+<li><p>Then we divide the image into various regions:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-09-14-21-14.png" alt="img"></p>
+</li>
+<li><p>We will then consider each region as a separate image.</p>
+</li>
+<li><p>Pass all these regions (images) to the CNN and classify them into various classes.</p>
+</li>
+<li><p>Once we have divided each region into its corresponding class, we can combine all these regions to get the original image with the detected objects:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/I1_2009_09_08_drive_0012_001351-another-copy-768x223.png" alt="img"></p>
+</li>
+</ol>
+<p>The problem with using this approach is that the objects in the image can have different aspect ratios and spatial locations. For instance, in some cases the object might be covering most of the image, while in others the object might only be covering a small percentage of the image. The shapes of the objects might also be different (happens a lot in real-life use cases).</p>
+<p>As a result of these factors, we would require a very large number of regions resulting in a huge amount of computational time. So to solve this problem and reduce the number of regions, we can use region-based CNN, which selects the regions using a proposal method. Let’s understand what this region-based CNN can do for us.</p>
+<h4 id="10-1-1-Understanding-Region-Based-Convolutional-Neural-Network-RCNN"><a href="#10-1-1-Understanding-Region-Based-Convolutional-Neural-Network-RCNN" class="headerlink" title="10.1.1 Understanding Region-Based Convolutional Neural Network (RCNN)"></a>10.1.1 Understanding Region-Based Convolutional Neural Network (RCNN)</h4><h5 id="10-1-1-1-Intuition-of-RCNN"><a href="#10-1-1-1-Intuition-of-RCNN" class="headerlink" title="10.1.1.1 Intuition of RCNN"></a>10.1.1.1 Intuition of RCNN</h5><p>Instead of working on a massive number of regions, the RCNN algorithm proposes a bunch of boxes in the image and checks if any of these boxes contain any object. RCNN <strong>uses <span style="color:red">selective search</span> to extract these boxes from an image (these boxes are called regions).</strong></p>
+<p>Let’s first understand what selective search is and how it identifies the different regions. There are basically four regions that form an object: varying scales, colors, textures, and enclosure. Selective search identifies these patterns in the image and based on that, proposes various regions. <a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Here is a brief overview of how selective search works.</a></p>
+<p>Below is a succint summary of the steps followed in RCNN to detect objects:</p>
+<ol>
+<li>We first take a pre-trained convolutional neural network.</li>
+<li>Then, this model is retrained. We train the last layer of the network based on the number of classes that need to be detected.</li>
+<li>The third step is to get the Region of Interest for each image. We then reshape all these regions so that they can match the CNN input size.</li>
+<li>After getting the regions, we train SVM to classify objects and background. For each class, we train one binary SVM.</li>
+<li>Finally, we train a linear regression model to generate tighter bounding boxes for each identified object in the image.</li>
+</ol>
+<p>You might get a better idea of the above steps with a visual example:</p>
+<ul>
+<li><p>First, an image is taken as an input:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-14-59-02.png" alt="img"></p>
+</li>
+</ul>
+<ul>
+<li><p>Then, we get the Regions of Interest (ROI) using some proposal method (for example, selective search as seen above):</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-00-09.png" alt="img"></p>
+</li>
+<li><p>All these regions are then reshaped as per the input of the CNN, and each region is passed to the ConvNet:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-01-56.png" alt="img"></p>
+</li>
+<li><p>CNN then extracts features for each region and SVMs are used to divide these regions into different classes:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-03-02.png" alt="img"></p>
+</li>
+<li><p>Finally, a bounding box regression (<em>Bbox reg</em>) is used to predict the bounding boxes for each identified region:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-06-33.png" alt="img"></p>
+</li>
+</ul>
+<p>And this, in a nutshell, is how an RCNN helps us to detect objects.</p>
+<h5 id="10-1-1-2-Limitations-of-RCNN"><a href="#10-1-1-2-Limitations-of-RCNN" class="headerlink" title="10.1.1.2  Limitations of RCNN"></a>10.1.1.2  Limitations of RCNN</h5><p>Training an RCNN model is expensive and slow:</p>
+<ul>
+<li>Extracting 2,000 regions for each image based on selective search</li>
+<li>Extracting features using CNN for every image region. Suppose we have N images, then the number of CNN features will be N*2,000</li>
+<li>The entire process of object detection using RCNN has three models:<ol>
+<li>CNN for feature extraction</li>
+<li>Linear SVM classifier for identifying objects</li>
+<li>Regression model for tightening the bounding boxes.</li>
+</ol>
+</li>
+</ul>
+<p>All these processes combine to make RCNN very slow. It takes around 40-50 seconds to make predictions for each new image, which essentially makes the model cumbersome and practically impossible to build when faced with a gigantic dataset.</p>
+<p>Here’s the good news – we have another object detection technique which fixes most of the limitations we saw in RCNN.</p>
+<h4 id="10-1-2-Understanding-Fast-RCNN"><a href="#10-1-2-Understanding-Fast-RCNN" class="headerlink" title="10.1.2 Understanding Fast RCNN"></a>10.1.2 Understanding Fast RCNN</h4><h5 id="10-1-2-1-Intuition-of-Fast-RCNN"><a href="#10-1-2-1-Intuition-of-Fast-RCNN" class="headerlink" title="10.1.2.1 Intuition of Fast RCNN"></a>10.1.2.1 Intuition of Fast RCNN</h5><p>What else can we do to reduce the computation time a RCNN algorithm typically takes? Instead of running a CNN 2,000 times per image, we can run it just once per image and get all the regions of interest (regions containing some object).</p>
+<p>In Fast RCNN, we feed the input image to the CNN, which in turn generates the convolutional feature maps. Using these maps, the regions of proposals are extracted. We then use a RoI pooling layer to reshape all the proposed regions into a fixed size, so that it can be fed into a fully connected network.</p>
+<p>Let’s break this down into steps to simplify the concept:</p>
+<ol>
+<li>As with the earlier two techniques, we take an image as an input.</li>
+<li>This image is passed to a ConvNet which in turns generates the Regions of Interest.</li>
+<li>A RoI pooling layer is applied on all of these regions to reshape them as per the input of the ConvNet. Then, each region is passed on to a fully connected network.</li>
+<li>A softmax layer is used on top of the fully connected network to output classes. Along with the softmax layer, a linear regression layer is also used parallely to output bounding box coordinates for predicted classes.</li>
+</ol>
+<p>So, instead of using three different models (like in RCNN), Fast RCNN uses a single model which extracts features from the regions, divides them into different classes, and returns the boundary boxes for the identified classes simultaneously.</p>
+<p>图解：</p>
+<ul>
+<li><p>Taking an image as input:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-14-59-021.png" alt="img"></p>
+</li>
+<li><p>This image is passed to a ConvNet which returns the region of interests accordingly:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-44-03.png" alt="img"></p>
+</li>
+<li><p>Then we apply the RoI pooling layer on the extracted regions of interest to make sure all the regions are of the same size:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-45-26.png" alt="img"></p>
+</li>
+<li><p>Finally, these regions are passed on to a fully connected network which classifies them, as well as returns the bounding boxes using softmax and linear regression layers simultaneously:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-47-18.png" alt="img"></p>
+</li>
+</ul>
+<p>This is how Fast RCNN resolves two major issues of RCNN, i.e., <span style="color:red">passing one instead of 2,000 regions per image to the ConvNet, and using one instead of three different models for extracting features, classification and generating bounding boxes.</span></p>
+<h5 id="10-1-2-2-Limitations-of-Fast-RCNN"><a href="#10-1-2-2-Limitations-of-Fast-RCNN" class="headerlink" title="10.1.2.2 Limitations of Fast RCNN"></a>10.1.2.2 Limitations of Fast RCNN</h5><p>It also uses <strong>selective search</strong> as a proposal method to find the Regions of Interest, which is a slow and time consuming process. It takes around 2 seconds per image to detect objects, which is much better compared to RCNN. But when we consider large real-life datasets, then even a Fast RCNN doesn’t look so fast anymore.</p>
+<p>But there’s yet another object detection algorithm that trump Fast RCNN. </p>
+<h4 id="10-1-3-Understanding-Faster-RCNN"><a href="#10-1-3-Understanding-Faster-RCNN" class="headerlink" title="10.1.3 Understanding Faster RCNN"></a>10.1.3 Understanding Faster RCNN</h4><h5 id="10-1-3-1-Intuition-of-Faster-RCNN"><a href="#10-1-3-1-Intuition-of-Faster-RCNN" class="headerlink" title="10.1.3.1 Intuition of Faster RCNN"></a>10.1.3.1 Intuition of Faster RCNN</h5><p>Faster RCNN is the modified version of Fast RCNN. The major difference between them is that Fast RCNN uses selective search for generating Regions of Interest, while Faster RCNN uses <strong>“Region Proposal Network”, aka RPN.</strong> RPN takes image feature maps as an input and generates a set of object proposals, each with an objectness score as output.</p>
+<p>The  below steps are typically followed in a Faster RCNN approach:</p>
+<ol>
+<li>We take an image as input and pass it to the ConvNet which returns the feature map for that image.</li>
+<li>Region proposal network is applied on these feature maps. This returns the object proposals along with their objectness score.</li>
+<li>A RoI pooling layer is applied on these proposals to bring down all the proposals to the same size.</li>
+<li>Finally, the proposals are passed to a fully connected layer which has a softmax layer and a linear regression layer at its top, to classify and output the bounding boxes for objects.</li>
+</ol>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-09-14-15-36.png" alt="img"></p>
+<p><a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">A briefly explain how this Region Proposal Network (RPN) actually works.</a></p>
+<h5 id="10-1-3-2-Limitations-of-Faster-RCNN"><a href="#10-1-3-2-Limitations-of-Faster-RCNN" class="headerlink" title="10.1.3.2 Limitations of Faster RCNN"></a>10.1.3.2 Limitations of Faster RCNN</h5><p>All of the object detection algorithms we have discussed so far use regions to identify the objects. The network does not look at the complete image in one go, but focuses on parts of the image sequentially. This creates two complications:</p>
+<ul>
+<li>The algorithm requires many passes through a single image to extract all the objects</li>
+<li>As there are different systems working one after the other, the performance of the systems further ahead depends on how the previous systems performed</li>
+</ul>
+<h4 id="10-1-4-Summary"><a href="#10-1-4-Summary" class="headerlink" title="10.1.4 Summary"></a>10.1.4 Summary</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Algorithm</strong></th>
+<th><strong>Features</strong></th>
+<th><strong>Prediction time / image</strong></th>
+<th><strong>Limitations</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN</td>
+<td>Divides the image into multiple regions and then classify each region into various classes.</td>
+<td>–</td>
+<td>Needs a lot of regions to predict accurately and hence high computation time.</td>
+</tr>
+<tr>
+<td>RCNN</td>
+<td>Uses selective search to generate regions. Extracts around 2000 regions from each image.</td>
+<td>40-50 seconds</td>
+<td>High computation time as each region is passed to the CNN separately also it uses three different model for making predictions.</td>
+</tr>
+<tr>
+<td>Fast RCNN</td>
+<td>Each image is passed only once to the CNN and feature maps are extracted. Selective search is used on these maps to generate predictions. Combines all the three models used in RCNN together.</td>
+<td>2 seconds</td>
+<td>Selective search is slow and hence computation time is still high.</td>
+</tr>
+<tr>
+<td>Faster RCNN</td>
+<td>Replaces the selective search method with region proposal network which made the algorithm much faster.</td>
+<td>0.2 seconds</td>
+<td>Object proposal takes time and as there are different systems working one after the other, the performance of systems depends on how the previous system has performed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="10-2-Implementing-Faster-RCNN-for-Object-Detection-代码"><a href="#10-2-Implementing-Faster-RCNN-for-Object-Detection-代码" class="headerlink" title="10.2 Implementing Faster RCNN for Object Detection (代码)"></a>10.2 Implementing Faster RCNN for Object Detection (代码)</h3><p><a href="https://www.analyticsvidhya.com/blog/2018/11/implementation-faster-r-cnn-python-object-detection/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2018/11/implementation-faster-r-cnn-python-object-detection/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a>)</p>
+<h3 id="10-3-Object-Detection-using-YOLO-含代码"><a href="#10-3-Object-Detection-using-YOLO-含代码" class="headerlink" title="10.3 Object Detection using YOLO (含代码)"></a>10.3 Object Detection using YOLO (含代码)</h3><p>详细介绍见这里：<a href="https://www.analyticsvidhya.com/blog/2018/12/practical-guide-object-detection-yolo-framewor-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2018/12/practical-guide-object-detection-yolo-framewor-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>The R-CNN family of techniques we saw in Part 1 primarily use regions to localize the objects within the image. The network does not look at the entire image, only at the parts of the images which have a higher chance of containing an object.</p>
+<p>The YOLO framework (You Only Look Once) on the other hand, deals with object detection in a different way. It takes the entire image in a single instance and predicts the bounding box coordinates and class probabilities for these boxes. <strong>The biggest advantage of using YOLO is its superb speed</strong> – it’s incredibly fast and can process 45 frames per second. YOLO also understands generalized object representation.</p>
+<blockquote>
+<p>YOLO is a state-of-the-art object detection algorithm that is incredibly fast and accurate</p>
+</blockquote>
+<p>_<strong>Training</strong>_</p>
+<p>The input for training our model will obviously be images and their corresponding y labels. Let’s see an image and make its y label:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/12/Screenshot-from-2018-11-17-15-02-11.png" alt="img"></p>
+<p>Consider the scenario where we are using a 3 X 3 grid with two anchors per grid, and there are 3 different object classes. So the corresponding y labels will have a shape of 3 X 3 X 16. Now, suppose if we use 5 anchor boxes per grid and the number of classes has been increased to 5. So the target will be 3 X 3 X 10 X 5 = 3 X 3 X 50. This is how the training process is done – taking an image of a particular shape and mapping it with a 3 X 3 X 16 target (this may change as per the grid size, number of anchor boxes and the number of classes).</p>
+<p><strong>_Testing_</strong></p>
+<p>The new image will be divided into the same number of grids which we have chosen during the training period. For each grid, the model will predict an output of shape 3 X 3 X 16 (assuming this is the shape of the target during training time). The 16 values in this prediction will be in the same format as that of the training label. The first 8 values will correspond to anchor box 1, where the first value will be the probability of an object in that grid. Values 2-5 will be the bounding box coordinates for that object, and the last three values will tell us which class the object belongs to. The next 8 values will be for anchor box 2 and in the same format, i.e., first the probability, then the bounding box coordinates, and finally the classes.</p>
+<p>Finally, the Non-Max Suppression technique will be applied on the predicted boxes to obtain a single prediction per object.</p>
+<p>That brings us to the end of the theoretical aspect of understanding how the YOLO algorithm works, starting from training the model and then generating prediction boxes for the objects. Below are the exact dimensions and steps that the YOLO algorithm follows:</p>
+<ul>
+<li>Takes an input image of shape (608, 608, 3)</li>
+<li>Passes this image to a convolutional neural network (CNN), which returns a (19, 19, 5, 85) dimensional output</li>
+<li>The last two dimensions of the above output are flattened to get an output volume of (19, 19, 425):<ul>
+<li>Here, each cell of a 19 X 19 grid returns 425 numbers</li>
+<li>425 = 5 * 85, where 5 is the number of anchor boxes per grid</li>
+<li>85 = 5 + 80, where 5 is (pc, bx, by, bh, bw) and 80 is the number of classes we want to detect</li>
+</ul>
+</li>
+<li>Finally, we do the IoU and Non-Max Suppression to avoid selecting overlapping boxes</li>
+</ul>
+<h3 id="10-4-Object-detection-by-Stanford"><a href="#10-4-Object-detection-by-Stanford" class="headerlink" title="10.4 Object detection by Stanford:"></a>10.4 Object detection by Stanford:</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/nDPWywWRIRo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="10-5-其他Resources"><a href="#10-5-其他Resources" class="headerlink" title="10.5 其他Resources"></a>10.5 其他Resources</h3><ul>
+<li><a href="https://arxiv.org/pdf/1506.02640.pdf" target="_blank" rel="noopener">YOLO Paper</a></li>
+<li><a href="https://pjreddie.com/darknet/yolo/" target="_blank" rel="noopener">YOLO Pre-Trained Models</a></li>
+</ul>
+<h2 id="11-Project-3-Face-Counting-Challenge"><a href="#11-Project-3-Face-Counting-Challenge" class="headerlink" title="11. Project 3 - Face Counting Challenge"></a>11. Project 3 - Face Counting Challenge</h2><p><a href="https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<h2 id="12-Project-4-COCO-Object-Detection-Challenge"><a href="#12-Project-4-COCO-Object-Detection-Challenge" class="headerlink" title="12. Project 4 - COCO Object Detection Challenge"></a>12. Project 4 - COCO Object Detection Challenge</h2><p><a href="http://cocodataset.org/#download" target="_blank" rel="noopener">http://cocodataset.org/#download</a></p>
+<h2 id="13-Understanding-Image-Segmentation-amp-Attention-Models"><a href="#13-Understanding-Image-Segmentation-amp-Attention-Models" class="headerlink" title="13. Understanding Image Segmentation &amp; Attention Models"></a>13. Understanding Image Segmentation &amp; Attention Models</h2>]]></content>
       <categories>
         <category>Computer Vision</category>
       </categories>
       <tags>
         <tag>Computer Vision</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo相关问题</title>
+    <url>/2020/02/17/hexo%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="hexo中无法显示数学公式："><a href="#hexo中无法显示数学公式：" class="headerlink" title="hexo中无法显示数学公式："></a>hexo中无法显示数学公式：</h4><p>参考 <a href="[https://runninggump.github.io/2018/12/05/%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E5%9C%A8hexo%E4%B8%AD%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/]">成功解决在hexo中无法显示数学公式的问题</a></p>
+<h4 id="取消对”文章目录”的自动编号"><a href="#取消对”文章目录”的自动编号" class="headerlink" title="取消对”文章目录”的自动编号"></a>取消对”文章目录”的自动编号</h4><p><a href="https://segmentfault.com/q/1010000008494901" target="_blank" rel="noopener">hexo的NexT主题，怎么取消“文章目录”对标题的自动编号？</a></p>
+<h4 id="Markdown页面内跳转"><a href="#Markdown页面内跳转" class="headerlink" title="Markdown页面内跳转"></a>Markdown页面内跳转</h4><p><a href="https://www.cnblogs.com/triple-y/p/10780644.html" target="_blank" rel="noopener">markdown页面内跳转</a></p>
+<h4 id="设置文章封面"><a href="#设置文章封面" class="headerlink" title="设置文章封面"></a>设置文章封面</h4><p>参考 <a href="https://www.zhihu.com/tardis/sogou/art/60424755" target="_blank" rel="noopener">https://www.zhihu.com/tardis/sogou/art/60424755</a></p>
+<p><code>&lt;!-- less --&gt;</code>: 点击阅读全文后不显示<code>&lt;!-- less --&gt;</code> 以上的内容</p>
+<p><code>&lt;!-- more --&gt;</code>: 要显示</p>
+<h4 id="修改主题页面布局为圆角"><a href="#修改主题页面布局为圆角" class="headerlink" title="修改主题页面布局为圆角"></a>修改主题页面布局为圆角</h4><p>参考<a href="https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2" target="_blank" rel="noopener">https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2</a></p>
+<p>对scheme为Mist时无用？</p>
+<h4 id="添加背景音乐"><a href="#添加背景音乐" class="headerlink" title="添加背景音乐"></a>添加背景音乐</h4><p><a href="https://www.cnblogs.com/Guhongying/p/10461970.html" target="_blank" rel="noopener">Hexo 的next主题下添加网易云音乐作BGM</a></p>
+<p>网易云音乐无法生成外链：</p>
+<p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
+<p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
+<p>（<span style="background:yellow">更新</span>：参考以上方法时，无法播放音乐？）</p>
+<p>另一个方法参考：<a href="https://blog.csdn.net/qq_35859750/article/details/91452615" target="_blank" rel="noopener">hexo添加音乐</a></p>
+<p>安装aplayer: <code>npm install --save hexo-tag-aplayer</code></p>
+<p>粘贴以下内容到 \themes\next\layout\_macro\sidebar.swig</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 新增的内容 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- require APlayer --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- require MetingJS --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meting-js</span></span></span><br><span class="line"><span class="tag"><span class="attr">server</span>=<span class="string">"netease"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">type</span>=<span class="string">"song"</span></span></span><br><span class="line"><span class="tag"><span class="attr">id</span>=<span class="string">"188376"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">meting-js</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 新增的内容end --&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/17/hexo相关问题/1582012566416.png" alt="1582012566416"></p>
+<p>即可.</p>
+<p>其中server, type, id等根据具体情况修改.</p>
+<p>例：</p>
+<p><img src="/2020/02/17/hexo相关问题/1582014322346.png" alt="1582014322346"></p>
+<h4 id="关于目录"><a href="#关于目录" class="headerlink" title="关于目录"></a>关于目录</h4><p>在 themes\next\_config.yml 中设定，不要去安装 hexo-toc，否则会冲突</p>
+<p><img src="/2020/02/17/hexo相关问题/1582014793720.png" alt="1582014793720"></p>
+<h4 id="嵌入视频"><a href="#嵌入视频" class="headerlink" title="嵌入视频"></a>嵌入视频</h4><p>参考 <a href="https://www.bilibili.com/video/av23207325/" target="_blank" rel="noopener">https://www.bilibili.com/video/av23207325/</a></p>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -269,7 +648,7 @@
   <entry>
     <title>RNN相关资料（LSTM, GRU）</title>
     <url>/2020/02/15/RNN%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
-    <content><![CDATA[<h4 id="pdf："><a href="#pdf：" class="headerlink" title="pdf："></a>pdf：</h4><p><a href="https://www.aclweb.org/anthology/C16-1311.pdf" target="_blank" rel="noopener">Effective LSTMs for Target-Dependent Sentiment Classification</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="pdf："><a href="#pdf：" class="headerlink" title="pdf："></a>pdf：</h4><p><a href="https://www.aclweb.org/anthology/C16-1311.pdf" target="_blank" rel="noopener">Effective LSTMs for Target-Dependent Sentiment Classification</a></p>
 <h4 id="网页："><a href="#网页：" class="headerlink" title="网页："></a>网页：</h4><p><a href="https://www.jianshu.com/p/95d5c461924c" target="_blank" rel="noopener">【译】理解LSTM（通俗易懂版）</a></p>
 <p><a href="https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be" target="_blank" rel="noopener">Understanding GRU Networks</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/32481747" target="_blank" rel="noopener">人人都能看懂的GRU</a></p>
@@ -288,7 +667,7 @@
   <entry>
     <title>CNN相关资料</title>
     <url>/2020/02/15/CNN%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
-    <content><![CDATA[<h4 id="pdf："><a href="#pdf：" class="headerlink" title="pdf："></a>pdf：</h4><p><a href="https://www.aclweb.org/anthology/D14-1181.pdf" target="_blank" rel="noopener">Convolutional Neural Networks for Sentence Classification</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="pdf："><a href="#pdf：" class="headerlink" title="pdf："></a>pdf：</h4><p><a href="https://www.aclweb.org/anthology/D14-1181.pdf" target="_blank" rel="noopener">Convolutional Neural Networks for Sentence Classification</a></p>
 <h4 id="网页："><a href="#网页：" class="headerlink" title="网页："></a>网页：</h4><p><a href="https://www.cnblogs.com/yelbosh/p/5808706.html" target="_blank" rel="noopener">卷积神经网络CNN在自然语言处理中的应用</a></p>
 <h4 id="卷积与矩阵乘法："><a href="#卷积与矩阵乘法：" class="headerlink" title="卷积与矩阵乘法："></a>卷积与矩阵乘法：</h4><p><img src="/2020/02/15/CNN相关资料/卷积与矩阵乘法.jpg" alt="卷积与矩阵乘法"></p>
 <p><img src="/2020/02/15/CNN相关资料/example.jpg" alt="example"></p>
@@ -304,7 +683,7 @@
   <entry>
     <title>移动零</title>
     <url>/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">移动零（难度：简答）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">移动零（难度：简答）</a></p>
 <p><img src="/2020/02/05/移动零/1580888243775.png" alt="1580888243775"></p>
 <p>问题的两个要求是：</p>
 <ul>
@@ -335,7 +714,7 @@
   <entry>
     <title>最小覆盖子串</title>
     <url>/2020/01/28/%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">最小覆盖子串（难度：困难）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">最小覆盖子串（难度：困难）</a></p>
 <p><img src="/2020/01/28/最小覆盖子串/1580195563488.png" alt="1580195563488"></p>
 <h4 id="方法：滑动窗口"><a href="#方法：滑动窗口" class="headerlink" title="方法：滑动窗口"></a>方法：滑动窗口</h4><h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ol>
 <li><p>初始，<code>left</code>指针和<code>right</code>指针都指向<code>s</code>的第一个元素.</p>
@@ -361,7 +740,7 @@
   <entry>
     <title>滑动窗口最大值</title>
     <url>/2020/01/22/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/sliding-window-maximum/" target="_blank" rel="noopener">滑动窗口最大值（难度：困难）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/sliding-window-maximum/" target="_blank" rel="noopener">滑动窗口最大值（难度：困难）</a></p>
 <p><img src="/2020/01/22/滑动窗口最大值/1579702056767.png" alt="1579702056767"></p>
 <p><img src="/2020/01/22/滑动窗口最大值/1579702078067.png" alt="1579702078067"></p>
 <h4 id="方法一：暴力法"><a href="#方法一：暴力法" class="headerlink" title="方法一：暴力法"></a>方法一：暴力法</h4><p>遍历每个滑动窗口，找到每个窗口的最大值。一共有 N - k + 1 个滑动窗口，每个有 k 个元素，于是算法的时间复杂度为 O(Nk)，表现较差。</p>
@@ -396,7 +775,7 @@
   <entry>
     <title>二叉树的中序遍历</title>
     <url>/2020/01/21/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">二叉树的中序遍历（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">二叉树的中序遍历（难度：中等）</a></p>
 <p><img src="/2020/01/21/二叉树的中序遍历/1579622453083.png" alt="1579622453083"></p>
 <p><strong>中序遍历：左-中-右</strong></p>
 <h4 id="方法一：递归"><a href="#方法一：递归" class="headerlink" title="方法一：递归"></a>方法一：递归</h4><p>定义一个辅助函数来实现递归。</p>
@@ -463,7 +842,7 @@
   <entry>
     <title>二叉搜索树中第k小的元素</title>
     <url>/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/" target="_blank" rel="noopener">二叉搜索树中第K小的元素（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/" target="_blank" rel="noopener">二叉搜索树中第K小的元素（难度：中等）</a></p>
 <p><img src="/2020/01/21/二叉搜索树中第k小的元素/1579620616705.png" alt="1579620616705"></p>
 <p><img src="/2020/01/21/二叉搜索树中第k小的元素/1579620662544.png" alt="1579620662544"></p>
 <p>此题与<a href="https://qypx.github.io/2020/01/21/二叉树的中序遍历/">二叉树的中序遍历（难度：中等）</a>类似，只需稍加变化。</p>
@@ -492,7 +871,7 @@
   <entry>
     <title>最长连续序列</title>
     <url>/2020/01/20/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener">最长连续序列（难度：困难）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener">最长连续序列（难度：困难）</a></p>
 <p><img src="/2020/01/20/最长连续序列/1579513410172.png" alt="1579513410172"></p>
 <h4 id="方法：哈希表（HashSet）"><a href="#方法：哈希表（HashSet）" class="headerlink" title="方法：哈希表（HashSet）"></a>方法：哈希表（HashSet）</h4><p>因为一个序列可能在 <code>nums</code> 数组的任意一个数字开始，我们可以枚举每个数字作为序列的第一个数字，搜索所有的可能性 （暴力法）。优化：将数组中的数字用HashSet保存，实现O(1)的时间查询，同时，我们只对 <code>当前数字 - 1</code> 不在哈希表里的数字，作为连续序列的第一个数字去找对应的最长序列，这是因为其他数字一定已经出现在了某个序列里。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">            </span><br><span class="line">        HashSet&lt;Integer&gt; hashSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)</span><br><span class="line">            hashSet.add(num);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> maxLen = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> curLen = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(!hashSet.contains(nums[i]-<span class="number">1</span>))&#123;</span><br><span class="line">                <span class="keyword">int</span> curNum = nums[i];</span><br><span class="line">                <span class="keyword">while</span>(hashSet.contains(curNum+<span class="number">1</span>))&#123;</span><br><span class="line">                    curLen++;</span><br><span class="line">                    curNum++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            maxLen = Math.max(maxLen,curLen);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLen;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -510,7 +889,7 @@
   <entry>
     <title>HashSet</title>
     <url>/2020/01/20/HashSet/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li>无序列表HashSet是采用hash表来实现的。其中的元素没有按顺序排列，add()、remove()以及contains()等方法都是复杂度为O(1)的方法。 </li>
 <li>无序列表列表TreeSet是采用树结构实现(红黑树算法)。元素是按顺序进行排列，但是add()、remove()以及contains()等方法都是复杂度为O(log (n))的方法。它还提供了一些方法来处理排序的set，如first(), last(), headSet(), tailSet()等等</li>
 </ul>
@@ -527,7 +906,7 @@
   <entry>
     <title>Feeding Data to your Cluster - Kafka &amp; Flume</title>
     <url>/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/</url>
-    <content><![CDATA[<!-- toc -->
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
 <h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579416693703.png" alt="1579416693703"></p>
 <h4 id="What-is-streaming"><a href="#What-is-streaming" class="headerlink" title="What is streaming?"></a>What is streaming?</h4><p><img src="/2020/01/19/Feeding-Data-to-your-Cluster-Kafka/1579417084705.png" alt="1579417084705"></p>
 <p>With streaming technologies such as Kafka, you can actually process new data as it’s generated into your cluster, maybe you’re gonna save it into HDFS, maybe you’ll save it into HBase or some other database or maybe you’ll actually process it in real time as it comes in.</p>
@@ -586,7 +965,7 @@
   <entry>
     <title>Using non-relational data stores with Hadoop - NoSQL &amp; HBase &amp; MongoDB</title>
     <url>/2020/01/16/Using-non-relational-data-stores-with-Hadoop/</url>
-    <content><![CDATA[<!-- toc -->
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
 <h3 id="Why-NoSQL"><a href="#Why-NoSQL" class="headerlink" title="Why NoSQL?"></a>Why NoSQL?</h3><p>We’ve talked about integrating Hadoop with SQL solutions - MySQL - RDBMSs, if you will - relational database management systems - and those are very handy for giving you the power of a rich analytical query language like SQL to answer your business questions. But, you know, they do take a little bit of time to execute. So <strong>if you’re doing analytic work, relational databases are awesome. </strong>Even if you’re running a small, like, say, an internal web site or a very small-scale web site, something like MySQL can even vend that data to the outside world pretty well.</p>
 <p>BUT let’s imagine you need to take things up to the next level. You’re going to start to run into some limitations with SQL and relational database systems.</p>
 <p>Maybe you don’t really need the ability to issue arbitrary queries across your entire dataset. Maybe all you need is just the ability to <strong>very quickly answer a specific question </strong>like “What movie should I recommend for this customer?” or “What web pages has this customer looked at in the past?” </p>
@@ -736,7 +1115,7 @@
   <entry>
     <title>Using relational data stores with Hadoop —— Hive &amp; Sqoop</title>
     <url>/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/</url>
-    <content><![CDATA[<!-- toc -->
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
 <h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
 <p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png" alt="1579064046135"></p>
 <h3 id="What-is-Hive"><a href="#What-is-Hive" class="headerlink" title="What is Hive?"></a>What is Hive?</h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
@@ -834,7 +1213,7 @@
   <entry>
     <title>Hadoop Course Overview</title>
     <url>/2020/01/14/Hadoop-Course-Overview/</url>
-    <content><![CDATA[<p>课程：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>课程：</p>
 <p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=996228" target="_blank" rel="noopener"><img src="https://i.udemycdn.com/course/240x135/996228_af5f_3.jpg" alt="The Ultimate Hands-On Hadoop - Tame your Big Data!"></a><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/" target="_blank" rel="noopener"><strong>The Ultimate Hands-On Hadoop - Tame your Big Data!</strong></a></p>
 <p><a href="https://sundog-education.com/hadoop-materials/" target="_blank" rel="noopener">Course Materials</a></p>
 <h4 id="What-you’ll-learn"><a href="#What-you’ll-learn" class="headerlink" title="What you’ll learn"></a>What you’ll learn</h4><ul>
@@ -860,7 +1239,7 @@
   <entry>
     <title>Spark</title>
     <url>/2020/01/14/Spark/</url>
-    <content><![CDATA[<!-- toc -->
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
 <h3 id="Introduction-to-Spark"><a href="#Introduction-to-Spark" class="headerlink" title="Introduction to Spark"></a>Introduction to Spark</h3><p><img src="/2020/01/14/Spark/1578976053911.png" alt="1578976053911"></p>
 <p><img src="/2020/01/14/Spark/1578976261212.png" alt="1578976261212"></p>
 <p>There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data.</p>
@@ -943,7 +1322,7 @@
   <entry>
     <title>存储过程</title>
     <url>/2020/01/13/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<p>存储过程（Stored Procedure）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>存储过程（Stored Procedure）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。</p>
 <p>存储过程是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。</p>
 <p>存储过程思想上很简单，就是数据库 SQL 语言层面的代码封装与重用。</p>
 <h4 id="什么是存储过程？"><a href="#什么是存储过程？" class="headerlink" title="什么是存储过程？"></a>什么是存储过程？</h4><p>存储过程就是作为可执行对象存放在数据库中的一个或多个SQL命令。<br>通俗来讲：存储过程其实就是能完成一定操作的一组SQL语句。</p>
@@ -979,7 +1358,7 @@
   <entry>
     <title>事务与锁</title>
     <url>/2020/01/13/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/</url>
-    <content><![CDATA[<!-- toc -->
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
 <h4 id="事务-Transaction"><a href="#事务-Transaction" class="headerlink" title="事务 Transaction"></a>事务 Transaction</h4><p>事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。</p>
 <p>事务性质：(<span style="color:red">ACID</span>)</p>
 <ul>
@@ -1061,7 +1440,7 @@
   <entry>
     <title>索引Index</title>
     <url>/2020/01/13/%E7%B4%A2%E5%BC%95Index/</url>
-    <content><![CDATA[<p><img src="/2020/01/13/索引Index/1578902807233.png" alt="1578902807233"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/13/索引Index/1578902807233.png" alt="1578902807233"></p>
 <p><img src="/2020/01/13/索引Index/1578902869016.png" alt="1578902869016"></p>
 <p><code>Create UNIQUE INDEX index_name ON TableName(col_name);</code> //建索引</p>
 <p><img src="/2020/01/13/索引Index/1578902891139.png" alt="1578902891139"></p>
@@ -1077,7 +1456,7 @@
   <entry>
     <title>视图View</title>
     <url>/2020/01/13/%E8%A7%86%E5%9B%BEView/</url>
-    <content><![CDATA[<p><img src="/2020/01/13/视图View/1578902313361.png" alt="1578902313361"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/13/视图View/1578902313361.png" alt="1578902313361"></p>
 <p><img src="/2020/01/13/视图View/1578902382330.png" alt="1578902382330"></p>
 <p><img src="/2020/01/13/视图View/1578902994931.png" alt="1578902994931"></p>
 <p><img src="/2020/01/13/视图View/1578903023109.png" alt="1578903023109"></p>
@@ -1093,7 +1472,7 @@
   <entry>
     <title>Hive介绍</title>
     <url>/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<p>参考：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>参考：</p>
 <p><a href="https://blog.csdn.net/PowerBlogger/article/details/83626449" target="_blank" rel="noopener">https://blog.csdn.net/PowerBlogger/article/details/83626449</a></p>
 <p><a href="https://blog.csdn.net/u010886217/article/details/83796151" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83796151</a></p>
 <!-- toc -->
@@ -1183,7 +1562,7 @@
   <entry>
     <title>笔试知识点</title>
     <url>/2020/01/12/%E7%AC%94%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<!-- toc -->
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
 <ul>
 <li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
 <p>A. AR模型</p>
@@ -1640,7 +2019,7 @@
   <entry>
     <title>sql语言</title>
     <url>/2020/01/12/sql%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<!-- toc -->
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
 <h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
 <p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
 <p><img src="/2020/01/12/sql语言/1578825616684.png" alt="1578825616684"></p>
@@ -1674,7 +2053,7 @@
   <entry>
     <title>sql语句中的drop, truncate, delete</title>
     <url>/2020/01/12/sql%E8%AF%AD%E5%8F%A5%E4%B8%AD%E7%9A%84drop-truncate-delete/</url>
-    <content><![CDATA[<p>参考：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>参考：</p>
 <p><a href="https://blog.csdn.net/lovezhaohaimig/article/details/80184994" target="_blank" rel="noopener">https://blog.csdn.net/lovezhaohaimig/article/details/80184994</a></p>
 <p><a href="https://www.cnblogs.com/xianyao/p/11613021.html" target="_blank" rel="noopener">https://www.cnblogs.com/xianyao/p/11613021.html</a></p>
 <ol>
@@ -1722,7 +2101,7 @@
   <entry>
     <title>两数之和</title>
     <url>/2020/01/12/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">两数之和（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">两数之和（难度：简单）</a></p>
 <p><img src="/2020/01/12/两数之和/1578808347100.png" alt="1578808347100"></p>
 <h4 id="方法一：暴力法"><a href="#方法一：暴力法" class="headerlink" title="方法一：暴力法"></a>方法一：暴力法</h4><p>遍历每个元素 x，并查找是否存在一个值与 target - x相等的目标元素。\</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] == target - nums[i]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; i, j &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1753,7 +2132,7 @@
   <entry>
     <title>最长连续递增序列</title>
     <url>/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/" target="_blank" rel="noopener">最长连续递增序列（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/" target="_blank" rel="noopener">最长连续递增序列（难度：简单）</a></p>
 <p><img src="/2020/01/12/最长连续递增序列/1578807734778.png" alt="1578807734778"></p>
 <p><img src="/2020/01/12/最长连续递增序列/1578807775519.png" alt="1578807775519"></p>
 <p><strong>代码</strong></p>
@@ -1771,7 +2150,7 @@
   <entry>
     <title>排序算法</title>
     <url>/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p><img src="/2020/01/10/排序算法/1578640411160.png" alt="1578640411160"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/10/排序算法/1578640411160.png" alt="1578640411160"></p>
 <p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
 ]]></content>
       <tags>
@@ -1781,7 +2160,7 @@
   <entry>
     <title>Matrix Factorization Methods</title>
     <url>/2020/01/09/Matrix-Factorization-Methods/</url>
-    <content><![CDATA[<p>Collaborative Filtering has been criticized as having limited scalability, since computing similarity matrices on very large sets of items or users can take a lot of computing horsepower. I don’t really buy this, however. Technologies such as Apache Spark allow you to distribute the construction of this matrix across a cluster if you need to. <strong>A legitimate problem with collaborative filtering is that it’s sensitive to noisy data and sparse data. You’ll only get really good results if you have a large data set to work with that’s nice and clean. </strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Collaborative Filtering has been criticized as having limited scalability, since computing similarity matrices on very large sets of items or users can take a lot of computing horsepower. I don’t really buy this, however. Technologies such as Apache Spark allow you to distribute the construction of this matrix across a cluster if you need to. <strong>A legitimate problem with collaborative filtering is that it’s sensitive to noisy data and sparse data. You’ll only get really good results if you have a large data set to work with that’s nice and clean. </strong></p>
 <p>接下来介绍一些<strong>Model-based methods</strong>. Instead of 寻找相似的物品或相似的用户, we apply data science and machine learning techniques to extract predictions from our ratings data.</p>
 <p><img src="/2020/01/09/Matrix-Factorization-Methods/1578547347570.png" alt="1578547347570"></p>
 <p>There are a wide variety of techniques that fall under the category of matrix factorization. They managed to find broader features of users and items on their own, like action movies or romantic. They are described by matrices. The general idea is to describe users and movies as combinations of different amounts of each feature. For example, Bob is defined as being 80% an action fan and 20% a comedy fan. We’d then know to match him up with movies that are blend about 80% action and 20% comedy. </p>
@@ -1797,7 +2176,7 @@
   <entry>
     <title>Neighborhood-Based Collaborative Filtering</title>
     <url>/2020/01/07/Neighborhood-Based-Collaborative-Filtering/</url>
-    <content><![CDATA[<p>This is the idea of leveraging the behavior of others to inform what you might enjoy. At a very high level, it means finding other people like you and recommending stuff they liked. Or it might mean finding other things similar to the thing that you like. </p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>This is the idea of leveraging the behavior of others to inform what you might enjoy. At a very high level, it means finding other people like you and recommending stuff they liked. Or it might mean finding other things similar to the thing that you like. </p>
 <p>That’s why we call it collaborative filtering. It’s recommending stuff based on other people’s collaborative behavior. </p>
 <p>The heart of neighborhood-based collaborative filtering is the ability to find people similar to you, or items similar to items you’ve liked.</p>
 <h3 id="Measuring-Similarity-and-Sparsity"><a href="#Measuring-Similarity-and-Sparsity" class="headerlink" title="Measuring Similarity, and Sparsity"></a>Measuring Similarity, and Sparsity</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962"></p>
@@ -1943,7 +2322,7 @@
   <entry>
     <title>Content-Based Filtering</title>
     <url>/2020/01/06/Content-Based-Filtering/</url>
-    <content><![CDATA[<p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
 <h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
 <p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
 <p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
@@ -2007,7 +2386,7 @@
   <entry>
     <title>A Recommender Engine Framework</title>
     <url>/2020/01/05/A-Recommender-Engine-Framework/</url>
-    <content><![CDATA[<p>What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.</p>
 <p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867"></p>
 <h3 id="1-Our-Recommender-Engine-Architecture"><a href="#1-Our-Recommender-Engine-Architecture" class="headerlink" title="1. Our Recommender Engine Architecture"></a>1. Our Recommender Engine Architecture</h3><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375"></p>
 <p>Object oriented design allows us to have base classes, for example, AlgoBase, that contain functions and variables that can be shared by other classes that inherit from that base class. 例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
@@ -2065,7 +2444,7 @@
   <entry>
     <title>Evaluate Recommender System</title>
     <url>/2020/01/04/Evaluate-Recommender-System/</url>
-    <content><![CDATA[<h3 id="1-The-methodology-for-testing-recommender-systems-offline"><a href="#1-The-methodology-for-testing-recommender-systems-offline" class="headerlink" title="1. The methodology for testing recommender systems offline."></a>1. The methodology for testing recommender systems offline.</h3><h4 id="1-1-train-test-split"><a href="#1-1-train-test-split" class="headerlink" title="1.1 train/test split"></a>1.1 train/test split</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="1-The-methodology-for-testing-recommender-systems-offline"><a href="#1-The-methodology-for-testing-recommender-systems-offline" class="headerlink" title="1. The methodology for testing recommender systems offline."></a>1. The methodology for testing recommender systems offline.</h3><h4 id="1-1-train-test-split"><a href="#1-1-train-test-split" class="headerlink" title="1.1 train/test split"></a>1.1 train/test split</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
 <p>You measure your recommender system’s ability to predict how people rated things in the past.</p>
 <p>If you do this over enough people, you can end up with a meaningful number that tells you <strong>how good your recommender system is at recommending things, or more specifically, recommending things people already watched and rated.</strong> That’s really all you can do, if you can’t test things out in an online system.</p>
 <h4 id="1-2-k-fold-cross-validation"><a href="#1-2-k-fold-cross-validation" class="headerlink" title="1.2 k-fold cross-validation"></a>1.2 k-fold cross-validation</h4><p>If you really want to get fancy, it’s possible to improve on a single train/test split by using  a technique called k-fold cross validation.</p>
@@ -2187,7 +2566,7 @@
   <entry>
     <title>Top-N Recommender Architecture</title>
     <url>/2020/01/03/Top-N-Recommender-Architecture/</url>
-    <content><![CDATA[<p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578052647526.jpg" alt="1578052647526"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578052647526.jpg" alt="1578052647526"></p>
 <p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578471196924.png" alt="1578471196924"></p>
 ]]></content>
       <categories>
@@ -2200,7 +2579,7 @@
   <entry>
     <title>RecSys Course Overview</title>
     <url>/2020/01/03/RecSys-Course-Overview/</url>
-    <content><![CDATA[<p>课程：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>课程：</p>
 <p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=1726410" target="_blank" rel="noopener"><img src="https://i.udemycdn.com/course/240x135/1726410_7b86.jpg" alt="Building Recommender Systems with Machine Learning and AI"></a><a href="https://www.udemy.com/course/building-recommender-systems-with-machine-learning-and-ai/learn/" target="_blank" rel="noopener"><strong>Building Recommender Systems with Machine Learning and AI</strong> </a></p>
 <p><a href="https://sundog-education.com/RecSys/" target="_blank" rel="noopener">Course Materials</a></p>
 <p><img src="/2020/01/03/RecSys-Course-Overview/1578048175249.jpg" alt="1578048175249"></p>
@@ -2215,7 +2594,7 @@
   <entry>
     <title>MapReduce</title>
     <url>/2020/01/03/MapReduce/</url>
-    <content><![CDATA[<h4 id="1-MapReduce-fundamental-concepts"><a href="#1-MapReduce-fundamental-concepts" class="headerlink" title="1. MapReduce fundamental concepts"></a>1. MapReduce fundamental concepts</h4><p><img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-MapReduce-fundamental-concepts"><a href="#1-MapReduce-fundamental-concepts" class="headerlink" title="1. MapReduce fundamental concepts"></a>1. MapReduce fundamental concepts</h4><p><img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1"></p>
 <p><img src="/2020/01/03/MapReduce/20200103-142610.jpg" alt="20200103-142610"></p>
 <p><img src="/2020/01/03/MapReduce/1578032937052.jpg" alt="1578032937052"></p>
 <h5 id="1-1-Mapper"><a href="#1-1-Mapper" class="headerlink" title="1.1 Mapper"></a>1.1 Mapper</h5><p><img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727"></p>
@@ -2272,7 +2651,7 @@
   <entry>
     <title>有效的字母异位词</title>
     <url>/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/valid-anagram/" target="_blank" rel="noopener">有效的字母异位词（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/valid-anagram/" target="_blank" rel="noopener">有效的字母异位词（难度：简单）</a></p>
 <p><img src="/2020/01/02/有效的字母异位词/1.jpg" alt="1"></p>
 <h4 id="方法一：哈希表"><a href="#方法一：哈希表" class="headerlink" title="方法一：哈希表"></a>方法一：哈希表</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ul>
 <li>首先判断两个字符串长度是否相等，不相等则直接返回 false。</li>
@@ -2304,7 +2683,7 @@
   <entry>
     <title>加一</title>
     <url>/2020/01/02/%E5%8A%A0%E4%B8%80/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">加一（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/plus-one/" target="_blank" rel="noopener">加一（难度：简单）</a></p>
 <p><img src="/2020/01/02/加一/1.jpg" alt="1"></p>
 <h4 id="方法：数组遍历"><a href="#方法：数组遍历" class="headerlink" title="方法：数组遍历"></a>方法：数组遍历</h4><p><img src="/2020/01/02/加一/2.jpg" alt="2"></p>
 <p>时间复杂度：O(n)</p>
@@ -2322,7 +2701,7 @@
   <entry>
     <title>电话号码的字母组合</title>
     <url>/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">电话号码的字母组合（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">电话号码的字母组合（难度：中等）</a></p>
 <p><img src="/2020/01/02/电话号码的字母组合/1.jpg" alt="1"></p>
 <h4 id="方法：回溯"><a href="#方法：回溯" class="headerlink" title="方法：回溯"></a>方法：回溯</h4><p><img src="/2020/01/02/电话号码的字母组合/2.jpg" alt="2"></p>
 <p><img src="https://pic.leetcode-cn.com/0ac574ab37f620221e702f57d6c4ffd0ba246abe41c43f9fc9637ab8f3365377-image.png" alt="img"></p>
@@ -2341,7 +2720,7 @@
   <entry>
     <title>盛最多水的容器</title>
     <url>/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">盛最多水的容器（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">盛最多水的容器（难度：中等）</a></p>
 <p><img src="/2020/01/02/盛最多水的容器/1.jpg" alt="1"></p>
 <h4 id="方法：双指针"><a href="#方法：双指针" class="headerlink" title="方法：双指针"></a>方法：双指针</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。</p>
 <h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
@@ -2365,7 +2744,7 @@
   <entry>
     <title>正则表达式匹配</title>
     <url>/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">正则表达式匹配（难度：困难）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">正则表达式匹配（难度：困难）</a></p>
 <p><img src="/2020/01/02/正则表达式匹配/1.jpg" alt="1"></p>
 <p>转自：</p>
 <blockquote>
@@ -2395,7 +2774,7 @@
   <entry>
     <title>单调递增的数字</title>
     <url>/2020/01/02/%E5%8D%95%E8%B0%83%E9%80%92%E5%A2%9E%E7%9A%84%E6%95%B0%E5%AD%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/monotone-increasing-digits/" target="_blank" rel="noopener">单调递增的数字（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/monotone-increasing-digits/" target="_blank" rel="noopener">单调递增的数字（难度：中等）</a></p>
 <p><img src="/2020/01/02/单调递增的数字/1.jpg" alt="1"></p>
 <h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><p><img src="/2020/01/02/单调递增的数字/2.jpg" alt="2"></p>
 <h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">monotoneIncreasingDigits</span><span class="params">(self, N: int)</span> -&gt; int:</span></span><br><span class="line">        s = list(str(N))</span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &lt;= s[i]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> <span class="number">0</span> &lt; i &lt; len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &gt; s[i]:</span><br><span class="line">            s[i<span class="number">-1</span>] = str(int(s[i<span class="number">-1</span>])<span class="number">-1</span>)</span><br><span class="line">            i-=<span class="number">1</span></span><br><span class="line">        s[i+<span class="number">1</span>:] = <span class="string">'9'</span>*(len(s)-i<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> int(<span class="string">''</span>.join(s))</span><br></pre></td></tr></table></figure>
@@ -2413,7 +2792,7 @@
   <entry>
     <title>移掉K位数字</title>
     <url>/2020/01/02/%E7%A7%BB%E6%8E%89K%E4%BD%8D%E6%95%B0%E5%AD%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/remove-k-digits/" target="_blank" rel="noopener">移掉K位数字（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-k-digits/" target="_blank" rel="noopener">移掉K位数字（难度：中等）</a></p>
 <p><img src="/2020/01/02/移掉K位数字/1.jpg" alt="1"></p>
 <h4 id="方法：单调栈"><a href="#方法：单调栈" class="headerlink" title="方法：单调栈"></a>方法：单调栈</h4><p>维护一个递增栈，但当前元素小于栈顶元素，则移掉栈顶元素。</p>
 <h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>转自</p>
@@ -2445,7 +2824,7 @@
   <entry>
     <title>贪心算法</title>
     <url>/2020/01/01/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p>转自：</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>转自：</p>
 <blockquote>
 <p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/</a><br>来源：力扣（LeetCode）</p>
 </blockquote>
@@ -2466,7 +2845,7 @@
   <entry>
     <title>无重叠区间</title>
     <url>/2020/01/01/%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener">无重叠区间（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/non-overlapping-intervals/" target="_blank" rel="noopener">无重叠区间（难度：中等）</a></p>
 <p><img src="/2020/01/01/无重叠区间/1.jpg" alt="1"></p>
 <p>转自：</p>
 <blockquote>
@@ -2497,7 +2876,7 @@
   <entry>
     <title>判断子序列</title>
     <url>/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/is-subsequence/" target="_blank" rel="noopener">判断子序列（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/is-subsequence/" target="_blank" rel="noopener">判断子序列（难度：简单）</a></p>
 <p><img src="/2020/01/01/判断子序列/3.jpg" alt="3"></p>
 <h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> t:</span><br><span class="line">                t = t[t.index(i)+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
@@ -2518,7 +2897,7 @@
   <entry>
     <title>缺失的第一个正数</title>
     <url>/2019/12/31/%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/first-missing-positive/" target="_blank" rel="noopener">缺失的第一个正数（难度：困难）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/first-missing-positive/" target="_blank" rel="noopener">缺失的第一个正数（难度：困难）</a></p>
 <p><img src="/2019/12/31/缺失的第一个正数/4.jpg" alt="4"></p>
 <h4 id="方法一（空间复杂度不满足要求）"><a href="#方法一（空间复杂度不满足要求）" class="headerlink" title="方法一（空间复杂度不满足要求）"></a>方法一（空间复杂度不满足要求）</h4><p>遍历一遍数组，将元素装入HashSet，再从1开始，判断元素是否在HashSet中，若不存在，则该数为缺失的第一个正数。</p>
 <h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n).</p>
@@ -2554,7 +2933,7 @@
   <entry>
     <title>寻找重复数</title>
     <url>/2019/12/31/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">寻找重复数（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">寻找重复数（难度：中等）</a></p>
 <p><img src="/2019/12/31/寻找重复数/1.jpg" alt="1"></p>
 <h4 id="方法一：排序"><a href="#方法一：排序" class="headerlink" title="方法一：排序"></a>方法一：排序</h4><h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：<em>O</em>(nlog(n))。</p>
 <p>空间复杂度：O(1) (or O(n))，在这里，我们对 nums 进行排序，因此内存大小是恒定的。如果我们不能修改输入数组，那么我们必须为 nums 的副本分配线性空间，并对其进行排序。</p>
@@ -2577,7 +2956,7 @@
   <entry>
     <title>缺失数字</title>
     <url>/2019/12/31/%E7%BC%BA%E5%A4%B1%E6%95%B0%E5%AD%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/missing-number/" target="_blank" rel="noopener">缺失数字（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/missing-number/" target="_blank" rel="noopener">缺失数字（难度：简单）</a></p>
 <p><img src="/2019/12/31/缺失数字/3.jpg" alt="3"></p>
 <h4 id="方法一：数学方法"><a href="#方法一：数学方法" class="headerlink" title="方法一：数学方法"></a>方法一：数学方法</h4><p>用序列<code>[0,1,...,n]</code>的和减去给定的<code>nums</code>的和，可得到缺失的数字。</p>
 <h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。</p>
@@ -2604,7 +2983,7 @@
   <entry>
     <title>回文链表</title>
     <url>/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">回文链表（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">回文链表（难度：简单）</a></p>
 <p><img src="/2019/12/29/回文链表/1.jpg" alt="1"></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用快慢指针找到中点，对链表前半部分进行翻转。</p>
 <h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)</p>
@@ -2624,7 +3003,7 @@
   <entry>
     <title>翻转二叉树</title>
     <url>/2019/12/29/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/invert-binary-tree/" target="_blank" rel="noopener">翻转二叉树（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/invert-binary-tree/" target="_blank" rel="noopener">翻转二叉树（难度：简单）</a></p>
 <p><img src="/2019/12/29/翻转二叉树/1.jpg" alt="1"></p>
 <h4 id="方法：-递归"><a href="#方法：-递归" class="headerlink" title="方法： 递归"></a>方法： 递归</h4><h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n). 每个节点只被访问了一次。</p>
 <p>空间复杂度：最坏情况下栈内需要存放 O(h)个方法调用，其中 h是树的高度。由于 h<em>∈</em>O<em>(</em>n)，可得出空间复杂度为 O(n)。</p>
@@ -2642,7 +3021,7 @@
   <entry>
     <title>存在重复元素2</title>
     <url>/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/contains-duplicate-ii/" target="_blank" rel="noopener">存在重复元素2（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/contains-duplicate-ii/" target="_blank" rel="noopener">存在重复元素2（难度：简单）</a></p>
 <p><img src="/2019/12/29/存在重复元素2/1.jpg" alt="1"></p>
 <h4 id="方法：哈希表"><a href="#方法：哈希表" class="headerlink" title="方法：哈希表"></a>方法：哈希表</h4><p>维护一个哈希表，里面始终最多包含 k 个元素，当出现重复值时则说明在 k 距离内存在重复元素。<br>每次遍历一个元素则将其加入哈希表中，如果哈希表的大小大于 k，则移除最前面的数字。</p>
 <h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。我们会做 n 次 搜索，删除，插入操作，每次操作都耗费常数时间。</p>
@@ -2661,7 +3040,7 @@
   <entry>
     <title>存在重复元素</title>
     <url>/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/contains-duplicate/" target="_blank" rel="noopener">存在重复元素（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/contains-duplicate/" target="_blank" rel="noopener">存在重复元素（难度：简单）</a></p>
 <p><img src="/2019/12/29/存在重复元素/1.jpg" alt="1"></p>
 <h4 id="方法一：哈希表"><a href="#方法一：哈希表" class="headerlink" title="方法一：哈希表"></a>方法一：哈希表</h4><h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度 : O(n)。search() 和 insert() 各自使用 n 次，每个操作耗费常数时间。</p>
 <p>空间复杂度 : O(n)。哈希表占用的空间与元素数量是线性关系。</p>
@@ -2691,7 +3070,7 @@
   <entry>
     <title>数组中的第K个最大元素</title>
     <url>/2019/12/29/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">数组中的第K个最大元素（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">数组中的第K个最大元素（难度：中等）</a></p>
 <p><img src="/2019/12/29/数组中的第K个最大元素/3.jpg" alt="3"></p>
 <h4 id="方法一：排序"><a href="#方法一：排序" class="headerlink" title="方法一：排序"></a>方法一：排序</h4><p>先对数组进行排序，再返回倒数第 k 个元素。</p>
 <h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn)</p>
@@ -2721,7 +3100,7 @@
   <entry>
     <title>移除链表元素</title>
     <url>/2019/12/29/%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">移除链表元素（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">移除链表元素（难度：简单）</a></p>
 <p><img src="/2019/12/29/移除链表元素/1.jpg" alt="1"></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeElements</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line"></span><br><span class="line">        ListNode cur = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(cur.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur.next.val == val)&#123;</span><br><span class="line">                cur.next = cur.next.next;</span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注：添加虚拟头节点解决头节点是要被删除的情况</p>
@@ -2737,7 +3116,7 @@
   <entry>
     <title>快乐数</title>
     <url>/2019/12/28/%E5%BF%AB%E4%B9%90%E6%95%B0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/happy-number/" target="_blank" rel="noopener">快乐数（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/happy-number/" target="_blank" rel="noopener">快乐数（难度：简单）</a></p>
 <p><img src="/2019/12/28/快乐数/2.jpg" alt="2"></p>
 <h4 id="方法一：使用“快慢指针”思想找出循环"><a href="#方法一：使用“快慢指针”思想找出循环" class="headerlink" title="方法一：使用“快慢指针”思想找出循环"></a>方法一：使用“快慢指针”思想找出循环</h4><p>“快指针”每次走两步，“慢指针”每次走一步，当二者相等时，即为一个循环周期。此时，判断是不是因为1引起的循环，是的话就是快乐数，否则不是快乐数。</p>
 <h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> slow = n;</span><br><span class="line">        <span class="keyword">int</span> fast = n;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            slow = helper(slow);</span><br><span class="line">            fast = helper(fast);</span><br><span class="line">            fast = helper(fast);</span><br><span class="line">        &#125; <span class="keyword">while</span>(slow != fast);</span><br><span class="line">        <span class="keyword">return</span> slow == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> re = n%<span class="number">10</span>;</span><br><span class="line">            sum += re*re;</span><br><span class="line">            n = n/<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2762,7 +3141,7 @@
   <entry>
     <title>求众数2</title>
     <url>/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/majority-element-ii/" target="_blank" rel="noopener">求众数2（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/majority-element-ii/" target="_blank" rel="noopener">求众数2（难度：中等）</a></p>
 <p><img src="/2019/12/28/求众数2/1.jpg" alt="1"></p>
 <h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/3的。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums: List[int])</span> -&gt; List[int]:</span></span><br><span class="line">        set1 = set(nums)</span><br><span class="line">        <span class="keyword">return</span> [s <span class="keyword">for</span> s <span class="keyword">in</span> set1 <span class="keyword">if</span> nums.count(s) &gt; len(nums)//<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
@@ -2802,7 +3181,7 @@
   <entry>
     <title>多数元素</title>
     <url>/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">多数元素（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">多数元素（难度：简单）</a></p>
 <p><img src="/2019/12/28/多数元素/1.jpg" alt="1"></p>
 <p><strong>注意：这样的元素只存在一个，因为出现次数大于n/2，若存在两个，则数组长度会超过n。</strong></p>
 <h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/2的。</p>
@@ -2832,7 +3211,7 @@
   <entry>
     <title>寻找峰值</title>
     <url>/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/find-peak-element/" target="_blank" rel="noopener">寻找峰值（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/find-peak-element/" target="_blank" rel="noopener">寻找峰值（难度：中等）</a></p>
 <p><img src="/2019/12/28/寻找峰值/1.jpg" alt="1"></p>
 <h4 id="方法一：线性扫描"><a href="#方法一：线性扫描" class="headerlink" title="方法一：线性扫描"></a>方法一：线性扫描</h4><p>利用连续的两个元素 <code>nums[j]</code> 和 <code>nums[j+1]</code> 不会相等这一事实，我们可以从头开始遍历 <code>nums</code>数组，当遇到<code>nums[i] &gt; nums[i+1]</code> ，即可判断 <code>nums[i]</code>为峰值。</p>
 <p><strong>注意：不需要判断<code>nums[i]&gt;nums[i-1]</code>。这是由于“遍历会到达第i个元素”本身就说明上一个元素（第i- 1个）不满足 <code>nums[i] &gt; nums[i+1]</code>这一条件，也就说明 <code>nums[i-1] &lt; nums[i]</code>。</strong></p>
@@ -2854,7 +3233,7 @@
   <entry>
     <title>最长重复子数组</title>
     <url>/2019/12/28/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/" target="_blank" rel="noopener">最长重复子数组（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/" target="_blank" rel="noopener">最长重复子数组（难度：中等）</a></p>
 <p><img src="/2019/12/28/最长重复子数组/1.jpg" alt="1"></p>
 <h4 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h4><blockquote>
 <p>作者：LeetCode<br>链接：<a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
@@ -2878,7 +3257,7 @@
   <entry>
     <title>最大连续1的个数</title>
     <url>/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/max-consecutive-ones/" target="_blank" rel="noopener">最大连续1的个数（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/max-consecutive-ones/" target="_blank" rel="noopener">最大连续1的个数（难度：简单）</a></p>
 <p><img src="/2019/12/27/最大连续1的个数/1.jpg" alt="1"></p>
 <h4 id="方法一：一次遍历"><a href="#方法一：一次遍历" class="headerlink" title="方法一：一次遍历"></a>方法一：一次遍历</h4><p><img src="/2019/12/27/最大连续1的个数/2.jpg" alt="2"></p>
 <p><strong>复杂度分析</strong></p>
@@ -2900,7 +3279,7 @@
   <entry>
     <title>区域和检索 - 数组不可变</title>
     <url>/2019/12/27/%E5%8C%BA%E5%9F%9F%E5%92%8C%E6%A3%80%E7%B4%A2-%E6%95%B0%E7%BB%84%E4%B8%8D%E5%8F%AF%E5%8F%98/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/range-sum-query-immutable/" target="_blank" rel="noopener">区域和检索 - 数组不可变（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/range-sum-query-immutable/" target="_blank" rel="noopener">区域和检索 - 数组不可变（难度：简单）</a></p>
 <p><img src="/2019/12/27/区域和检索-数组不可变/1.jpg" alt="1"></p>
 <p><img src="/2019/12/27/区域和检索-数组不可变/2.jpg" alt="2"></p>
 <hr>
@@ -2924,7 +3303,7 @@
   <entry>
     <title>最长上升子序列</title>
     <url>/2019/12/27/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">最长上升子序列（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">最长上升子序列（难度：中等）</a></p>
 <p><img src="/2019/12/27/最长上升子序列/1.jpg" alt="1"></p>
 <h4 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h4><p><img src="/2019/12/27/最长上升子序列/2.jpg" alt="2"></p>
 <p><img src="/2019/12/27/最长上升子序列/3.jpg" alt="3"></p>
@@ -2943,7 +3322,7 @@
   <entry>
     <title>完全平方数</title>
     <url>/2019/12/27/%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">完全平方数（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">完全平方数（难度：中等）</a></p>
 <p><img src="/2019/12/27/完全平方数/1.jpg" alt="1"></p>
 <h4 id="方法一：动态规划"><a href="#方法一：动态规划" class="headerlink" title="方法一：动态规划"></a>方法一：动态规划</h4><p>dp[i]表示i最少可以由几个平方数构成。</p>
 <p>初试化dp=[0,1,2,…, n]，长度为n+1，最多次数就是全由1构成。</p>
@@ -2971,7 +3350,7 @@
   <entry>
     <title>乘积最大子序列</title>
     <url>/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">乘积最大子序列（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">乘积最大子序列（难度：中等）</a></p>
 <p><img src="/2019/12/26/乘积最大子序列/1.jpg" alt="1"></p>
 <p><img src="/2019/12/26/乘积最大子序列/2.jpg" alt="2"></p>
 <blockquote>
@@ -2991,7 +3370,7 @@
   <entry>
     <title>链表中的下一个更大节点</title>
     <url>/2019/12/26/%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E8%8A%82%E7%82%B9/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/next-greater-node-in-linked-list/" target="_blank" rel="noopener">链表中的下一个更大节点（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/next-greater-node-in-linked-list/" target="_blank" rel="noopener">链表中的下一个更大节点（难度：中等）</a></p>
 <p><img src="/2019/12/26/链表中的下一个更大节点/1.jpg" alt="1"></p>
 <p><img src="/2019/12/26/链表中的下一个更大节点/2.jpg" alt="2"></p>
 <h4 id="方法：单调栈"><a href="#方法：单调栈" class="headerlink" title="方法：单调栈"></a>方法：单调栈</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextLargerNodes(ListNode head) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10000</span>];</span><br><span class="line">        <span class="keyword">int</span>[] arr2 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10000</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(head != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 栈里存放索引</span></span><br><span class="line">            arr2[length] = head.val;</span><br><span class="line">            <span class="keyword">while</span>(!stack.empty() &amp;&amp; arr2[stack.peek()] &lt; head.val)&#123;</span><br><span class="line">                arr[stack.pop()] = head.val;</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(length);</span><br><span class="line">            head = head.next;</span><br><span class="line">            length++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> res[] = <span class="keyword">new</span> <span class="keyword">int</span>[length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;length; i++)&#123;</span><br><span class="line">            res[i] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -3009,7 +3388,7 @@
   <entry>
     <title>下一个更大元素2</title>
     <url>/2019/12/26/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A02/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/next-greater-element-ii/" target="_blank" rel="noopener">下一个更大元素2（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/next-greater-element-ii/" target="_blank" rel="noopener">下一个更大元素2（难度：中等）</a></p>
 <p><img src="/2019/12/26/下一个更大元素2/1.jpg" alt="1"></p>
 <h4 id="方法：单调栈"><a href="#方法：单调栈" class="headerlink" title="方法：单调栈"></a>方法：单调栈</h4><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>转自：</p>
 <blockquote>
@@ -3038,7 +3417,7 @@
   <entry>
     <title>打家劫舍3</title>
     <url>/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D3/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/house-robber-iii/" target="_blank" rel="noopener">打家劫舍3（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/house-robber-iii/" target="_blank" rel="noopener">打家劫舍3（难度：中等）</a></p>
 <p><img src="/2019/12/26/打家劫舍3/1.jpg" alt="题目"></p>
 <p>以下内容转载自：</p>
 <blockquote>
@@ -3068,7 +3447,7 @@
   <entry>
     <title>打家劫舍2</title>
     <url>/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/house-robber-ii/" target="_blank" rel="noopener">打家劫舍2（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/house-robber-ii/" target="_blank" rel="noopener">打家劫舍2（难度：中等）</a></p>
 <p><img src="/2019/12/26/打家劫舍2/题目.jpg" alt="题目"></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><strong>此题是 <a href>198. 打家劫舍</a> 的拓展版：</strong> 唯一的区别是此题中的房间是<strong>环状排列</strong>的（即首尾相接），而 198 题中的房间是<strong>单排排列</strong>的。</p>
 <p><img src="/2019/12/26/打家劫舍2/1.jpg" alt="1"></p>
@@ -3087,7 +3466,7 @@
   <entry>
     <title>创建单链表的头插法与尾插法</title>
     <url>/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/qq_41028985/article/details/82859199" target="_blank" rel="noopener">原文</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/qq_41028985/article/details/82859199" target="_blank" rel="noopener">原文</a></p>
 <h4 id="头插法创建单链表"><a href="#头插法创建单链表" class="headerlink" title="头插法创建单链表"></a>头插法创建单链表</h4><p><img src="/2019/12/26/创建单链表的头插法与尾插法/1577345110132.jpg" alt="图1"></p>
 <p><img src="/2019/12/26/创建单链表的头插法与尾插法/1.jpg" alt="1"></p>
 <h4 id="尾插法创建单链表"><a href="#尾插法创建单链表" class="headerlink" title="尾插法创建单链表"></a>尾插法创建单链表</h4><p><img src="/2019/12/26/创建单链表的头插法与尾插法/2.jpg" alt="2"></p>
@@ -3104,7 +3483,7 @@
   <entry>
     <title>两数相加2</title>
     <url>/2019/12/26/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A02/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/" target="_blank" rel="noopener">两数相加2（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/" target="_blank" rel="noopener">两数相加2（难度：中等）</a></p>
 <p><img src="/2019/12/26/两数相加2/1577344361644.jpg" alt="题目"></p>
 <h4 id="方法：双栈-头插法"><a href="#方法：双栈-头插法" class="headerlink" title="方法：双栈 + 头插法"></a>方法：双栈 + 头插法</h4><p><img src="/2019/12/26/两数相加2/1577344797002.jpg" alt="code"></p>
 ]]></content>
@@ -3119,7 +3498,7 @@
   <entry>
     <title>下一个更大元素1</title>
     <url>/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/next-greater-element-i/" target="_blank" rel="noopener">下一个更大元素1（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/next-greater-element-i/" target="_blank" rel="noopener">下一个更大元素1（难度：简单）</a></p>
 <p><img src="/2019/12/25/下一个更大元素1/1577281453752.jpg" alt="题目"></p>
 <p><img src="/2019/12/25/下一个更大元素1/1577281497407.jpg" alt="方法"></p>
 <p><img src="/2019/12/25/下一个更大元素1/1577281548614.jpg" alt="code"></p>
@@ -3149,7 +3528,7 @@
   <entry>
     <title>删除列表中的节点</title>
     <url>/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">删除列表中的节点（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">删除列表中的节点（难度：简单）</a></p>
 <p><img src="/2019/12/25/删除列表中的节点/捕获.JPG" alt="题目"></p>
 <p><img src="/2019/12/25/删除列表中的节点/1577280000099.jpg" alt="方法"></p>
 ]]></content>
@@ -3164,7 +3543,7 @@
   <entry>
     <title>删除排序链表中的重复元素2</title>
     <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">删除排序链表中的重复元素2（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">删除排序链表中的重复元素2（难度：中等）</a></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278156148.jpg" alt="题目"></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/1577278207894.jpg" alt="1577278207894"></p>
 <h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/删除排序链表中的重复元素2/20191225-210253.jpg" alt="画解"></p>
@@ -3183,7 +3562,7 @@
   <entry>
     <title>删除排序链表中的重复元素</title>
     <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">删除排序链表中的重复元素（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">删除排序链表中的重复元素（难度：简单）</a></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素/1577268363569.jpg" alt="题目"></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/删除排序链表中的重复元素/1577268482086.jpg" alt="思路"></p>
 <p><img src="/2019/12/25/删除排序链表中的重复元素/1577268503067.jpg" alt="1577268503067"></p>
@@ -3204,7 +3583,7 @@
   <entry>
     <title>最长回文串</title>
     <url>/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-palindrome/" target="_blank" rel="noopener">最长回文串（难度：简单）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/longest-palindrome/" target="_blank" rel="noopener">最长回文串（难度：简单）</a></p>
 <p><img src="/2019/12/25/最长回文串/1577266515330.jpg" alt="题目"></p>
 <p><img src="/2019/12/25/最长回文串/20191225-174159.jpg" alt="思路"></p>
 <p><img src="/2019/12/25/最长回文串/1577267022201.jpg" alt="code"></p>
@@ -3221,7 +3600,7 @@
   <entry>
     <title>最长回文子串</title>
     <url>/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">最长回文子串（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">最长回文子串（难度：中等）</a></p>
 <p><img src="/2019/12/25/最长回文子串/0001.jpg" alt="0001"></p>
 <p><img src="/2019/12/25/最长回文子串/0002.jpg" alt="0002"></p>
 ]]></content>
@@ -3236,7 +3615,7 @@
   <entry>
     <title>最长公共子序列</title>
     <url>/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/longest-common-subsequence/" target="_blank" rel="noopener">最长公共子序列（难度：中等）</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/longest-common-subsequence/" target="_blank" rel="noopener">最长公共子序列（难度：中等）</a></p>
 <p><img src="/2019/12/25/最长公共子序列/question.JPG" alt="题目"></p>
 <h3 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h3><p><img src="/2019/12/25/最长公共子序列/1.JPG" alt="图1"></p>
 <p><img src="/2019/12/25/最长公共子序列/2.JPG" alt="图2"></p>
@@ -3264,7 +3643,7 @@
   <entry>
     <title>HDFS-Overview</title>
     <url>/2019/12/16/HDFS-Overview/</url>
-    <content><![CDATA[<p><img src="/2019/12/16/HDFS-Overview/0001.jpg" alt="0001"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2019/12/16/HDFS-Overview/0001.jpg" alt="0001"></p>
 ]]></content>
       <categories>
         <category>Hadoop</category>
@@ -3277,7 +3656,7 @@
   <entry>
     <title>Hadoop Introduction</title>
     <url>/2019/12/15/Hadoop-Introduction/</url>
-    <content><![CDATA[<h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
 <h1 id="Hadoop-Ecosystem"><a href="#Hadoop-Ecosystem" class="headerlink" title="Hadoop Ecosystem"></a>Hadoop Ecosystem</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-ecosystem.JPG" alt="hadoop-ecosystem"></p>
 ]]></content>
       <categories>
@@ -3291,7 +3670,7 @@
   <entry>
     <title>Data Preprocessing</title>
     <url>/2019/09/21/Data-Preprocessing/</url>
-    <content><![CDATA[<p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/" target="_blank" rel="noopener"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/" target="_blank" rel="noopener"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
 <p><a href="https://www.superdatascience.com/pages/machine-learning" target="_blank" rel="noopener">datasets download</a></p>
 <p>使用数据：</p>
 <p><img src="/2019/09/21/Data-Preprocessing/data.JPG" alt="data"></p>
@@ -3349,7 +3728,7 @@
   <entry>
     <title>Python working directory</title>
     <url>/2019/09/17/Python-working-directory/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li>更改当前路径</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">"E:/machine learning"</span>)</span><br></pre></td></tr></table></figure>
@@ -3368,7 +3747,7 @@
   <entry>
     <title>数据框操作</title>
     <url>/2019/09/02/dataframe-operation/</url>
-    <content><![CDATA[<p>一、创建dataframe</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一、创建dataframe</p>
 <ul>
 <li>法一</li>
 </ul>
@@ -3395,7 +3774,7 @@
   <entry>
     <title>读取与保存csv和txt文件</title>
     <url>/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<p>一、csv文件</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一、csv文件</p>
 <ol>
 <li>读取</li>
 </ol>
@@ -3440,7 +3819,7 @@
   <entry>
     <title>Markdown语法</title>
     <url>/2019/06/27/Markdown%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>(本文参考<a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">Markdown Tutorial</a>)</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>(本文参考<a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">Markdown Tutorial</a>)</p>
 <h4 id="1-加粗与斜体"><a href="#1-加粗与斜体" class="headerlink" title="1. 加粗与斜体"></a>1. 加粗与斜体</h4><ul>
 <li>斜体：在文本两侧加上一个星号或一个下划线，例如：</li>
 </ul>
@@ -3579,7 +3958,7 @@ y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora
   <entry>
     <title>Jupyter Notebook中的快捷键</title>
     <url>/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li>shift+enter: 运行代码块</li>
 <li>shift+tab: show the documentation pop up for the method</li>
 <li>Esc+m: markdown语句</li>
@@ -3595,7 +3974,7 @@ y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora
   <entry>
     <title>Advanced Python Types</title>
     <url>/2019/06/27/Advanced-Python-Types/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
 <li>List</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
@@ -3646,7 +4025,7 @@ y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora
   <entry>
     <title>Python中的简单语法</title>
     <url>/2019/06/27/basic-python-type/</url>
-    <content><![CDATA[<p><strong>_缩进是python的灵魂_</strong></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>_缩进是python的灵魂_</strong></p>
 <ul>
 <li>查看内置函数</li>
 </ul>
@@ -3692,7 +4071,7 @@ y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora
   <entry>
     <title>test blog</title>
     <url>/2019/06/26/test-blog/</url>
-    <content><![CDATA[<p>一篇测试文章.</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一篇测试文章.</p>
 ]]></content>
       <categories>
         <category>机器学习</category>
@@ -3705,7 +4084,7 @@ y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora
   <entry>
     <title>Hello World</title>
     <url>/2019/06/26/hello-world/</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><a id="more"></a>
 <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>

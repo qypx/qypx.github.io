@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Computer Vision,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,13 +79,12 @@
 
 
 
-<meta name="description" content="来源于Here’s your Learning Path to Master Computer Vision in 2020)">
-<meta name="keywords" content="Computer Vision">
+<meta name="description" content="title: Computer Visiondate: 2020-02-17 18:39:54tags: [Computer Vision]categories: [Computer Vision]mathjax: true 来源于Here’s your Learning Path to Master Computer Vision in 2020)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Computer Vision">
+<meta property="og:title" content="qypx の blog">
 <meta property="og:url" content="http://qypx.github.io/2020/02/17/Computer-Vision/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="来源于Here’s your Learning Path to Master Computer Vision in 2020)">
+<meta property="og:description" content="title: Computer Visiondate: 2020-02-17 18:39:54tags: [Computer Vision]categories: [Computer Vision]mathjax: true 来源于Here’s your Learning Path to Master Computer Vision in 2020)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/02/17/Computer-Vision/1581936373011.png">
 <meta property="og:image" content="http://qypx.github.io/2020/02/17/Computer-Vision/1581936472914.png">
@@ -109,10 +108,16 @@
 <meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_7.png">
 <meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_8.png">
 <meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_9.png">
-<meta property="og:updated_time" content="2020-02-18T06:29:26.308Z">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-20-17-49-55.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/10/Screenshot-from-2019-10-01-16-08-16-300x282.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/index_110.png">
+<meta property="og:image" content="http://qypx.github.io/2020/02/17/Computer-Vision/1582017369109.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-24-18-27-46.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-25-14-18-26.png">
+<meta property="og:updated_time" content="2020-02-18T09:23:47.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Computer Vision">
-<meta name="twitter:description" content="来源于Here’s your Learning Path to Master Computer Vision in 2020)">
+<meta name="twitter:title" content="qypx の blog">
+<meta name="twitter:description" content="title: Computer Visiondate: 2020-02-17 18:39:54tags: [Computer Vision]categories: [Computer Vision]mathjax: true 来源于Here’s your Learning Path to Master Computer Vision in 2020)">
 <meta name="twitter:image" content="http://qypx.github.io/2020/02/17/Computer-Vision/1581936373011.png">
 
 
@@ -152,7 +157,7 @@
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
 
-  <title>Computer Vision | qypx の blog</title>
+  <title> | qypx の blog</title>
   
 
 
@@ -328,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Computer Vision</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -356,34 +361,12 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T14:29:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-18T17:23:47+08:00">
                 2020-02-18
               </time>
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computer-Vision/" itemprop="url" rel="index">
-                    <span itemprop="name">Computer Vision</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -536,6 +519,57 @@
 <p>Let’s finally look at the HOG image:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig, (ax1, ax2) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">16</span>, <span class="number">8</span>), sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>) </span><br><span class="line"></span><br><span class="line">ax1.imshow(resized_img, cmap=plt.cm.gray) </span><br><span class="line">ax1.set_title(<span class="string">'Input image'</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># Rescale histogram for better display </span></span><br><span class="line">hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(<span class="number">0</span>, <span class="number">10</span>)) </span><br><span class="line"></span><br><span class="line">ax2.imshow(hog_image_rescaled, cmap=plt.cm.gray) </span><br><span class="line">ax2.set_title(<span class="string">'Histogram of Oriented Gradients'</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_9.png" alt="hog_features"></p>
+<h3 id="2-3-SIFT-Scale-Invariant-Feature-Transform-features"><a href="#2-3-SIFT-Scale-Invariant-Feature-Transform-features" class="headerlink" title="2.3 SIFT (Scale Invariant Feature Transform) features"></a>2.3 SIFT (Scale Invariant Feature Transform) features</h3><p><a href="https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>Take a look at the below collection of images and think of the common element between them:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-20-17-49-55.png" alt="SIFT"></p>
+<p>The resplendent Eiffel Tower, of course! We naturally understand that the scale or angle of the image may change but the object remains the same.</p>
+<p>But machines have an almighty struggle with the same idea. It’s a challenge for them to identify the object in an image if we change certain things (like the angle or the scale). Here’s the good news – machines are super flexible and we can teach them to identify images at an almost human-level.</p>
+<p>So, in this article, we will talk about an <span style="color:red">image matching algorithm</span> that <strong>identifies the key features from the images and is able to match these features to a new image of the same object.</strong></p>
+<h4 id="2-3-1-Introduciton-to-SIFT"><a href="#2-3-1-Introduciton-to-SIFT" class="headerlink" title="2.3.1 Introduciton to SIFT"></a>2.3.1 Introduciton to SIFT</h4><blockquote>
+<p><em>SIFT, or Scale Invariant Feature Transform, is a feature detection algorithm in Computer Vision.</em></p>
+</blockquote>
+<p>SIFT helps locate the local features in an image, commonly known as the <span style="color:red">‘<em>keypoints</em>‘ </span>of the image. These keypoints are <strong>scale &amp; rotation invariant</strong> that can be used for various computer vision applications, like image matching, object detection, scene detection, etc.</p>
+<p>在模型训练过程中，我们也可以使用SIFT生成的关键点作为图像的特征。<strong>The major advantage of SIFT features, over edge features or hog features, is that they are not affected by the size or orientation of the image.</strong></p>
+<p>For example, here is another image of the Eiffel Tower along with its smaller version. The keypoints of the object in the first image are matched with the keypoints found in the second image. The same goes for two images when the object in the other image is slightly rotated. Amazing, right?</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/10/Screenshot-from-2019-10-01-16-08-16-300x282.png" alt="SIFT"></p>
+<p>Let’s understand how these keypoints are identified and what are the techniques used to ensure the scale and rotation invariance. Broadly speaking, the entire process can be divided into 4 parts:</p>
+<ul>
+<li><strong><a href="#jump2.3.2">Constructing a Scale Space:</a></strong> To make sure that features are scale-independent</li>
+<li><strong>Keypoint Localisation (关键点定位):</strong> Identifying the suitable features or keypoints</li>
+<li><strong>Orientation Assignment:</strong> Ensure the keypoints are rotation invariant</li>
+<li><strong>Keypoint Descriptor:</strong> Assign a unique fingerprint to each keypoint</li>
+</ul>
+<p>Finally, we can use these keypoints for feature matching!</p>
+<p><em>This article is based on the original paper by David G. Lowe. Here is the link: <a href="https://people.eecs.berkeley.edu/~malik/cs294/lowe-ijcv04.pdf" target="_blank" rel="noopener">Distinctive Image Features from Scale-Invariant Keypoints.</a></em></p>
+<h4 id="2-3-2-Constructing-the-Scale-Space"><a href="#2-3-2-Constructing-the-Scale-Space" class="headerlink" title="2.3.2 Constructing the Scale Space"></a>2.3.2 Constructing the Scale Space</h4><p><span id="jump2.3.2">We need to identify the most distinct features in a given image while ignoring any noise. Additionally, we need to ensure that the features are not scale-dependent.</span></p>
+<ol>
+<li>reduce the noise</li>
+</ol>
+<blockquote>
+<p><em>We use the</em> <strong>Gaussian Blurring technique</strong> <em>to reduce the noise in an image.</em></p>
+</blockquote>
+<p>So, for every pixel in an image, the Gaussian Blur calculates a value based on its neighboring pixels. Below is an example of image before and after applying the Gaussian Blur. As you can see, the texture and minor details are removed from the image and only the relevant information like the shape and edges remain:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/index_110.png" alt="gaussian blur"></p>
+<ol>
+<li>ensure the features are not scale-dependent</li>
+</ol>
+<p>Gaussian Blur successfully removed the noise from the images and we have highlighted the important features of the image. Now, <em>we need to ensure that these features must not be scale-dependent.</em> This means we will be searching for these features on multiple scales, by creating a ‘scale space’.</p>
+<blockquote>
+<p><em>Scale space is a collection of images having different scales, generated from a single image.</em></p>
+</blockquote>
+<p>To create a new set of images of different scales, we will take the original image and <strong>reduce the scale by half</strong>. For each new image, we will create blur versions as we saw above.</p>
+<p>例：We have the original image of size (275, 183) and a scaled image of dimension (138, 92). For both the images, two blur images are created:</p>
+<p><img src="/2020/02/17/Computer-Vision/1582017369109.png" alt="1582017369109"></p>
+<p>How many times do we need to scale the image and how many subsequent blur images need to be created for each scaled image? <strong>The ideal number of octaves should be four</strong>, and for each octave, the number of blur images should be five.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-24-18-27-46.png" alt="sift octave"></p>
+<h5 id="Difference-of-Gaussian"><a href="#Difference-of-Gaussian" class="headerlink" title="Difference of Gaussian"></a>Difference of Gaussian</h5><p>So far we have created images of multiple scales (often represented by σ) and used Gaussian blur for each of them to reduce the noise in the image. Next, we will try to enhance the features using a technique called Difference of Gaussians or DoG.</p>
+<blockquote>
+<p><em>Difference of Gaussian is a <span style="color:red">feature enhancement</span> algorithm that involves the subtraction of one blurred version of an original image from another, less blurred version of the original.</em></p>
+</blockquote>
+<p>DoG creates another set of images, for each octave, by subtracting every image from the previous image in the same scale. </p>
+<p>Let us create the DoG for the images in scale space. 如下图所示，On the left, we have 5 images, all from the first octave (thus having the same scale). Each subsequent image is created by applying the Gaussian blur over the previous image. On the right, we have four images generated by subtracting the consecutive Gaussians. The results are jaw-dropping (让人吃惊)!</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-25-14-18-26.png" alt="difference of gaussian"></p>
+<p>Now that we have a new set of images, we are going to use this to find the important keypoints.</p>
       
     </div>
     
@@ -549,12 +583,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Computer-Vision/" rel="tag"># Computer Vision</a>
-          
-        </div>
       
 
       
@@ -667,7 +695,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -678,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -734,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Face-Recognition"><span class="nav-text">Face Recognition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-computer-vision"><span class="nav-text">Types of computer vision</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Image-Preprocessing"><span class="nav-text">2. Image Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images"><span class="nav-text">2.1 Three Beginner-Friendly Techniques to Extract Features from Images</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-How-do-Machines-Store-Images"><span class="nav-text">2.1.1 How do Machines Store Images?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-Reading-Image-Data-in-Python"><span class="nav-text">2.1.2 Reading Image Data in Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-Method-1-Grayscale-Pixel-Values-as-Features"><span class="nav-text">2.1.3 Method #1: Grayscale Pixel Values as Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-Method-2-Mean-Pixel-Value-of-Channels-Colored-Image"><span class="nav-text">2.1.4 Method #2: Mean Pixel Value of Channels (Colored Image)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-5-Method-3-Extracting-Edge-Features"><span class="nav-text">2.1.5 Method #3: Extracting Edge Features</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-HOG-Histogram-of-Oriented-Gradients-features"><span class="nav-text">2.2 HOG (Histogram of Oriented Gradients) features</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-What-is-a-Feature-Descriptor"><span class="nav-text">2.2.1 What is a Feature Descriptor?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Introduction-to-the-HOG-Feature-Descriptor"><span class="nav-text">2.2.2 Introduction to the HOG Feature Descriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-Process-of-Calculating-the-Histogram-of-Oriented-Gradients-HOG"><span class="nav-text">2.2.3 Process of Calculating the Histogram of Oriented Gradients (HOG)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-Implementing-HOG-Feature-Descriptor-in-Python"><span class="nav-text">2.2.4 Implementing HOG Feature Descriptor in Python</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Face-Recognition"><span class="nav-text">Face Recognition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-computer-vision"><span class="nav-text">Types of computer vision</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Image-Preprocessing"><span class="nav-text">2. Image Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images"><span class="nav-text">2.1 Three Beginner-Friendly Techniques to Extract Features from Images</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-How-do-Machines-Store-Images"><span class="nav-text">2.1.1 How do Machines Store Images?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-Reading-Image-Data-in-Python"><span class="nav-text">2.1.2 Reading Image Data in Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-Method-1-Grayscale-Pixel-Values-as-Features"><span class="nav-text">2.1.3 Method #1: Grayscale Pixel Values as Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-Method-2-Mean-Pixel-Value-of-Channels-Colored-Image"><span class="nav-text">2.1.4 Method #2: Mean Pixel Value of Channels (Colored Image)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-5-Method-3-Extracting-Edge-Features"><span class="nav-text">2.1.5 Method #3: Extracting Edge Features</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-HOG-Histogram-of-Oriented-Gradients-features"><span class="nav-text">2.2 HOG (Histogram of Oriented Gradients) features</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-What-is-a-Feature-Descriptor"><span class="nav-text">2.2.1 What is a Feature Descriptor?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Introduction-to-the-HOG-Feature-Descriptor"><span class="nav-text">2.2.2 Introduction to the HOG Feature Descriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-Process-of-Calculating-the-Histogram-of-Oriented-Gradients-HOG"><span class="nav-text">2.2.3 Process of Calculating the Histogram of Oriented Gradients (HOG)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-Implementing-HOG-Feature-Descriptor-in-Python"><span class="nav-text">2.2.4 Implementing HOG Feature Descriptor in Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-SIFT-Scale-Invariant-Feature-Transform-features"><span class="nav-text">2.3 SIFT (Scale Invariant Feature Transform) features</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-Introduciton-to-SIFT"><span class="nav-text">2.3.1 Introduciton to SIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-Constructing-the-Scale-Space"><span class="nav-text">2.3.2 Constructing the Scale Space</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Difference-of-Gaussian"><span class="nav-text">Difference of Gaussian</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1258,26 +1286,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

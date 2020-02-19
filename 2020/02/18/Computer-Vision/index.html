@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Computer Vision,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="来源于Here’s your Learning Path to Master Computer Vision in 2020)">
+<meta name="keywords" content="Computer Vision">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computer Vision">
+<meta property="og:url" content="http://qypx.github.io/2020/02/18/Computer-Vision/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="来源于Here’s your Learning Path to Master Computer Vision in 2020)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/1581936373011.png">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/1581936472914.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-16.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-41.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_1.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_2-300x289.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-52.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_3.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-6.png">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/article-image-71.webp">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-81.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-9.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-101.png">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/article-image-132-300x159.webp">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/article-image-111.webp">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-121.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_61.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-1.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-2.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_7.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_8.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_9.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-20-17-49-55.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/10/Screenshot-from-2019-10-01-16-08-16-300x282.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/index_110.png">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/1582017369109.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-24-18-27-46.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-25-14-18-26.png">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/Screenshot-from-2019-09-25-16-50-01-300x207.webp">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/Screenshot-from-2019-09-26-18-53-12.webp">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/Screenshot-from-2019-09-26-20-10-52.webp">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/index_41.webp">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/index_71.png">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/index_61.webp">
+<meta property="og:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/1582027636102.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2017/05/31112715/finetune1-300x270.jpg">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/06/OD.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/I1_2009_09_08_drive_0012_001351-768x223.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-09-14-21-14.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/I1_2009_09_08_drive_0012_001351-another-copy-768x223.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-14-59-02.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-00-09.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-01-56.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-03-02.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-06-33.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-14-59-021.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-44-03.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-45-26.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-47-18.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-09-14-15-36.png">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/12/Screenshot-from-2018-11-17-15-02-11.png">
+<meta property="og:updated_time" content="2020-02-19T13:04:50.083Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Computer Vision">
+<meta name="twitter:description" content="来源于Here’s your Learning Path to Master Computer Vision in 2020)">
+<meta name="twitter:image" content="http://qypx.github.io/2020/02/18/Computer-Vision/1581936373011.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qypx.github.io/2020/02/18/Computer-Vision/">
+
+
+
+
+
+<!-- 网页加载条 -->
+<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
+
+  <title>Computer Vision | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">qypx の blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">机会是留给有准备的人的.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/02/18/Computer-Vision/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Computer Vision</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-18T17:27:36+08:00">
+                2020-02-18
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-19T21:04:50+08:00">
+                2020-02-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Vision/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Vision</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>来源于<a href="https://www.analyticsvidhya.com/blog/2020/01/computer-vision-learning-path-2020/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+AnalyticsVidhya+(Analytics+Vidhya" target="_blank" rel="noopener">Here’s your Learning Path to Master Computer Vision in 2020</a>)</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><h3 id="Face-Recognition"><a href="#Face-Recognition" class="headerlink" title="Face Recognition"></a>Face Recognition</h3><p><img src="/2020/02/18/Computer-Vision/1581936373011.png" alt="1581936373011"></p>
+<h3 id="Types-of-computer-vision"><a href="#Types-of-computer-vision" class="headerlink" title="Types of computer vision"></a>Types of computer vision</h3><p><img src="/2020/02/18/Computer-Vision/1581936472914.png" alt="1581936472914"></p>
+<h2 id="2-Image-Preprocessing"><a href="#2-Image-Preprocessing" class="headerlink" title="2. Image Preprocessing"></a>2. Image Preprocessing</h2><h3 id="2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images"><a href="#2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images" class="headerlink" title="2.1 Three Beginner-Friendly Techniques to Extract Features from Images"></a>2.1 Three Beginner-Friendly Techniques to Extract Features from Images</h3><p><a href="https://www.analyticsvidhya.com/blog/2019/08/3-techniques-extract-features-from-image-data-machine-learning-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/08/3-techniques-extract-features-from-image-data-machine-learning-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<h4 id="2-1-1-How-do-Machines-Store-Images"><a href="#2-1-1-How-do-Machines-Store-Images" class="headerlink" title="2.1.1 How do Machines Store Images?"></a>2.1.1 How do Machines Store Images?</h4><p>Machines store images in the form of a matrix of numbers. The size of this matrix depends on the number of pixels we have in any given image.</p>
+<blockquote>
+<p><em>Let’s say the dimensions of an image are 180 x 200 or n x m. These dimensions are basically the number of pixels in the image (height x width).</em></p>
+</blockquote>
+<p><strong>These numbers, or the pixel values, denote the intensity or brightness of the pixel.</strong> <span style="color:red">Smaller numbers (closer to zero) represent black, and larger numbers (closer to 255) denote white. </span>You’ll understand whatever we have learned so far by analyzing the below image.</p>
+<p>The dimensions of the below image are 22 x 16, which you can verify by counting the number of pixels:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-16.png" alt="reading image data machine learning"></p>
+<blockquote>
+<p><em>A colored image is typically composed of multiple colors and almost all colors can be generated from three primary colors – red, green and blue.</em></p>
+</blockquote>
+<p>In the case of a colored image, there are three Matrices (or channels) – Red, Green, and Blue. <strong>Each matrix has values between 0-255 representing the intensity of the color for that pixel.</strong> Consider the below image to understand this concept:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-41.png" alt="Channels in Images"></p>
+<p>The three channels are superimposed (叠加) to form a colored image.</p>
+<p><em>Note that these are not the original pixel values for the given image as the original matrix would be very large and difficult to visualize. Also, there are various other formats in which the images are stored. RGB is the most popular one and hence I have addressed it here. You can read more about the other popular formats <a href="https://www.w3schools.com/cssref/css_colors_legal.asp" target="_blank" rel="noopener">here</a>.</em></p>
+<h4 id="2-1-2-Reading-Image-Data-in-Python"><a href="#2-1-2-Reading-Image-Data-in-Python" class="headerlink" title="2.1.2 Reading Image Data in Python"></a>2.1.2 Reading Image Data in Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">from</span> skimage.io <span class="keyword">import</span> imread, imshow</span><br><span class="line"></span><br><span class="line">image = imread(<span class="string">'image_8_original.png'</span>, as_gray=<span class="literal">True</span>)</span><br><span class="line">imshow(image)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_1.png" alt="image data machine learning"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#checking image shape </span></span><br><span class="line">image.shape, image</span><br></pre></td></tr></table></figure>
+<p>(28,28)</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_2-300x289.png" alt="image data machine learning"></p>
+<p>Let’s now explore various methods of using pixel values as features.</p>
+<h4 id="2-1-3-Method-1-Grayscale-Pixel-Values-as-Features"><a href="#2-1-3-Method-1-Grayscale-Pixel-Values-as-Features" class="headerlink" title="2.1.3 Method #1: Grayscale Pixel Values as Features"></a>2.1.3 Method #1: Grayscale Pixel Values as Features</h4><blockquote>
+<p><em>The simplest way to create features from an image is to use these raw pixel values as separate features.</em></p>
+</blockquote>
+<p>The number of features will be the same as the number of pixels.</p>
+<p>How do we arrange these pixels as features? Well, we can simply append every pixel value one after the other to generate a feature vector. This is illustrated in the image below:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-52.png" alt="pixel features machine learning"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = imread(<span class="string">'puppy.jpeg'</span>, as_gray=<span class="literal">True</span>) </span><br><span class="line">image.shape, imshow(image)</span><br></pre></td></tr></table></figure>
+<p>(660, 450)</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_3.png" alt="image data machine learning"></p>
+<p>The image shape here is 660 x 450. Hence, the number of features should be 297,000. We can generate this using the <code>reshape</code> function from NumPy where we specify the dimension of the image:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pixel features</span></span><br><span class="line">features = np.reshape(image, (<span class="number">660</span>*<span class="number">450</span>))</span><br><span class="line">features.shape, features</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(297000,)</span><br><span class="line">array([0.96470588, 0.96470588, 0.96470588, ..., 0.96862745, 0.96470588,</span><br><span class="line">       0.96470588])</span><br></pre></td></tr></table></figure>
+<p>But here, we only had a single channel or a grayscale image. Can we do the same for a colored image? Let’s find out!</p>
+<h4 id="2-1-4-Method-2-Mean-Pixel-Value-of-Channels-Colored-Image"><a href="#2-1-4-Method-2-Mean-Pixel-Value-of-Channels-Colored-Image" class="headerlink" title="2.1.4 Method #2: Mean Pixel Value of Channels (Colored Image)"></a>2.1.4 Method #2: Mean Pixel Value of Channels (Colored Image)</h4><p>While reading the image in the previous section, we had set the parameter <em>‘as_gray = True’</em>. So we only had one channel in the image and we could easily append the pixel values. Let us remove the parameter and load the image again:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = imread(<span class="string">'puppy.jpeg'</span>) </span><br><span class="line">image.shape</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(660, 450, 3)</span><br></pre></td></tr></table></figure>
+<p>This time, the image has a dimension (660, 450, 3), where 3 is the number of channels. We can go ahead and create the features as we did previously. The number of features, in this case, will be 660*450*3 = 891,000.</p>
+<p>Alternatively, here is another approach we can use:</p>
+<blockquote>
+<p><em>Instead of using the pixel values from the three channels separately, we can generate a new matrix that has the mean value of pixels from all three channels.</em></p>
+</blockquote>
+<p>The image below will give you even more clarity around this idea:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-6.png" alt="image pixel features"></p>
+<p>By doing so, the number of features remains the same and we also take into account the pixel values from all three channels of the image. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">image = imread(<span class="string">'puppy.jpeg'</span>)</span><br><span class="line">feature_matrix = np.zeros((<span class="number">660</span>,<span class="number">450</span>)) </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,image.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,image.shape[<span class="number">1</span>]):</span><br><span class="line">        feature_matrix[i][j] = ((int(image[i,j,<span class="number">0</span>]) + int(image[i,j,<span class="number">1</span>]) + int(image[i,j,<span class="number">2</span>]))/<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>The new matrix will have the same height and width but only 1 channel. Now we can follow the same steps that we did in the previous section. We append the pixel values one after the other to get a 1D array:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">features = np.reshape(feature_matrix, (<span class="number">660</span>*<span class="number">450</span>)) </span><br><span class="line">features.shape</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(297000,)</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-5-Method-3-Extracting-Edge-Features"><a href="#2-1-5-Method-3-Extracting-Edge-Features" class="headerlink" title="2.1.5 Method #3: Extracting Edge Features"></a>2.1.5 Method #3: Extracting Edge Features</h4><p>Consider that we are given the below image and we need to identify the objects present in it:</p>
+<p><img src="/2020/02/18/Computer-Vision/article-image-71.webp" alt="article-image-71"></p>
+<p>You must have recognized the objects in an instant – a dog, a car and a cat. What are the features that you considered while differentiating each of these images? The shape could be one important factor, followed by color, or size. What if the machine could also identify the shape as we do?</p>
+<p>A similar idea is to <strong>extract edges as features and use that as the input for the model.</strong> I want you to think about this for a moment – how can we identify edges in an image? <strong>Edge is basically where there is a sharp change in color</strong>. Look at the below image:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-81.png" alt="edge features"></p>
+<p>And as we know, an image is represented in the form of numbers. So, we will look for pixels around which there is a drastic change in the pixel values.</p>
+<p>Let’s say we have the following matrix for the image:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-9.png" alt="img"></p>
+<p>To identify if a pixel is an edge or not, we will simply subtract the values on either side of the pixel. For this example, we have the highlighted value of 85. We will find the difference between the values 89 and 78. Since this difference is not very large, we can say that there is no edge around this pixel.</p>
+<p>Now consider the pixel 125 highlighted in the below image:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-101.png" alt="img"></p>
+<p>Since the difference between the values on either side of this pixel is large, we can conclude that there is a significant transition at this pixel and hence it is an edge. Now the question is, do we have to do this step manually?</p>
+<p>No! <strong>There are various kernels that can be used to highlight the edges in an image.</strong> The method we just discussed can also be achieved using the Prewitt kernel (in the x-direction). Given below is the Prewitt kernel:</p>
+<p><img src="/2020/02/18/Computer-Vision/article-image-132-300x159.webp" alt="article-image-132-300x159"></p>
+<p>We take the values surrounding the selected pixel and multiply it with the selected kernel (Prewitt kernel). We can then add the resulting values to get a final value. Since we already have -1 in one column and 1 in the other column, adding the values is equivalent to taking the difference.</p>
+<p><img src="/2020/02/18/Computer-Vision/article-image-111.webp" alt="article-image-111"></p>
+<p>There are various other kernels and I have mentioned four most popularly used ones below:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-121.png" alt="kernels"></p>
+<p>Let’s now go back to the notebook and generate edge features for the same image:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#importing the required libraries</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> skimage.io <span class="keyword">import</span> imread, imshow</span><br><span class="line"><span class="keyword">from</span> skimage.filters <span class="keyword">import</span> prewitt_h,prewitt_v</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment">#reading the image </span></span><br><span class="line">image = imread(<span class="string">'puppy.jpeg'</span>,as_gray=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#calculating horizontal edges using prewitt kernel</span></span><br><span class="line">edges_prewitt_horizontal = prewitt_h(image)</span><br><span class="line"><span class="comment">#calculating vertical edges using prewitt kernel</span></span><br><span class="line">edges_prewitt_vertical = prewitt_v(image)</span><br><span class="line"></span><br><span class="line">imshow(edges_prewitt_vertical, cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_61.png" alt="edge features"></p>
+<h3 id="2-2-HOG-Histogram-of-Oriented-Gradients-features"><a href="#2-2-HOG-Histogram-of-Oriented-Gradients-features" class="headerlink" title="2.2 HOG (Histogram of Oriented Gradients) features"></a>2.2 HOG (Histogram of Oriented Gradients) features</h3><p><a href="https://www.analyticsvidhya.com/blog/2019/09/feature-engineering-images-introduction-hog-feature-descriptor/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/09/feature-engineering-images-introduction-hog-feature-descriptor/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<h4 id="2-2-1-What-is-a-Feature-Descriptor"><a href="#2-2-1-What-is-a-Feature-Descriptor" class="headerlink" title="2.2.1 What is a Feature Descriptor?"></a>2.2.1 What is a Feature Descriptor?</h4><p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-1.png" alt="HOG feature"></p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/article-image-2.png" alt="HOG feature"></p>
+<p>The first pair of images had a lot of information, like the shape of the object, its color, the edges, background, etc.</p>
+<p>On the other hand, the second pair had much less information (only the shape and the edges) but it was still enough to differentiate the two images.</p>
+<p>We were easily able to differentiate the objects in the second case because it had the necessary information we would need to identify the object. And that is exactly what a <strong>feature descriptor</strong> does:</p>
+<blockquote>
+<p><em>It is a simplified representation of the image that contains only the most important information about the image.</em></p>
+</blockquote>
+<p>There are a number of feature descriptors out there. Here are a few of the most popular ones:</p>
+<ul>
+<li><a href="#jumpHOG">HOG: Histogram of Oriented Gradients</a></li>
+<li><a href="#jumpSIFT">SIFT: Scale Invariant Feature Transform</a></li>
+<li>SURF: Speeded-Up Robust Feature</li>
+</ul>
+<h4 id="2-2-2-Introduction-to-the-HOG-Feature-Descriptor"><a href="#2-2-2-Introduction-to-the-HOG-Feature-Descriptor" class="headerlink" title="2.2.2 Introduction to the HOG Feature Descriptor"></a><span id="jumpHOG">2.2.2 Introduction to the HOG Feature Descriptor</span></h4><p>HOG, or Histogram of Oriented Gradients, is a feature descriptor that is often used to extract features from image data. It is widely used in <a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2/?utm_source=blog&amp;utm_medium=understand-math-HOG-feature-descriptor" target="_blank" rel="noopener">computer vision</a> tasks for <a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=understand-math-HOG-feature-descriptor" target="_blank" rel="noopener">object detection</a>.</p>
+<p>Let’s look at some important aspects of HOG that makes it different from other feature descriptors:</p>
+<ul>
+<li>The HOG descriptor focuses on the <strong>structure or the shape</strong> of an object. Now you might ask, how is this different from the edge features we extract for images? In the case of edge features, we only identify if the pixel is an edge or not. HOG is able to provide the edge direction as well. This is done by extracting the <strong>gradient and orientation</strong> (or you can say magnitude and direction) of the edges</li>
+<li>Additionally, these orientations are calculated in <strong>‘localized’ portions</strong>. This means that the complete image is broken down into smaller regions and for each region, the gradients and orientation are calculated. We will discuss this in much more detail in the upcoming sections</li>
+<li>Finally the HOG would generate a <strong>Histogram</strong> for each of these regions separately. The histograms are created using the gradients and orientations of the pixel values, hence the name ‘Histogram of Oriented Gradients’</li>
+</ul>
+<p>To put a formal definition to this:</p>
+<blockquote>
+<p>The HOG feature descriptor counts the occurrences of gradient orientation in localized portions of an image.</p>
+</blockquote>
+<p>Implementing HOG using tools like OpenCV is extremely simple. It’s just a few lines of code since we have a predefined function called <strong>hog</strong> in the <strong>skimage.feature</strong> library. Our focus in this article, however, is on how these features are actually calculated.</p>
+<h4 id="2-2-3-Process-of-Calculating-the-Histogram-of-Oriented-Gradients-HOG"><a href="#2-2-3-Process-of-Calculating-the-Histogram-of-Oriented-Gradients-HOG" class="headerlink" title="2.2.3 Process of Calculating the Histogram of Oriented Gradients (HOG)"></a>2.2.3 Process of Calculating the Histogram of Oriented Gradients (HOG)</h4><p>HOG具体是怎么计算的：详细内容见<a href="https://www.analyticsvidhya.com/blog/2019/09/feature-engineering-images-introduction-hog-feature-descriptor/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a>.</p>
+<h4 id="2-2-4-Implementing-HOG-Feature-Descriptor-in-Python"><a href="#2-2-4-Implementing-HOG-Feature-Descriptor-in-Python" class="headerlink" title="2.2.4 Implementing HOG Feature Descriptor in Python"></a>2.2.4 Implementing HOG Feature Descriptor in Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#importing required libraries</span></span><br><span class="line"><span class="keyword">from</span> skimage.io <span class="keyword">import</span> imread, imshow</span><br><span class="line"><span class="keyword">from</span> skimage.transform <span class="keyword">import</span> resize</span><br><span class="line"><span class="keyword">from</span> skimage.feature <span class="keyword">import</span> hog</span><br><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> exposure</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#reading the image</span></span><br><span class="line">img = imread(<span class="string">'puppy.jpeg'</span>)</span><br><span class="line">imshow(img)</span><br><span class="line">print(img.shape)</span><br></pre></td></tr></table></figure>
+<p>(663, 459, 3)</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_7.png" alt="hog_feature"></p>
+<p>We can see that the shape of the image is 663 x 459. We will have to resize this image into 64 x 128. Note that we are using <code>skimage</code> which takes the input as height x width.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#resizing image </span></span><br><span class="line">resized_img = resize(img, (<span class="number">128</span>,<span class="number">64</span>)) </span><br><span class="line">imshow(resized_img) </span><br><span class="line">print(resized_img.shape)</span><br></pre></td></tr></table></figure>
+<p>(128, 64, 3)</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_8.png" alt="hog_feature"></p>
+<p>Here, I am going to use the hog function from <code>skimage.feature</code> directly. So we don’t have to calculate the gradients, magnitude (total gradient) and orientation individually. The hog function would internally calculate it and return the feature matrix.</p>
+<p>Also, if you set the parameter <code>visualize = True</code>, it will return an image of the HOG.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#creating hog features </span></span><br><span class="line">fd, hog_image = hog(resized_img, orientations=<span class="number">9</span>, pixels_per_cell=(<span class="number">8</span>, <span class="number">8</span>), </span><br><span class="line">                    cells_per_block=(<span class="number">2</span>, <span class="number">2</span>), visualize=<span class="literal">True</span>, multichannel=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>Before going ahead, let me give you a basic idea of what each of these hyperparameters represents. Alternatively, you can check the definitions from the official documentation <a href="https://scikit-image.org/docs/dev/api/skimage.feature.html#skimage.feature.hog" target="_blank" rel="noopener">here</a>.</p>
+<ul>
+<li>The <code>orientations</code> are the number of buckets we want to create. Since I want to have a 9 x 1 matrix, I will set the orientations to 9</li>
+<li><code>pixels_per_cell</code> defines the size of the cell for which we create the histograms. In the example we covered in this article, we used 8 x 8 cells and here I will set the same value. As mentioned previously, you can choose to change this value</li>
+<li>We have another hyperparameter <code>cells_per_block</code> which is the size of the block over which we normalize the histogram. Here, we mention the cells per blocks and not the number of pixels. So, instead of writing 16 x 16, we will use 2 x 2 here</li>
+</ul>
+<p>The feature matrix from the function is stored in the variable <code>fd</code>, and the image is stored in <code>hog_image</code>. Let us check the shape of the feature matrix:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fd.shape</span><br></pre></td></tr></table></figure>
+<p>(3780,)</p>
+<p>As expected, we have 3,780 features for the image and this verifies the calculations we did in step 7 earlier. You can choose to change the values of the hyperparameters and that will give you a feature matrix of different sizes.</p>
+<p>Let’s finally look at the HOG image:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig, (ax1, ax2) = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">16</span>, <span class="number">8</span>), sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>) </span><br><span class="line"></span><br><span class="line">ax1.imshow(resized_img, cmap=plt.cm.gray) </span><br><span class="line">ax1.set_title(<span class="string">'Input image'</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># Rescale histogram for better display </span></span><br><span class="line">hog_image_rescaled = exposure.rescale_intensity(hog_image, in_range=(<span class="number">0</span>, <span class="number">10</span>)) </span><br><span class="line"></span><br><span class="line">ax2.imshow(hog_image_rescaled, cmap=plt.cm.gray) </span><br><span class="line">ax2.set_title(<span class="string">'Histogram of Oriented Gradients'</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/08/index_9.png" alt="hog_features"></p>
+<h3 id="2-3-SIFT-Scale-Invariant-Feature-Transform-features"><a href="#2-3-SIFT-Scale-Invariant-Feature-Transform-features" class="headerlink" title="2.3 SIFT (Scale Invariant Feature Transform) features"></a><span id="jumpSIFT">2.3 SIFT (Scale Invariant Feature Transform) features</span></h3><p><a href="https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>Take a look at the below collection of images and think of the common element between them:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-20-17-49-55.png" alt="SIFT"></p>
+<p>The resplendent Eiffel Tower, of course! We naturally understand that the scale or angle of the image may change but the object remains the same.</p>
+<p>But machines have an almighty struggle with the same idea. It’s a challenge for them to identify the object in an image if we change certain things (like the angle or the scale). Here’s the good news – machines are super flexible and we can teach them to identify images at an almost human-level.</p>
+<p>So, in this article, we will talk about an <span style="color:red">image matching algorithm</span> that <strong>identifies the key features from the images and is able to match these features to a new image of the same object.</strong></p>
+<h4 id="2-3-1-Introduciton-to-SIFT"><a href="#2-3-1-Introduciton-to-SIFT" class="headerlink" title="2.3.1 Introduciton to SIFT"></a>2.3.1 Introduciton to SIFT</h4><blockquote>
+<p><em>SIFT, or Scale Invariant Feature Transform, is a feature detection algorithm in Computer Vision.</em></p>
+</blockquote>
+<p>SIFT helps locate the local features in an image, commonly known as the <span style="color:red">‘<em>keypoints</em>‘ </span>of the image. These keypoints are <strong>scale &amp; rotation invariant</strong> that can be used for various computer vision applications, like image matching, object detection, scene detection, etc.</p>
+<p>在模型训练过程中，我们也可以使用SIFT生成的关键点作为图像的特征。<strong>The major advantage of SIFT features, over edge features or hog features, is that they are not affected by the size or orientation of the image.</strong></p>
+<p>For example, here is another image of the Eiffel Tower along with its smaller version. The keypoints of the object in the first image are matched with the keypoints found in the second image. The same goes for two images when the object in the other image is slightly rotated. Amazing, right?</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/10/Screenshot-from-2019-10-01-16-08-16-300x282.png" alt="SIFT"></p>
+<p>Let’s understand how these keypoints are identified and what are the techniques used to ensure the scale and rotation invariance. Broadly speaking, the entire process can be divided into 4 parts:</p>
+<ul>
+<li><strong><a href="#jump2.3.2">Constructing a Scale Space:</a></strong> To make sure that features are scale-independent</li>
+<li><strong><a href="#jump2.3.3">Keypoint Localisation (关键点定位):</a></strong> Identifying the suitable features or keypoints</li>
+<li><strong><a href="#jump2.3.4">Orientation Assignment:</a></strong> Ensure the keypoints are rotation invariant</li>
+<li><strong><a href="#jump2.3.5">Keypoint Descriptor:</a></strong> Assign a unique fingerprint to each keypoint</li>
+</ul>
+<p>Finally, we can use these keypoints for feature matching!</p>
+<p><em>This article is based on the original paper by David G. Lowe. Here is the link: <a href="https://people.eecs.berkeley.edu/~malik/cs294/lowe-ijcv04.pdf" target="_blank" rel="noopener">Distinctive Image Features from Scale-Invariant Keypoints.</a></em></p>
+<h4 id="2-3-2-Constructing-the-Scale-Space"><a href="#2-3-2-Constructing-the-Scale-Space" class="headerlink" title="2.3.2 Constructing the Scale Space"></a><span id="jump2.3.2">2.3.2 Constructing the Scale Space</span></h4><p>We need to identify the most distinct features in a given image while ignoring any noise. Additionally, we need to ensure that the features are not scale-dependent.</p>
+<p>1.reduce the noise</p>
+<blockquote>
+<p><em>We use the</em> <strong>Gaussian Blurring technique</strong> <em>to reduce the noise in an image.</em></p>
+</blockquote>
+<p>So, for every pixel in an image, the Gaussian Blur calculates a value based on its neighboring pixels. Below is an example of image before and after applying the Gaussian Blur. As you can see, the texture and minor details are removed from the image and only the relevant information like the shape and edges remain:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/index_110.png" alt="gaussian blur"></p>
+<p>2.ensure the features are not scale-dependent</p>
+<p>Gaussian Blur successfully removed the noise from the images and we have highlighted the important features of the image. Now, <em>we need to ensure that these features must not be scale-dependent.</em> This means we will be searching for these features on multiple scales, by creating a ‘scale space’.</p>
+<blockquote>
+<p><em>Scale space is a collection of images having different scales, generated from a single image.</em></p>
+</blockquote>
+<p>To create a new set of images of different scales, we will take the original image and <strong>reduce the scale by half</strong>. For each new image, we will create blur versions as we saw above.</p>
+<p>例：We have the original image of size (275, 183) and a scaled image of dimension (138, 92). For both the images, two blur images are created:</p>
+<p><img src="/2020/02/18/Computer-Vision/1582017369109.png" alt="1582017369109"></p>
+<p>How many times do we need to scale the image and how many subsequent blur images need to be created for each scaled image? <strong>The ideal number of octaves should be four</strong>, and for each octave, the number of blur images should be five.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-24-18-27-46.png" alt="sift octave"></p>
+<h5 id="Difference-of-Gaussian"><a href="#Difference-of-Gaussian" class="headerlink" title="Difference of Gaussian"></a>Difference of Gaussian</h5><p>So far we have created images of multiple scales (often represented by σ) and used Gaussian blur for each of them to reduce the noise in the image. Next, we will try to enhance the features using a technique called Difference of Gaussians or DoG.</p>
+<blockquote>
+<p><em>Difference of Gaussian is a <span style="color:red">feature enhancement</span> algorithm that involves the subtraction of one blurred version of an original image from another, less blurred version of the original.</em></p>
+</blockquote>
+<p>DoG creates another set of images, for each octave, by subtracting every image from the previous image in the same scale. </p>
+<p>Let us create the DoG for the images in scale space. 如下图所示，On the left, we have 5 images, all from the first octave (thus having the same scale). Each subsequent image is created by applying the Gaussian blur over the previous image. On the right, we have four images generated by subtracting the consecutive Gaussians. The results are jaw-dropping (让人吃惊)!</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/09/Screenshot-from-2019-09-25-14-18-26.png" alt="difference of gaussian"></p>
+<p>Now that we have a new set of images, we are going to use this to find the important keypoints.</p>
+<h4 id="2-3-3-Keypoint-Localization-关键点定位"><a href="#2-3-3-Keypoint-Localization-关键点定位" class="headerlink" title="2.3.3 Keypoint Localization (关键点定位)"></a><span id="jump2.3.3">2.3.3 Keypoint Localization (关键点定位)</span></h4><p>Once the images have been created, the next step is to find the important keypoints from the image that can be used for feature matching. <strong>The idea is to find the local maxima and minima for the images.</strong> This part is divided into two steps:</p>
+<ol>
+<li><a href="#jump2.3.3.1">Find the local maxima and minima</a></li>
+<li><a href="#jump2.3.3.2">Remove low contrast keypoints (keypoint selection)</a></li>
+</ol>
+<h5 id="Local-Maxima-and-Local-Minima"><a href="#Local-Maxima-and-Local-Minima" class="headerlink" title="Local Maxima and Local Minima"></a><span id="jump2.3.3.1">Local Maxima and Local Minima</span></h5><blockquote>
+<p><em>To locate the local maxima and minima, we go through every pixel in the image and compare it with its neighboring pixels.</em></p>
+</blockquote>
+<p>When I say ‘neighboring’, this not only includes the surrounding pixels of that image (in which the pixel lies), but also the nine pixels for the previous and next image in the octave.</p>
+<p>This means that every pixel value is compared with 26 other pixel values to find whether it is the local maxima/minima. For example, in the below diagram, we have three images from the first octave. The pixel marked <em>x</em> is compared with the neighboring pixels (in green) and is selected as a keypoint if it is the highest or lowest among the neighbors:</p>
+<p><img src="/2020/02/18/Computer-Vision/Screenshot-from-2019-09-25-16-50-01-300x207.webp" alt="Screenshot-from-2019-09-25-16-50-01-300x207"></p>
+<p>We now have potential keypoints that represent the images and are scale-invariant. We will apply the last check over the selected keypoints to ensure that these are the most accurate keypoints to represent the image. ( 因为some of these keypoints may not be robust to noise. )</p>
+<h5 id="Keypoint-Selection"><a href="#Keypoint-Selection" class="headerlink" title="Keypoint Selection"></a><span id="jump2.3.3.2">Keypoint Selection</span></h5><p><strong>we will eliminate the keypoints that have low contrast, or lie very close to the edge.</strong></p>
+<p>To deal with the low contrast keypoints, <strong>a second-order Taylor expansion</strong> is computed for each keypoint. If the resulting value is less than 0.03 (in magnitude), we reject the keypoint.</p>
+<p>So what do we do about the remaining keypoints? Well, we perform a check to identify the poorly located keypoints. 这些是接近边缘的关键点，具有高边缘响应，但可能对少量噪声不够稳健。<strong>A second-order Hessian matrix</strong> is used to identify such keypoints. </p>
+<p>Now that we have performed both the <span style="color:red">contrast test</span> and the <span style="color:red">edge test</span> to reject the unstable keypoints, we will now assign an orientation value for each keypoint to make the rotation invariant.</p>
+<h4 id="2-3-4-Orientation-Assignment"><a href="#2-3-4-Orientation-Assignment" class="headerlink" title="2.3.4 Orientation Assignment"></a><span id="jump2.3.4">2.3.4 Orientation Assignment</span></h4><p>At this stage, we have a set of stable keypoints for the images. We will now assign an orientation to each of these keypoints so that they are invariant to rotation. We can again divide this step into two smaller steps:</p>
+<ol>
+<li>Calculate the magnitude and orientation</li>
+<li>Create a histogram for magnitude and orientation</li>
+</ol>
+<p>计算magnitude和orientation的方法与 HOG中的计算方法类似，具体计算过程见<a href="https://www.analyticsvidhya.com/blog/2019/10/detailed-guide-powerful-sift-technique-image-matching-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a>.</p>
+<blockquote>
+<p><em>The magnitude represents the intensity of the pixel and the orientation gives the direction for the same.</em></p>
+</blockquote>
+<h5 id="Creating-a-Histogram-for-Magnitude-and-Orientation"><a href="#Creating-a-Histogram-for-Magnitude-and-Orientation" class="headerlink" title="Creating a Histogram for Magnitude and Orientation"></a>Creating a Histogram for Magnitude and Orientation</h5><p>On the x-axis, we will have bins for angle values, like 0-9, 10 – 19, 20-29, up to 360. Since our angle value is 57, it will fall in the 6th bin. The 6th bin value will be in proportion to the magnitude of the pixel, i.e. 16.64.  We will do this for all the pixels around the keypoint.</p>
+<p>This is how we get the below histogram:</p>
+<p><img src="/2020/02/18/Computer-Vision/Screenshot-from-2019-09-26-18-53-12.webp" alt="Screenshot-from-2019-09-26-18-53-12"></p>
+<p><em>You can refer to this article for a much detailed explanation for calculating the gradient, magnitude, orientation and plotting histogram – <a href="https://www.analyticsvidhya.com/blog/2019/09/feature-engineering-images-introduction-hog-feature-descriptor/" target="_blank" rel="noopener">A Valuable Introduction to the Histogram of Oriented Gradients.</a></em></p>
+<p>This histogram would peak at some point. <strong>The bin at which we see the peak will be the orientation for the keypoint.</strong> Additionally, if there is another significant peak (seen between 80 – 100%), then another keypoint is generated with the magnitude and scale the same as the keypoint used to generate the histogram. And the angle or orientation will be equal to the new bin that has the peak.</p>
+<p>Effectively at this point, we can say that there can be a small increase in the number of keypoints.</p>
+<h4 id="2-3-5-Keypoint-Descriptor"><a href="#2-3-5-Keypoint-Descriptor" class="headerlink" title="2.3.5 Keypoint Descriptor"></a><span id="jump2.3.5">2.3.5 Keypoint Descriptor</span></h4><p>This is the final step for SIFT. So far, we have stable keypoints that are scale-invariant and rotation invariant. In this section, we will use the neighboring pixels, their orientations, and magnitude, to generate a unique fingerprint for this keypoint called a ‘descriptor’.</p>
+<p>Additionally, since we use the surrounding pixels, the descriptors will be partially invariant to illumination or brightness of the images.</p>
+<p>We will first take a 16×16 neighborhood around the keypoint. This 16×16 block is further divided into 4×4 sub-blocks and for each of these sub-blocks, we generate the histogram using magnitude and orientation.</p>
+<p><img src="/2020/02/18/Computer-Vision/Screenshot-from-2019-09-26-20-10-52.webp" alt="Screenshot-from-2019-09-26-20-10-52"></p>
+<p>At this stage, the bin size is increased and we take only 8 bins (not 36). Each of these arrows represents the 8 bins and the length of the arrows define the magnitude. So, we will have a total of 128 bin values for every keypoint.</p>
+<p>Here is an example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment">#reading image</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line"><span class="comment">#keypoints</span></span><br><span class="line">sift = cv2.xfeatures2d.SIFT_create()</span><br><span class="line">keypoints_1, descriptors_1 = sift.detectAndCompute(img1,<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">img_1 = cv2.drawKeypoints(gray1,keypoints_1,img1)</span><br><span class="line">plt.imshow(img_1)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/18/Computer-Vision/index_41.webp" alt="index_41"></p>
+<h4 id="2-3-6-Feature-Matching-代码"><a href="#2-3-6-Feature-Matching-代码" class="headerlink" title="2.3.6 Feature Matching (代码)"></a>2.3.6 Feature Matching (代码)</h4><p>We will now use the SIFT features for feature matching. For this purpose, I have downloaded two images of the Eiffel Tower, taken from different positions. You can try it with any two images that you want. <br>Here are the two images that I have used:</p>
+<p><span style="background:yellow">reading_image_eiffel.py</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># read images</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">img2 = cv2.imread(<span class="string">'eiffel_1.jpg'</span>) </span><br><span class="line"></span><br><span class="line">img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">figure, ax = plt.subplots(<span class="number">1</span>, <span class="number">2</span>, figsize=(<span class="number">16</span>, <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">ax[<span class="number">0</span>].imshow(img1, cmap=<span class="string">'gray'</span>)</span><br><span class="line">ax[<span class="number">1</span>].imshow(img2, cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/18/Computer-Vision/index_71.png" alt="index_71"></p>
+<p>Now, for both these images, we are going to generate the SIFT features. First, we have to construct a SIFT object and then use the function <em>detectAndCompute</em> to get the keypoints. It will return two values – the keypoints and the descriptors.</p>
+<p>Let’s determine the keypoints and print the total number of keypoints found in each image:</p>
+<p><span style="background:yellow">keypoints_shape.py</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># read images</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">img2 = cv2.imread(<span class="string">'eiffel_1.jpg'</span>) </span><br><span class="line"></span><br><span class="line">img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line"><span class="comment">#sift</span></span><br><span class="line">sift = cv2.xfeatures2d.SIFT_create()</span><br><span class="line"></span><br><span class="line">keypoints_1, descriptors_1 = sift.detectAndCompute(img1,<span class="literal">None</span>)</span><br><span class="line">keypoints_2, descriptors_2 = sift.detectAndCompute(img2,<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">len(keypoints_1), len(keypoints_2)</span><br></pre></td></tr></table></figure>
+<p>283, 540</p>
+<p>Next, let’s try and match the features from image 1 with features from image 2. We will be using the function <em>match()</em> from the <em>BFmatcher</em> (brute force match) module. Also, we will draw lines between the features that match in both the images. This can be done using the <em>drawMatches</em> function in OpenCV.</p>
+<p><span style="background:yellow">feature_matching.py</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># read images</span></span><br><span class="line">img1 = cv2.imread(<span class="string">'eiffel_2.jpeg'</span>)  </span><br><span class="line">img2 = cv2.imread(<span class="string">'eiffel_1.jpg'</span>) </span><br><span class="line"></span><br><span class="line">img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)</span><br><span class="line">img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line"><span class="comment">#sift</span></span><br><span class="line">sift = cv2.xfeatures2d.SIFT_create()</span><br><span class="line"></span><br><span class="line">keypoints_1, descriptors_1 = sift.detectAndCompute(img1,<span class="literal">None</span>)</span><br><span class="line">keypoints_2, descriptors_2 = sift.detectAndCompute(img2,<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#feature matching</span></span><br><span class="line">bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">matches = bf.match(descriptors_1,descriptors_2)</span><br><span class="line">matches = sorted(matches, key = <span class="keyword">lambda</span> x:x.distance)</span><br><span class="line"></span><br><span class="line">img3 = cv2.drawMatches(img1, keypoints_1, img2, keypoints_2, matches[:<span class="number">50</span>], img2, flags=<span class="number">2</span>)</span><br><span class="line">plt.imshow(img3),plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/18/Computer-Vision/index_61.webp" alt="index_61"></p>
+<p>I have plotted only 50 matches here for clarity’s sake. You can increase the number according to what you prefer. To find out how many keypoints are matched, we can print the length of the variable <em>matches</em>. In this case, the answer would be 190.</p>
+<h4 id="2-3-7-End-Notes"><a href="#2-3-7-End-Notes" class="headerlink" title="2.3.7 End Notes"></a>2.3.7 End Notes</h4><p>In this article, we discussed the SIFT feature matching algorithm in detail. Here is a site that provides excellent visualization for each step of SIFT. You can add your own image and it will create the keypoints for that image as well. Check it out <a href="http://weitz.de/sift/" target="_blank" rel="noopener">here</a>.</p>
+<p>Another popular feature matching algorithm is SURF (Speeded Up Robust Feature), which is simply a faster version of SIFT. I would encourage you to go ahead and explore it as well.</p>
+<p>And if you’re new to the world of computer vision and image data, I recommend checking out the below course:</p>
+<ul>
+<li><a href="https://courses.analyticsvidhya.com/courses/computer-vision-using-deep-learning-version2?utm_source=blog&amp;utm_medium=detailed-guide-powerful-sift-technique-image-matching-python" target="_blank" rel="noopener">Computer Vision using Deep Learning 2.0</a></li>
+</ul>
+<h2 id="3-Image-Classification-using-Logistic-Regression"><a href="#3-Image-Classification-using-Logistic-Regression" class="headerlink" title="3. Image Classification using Logistic Regression"></a>3. Image Classification using Logistic Regression</h2><ul>
+<li><p>Python:</p>
+<p>kaggle kernel: used grid search method in logistic regression to classify rooms as messy or clean.</p>
+</li>
+</ul>
+<p>完整代码见：<a href="https://www.kaggle.com/gulsahdemiryurek/image-classification-with-logistic-regression/notebook" target="_blank" rel="noopener">https://www.kaggle.com/gulsahdemiryurek/image-classification-with-logistic-regression/notebook</a></p>
+<p>对图片的大致处理：（在这里，先不纠结train/val/test等）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np <span class="comment"># linear algebra</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment"># data processing, CSV file I/O (e.g. pd.read_csv)</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> cv2 </span><br><span class="line"><span class="keyword">import</span> os </span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> shuffle </span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm </span><br><span class="line"></span><br><span class="line">train_messy = <span class="string">"../input/images/images/train/messy"</span></span><br><span class="line">train_clean= <span class="string">"../input/images/images/train/clean"</span></span><br><span class="line">test_messy= <span class="string">"../input/images/images/val/messy"</span></span><br><span class="line">test_clean= <span class="string">"../input/images/images/val/clean"</span></span><br><span class="line">image_size = <span class="number">128</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_data</span><span class="params">()</span>:</span></span><br><span class="line">    train_data_messy = [] </span><br><span class="line">    train_data_clean=[]</span><br><span class="line">    <span class="keyword">for</span> image1 <span class="keyword">in</span> tqdm(os.listdir(train_messy)): </span><br><span class="line">        path = os.path.join(train_messy, image)</span><br><span class="line">        img1 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img1 = cv2.resize(img1, (image_size, image_size))</span><br><span class="line">        train_data_messy.append(img1) </span><br><span class="line">    <span class="keyword">for</span> image2 <span class="keyword">in</span> tqdm(os.listdir(train_clean)): </span><br><span class="line">        path = os.path.join(train_clean, image)</span><br><span class="line">        img2 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img2 = cv2.resize(img2, (image_size, image_size))</span><br><span class="line">        train_data_clean.append(img2) </span><br><span class="line">    </span><br><span class="line">    train_data= np.concatenate((np.asarray(train_data_messy),np.asarray(train_data_clean)),axis=<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> train_data </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_data</span><span class="params">()</span>:</span></span><br><span class="line">    test_data_messy = [] </span><br><span class="line">    test_data_clean=[]</span><br><span class="line">    <span class="keyword">for</span> image1 <span class="keyword">in</span> tqdm(os.listdir(test_messy)): </span><br><span class="line">        path = os.path.join(test_messy, image1)</span><br><span class="line">        img1 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img1 = cv2.resize(img1, (image_size, image_size))</span><br><span class="line">        test_data_messy.append(img1) </span><br><span class="line">    <span class="keyword">for</span> image2 <span class="keyword">in</span> tqdm(os.listdir(test_clean)): </span><br><span class="line">        path = os.path.join(test_clean, image2)</span><br><span class="line">        img2 = cv2.imread(path, cv2.IMREAD_GRAYSCALE) </span><br><span class="line">        img2 = cv2.resize(img2, (image_size, image_size))</span><br><span class="line">        test_data_clean.append(img2) </span><br><span class="line">    </span><br><span class="line">    test_data= np.concatenate((np.asarray(test_data_messy),np.asarray(test_data_clean)),axis=<span class="number">0</span>) </span><br><span class="line">    <span class="keyword">return</span> test_data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_data = train_data() </span><br><span class="line">test_data = test_data()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train_flatten = train_data.reshape(train_data.shape[<span class="number">0</span>],train_data.shape[<span class="number">1</span>]*train_data.shape[<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<p>Grid search:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line">grid=&#123;<span class="string">"C"</span>:np.logspace(<span class="number">-3</span>,<span class="number">3</span>,<span class="number">7</span>),<span class="string">"penalty"</span>:[<span class="string">"l1"</span>,<span class="string">"l2"</span>]&#125;,</span><br><span class="line">logistic_regression=LogisticRegression(random_state=<span class="number">42</span>)</span><br><span class="line">log_reg_cv=GridSearchCV(logistic_regression,grid,cv=<span class="number">10</span>)</span><br><span class="line">log_reg_cv.fit(x_train_flatten, y_train)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>C: <a href="https://mmlind.github.io/Using_Logistic_Regression_to_solve_MNIST/" target="_blank" rel="noopener">Using Logistic regression to classify images</a> (MNIST data)</li>
+</ul>
+<h2 id="4-Project-1-Identify-the-Apparels-服装"><a href="#4-Project-1-Identify-the-Apparels-服装" class="headerlink" title="4. Project 1- Identify the Apparels (服装)"></a>4. Project 1- Identify the Apparels (服装)</h2><p><a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-apparels/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-apparels/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p><img src="/2020/02/18/Computer-Vision/1582027636102.png" alt="1582027636102"></p>
+<p>More than 25% of entire revenue in E-Commerce is attributed to apparels &amp; accessories. A major problem they face is categorizing these apparels from just the images especially when the categories provided by the brands are inconsistent. This poses an interesting computer vision problem which has caught the eyes of several deep learning researchers.</p>
+<p>Fashion MNIST is a drop-in replacement for the very well known, machine learning hello world - MNIST dataset which can be checked out at <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/" target="_blank" rel="noopener">‘Identify the digits’</a> practice problem. Instead of digits, the images show a type of apparel e.g. T-shirt, trousers, bag, etc. The dataset used in this problem was created by Zalando Research. More details can be found at this <a href="https://github.com/zalandoresearch/fashion-mnist" target="_blank" rel="noopener">link</a>.</p>
+<h2 id="5-Introduction-to-Keras-amp-Neural-Networks"><a href="#5-Introduction-to-Keras-amp-Neural-Networks" class="headerlink" title="5. Introduction to Keras &amp; Neural Networks"></a>5. Introduction to Keras &amp; Neural Networks</h2><h3 id="5-1-Keras"><a href="#5-1-Keras" class="headerlink" title="5.1 Keras"></a>5.1 Keras</h3><p>Keras is one of the most commonly used deep learning tools.</p>
+<ul>
+<li><a href="https://keras.io/" target="_blank" rel="noopener">Keras Documentation</a> (Keras官方文档)</li>
+<li><a href="https://www.analyticsvidhya.com/blog/2016/10/tutorial-optimizing-neural-networks-using-keras-with-image-recognition-case-study/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Neural Networks using Keras</a> (MNIST)</li>
+</ul>
+<h3 id="5-2-Neural-Network"><a href="#5-2-Neural-Network" class="headerlink" title="5.2 Neural Network"></a>5.2 Neural Network</h3><ul>
+<li><p><a href="https://www.analyticsvidhya.com/blog/2017/05/neural-network-from-scratch-in-python-and-r/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Neural Networks from Scratch</a></p>
+</li>
+<li><p>Introduction to Neural Networks by Stanford:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d14TUNcbn1k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</li>
+</ul>
+<ul>
+<li><p>Neural Networks by 3Blue1Brown:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aircAruvnKk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</li>
+</ul>
+<h2 id="6-Project-1-Identify-the-Apparels"><a href="#6-Project-1-Identify-the-Apparels" class="headerlink" title="6. Project 1 - Identify the Apparels"></a>6. Project 1 - Identify the Apparels</h2><p>同第4部分</p>
+<h2 id="7-Understanding-Convolutional-Neural-Networks-CNNs-Transfer-Learning"><a href="#7-Understanding-Convolutional-Neural-Networks-CNNs-Transfer-Learning" class="headerlink" title="7. Understanding Convolutional Neural Networks (CNNs), Transfer Learning"></a>7. Understanding Convolutional Neural Networks (CNNs), Transfer Learning</h2><h3 id="7-1-Introduction-to-Convolutional-Neural-Networks-CNNs"><a href="#7-1-Introduction-to-Convolutional-Neural-Networks-CNNs" class="headerlink" title="7.1 Introduction to Convolutional Neural Networks (CNNs):"></a>7.1 <strong>Introduction to Convolutional Neural Networks (CNNs):</strong></h3><ul>
+<li><p><a href="https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Convolutional Neural Networks (CNNs) Simplified</a></p>
+</li>
+<li><p>Convolutional Neural Networks by Stanford:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bNb2fEVKeEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+</li>
+</ul>
+<h3 id="7-2-Introduction-to-Transfer-Learning"><a href="#7-2-Introduction-to-Transfer-Learning" class="headerlink" title="7.2 Introduction to Transfer Learning:"></a>7.2 <strong>Introduction to Transfer Learning:</strong></h3><h4 id="7-2-1-Master-Transfer-Learning"><a href="#7-2-1-Master-Transfer-Learning" class="headerlink" title="7.2.1 Master Transfer Learning"></a>7.2.1 Master Transfer Learning</h4><p><a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>训练神经网络有时需要很多的资源（RAM, GPUs）, RAM on a machine is cheap and is available in plenty, but access to GPUs is not that cheap. </p>
+<p>Now, that may change in future. But for now, it means that we have to be smarter about the way we use our resources in solving Deep Learning problems. Especially so, when we try to solve complex real life problems on areas like image and voice recognition. Once you have a few hidden layers in your model, adding another layer of hidden layer would need immense resources.</p>
+<p>Thankfully, there is something called “Transfer Learning” which enables us to <strong>use pre-trained models from other people by making small changes.</strong> In this article, I am going to tell how we can use pre-trained models to accelerate our solutions.</p>
+<ul>
+<li><strong>What is transfer learning?</strong></li>
+</ul>
+<p>A neural network is trained on a data. This network gains knowledge from this data, which is compiled as “weights” of the network. <span style="color:red">These weights can be extracted and then transferred to any other neural network.</span> Instead of training the other neural network from scratch, we <strong>“transfer”</strong> the learned features.</p>
+<ul>
+<li><strong>What is a Pre-trained Model?</strong></li>
+</ul>
+<p>Simply put, a pre-trained model is a model created by some one else to solve a similar problem. Instead of building a model from scratch to solve a similar problem, you use the model trained on other problem as a starting point.<br>For example, if you want to build a self learning car. You can spend years to build a decent image recognition algorithm from scratch or you can take inception model (a pre-trained model) from Google which was built on ImageNet data to identify images in those pictures.<br>A pre-trained model may not be 100% accurate in your application, but it saves huge efforts required to re-invent the wheel. </p>
+<p>使用pre-trained model不仅能节约训练时间，还能得到更高的准确率</p>
+<ul>
+<li><strong>How can I use Pre-trained Models?</strong></li>
+</ul>
+<p> By using pre-trained models which have been previously trained on large datasets, we can directly use the weights and architecture obtained and apply the learning on our problem statement. This is known as transfer learning. We “transfer the learning” of the pre-trained model to our specific problem statement.</p>
+<p>You should be very careful while choosing what pre-trained model you should use in your case. If the problem statement we have at hand is very different from the one on which the pre-trained model was trained – the prediction we would get would be very inaccurate. For example, a model previously trained for speech recognition would work horribly if we try to use it to identify objects using it.</p>
+<p>We are lucky that many pre-trained architectures are directly available for us in the Keras library. <strong>Imagenet</strong> data set has been widely used to build various architectures since it is large enough (1.2M images) to create a generalized model. The problem statement is to train a model that can correctly classify the images into 1,000 separate object categories. These 1,000 image categories represent object classes that we come across in our day-to-day lives, such as species of dogs, cats, various household objects, vehicle types etc.</p>
+<p>These pre-trained networks demonstrate a strong ability to generalize to images outside the ImageNet dataset via transfer learning. <strong>We make modifications in the pre-existing model by fine-tuning the model. </strong>Since we assume that the pre-trained network has been trained quite well, we would not want to modify the weights too soon and too much. While modifying we generally use a learning rate smaller than the one used for initially training the model.</p>
+<ul>
+<li><p><strong>Ways to Fine tune the model</strong></p>
+<ol>
+<li><strong>Feature extraction</strong> – We can use a pre-trained model as a feature extraction mechanism. What we can do is that we can remove the output layer( the one which gives the probabilities for being in each of the 1000 classes) and then use the entire network as a fixed feature extractor for the new data set.</li>
+<li><strong>Use the Architecture of the pre-trained model –</strong> What we can do is that we use architecture of the model while we initialize all the weights randomly and train the model according to our dataset again.</li>
+<li><strong>Train some layers while freeze others</strong> – Another way to use a pre-trained model is to train is partially. What we can do is we keep the weights of initial layers of the model frozen while we retrain only the higher layers. We can try and test as to how many layers to be frozen and how many to be trained.</li>
+</ol>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2017/05/31112715/finetune1-300x270.jpg"></p>
+</li>
+</ul>
+<p><strong>Scenario 1 – Size of the Data set is small while the Data similarity is very high –</strong> In this case, since the data similarity is very high, we do not need to retrain the model. All we need to do is to customize and modify the output layers according to our problem statement. We use the pretrained model as a feature extractor. Suppose we decide to use models trained on Imagenet to identify if the new set of images have cats or dogs. Here the images we need to identify would be similar to imagenet, however we just need two categories as my output – cats or dogs. In this case all we do is just modify the dense layers and the final softmax layer to output 2 categories instead of a 1000.</p>
+<p><strong>Scenario 2 – Size of the data is small as well as data similarity is very low</strong> – In this case we can freeze the initial (let’s say k) layers of the pretrained model and train just the remaining(n-k) layers again. The top layers would then be customized to the new data set. Since the new data set has low similarity it is significant to retrain and customize the higher layers according to the new dataset.  The small size of the data set is compensated by the fact that the initial layers are kept pretrained(which have been trained on a large dataset previously) and the weights for those layers are frozen.</p>
+<p><strong>Scenario 3 – Size of the data set is large however the Data similarity is very low</strong> – In this case, since we have a large dataset, our neural network training would be effective. However, since the data we have is very different as compared to the data used for training our pretrained models. The predictions made using pretrained models would not be effective. Hence, its best to train the neural network from scratch according to your data.</p>
+<p><strong>Scenario 4 – Size of the data is large as well as there is high data similarity –</strong> This is the ideal situation. In this case the pretrained model should be most effective. The best way to use the model is to retain the architecture of the model and the initial weights of the model. Then we can retrain this model using the weights as initialized in the pre-trained model.</p>
+<blockquote>
+<p>There are various architectures that have been trained on the imageNet data set. You can go through various architectures <a href="http://www.pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/" target="_blank" rel="noopener">here</a>.</p>
+</blockquote>
+<p><span style="background:yellow">代码示例</span>： se the pre-trained models to identify handwritten digits. 见<a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a></p>
+<h4 id="7-2-2-ConvNets-in-Practice-by-Stanford"><a href="#7-2-2-ConvNets-in-Practice-by-Stanford" class="headerlink" title="7.2.2 ConvNets in Practice by Stanford:"></a>7.2.2 ConvNets in Practice by Stanford:</h4><iframe width="560" height="315" src="https://www.youtube.com/embed/dUTzeP_HTZg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+<h2 id="8-Project-2-Idendify-the-Digits"><a href="#8-Project-2-Idendify-the-Digits" class="headerlink" title="8. Project 2 - Idendify the Digits"></a>8. Project 2 - Idendify the Digits</h2><p><a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>Automatic digit recognition is of popular interest today. Deep Learning techniques makes it possible for object recognition in image data . This practice problem is meant to give you a kick start in deep learning. As usual, we will not only provide you with the challenge and a solution checker, but also a set of tutorials to get you off the ground!</p>
+<p>The data set used for this problem is from the populat MNIST data set. Developed by Yann LeCun, Corina Cortes and Christopher Burger for evaluating machine learning model on the handwritten digit classification problem. It is a widely used data set in the machine learning community. For more details about the data set, read here <a href="http://bit.ly/1REjJgL" target="_blank" rel="noopener">http://bit.ly/1REjJgL</a></p>
+<h2 id="9-Build-your-profile-Participate-in-competitions"><a href="#9-Build-your-profile-Participate-in-competitions" class="headerlink" title="9. Build your profile: Participate in competitions"></a>9. <strong>Build your profile: Participate in competitions</strong></h2><ul>
+<li><a href="https://datahack.analyticsvidhya.com/contest/all/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">DataHack</a></li>
+<li><a href="https://www.kaggle.com/competitions" target="_blank" rel="noopener">Kaggle</a></li>
+</ul>
+<h2 id="10-Solving-Object-Detection-problems"><a href="#10-Solving-Object-Detection-problems" class="headerlink" title="10. Solving Object Detection problems"></a>10. Solving Object Detection problems</h2><h3 id="10-1-Step-by-Step-Introduction-to-Object-Detection-Techniques"><a href="#10-1-Step-by-Step-Introduction-to-Object-Detection-Techniques" class="headerlink" title="10.1 Step-by-Step Introduction to Object Detection Techniques"></a>10.1 Step-by-Step Introduction to Object Detection Techniques</h3><p><a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>The below image is a popular example of illustrating how an object detection algorithm works. Each object in the image, from a person to a kite, have been located and identified with a certain level of precision.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/06/OD.png" alt="img"></p>
+<p>Let’s look at how we can solve a general object detection problem using a CNN.</p>
+<ol>
+<li><p>First, we take an image as input:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/I1_2009_09_08_drive_0012_001351-768x223.png" alt="img"></p>
+</li>
+<li><p>Then we divide the image into various regions:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-09-14-21-14.png" alt="img"></p>
+</li>
+<li><p>We will then consider each region as a separate image.</p>
+</li>
+<li><p>Pass all these regions (images) to the CNN and classify them into various classes.</p>
+</li>
+<li><p>Once we have divided each region into its corresponding class, we can combine all these regions to get the original image with the detected objects:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/I1_2009_09_08_drive_0012_001351-another-copy-768x223.png" alt="img"></p>
+</li>
+</ol>
+<p>The problem with using this approach is that the objects in the image can have different aspect ratios and spatial locations. For instance, in some cases the object might be covering most of the image, while in others the object might only be covering a small percentage of the image. The shapes of the objects might also be different (happens a lot in real-life use cases).</p>
+<p>As a result of these factors, we would require a very large number of regions resulting in a huge amount of computational time. So to solve this problem and reduce the number of regions, we can use region-based CNN, which selects the regions using a proposal method. Let’s understand what this region-based CNN can do for us.</p>
+<h4 id="10-1-1-Understanding-Region-Based-Convolutional-Neural-Network-RCNN"><a href="#10-1-1-Understanding-Region-Based-Convolutional-Neural-Network-RCNN" class="headerlink" title="10.1.1 Understanding Region-Based Convolutional Neural Network (RCNN)"></a>10.1.1 Understanding Region-Based Convolutional Neural Network (RCNN)</h4><h5 id="10-1-1-1-Intuition-of-RCNN"><a href="#10-1-1-1-Intuition-of-RCNN" class="headerlink" title="10.1.1.1 Intuition of RCNN"></a>10.1.1.1 Intuition of RCNN</h5><p>Instead of working on a massive number of regions, the RCNN algorithm proposes a bunch of boxes in the image and checks if any of these boxes contain any object. RCNN <strong>uses <span style="color:red">selective search</span> to extract these boxes from an image (these boxes are called regions).</strong></p>
+<p>Let’s first understand what selective search is and how it identifies the different regions. There are basically four regions that form an object: varying scales, colors, textures, and enclosure. Selective search identifies these patterns in the image and based on that, proposes various regions. <a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Here is a brief overview of how selective search works.</a></p>
+<p>Below is a succint summary of the steps followed in RCNN to detect objects:</p>
+<ol>
+<li>We first take a pre-trained convolutional neural network.</li>
+<li>Then, this model is retrained. We train the last layer of the network based on the number of classes that need to be detected.</li>
+<li>The third step is to get the Region of Interest for each image. We then reshape all these regions so that they can match the CNN input size.</li>
+<li>After getting the regions, we train SVM to classify objects and background. For each class, we train one binary SVM.</li>
+<li>Finally, we train a linear regression model to generate tighter bounding boxes for each identified object in the image.</li>
+</ol>
+<p>You might get a better idea of the above steps with a visual example:</p>
+<ul>
+<li><p>First, an image is taken as an input:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-14-59-02.png" alt="img"></p>
+</li>
+</ul>
+<ul>
+<li><p>Then, we get the Regions of Interest (ROI) using some proposal method (for example, selective search as seen above):</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-00-09.png" alt="img"></p>
+</li>
+<li><p>All these regions are then reshaped as per the input of the CNN, and each region is passed to the ConvNet:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-01-56.png" alt="img"></p>
+</li>
+<li><p>CNN then extracts features for each region and SVMs are used to divide these regions into different classes:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-03-02.png" alt="img"></p>
+</li>
+<li><p>Finally, a bounding box regression (<em>Bbox reg</em>) is used to predict the bounding boxes for each identified region:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-06-33.png" alt="img"></p>
+</li>
+</ul>
+<p>And this, in a nutshell, is how an RCNN helps us to detect objects.</p>
+<h5 id="10-1-1-2-Limitations-of-RCNN"><a href="#10-1-1-2-Limitations-of-RCNN" class="headerlink" title="10.1.1.2  Limitations of RCNN"></a>10.1.1.2  Limitations of RCNN</h5><p>Training an RCNN model is expensive and slow:</p>
+<ul>
+<li>Extracting 2,000 regions for each image based on selective search</li>
+<li>Extracting features using CNN for every image region. Suppose we have N images, then the number of CNN features will be N*2,000</li>
+<li>The entire process of object detection using RCNN has three models:<ol>
+<li>CNN for feature extraction</li>
+<li>Linear SVM classifier for identifying objects</li>
+<li>Regression model for tightening the bounding boxes.</li>
+</ol>
+</li>
+</ul>
+<p>All these processes combine to make RCNN very slow. It takes around 40-50 seconds to make predictions for each new image, which essentially makes the model cumbersome and practically impossible to build when faced with a gigantic dataset.</p>
+<p>Here’s the good news – we have another object detection technique which fixes most of the limitations we saw in RCNN.</p>
+<h4 id="10-1-2-Understanding-Fast-RCNN"><a href="#10-1-2-Understanding-Fast-RCNN" class="headerlink" title="10.1.2 Understanding Fast RCNN"></a>10.1.2 Understanding Fast RCNN</h4><h5 id="10-1-2-1-Intuition-of-Fast-RCNN"><a href="#10-1-2-1-Intuition-of-Fast-RCNN" class="headerlink" title="10.1.2.1 Intuition of Fast RCNN"></a>10.1.2.1 Intuition of Fast RCNN</h5><p>What else can we do to reduce the computation time a RCNN algorithm typically takes? Instead of running a CNN 2,000 times per image, we can run it just once per image and get all the regions of interest (regions containing some object).</p>
+<p>In Fast RCNN, we feed the input image to the CNN, which in turn generates the convolutional feature maps. Using these maps, the regions of proposals are extracted. We then use a RoI pooling layer to reshape all the proposed regions into a fixed size, so that it can be fed into a fully connected network.</p>
+<p>Let’s break this down into steps to simplify the concept:</p>
+<ol>
+<li>As with the earlier two techniques, we take an image as an input.</li>
+<li>This image is passed to a ConvNet which in turns generates the Regions of Interest.</li>
+<li>A RoI pooling layer is applied on all of these regions to reshape them as per the input of the ConvNet. Then, each region is passed on to a fully connected network.</li>
+<li>A softmax layer is used on top of the fully connected network to output classes. Along with the softmax layer, a linear regression layer is also used parallely to output bounding box coordinates for predicted classes.</li>
+</ol>
+<p>So, instead of using three different models (like in RCNN), Fast RCNN uses a single model which extracts features from the regions, divides them into different classes, and returns the boundary boxes for the identified classes simultaneously.</p>
+<p>图解：</p>
+<ul>
+<li><p>Taking an image as input:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-14-59-021.png" alt="img"></p>
+</li>
+<li><p>This image is passed to a ConvNet which returns the region of interests accordingly:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-44-03.png" alt="img"></p>
+</li>
+<li><p>Then we apply the RoI pooling layer on the extracted regions of interest to make sure all the regions are of the same size:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-45-26.png" alt="img"></p>
+</li>
+<li><p>Finally, these regions are passed on to a fully connected network which classifies them, as well as returns the bounding boxes using softmax and linear regression layers simultaneously:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-08-15-47-18.png" alt="img"></p>
+</li>
+</ul>
+<p>This is how Fast RCNN resolves two major issues of RCNN, i.e., <span style="color:red">passing one instead of 2,000 regions per image to the ConvNet, and using one instead of three different models for extracting features, classification and generating bounding boxes.</span></p>
+<h5 id="10-1-2-2-Limitations-of-Fast-RCNN"><a href="#10-1-2-2-Limitations-of-Fast-RCNN" class="headerlink" title="10.1.2.2 Limitations of Fast RCNN"></a>10.1.2.2 Limitations of Fast RCNN</h5><p>It also uses <strong>selective search</strong> as a proposal method to find the Regions of Interest, which is a slow and time consuming process. It takes around 2 seconds per image to detect objects, which is much better compared to RCNN. But when we consider large real-life datasets, then even a Fast RCNN doesn’t look so fast anymore.</p>
+<p>But there’s yet another object detection algorithm that trump Fast RCNN. </p>
+<h4 id="10-1-3-Understanding-Faster-RCNN"><a href="#10-1-3-Understanding-Faster-RCNN" class="headerlink" title="10.1.3 Understanding Faster RCNN"></a>10.1.3 Understanding Faster RCNN</h4><h5 id="10-1-3-1-Intuition-of-Faster-RCNN"><a href="#10-1-3-1-Intuition-of-Faster-RCNN" class="headerlink" title="10.1.3.1 Intuition of Faster RCNN"></a>10.1.3.1 Intuition of Faster RCNN</h5><p>Faster RCNN is the modified version of Fast RCNN. The major difference between them is that Fast RCNN uses selective search for generating Regions of Interest, while Faster RCNN uses <strong>“Region Proposal Network”, aka RPN.</strong> RPN takes image feature maps as an input and generates a set of object proposals, each with an objectness score as output.</p>
+<p>The  below steps are typically followed in a Faster RCNN approach:</p>
+<ol>
+<li>We take an image as input and pass it to the ConvNet which returns the feature map for that image.</li>
+<li>Region proposal network is applied on these feature maps. This returns the object proposals along with their objectness score.</li>
+<li>A RoI pooling layer is applied on these proposals to bring down all the proposals to the same size.</li>
+<li>Finally, the proposals are passed to a fully connected layer which has a softmax layer and a linear regression layer at its top, to classify and output the bounding boxes for objects.</li>
+</ol>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/10/Screenshot-from-2018-10-09-14-15-36.png" alt="img"></p>
+<p><a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">A briefly explain how this Region Proposal Network (RPN) actually works.</a></p>
+<h5 id="10-1-3-2-Limitations-of-Faster-RCNN"><a href="#10-1-3-2-Limitations-of-Faster-RCNN" class="headerlink" title="10.1.3.2 Limitations of Faster RCNN"></a>10.1.3.2 Limitations of Faster RCNN</h5><p>All of the object detection algorithms we have discussed so far use regions to identify the objects. The network does not look at the complete image in one go, but focuses on parts of the image sequentially. This creates two complications:</p>
+<ul>
+<li>The algorithm requires many passes through a single image to extract all the objects</li>
+<li>As there are different systems working one after the other, the performance of the systems further ahead depends on how the previous systems performed</li>
+</ul>
+<h4 id="10-1-4-Summary"><a href="#10-1-4-Summary" class="headerlink" title="10.1.4 Summary"></a>10.1.4 Summary</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Algorithm</strong></th>
+<th><strong>Features</strong></th>
+<th><strong>Prediction time / image</strong></th>
+<th><strong>Limitations</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN</td>
+<td>Divides the image into multiple regions and then classify each region into various classes.</td>
+<td>–</td>
+<td>Needs a lot of regions to predict accurately and hence high computation time.</td>
+</tr>
+<tr>
+<td>RCNN</td>
+<td>Uses selective search to generate regions. Extracts around 2000 regions from each image.</td>
+<td>40-50 seconds</td>
+<td>High computation time as each region is passed to the CNN separately also it uses three different model for making predictions.</td>
+</tr>
+<tr>
+<td>Fast RCNN</td>
+<td>Each image is passed only once to the CNN and feature maps are extracted. Selective search is used on these maps to generate predictions. Combines all the three models used in RCNN together.</td>
+<td>2 seconds</td>
+<td>Selective search is slow and hence computation time is still high.</td>
+</tr>
+<tr>
+<td>Faster RCNN</td>
+<td>Replaces the selective search method with region proposal network which made the algorithm much faster.</td>
+<td>0.2 seconds</td>
+<td>Object proposal takes time and as there are different systems working one after the other, the performance of systems depends on how the previous system has performed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="10-2-Implementing-Faster-RCNN-for-Object-Detection-代码"><a href="#10-2-Implementing-Faster-RCNN-for-Object-Detection-代码" class="headerlink" title="10.2 Implementing Faster RCNN for Object Detection (代码)"></a>10.2 Implementing Faster RCNN for Object Detection (代码)</h3><p><a href="https://www.analyticsvidhya.com/blog/2018/11/implementation-faster-r-cnn-python-object-detection/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2018/11/implementation-faster-r-cnn-python-object-detection/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a>)</p>
+<h3 id="10-3-Object-Detection-using-YOLO-含代码"><a href="#10-3-Object-Detection-using-YOLO-含代码" class="headerlink" title="10.3 Object Detection using YOLO (含代码)"></a>10.3 Object Detection using YOLO (含代码)</h3><p>详细介绍见这里：<a href="https://www.analyticsvidhya.com/blog/2018/12/practical-guide-object-detection-yolo-framewor-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2018/12/practical-guide-object-detection-yolo-framewor-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<p>The R-CNN family of techniques we saw in Part 1 primarily use regions to localize the objects within the image. The network does not look at the entire image, only at the parts of the images which have a higher chance of containing an object.</p>
+<p>The YOLO framework (You Only Look Once) on the other hand, deals with object detection in a different way. It takes the entire image in a single instance and predicts the bounding box coordinates and class probabilities for these boxes. <strong>The biggest advantage of using YOLO is its superb speed</strong> – it’s incredibly fast and can process 45 frames per second. YOLO also understands generalized object representation.</p>
+<blockquote>
+<p>YOLO is a state-of-the-art object detection algorithm that is incredibly fast and accurate</p>
+</blockquote>
+<p>_<strong>Training</strong>_</p>
+<p>The input for training our model will obviously be images and their corresponding y labels. Let’s see an image and make its y label:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/12/Screenshot-from-2018-11-17-15-02-11.png" alt="img"></p>
+<p>Consider the scenario where we are using a 3 X 3 grid with two anchors per grid, and there are 3 different object classes. So the corresponding y labels will have a shape of 3 X 3 X 16. Now, suppose if we use 5 anchor boxes per grid and the number of classes has been increased to 5. So the target will be 3 X 3 X 10 X 5 = 3 X 3 X 50. This is how the training process is done – taking an image of a particular shape and mapping it with a 3 X 3 X 16 target (this may change as per the grid size, number of anchor boxes and the number of classes).</p>
+<p><strong>_Testing_</strong></p>
+<p>The new image will be divided into the same number of grids which we have chosen during the training period. For each grid, the model will predict an output of shape 3 X 3 X 16 (assuming this is the shape of the target during training time). The 16 values in this prediction will be in the same format as that of the training label. The first 8 values will correspond to anchor box 1, where the first value will be the probability of an object in that grid. Values 2-5 will be the bounding box coordinates for that object, and the last three values will tell us which class the object belongs to. The next 8 values will be for anchor box 2 and in the same format, i.e., first the probability, then the bounding box coordinates, and finally the classes.</p>
+<p>Finally, the Non-Max Suppression technique will be applied on the predicted boxes to obtain a single prediction per object.</p>
+<p>That brings us to the end of the theoretical aspect of understanding how the YOLO algorithm works, starting from training the model and then generating prediction boxes for the objects. Below are the exact dimensions and steps that the YOLO algorithm follows:</p>
+<ul>
+<li>Takes an input image of shape (608, 608, 3)</li>
+<li>Passes this image to a convolutional neural network (CNN), which returns a (19, 19, 5, 85) dimensional output</li>
+<li>The last two dimensions of the above output are flattened to get an output volume of (19, 19, 425):<ul>
+<li>Here, each cell of a 19 X 19 grid returns 425 numbers</li>
+<li>425 = 5 * 85, where 5 is the number of anchor boxes per grid</li>
+<li>85 = 5 + 80, where 5 is (pc, bx, by, bh, bw) and 80 is the number of classes we want to detect</li>
+</ul>
+</li>
+<li>Finally, we do the IoU and Non-Max Suppression to avoid selecting overlapping boxes</li>
+</ul>
+<h3 id="10-4-Object-detection-by-Stanford"><a href="#10-4-Object-detection-by-Stanford" class="headerlink" title="10.4 Object detection by Stanford:"></a>10.4 Object detection by Stanford:</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/nDPWywWRIRo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="10-5-其他Resources"><a href="#10-5-其他Resources" class="headerlink" title="10.5 其他Resources"></a>10.5 其他Resources</h3><ul>
+<li><a href="https://arxiv.org/pdf/1506.02640.pdf" target="_blank" rel="noopener">YOLO Paper</a></li>
+<li><a href="https://pjreddie.com/darknet/yolo/" target="_blank" rel="noopener">YOLO Pre-Trained Models</a></li>
+</ul>
+<h2 id="11-Project-3-Face-Counting-Challenge"><a href="#11-Project-3-Face-Counting-Challenge" class="headerlink" title="11. Project 3 - Face Counting Challenge"></a>11. Project 3 - Face Counting Challenge</h2><p><a href="https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<h2 id="12-Project-4-COCO-Object-Detection-Challenge"><a href="#12-Project-4-COCO-Object-Detection-Challenge" class="headerlink" title="12. Project 4 - COCO Object Detection Challenge"></a>12. Project 4 - COCO Object Detection Challenge</h2><p><a href="http://cocodataset.org/#download" target="_blank" rel="noopener">http://cocodataset.org/#download</a></p>
+<h2 id="13-Understanding-Image-Segmentation-amp-Attention-Models"><a href="#13-Understanding-Image-Segmentation-amp-Attention-Models" class="headerlink" title="13. Understanding Image Segmentation &amp; Attention Models"></a>13. Understanding Image Segmentation &amp; Attention Models</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Computer-Vision/" rel="tag"># Computer Vision</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/17/hexo相关问题/" rel="next" title="hexo相关问题">
+                <i class="fa fa-chevron-left"></i> hexo相关问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="qypx">
+            
+              <p class="site-author-name" itemprop="name">qypx</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qypx" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+
+          
+          
+
+          
+          
+
+          
+
+
+          <!-- 新增的内容 -->
+          <!-- require APlayer -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+          <!-- require MetingJS -->
+          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
+          </meting-js>
+          <!-- 新增的内容end -->
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Face-Recognition"><span class="nav-text">Face Recognition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-computer-vision"><span class="nav-text">Types of computer vision</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Image-Preprocessing"><span class="nav-text">2. Image Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images"><span class="nav-text">2.1 Three Beginner-Friendly Techniques to Extract Features from Images</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-How-do-Machines-Store-Images"><span class="nav-text">2.1.1 How do Machines Store Images?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-Reading-Image-Data-in-Python"><span class="nav-text">2.1.2 Reading Image Data in Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-Method-1-Grayscale-Pixel-Values-as-Features"><span class="nav-text">2.1.3 Method #1: Grayscale Pixel Values as Features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-Method-2-Mean-Pixel-Value-of-Channels-Colored-Image"><span class="nav-text">2.1.4 Method #2: Mean Pixel Value of Channels (Colored Image)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-5-Method-3-Extracting-Edge-Features"><span class="nav-text">2.1.5 Method #3: Extracting Edge Features</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-HOG-Histogram-of-Oriented-Gradients-features"><span class="nav-text">2.2 HOG (Histogram of Oriented Gradients) features</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-What-is-a-Feature-Descriptor"><span class="nav-text">2.2.1 What is a Feature Descriptor?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Introduction-to-the-HOG-Feature-Descriptor"><span class="nav-text">2.2.2 Introduction to the HOG Feature Descriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-Process-of-Calculating-the-Histogram-of-Oriented-Gradients-HOG"><span class="nav-text">2.2.3 Process of Calculating the Histogram of Oriented Gradients (HOG)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-Implementing-HOG-Feature-Descriptor-in-Python"><span class="nav-text">2.2.4 Implementing HOG Feature Descriptor in Python</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-SIFT-Scale-Invariant-Feature-Transform-features"><span class="nav-text">2.3 SIFT (Scale Invariant Feature Transform) features</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-Introduciton-to-SIFT"><span class="nav-text">2.3.1 Introduciton to SIFT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-Constructing-the-Scale-Space"><span class="nav-text">2.3.2 Constructing the Scale Space</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Difference-of-Gaussian"><span class="nav-text">Difference of Gaussian</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-Keypoint-Localization-关键点定位"><span class="nav-text">2.3.3 Keypoint Localization (关键点定位)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Local-Maxima-and-Local-Minima"><span class="nav-text">Local Maxima and Local Minima</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Keypoint-Selection"><span class="nav-text">Keypoint Selection</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-4-Orientation-Assignment"><span class="nav-text">2.3.4 Orientation Assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Creating-a-Histogram-for-Magnitude-and-Orientation"><span class="nav-text">Creating a Histogram for Magnitude and Orientation</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-5-Keypoint-Descriptor"><span class="nav-text">2.3.5 Keypoint Descriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-6-Feature-Matching-代码"><span class="nav-text">2.3.6 Feature Matching (代码)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-7-End-Notes"><span class="nav-text">2.3.7 End Notes</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Image-Classification-using-Logistic-Regression"><span class="nav-text">3. Image Classification using Logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Project-1-Identify-the-Apparels-服装"><span class="nav-text">4. Project 1- Identify the Apparels (服装)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Introduction-to-Keras-amp-Neural-Networks"><span class="nav-text">5. Introduction to Keras &amp; Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Keras"><span class="nav-text">5.1 Keras</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Neural-Network"><span class="nav-text">5.2 Neural Network</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Project-1-Identify-the-Apparels"><span class="nav-text">6. Project 1 - Identify the Apparels</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Understanding-Convolutional-Neural-Networks-CNNs-Transfer-Learning"><span class="nav-text">7. Understanding Convolutional Neural Networks (CNNs), Transfer Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-Introduction-to-Convolutional-Neural-Networks-CNNs"><span class="nav-text">7.1 Introduction to Convolutional Neural Networks (CNNs):</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-Introduction-to-Transfer-Learning"><span class="nav-text">7.2 Introduction to Transfer Learning:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-1-Master-Transfer-Learning"><span class="nav-text">7.2.1 Master Transfer Learning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-2-ConvNets-in-Practice-by-Stanford"><span class="nav-text">7.2.2 ConvNets in Practice by Stanford:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Project-2-Idendify-the-Digits"><span class="nav-text">8. Project 2 - Idendify the Digits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Build-your-profile-Participate-in-competitions"><span class="nav-text">9. Build your profile: Participate in competitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Solving-Object-Detection-problems"><span class="nav-text">10. Solving Object Detection problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-Step-by-Step-Introduction-to-Object-Detection-Techniques"><span class="nav-text">10.1 Step-by-Step Introduction to Object Detection Techniques</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-1-Understanding-Region-Based-Convolutional-Neural-Network-RCNN"><span class="nav-text">10.1.1 Understanding Region-Based Convolutional Neural Network (RCNN)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-1-1-Intuition-of-RCNN"><span class="nav-text">10.1.1.1 Intuition of RCNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-1-2-Limitations-of-RCNN"><span class="nav-text">10.1.1.2  Limitations of RCNN</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-2-Understanding-Fast-RCNN"><span class="nav-text">10.1.2 Understanding Fast RCNN</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-2-1-Intuition-of-Fast-RCNN"><span class="nav-text">10.1.2.1 Intuition of Fast RCNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-2-2-Limitations-of-Fast-RCNN"><span class="nav-text">10.1.2.2 Limitations of Fast RCNN</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-3-Understanding-Faster-RCNN"><span class="nav-text">10.1.3 Understanding Faster RCNN</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-3-1-Intuition-of-Faster-RCNN"><span class="nav-text">10.1.3.1 Intuition of Faster RCNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-1-3-2-Limitations-of-Faster-RCNN"><span class="nav-text">10.1.3.2 Limitations of Faster RCNN</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-1-4-Summary"><span class="nav-text">10.1.4 Summary</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-Implementing-Faster-RCNN-for-Object-Detection-代码"><span class="nav-text">10.2 Implementing Faster RCNN for Object Detection (代码)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-Object-Detection-using-YOLO-含代码"><span class="nav-text">10.3 Object Detection using YOLO (含代码)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-4-Object-detection-by-Stanford"><span class="nav-text">10.4 Object detection by Stanford:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-5-其他Resources"><span class="nav-text">10.5 其他Resources</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Project-3-Face-Counting-Challenge"><span class="nav-text">11. Project 3 - Face Counting Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Project-4-COCO-Object-Detection-Challenge"><span class="nav-text">12. Project 4 - COCO Object Detection Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-Understanding-Image-Segmentation-amp-Attention-Models"><span class="nav-text">13. Understanding Image Segmentation &amp; Attention Models</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qypx</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
