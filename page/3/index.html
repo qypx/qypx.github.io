@@ -664,8 +664,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-17T00:29:07+08:00">
-                2020-02-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-22T17:46:34+08:00">
+                2020-02-22
               </time>
             
           </span>
@@ -721,81 +721,7 @@
 
       
         
-          <!-- toc -->
-<ul>
-<li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
-<p>A. AR模型</p>
-<p>B. MA模型</p>
-<p>C. ARMA模型</p>
-<p>D. GARCH模型</p>
-</li>
-</ul>
-<p>解析：</p>
-<p>参考 <a href="https://blog.csdn.net/s1491695565/article/details/52093003" target="_blank" rel="noopener">https://blog.csdn.net/s1491695565/article/details/52093003</a></p>
-<p>时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。</p>
-<p><strong>1.  移动平均法 (MA)</strong></p>
-<p>1.1. 简单移动平均法</p>
-<p>设有一时间序列y1,y2,…, 则按数据点的顺序逐点推移求出N个数的平均数，即可得到一次移动平均数.</p>
-<p> 1.2 趋势移动平均法  </p>
-<p>当时间序列没有明显的趋势变动时，使用一次移动平均就能够准确地反映实际情况，直接用第t周期的一次移动平均数就可预测第t+1周期之值。</p>
-<p>时间序列出现线性变动趋势时，用一次移动平均数来预测就会出现滞后偏差。修正的方法是在一次移动平均的基础上再做二次移动平均，利用移动平均滞后偏差的规律找出曲线的发展方向和发展趋势，然后才建立直线趋势的预测模型。故称为趋势移动平均法。</p>
-<p><strong>2.  自回归模型(AR)</strong></p>
-<p>AR模型是一种线性预测，即已知N个数据，可由模型推出第N点前面或后面的数据（设推出P点）.</p>
-<p>本质类似于插值，其目的都是为了增加有效数据，只是AR模型是由N点递推，而插值是由两点（或少数几点）去推导多点，所以AR模型要比插值方法效果更好。</p>
-<p><strong>3. 自回归滑动平均模型(ARMA)</strong></p>
-<p>其建模思想可概括为：逐渐增加模型的阶数，拟合较高阶模型，直到再增加模型的阶数而剩余残差方差不再显著减小为止。</p>
-<p><strong>4. GARCH模型</strong></p>
-<p>回归模型。除去和普通回归模型相同的之处，GARCH对误差的方差进行了进一步的建模。特别适用于波动性的分析和预测。</p>
-<p><strong>4. 指数平滑法</strong></p>
-<p>移动平均法的预测值实质上是以前观测值的加权和，且对不同时期的数据给予相同的加权。这往往不符合实际情况。</p>
-<p>指数平滑法则对移动平均法进行了改进和发展，其应用较为广泛。</p>
-<p>基本思想都是：预测值是以前观测值的加权和，且对不同的数据给予不同的权，新数据给较大的权，旧数据给较小的权。</p>
-<p>根据平滑次数不同，指数平滑法分为：一次指数平滑法、二次指数平滑法和三次指数平滑法等。</p>
-<hr>
-<ul>
-<li><p>下面对集成学习模型中的弱学习者描述错误的是 (C)</p>
-<p>A. 他们经常不会过拟合</p>
-<p>B. 他们通常带有高偏差，所以其并不能解决复杂学习问题</p>
-<p>C. 他们通常会过拟合</p>
-</li>
-</ul>
-<p>弱学习器：略优于随机猜测的学习器。（西瓜书）</p>
-<hr>
-<ul>
-<li><p>xgboost对缺失值的处理方法：</p>
-<p>把缺失值分别放到左叶子节点和右叶子节点中，计算增益。哪个增益大就放到哪个叶子节点。</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>Hive四大表类型：<ul>
-<li>内部表</li>
-<li>外部表</li>
-<li>分区表</li>
-<li>桶表（或叫分桶表）</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h4><p>HBase是一个分布式的、面向列的开源数据库。</p>
-<p>题目来源于：<a href="https://www.cnblogs.com/cxchanpin/p/7381890.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxchanpin/p/7381890.html</a></p>
-<ul>
-<li><p>HBase来源于哪篇博文？ C</p>
-<p>A. The Google File System</p>
-<p>B. MapReduce</p>
-<p>C. BigTable</p>
-<p>D. Chubby</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>下对HBase的描写叙述哪些是正确的？ B、C、D</p>
-<p>A. 不是开源的</p>
-<p>B. 是面向列的</p>
-<p>C. 是分布式的</p>
-<p>D. 是一种NoSQL数据库</p>
-</li>
-</ul>
+          <p><img src="https://img.sanhao.com/community_news/24544/2018040318514556.jpg" alt="img"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/01/12/笔试知识点/#more" rel="contents">

@@ -79,13 +79,11 @@
 
 
 
-<meta name="description" content="时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。 1.  移动平均法 (MA)">
 <meta name="keywords" content="知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笔试知识点">
 <meta property="og:url" content="http://qypx.github.io/2020/01/12/笔试知识点/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。 1.  移动平均法 (MA)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1581870524984.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1581864564384.png">
@@ -124,10 +122,19 @@
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1581870210402.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1581870300117.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1581870472998.png">
-<meta property="og:updated_time" content="2020-02-16T16:29:07.103Z">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582361004130.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582360970415.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582361114265.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582361203067.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582361360734.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582363721071.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582363882820.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582363973719.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582364106629.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1582364410421.png">
+<meta property="og:updated_time" content="2020-02-22T09:46:34.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔试知识点">
-<meta name="twitter:description" content="时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D) A. AR模型 B. MA模型 C. ARMA模型 D. GARCH模型   解析： 参考 https://blog.csdn.net/s1491695565/article/details/52093003 时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。 1.  移动平均法 (MA)">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/12/笔试知识点/1581870524984.png">
 
 
@@ -371,8 +378,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-17T00:29:07+08:00">
-                2020-02-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-22T17:46:34+08:00">
+                2020-02-22
               </time>
             
           </span>
@@ -427,63 +434,7 @@
       
 
       
-        <!-- toc -->
-<ul>
-<li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
-<p>A. AR模型</p>
-<p>B. MA模型</p>
-<p>C. ARMA模型</p>
-<p>D. GARCH模型</p>
-</li>
-</ul>
-<p>解析：</p>
-<p>参考 <a href="https://blog.csdn.net/s1491695565/article/details/52093003" target="_blank" rel="noopener">https://blog.csdn.net/s1491695565/article/details/52093003</a></p>
-<p>时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。</p>
-<p><strong>1.  移动平均法 (MA)</strong></p>
-<p>1.1. 简单移动平均法</p>
-<p>设有一时间序列y1,y2,…, 则按数据点的顺序逐点推移求出N个数的平均数，即可得到一次移动平均数.</p>
-<p> 1.2 趋势移动平均法  </p>
-<p>当时间序列没有明显的趋势变动时，使用一次移动平均就能够准确地反映实际情况，直接用第t周期的一次移动平均数就可预测第t+1周期之值。</p>
-<p>时间序列出现线性变动趋势时，用一次移动平均数来预测就会出现滞后偏差。修正的方法是在一次移动平均的基础上再做二次移动平均，利用移动平均滞后偏差的规律找出曲线的发展方向和发展趋势，然后才建立直线趋势的预测模型。故称为趋势移动平均法。</p>
-<p><strong>2.  自回归模型(AR)</strong></p>
-<p>AR模型是一种线性预测，即已知N个数据，可由模型推出第N点前面或后面的数据（设推出P点）.</p>
-<p>本质类似于插值，其目的都是为了增加有效数据，只是AR模型是由N点递推，而插值是由两点（或少数几点）去推导多点，所以AR模型要比插值方法效果更好。</p>
-<p><strong>3. 自回归滑动平均模型(ARMA)</strong></p>
-<p>其建模思想可概括为：逐渐增加模型的阶数，拟合较高阶模型，直到再增加模型的阶数而剩余残差方差不再显著减小为止。</p>
-<p><strong>4. GARCH模型</strong></p>
-<p>回归模型。除去和普通回归模型相同的之处，GARCH对误差的方差进行了进一步的建模。特别适用于波动性的分析和预测。</p>
-<p><strong>4. 指数平滑法</strong></p>
-<p>移动平均法的预测值实质上是以前观测值的加权和，且对不同时期的数据给予相同的加权。这往往不符合实际情况。</p>
-<p>指数平滑法则对移动平均法进行了改进和发展，其应用较为广泛。</p>
-<p>基本思想都是：预测值是以前观测值的加权和，且对不同的数据给予不同的权，新数据给较大的权，旧数据给较小的权。</p>
-<p>根据平滑次数不同，指数平滑法分为：一次指数平滑法、二次指数平滑法和三次指数平滑法等。</p>
-<hr>
-<ul>
-<li><p>下面对集成学习模型中的弱学习者描述错误的是 (C)</p>
-<p>A. 他们经常不会过拟合</p>
-<p>B. 他们通常带有高偏差，所以其并不能解决复杂学习问题</p>
-<p>C. 他们通常会过拟合</p>
-</li>
-</ul>
-<p>弱学习器：略优于随机猜测的学习器。（西瓜书）</p>
-<hr>
-<ul>
-<li><p>xgboost对缺失值的处理方法：</p>
-<p>把缺失值分别放到左叶子节点和右叶子节点中，计算增益。哪个增益大就放到哪个叶子节点。</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>Hive四大表类型：<ul>
-<li>内部表</li>
-<li>外部表</li>
-<li>分区表</li>
-<li>桶表（或叫分桶表）</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h4><p>HBase是一个分布式的、面向列的开源数据库。</p>
+        <h4 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h4><p>HBase是一个分布式的、面向列的开源数据库。</p>
 <p>题目来源于：<a href="https://www.cnblogs.com/cxchanpin/p/7381890.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxchanpin/p/7381890.html</a></p>
 <ul>
 <li><p>HBase来源于哪篇博文？ C</p>
@@ -768,9 +719,9 @@
 <p><img src="/2020/01/12/笔试知识点/1581864916612.png" alt="1581864916612"></p>
 <p>B树相关知识见<a href="https://qypx.github.io/2020/02/16/B树介绍/">这里</a></p>
 <hr>
-<ol>
+<ul>
 <li>具有3个结点的二叉树有几种形态？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581865489812.png" alt="1581865489812"></p>
 <p>解析：</p>
 <pre><code> 这是组合计数问题，最常见的catalan数，C(n)=(1/(n+1))*((2*n)!/(n!*n!)) 
@@ -778,17 +729,17 @@
  3个节点详细如图： 
 </code></pre><p><img src="/2020/01/12/笔试知识点/1581865572237.png" alt="1581865572237"></p>
 <hr>
-<ol>
+<ul>
 <li>已知一棵二叉树前序遍历和中序遍历分别为 <code>ABDEGCFH</code> 和 <code>DBGEACHF</code>，则该二叉树的后序遍历为多少？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581865717797.png" alt="1581865717797"></p>
 <p>解析：</p>
 <p><strong>前序遍历确定根节点，中序遍历确定左右子树</strong>。</p>
 <p><img src="/2020/01/12/笔试知识点/1581866226956.png" alt="1581866226956"></p>
 <hr>
-<ol>
+<ul>
 <li>已知数据表A中每个元素距其最终位置不远，为节省时间排序，应采用什么方法排序？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581866323542.png" alt="1581866323542"></p>
 <p>解析：</p>
 <ul>
@@ -804,9 +755,9 @@
 </ul>
 <p><img src="/2020/01/12/笔试知识点/1581866854874.png" alt="1581866854874"></p>
 <hr>
-<ol>
+<ul>
 <li>将N条长度均为M的有序链表进行合并，合并以后的链表也保持有序，时间复杂度为()?</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581867137493.png" alt="1581867137493"></p>
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581867157973.png" alt="1581867157973"></p>
@@ -815,14 +766,16 @@
 <p>解析：这个是卡特兰数的经典应用，但是这个问题不是一两句话能说得清的。</p>
 <p>可采取代入法，n=1或n=2代入，均可得到正确答案。</p>
 <hr>
-<ol>
+<ul>
 <li>T(n) = 25T(n/5)+n^2的时间复杂度？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581867385697.png" alt="1581867385697"></p>
 <p>解析：Master Theorem</p>
 <p><img src="/2020/01/12/笔试知识点/1581867450572.png" alt="1581867450572"></p>
 <hr>
-<p>11.连续自然数之和为1000的共有几组？（m，n都为自然数，单独1个数也算作“连续自然数”）</p>
+<ul>
+<li>连续自然数之和为1000的共有几组？（m，n都为自然数，单独1个数也算作“连续自然数”）</li>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581868980583.png" alt="1581868980583"></p>
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581869129932.png" alt="1581869129932"></p>
@@ -832,15 +785,15 @@
 <p><img src="/2020/01/12/笔试知识点/1581869344795.png" alt="1581869344795"></p>
 <p><img src="/2020/01/12/笔试知识点/1581869369324.png" alt="1581869369324"></p>
 <hr>
-<ol>
+<ul>
 <li>写出a*(b-c*d)+e-f/g*(h+i*j-k)的逆波兰表达式。</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581869439352.png" alt="1581869439352"></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E7%A4%BA%E6%B3%95" target="_blank" rel="noopener">逆波兰表达式</a></p>
 <hr>
-<ol>
+<ul>
 <li>下列关于线性表，二叉平衡树，哈希表存储数据的优劣描述错误的是？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581869526156.png" alt="1581869526156"></p>
 <p>解析：<strong>在平衡二叉树中插入结点要随时保证插入后整棵二叉树是平衡的，所以可能需要通过一次或多次树旋转来重新平衡这个树</strong>。</p>
 <hr>
@@ -851,14 +804,14 @@
 <hr>
 <p><img src="/2020/01/12/笔试知识点/1581869840257.png" alt="1581869840257"></p>
 <hr>
-<ol>
+<ul>
 <li>如果一个堆栈的入栈序列是A,B,C,D,E,则堆栈的不可能输出顺序是（）。</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581869901758.png" alt="1581869901758"></p>
 <hr>
-<ol>
+<ul>
 <li>若以{4,5,6,7,8}作为叶子结点的权值构造哈夫曼树，则其带权路径长度是（）。</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581870076226.png" alt="1581870076226"></p>
 <p>解析：</p>
 <p><img src="https://uploadfiles.nowcoder.com/images/20161031/6306378_1477892872536_FB5C81ED3A220004B71069645F112867" alt="img"></p>
@@ -867,13 +820,127 @@
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581870210402.png" alt="1581870210402"></p>
 <hr>
-<ol>
+<ul>
 <li>设某颗二叉树中有360个结点，则该二叉树的最小高度是？(包括根节点)</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581870300117.png" alt="1581870300117"></p>
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581870472998.png" alt="1581870472998"></p>
-
+<hr>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><hr>
+<ul>
+<li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
+<p>A. AR模型</p>
+<p>B. MA模型</p>
+<p>C. ARMA模型</p>
+<p>D. GARCH模型</p>
+</li>
+</ul>
+<p>解析：</p>
+<p>参考 <a href="https://blog.csdn.net/s1491695565/article/details/52093003" target="_blank" rel="noopener">https://blog.csdn.net/s1491695565/article/details/52093003</a></p>
+<p>时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。</p>
+<p><strong>1.  移动平均法 (MA)</strong></p>
+<p>1.1. 简单移动平均法</p>
+<p>设有一时间序列y1,y2,…, 则按数据点的顺序逐点推移求出N个数的平均数，即可得到一次移动平均数.</p>
+<p> 1.2 趋势移动平均法  </p>
+<p>当时间序列没有明显的趋势变动时，使用一次移动平均就能够准确地反映实际情况，直接用第t周期的一次移动平均数就可预测第t+1周期之值。</p>
+<p>时间序列出现线性变动趋势时，用一次移动平均数来预测就会出现滞后偏差。修正的方法是在一次移动平均的基础上再做二次移动平均，利用移动平均滞后偏差的规律找出曲线的发展方向和发展趋势，然后才建立直线趋势的预测模型。故称为趋势移动平均法。</p>
+<p><strong>2.  自回归模型(AR)</strong></p>
+<p>AR模型是一种线性预测，即已知N个数据，可由模型推出第N点前面或后面的数据（设推出P点）.</p>
+<p>本质类似于插值，其目的都是为了增加有效数据，只是AR模型是由N点递推，而插值是由两点（或少数几点）去推导多点，所以AR模型要比插值方法效果更好。</p>
+<p><strong>3. 自回归滑动平均模型(ARMA)</strong></p>
+<p>其建模思想可概括为：逐渐增加模型的阶数，拟合较高阶模型，直到再增加模型的阶数而剩余残差方差不再显著减小为止。</p>
+<p><strong>4. GARCH模型</strong></p>
+<p>回归模型。除去和普通回归模型相同的之处，GARCH对误差的方差进行了进一步的建模。特别适用于波动性的分析和预测。</p>
+<p><strong>4. 指数平滑法</strong></p>
+<p>移动平均法的预测值实质上是以前观测值的加权和，且对不同时期的数据给予相同的加权。这往往不符合实际情况。</p>
+<p>指数平滑法则对移动平均法进行了改进和发展，其应用较为广泛。</p>
+<p>基本思想都是：预测值是以前观测值的加权和，且对不同的数据给予不同的权，新数据给较大的权，旧数据给较小的权。</p>
+<p>根据平滑次数不同，指数平滑法分为：一次指数平滑法、二次指数平滑法和三次指数平滑法等。</p>
+<hr>
+<ul>
+<li><p>下面对集成学习模型中的弱学习者描述错误的是 (C)</p>
+<p>A. 他们经常不会过拟合</p>
+<p>B. 他们通常带有高偏差，所以其并不能解决复杂学习问题</p>
+<p>C. 他们通常会过拟合</p>
+</li>
+</ul>
+<p>弱学习器：略优于随机猜测的学习器。（西瓜书）</p>
+<hr>
+<ul>
+<li><p>xgboost对缺失值的处理方法：</p>
+<p>把缺失值分别放到左叶子节点和右叶子节点中，计算增益。哪个增益大就放到哪个叶子节点。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Hive四大表类型：<ul>
+<li>内部表</li>
+<li>外部表</li>
+<li>分区表</li>
+<li>桶表（或叫分桶表）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>能在O(1)时间内访问线性表的第i个元素的结构是 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361004130.png" alt="1582361004130"></p>
+</li>
+</ul>
+<p><img src="/2020/01/12/笔试知识点/1582360970415.png" alt="1582360970415"></p>
+<hr>
+<ul>
+<li><p>只要数据元素保持有序，则查找时就可以采用折半查找方法 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361114265.png" alt="1582361114265"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>一个长度为32的有序表，若采用二分查找一个不存在的元素，则比较次数最多是 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361203067.png" alt="1582361203067"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>分块查找的基本思想是首先在索引表中进行查找，以便确定给定的关键字可能存在的块号，然后再在相应的块内进行顺序查找。( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361360734.png" alt="1582361360734"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>下列说法中错误的是( )</p>
+<p>A. 插入排序某些情况下复杂度为O(n)</p>
+<p>B. 排序二叉树元素查找的复杂度可能为O(n)</p>
+<p>C. 对于有序列表的排序最快的是快速排序</p>
+<p>D. 在有序列表中通过二分查找的复杂度一定为O(logn)</p>
+</li>
+</ul>
+<p>答案：C</p>
+<p>解析：</p>
+<p><img src="/2020/01/12/笔试知识点/1582363721071.png" alt="1582363721071"></p>
+<p>C选项应该为插入排序？</p>
+<hr>
+<ul>
+<li><p>在长度为n的顺序线性表中顺序查找值为x的元素时，查找成功时的平均查找长度（假定查找每个元素的概率均相等）为（）</p>
+<p><img src="/2020/01/12/笔试知识点/1582363882820.png" alt="1582363882820"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>折半查找与二元查找树的时间性能在最坏的情况下是相同的 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582363973719.png" alt="1582363973719"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>使用KMP算法在文本串S中找m模式串P是一种常见的方法。假设S=P={xyxyyxxyx}，亦即将S对自己进行匹配，匹配过程中正确的next数组是( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582364106629.png" alt="1582364106629"></p>
+</li>
+</ul>
+<p>解析：参考 <a href="https://blog.csdn.net/qq_37969433/article/details/82947411" target="_blank" rel="noopener">https://blog.csdn.net/qq_37969433/article/details/82947411</a></p>
+<p><img src="/2020/01/12/笔试知识点/1582364410421.png" alt="1582364410421"></p>
+<hr>
       
     </div>
     
@@ -1072,7 +1139,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hbase"><span class="nav-text">Hbase</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HFile"><span class="nav-text">HFile</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL面试题"><span class="nav-text">SQL面试题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法工程师能力评估（牛客）"><span class="nav-text">算法工程师能力评估（牛客）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hbase"><span class="nav-text">Hbase</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HFile"><span class="nav-text">HFile</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL面试题"><span class="nav-text">SQL面试题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法工程师能力评估（牛客）"><span class="nav-text">算法工程师能力评估（牛客）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>

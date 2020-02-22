@@ -511,7 +511,120 @@
 </ul>
 <h2 id="11-Project-3-Face-Counting-Challenge"><a href="#11-Project-3-Face-Counting-Challenge" class="headerlink" title="11. Project 3 - Face Counting Challenge"></a>11. Project 3 - Face Counting Challenge</h2><p><a href="https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/vista-codefest-computer-vision-1/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
 <h2 id="12-Project-4-COCO-Object-Detection-Challenge"><a href="#12-Project-4-COCO-Object-Detection-Challenge" class="headerlink" title="12. Project 4 - COCO Object Detection Challenge"></a>12. Project 4 - COCO Object Detection Challenge</h2><p><a href="http://cocodataset.org/#download" target="_blank" rel="noopener">http://cocodataset.org/#download</a></p>
-<h2 id="13-Understanding-Image-Segmentation-amp-Attention-Models"><a href="#13-Understanding-Image-Segmentation-amp-Attention-Models" class="headerlink" title="13. Understanding Image Segmentation &amp; Attention Models"></a>13. Understanding Image Segmentation &amp; Attention Models</h2>]]></content>
+<h2 id="13-Understanding-Image-Segmentation-amp-Attention-Models"><a href="#13-Understanding-Image-Segmentation-amp-Attention-Models" class="headerlink" title="13. Understanding Image Segmentation &amp; Attention Models"></a>13. Understanding Image Segmentation &amp; Attention Models</h2><h3 id="13-1-Introduction-to-Image-Segmentation"><a href="#13-1-Introduction-to-Image-Segmentation" class="headerlink" title="13.1 Introduction to Image Segmentation"></a>13.1 Introduction to Image Segmentation</h3><h4 id="13-1-1-A-Step-by-Step-Introduction-to-Image-Segmentation-Techniques"><a href="#13-1-1-A-Step-by-Step-Introduction-to-Image-Segmentation-Techniques" class="headerlink" title="13.1.1 A Step-by-Step Introduction to Image Segmentation Techniques"></a>13.1.1 A Step-by-Step Introduction to Image Segmentation Techniques</h4><p><a href="https://www.analyticsvidhya.com/blog/2019/04/introduction-image-segmentation-techniques-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/04/introduction-image-segmentation-techniques-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
+<h5 id="13-1-1-1-What-is-Image-Segmentation"><a href="#13-1-1-1-What-is-Image-Segmentation" class="headerlink" title="13.1.1.1 What is Image Segmentation?"></a>13.1.1.1 What is Image Segmentation?</h5><p>An image is a collection or set of different pixels. We group together the pixels that have similar attributes using image segmentation. Take a moment to go through the below visual (it’ll give you a practical idea of image segmentation):</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/03/instance_segmentation_example.jpg" alt="object detection and instance segmentation"></p>
+<p>Object detection builds a bounding box corresponding to each class in the image. But it tells us nothing about the shape of the object. We only get the set of bounding box coordinates. We want to get more information – this is too vague for our purposes.</p>
+<p><span style="color:red">Image segmentation creates a pixel-wise mask for each object in the image.</span> This technique gives us a far more granular understanding of the object(s) in the image.</p>
+<h5 id="13-1-1-2-Why-do-we-need-Image-Segmentation"><a href="#13-1-1-2-Why-do-we-need-Image-Segmentation" class="headerlink" title="13.1.1.2 Why do we need Image Segmentation?"></a>13.1.1.2 Why do we need Image Segmentation?</h5><p>Cancer has long been a deadly illness. Even in today’s age of technological advancements, cancer can be fatal if we don’t identify it at an early stage. Detecting cancerous cell(s) as quickly as possible can potentially save millions of lives.</p>
+<p>The shape of the cancerous cells plays a vital role in determining the severity of the cancer. You might have put the pieces together – object detection will not be very useful here. We will only generate bounding boxes which will not help us in identifying the shape of the cells.</p>
+<p>Image Segmentation techniques make a MASSIVE impact here. They help us approach this problem in a more granular manner and get more meaningful results. A win-win for everyone in the healthcare industry.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/03/cancer-cell-segmentation.png" alt="cancer cell segmentation"></p>
+<p>There are many other applications where Image segmentation is transforming industries:</p>
+<ul>
+<li>Traffic Control Systems</li>
+<li>Self Driving Cars</li>
+<li>Locating objects in satellite images</li>
+</ul>
+<h5 id="13-1-1-3-The-Different-Types-of-Image-Segmentation"><a href="#13-1-1-3-The-Different-Types-of-Image-Segmentation" class="headerlink" title="13.1.1.3 The Different Types of Image Segmentation"></a>13.1.1.3 The Different Types of Image Segmentation</h5><p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/03/Screenshot-from-2019-03-28-12-08-09.png" alt="semantic and instance segmentation"></p>
+<p>If there are 5 people in an image, semantic segmentation will focus on classifying all the people as a single instance. Instance segmentation, on the other hand. will identify each of these people individually.</p>
+<h5 id="13-1-1-4-Region-based-Segmentation-Threshold"><a href="#13-1-1-4-Region-based-Segmentation-Threshold" class="headerlink" title="13.1.1.4 Region-based Segmentation (Threshold)"></a>13.1.1.4 Region-based Segmentation (Threshold)</h5><p>One simple way to segment different objects could be to use their pixel values. An important point to note – the pixel values will be different for the objects and the image’s background if there’s a sharp contrast between them.</p>
+<p>In this case, we can set a threshold value. The pixel values falling below or above that threshold can be classified accordingly (as an object or the background). This technique is known as <strong>Threshold Segmentation</strong>.</p>
+<blockquote>
+<p>If we want to divide the image into two regions (object and background), we define a single threshold value. This is known as the <strong>global threshold</strong>.</p>
+<p>If we have multiple objects along with the background, we must define multiple thresholds. These thresholds are collectively known as the <strong>local threshold</strong>.</p>
+</blockquote>
+<p><span style="background:yellow">代码见<a href="https://www.analyticsvidhya.com/blog/2019/04/introduction-image-segmentation-techniques-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a>.</span></p>
+<p>You can set different threshold values and check how the segments are made. Some of the advantages of this method are:</p>
+<ul>
+<li>Calculations are simpler</li>
+<li>Fast operation speed</li>
+<li>When the object and background have high contrast, this method performs really well</li>
+</ul>
+<p>But there are some limitations to this approach. When we don’t have significant grayscale difference, or there is an overlap of the grayscale pixel values, it becomes very difficult to get accurate segments.</p>
+<h5 id="13-1-1-5-Edge-Detection-Segmentation"><a href="#13-1-1-5-Edge-Detection-Segmentation" class="headerlink" title="13.1.1.5 Edge Detection Segmentation"></a>13.1.1.5 Edge Detection Segmentation</h5><p>What divides two objects in an image? There is always an edge between two adjacent regions with different grayscale values (pixel values). The edges can be considered as the discontinuous local features of an image.</p>
+<p>We can make use of this discontinuity to detect edges and hence define a boundary of the object. This helps us in detecting the shapes of multiple objects present in a given image. Now the question is how can we detect these edges? This is where we can make use of <span style="color:red">filters and convolutions</span>. Refer to <a href="https://www.analyticsvidhya.com/blog/2017/06/architecture-of-convolutional-neural-networks-simplified-demystified/?utm_source=blog&amp;utm_medium=image-segmentation-article" target="_blank" rel="noopener">this article</a> if you need to learn about these concepts.</p>
+<p>Researchers have found that choosing some specific values for these weight matrices (filters) helps us to detect horizontal or vertical edges (or even the combination of horizontal and vertical edges).</p>
+<p>One such weight matrix is the sobel operator. It is typically used to detect edges. </p>
+<p><img src="/2020/02/18/Computer-Vision/1582182873707.png" alt="1582182873707"></p>
+<p>There is one more type of filter that can detect both horizontal and vertical edges at the same time. This is called the laplace operator:</p>
+<p><img src="/2020/02/18/Computer-Vision/1582182970901.png" alt="1582182970901"></p>
+<p>例：</p>
+<p><img src="/2020/02/18/Computer-Vision/1582183125398.png" alt="1582183125398"></p>
+<p><span style="background:yellow">代码见<a href="https://www.analyticsvidhya.com/blog/2019/04/introduction-image-segmentation-techniques-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a>.</span></p>
+<h5 id="13-1-1-6-Image-Segmentation-based-on-Clustering"><a href="#13-1-1-6-Image-Segmentation-based-on-Clustering" class="headerlink" title="13.1.1.6 Image Segmentation based on Clustering"></a>13.1.1.6 Image Segmentation based on Clustering</h5><p>Clustering is the task of dividing the population (data points) into a number of groups, such that data points in the same groups are more similar to other data points in that same group than those in other groups. These groups are known as clusters.</p>
+<p>One of the most commonly used clustering algorithms is <a href="https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/" target="_blank" rel="noopener">k-means</a>. Here, the k represents the number of clusters (not to be confused with k-nearest neighbor). Let’s understand how k-means works:</p>
+<ol>
+<li>First, randomly select k initial clusters</li>
+<li>Randomly assign each data point to any one of the k clusters</li>
+<li>Calculate the centers of these clusters</li>
+<li>Calculate the distance of all the points from the center of each cluster</li>
+<li>Depending on this distance, the points are reassigned to the nearest cluster</li>
+<li>Calculate the center of the newly formed clusters</li>
+<li>Finally, repeat steps (4), (5) and (6) until either the center of the clusters does not change or we reach the set number of iterations</li>
+</ol>
+<p><strong>The key advantage of using k-means algorithm is that it is simple and easy to understand.</strong> We are assigning the points to the clusters which are closest to them.</p>
+<p><span style="background:yellow">代码见<a href="https://www.analyticsvidhya.com/blog/2019/04/introduction-image-segmentation-techniques-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a>.</span></p>
+<p>选择5 cluster的效果:</p>
+<p><img src="/2020/02/18/Computer-Vision/1582183359913.png" alt="1582183359913"></p>
+<p>k-means works really well when we have a small dataset. It can segment the objects in the image and give impressive results. But the algorithm hits a roadblock when applied on a large dataset (more number of images).</p>
+<p>It looks at all the samples at every iteration, so the time taken is too high. Hence, it’s also too expensive to implement. And since k-means is a distance-based algorithm, it is only applicable to convex datasets and is not suitable for clustering <a href="https://en.wikipedia.org/wiki/Convex_set" target="_blank" rel="noopener">non-convex clusters</a>.</p>
+<p>Finally, let’s look at a simple, flexible and general approach for image segmentation.</p>
+<h5 id="13-1-1-7-Mask-R-CNN"><a href="#13-1-1-7-Mask-R-CNN" class="headerlink" title="13.1.1.7 Mask R-CNN"></a>13.1.1.7 Mask R-CNN</h5><p>Mask R-CNN is an extension of the popular <a href="https://www.analyticsvidhya.com/blog/2018/10/a-step-by-step-introduction-to-the-basic-object-detection-algorithms-part-1/?utm_source=blog&amp;utm_medium=image-segmentation-article" target="_blank" rel="noopener">Faster R-CNN</a> object detection architecture. Mask R-CNN adds a branch to the already existing Faster R-CNN outputs. The Faster R-CNN method generates two things for each object in the image:</p>
+<ul>
+<li>Its class</li>
+<li>The bounding box coordinates</li>
+</ul>
+<p>Mask R-CNN adds a third branch to this which outputs the object mask as well. Take a look at the below image to get an intuition of how Mask R-CNN works on the inside:</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2019/03/Mask-R-CNN.png" alt="Mask R-CNN"></p>
+<ol>
+<li>We take an image as input and pass it to the ConvNet, which returns the feature map for that image</li>
+<li>Region proposal network (RPN) is applied on these feature maps. This returns the object proposals along with their objectness score</li>
+<li>A RoI pooling layer is applied on these proposals to bring down all the proposals to the same size</li>
+<li>Finally, the proposals are passed to a fully connected layer to classify and output the bounding boxes for objects. It also returns the mask for each proposal</li>
+</ol>
+<blockquote>
+<p><strong>Mask R-CNN is the current state-of-the-art for image segmentation and runs at 5 fps.</strong></p>
+</blockquote>
+<h5 id="13-1-1-8-Summary"><a href="#13-1-1-8-Summary" class="headerlink" title="13.1.1.8 Summary"></a>13.1.1.8 Summary</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Algorithm</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Advantages</strong></th>
+<th><strong>Limitations</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Region-Based Segmentation</td>
+<td>Separates the objects into different regions based on some threshold value(s).</td>
+<td>a. Simple calculationsb. Fast operation speedc. When the object and background have high contrast, this method performs really well</td>
+<td>When there is no significant grayscale difference or an overlap of the grayscale pixel values, it becomes very difficult to get accurate segments.</td>
+</tr>
+<tr>
+<td>Edge Detection Segmentation</td>
+<td>Makes use of discontinuous local features of an image to detect edges and hence define a boundary of the object.</td>
+<td>It is good for images having better contrast between objects.</td>
+<td>Not suitable when there are too many edges in the image and if there is less contrast between objects.</td>
+</tr>
+<tr>
+<td>Segmentation based on Clustering</td>
+<td>Divides the pixels of the image into homogeneous clusters.</td>
+<td>Works really well on small datasets and generates excellent clusters.</td>
+<td>a. Computation time is too large and expensive.b. k-means is a distance-based algorithm. It is not suitable for clustering non-convex clusters.</td>
+</tr>
+<tr>
+<td>Mask R-CNN</td>
+<td>Gives three outputs for each object in the image: its class, bounding box coordinates, and object mask</td>
+<td>a. Simple, flexible and general approachb. It is also the current state-of-the-art for image segmentation</td>
+<td>High training time</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="13-1-2-Implementing-Mask-R-CNN-for-Image-Segmentation"><a href="#13-1-2-Implementing-Mask-R-CNN-for-Image-Segmentation" class="headerlink" title="13.1.2 Implementing Mask R-CNN for Image Segmentation"></a>13.1.2 Implementing Mask R-CNN for Image Segmentation</h4><p><a href="https://www.analyticsvidhya.com/blog/2019/07/computer-vision-implementing-mask-r-cnn-image-segmentation/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/07/computer-vision-implementing-mask-r-cnn-image-segmentation/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>]]></content>
       <categories>
         <category>Computer Vision</category>
       </categories>
@@ -847,13 +960,13 @@
 <p><img src="/2020/01/21/二叉搜索树中第k小的元素/1579620662544.png" alt="1579620662544"></p>
 <p>此题与<a href="https://qypx.github.io/2020/01/21/二叉树的中序遍历/">二叉树的中序遍历（难度：中等）</a>类似，只需稍加变化。</p>
 <h4 id="方法一：递归"><a href="#方法一：递归" class="headerlink" title="方法一：递归"></a>方法一：递归</h4><p>通过构造 BST 的中序遍历序列，则第 <code>k-1</code> 个元素就是第 <code>k</code> 小的元素。</p>
-<p><img src="https://pic.leetcode-cn.com/7dc3fe454519e27105c5aaf57d20b26137bd77c56bb0289830bf18116627de12-file_1579413216156" alt="在这里插入图片描述"></p>
+<p><img src="/2020/01/21/二叉搜索树中第k小的元素/7dc3fe454519e27105c5aaf57d20b26137bd77c56bb0289830bf18116627de12-file_1579413216156.jpg" alt="7dc3fe454519e27105c5aaf57d20b26137bd77c56bb0289830bf18116627de12-file_1579413216156"></p>
 <h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; arr = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        inorder(root,arr);</span><br><span class="line">        <span class="keyword">return</span> arr.get(k-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List arr)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(root.left!=<span class="keyword">null</span>)</span><br><span class="line">                inorder(root.left, arr);</span><br><span class="line">            arr.add(root.val);</span><br><span class="line">            <span class="keyword">if</span>(root.right!=<span class="keyword">null</span>)</span><br><span class="line">                inorder(root.right, arr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/01/21/二叉搜索树中第k小的元素/1579620513520.png" alt="1579620513520"></p>
 <h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(N)，遍历了整个树。</p>
 <p>空间复杂度：O(N)，用了一个数组存储中序序列。</p>
 <h4 id="方法二：迭代"><a href="#方法二：迭代" class="headerlink" title="方法二：迭代"></a>方法二：迭代</h4><p>在栈的帮助下，可以将方法一的递归转换为迭代，这样可以加快速度，因为这样可以不用遍历整个树，可以在找到答案后停止。</p>
-<p><img src="https://pic.leetcode-cn.com/25159a5137867644b75f203ee1917645d2cd454d8f4871e371d7edfa67bef083-file_1579413216176" alt="img"></p>
+<p><img src="/2020/01/21/二叉搜索树中第k小的元素/25159a5137867644b75f203ee1917645d2cd454d8f4871e371d7edfa67bef083-file_1579413216176.jpg" alt="25159a5137867644b75f203ee1917645d2cd454d8f4871e371d7edfa67bef083-file_1579413216176"></p>
 <h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, root: TreeNode, k: int)</span> -&gt; int:</span></span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">while</span> root:</span><br><span class="line">                stack.append(root)</span><br><span class="line">                root = root.left</span><br><span class="line">            root = stack.pop()</span><br><span class="line">            k -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> k == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> root.val</span><br><span class="line">            root = root.right</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/01/21/二叉搜索树中第k小的元素/1579621550313.png" alt="1579621550313"></p>
 <h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(H+k)，其中 H指的是树的高度，由于我们开始遍历之前，要先向下达到叶，当树是一个平衡树时：复杂度为O(logN+k)。当树是一个不平衡树时：复杂度为 O(N+k)，此时所有的节点都在左子树。</p>
@@ -1562,63 +1675,7 @@
   <entry>
     <title>笔试知识点</title>
     <url>/2020/01/12/%E7%AC%94%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
-<ul>
-<li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
-<p>A. AR模型</p>
-<p>B. MA模型</p>
-<p>C. ARMA模型</p>
-<p>D. GARCH模型</p>
-</li>
-</ul>
-<p>解析：</p>
-<p>参考 <a href="https://blog.csdn.net/s1491695565/article/details/52093003" target="_blank" rel="noopener">https://blog.csdn.net/s1491695565/article/details/52093003</a></p>
-<p>时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。</p>
-<p><strong>1.  移动平均法 (MA)</strong></p>
-<p>1.1. 简单移动平均法</p>
-<p>设有一时间序列y1,y2,…, 则按数据点的顺序逐点推移求出N个数的平均数，即可得到一次移动平均数.</p>
-<p> 1.2 趋势移动平均法  </p>
-<p>当时间序列没有明显的趋势变动时，使用一次移动平均就能够准确地反映实际情况，直接用第t周期的一次移动平均数就可预测第t+1周期之值。</p>
-<p>时间序列出现线性变动趋势时，用一次移动平均数来预测就会出现滞后偏差。修正的方法是在一次移动平均的基础上再做二次移动平均，利用移动平均滞后偏差的规律找出曲线的发展方向和发展趋势，然后才建立直线趋势的预测模型。故称为趋势移动平均法。</p>
-<p><strong>2.  自回归模型(AR)</strong></p>
-<p>AR模型是一种线性预测，即已知N个数据，可由模型推出第N点前面或后面的数据（设推出P点）.</p>
-<p>本质类似于插值，其目的都是为了增加有效数据，只是AR模型是由N点递推，而插值是由两点（或少数几点）去推导多点，所以AR模型要比插值方法效果更好。</p>
-<p><strong>3. 自回归滑动平均模型(ARMA)</strong></p>
-<p>其建模思想可概括为：逐渐增加模型的阶数，拟合较高阶模型，直到再增加模型的阶数而剩余残差方差不再显著减小为止。</p>
-<p><strong>4. GARCH模型</strong></p>
-<p>回归模型。除去和普通回归模型相同的之处，GARCH对误差的方差进行了进一步的建模。特别适用于波动性的分析和预测。</p>
-<p><strong>4. 指数平滑法</strong></p>
-<p>移动平均法的预测值实质上是以前观测值的加权和，且对不同时期的数据给予相同的加权。这往往不符合实际情况。</p>
-<p>指数平滑法则对移动平均法进行了改进和发展，其应用较为广泛。</p>
-<p>基本思想都是：预测值是以前观测值的加权和，且对不同的数据给予不同的权，新数据给较大的权，旧数据给较小的权。</p>
-<p>根据平滑次数不同，指数平滑法分为：一次指数平滑法、二次指数平滑法和三次指数平滑法等。</p>
-<hr>
-<ul>
-<li><p>下面对集成学习模型中的弱学习者描述错误的是 (C)</p>
-<p>A. 他们经常不会过拟合</p>
-<p>B. 他们通常带有高偏差，所以其并不能解决复杂学习问题</p>
-<p>C. 他们通常会过拟合</p>
-</li>
-</ul>
-<p>弱学习器：略优于随机猜测的学习器。（西瓜书）</p>
-<hr>
-<ul>
-<li><p>xgboost对缺失值的处理方法：</p>
-<p>把缺失值分别放到左叶子节点和右叶子节点中，计算增益。哪个增益大就放到哪个叶子节点。</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>Hive四大表类型：<ul>
-<li>内部表</li>
-<li>外部表</li>
-<li>分区表</li>
-<li>桶表（或叫分桶表）</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h4><p>HBase是一个分布式的、面向列的开源数据库。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h4><p>HBase是一个分布式的、面向列的开源数据库。</p>
 <p>题目来源于：<a href="https://www.cnblogs.com/cxchanpin/p/7381890.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxchanpin/p/7381890.html</a></p>
 <ul>
 <li><p>HBase来源于哪篇博文？ C</p>
@@ -1903,9 +1960,9 @@
 <p><img src="/2020/01/12/笔试知识点/1581864916612.png" alt="1581864916612"></p>
 <p>B树相关知识见<a href="https://qypx.github.io/2020/02/16/B树介绍/">这里</a></p>
 <hr>
-<ol>
+<ul>
 <li>具有3个结点的二叉树有几种形态？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581865489812.png" alt="1581865489812"></p>
 <p>解析：</p>
 <pre><code> 这是组合计数问题，最常见的catalan数，C(n)=(1/(n+1))*((2*n)!/(n!*n!)) 
@@ -1913,17 +1970,17 @@
  3个节点详细如图： 
 </code></pre><p><img src="/2020/01/12/笔试知识点/1581865572237.png" alt="1581865572237"></p>
 <hr>
-<ol>
+<ul>
 <li>已知一棵二叉树前序遍历和中序遍历分别为 <code>ABDEGCFH</code> 和 <code>DBGEACHF</code>，则该二叉树的后序遍历为多少？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581865717797.png" alt="1581865717797"></p>
 <p>解析：</p>
 <p><strong>前序遍历确定根节点，中序遍历确定左右子树</strong>。</p>
 <p><img src="/2020/01/12/笔试知识点/1581866226956.png" alt="1581866226956"></p>
 <hr>
-<ol>
+<ul>
 <li>已知数据表A中每个元素距其最终位置不远，为节省时间排序，应采用什么方法排序？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581866323542.png" alt="1581866323542"></p>
 <p>解析：</p>
 <ul>
@@ -1939,9 +1996,9 @@
 </ul>
 <p><img src="/2020/01/12/笔试知识点/1581866854874.png" alt="1581866854874"></p>
 <hr>
-<ol>
+<ul>
 <li>将N条长度均为M的有序链表进行合并，合并以后的链表也保持有序，时间复杂度为()?</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581867137493.png" alt="1581867137493"></p>
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581867157973.png" alt="1581867157973"></p>
@@ -1950,14 +2007,16 @@
 <p>解析：这个是卡特兰数的经典应用，但是这个问题不是一两句话能说得清的。</p>
 <p>可采取代入法，n=1或n=2代入，均可得到正确答案。</p>
 <hr>
-<ol>
+<ul>
 <li>T(n) = 25T(n/5)+n^2的时间复杂度？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581867385697.png" alt="1581867385697"></p>
 <p>解析：Master Theorem</p>
 <p><img src="/2020/01/12/笔试知识点/1581867450572.png" alt="1581867450572"></p>
 <hr>
-<p>11.连续自然数之和为1000的共有几组？（m，n都为自然数，单独1个数也算作“连续自然数”）</p>
+<ul>
+<li>连续自然数之和为1000的共有几组？（m，n都为自然数，单独1个数也算作“连续自然数”）</li>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581868980583.png" alt="1581868980583"></p>
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581869129932.png" alt="1581869129932"></p>
@@ -1967,15 +2026,15 @@
 <p><img src="/2020/01/12/笔试知识点/1581869344795.png" alt="1581869344795"></p>
 <p><img src="/2020/01/12/笔试知识点/1581869369324.png" alt="1581869369324"></p>
 <hr>
-<ol>
+<ul>
 <li>写出a*(b-c*d)+e-f/g*(h+i*j-k)的逆波兰表达式。</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581869439352.png" alt="1581869439352"></p>
 <p><a href="https://zh.wikipedia.org/wiki/%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E7%A4%BA%E6%B3%95" target="_blank" rel="noopener">逆波兰表达式</a></p>
 <hr>
-<ol>
+<ul>
 <li>下列关于线性表，二叉平衡树，哈希表存储数据的优劣描述错误的是？</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581869526156.png" alt="1581869526156"></p>
 <p>解析：<strong>在平衡二叉树中插入结点要随时保证插入后整棵二叉树是平衡的，所以可能需要通过一次或多次树旋转来重新平衡这个树</strong>。</p>
 <hr>
@@ -1986,14 +2045,14 @@
 <hr>
 <p><img src="/2020/01/12/笔试知识点/1581869840257.png" alt="1581869840257"></p>
 <hr>
-<ol>
+<ul>
 <li>如果一个堆栈的入栈序列是A,B,C,D,E,则堆栈的不可能输出顺序是（）。</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581869901758.png" alt="1581869901758"></p>
 <hr>
-<ol>
+<ul>
 <li>若以{4,5,6,7,8}作为叶子结点的权值构造哈夫曼树，则其带权路径长度是（）。</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581870076226.png" alt="1581870076226"></p>
 <p>解析：</p>
 <p><img src="https://uploadfiles.nowcoder.com/images/20161031/6306378_1477892872536_FB5C81ED3A220004B71069645F112867" alt="img"></p>
@@ -2002,13 +2061,127 @@
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581870210402.png" alt="1581870210402"></p>
 <hr>
-<ol>
+<ul>
 <li>设某颗二叉树中有360个结点，则该二叉树的最小高度是？(包括根节点)</li>
-</ol>
+</ul>
 <p><img src="/2020/01/12/笔试知识点/1581870300117.png" alt="1581870300117"></p>
 <p>解析：</p>
 <p><img src="/2020/01/12/笔试知识点/1581870472998.png" alt="1581870472998"></p>
-]]></content>
+<hr>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><hr>
+<ul>
+<li><p>时间序列模型中，哪一个模型可以较好的拟合波动性的分析和预测 (D)</p>
+<p>A. AR模型</p>
+<p>B. MA模型</p>
+<p>C. ARMA模型</p>
+<p>D. GARCH模型</p>
+</li>
+</ul>
+<p>解析：</p>
+<p>参考 <a href="https://blog.csdn.net/s1491695565/article/details/52093003" target="_blank" rel="noopener">https://blog.csdn.net/s1491695565/article/details/52093003</a></p>
+<p>时间序列中常用预测技术  一个时间序列是一组对于某一变量连续时间点或连续时段上的观测值。</p>
+<p><strong>1.  移动平均法 (MA)</strong></p>
+<p>1.1. 简单移动平均法</p>
+<p>设有一时间序列y1,y2,…, 则按数据点的顺序逐点推移求出N个数的平均数，即可得到一次移动平均数.</p>
+<p> 1.2 趋势移动平均法  </p>
+<p>当时间序列没有明显的趋势变动时，使用一次移动平均就能够准确地反映实际情况，直接用第t周期的一次移动平均数就可预测第t+1周期之值。</p>
+<p>时间序列出现线性变动趋势时，用一次移动平均数来预测就会出现滞后偏差。修正的方法是在一次移动平均的基础上再做二次移动平均，利用移动平均滞后偏差的规律找出曲线的发展方向和发展趋势，然后才建立直线趋势的预测模型。故称为趋势移动平均法。</p>
+<p><strong>2.  自回归模型(AR)</strong></p>
+<p>AR模型是一种线性预测，即已知N个数据，可由模型推出第N点前面或后面的数据（设推出P点）.</p>
+<p>本质类似于插值，其目的都是为了增加有效数据，只是AR模型是由N点递推，而插值是由两点（或少数几点）去推导多点，所以AR模型要比插值方法效果更好。</p>
+<p><strong>3. 自回归滑动平均模型(ARMA)</strong></p>
+<p>其建模思想可概括为：逐渐增加模型的阶数，拟合较高阶模型，直到再增加模型的阶数而剩余残差方差不再显著减小为止。</p>
+<p><strong>4. GARCH模型</strong></p>
+<p>回归模型。除去和普通回归模型相同的之处，GARCH对误差的方差进行了进一步的建模。特别适用于波动性的分析和预测。</p>
+<p><strong>4. 指数平滑法</strong></p>
+<p>移动平均法的预测值实质上是以前观测值的加权和，且对不同时期的数据给予相同的加权。这往往不符合实际情况。</p>
+<p>指数平滑法则对移动平均法进行了改进和发展，其应用较为广泛。</p>
+<p>基本思想都是：预测值是以前观测值的加权和，且对不同的数据给予不同的权，新数据给较大的权，旧数据给较小的权。</p>
+<p>根据平滑次数不同，指数平滑法分为：一次指数平滑法、二次指数平滑法和三次指数平滑法等。</p>
+<hr>
+<ul>
+<li><p>下面对集成学习模型中的弱学习者描述错误的是 (C)</p>
+<p>A. 他们经常不会过拟合</p>
+<p>B. 他们通常带有高偏差，所以其并不能解决复杂学习问题</p>
+<p>C. 他们通常会过拟合</p>
+</li>
+</ul>
+<p>弱学习器：略优于随机猜测的学习器。（西瓜书）</p>
+<hr>
+<ul>
+<li><p>xgboost对缺失值的处理方法：</p>
+<p>把缺失值分别放到左叶子节点和右叶子节点中，计算增益。哪个增益大就放到哪个叶子节点。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>Hive四大表类型：<ul>
+<li>内部表</li>
+<li>外部表</li>
+<li>分区表</li>
+<li>桶表（或叫分桶表）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>能在O(1)时间内访问线性表的第i个元素的结构是 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361004130.png" alt="1582361004130"></p>
+</li>
+</ul>
+<p><img src="/2020/01/12/笔试知识点/1582360970415.png" alt="1582360970415"></p>
+<hr>
+<ul>
+<li><p>只要数据元素保持有序，则查找时就可以采用折半查找方法 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361114265.png" alt="1582361114265"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>一个长度为32的有序表，若采用二分查找一个不存在的元素，则比较次数最多是 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361203067.png" alt="1582361203067"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>分块查找的基本思想是首先在索引表中进行查找，以便确定给定的关键字可能存在的块号，然后再在相应的块内进行顺序查找。( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582361360734.png" alt="1582361360734"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>下列说法中错误的是( )</p>
+<p>A. 插入排序某些情况下复杂度为O(n)</p>
+<p>B. 排序二叉树元素查找的复杂度可能为O(n)</p>
+<p>C. 对于有序列表的排序最快的是快速排序</p>
+<p>D. 在有序列表中通过二分查找的复杂度一定为O(logn)</p>
+</li>
+</ul>
+<p>答案：C</p>
+<p>解析：</p>
+<p><img src="/2020/01/12/笔试知识点/1582363721071.png" alt="1582363721071"></p>
+<p>C选项应该为插入排序？</p>
+<hr>
+<ul>
+<li><p>在长度为n的顺序线性表中顺序查找值为x的元素时，查找成功时的平均查找长度（假定查找每个元素的概率均相等）为（）</p>
+<p><img src="/2020/01/12/笔试知识点/1582363882820.png" alt="1582363882820"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>折半查找与二元查找树的时间性能在最坏的情况下是相同的 ( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582363973719.png" alt="1582363973719"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>使用KMP算法在文本串S中找m模式串P是一种常见的方法。假设S=P={xyxyyxxyx}，亦即将S对自己进行匹配，匹配过程中正确的next数组是( )</p>
+<p><img src="/2020/01/12/笔试知识点/1582364106629.png" alt="1582364106629"></p>
+</li>
+</ul>
+<p>解析：参考 <a href="https://blog.csdn.net/qq_37969433/article/details/82947411" target="_blank" rel="noopener">https://blog.csdn.net/qq_37969433/article/details/82947411</a></p>
+<p><img src="/2020/01/12/笔试知识点/1582364410421.png" alt="1582364410421"></p>
+<hr>]]></content>
       <categories>
         <category>笔试</category>
       </categories>
