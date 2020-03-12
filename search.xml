@@ -21,7 +21,7 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>牛客-剑指offer</title>
     <url>/2020/03/05/%E7%89%9B%E5%AE%A2-%E5%89%91%E6%8C%87offer/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h4><p><a href="https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&amp;tqId=11154&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&amp;tqId=11154&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking</a></p>
 <p><u>题目描述</u>：</p>
@@ -49,6 +49,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*    public class ListNode &#123;</span></span><br><span class="line"><span class="comment">*        int val;</span></span><br><span class="line"><span class="comment">*        ListNode next = null;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*        ListNode(int val) &#123;</span></span><br><span class="line"><span class="comment">*            this.val = val;</span></span><br><span class="line"><span class="comment">*        &#125;</span></span><br><span class="line"><span class="comment">*    &#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">printListFromTailToHead</span><span class="params">(ListNode listNode)</span> </span>&#123;</span><br><span class="line">        ListNode cur = listNode;</span><br><span class="line">        ArrayList&lt;Integer&gt; arr = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            arr.add(<span class="number">0</span>,cur.val);</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><u>复杂度</u>：</p>
 <p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<a id="more"></a>
 <hr>
 <h4 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h4><p><a href="https://www.nowcoder.com/practice/8a19cbe657394eeaac2f6ea9b0f6fcf6?tpId=13&amp;tqId=11157&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="noopener">https://www.nowcoder.com/practice/8a19cbe657394eeaac2f6ea9b0f6fcf6?tpId=13&amp;tqId=11157&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking</a></p>
 <p><u>题目描述</u>：</p>
@@ -219,6 +220,12 @@
 <p>每一次打印一个节点的时候，如果该节点有子节点，则把该节点的子节点放到一个队列的尾部。接下来到对队列的头部取出最早进入队列的节点放到ArrayList 中，重复前面的操作，直至队列为空。  </p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">public class TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val = 0;</span></span><br><span class="line"><span class="comment">    TreeNode left = null;</span></span><br><span class="line"><span class="comment">    TreeNode right = null;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    public TreeNode(int val) &#123;</span></span><br><span class="line"><span class="comment">        this.val = val;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Integer&gt; <span class="title">PrintFromTopToBottom</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            TreeNode cur = queue.poll();</span><br><span class="line">            res.add(cur.val);</span><br><span class="line">            <span class="keyword">if</span>(cur.left!=<span class="keyword">null</span>)</span><br><span class="line">                queue.offer(cur.left);</span><br><span class="line">            <span class="keyword">if</span>(cur.right!=<span class="keyword">null</span>)</span><br><span class="line">                queue.offer(cur.right);</span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title>pip命令</title>
@@ -242,7 +249,7 @@
   <entry>
     <title>Computer Vision</title>
     <url>/2020/02/18/Computer-Vision/</url>
-    <content><![CDATA[<p>来源于<a href="https://www.analyticsvidhya.com/blog/2020/01/computer-vision-learning-path-2020/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+AnalyticsVidhya+(Analytics+Vidhya" target="_blank" rel="noopener">Here’s your Learning Path to Master Computer Vision in 2020</a>)</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>来源于<a href="https://www.analyticsvidhya.com/blog/2020/01/computer-vision-learning-path-2020/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+AnalyticsVidhya+(Analytics+Vidhya" target="_blank" rel="noopener">Here’s your Learning Path to Master Computer Vision in 2020</a>)</p>
 <h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h2><h3 id="Face-Recognition"><a href="#Face-Recognition" class="headerlink" title="Face Recognition"></a>Face Recognition</h3><p><img src="/2020/02/18/Computer-Vision/1581936373011.png" alt="1581936373011"></p>
 <h3 id="Types-of-computer-vision"><a href="#Types-of-computer-vision" class="headerlink" title="Types of computer vision"></a>Types of computer vision</h3><p><img src="/2020/02/18/Computer-Vision/1581936472914.png" alt="1581936472914"></p>
 <h2 id="2-Image-Preprocessing"><a href="#2-Image-Preprocessing" class="headerlink" title="2. Image Preprocessing"></a>2. Image Preprocessing</h2><h3 id="2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images"><a href="#2-1-Three-Beginner-Friendly-Techniques-to-Extract-Features-from-Images" class="headerlink" title="2.1 Three Beginner-Friendly Techniques to Extract Features from Images"></a>2.1 Three Beginner-Friendly Techniques to Extract Features from Images</h3><p><a href="https://www.analyticsvidhya.com/blog/2019/08/3-techniques-extract-features-from-image-data-machine-learning-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2019/08/3-techniques-extract-features-from-image-data-machine-learning-python/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
@@ -926,7 +933,7 @@
   <entry>
     <title>hexo相关问题</title>
     <url>/2020/02/17/hexo%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h4 id="hexo中无法显示数学公式："><a href="#hexo中无法显示数学公式：" class="headerlink" title="hexo中无法显示数学公式："></a>hexo中无法显示数学公式：</h4><p>参考 <a href="[https://runninggump.github.io/2018/12/05/%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E5%9C%A8hexo%E4%B8%AD%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/]">成功解决在hexo中无法显示数学公式的问题</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="hexo中无法显示数学公式："><a href="#hexo中无法显示数学公式：" class="headerlink" title="hexo中无法显示数学公式："></a>hexo中无法显示数学公式：</h4><p>参考 <a href="[https://runninggump.github.io/2018/12/05/%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E5%9C%A8hexo%E4%B8%AD%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/]">成功解决在hexo中无法显示数学公式的问题</a></p>
 <h4 id="取消对”文章目录”的自动编号"><a href="#取消对”文章目录”的自动编号" class="headerlink" title="取消对”文章目录”的自动编号"></a>取消对”文章目录”的自动编号</h4><p><a href="https://segmentfault.com/q/1010000008494901" target="_blank" rel="noopener">hexo的NexT主题，怎么取消“文章目录”对标题的自动编号？</a></p>
 <h4 id="Markdown页面内跳转"><a href="#Markdown页面内跳转" class="headerlink" title="Markdown页面内跳转"></a>Markdown页面内跳转</h4><p><a href="https://www.cnblogs.com/triple-y/p/10780644.html" target="_blank" rel="noopener">markdown页面内跳转</a></p>
 <h4 id="设置文章封面"><a href="#设置文章封面" class="headerlink" title="设置文章封面"></a>设置文章封面</h4><p>参考 <a href="https://www.zhihu.com/tardis/sogou/art/60424755" target="_blank" rel="noopener">https://www.zhihu.com/tardis/sogou/art/60424755</a></p>
@@ -960,7 +967,7 @@
   <entry>
     <title>B树介绍</title>
     <url>/2020/02/16/B%E6%A0%91%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>参考：<a href="https://blog.csdn.net/A_zhangq/article/details/99662693" target="_blank" rel="noopener">https://blog.csdn.net/A_zhangq/article/details/99662693</a></p>
 <p><a href="https://blog.csdn.net/qq_35571554/article/details/82759668" target="_blank" rel="noopener">漫画叙述B+树和B-树，很值得看!</a></p>
 </blockquote>
@@ -1966,7 +1973,7 @@
   <entry>
     <title>笔试知识点</title>
     <url>/2020/01/12/%E7%AC%94%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<h4 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h4><p>HBase是一个分布式的、面向列的开源数据库。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="Hbase"><a href="#Hbase" class="headerlink" title="Hbase"></a>Hbase</h4><p>HBase是一个分布式的、面向列的开源数据库。</p>
 <p>题目来源于：<a href="https://www.cnblogs.com/cxchanpin/p/7381890.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxchanpin/p/7381890.html</a></p>
 <ul>
 <li><p>HBase来源于哪篇博文？ C</p>
@@ -4590,6 +4597,35 @@ y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg" alt="1578054512678"></p>
 <p>Iterate:</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg" alt="1578054588653"></p>
+<p><strong>遍历字典： keys()  、values() 、items()</strong>　　</p>
+<p><a href="https://www.cnblogs.com/FlyingLiao/p/11192330.html" target="_blank" rel="noopener">https://www.cnblogs.com/FlyingLiao/p/11192330.html</a></p>
+<ol>
+<li>xxx.keys()    :    返回字典的所有的key     返回一个序列，序列中保存有字典的所有的键</li>
+</ol>
+<p>例：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001011558.png" alt="1584001011558"></p>
+<ol>
+<li>xxx.values()     :   返回字典所有的值</li>
+</ol>
+<p>例：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001175719.png" alt="1584001175719"></p>
+<ol>
+<li>xxx.items()    :  返回字典中所有的key和values   返回一个序列，序列中包含有双值子序列</li>
+</ol>
+<p>例：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001276582.png" alt="1584001276582"></p>
+<p>Python中的defaultdict:</p>
+<p><a href="mk:@MSITStore:C:\Python32\Doc\Python323.chm::/library/#collections.defaultdict" target="_blank" rel="noopener"><code>defaultdict</code></a><br>dict subclass that calls a factory function to supply missing values。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">dict = collections.defaultdict(int)</span><br></pre></td></tr></table></figure>
+<p><em>defaultdict(int)</em>创建一个类似<em>dictionary</em>对象，里面任何的<em>values</em>都是<em>int</em>的实例，而且就算是一个不存在的<em>key</em>, <em>d[key]</em> 也有一个默认值，这个默认值是<em>int()</em>的默认值0.</p>
+<p>按照字典的键或者值排序：</p>
+<p><a href="https://blog.csdn.net/leokingszx/article/details/81154681" target="_blank" rel="noopener">https://blog.csdn.net/leokingszx/article/details/81154681</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y = &#123;<span class="number">1</span>:<span class="number">3</span>, <span class="number">2</span>:<span class="number">2</span>, <span class="number">3</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line">by_value = sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">1</span>])</span><br><span class="line">print(by_key)   <span class="comment">#结果为[(1, 3), (2, 2), (3, 1)]，即按照键名排列</span></span><br><span class="line">print(by_value) <span class="comment">#结果为[(3, 1), (2, 2), (1, 3)]，即按照键值排列</span></span><br></pre></td></tr></table></figure>
+<p>当然，在这样处理后，得到的结果将变成元组。这样也可以理解，毕竟对于字典而言，本身是不提供排序的需求的。如果想按照里面的元素进行排列，那么将不得不对其类型进行转化。</p>
+<p>另：Python中多条件排序：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">y = &#123;<span class="string">"ab"</span>:<span class="number">1</span>, <span class="string">"b"</span>:<span class="number">2</span>, <span class="string">"a"</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:(len(item[<span class="number">0</span>]),item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">print(by_key)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> by_key:</span><br><span class="line">	print(value[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p>[(‘a’, 1), (‘b’, 2), (‘ab’, 1)]</p>
+<p>a<br>b<br>ab</p>
 <ul>
 <li>Array</li>
 </ul>
@@ -4660,8 +4696,8 @@ y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>

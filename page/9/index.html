@@ -1837,8 +1837,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-03T23:32:27+11:00">
-                2020-01-03
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-12T19:42:22+11:00">
+                2020-03-12
               </time>
             
           </span>
@@ -1928,6 +1928,35 @@
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg" alt="1578054512678"></p>
 <p>Iterate:</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg" alt="1578054588653"></p>
+<p><strong>遍历字典： keys()  、values() 、items()</strong>　　</p>
+<p><a href="https://www.cnblogs.com/FlyingLiao/p/11192330.html" target="_blank" rel="noopener">https://www.cnblogs.com/FlyingLiao/p/11192330.html</a></p>
+<ol>
+<li>xxx.keys()    :    返回字典的所有的key     返回一个序列，序列中保存有字典的所有的键</li>
+</ol>
+<p>例：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001011558.png" alt="1584001011558"></p>
+<ol>
+<li>xxx.values()     :   返回字典所有的值</li>
+</ol>
+<p>例：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001175719.png" alt="1584001175719"></p>
+<ol>
+<li>xxx.items()    :  返回字典中所有的key和values   返回一个序列，序列中包含有双值子序列</li>
+</ol>
+<p>例：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001276582.png" alt="1584001276582"></p>
+<p>Python中的defaultdict:</p>
+<p><a href="mk:@MSITStore:C:\Python32\Doc\Python323.chm::/library/#collections.defaultdict" target="_blank" rel="noopener"><code>defaultdict</code></a><br>dict subclass that calls a factory function to supply missing values。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">dict = collections.defaultdict(int)</span><br></pre></td></tr></table></figure>
+<p><em>defaultdict(int)</em>创建一个类似<em>dictionary</em>对象，里面任何的<em>values</em>都是<em>int</em>的实例，而且就算是一个不存在的<em>key</em>, <em>d[key]</em> 也有一个默认值，这个默认值是<em>int()</em>的默认值0.</p>
+<p>按照字典的键或者值排序：</p>
+<p><a href="https://blog.csdn.net/leokingszx/article/details/81154681" target="_blank" rel="noopener">https://blog.csdn.net/leokingszx/article/details/81154681</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y = &#123;<span class="number">1</span>:<span class="number">3</span>, <span class="number">2</span>:<span class="number">2</span>, <span class="number">3</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line">by_value = sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">1</span>])</span><br><span class="line">print(by_key)   <span class="comment">#结果为[(1, 3), (2, 2), (3, 1)]，即按照键名排列</span></span><br><span class="line">print(by_value) <span class="comment">#结果为[(3, 1), (2, 2), (1, 3)]，即按照键值排列</span></span><br></pre></td></tr></table></figure>
+<p>当然，在这样处理后，得到的结果将变成元组。这样也可以理解，毕竟对于字典而言，本身是不提供排序的需求的。如果想按照里面的元素进行排列，那么将不得不对其类型进行转化。</p>
+<p>另：Python中多条件排序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">y = &#123;<span class="string">"ab"</span>:<span class="number">1</span>, <span class="string">"b"</span>:<span class="number">2</span>, <span class="string">"a"</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:(len(item[<span class="number">0</span>]),item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">print(by_key)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> by_key:</span><br><span class="line">	print(value[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p>[(‘a’, 1), (‘b’, 2), (‘ab’, 1)]</p>
+<p>a<br>b<br>ab</p>
 <ul>
 <li>Array</li>
 </ul>
