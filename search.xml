@@ -2868,8 +2868,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>哈希表</tag>
         <tag>数组</tag>
+        <tag>哈希表</tag>
       </tags>
   </entry>
   <entry>
@@ -4185,8 +4185,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>数组</tag>
         <tag>栈</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -4296,8 +4296,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>数组</tag>
         <tag>栈</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -4526,7 +4526,7 @@
 <ul>
 <li>法一</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dat = (&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">'string'</span>: [<span class="string">'a'</span>, <span class="string">'b'</span>,<span class="string">'c'</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dat = pd.DataFrame(&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">'string'</span>: [<span class="string">'a'</span>, <span class="string">'b'</span>,<span class="string">'c'</span>]&#125;)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>法二（若已有现成的list）</li>
 </ul>
