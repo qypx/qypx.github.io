@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="一、csv文件  读取   法一 123import pandas as pdeval_raw = pd.read_csv(&apos;eval-tweets.csv&apos;, sep = &apos;\t&apos;, header = None)  #若文件中无列表头 -&amp;gt; header = Noneeval_raw.columns = [&apos;ID&apos;, &apos;tweet&apos;]  法二：用names指定需要的列表头 12import">
+<meta name="description" content="一、csv文件 读取  123import pandas as pdtrain = pd.read_csv(&quot;Google_Stock_Price_Train.csv&quot;)train.head()  若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）  1234import pandas as pddata = pd.read_csv(&quot;dataset.csv&quot;,">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读取与保存csv和txt文件">
 <meta property="og:url" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="一、csv文件  读取   法一 123import pandas as pdeval_raw = pd.read_csv(&apos;eval-tweets.csv&apos;, sep = &apos;\t&apos;, header = None)  #若文件中无列表头 -&amp;gt; header = Noneeval_raw.columns = [&apos;ID&apos;, &apos;tweet&apos;]  法二：用names指定需要的列表头 12import">
+<meta property="og:description" content="一、csv文件 读取  123import pandas as pdtrain = pd.read_csv(&quot;Google_Stock_Price_Train.csv&quot;)train.head()  若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）  1234import pandas as pddata = pd.read_csv(&quot;dataset.csv&quot;,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-13T04:56:36.270Z">
+<meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/1594120531625.png">
+<meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/1594120744906.png">
+<meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/1594120675413.png">
+<meta property="og:updated_time" content="2020-07-07T11:21:35.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读取与保存csv和txt文件">
-<meta name="twitter:description" content="一、csv文件  读取   法一 123import pandas as pdeval_raw = pd.read_csv(&apos;eval-tweets.csv&apos;, sep = &apos;\t&apos;, header = None)  #若文件中无列表头 -&amp;gt; header = Noneeval_raw.columns = [&apos;ID&apos;, &apos;tweet&apos;]  法二：用names指定需要的列表头 12import">
+<meta name="twitter:description" content="一、csv文件 读取  123import pandas as pdtrain = pd.read_csv(&quot;Google_Stock_Price_Train.csv&quot;)train.head()  若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）  1234import pandas as pddata = pd.read_csv(&quot;dataset.csv&quot;,">
+<meta name="twitter:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/1594120531625.png">
 
 
 
@@ -333,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-13T15:56:36+11:00">
-                2019-10-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-07T21:21:35+10:00">
+                2020-07-07
               </time>
             
           </span>
@@ -389,22 +393,21 @@
       
 
       
-        <p>一、csv文件</p>
-<ol>
+        <h4 id="一、csv文件"><a href="#一、csv文件" class="headerlink" title="一、csv文件"></a>一、csv文件</h4><ul>
 <li>读取</li>
-</ol>
-<ul>
-<li><p>法一</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">eval_raw = pd.read_csv(<span class="string">'eval-tweets.csv'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>)  <span class="comment">#若文件中无列表头 -&gt; header = None</span></span><br><span class="line">eval_raw.columns = [<span class="string">'ID'</span>, <span class="string">'tweet'</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>法二：用names指定需要的列表头</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">eval_raw = pd.read_csv(<span class="string">'eval-tweets.csv'</span>, sep = <span class="string">'\t'</span>, names = [<span class="string">'ID'</span>,<span class="string">'tweet'</span>])</span><br></pre></td></tr></table></figure>
-</li>
 </ul>
-<ol>
-<li>保存<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">save = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">save.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", sep = '\t', index = False)</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_csv(<span class="string">"Google_Stock_Price_Train.csv"</span>)</span><br><span class="line">train.head()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120531625.png" alt="1594120531625"></p>
+<p>若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）</p>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120744906.png" alt="1594120744906"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">"dataset.csv"</span>, header=<span class="literal">None</span>)</span><br><span class="line">data.head()</span><br><span class="line"><span class="comment">#data.columns = ['date','open','high','low','close','volume']</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120675413.png" alt="1594120675413"></p>
+<p>或者用names指定需要的列表头</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">'dataset.csv'</span>, names =  [<span class="string">'date'</span>,<span class="string">'open'</span>,<span class="string">'high'</span>,<span class="string">'low'</span>,<span class="string">'close'</span>,<span class="string">'volume'</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>保存</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">save = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">save.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", sep = '\t', index = False)</span></span><br></pre></td></tr></table></figure>
 <p>二、txt文件</p>
 <ol>
 <li>读取(注：法一和法二都有可能会造成行数缺少或数据分割不正确的现象，建议采用法三)</li>
@@ -517,8 +520,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -603,6 +615,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、csv文件"><span class="nav-text">一、csv文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
