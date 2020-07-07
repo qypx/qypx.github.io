@@ -21,6 +21,7 @@
 <li><strong>Time Dependence of a time series -</strong> The basic assumption of a linear regression model that the observations are independent doesn’t hold in this case.</li>
 <li><strong>Seasonality in a time series -</strong> Along with an increasing or decreasing trend, most time series have some form of seasonal trends, i.e. variations specific to a particular time frame. </li>
 </ul>
+<a id="more"></a>
 <h2 id="Introduction-to-Time-Series"><a href="#Introduction-to-Time-Series" class="headerlink" title="Introduction to Time Series"></a>Introduction to Time Series</h2><p><em>Time Series is generally data which is collected over time and is dependent on it.</em></p>
 <p><img src="/2020/04/02/Time-Series/1585797313470.png" alt="1585797313470"></p>
 <p>Here we see that the count of cars is independent of time, hence it is not a time series. While the CO2 level increases with respect to time, hence it is a time series.</p>
@@ -95,6 +96,7 @@
 <p><img src="/2020/04/01/数据挖掘/1585702665564.png" alt="1585702665564"></p>
 <p><img src="/2020/04/01/数据挖掘/1585702697687.png" alt="1585702697687"></p>
 <h3 id="数据挖掘的对象"><a href="#数据挖掘的对象" class="headerlink" title="数据挖掘的对象"></a>数据挖掘的对象</h3><p><img src="/2020/04/01/数据挖掘/1585702748399.png" alt="1585702748399"></p>
+<a id="more"></a>
 <h3 id="数据挖掘的方法"><a href="#数据挖掘的方法" class="headerlink" title="数据挖掘的方法"></a>数据挖掘的方法</h3><p><img src="/2020/04/01/数据挖掘/1585702952640.png" alt="1585702952640"></p>
 <p><img src="/2020/04/01/数据挖掘/1585702973741.png" alt="1585702973741"></p>
 <p><img src="/2020/04/01/数据挖掘/1585702996306.png" alt="1585702996306"></p>
@@ -170,9 +172,9 @@
 <p>[1] “NULL”  “NULL”  “NULL”  “NULL”</p>
 <p>如上我们知道所读取结果共有4个部分，因此，可以分别查看tables1中4个维度中所储存的<br>信息，以下仅输出其中的第2、3维度的数据。</p>
 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">tables1[[<span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/04/01/数据挖掘/Users\zhu_r\Desktop\test\blog\source\_posts\数据挖掘\1585712408039.png" alt="1585712408039"></p>
+<p><img src="/2020/04/01/数据挖掘/1585712408039.png" alt="1585712408039"></p>
 <figure class="highlight r"><table><tr><td class="code"><pre><span class="line">tables1[[<span class="number">3</span>]]</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/04/01/数据挖掘/Users\zhu_r\Desktop\test\blog\source\_posts\数据挖掘\1585712457342.png" alt="1585712457342"></p>
+<p><img src="/2020/04/01/数据挖掘/1585712457342.png" alt="1585712457342"></p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p><img src="/2020/04/01/数据挖掘/1585712504471.png" alt="1585712504471"></p>
 ]]></content>
       <categories>
