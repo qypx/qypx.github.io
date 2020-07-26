@@ -284,6 +284,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/sql语句中的drop-truncate-delete/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/12/sql语句中的drop-truncate-delete/" itemprop="url">sql语句中的drop, truncate, delete</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T18:34:28+11:00">
+                2020-01-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T18:57:00+11:00">
+                2020-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考：</p>
+<p><a href="https://blog.csdn.net/lovezhaohaimig/article/details/80184994" target="_blank" rel="noopener">https://blog.csdn.net/lovezhaohaimig/article/details/80184994</a></p>
+<p><a href="https://www.cnblogs.com/xianyao/p/11613021.html" target="_blank" rel="noopener">https://www.cnblogs.com/xianyao/p/11613021.html</a></p>
+<ol>
+<li><code>drop table 表名称</code></li>
+</ol>
+<p>作用：删除内容和定义，释放空间。简单来说就是把整个表去掉.以后要新增数据是不可能的,除非新增一个表。</p>
+<p>把表的结构也删除了 下次要使用的时候要重新创建表的结构再插入数据。</p>
+<p><strong>即删除表内容及表结构（或表定义）</strong>。</p>
+<p><strong>不能回滚</strong></p>
+<ol>
+<li><code>truncate table 表名称</code></li>
+</ol>
+<p>作用：删除内容、释放空间但不删除定义。与drop不同的是,他只是清空表数据而已,不删除表结构。</p>
+<p>truncate table test 后，向test表添加数据，id标识列连续了(体现了truncate删除是释放空间）</p>
+<p>插入的字段的id重新从1开始递增 1、2、3…..<br><strong>即删除表内容，不删除表结构</strong>。</p>
+<p><strong>in MySQL, resets auto_increment PKs</strong></p>
+<p><strong>不能回滚</strong></p>
+<ol>
+<li><code>delete from 表名称 where 列名称 = 值</code></li>
+</ol>
+<p>作用：删除整表中的行，表结构不会删除。</p>
+<p>删除内容不删除定义，不释放空间。</p>
+<p>用delete删除数据，然后添加。可以看到添加之后id标识不连续。（说明delete删除不释放空间）</p>
+<p>如果重新插入数据时对应的id在上次基础之上递增 4、5、6….</p>
+<p>delete语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存,以便进行回滚操作。</p>
+<p><strong>即不带where的delete: 删除表内容，不删除表结构</strong></p>
+<p><strong>可回滚</strong></p>
+<ul>
+<li><p>执行速度，一般来说: drop&gt; truncate &gt; delete。</p>
+</li>
+<li><p>delete语句是数据库操作语言(dml)，这个操作会放到 rollback segment中，事务提交之后才生效；如果有相应的 trigger，执行的时候将被触发。</p>
+</li>
+<li><p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/两数之和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2037,163 +2226,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/03/RecSys-Course-Overview/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/03/RecSys-Course-Overview/" itemprop="url">RecSys Course Overview</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-03T18:39:13+11:00">
-                2020-01-03
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-15T01:02:16+11:00">
-                2020-01-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
-                    <span itemprop="name">Recommender System</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>课程：</p>
-<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=1726410" target="_blank" rel="noopener"><img src="https://i.udemycdn.com/course/240x135/1726410_7b86.jpg" alt="Building Recommender Systems with Machine Learning and AI"></a><a href="https://www.udemy.com/course/building-recommender-systems-with-machine-learning-and-ai/learn/" target="_blank" rel="noopener"><strong>Building Recommender Systems with Machine Learning and AI</strong> </a></p>
-<p><a href="https://sundog-education.com/RecSys/" target="_blank" rel="noopener">Course Materials</a></p>
-<p><img src="/2020/01/03/RecSys-Course-Overview/1578048175249.jpg" alt="1578048175249"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2246,7 +2278,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">96</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
