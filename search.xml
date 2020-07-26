@@ -1541,6 +1541,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p><code>&lt;!-- more --&gt;</code>: 要显示</p>
 <h4 id="修改主题页面布局为圆角"><a href="#修改主题页面布局为圆角" class="headerlink" title="修改主题页面布局为圆角"></a>修改主题页面布局为圆角</h4><p>参考<a href="https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2" target="_blank" rel="noopener">https://wugenqiang.github.io/articles/hexo-do-optimization.html中3.12.2</a></p>
 <p>对scheme为Mist时无用？</p>
+<h4 id="NeXT第三方服务集成"><a href="#NeXT第三方服务集成" class="headerlink" title="NeXT第三方服务集成"></a>NeXT第三方服务集成</h4><p>(评论系统，数据统计与分析，内容分享服务，搜索服务等)</p>
+<p><a href="http://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools" target="_blank" rel="noopener">NeXT第三方服务集成</a></p>
 <h4 id="添加背景音乐"><a href="#添加背景音乐" class="headerlink" title="添加背景音乐"></a>添加背景音乐</h4><p><a href="https://www.cnblogs.com/Guhongying/p/10461970.html" target="_blank" rel="noopener">Hexo 的next主题下添加网易云音乐作BGM</a></p>
 <p>网易云音乐无法生成外链：</p>
 <p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
@@ -5290,8 +5292,8 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>机器学习</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
