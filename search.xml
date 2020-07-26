@@ -1543,6 +1543,12 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>对scheme为Mist时无用？</p>
 <h4 id="NeXT第三方服务集成"><a href="#NeXT第三方服务集成" class="headerlink" title="NeXT第三方服务集成"></a>NeXT第三方服务集成</h4><p>(评论系统，数据统计与分析，内容分享服务，搜索服务等)</p>
 <p><a href="http://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools" target="_blank" rel="noopener">NeXT第三方服务集成</a></p>
+<p>文章及网站访问量：</p>
+<p><img src="/2020/02/17/hexo相关问题/1595773900727.png" alt="1595773900727"></p>
+<p>注：由于原链接已失效，还需修改</p>
+<p>themes\next\layout_third_party\analytics\busuanzi-counter.swig 中</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">src = <span class="string">"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/02/17/hexo相关问题/1595774099538.png" alt="1595774099538"></p>
 <h4 id="添加背景音乐"><a href="#添加背景音乐" class="headerlink" title="添加背景音乐"></a>添加背景音乐</h4><p><a href="https://www.cnblogs.com/Guhongying/p/10461970.html" target="_blank" rel="noopener">Hexo 的next主题下添加网易云音乐作BGM</a></p>
 <p>网易云音乐无法生成外链：</p>
 <p><a href="https://www.cnblogs.com/cstdio1/p/11617357.html" target="_blank" rel="noopener">https://www.cnblogs.com/cstdio1/p/11617357.html</a></p>
