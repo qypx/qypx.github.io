@@ -137,7 +137,7 @@
 <meta property="og:image" content="http://qypx.github.io/2020/07/25/决策树/1595669193083.png">
 <meta property="og:image" content="http://qypx.github.io/2020/07/25/决策树/1595669223727.png">
 <meta property="og:image" content="http://qypx.github.io/2020/07/25/决策树/1595669343135.png">
-<meta property="og:updated_time" content="2020-07-26T13:08:57.028Z">
+<meta property="og:updated_time" content="2020-07-26T13:23:35.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树">
 <meta name="twitter:image" content="http://qypx.github.io/2020/07/25/决策树/1595649034648.png">
@@ -383,7 +383,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-26T23:08:57+10:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-26T23:23:35+10:00">
                 2020-07-26
               </time>
             
@@ -689,7 +689,7 @@
 <p><img src="/2020/07/25/决策树/1595667888425.png" alt="1595667888425"></p>
 <p>又因为有 </p>
 <script type="math/tex; mode=display">
-\sum_{i=1}^{t} \Omega(f_i)=\Omega(f_t)+\sum_{i=1}^{t-1}(f_i)</script><p>并且最后一项在前t-1棵树已知下为常数，所以目标函数可写为：</p>
+\sum_{i=1}^{t} \Omega(f_i)=\Omega(f_t)+\sum_{i=1}^{t-1}\Omega(f_i)</script><p>并且$\sum_{i=1}^{t-1}\Omega(f_i)$在前t-1棵树已知下为常数，所以目标函数可写为：</p>
 <script type="math/tex; mode=display">
 Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</script><h5 id="1-1-2-基于决策树的目标函数"><a href="#1-1-2-基于决策树的目标函数" class="headerlink" title="1.1.2 基于决策树的目标函数"></a>1.1.2 基于决策树的目标函数</h5><p>我们知道 Xgboost 的基模型不仅支持决策树，还支持线性模型，这里我们主要介绍基于决策树的目标函数。</p>
 <p><img src="/2020/07/25/决策树/1595667950419.png" alt="1595667950419"></p>
@@ -1559,6 +1559,26 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

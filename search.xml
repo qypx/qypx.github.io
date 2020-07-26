@@ -253,7 +253,7 @@
 <p><img src="/2020/07/25/决策树/1595667888425.png" alt="1595667888425"></p>
 <p>又因为有 </p>
 <script type="math/tex; mode=display">
-\sum_{i=1}^{t} \Omega(f_i)=\Omega(f_t)+\sum_{i=1}^{t-1}(f_i)</script><p>并且最后一项在前t-1棵树已知下为常数，所以目标函数可写为：</p>
+\sum_{i=1}^{t} \Omega(f_i)=\Omega(f_t)+\sum_{i=1}^{t-1}\Omega(f_i)</script><p>并且$\sum_{i=1}^{t-1}\Omega(f_i)$在前t-1棵树已知下为常数，所以目标函数可写为：</p>
 <script type="math/tex; mode=display">
 Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</script><h5 id="1-1-2-基于决策树的目标函数"><a href="#1-1-2-基于决策树的目标函数" class="headerlink" title="1.1.2 基于决策树的目标函数"></a>1.1.2 基于决策树的目标函数</h5><p>我们知道 Xgboost 的基模型不仅支持决策树，还支持线性模型，这里我们主要介绍基于决策树的目标函数。</p>
 <p><img src="/2020/07/25/决策树/1595667950419.png" alt="1595667950419"></p>
@@ -1532,7 +1532,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
   <entry>
     <title>hexo相关问题</title>
     <url>/2020/02/17/hexo%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="hexo中无法显示数学公式："><a href="#hexo中无法显示数学公式：" class="headerlink" title="hexo中无法显示数学公式："></a>hexo中无法显示数学公式：</h4><p>参考 <a href="[https://runninggump.github.io/2018/12/05/%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E5%9C%A8hexo%E4%B8%AD%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/]">成功解决在hexo中无法显示数学公式的问题</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="hexo中无法显示数学公式："><a href="#hexo中无法显示数学公式：" class="headerlink" title="hexo中无法显示数学公式："></a>hexo中无法显示数学公式：</h4><p>参考 <a href="https://runninggump.github.io/2018/12/05/成功解决在hexo中无法显示数学公式的问题/" target="_blank" rel="noopener">成功解决在hexo中无法显示数学公式的问题</a></p>
+<p><a href="https://blog.csdn.net/yexiaohhjk/article/details/82526604" target="_blank" rel="noopener">hexo next主题解决无法显示数学公式</a></p>
 <h4 id="取消对”文章目录”的自动编号"><a href="#取消对”文章目录”的自动编号" class="headerlink" title="取消对”文章目录”的自动编号"></a>取消对”文章目录”的自动编号</h4><p><a href="https://segmentfault.com/q/1010000008494901" target="_blank" rel="noopener">hexo的NexT主题，怎么取消“文章目录”对标题的自动编号？</a></p>
 <h4 id="Markdown页面内跳转"><a href="#Markdown页面内跳转" class="headerlink" title="Markdown页面内跳转"></a>Markdown页面内跳转</h4><p><a href="https://www.cnblogs.com/triple-y/p/10780644.html" target="_blank" rel="noopener">markdown页面内跳转</a></p>
 <h4 id="设置文章封面"><a href="#设置文章封面" class="headerlink" title="设置文章封面"></a>设置文章封面</h4><p>参考 <a href="https://www.zhihu.com/tardis/sogou/art/60424755" target="_blank" rel="noopener">https://www.zhihu.com/tardis/sogou/art/60424755</a></p>
@@ -5129,7 +5130,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <h4 id="8-LaTex数学表达式"><a href="#8-LaTex数学表达式" class="headerlink" title="8. LaTex数学表达式"></a>8. LaTex数学表达式</h4><p>在Markdown文档中，可以使用<a href="https://www.latex-project.org/" target="_blank" rel="noopener">LaTex</a>符号创建数学表达式。例如：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">$$</span><br><span class="line">y = \frac&#123;a&#125;&#123;b+c&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
-y = \frac{a}{b+c}</script><h4 id="9-Typora中，字体颜色"><a href="#9-Typora中，字体颜色" class="headerlink" title="9. Typora中，字体颜色"></a>9. Typora中，字体颜色</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style=&apos;color:red&apos;&gt;This is red&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matter中加上：mathjax: true)</p>
+<h4 id="9-Typora中，字体颜色"><a href="#9-Typora中，字体颜色" class="headerlink" title="9. Typora中，字体颜色"></a>9. Typora中，字体颜色</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style=&apos;color:red&apos;&gt;This is red&lt;/span&gt;</span><br></pre></td></tr></table></figure>
 <p><span style="color:red">This is red</span></p>
 <p>以上，本文介绍了一些基础的Markdown语法，想了解更多的Markdown知识可查询相关资料。</p>
 ]]></content>
