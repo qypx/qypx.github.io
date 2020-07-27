@@ -6,8 +6,14 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://createmomo.github.io/2018/01/23/Super-Machine-Learning-Revision-Notes/" target="_blank" rel="noopener">Super Machine Learning Revision Notes</a></p>
 <p>总结了机器学习的一系列基本概念，算法等。</p>
 <p>分为激活函数，梯度下降，参数，正则化，模型，实用窍门等几大板块。</p>
+<hr>
 <p><a href="https://yuanxiaosc.github.io/2019/08/16/机器学习中的常识性问题/" target="_blank" rel="noopener">机器学习中的常识性问题</a></p>
 <p><img src="/2020/07/28/机器学习相关资料/1595861323230.png" alt="1595861323230"></p>
+<a id="more"></a>
+<hr>
+<p>ds-cheatsheets</p>
+<p><a href="https://github.com/FavioVazquez/ds-cheatsheets" target="_blank" rel="noopener">https://github.com/FavioVazquez/ds-cheatsheets</a></p>
+<p>各种cheatsheet，关于python, R, big data, machine learning, deep learning, SQL, data visulization等等。</p>
 ]]></content>
       <categories>
         <category>机器学习</category>
