@@ -1421,7 +1421,6 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bNb2fEVKeEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-
 </li>
 </ul>
 <h3 id="7-2-Introduction-to-Transfer-Learning"><a href="#7-2-Introduction-to-Transfer-Learning" class="headerlink" title="7.2 Introduction to Transfer Learning:"></a>7.2 <strong>Introduction to Transfer Learning:</strong></h3><h4 id="7-2-1-Master-Transfer-Learning"><a href="#7-2-1-Master-Transfer-Learning" class="headerlink" title="7.2.1 Master Transfer Learning"></a>7.2.1 Master Transfer Learning</h4><p><a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
@@ -1463,7 +1462,6 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 </blockquote>
 <p><span style="background:yellow">代码示例</span>： se the pre-trained models to identify handwritten digits. 见<a href="https://www.analyticsvidhya.com/blog/2017/06/transfer-learning-the-art-of-fine-tuning-a-pre-trained-model/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">这里</a></p>
 <h4 id="7-2-2-ConvNets-in-Practice-by-Stanford"><a href="#7-2-2-ConvNets-in-Practice-by-Stanford" class="headerlink" title="7.2.2 ConvNets in Practice by Stanford:"></a>7.2.2 ConvNets in Practice by Stanford:</h4><iframe width="560" height="315" src="https://www.youtube.com/embed/dUTzeP_HTZg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 
 <h2 id="8-Project-2-Idendify-the-Digits"><a href="#8-Project-2-Idendify-the-Digits" class="headerlink" title="8. Project 2 - Idendify the Digits"></a>8. Project 2 - Idendify the Digits</h2><p><a href="https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">https://datahack.analyticsvidhya.com/contest/practice-problem-identify-the-digits/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020</a></p>
@@ -1645,8 +1643,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 </li>
 <li>Finally, we do the IoU and Non-Max Suppression to avoid selecting overlapping boxes</li>
 </ul>
-<h3 id="10-4-Object-detection-by-Stanford"><a href="#10-4-Object-detection-by-Stanford" class="headerlink" title="10.4 Object detection by Stanford:"></a>10.4 Object detection by Stanford:</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/nDPWywWRIRo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<h3 id="10-4-Object-detection-by-Stanford"><a href="#10-4-Object-detection-by-Stanford" class="headerlink" title="10.4 Object detection by Stanford:"></a>10.4 Object detection by Stanford:</h3><p><iframe width="560" height="315" src="https://www.youtube.com/embed/nDPWywWRIRo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <h3 id="10-5-其他Resources"><a href="#10-5-其他Resources" class="headerlink" title="10.5 其他Resources"></a>10.5 其他Resources</h3><ul>
 <li><a href="https://arxiv.org/pdf/1506.02640.pdf" target="_blank" rel="noopener">YOLO Paper</a></li>
 <li><a href="https://pjreddie.com/darknet/yolo/" target="_blank" rel="noopener">YOLO Pre-Trained Models</a></li>
@@ -1820,9 +1817,10 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <li><a href="https://www.analyticsvidhya.com/blog/2016/10/an-introduction-to-implementing-neural-networks-using-tensorflow/?utm_source=blog&amp;utm_medium=computer-vision-learning-path-2020" target="_blank" rel="noopener">Introduction to TensorFlow</a></li>
 </ul>]]></content>
       <categories>
-        <category>Computer Vision</category>
+        <category>深度学习</category>
       </categories>
       <tags>
+        <tag>深度学习</tag>
         <tag>Computer Vision</tag>
       </tags>
   </entry>
