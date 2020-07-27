@@ -790,10 +790,12 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>If the time series is not stationary, firstly we have to make it stationary. For doing so, we need to remove the trend and seasonality from the data. To learn more about stationarity you can refer this article: <a href="https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/" target="_blank" rel="noopener">https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/</a></p>
 ]]></content>
       <categories>
-        <category>机器学习，时间序列</category>
+        <category>机器学习</category>
+        <category>时间序列</category>
       </categories>
       <tags>
         <tag>时间序列</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
