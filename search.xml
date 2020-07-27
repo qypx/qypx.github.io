@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>深度学习相关资料</title>
+    <url>/2020/07/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>吴恩达深度学习coursera课程笔记：</p>
+<p><a href="https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng" target="_blank" rel="noopener">https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/152362317" target="_blank" rel="noopener">22张深度学习精炼图笔记总结</a></p>
+<p>内容包含深度学习基础、卷积网络和循环网络等。</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>CNN</tag>
+        <tag>深度学习</tag>
+        <tag>RNN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>决策树</title>
     <url>/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>（注：更多关于Boosting系列算法可见OneNote）</p>
@@ -1968,10 +1985,10 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p><a href="https://www.analyticsvidhya.com/blog/2017/12/introduction-to-recurrent-neural-networks/" target="_blank" rel="noopener">Fundamentals of Deep Learning – Introduction to Recurrent Neural Networks</a></p>
 ]]></content>
       <categories>
-        <category>机器学习</category>
+        <category>深度学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
+        <tag>深度学习</tag>
         <tag>RNN</tag>
       </tags>
   </entry>
@@ -1984,11 +2001,11 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p><img src="/2020/02/15/CNN相关资料/example.jpg" alt="example"></p>
 ]]></content>
       <categories>
-        <category>机器学习</category>
+        <category>深度学习</category>
       </categories>
       <tags>
         <tag>CNN</tag>
-        <tag>机器学习</tag>
+        <tag>深度学习</tag>
       </tags>
   </entry>
   <entry>
@@ -4871,8 +4888,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>链表</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
