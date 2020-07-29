@@ -1,6 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>推荐系统冷启动问题</title>
+    <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
+<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
+<ol>
+<li>利用用户的账号信息。</li>
+<li>利用用户的手机 IMEI 号进行冷启动。</li>
+<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
+</ol>
+<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
+<ol>
+<li>利用物品的内容、分类信息。</li>
+<li>利用专家标注的数据。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐系统总体架构及特征数据</title>
+    <url>/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
+<p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
+<p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
+<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
+<p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
+<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
+<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
+<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
+<a id="more"></a>
+<ol>
+<li><p><strong>数据上报</strong>：数据上报模块的作用是搜集业务数据组成训练样本。一般分为收集、验证、清洗和转换几个步骤。将收集的数据转化为训练所需要的样本格式，保存到离线存储模块。</p>
+<p><a href="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" alt="img"></a></p>
+</li>
+<li><p><strong>离线训练</strong>：离线训练模块又细分为<strong>离线存储</strong>和<strong>离线计算</strong>。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p>
+</li>
+<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机 APP ，他肯定希望APP 能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据 。</p>
+</li>
+<li><p><strong>实时推荐</strong>：实时推荐模块的功能是对来自业务的新请求进行预测。1.获取用户特征；2.调用推荐模型；3.结果排序。</p>
+<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为<strong>召回</strong>和<strong>排序</strong>两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集 （一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p>
+</li>
+<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B 测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了 离线的指标外，一个新的推荐算法上线之前一般都会经过 A/B 测试来测试新算法的有效性。</p>
+</li>
+</ol>
+<p>下图是与之对应的实际系统中各个组件的流转过程。<strong>需要注意的是生成推荐列表就已经做完了召回和排序的操作，业务层直接调用API就可以得到这个推荐列表。</strong></p>
+<p><img src="https://camo.githubusercontent.com/e00fb75f81bd5377bcfd1de0cdb3891a7790b134/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32352d32372e706e67" alt="img"></p>
+<h3 id="2-2-在线训练"><a href="#2-2-在线训练" class="headerlink" title="2.2 在线训练"></a>2.2 在线训练</h3><p>对于业务来说，我们希望用户对于上个广告的反馈 （喜欢或者不喜欢，有没有点击），可以很快地用于下 一个广告的推荐中。这就要求我们用另一种方法来解决这个问题，这个方法就是在线训练。</p>
+<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景，相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。 一方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
+<p><img src="https://camo.githubusercontent.com/6d0bf23d50bf62aaf218595a74437800ae143d01/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31312d31312d31312e706e67" alt="img"></p>
+<ol>
+<li><strong>样本处理</strong>：和基于离线训练的推荐系统相比，在线训练在数据上报阶段的主要不同体现在样本处理上。对于离线训练来说，上报后的数据先是被存储到一个分布式文件系统，然后等待离线计算任务来对样本进行处理；对于在线训练来说，对样本的去重、过滤和采样等计算都需要实时进行。</li>
+<li><strong>实时特性</strong>：实时特征模块通过实时处理样本数据拼接训练需要的特征构造训练样本，输入流式训练模块用于更新模型。该模块的主要的功能是特征拼接和特征工程。</li>
+<li><strong>流式训练</strong>：流式训练模块的主要作用是使用实时训练样本来更新模型。推荐算法中增量更新部分的计算，通过流式计算的方式来进行更新。在线训练的优势之一，是可以支持模型的稀疏存储。训练方面，在线模型不一定都是从零开始训练，而是可以将离线训练得到的模型参数作为基础，在这个基础上进行增量训练。</li>
+<li><strong>模型存储和加载</strong>：模型一般存储在参数服务器中。模型更新后，将模型文件推送到线上存储，并由线上服务模块动态加载。</li>
+</ol>
+<h2 id="2-特征数据"><a href="#2-特征数据" class="headerlink" title="2. 特征数据"></a>2. 特征数据</h2><p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
+<ol>
+<li><strong>用户行为的种类</strong>：在一个网站中，用户可以对物品产生很多不同种类的行为。用户可以浏览物品、单击物品的链接、收藏物品、给物品打分、购买物品、评论物品、给物品打上不同的标签、和好友分享物品、搜索不同的关键词等。这些行为都会对物品特征的权重产生影响，但不同行为的影响不同，大多时候很难确定什么行为更加重要，一般的标准就是用户付出代价越大的行为权重越高。</li>
+<li><strong>用户行为产生的时间</strong>：一般来说，用户近期的行为比较重要，而用户很久之前的行为相对比较次要。因此，如果用户最近购买过某一个物品，那么这个物品对应的特征将会具有比较高的权重。</li>
+<li><strong>用户行为的次数</strong>：有时用户对一个物品会产生很多次行为。比如用户会听一首歌很多次，看一部电视剧的很多集等。因此用户对同一个物品的同一种行为发生的次数也反映了用户对物品的兴趣，行为次数多的物品对应的特征权重越高。</li>
+<li><strong>物品的热门程度</strong>：如果用户对一个很热门的物品产生了行为，往往不能代表用户的个性，因为用户可能是在跟风，可能对该物品并没有太大兴趣，特别是在用户对一个热门物品产生了偶尔几次不重要的行为（比如浏览行为）时，就更说明用户对这个物品可能没有什么兴趣，可能只是因为这个物品的链接到处都是，很容易点到而已。反之，如果用户对一个不热门的物品产生了行为，就说明了用户的个性需求。因此，推荐引擎在生成用户特征时会加重不热门物品对应的特征的权重。</li>
+<li><strong>数据去燥</strong>：对样本做去噪。对于数据中混杂的刷单等类作弊行为的数据，要将其排除出训练数据,否则它会直接影响模型的效果；样本中的缺失值也要做处理。</li>
+<li><strong>正负样本均衡</strong>：一般我们收集用户的行为数据都是属于正样本，造成了严重的不平衡。所以对于一个用户，从他没有过行为的物品中采样出一些物品作为负样本，但采样时，保证每个用户的正负样本数目相当。</li>
+<li><strong>特征组合</strong>：我们需要考虑特征与特征之间的关系。例如在美团酒店搜索排序中，酒店的销量、价格、用户的消费水平等是强相关的因素，用户的年龄、位置可能是弱相关的因素，用户的ID是完全无关的因素。在确定了哪些因素可能与预测目标相关后，我们需要将此信息表示为数值类型,即为特征抽取的过程。除此之外，用户在App上的浏览、交易等行为记录中包含了大量的信息，特征抽取则主要是从这些信息抽取出相关因素，用数值变量进行表示。常用的统计特征有计数特征,如浏览次数、下单次数等;比率特征，如点击率、转化率等;统计量特征，如价格均值、标准差、分位数、偏度、峰度等。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>隐语义模型</title>
+    <url>/2020/07/29/%E9%9A%90%E8%AF%AD%E4%B9%89%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于:</p>
+<p> <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<h3 id="1-基本思想"><a href="#1-基本思想" class="headerlink" title="1. 基本思想"></a>1. 基本思想</h3><p>推荐系统中一个重要的分支，隐语义建模。隐语义模型<strong>LFM</strong>：Latent Factor Model，其核心思想就是<span style="color:red">通过隐含特征联系用户兴趣和物品</span>。</p>
+<p><strong>过程分为三个部分，将物品映射到隐含分类，确定用户对隐含分类的兴趣，然后选择用户感兴趣的分类中的物品推荐给用户。它是基于用户行为统计的自动聚类。</strong></p>
+<p>隐语义模型在Top-N推荐中的应用十分广泛。常用的隐语义模型，LSA(Latent Semantic Analysis)，LDA(Latent Dirichlet Allocation)，主题模型(Topic Model)，矩阵分解(Matrix Factorization)等等。</p>
+<p>首先通过一个例子来理解一下这个模型，比如说有两个用户A和B，目前有用户的阅读列表，用户A的兴趣涉及侦探小说，科普图书以及一些计算机技术书，而用户B的兴趣比较集中在数学和机器学习方面。那么如何给A和B推荐图书呢？</p>
+<p>对于UserCF，首先需要找到和他们看了同样书的其他用户(兴趣相似的用户)，然后在给他们推荐那些用户喜欢的其他书。 对于ItemCF, 需要给他们推荐和他们已经看的书相似的书，比如用户B 看了很多数据挖掘方面的书，那么可以给他推荐机器学习或者模式识别方面的书。</p>
+<p>还有一种方法就是使用隐语义模型，可以对书和物品的兴趣进行分类。对于某个用户，首先得到他的兴趣分类，然后从分类中挑选他可能喜欢的物品。</p>
+<a id="more"></a>
+<h3 id="2-模型理解"><a href="#2-模型理解" class="headerlink" title="2 模型理解"></a>2 模型理解</h3><ol>
+<li>如何给物品进行分类？</li>
+<li>如何确定用户对哪些类的物品感兴趣，以及感兴趣的程度？</li>
+<li>对于一个给定的类，选择哪些属于这个类的物品推荐给用户，以及如何确定这些物品在一个类中的权重？</li>
+</ol>
+<p>为了解决上面的问题，研究人员提出：为什么我们不从数据出发，自动地找到那些类，然后进行个性化推荐，隐语义分析技术因为采取基于用户行为统计的自动聚类，较好地解决了上面的问题。隐语义分析技术从诞生到今天产生了很多著名的模型和方法，其中和推荐技术相关的有pLSA，LDA，隐含类别模型（latent class model）, 隐含主题模型（latent topic model）, 矩阵分解（matrix factorization）。</p>
+<p>LFM通过如下公式计算用户 u 对物品 i 的兴趣：</p>
+<p><img src="https://camo.githubusercontent.com/7f94ca282d949c428b6c6021803daa14f88d61fb/68747470733a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f707265666572656e636528752c69293d725f25374275692537443d705f7525354554715f693d25354373756d5f253742663d3125374425354546705f253742752c6b253744715f253742692c6b253744" alt="img"></p>
+<p>这个公式中 $p_{u,k}$ 和 $q_{i,k}$ 是模型的参数，其中 $p_{u,k}$  度量了用户 u 的兴趣和第 k 个隐类的关系，而 $q_{i,k}$  度量了第 k 个隐类和物品 i 之间的关系。那么，下面的问题就是如何计算这两个参数。</p>
+<p>对最优化理论或者机器学习有所了解的读者，可能对如何计算这两个参数都比较清楚。这两个参数是从数据集中计算出来的。要计算这两个参数，需要一个训练集，对于每个用户u，训练集里都包含了用户u喜欢的物品和不感兴趣的物品，通过学习这个数据集，就可以获得上面的模型参数。</p>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习相关资料</title>
     <url>/2020/07/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://createmomo.github.io/2018/01/23/Super-Machine-Learning-Revision-Notes/" target="_blank" rel="noopener">Super Machine Learning Revision Notes</a></p>
@@ -3706,19 +3824,19 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
       </tags>
   </entry>
   <entry>
-    <title>Neighborhood-Based Collaborative Filtering</title>
+    <title>Neighborhood-Based Collaborative Filtering 协同过滤</title>
     <url>/2020/01/07/Neighborhood-Based-Collaborative-Filtering/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>This is the idea of leveraging the behavior of others to inform what you might enjoy. At a very high level, it means finding other people like you and recommending stuff they liked. Or it might mean finding other things similar to the thing that you like. </p>
 <p>That’s why we call it collaborative filtering. It’s recommending stuff based on other people’s collaborative behavior. </p>
 <p>The heart of neighborhood-based collaborative filtering is the ability to find people similar to you, or items similar to items you’ve liked.</p>
-<h3 id="Measuring-Similarity-and-Sparsity"><a href="#Measuring-Similarity-and-Sparsity" class="headerlink" title="Measuring Similarity, and Sparsity"></a>Measuring Similarity, and Sparsity</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962"></p>
+<h3 id="1-Measuring-Similarity-and-Sparsity"><a href="#1-Measuring-Similarity-and-Sparsity" class="headerlink" title="1. Measuring Similarity, and Sparsity"></a>1. Measuring Similarity, and Sparsity</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372454415.png" alt="1578372454415"></p>
 <p>这里的余弦相似度和前面content-based中的余弦相似度的区别在于：Our dimensions would be things like his: Did this user like this thing? Or was this thing liked by this user? So every user or every thing might constitute its own dimension, and the dimensions are based on user behavior instead of content attributes.</p>
 <p>The big challenge in measuring these similarities based on behavior data is the <strong>sparsity</strong> of the data we’re working with. This means that it’s tough for collaborative filtering to work well unless you have a lot of user behavior data to work with. You can’t compute a meaningful cosine similarity between two people when they have nothing in common, or between two items when they have no people in common. </p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578373973291.png" alt="1578373973291"></p>
 <p>This is why collaborative filtering works well for big companies like Amazon and Netflix. They have millions of users and so they have enough data to generate meaningful relations in spite of the data sparsity. </p>
 <p>Sparsity also introduces some computational challenges. You don’t want to waste time storing and processing all of that missing data, so under the hood we end up using structures like <strong>sparse arrays</strong> that avoid storing all that empty spaces in this matrix. </p>
-<h3 id="Similarity-Metrics"><a href="#Similarity-Metrics" class="headerlink" title="Similarity Metrics"></a>Similarity Metrics</h3><h4 id="Adjusted-Cosine"><a href="#Adjusted-Cosine" class="headerlink" title="Adjusted Cosine"></a>Adjusted Cosine</h4><p>It’s applicable mostly to measuring the similarity between users based on their ratings. It’s based on the idea that different people might have different baselines. What Bob considers a three star movie, maybe different from what Alice considers a three star movie. </p>
+<h3 id="2-Similarity-Metrics"><a href="#2-Similarity-Metrics" class="headerlink" title="2. Similarity Metrics"></a>2. Similarity Metrics</h3><h4 id="Adjusted-Cosine"><a href="#Adjusted-Cosine" class="headerlink" title="Adjusted Cosine"></a>Adjusted Cosine</h4><p>It’s applicable mostly to measuring the similarity between users based on their ratings. It’s based on the idea that different people might have different baselines. What Bob considers a three star movie, maybe different from what Alice considers a three star movie. </p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578374644148.png" alt="1578374644148"></p>
 <p>Adjusted cosine attempts to normalize these differences. Instead of measuring similarities between people based on their raw rating values, we instead measure similarities based on the difference between a user’s rating for an item and their average rating for all items. </p>
 <p>Now this sounds good on paper, but in practice, data sparsity can really mess you up here. You can only get a meaningful average, or a baseline of an individual’s ratings if they have rated a lot of stuff for you to take the average of in the first place. 若有许多用户只评价了一部电影，then that data will be totally wasted with the adjusted cosine metric. 不管他们评了多少分，the difference between it and that user’s mean will be zero at that point. </p>
@@ -3748,9 +3866,18 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <li>Jaccard similarity is just looking at how many items two users have in common, or how many users two items have in common, divided by how many items or users they have between both of them. It’s really simple and well suited to implicit ratings, like binary actions, like purchasing or view something. But you can also apply cosine similarities to implicit ratings too.</li>
 <li>So, and the end of the day, cosine similarity remains my default go to similarity metric. </li>
 </ul>
-<h3 id="User-based-Collaborative-Filtering"><a href="#User-based-Collaborative-Filtering" class="headerlink" title="User-based Collaborative Filtering"></a>User-based Collaborative Filtering</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386125836.png" alt="1578386125836"></p>
+<h3 id="3-协同过滤"><a href="#3-协同过滤" class="headerlink" title="3. 协同过滤"></a>3. 协同过滤</h3><h4 id="3-1-User-based-Collaborative-Filtering-基于用户的协同过滤-UserCF"><a href="#3-1-User-based-Collaborative-Filtering-基于用户的协同过滤-UserCF" class="headerlink" title="3.1 User-based Collaborative Filtering 基于用户的协同过滤(UserCF)"></a>3.1 User-based Collaborative Filtering 基于用户的协同过滤(UserCF)</h4><p>与基于物品的协同过滤类似的，不同的是，基于物品的协同过滤的原理是用户 U 购买了 A 物品，推荐给用户 U 和 A 相似的物品 B、C、D。而基于用户的协同过滤，是先计算用户 U 与其他的用户的相似度，然后取和 U 最相似的几个用户，把他们购买过的物品推荐给用户U。</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386125836.png" alt="1578386125836"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386158223.png" alt="1578386158223"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455133171.png" alt="1578455133171"></p>
+<hr>
+<h5 id="3-1-1-计算用户之间的相似度"><a href="#3-1-1-计算用户之间的相似度" class="headerlink" title="3.1.1 计算用户之间的相似度"></a>3.1.1 计算用户之间的相似度</h5><p>参考 <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>为了计算用户相似度，我们首先要把用户购买过物品的索引数据转化成物品被用户购买过的索引数据，即物品的倒排索引：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012706765.png" alt="1596012706765"></p>
+<p>建立好物品的倒排索引后，就可以根据相似度公式计算用户之间的相似度：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012763141.png" alt="1596012763141"></p>
+<p>其中 $N(a)$ 表示用户 $a$ 购买物品的数量，$N(b)$ 表示用户 $b$ 购买物品的数量，$N(a)∩N(b)$ 表示用户 $a$ 和 $b$ 购买相同物品的数量。有了用户的相似数据，针对用户 U 挑选 k 个最相似的用户，把他们购买过的物品中，U 未购买过的物品推荐给用户 U 即可。</p>
+<hr>
+<h5 id="3-1-2-举例"><a href="#3-1-2-举例" class="headerlink" title="3.1.2 举例"></a>3.1.2 举例</h5><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455133171.png" alt="1578455133171"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455288882.png" alt="1578455288882"></p>
 <ul>
 <li>每个人和自己的余弦相似度是1</li>
@@ -3768,12 +3895,13 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>应该adding in the score for a given movie if we encounter it more than once.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457620591.png" alt="1578457620591"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457759908.png" alt="1578457759908"></p>
-<h4 id="Recap-1"><a href="#Recap-1" class="headerlink" title="Recap"></a>Recap</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457999015.png" alt="1578457999015"></p>
-<h4 id="User-based-Collaborative-Filtering-Hands-On"><a href="#User-based-Collaborative-Filtering-Hands-On" class="headerlink" title="User-based Collaborative Filtering, Hands-On"></a>User-based Collaborative Filtering, Hands-On</h4><p>code walkthrough</p>
+<h5 id="3-1-3-Recap"><a href="#3-1-3-Recap" class="headerlink" title="3.1.3 Recap"></a>3.1.3 Recap</h5><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457999015.png" alt="1578457999015"></p>
+<h5 id="3-1-4-User-based-Collaborative-Filtering-Hands-On"><a href="#3-1-4-User-based-Collaborative-Filtering-Hands-On" class="headerlink" title="3.1.4 User-based Collaborative Filtering, Hands-On"></a>3.1.4 User-based Collaborative Filtering, Hands-On</h5><p>code walkthrough</p>
 <p>CollaborativeFiltering文件夹里的：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
 <p>运行SimpleUserCF.py</p>
-<h3 id="Item-based-Collaborative-Filtering"><a href="#Item-based-Collaborative-Filtering" class="headerlink" title="Item-based Collaborative Filtering"></a>Item-based Collaborative Filtering</h3><p>Look at the things you liked, and recommend stuff that’s similar to those things. </p>
+<h4 id="3-2-Item-based-Collaborative-Filtering-基于物品的协同过滤-ItemCF"><a href="#3-2-Item-based-Collaborative-Filtering-基于物品的协同过滤-ItemCF" class="headerlink" title="3.2 Item-based Collaborative Filtering 基于物品的协同过滤(ItemCF)"></a>3.2 Item-based Collaborative Filtering 基于物品的协同过滤(ItemCF)</h4><p>Look at the things you liked, and recommend stuff that’s similar to those things. </p>
+<p>核心思想：给用户推荐那些和他们之前喜欢的物品相似的物品。</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458842316.png" alt="1578458842316"></p>
 <p>一些原因为什么使用物品之间的相似度可能比使用用户之间的相似度更好：</p>
 <ul>
@@ -3785,32 +3913,64 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463881122.png" alt="1578463881122"></p>
 <p>在这个例子中，所有的相似度都为0或1，是因为数据量比较小。In the real world, you’d see more interesting and meaningful numbers here.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578464579773.png" alt="1578464579773"></p>
-<h4 id="Item-based-Collaborative-Filtering-Hands-On"><a href="#Item-based-Collaborative-Filtering-Hands-On" class="headerlink" title="Item-based Collaborative Filtering, Hands-On"></a>Item-based Collaborative Filtering, Hands-On</h4><p>code walkthrough</p>
+<hr>
+<h5 id="3-2-1-计算物品相似度的方法"><a href="#3-2-1-计算物品相似度的方法" class="headerlink" title="3.2.1 计算物品相似度的方法"></a>3.2.1 计算物品相似度的方法</h5><p>参考 <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>基于物品的协同过滤算法首先计算物品之间的相似度， 计算相似度的方法有以下几种：</p>
+<p><strong>1. 基于共同喜欢物品的用户列表计算</strong></p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596011528508.png" alt="1596011528508"></p>
+<p>在此，分母中 $N(i)$ 是购买物品 $i$ 的用户数，$N(j)$ 是购买物品 $j$ 的用户数，而分子 $N(i)∩N(j)$是同时购买物品 $i$ 和物品 $j$ 的用户数。可见上述的公式的核心是计算同时购买这件商品的人数比例 。当同时购买这两个物品的人数越多，他们的相似度也就越高。另外值得注意的是，在分母中我们用了物品总购买人数做惩罚，也就是说某个物品可能很热门，导致它经常会被和其他物品一起购买，所以除以它的总购买人数，来降低它和其他物品的相似分数。</p>
+<p><strong>2. 基于余弦的相似度计算</strong></p>
+<p>上面的方法计算物品相似度是直接计算同时购买这两个物品的人数。但是也可能存在用户购买了但不喜欢的情况，所以如果数据集包含了具体的<strong>评分数据</strong>，我们可以进一步把用户评分引入到相似度计算中 。</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596011935928.png" alt="1596011935928"></p>
+<p>其中 $n_{ki}$ 是用户 $k$ 对物品 $i$ 的评分，如果没有评分则为 0。</p>
+<p><strong>3. 热门物品的惩罚</strong></p>
+<p>对于热门物品的问题，可以用如下公式解决：</p>
+<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012034088.png" alt="1596012034088"></p>
+<p>当 $\alpha ∈ (0，0.5)$时，$N(i)$ 越小，惩罚得越厉害，从而会使热门物品相关性分数下降。</p>
+<hr>
+<h5 id="3-2-2-Item-based-Collaborative-Filtering-Hands-On"><a href="#3-2-2-Item-based-Collaborative-Filtering-Hands-On" class="headerlink" title="3.2.2 Item-based Collaborative Filtering, Hands-On"></a>3.2.2 Item-based Collaborative Filtering, Hands-On</h5><p>code walkthrough</p>
 <p>CollaborativeFiltering文件夹里的：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
 <p>运行SimpleItemCF.py</p>
 <p>Item-based collaborative filtering is what Amazon used with outstanding success.</p>
 <p>You need to test it out on several real people if possible, and then move to a large scale A/B test to see if this algorithm really is better or worse than whatever you might have today.</p>
-<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468263883.png" alt="1578468263883"></p>
+<hr>
+<h4 id="3-3-矩阵分解"><a href="#3-3-矩阵分解" class="headerlink" title="3.3 矩阵分解"></a>3.3 矩阵分解</h4><p>参考 <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>上述计算会得到一个相似度矩阵，而这个矩阵的大小和维度都是很大的，需要进行降维处理，用到的是SVD的降维方法，具体可以参考：<a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine Learning/8. ML特征工程和优化方法#25-降维方法" target="_blank" rel="noopener">降维方法</a></p>
+<p><strong>基于稀疏自编码的矩阵分解</strong></p>
+<p>矩阵分解技术在推荐领域的应用比较成熟，但是通过上一节的介绍，我们不难发现矩阵分解本质上只通过一次分解来对原矩阵进行逼近，特征挖掘的层次不够深入。另外矩阵分解也没有运用到物品本身的内容特征，例如书本的类别分类、音乐的流派分类等。随着神经网络技术的兴起，笔者发现通过多层感知机，可以得到更加深度的特征表示，并且可以对内容分类特征加以应用。首先，我们介绍一下稀疏自编码神经网络的设计思路。</p>
+<ol>
+<li><p><strong>基础的自编码结构</strong></p>
+<p>最简单的自编码结构如下图，构造个三层的神经网络，我们让输出层等于输入层，且中间层的维度远低于输入层和输出层，这样就得到了第一层的特征压缩。</p>
+<p><img src="https://camo.githubusercontent.com/c056188f3498f28ff6bfe618b81642ba7711a797/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31332d32342d34382e706e67" alt="img"></p>
+<p>简单来说自编码神经网络尝试学习<strong>中间层约等于输入层</strong>的函数。换句话说，它尝试逼近一个恒等函数。如果网络的输入数据是完全随机的，比如每一个输入都是一个跟其他特征完全无关的独立同分布高斯随机变 ，那么这一压缩表示将会非常难于学习。但是如果输入数据中隐含着 些特定的结构，比如某些输入特征是彼此相关的，那么这一算法就可以发现输入数据中的这些相关性。</p>
+</li>
+<li><p><strong>多层结构</strong></p>
+<p>基于以上的单层隐藏层的网络结构，我们可以扩展至多层网络结构，学习到更高层次的抽象特征。</p>
+<p><img src="https://camo.githubusercontent.com/77fdc47c74a72f3b3c1b57ab29ec08452697eb42/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31332d33362d35312e6a7067" alt="img"></p>
+</li>
+</ol>
+<hr>
+<h3 id="4-Exercise"><a href="#4-Exercise" class="headerlink" title="4. Exercise"></a>4. Exercise</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468263883.png" alt="1578468263883"></p>
 <p>我们之前是选取的top-n，例如item-based: 选择用户评价前10的电影，再找similar items；user-based: 选择与用户相似度排前10的用户，再…</p>
 <p>Maybe it would be better if instead of taking the top k sources for recommendation candidates, we just use any source above some given quality threshold. 例如，用户评价4星以上的电影 should generate item-based recommendation candidates, no matter how many or how few of them there may be.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468513742.png" alt="1578468513742"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468541742.png" alt="1578468541742"></p>
 <p>可以发现一个小的改变可以使得结果很不一样。Often, you don’t just want to test different recommendation algorithms, you want to test different variations and parameters on those algorithms. In this case, I not only want to test the idea of using a threshold instead of a top k approach, I’d also want to test many different threshold values to find the best one. In the real world, you’ll find that your biggest problem is just not having enough time to run all of the different experiments you want to run to make your recommendations  better. </p>
-<h3 id="Evaluating-Collaborative-Filtering-Systems-Offline"><a href="#Evaluating-Collaborative-Filtering-Systems-Offline" class="headerlink" title="Evaluating Collaborative Filtering Systems Offline"></a>Evaluating Collaborative Filtering Systems Offline</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469111053.png" alt="1578469111053"></p>
-<p>Now, although <strong>we can’t measure accuracy with user based or item based collaborative filtering, because they don’t making rating predictions</strong>, we can still measure hit rate, because it is still a top-N recommender.</p>
+<h3 id="5-Evaluating-Collaborative-Filtering-Systems-Offline"><a href="#5-Evaluating-Collaborative-Filtering-Systems-Offline" class="headerlink" title="5. Evaluating Collaborative Filtering Systems Offline"></a>5. Evaluating Collaborative Filtering Systems Offline</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469111053.png" alt="1578469111053"></p>
+<p>Now, although <strong>we can’t measure accuracy with user based or item based collaborative filtering, because they don’t make rating predictions</strong>, we can still measure hit rate, because it is still a top-N recommender.</p>
 <h4 id="code-walkthrough"><a href="#code-walkthrough" class="headerlink" title="code walkthrough"></a>code walkthrough</h4><p>CollaborativeFiltering文件夹里的：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
 <p>运行EvaluateUserCF.py</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469413099.png" alt="1578469413099"></p>
 <p>That was surprisingly fast. One really nice property of collaborative filtering is how quickly it can generate recommendations for any given individual, once we’ve built up the similarity matrix.</p>
 <p>结果5.5% is pretty good.</p>
-<h4 id="Exercise-1"><a href="#Exercise-1" class="headerlink" title="Exercise"></a>Exercise</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469688733.png" alt="1578469688733"></p>
+<h4 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469688733.png" alt="1578469688733"></p>
 <p>与EvaluateUserCF.py相比需要改变的地方：</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578470341309.png" alt="1578470341309"></p>
 <p>item-based的hit rate只有0.5%，相比user-based的5.5%，要差一点。</p>
 <p>Item-based should be a superior approach, and that’s been proven in industry. 这里item-based要差一点应该是数据的原因。而且这只是offline evaluation. If we were to test both algorithms on real-world people using real-world data in an A/B test, the results could end up being very different.</p>
-<h3 id="KNN-Recommenders"><a href="#KNN-Recommenders" class="headerlink" title="KNN Recommenders"></a>KNN Recommenders</h3><p>The concept of collaborative filtering has been applied to recommender systems that do make rating predictions, and these are generally referred to in the literature as KNN recommenders.</p>
+<h3 id="6-KNN-Recommenders"><a href="#6-KNN-Recommenders" class="headerlink" title="6. KNN Recommenders"></a>6. KNN Recommenders</h3><p>The concept of collaborative filtering has been applied to recommender systems that do make rating predictions, and these are generally referred to in the literature as KNN recommenders.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578471356190.png" alt="1578471356190"></p>
 <p>In this sort of system, we generate recommendation candidates by predicting the ratings of everything a user hasn’t already rated, and selecting the top k items with the highest predicted ratings. This obviously isn’t a terribly efficient approach, but since we’re predicting rating values, we can measure the offline accuracy of the system using train/test or cross-validation, which is useful in the research world.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578478326957.png" alt="1578478326957"></p>
@@ -3824,7 +3984,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479972763.png" alt="1578479972763"></p>
 <p>如果只看accuracy, KNN recommendation看上去是一个好方法，但是如果看 top-n recommendations, item-based和user-based推荐的都是些没听说过的电影 (obscure)，反而 random recommendation looks a lot better from a subjective standpoint.</p>
 <p>So, on the surface, it looks like we may have made a system that’s pretty good at predicting ratings of movies people have already seen, but might not be very good at producing top-n recommendations.</p>
-<h4 id="Exercise-2"><a href="#Exercise-2" class="headerlink" title="Exercise"></a>Exercise</h4><p>Experiment with different KNN parameters.</p>
+<h4 id="Exercise-1"><a href="#Exercise-1" class="headerlink" title="Exercise"></a>Exercise</h4><p>Experiment with different KNN parameters.</p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480409983.png" alt="1578480409983"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480533805.png" alt="1578480533805"></p>
 <p>虽然msd比cosine的RMSE要低一点，但它们推荐的内容是一样的</p>
@@ -3833,7 +3993,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>Well, it’s actually pretty well known that KNN doesn’t work well in practice. Unfortunately, some people conclude that collaborative filtering in general is some naive approach that should be replaced with completely different techniques. But as we’ve seen, collaborative filtering isn’t the problem, it’s forcing collaborative filtering to make rating predictions — that’s the problem. We had some pretty exciting results when we just focused on making top-N recommendations, and completely forgot about optimizing for rating accuracy, and it turns out that’s what at the heart of the problem. <strong>使用user-based CF和item-based CF,   top-N 推荐结果都是不错的。</strong></p>
 <p>Ratings are not continuous in nature, and KNN treats them as though they are continuous values that can be predicted on a continuous scale. If you really want to go with KNN, it would be more appropriate to treat it as a rating classification problem than as a rating prediction problem. KNN is also very sensitive to sparse data.</p>
 <p>The most fundamental thing is that accuracy isn’t everything. The main reason KNN produces underwhelming results is because it’s trying to solve the wrong problem. <strong>KNN recommender之所以推荐结果不好，是因为它解决的是rating prediction的问题，而不是推荐问题</strong>。</p>
-<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381"></p>
+<h3 id="7-Bleeding-Edge-Alert"><a href="#7-Bleeding-Edge-Alert" class="headerlink" title="7. Bleeding Edge Alert"></a>7. Bleeding Edge Alert</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381"></p>
 <p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491659157.png" alt="1578491659157"></p>
 <p>The idea behind it is that users are modeled as vectors moving from one item to another in a multidimensional space. And you can predict sequences of events, like which movie a user is likely to watch next, by modeling these vectors.</p>
 <p>The reason this paper is exciting is because it outperformed all of the best existing methods for recommending sequences of events in all but one case in one data set.</p>
@@ -4014,14 +4174,14 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578123016707.jpg" alt="1578123016707"></p>
 <p>对每一个rating type (1,2,3,4,5), print out its hit rate.</p>
 <h3 id="4-Coverage-Diversity-and-Novelty"><a href="#4-Coverage-Diversity-and-Novelty" class="headerlink" title="4. Coverage, Diversity and Novelty"></a>4. Coverage, Diversity and Novelty</h3><p>Accuracy isn’t the only thing that matters.</p>
-<h4 id="4-1-Coverage"><a href="#4-1-Coverage" class="headerlink" title="4.1 Coverage"></a>4.1 Coverage</h4><p>The percentage of possible recommendations that your system is able to provide. </p>
+<h4 id="4-1-Coverage-覆盖度"><a href="#4-1-Coverage-覆盖度" class="headerlink" title="4.1 Coverage 覆盖度"></a>4.1 Coverage 覆盖度</h4><p>The percentage of possible recommendations that your system is able to provide. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150"></p>
 <p>It’s worth noting that coverage can be at odds with accuracy. If you enforce a higher quality threshold on the recommendations you make, then you might improve your accuracy at the expense of coverage. Finding the balance of where exactly you’re better off recommending nothing at all can be delicate. </p>
 <p>Coverage can also be important to watch, because it gives you a sense of how quickly new items in your catalog will start to appear in your recommendations. When a new book come out on Amazon, it won’t appear in recommendations until at least a few people buy it, therefore establishing patterns with the purchase of other items. Until those patterns exist, that new book will reduce Amazon’s coverage metric.</p>
-<h4 id="4-2-Diversity"><a href="#4-2-Diversity" class="headerlink" title="4.2 Diversity"></a>4.2 Diversity</h4><p>You can think of this as measure of how broad a variety of items your recommender system is putting in front of people. An example of low diversity would be a recommender system that just recommends the next books in a series that you’ve started reading, but doesn’t recommend book from different authors, or movies related to what you’ve read.</p>
+<h4 id="4-2-Diversity-多样性"><a href="#4-2-Diversity-多样性" class="headerlink" title="4.2 Diversity 多样性"></a>4.2 Diversity 多样性</h4><p>You can think of this as measure of how broad a variety of items your recommender system is putting in front of people. An example of low diversity would be a recommender system that just recommends the next books in a series that you’ve started reading, but doesn’t recommend book from different authors, or movies related to what you’ve read.</p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578124451718.jpg" alt="1578124451718"></p>
 <p>Diversity, at least in the context of recommender systems, isn’t always a good thing. You can achieve very high diversity by just recommending completely random items. Unusually high diversity scores mean that you just have bad recommendations more often than not. You always need to look at diversity alongside metrics that measure the quality of the recommendations as well. </p>
-<h4 id="4-3-Novelty"><a href="#4-3-Novelty" class="headerlink" title="4.3 Novelty"></a>4.3 Novelty</h4><p>Similarly, novelty sounds like a good thing, but often it isn’t. Novelty is a measure of how popular the items are that you are recommending. And again, just recommending random stuff would yield very high novelty scores, since the vast majority of items are not top sellers. </p>
+<h4 id="4-3-Novelty-新颖性"><a href="#4-3-Novelty-新颖性" class="headerlink" title="4.3 Novelty 新颖性"></a>4.3 Novelty 新颖性</h4><p>Similarly, novelty sounds like a good thing, but often it isn’t. Novelty is a measure of how popular the items are that you are recommending. And again, just recommending random stuff would yield very high novelty scores, since the vast majority of items are not top sellers. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578124908363.jpg" alt="1578124908363"></p>
 <p>Although novelty is measurable, what to do with it is in many ways subjective. There’s a concept of user trust in a recommender system. People want to see at least a few familiar items in their recommendations that make them say, “Yeah, that’s a good recommendation for me. The system seems good”. If you only recommend things people never heard of, they may conclude that your system doesn’t really know them. Also, popular items are usually popular for a reason. They’re enjoyable by a large segment of the population, so you would expect them to be good recommendations for a large segment of the population who hasn’t read or watched them yet. If you’re not recommending some popular items, you should probably question whether your recommender system is really working as it should.</p>
 <p><strong>You need to strike a balance between familiar, popular items and what we call serendipitous discovery of new items that user has never heard of before. (balance between novelty and trust)</strong>. The familiar items establish trust with the user, and the new ones allow the user to discover entirely new things that they might love. </p>
@@ -4043,12 +4203,23 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>It also depends on what you’re trying to achieve as a business. And usually,  a business is just trying to make money, which leads to one more way to evaluate recommender systems that is arguably the most important of all: online A/B tests!</p>
 </blockquote>
 <h4 id="5-3-Online-A-B-Tests"><a href="#5-3-Online-A-B-Tests" class="headerlink" title="5.3 Online A/B Tests"></a>5.3 Online A/B Tests</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578129032852.jpg" alt="1578129032852"></p>
+<hr>
+<blockquote>
+<p>参考：</p>
+<p> <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p>AB测试是一种很常用的在线评测算法的实验方法。它通过一定的规则将用户随机分成几组，并对不同组的用户采用不同的算法，然后通过统计不同组用户的各种不同的评测指标比较不同算法，比如可以统计不同组用户的点击率，通过点击率比较不同算法的性能。对AB测试感兴趣的读者可以浏览一下网站<a href="http://www.abtests.com/" target="_blank" rel="noopener">http://www.abtests.com/</a> ，该网站给出了很多通过实际AB测试提高网站用户满意度的例子，从中我们可以学习到如何进行合理的AB测试。</p>
+<hr>
 <p>Doing online A/B tests to tune your recommender system using your real customers, and measuring how they react to your recommendations. You can put recommendations from different algorithms in front of different sets of users, and measure if they actually buy, watch, or otherwise indicate interest in the recommendations you’ve presented. </p>
 <p>By always testing changes to your recommender system using controlled, online experiments, you can see if they actually cause people to discover and purchase more new things than they would have otherwise.</p>
 <p>None of the metrics we’ve discussed matter more than how real customers react to the recommendations you produce in the real world. You can have the most accurate rating predictions in the world, but if customers can’t find new items to buy or watch from your system, it will be worthless from a practical standpoint. </p>
 <p>Online tests can help you to avoid introducing complexity that adds no value, and remember, complex systems are difficult to maintain.</p>
 <p>SO REMEMBER, offline metrics such as accuracy, diversity, and novelty can all be indicators you can look at while developing recommender systems offline, but you should never declare victory until you’ve measured a real impact on real users from your work. <strong>User behavior is the ultimate test of your work.</strong></p>
 <p><strong>Accurately predicted ratings don’t necessarily make for good video recommendations. At the end of the day, the results of online A/B tests are the only evaluation that matters for your recommender system.</strong></p>
+<hr>
+<p> A/B 测试，常见的指标有点击率、用户停留时间、 广告收入等，需要注意分析统计显著性。同时，需要注意短期的指标和长期的指标相结合， 一些短期指标的提升有时候反而会导致长期指标下降 比如 ，经常推荐美女或者搞笑类的内容会带来短期的点击率提高，但是可能会引起长期的用户粘性下降。设计者需要从自己的产品角度出发，根据产品的需要制定评估指标，这样才能更好地指导推荐系统的优化方向。常见的评价指标如下：</p>
+<p><img src="https://camo.githubusercontent.com/fcefce67e348ce386471df934a041b367eb9b529/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31342d34332d35312e706e67" alt="img"></p>
+<hr>
 <p>Another thing you can do is just straight up ask your users, if they think specific recommendations are good. </p>
 <p><img src="/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg" alt="1578129889414"></p>
 <p>In practice though, it’s a tough thing to do. Users will probably be confused over whether you’re asking them to rate the item or rate the recommendation, so you won’t really know how to interpret this data. It also requires extra work form your customers with no clear payoff for them, so you’re unlikely to get enough ratings on your recommendations to be useful. </p>
