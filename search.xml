@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Precision, Recall, ROC曲线等</title>
+    <url>/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>准确率 <script type="math/tex">Accuracy = \frac{TP+TN}{TP+TN+FP+FN}</script></p>
+<p>精确率 <script type="math/tex">Precision = \frac{TP}{TP+FP}</script>，预测为positive中，实际为positive的比例</p>
+<p>召回率 <script type="math/tex">Recall = \frac{TP}{TP+FN}</script>，实际为positive中，预测为positive的比例</p>
+<script type="math/tex; mode=display">F1\_Score=\frac{2*Precision*Recall}{Precision+Recall}</script><p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596782796816.png" alt="1596782796816"></p>
+<hr>
+<p>TPR, <script type="math/tex">True\ Positive\ Rate = \frac{TP}{TP+FN}</script>，等价于 <script type="math/tex">Recall</script>，正样本中正确分类的比例</p>
+<p>FPR, <script type="math/tex">False\ Positive\ Rate = \frac{FP}{FP+TN}</script>，负样本中错分的比例</p>
+<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596782970482.png" alt="1596782970482"></p>
+<hr>
+<p>灵敏度 <script type="math/tex">Sensitivity = \frac{TP}{TP+FN}</script>，等价于 <script type="math/tex">Recall</script>，正样本中正确分类的比例 (Accuracy with respect to positive cases, also called <script type="math/tex">True\ Positive\ Rate</script>) (预测为positive占实际真正为positive的比例)</p>
+<p>特异度 <script type="math/tex">Specificity = \frac{TN}{TN+FP}</script>，负样本中正确分类的比例 (Accuracy with respect to negative cases) (将negative预测为positive占实际真正为negative的比例)</p>
+<script type="math/tex; mode=display">FPR=1-Specificity</script><p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596783235673.png" alt="1596783235673"></p>
+<hr>
+<p>ROC曲线：横轴为 FPR, 纵轴为 TPR， 越靠近左上角越好。对于某个分类器，根据其在测试样本上的表现可以得到一个TPR和FPR点对。调整分类时使用的阈值，可以得到一个经过 (0,0), (1,1)的曲线。</p>
+<p>AUC值：ROC曲线下的面积，取值范围在 0.5 到 1 之间。AUC更大的分类器效果更好。</p>
+<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596778766409.png" alt="1596778766409"></p>]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>推荐系统冷启动问题</title>
     <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -3743,8 +3769,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>数组</tag>
         <tag>哈希表</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -5084,8 +5110,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>链表</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -5113,8 +5139,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>数组</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -5224,8 +5250,8 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>数组</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -5804,8 +5830,8 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>机器学习</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
