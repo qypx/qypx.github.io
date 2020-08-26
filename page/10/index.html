@@ -1661,8 +1661,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-03-12T19:42:22+11:00">
-                2020-03-12
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-26T20:13:26+10:00">
+                2020-08-26
               </time>
             
           </span>
@@ -1719,37 +1719,33 @@
       
         
           
-            <ul>
-<li>List</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
+            <h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(l)</span><br></pre></td></tr></table></figure>
 <pre><code>[1, 2, 3]
 </code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578053721585.jpg" alt="1578053721585"></p>
-<p>List的拼接</p>
-<p>注意：[1,2]是List不是Array（Array要用np.array()）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line">features = []</span><br><span class="line"><span class="keyword">for</span> (vec, wt) <span class="keyword">in</span> vecs_wt[<span class="number">0</span>:<span class="number">2</span>]:</span><br><span class="line">	features.append(vec)</span><br><span class="line">	newfeatures = list(chain(*features))</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>] + [<span class="number">3</span>] + [<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<pre><code>[1, 2, 3, 4]
-</code></pre><p>排序：</p>
-<p><img src="/2019/06/27/Advanced-Python-Types/1578053775703.jpg" alt="1578053775703"></p>
-<ul>
-<li><p>Tuple</p>
-<p>Tuples are a lot like lists, but the main difference is that they are <strong>immutable</strong>. Once you create a tuple, you can’t change them.</p>
+<p>注：extend()方法接收的是列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list1.extend(list2)</span><br></pre></td></tr></table></figure>
+<p>该方法没有返回值，直接修改原列表</p>
+<h5 id="给List添加元素"><a href="#给List添加元素" class="headerlink" title="给List添加元素"></a>给List添加元素</h5><p>1.往后添加元素append</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">arr.append(<span class="number">3</span>)</span><br><span class="line">print(arr)</span><br><span class="line"><span class="comment"># [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<p>2.往前添加元素，或在指定位置添加元素 insert</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">arr = []</span><br><span class="line">num = <span class="number">345</span></span><br><span class="line"><span class="keyword">while</span> num:</span><br><span class="line">    arr.insert(<span class="number">0</span>,num%<span class="number">10</span>)</span><br><span class="line">    num = num//<span class="number">10</span></span><br><span class="line">	</span><br><span class="line">print(arr)</span><br><span class="line"><span class="comment"># [3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<h5 id="List的拼接"><a href="#List的拼接" class="headerlink" title="List的拼接"></a>List的拼接</h5><p>方法一：使用 “+”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">arr1 = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">arr2 = [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr3 = arr1 + arr2</span><br><span class="line">print(arr3)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p>方法二：使用extend()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">arr1 = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">arr2 = [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr1.extend(arr2)</span><br><span class="line">print(arr1)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><p><img src="/2019/06/27/Advanced-Python-Types/1578053775703.jpg" alt="1578053775703"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">y = sorted(x)</span><br><span class="line"></span><br><span class="line">print(x)</span><br><span class="line">print(y)</span><br><span class="line"><span class="comment">#[3, 4, 1]</span></span><br><span class="line"><span class="comment">#[1, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>sorted()不会改变原列表</p>
+<h4 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h4><p>Tuples are a lot like lists, but the main difference is that they are <strong>immutable</strong>. Once you create a tuple, you can’t change them.</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054069373.jpg" alt="1578054069373"></p>
-</li>
-</ul>
-<ul>
-<li><p>Dictionary</p>
-<p>In other languages, you might know this as a map, or a hash table. It’s basically a lookup table, where you store values associated with some unique set of key values.</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">'foo'</span>:<span class="number">1</span>, <span class="string">'bar'</span>:<span class="number">2.3</span>, <span class="string">'s'</span>:<span class="string">'my first dictionary'</span>&#125;</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-<pre><code>{&#39;s&#39;: &#39;my first dictionary&#39;, &#39;bar&#39;: 2.3, &#39;foo&#39;: 1}
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(d[<span class="string">'foo'</span>])</span><br></pre></td></tr></table></figure>
-<pre><code>1
-</code></pre><p><img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg" alt="1578054637299"></p>
+<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><p>In other languages, you might know this as a map, or a hash table. It’s basically a lookup table, where you store values associated with some unique set of key values.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;<span class="string">'foo'</span>:<span class="number">1</span>, <span class="string">'bar'</span>:<span class="number">2.3</span>, <span class="string">'s'</span>:<span class="string">'my first dictionary'</span>&#125;</span><br><span class="line"></span><br><span class="line">print(d)</span><br><span class="line"><span class="comment"># &#123;'s': 'my first dictionary', 'bar': 2.3, 'foo': 1&#125;</span></span><br><span class="line"></span><br><span class="line">print(d[<span class="string">'foo'</span>])</span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg" alt="1578054637299"></p>
 <p>If you try to retrieve a value for a key that doesn’t exist, you will get an exception. </p>
-<p>One way to avoid that is to use the _get_ function on the dictionary:</p>
+<p>One way to avoid that is to use the <code>get</code> function on the dictionary:</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg" alt="1578054512678"></p>
+<p><code>get</code>还可指定不存在时的默认返回值，如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(captains.get(<span class="string">"NX-01"</span>,<span class="number">0</span>))</span><br><span class="line"><span class="comment"># 0</span></span><br></pre></td></tr></table></figure>
 <p>Iterate:</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg" alt="1578054588653"></p>
 <p><strong>遍历字典： keys()  、values() 、items()</strong>　　</p>
@@ -1769,22 +1765,16 @@
 </ol>
 <p>例：</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1584001276582.png" alt="1584001276582"></p>
-<p>Python中的defaultdict:</p>
-<p><a href="mk:@MSITStore:C:\Python32\Doc\Python323.chm::/library/#collections.defaultdict" target="_blank" rel="noopener"><code>defaultdict</code></a><br>dict subclass that calls a factory function to supply missing values。</p>
+<p>Python中的<code>defaultdict</code>:<br>dict subclass that calls a factory function to supply missing values.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">dict = collections.defaultdict(int)</span><br></pre></td></tr></table></figure>
-<p><em>defaultdict(int)</em>创建一个类似<em>dictionary</em>对象，里面任何的<em>values</em>都是<em>int</em>的实例，而且就算是一个不存在的<em>key</em>, <em>d[key]</em> 也有一个默认值，这个默认值是<em>int()</em>的默认值0.</p>
+<p><em>defaultdict(int)</em> 创建一个类似 <em>dictionary</em> 对象，里面任何的 <em>values</em> 都是 <em>int</em> 的实例，而且就算是一个不存在的 <em>key</em>, <em>d[key]</em> 也有一个默认值，这个默认值是 <em>int()</em> 的默认值0.</p>
 <p>按照字典的键或者值排序：</p>
 <p><a href="https://blog.csdn.net/leokingszx/article/details/81154681" target="_blank" rel="noopener">https://blog.csdn.net/leokingszx/article/details/81154681</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y = &#123;<span class="number">1</span>:<span class="number">3</span>, <span class="number">2</span>:<span class="number">2</span>, <span class="number">3</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line">by_value = sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">1</span>])</span><br><span class="line">print(by_key)   <span class="comment">#结果为[(1, 3), (2, 2), (3, 1)]，即按照键名排列</span></span><br><span class="line">print(by_value) <span class="comment">#结果为[(3, 1), (2, 2), (1, 3)]，即按照键值排列</span></span><br></pre></td></tr></table></figure>
 <p>当然，在这样处理后，得到的结果将变成元组。这样也可以理解，毕竟对于字典而言，本身是不提供排序的需求的。如果想按照里面的元素进行排列，那么将不得不对其类型进行转化。</p>
 <p>另：Python中多条件排序：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">y = &#123;<span class="string">"ab"</span>:<span class="number">1</span>, <span class="string">"b"</span>:<span class="number">2</span>, <span class="string">"a"</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:(len(item[<span class="number">0</span>]),item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">print(by_key)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> by_key:</span><br><span class="line">	print(value[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-<p>[(‘a’, 1), (‘b’, 2), (‘ab’, 1)]</p>
-<p>a<br>b<br>ab</p>
-<ul>
-<li>Array</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">y = &#123;<span class="string">"ab"</span>:<span class="number">1</span>, <span class="string">"b"</span>:<span class="number">2</span>, <span class="string">"a"</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:(len(item[<span class="number">0</span>]),item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">print(by_key) </span><br><span class="line"><span class="comment"># [('a', 1), ('b', 2), ('ab', 1)]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> by_key:</span><br><span class="line">    print(value[<span class="number">0</span>])</span><br><span class="line"><span class="comment"># a</span></span><br><span class="line"><span class="comment"># b</span></span><br><span class="line"><span class="comment"># ab</span></span><br></pre></td></tr></table></figure>
+<h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 2]</span><br></pre></td></tr></table></figure>
 <p>Array的合并</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.concatenate(要拼接的多个数组, axis = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
