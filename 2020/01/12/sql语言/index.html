@@ -102,7 +102,9 @@
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1596791476146.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1597394612354.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1597394696134.png">
-<meta property="og:updated_time" content="2020-08-14T08:57:12.753Z">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1599193947629.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1599194162675.png">
+<meta property="og:updated_time" content="2020-09-04T04:41:35.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql语言">
 <meta name="twitter:description" content="DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)">
@@ -349,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-14T18:57:12+10:00">
-                2020-08-14
+              <time title="更新于" itemprop="dateModified" datetime="2020-09-04T14:41:35+10:00">
+                2020-09-04
               </time>
             
           </span>
@@ -442,6 +444,15 @@
 <p>注：以下写法错误：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> BlockFloor, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="string">"maximum number of rooms available"</span></span><br><span class="line"><span class="keyword">FROM</span> Room</span><br><span class="line"><span class="keyword">WHERE</span> Unavailable=<span class="number">0</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> BlockFloor</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(*) = </span><br><span class="line">	(<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">COUNT</span>(*))</span><br><span class="line">	<span class="keyword">FROM</span> Room</span><br><span class="line">	<span class="keyword">WHERE</span> Unavailable = <span class="number">0</span></span><br><span class="line">	<span class="keyword">GROUP</span> <span class="keyword">BY</span> BlockFloor);</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/01/12/sql语言/1597394696134.png" alt="1597394696134"></p>
+<p>找第二高的薪水</p>
+<p><a href="https://leetcode.com/problems/second-highest-salary/" target="_blank" rel="noopener">https://leetcode.com/problems/second-highest-salary/</a></p>
+<p><img src="/2020/01/12/sql语言/1599193947629.png" alt="1599193947629"></p>
+<p>如何避免有多个最大值的情况：使用DISTINCT：Sort the distinct salary in descend order，再用LIMIT和OFFSET</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 法一：Using sub-query and LIMIT clause</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span></span><br><span class="line">            Salary</span><br><span class="line">        <span class="keyword">FROM</span></span><br><span class="line">            Employee</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span></span><br><span class="line">        <span class="keyword">LIMIT</span> <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">1</span>) <span class="keyword">AS</span> SecondHighestSalary;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 法二：Using IFNULL and LIMIT clause: </span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">IFNULL</span>(</span><br><span class="line">      (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Salary</span><br><span class="line">      <span class="keyword">FROM</span> Employee</span><br><span class="line">      <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span></span><br><span class="line">        <span class="keyword">LIMIT</span> <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">1</span>),</span><br><span class="line">    <span class="literal">NULL</span>) <span class="keyword">AS</span> SecondHighestSalary;</span><br></pre></td></tr></table></figure>
+<p>注：如果直接写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span></span><br><span class="line">    Salary <span class="keyword">AS</span> SecondHighestSalary</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Employee</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>this solution will be judged as ‘Wrong Answer’ if there is no such second highest salary since there might be only one record in this table.</p>
+<p><img src="/2020/01/12/sql语言/1599194162675.png" alt="1599194162675"></p>
 
       
     </div>
