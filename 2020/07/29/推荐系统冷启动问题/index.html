@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,">
+  <meta name="keywords" content="Recommender System,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Super Machine Learning Revision Notes 总结了机器学习的一系列基本概念，算法等。 分为激活函数，梯度下降，参数，正则化，模型，实用窍门等几大板块。  机器学习中的常识性问题">
-<meta name="keywords" content="机器学习">
+<meta name="description" content="来源于 https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System  冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有">
+<meta name="keywords" content="Recommender System">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习相关资料">
-<meta property="og:url" content="http://qypx.github.io/2020/07/28/机器学习相关资料/index.html">
+<meta property="og:title" content="推荐系统冷启动问题">
+<meta property="og:url" content="http://qypx.github.io/2020/07/29/推荐系统冷启动问题/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="Super Machine Learning Revision Notes 总结了机器学习的一系列基本概念，算法等。 分为激活函数，梯度下降，参数，正则化，模型，实用窍门等几大板块。  机器学习中的常识性问题">
+<meta property="og:description" content="来源于 https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System  冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://qypx.github.io/2020/07/28/机器学习相关资料/1595861323230.png">
-<meta property="og:updated_time" content="2020-07-27T15:19:02.059Z">
+<meta property="og:updated_time" content="2020-07-29T15:02:09.405Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习相关资料">
-<meta name="twitter:description" content="Super Machine Learning Revision Notes 总结了机器学习的一系列基本概念，算法等。 分为激活函数，梯度下降，参数，正则化，模型，实用窍门等几大板块。  机器学习中的常识性问题">
-<meta name="twitter:image" content="http://qypx.github.io/2020/07/28/机器学习相关资料/1595861323230.png">
+<meta name="twitter:title" content="推荐系统冷启动问题">
+<meta name="twitter:description" content="来源于 https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System  冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有">
 
 
 
@@ -122,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://qypx.github.io/2020/07/28/机器学习相关资料/">
+  <link rel="canonical" href="http://qypx.github.io/2020/07/29/推荐系统冷启动问题/">
 
 
 
@@ -131,7 +129,7 @@
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
 
-  <title>机器学习相关资料 | qypx の blog</title>
+  <title>推荐系统冷启动问题 | qypx の blog</title>
   
 
 
@@ -290,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/07/28/机器学习相关资料/">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/07/29/推荐系统冷启动问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qypx">
@@ -307,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">机器学习相关资料</h1>
+          <h1 class="post-title" itemprop="name headline">推荐系统冷启动问题</h1>
         
 
         <div class="post-meta">
@@ -319,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-28T00:44:34+10:00">
-                2020-07-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-29T23:00:59+08:00">
+                2020-07-29
               </time>
             
 
@@ -335,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-28T01:19:02+10:00">
-                2020-07-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-29T23:02:09+08:00">
+                2020-07-29
               </time>
             
           </span>
@@ -354,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
                   </a>
                 </span>
 
@@ -396,17 +394,22 @@
       
 
       
-        <p><a href="https://createmomo.github.io/2018/01/23/Super-Machine-Learning-Revision-Notes/" target="_blank" rel="noopener">Super Machine Learning Revision Notes</a></p>
-<p>总结了机器学习的一系列基本概念，算法等。</p>
-<p>分为激活函数，梯度下降，参数，正则化，模型，实用窍门等几大板块。</p>
-<hr>
-<p><a href="https://yuanxiaosc.github.io/2019/08/16/机器学习中的常识性问题/" target="_blank" rel="noopener">机器学习中的常识性问题</a></p>
-<p><img src="/2020/07/28/机器学习相关资料/1595861323230.png" alt="1595861323230"></p>
-<a id="more"></a>
-<hr>
-<p>ds-cheatsheets</p>
-<p><a href="https://github.com/FavioVazquez/ds-cheatsheets" target="_blank" rel="noopener">https://github.com/FavioVazquez/ds-cheatsheets</a></p>
-<p>各种cheatsheet，关于python, R, big data, machine learning, deep learning, SQL, data visulization等等。</p>
+        <blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
+<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
+<ol>
+<li>利用用户的账号信息。</li>
+<li>利用用户的手机 IMEI 号进行冷启动。</li>
+<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
+</ol>
+<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
+<ol>
+<li>利用物品的内容、分类信息。</li>
+<li>利用专家标注的数据。</li>
+</ol>
 
       
     </div>
@@ -424,7 +427,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+            <a href="/tags/Recommender-System/" rel="tag"># Recommender System</a>
           
         </div>
       
@@ -437,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/28/深度学习相关资料/" rel="next" title="深度学习相关资料">
-                <i class="fa fa-chevron-left"></i> 深度学习相关资料
+              <a href="/2020/07/29/推荐系统总体架构及特征数据/" rel="next" title="推荐系统总体架构及特征数据">
+                <i class="fa fa-chevron-left"></i> 推荐系统总体架构及特征数据
               </a>
             
           </div>
@@ -447,8 +450,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/29/隐语义模型/" rel="prev" title="隐语义模型">
-                隐语义模型 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/08/07/Precision-Recall-ROC曲线等/" rel="prev" title="Precision, Recall, ROC曲线等">
+                Precision, Recall, ROC曲线等 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -501,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -587,6 +599,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-用户冷启动"><span class="nav-text">8.1 用户冷启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-物品冷启动"><span class="nav-text">8.2 物品冷启动</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
