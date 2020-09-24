@@ -3017,20 +3017,20 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
 <p><img src="/2020/01/12/sql语言/1578825616684.png" alt="1578825616684"></p>
 <a id="more"></a>
-<h5 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h5><p><img src="/2020/01/12/sql语言/1578900159995.png" alt="1578900159995"></p>
+<h4 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h4><p><img src="/2020/01/12/sql语言/1578900159995.png" alt="1578900159995"></p>
 <blockquote>
 <p>注：字符为单引号</p>
 </blockquote>
 <p><code>INSERT INTO tablename {column1,column2,…}values(exp1,exp2,…);</code>  //插入</p>
-<h5 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h5><p><img src="/2020/01/12/sql语言/1578900315795.png" alt="1578900315795"></p>
-<h5 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h5><p><img src="/2020/01/12/sql语言/1578900364614.png" alt="1578900364614"></p>
-<h5 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h5><p><img src="/2020/01/12/sql语言/1578899962419.png" alt="1578899962419"></p>
+<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><p><img src="/2020/01/12/sql语言/1578900315795.png" alt="1578900315795"></p>
+<h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><p><img src="/2020/01/12/sql语言/1578900364614.png" alt="1578900364614"></p>
+<h4 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h4><p><img src="/2020/01/12/sql语言/1578899962419.png" alt="1578899962419"></p>
 <p><strong>CREATE的时候，先CREATE没有外键的表，最后CREATE右外键的表</strong></p>
-<h5 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h5><p><img src="/2020/01/12/sql语言/1578900950689.png" alt="1578900950689"></p>
+<h4 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h4><p><img src="/2020/01/12/sql语言/1578900950689.png" alt="1578900950689"></p>
 <p><strong>DROP的时候，先DROP有外键的表，最后DROP没有外键的表</strong></p>
-<h5 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h5><p>例如增加一列</p>
+<h4 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h4><p>例如增加一列</p>
 <p><img src="/2020/01/12/sql语言/1578901179360.png" alt="1578901179360"></p>
-<h5 id="RENAME"><a href="#RENAME" class="headerlink" title="RENAME"></a>RENAME</h5><p><img src="/2020/01/12/sql语言/1578901685944.png" alt="1578901685944"></p>
+<h4 id="RENAME"><a href="#RENAME" class="headerlink" title="RENAME"></a>RENAME</h4><p><img src="/2020/01/12/sql语言/1578901685944.png" alt="1578901685944"></p>
 <h3 id="语法顺序与执行顺序"><a href="#语法顺序与执行顺序" class="headerlink" title="语法顺序与执行顺序"></a>语法顺序与执行顺序</h3><p><img src="/2020/01/12/sql语言/1578825674160.png" alt="1578825674160"></p>
 <p><img src="/2020/01/12/sql语言/1578825736061.png" alt="1578825736061"></p>
 <p>相当于就是 SELECT [DISTINCT] 的顺序换了一下。</p>
