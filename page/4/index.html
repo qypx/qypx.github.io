@@ -315,7 +315,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T13:20:44+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T16:20:44+08:00">
                 2020-01-13
               </time>
             
@@ -486,7 +486,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T13:06:08+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T16:06:08+08:00">
                 2020-01-13
               </time>
             
@@ -644,7 +644,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T12:57:23+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T15:57:23+08:00">
                 2020-01-13
               </time>
             
@@ -725,6 +725,339 @@
 <p><code>INSERT INTO Viewname {column1,column2,…} values(exp1,exp2,…);</code>//插入视图实际影响表</p>
 
           
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/Hive介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/12/Hive介绍/" itemprop="url">Hive介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T20:26:40+08:00">
+                2020-01-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T23:15:10+08:00">
+                2020-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>参考：</p>
+<p><a href="https://blog.csdn.net/PowerBlogger/article/details/83626449" target="_blank" rel="noopener">https://blog.csdn.net/PowerBlogger/article/details/83626449</a></p>
+<p><a href="https://blog.csdn.net/u010886217/article/details/83796151" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83796151</a></p>
+<!-- toc -->
+<h3 id="什么是Hive？"><a href="#什么是Hive？" class="headerlink" title="什么是Hive？"></a>什么是Hive？</h3><p>Hive是建立在Hadoop上的，用来构建数据仓库的工具，里面有表的概念，可以使用SQL语句实现存储、查询和分析存储在 HDFS上的数据，这些SQL语句在Hive中称为HQL，语法和SQL语句基本一样。<br>由于数据是杂乱无章的，所以Hive需要一份关于这些数据的元数据来管理和操作这些数据。这份元数据包括：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">元数据（</span><br><span class="line">行的分隔符（在映射成表的时候知道在哪里分行显示）</span><br><span class="line">字段分隔符（在映射成表的时候知道在哪里分列显示）</span><br><span class="line">字段的类型</span><br><span class="line">字段的名称</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
+<p>在Hive中，我们把数据存储在HDFS中，元数据默认存储在Hive自带的Derby数据库中，由于Derby不能实现并发访问，所以我们一般使用mysql进行替换。</p>
+<h3 id="Hive的原理"><a href="#Hive的原理" class="headerlink" title="Hive的原理"></a>Hive的原理</h3><p><strong>Hive 将用户的 HQL 语句进行解析，优化，最终把一个个的HQL语句转换为 MapReduce 作业提交到 Hadoop 集群上，Hadoop进行作业的调度及监控，作业完成后将执行结果返回给用户。</strong>所以，<strong>Hive并不进行计算，只是把HQL解析为MapperReduce在HDFS集群中运行而已</strong>，所以Hive的效率并不高。</p>
+<h3 id="Hive中表的类型"><a href="#Hive中表的类型" class="headerlink" title="Hive中表的类型"></a>Hive中表的类型</h3><p>Hive中有5种表：内部表，外部表，临时表，分区表，桶表（分桶表）</p>
+<h4 id="1-内部表"><a href="#1-内部表" class="headerlink" title="1. 内部表"></a>1. 内部表</h4><p>数据默认存储在/user/hive/warehouse，由Hive自身管理，删除内部表会同时删除存储数据和元数据。</p>
+<p><strong>建表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 建表方式一</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">	    <span class="keyword">id</span>	<span class="built_in">INT</span>，</span><br><span class="line">	    <span class="keyword">name</span> <span class="keyword">STRING</span>，</span><br><span class="line">	    age <span class="built_in">INT</span>,</span><br><span class="line">		gfs <span class="built_in">ARRAY</span>&lt;<span class="keyword">STRING</span>&gt;,</span><br><span class="line">		address <span class="keyword">MAP</span>&lt;<span class="keyword">STRING</span>,<span class="keyword">STRING</span>&gt;,</span><br><span class="line">		info <span class="keyword">STRUCT</span>&lt;country:<span class="keyword">String</span>,province:<span class="keyword">String</span>,shi:<span class="keyword">String</span>&gt;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span> </span><br><span class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">' '</span> </span><br><span class="line">COLLECTION ITEMS <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span></span><br><span class="line"><span class="keyword">MAP</span> <span class="keyword">KEYS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">':'</span> </span><br><span class="line"><span class="keyword">LINES</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\n'</span></span><br><span class="line">LOCATION <span class="string">"/test"</span>;//可以设置源数据的位置，若不设置默认就在Hive的工作目录区</span><br><span class="line"></span><br><span class="line">// 建表方式二</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl1 <span class="keyword">like</span> gfstbl;只是创建表结构</span><br><span class="line"></span><br><span class="line">// 建表方式三</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl2 <span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">name</span>,gfs,address <span class="keyword">from</span> gfstbl; </span><br><span class="line">  会创建相应的表结构，并且插入数据，相当于完整的赋值</span><br></pre></td></tr></table></figure>
+<p><strong>加载数据：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">'/root/gfs.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> gfstbl;</span><br></pre></td></tr></table></figure>
+<p><strong>查看表描述信息：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span> [<span class="keyword">EXTENDED</span>|FORMATTED] table_name</span><br><span class="line"><span class="keyword">EXTENDED</span> 极简的方式显示</span><br><span class="line">FORMATTED 格式化方式来显示</span><br><span class="line"><span class="keyword">DESCRIBE</span> <span class="keyword">EXTENDED</span> gfstbl;默认就是EXTENDED</span><br><span class="line"><span class="keyword">DESCRIBE</span> FORMATTED gfstbl;</span><br></pre></td></tr></table></figure>
+<p><strong>插入数据的其他方式：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">插入数据的方式：</span><br><span class="line">	1、<span class="keyword">insert</span> 新数据</span><br><span class="line">	<span class="number">2</span>、<span class="keyword">load</span></span><br><span class="line">	<span class="number">3</span>、查询其他表数据 <span class="keyword">insert</span> 到新表中</span><br><span class="line">	模板：</span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...)] </span><br><span class="line">		select_statement1 <span class="keyword">FROM</span> from_statement;</span><br><span class="line">		</span><br><span class="line">		FROM from_statement</span><br><span class="line">		<span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...) </span><br><span class="line">		[<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] select_statement1</span><br><span class="line"></span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">table</span>;</span><br><span class="line">		</span><br><span class="line">		习惯写法 from提前  减少SQL代码的冗余</span><br><span class="line">		from day_hour_table</span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest </span><br><span class="line">			<span class="keyword">select</span> <span class="keyword">count</span>(*) ;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/12/Hive介绍/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/笔试知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/12/笔试知识点/" itemprop="url">笔试知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T19:54:55+08:00">
+                2020-01-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-25T19:55:22+08:00">
+                2020-02-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔试/" itemprop="url" rel="index">
+                    <span itemprop="name">笔试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="https://img.sanhao.com/community_news/24544/2018040318514556.jpg" alt="img"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/12/笔试知识点/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -931,339 +1264,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/Hive介绍/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/Hive介绍/" itemprop="url">Hive介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T17:26:40+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T23:15:10+08:00">
-                2020-01-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>参考：</p>
-<p><a href="https://blog.csdn.net/PowerBlogger/article/details/83626449" target="_blank" rel="noopener">https://blog.csdn.net/PowerBlogger/article/details/83626449</a></p>
-<p><a href="https://blog.csdn.net/u010886217/article/details/83796151" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83796151</a></p>
-<!-- toc -->
-<h3 id="什么是Hive？"><a href="#什么是Hive？" class="headerlink" title="什么是Hive？"></a>什么是Hive？</h3><p>Hive是建立在Hadoop上的，用来构建数据仓库的工具，里面有表的概念，可以使用SQL语句实现存储、查询和分析存储在 HDFS上的数据，这些SQL语句在Hive中称为HQL，语法和SQL语句基本一样。<br>由于数据是杂乱无章的，所以Hive需要一份关于这些数据的元数据来管理和操作这些数据。这份元数据包括：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">元数据（</span><br><span class="line">行的分隔符（在映射成表的时候知道在哪里分行显示）</span><br><span class="line">字段分隔符（在映射成表的时候知道在哪里分列显示）</span><br><span class="line">字段的类型</span><br><span class="line">字段的名称</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
-<p>在Hive中，我们把数据存储在HDFS中，元数据默认存储在Hive自带的Derby数据库中，由于Derby不能实现并发访问，所以我们一般使用mysql进行替换。</p>
-<h3 id="Hive的原理"><a href="#Hive的原理" class="headerlink" title="Hive的原理"></a>Hive的原理</h3><p><strong>Hive 将用户的 HQL 语句进行解析，优化，最终把一个个的HQL语句转换为 MapReduce 作业提交到 Hadoop 集群上，Hadoop进行作业的调度及监控，作业完成后将执行结果返回给用户。</strong>所以，<strong>Hive并不进行计算，只是把HQL解析为MapperReduce在HDFS集群中运行而已</strong>，所以Hive的效率并不高。</p>
-<h3 id="Hive中表的类型"><a href="#Hive中表的类型" class="headerlink" title="Hive中表的类型"></a>Hive中表的类型</h3><p>Hive中有5种表：内部表，外部表，临时表，分区表，桶表（分桶表）</p>
-<h4 id="1-内部表"><a href="#1-内部表" class="headerlink" title="1. 内部表"></a>1. 内部表</h4><p>数据默认存储在/user/hive/warehouse，由Hive自身管理，删除内部表会同时删除存储数据和元数据。</p>
-<p><strong>建表：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 建表方式一</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">	    <span class="keyword">id</span>	<span class="built_in">INT</span>，</span><br><span class="line">	    <span class="keyword">name</span> <span class="keyword">STRING</span>，</span><br><span class="line">	    age <span class="built_in">INT</span>,</span><br><span class="line">		gfs <span class="built_in">ARRAY</span>&lt;<span class="keyword">STRING</span>&gt;,</span><br><span class="line">		address <span class="keyword">MAP</span>&lt;<span class="keyword">STRING</span>,<span class="keyword">STRING</span>&gt;,</span><br><span class="line">		info <span class="keyword">STRUCT</span>&lt;country:<span class="keyword">String</span>,province:<span class="keyword">String</span>,shi:<span class="keyword">String</span>&gt;</span><br><span class="line">)</span><br><span class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span> </span><br><span class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">' '</span> </span><br><span class="line">COLLECTION ITEMS <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span></span><br><span class="line"><span class="keyword">MAP</span> <span class="keyword">KEYS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">':'</span> </span><br><span class="line"><span class="keyword">LINES</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">'\n'</span></span><br><span class="line">LOCATION <span class="string">"/test"</span>;//可以设置源数据的位置，若不设置默认就在Hive的工作目录区</span><br><span class="line"></span><br><span class="line">// 建表方式二</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl1 <span class="keyword">like</span> gfstbl;只是创建表结构</span><br><span class="line"></span><br><span class="line">// 建表方式三</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl2 <span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">name</span>,gfs,address <span class="keyword">from</span> gfstbl; </span><br><span class="line">  会创建相应的表结构，并且插入数据，相当于完整的赋值</span><br></pre></td></tr></table></figure>
-<p><strong>加载数据：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">'/root/gfs.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> gfstbl;</span><br></pre></td></tr></table></figure>
-<p><strong>查看表描述信息：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span> [<span class="keyword">EXTENDED</span>|FORMATTED] table_name</span><br><span class="line"><span class="keyword">EXTENDED</span> 极简的方式显示</span><br><span class="line">FORMATTED 格式化方式来显示</span><br><span class="line"><span class="keyword">DESCRIBE</span> <span class="keyword">EXTENDED</span> gfstbl;默认就是EXTENDED</span><br><span class="line"><span class="keyword">DESCRIBE</span> FORMATTED gfstbl;</span><br></pre></td></tr></table></figure>
-<p><strong>插入数据的其他方式：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">插入数据的方式：</span><br><span class="line">	1、<span class="keyword">insert</span> 新数据</span><br><span class="line">	<span class="number">2</span>、<span class="keyword">load</span></span><br><span class="line">	<span class="number">3</span>、查询其他表数据 <span class="keyword">insert</span> 到新表中</span><br><span class="line">	模板：</span><br><span class="line">		<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...)] </span><br><span class="line">		select_statement1 <span class="keyword">FROM</span> from_statement;</span><br><span class="line">		</span><br><span class="line">		FROM from_statement</span><br><span class="line">		<span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...) </span><br><span class="line">		[<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] select_statement1</span><br><span class="line"></span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest <span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">table</span>;</span><br><span class="line">		</span><br><span class="line">		习惯写法 from提前  减少SQL代码的冗余</span><br><span class="line">		from day_hour_table</span><br><span class="line">		<span class="keyword">insert</span> <span class="keyword">into</span> rest </span><br><span class="line">			<span class="keyword">select</span> <span class="keyword">count</span>(*) ;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/12/Hive介绍/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/笔试知识点/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/笔试知识点/" itemprop="url">笔试知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T16:54:55+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-25T19:55:22+08:00">
-                2020-02-25
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔试/" itemprop="url" rel="index">
-                    <span itemprop="name">笔试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://img.sanhao.com/community_news/24544/2018040318514556.jpg" alt="img"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/12/笔试知识点/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/sql语句中的drop-truncate-delete/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1295,7 +1295,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T15:34:28+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T18:34:28+08:00">
                 2020-01-12
               </time>
             
@@ -1484,7 +1484,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T10:50:20+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T13:50:20+08:00">
                 2020-01-12
               </time>
             
@@ -1655,7 +1655,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T10:31:52+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T13:31:52+08:00">
                 2020-01-12
               </time>
             
@@ -1814,7 +1814,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T12:12:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T15:12:00+08:00">
                 2020-01-10
               </time>
             
