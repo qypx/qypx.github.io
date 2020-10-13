@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1600917356859.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1600917489922.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql语言/1600917511295.png">
-<meta property="og:updated_time" content="2020-09-24T03:34:21.671Z">
+<meta property="og:updated_time" content="2020-10-13T02:13:59.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql语言">
 <meta name="twitter:description" content="DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-24T11:34:21+08:00">
-                2020-09-24
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-13T10:13:59+08:00">
+                2020-10-13
               </time>
             
           </span>
@@ -429,7 +429,9 @@
 <h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><p><img src="/2020/01/12/sql语言/1578900315795.png" alt="1578900315795"></p>
 <h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><p><img src="/2020/01/12/sql语言/1578900364614.png" alt="1578900364614"></p>
 <h4 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h4><p><img src="/2020/01/12/sql语言/1578899962419.png" alt="1578899962419"></p>
-<p><strong>CREATE的时候，先CREATE没有外键的表，最后CREATE右外键的表</strong></p>
+<p><strong>CREATE的时候，先CREATE没有外键的表，最后CREATE有外键的表</strong></p>
+<p>假设我们有一个主键列为ID的表，表中有字段k，并且在k上有索引。这个表的建表语句是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    k <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">16</span>),</span><br><span class="line">    <span class="keyword">index</span> (k)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h4><p><img src="/2020/01/12/sql语言/1578900950689.png" alt="1578900950689"></p>
 <p><strong>DROP的时候，先DROP有外键的表，最后DROP没有外键的表</strong></p>
 <h4 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h4><p>例如增加一列</p>
