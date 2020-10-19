@@ -89,7 +89,9 @@
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1596782970482.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1596783235673.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1596778766409.png">
-<meta property="og:updated_time" content="2020-08-07T06:57:34.220Z">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1602655652264.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1602655688379.png">
+<meta property="og:updated_time" content="2020-10-14T06:10:02.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Precision, Recall, ROC曲线等">
 <meta name="twitter:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1596782796816.png">
@@ -335,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-07T14:57:34+08:00">
-                2020-08-07
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-14T14:10:02+08:00">
+                2020-10-14
               </time>
             
           </span>
@@ -396,12 +398,19 @@
       
 
       
-        <p>准确率 <script type="math/tex">Accuracy = \frac{TP+TN}{TP+TN+FP+FN}</script></p>
-<p>精确率 <script type="math/tex">Precision = \frac{TP}{TP+FP}</script>，预测为positive中，实际为positive的比例</p>
-<p>召回率 <script type="math/tex">Recall = \frac{TP}{TP+FN}</script>，实际为positive中，预测为positive的比例</p>
+        <h4 id="1-Precision-Recall"><a href="#1-Precision-Recall" class="headerlink" title="1.Precision, Recall"></a>1.Precision, Recall</h4><p>准确率 <script type="math/tex">Accuracy = \frac{TP+TN}{TP+TN+FP+FN}</script></p>
+<p>精确率 <script type="math/tex">Precision = \frac{TP}{TP+FP}</script>，预测为positive中，实际为positive的比例，反映分类器的准确性</p>
+<p>召回率 <script type="math/tex">Recall = \frac{TP}{TP+FN}</script>，实际为positive中，预测为positive的比例，反映分类器的完备性</p>
+<p>F值为精确率和召回率的调和平均</p>
 <script type="math/tex; mode=display">F1\_Score=\frac{2*Precision*Recall}{Precision+Recall}</script><p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596782796816.png" alt="1596782796816"></p>
-<hr>
-<p>TPR, <script type="math/tex">True\ Positive\ Rate = \frac{TP}{TP+FN}</script>，等价于 <script type="math/tex">Recall</script>，正样本中正确分类的比例</p>
+<p>什么情况下更注重哪个指标？</p>
+<ul>
+<li><p>注重 <script type="math/tex">Precision = \frac{TP}{TP+FP}</script>，希望 FP 小 -&gt; 判断为正实际为负的情况少 -&gt; 垃圾邮件 (垃圾邮件为1)</p>
+</li>
+<li><p>注重 <script type="math/tex">Recall = \frac{TP}{TP+FN}</script>，希望 FN 小 -&gt; 判断为负实际为正的情况少 -&gt; 信贷风控 (坏客户为1)</p>
+</li>
+</ul>
+<h4 id="2-TPR-FPR-ROC曲线"><a href="#2-TPR-FPR-ROC曲线" class="headerlink" title="2.TPR,FPR,ROC曲线"></a>2.TPR,FPR,ROC曲线</h4><p>TPR, <script type="math/tex">True\ Positive\ Rate = \frac{TP}{TP+FN}</script>，等价于 <script type="math/tex">Recall</script>，正样本中正确分类的比例</p>
 <p>FPR, <script type="math/tex">False\ Positive\ Rate = \frac{FP}{FP+TN}</script>，负样本中错分的比例</p>
 <p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596782970482.png" alt="1596782970482"></p>
 <hr>
@@ -409,9 +418,12 @@
 <p>特异度 <script type="math/tex">Specificity = \frac{TN}{TN+FP}</script>，负样本中正确分类的比例 (Accuracy with respect to negative cases) (将negative预测为positive占实际真正为negative的比例)</p>
 <script type="math/tex; mode=display">FPR=1-Specificity</script><p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596783235673.png" alt="1596783235673"></p>
 <hr>
-<p>ROC曲线：横轴为 FPR, 纵轴为 TPR， 越靠近左上角越好。对于某个分类器，根据其在测试样本上的表现可以得到一个TPR和FPR点对。调整分类时使用的阈值，可以得到一个经过 (0,0), (1,1)的曲线。</p>
-<p>AUC值：ROC曲线下的面积，取值范围在 0.5 到 1 之间。AUC更大的分类器效果更好。</p>
+<p>ROC曲线：ROC曲线是一个画在二维平面上的曲线，横坐标是FPR（负样本中错分的比例）,纵坐标是TPR（TPR等价于recall，正样本中正确分类的比例）。对某个分类器而言，根据其在测试样本上的表现可以得到一个(FPR,TPR)点对，调整分类时使用的阈值，可以得到一个曲线，就是ROC曲线。一般情况下，这个曲线应该处于对角线的上方（对角线代表的是一个随机分类器）。</p>
 <p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596778766409.png" alt="1596778766409"></p>
+<p>ROC曲线的特性：当测试集中的正负样本的分布（比例）变化的时候，ROC曲线能保持不变。类不平衡现象可以使用ROC曲线来评估模型的性能。</p>
+<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1602655652264.png" alt="1602655652264"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1602655688379.png" alt="1602655688379"></p>
+<p>AUC值：ROC曲线下的面积，取值范围在 0.5 到 1 之间。使用AUC值作为评价标准是因为很多时候ROC曲线并不能清晰的说明哪个分类器的效果更好，而作为一个数值，对应AUC更大的分类器效果更好。</p>
       
     </div>
     
@@ -450,6 +462,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/19/熵、条件熵、互信息、相对熵/" rel="prev" title="熵、条件熵、互信息、相对熵">
+                熵、条件熵、互信息、相对熵 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -501,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -519,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -587,6 +612,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Precision-Recall"><span class="nav-text">1.Precision, Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-TPR-FPR-ROC曲线"><span class="nav-text">2.TPR,FPR,ROC曲线</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

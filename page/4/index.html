@@ -284,6 +284,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/13/存储过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/13/存储过程/" itemprop="url">存储过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-13T22:13:28+08:00">
+                2020-01-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T22:29:49+08:00">
+                2020-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>存储过程（Stored Procedure）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。</p>
+<p>存储过程是为了完成特定功能的SQL语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。</p>
+<p>存储过程思想上很简单，就是数据库 SQL 语言层面的代码封装与重用。</p>
+<h4 id="什么是存储过程？"><a href="#什么是存储过程？" class="headerlink" title="什么是存储过程？"></a>什么是存储过程？</h4><p>存储过程就是作为可执行对象存放在数据库中的一个或多个SQL命令。<br>通俗来讲：存储过程其实就是能完成一定操作的一组SQL语句。</p>
+<h4 id="为什么要使用存储过程？"><a href="#为什么要使用存储过程？" class="headerlink" title="为什么要使用存储过程？"></a>为什么要使用存储过程？</h4><p>1.存储过程只在创造时进行编译，以后每次执行存储过程都不需再重新编译，而一般SQL语句每执行一次就编译一次,所以使用存储过程可提高数据库执行速度。<br>2.当对数据库进行复杂操作时，可将此复杂操作用存储过程封装起来与数据库提供的事务处理结合一起使用。<br>3.存储过程可以重复使用，可减少数据库开发人员的工作量。<br>4.安全性高，可设定只有某些用户才具有对指定存储过程的使用权</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>存储过程可封装，并隐藏复杂的商业逻辑。</li>
+<li>存储过程可以回传值，并可以接受参数。</li>
+<li>存储过程无法使用 SELECT 指令来运行，因为它是子程序，与查看表，数据表或用户定义函数不同。</li>
+<li>存储过程可以用在数据检验，强制实行商业逻辑等。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>存储过程，往往定制化于特定的数据库上，因为支持的编程语言不同，当切换到其他厂商的数据库系统时，需要重写原有的存储过程。</li>
+<li>存储过程的性能调校与撰写，受限于各种数据库系统。</li>
+</ul>
+<p>存储过程：存储过程就是编译好了的一些sql语句。</p>
+<ol>
+<li><p>存储过程因为SQL语句已经预编绎过了，因此运行的速度比较快。</p>
+</li>
+<li><p>可保证数据的安全性和完整性。通过存储过程可以使没有权限的用户在控制之下间接地存取数据库，从而保证数据的安全。通过存储过程可以使相关的动作在一起发生，从而可以维护数据库的完整性。</p>
+</li>
+<li>可以降低网络的通信量。存储过程主要是在服务器上运行，减少对客户机的压力。</li>
+<li>存储过程可以接受参数、输出参数、返回单个或多个结果集以及返回值。可以向程序返回错误原因</li>
+<li>存储过程可以包含程序流、逻辑以及对数据库的查询。同时可以实体封装和隐藏数据逻辑。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/13/事务与锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1790,171 +1968,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/10/排序算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/10/排序算法/" itemprop="url">排序算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T15:12:00+08:00">
-                2020-01-10
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-22T21:43:41+08:00">
-                2020-02-22
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/2020/01/10/排序算法/1578640411160.png" alt="1578640411160"></p>
-<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
-<p><span style="color:red">* 基选归堆不变（运行时间不发生变化，与初始状态无关）</span></p>
-<p><span style="color:red">* 快选希堆不稳（是不稳定的排序） </span></p>
-<p><u>快 速 排 序 ：</u> </p>
-<p>思 想 ： </p>
-<p>1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为 基 准 （ 通 常 选 第 一 个 元 素 ， 但 最 的 选 择 方 法 是 从 待 排 序 元 素 中 随 机 选 取 一 个 作 为 基 准 ） ， 称 为 基 准 元 素 ； </p>
-<p>2 ． 将 待 排 序 的 元 素 进 行 分 区 ， 比 基 准 元 素 大 的 元 素 放 在 它 的 右 边 ， 比 其 小 的 放 在 它 的 左 边 ； </p>
-<p>3 ． 对 左 右 两 个 分 区 重 复 以 上 步 骤 直 到 所 有 元 素 都 是 有 序 的 </p>
-<p> <u>冒 泡 排 序 ：</u> </p>
-<p>1 ． 比 较 相 邻 的 元 素 。 如 果 第 一 个 比 第 二 个 大 ， 就 交 换 他 们 两 个 </p>
-<p>2 ． 对 每 一 对 相 邻 元 素 作 同 样 的 工 作 ， 从 开 始 第 一 对 到 结 尾 的 最 后 一 对 。 在 这 一 点 ， 最 后 的 元 素 应 该 会 是 最 大 的 数 。 </p>
-<p>3 ． 针 对 所 有 的 元 素 重 复 以 上 的 步 骤 ， 除 了 最 后 一 个 </p>
-<p>4 ． 持 续 每 次 对 越 来 越 少 的 元 素 重 复 上 面 的 步 骤 ， 直 到 没 有 任 何 一 对 数 字 需 要 比 较 。 </p>
-<p><u>归 并 排 序 ：</u> </p>
-<p>第 一 步 ： 申 请 空 间 ， 使 其 大 小 为 两 个 已 经 排 序 序 列 之 和 ， 该 空 间 用 来 存 放 合 并 后 的 序 列 </p>
-<p>第 二 步 ： 设 定 两 个 指 针 ， 最 初 位 置 分 别 为 两 个 已 经 排 序 序 列 的 起 始 位 置 </p>
-<p>第 三 步 ： 比 较 两 个 指 针 所 指 向 的 元 素 ， 选 择 相 对 小 的 元 素 放 入 到 合 并 空 </p>
-<p>间 ， 并 移 动 指 针 到 下 一 位 置 </p>
-<p>重 复 步 骤 3 直 到 某 一 指 针 超 出 序 列 尾 </p>
-<p>将 另 一 序 列 剩 下 的 所 有 元 素 直 接 复 制 到 合 并 序 列 尾 </p>
-<p><u>插 入 排 序 ：</u> </p>
-<p>1 ． 从 有 序 数 列 和 无 序 数 列 { a2 ， a3 ,  …, an} 开 始 进 行 排 序 </p>
-<p>2 ． 处 理 第 i 个 元 素 时 { i ： 2 ， 3 ，… , n } , 数 列 { a1 ， a2 ，…， ai-1} 是 已 有 序 的 ， 而 数 列 {ai,ai+1, …， an } 是 无 序 的 。 用 ai 与 ai-1, a i-2, …， a1 进 行 比 较 ， 找 出 合 适 的 位 置 将 ai 插 入 ； </p>
-<p>3 ． 重 复 第 二 步 ， 共 进 行 n - i 次 插 入 处 理 ， 数 列 全 部 有 序 。 </p>
-<p><u>选 择 排 序 (Selection sort)：</u></p>
-<p>是 一 种 简 单 直 观 的 排 序 算 法 。 它 的 工 作 原 理 是 每 一 次 从 待 排 序 的 数 据 元 素 中 选 出 最 小 （ 或 最 大 ） 的 一 个元 素 ， 存 放 在 序 列 的 起 始 位 置 ， 直 到 全 部 待 排 序 的 数 据 元 素 排 完 ，所 以 每 一 趟 选 择 的 元 素 都 会 放 在 他 的 最 终 位 置 </p>
-<p>第 i 趟排序，找到L[i…n]中最小的元素与L[i]交换位置，这样保证每一趟排序确定一个元素的最终位置</p>
-<p><u>堆 排 序 ：</u></p>
-<p>如 果 要 求 升 序 则 建 立 大 根 堆 ， 降 序 则 建 立 小 根 堆 ， 堆 顶 元 素 为 最 大 或 者 最 小 的 元 素 ， 将 这 个 元 素 与 最 后 一 个 位 置 的 元 素 交 换 ， 再 将 剩 余 元 素 还 原 成 大 小 跟 堆 ， 每 一 趙 都 会 选 出 一 个 未 排 序 中 的 最 大 或 者 最 小 放 大 他 的 最 终 位 置 </p>
-<p><u>希 尔 排 序 (shell’s sort)：</u> </p>
-<p>希尔排序(Shell’s Sort)是<a href="https://baike.baidu.com/item/插入排序/7214992" target="_blank" rel="noopener">插入排序</a>的一种，又称“缩小增量排序”（Diminishing Increment Sort），是直接插入<a href="https://baike.baidu.com/item/排序算法/5399605" target="_blank" rel="noopener">排序算法</a>的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
-<p>希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，<a href="https://baike.baidu.com/item/算法/209025" target="_blank" rel="noopener">算法</a>便终止。</p>
-<p>由 于 是 按 照 增 量 排 序 ， 步 长 不 同 可 能 元 素 不 一 定 到 他 最 终 位 置 </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2007,7 +2020,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
