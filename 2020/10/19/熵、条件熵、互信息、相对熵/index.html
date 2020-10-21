@@ -79,19 +79,16 @@
 
 
 
-<meta name="description" content="来自《数学之美》  1.信息熵香农在他著名的论文”通信的数学原理“（A Mathematic Theory of Communication）中提出了”信息熵“的概念，解决了信息的度量问题，并且量化出信息的作用。 一条信息的信息量与其不确定性有着直接的关系。比如说，我们要搞清楚一件非常非常不确定的事，或是我们一无所知的事情，就需要了解大量的信息。相反，如果已对某件事了解较多，则不需要太多的信息就">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="熵、条件熵、互信息、相对熵">
 <meta property="og:url" content="http://qypx.github.io/2020/10/19/熵、条件熵、互信息、相对熵/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="来自《数学之美》  1.信息熵香农在他著名的论文”通信的数学原理“（A Mathematic Theory of Communication）中提出了”信息熵“的概念，解决了信息的度量问题，并且量化出信息的作用。 一条信息的信息量与其不确定性有着直接的关系。比如说，我们要搞清楚一件非常非常不确定的事，或是我们一无所知的事情，就需要了解大量的信息。相反，如果已对某件事了解较多，则不需要太多的信息就">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/10/19/熵、条件熵、互信息、相对熵/1603102832279.png">
-<meta property="og:updated_time" content="2020-10-19T14:04:53.276Z">
+<meta property="og:updated_time" content="2020-10-21T05:01:46.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="熵、条件熵、互信息、相对熵">
-<meta name="twitter:description" content="来自《数学之美》  1.信息熵香农在他著名的论文”通信的数学原理“（A Mathematic Theory of Communication）中提出了”信息熵“的概念，解决了信息的度量问题，并且量化出信息的作用。 一条信息的信息量与其不确定性有着直接的关系。比如说，我们要搞清楚一件非常非常不确定的事，或是我们一无所知的事情，就需要了解大量的信息。相反，如果已对某件事了解较多，则不需要太多的信息就">
 <meta name="twitter:image" content="http://qypx.github.io/2020/10/19/熵、条件熵、互信息、相对熵/1603102832279.png">
 
 
@@ -335,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-10-19T22:04:53+08:00">
-                2020-10-19
+              <time title="更新于" itemprop="dateModified" datetime="2020-10-21T13:01:46+08:00">
+                2020-10-21
               </time>
             
           </span>
@@ -473,7 +470,6 @@ KL(f(x)||g(x)) \neq KL(g(x)||f(x))</script><p>这样使用起来有时不是很�
 <script type="math/tex; mode=display">
 JS(f(x)||g(x))=\frac{1}{2}[KL(f(x)||g(x))+KL(g(x)||f(x))]</script><p>相对熵最早是用在信号处理上。如果两个随机信号，它们的相对熵越小，说明这两个信号越接近，否则信号的差异越大。后来研究信息处理的学者们也用它来<span style="color:red">衡量两段信息的相似程度，比如说如果一篇文章是照抄或者改写另一篇，那么这两篇文章中词频分布的相对熵就非常小，接近于零</span>。<span style="background:yellow">在Google自动问答系统中，我们采用了上面的詹森-香农度量来衡量两个答案的相似性。</span></p>
 <p>相对熵在自然语言处理中还有很多应用，比如用来衡量两个常用词（在语法和语义上）在不同文本中的概率分布，看它们是否同义。另外，利用相对熵，还可以得到信息检索中最重要的一个概念：词频率．逆向文档频率（TF-IDF）。</p>
-
       
     </div>
     
