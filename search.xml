@@ -68,9 +68,7 @@
   <entry>
     <title>数据仓库简介</title>
     <url>/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3186354240,3044449506&amp;fm=26&amp;gp=0.jpg" alt="图片"></p>
-<a id="more"></a>
-<blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>参考《Hadoop构建数据仓库实践》</p>
 </blockquote>
 <h3 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h3><p><a href="#jump_zhutiyu">主题域</a><br><a href="#jump_RDS">RDS</a><br><a href="#jump_TDS">TDS</a><br><a href="#jump_ODS">ODS</a></p>
@@ -148,7 +146,15 @@
 </blockquote>
 <h3 id="3-数据仓库架构"><a href="#3-数据仓库架构" class="headerlink" title="3. 数据仓库架构"></a>3. 数据仓库架构</h3><h4 id="3-1-基本架构"><a href="#3-1-基本架构" class="headerlink" title="3.1 基本架构"></a>3.1 基本架构</h4><p><img src="/2020/10/27/数据仓库简介/1603782098335.png" alt="1603782098335"></p>
 <p>整个数据仓库环境包括操作型系统和数据仓库系统两大部分。操作型系统的数据由各种形式的业务数据组成（数据可能是结构化、半结构化、非结构化的）。<span style="color:red">这些数据经过抽取、转换和装载（ETL）过程进入数据仓库系统。</span></p>
-<p>这里把ETL过程分成了抽取和转换装载两个部分。<strong>抽取</strong>过程负责从操作型系统获取数据，该过程一般不做数据聚合和汇总，但是会按照主题进行集成，物理上是将操作型系统的数据全量或增量复制到数据仓库系统的RDS中。<strong>转换装载</strong>过程将数据进行清洗、过滤、汇总、统一格式化等一系列转换操作后，使数据转换为适合查询的格式，然后装载进数据仓库系统的TDS中。（关于ETL的更详细内容见 <a href="#jump4">4. 抽取-转换-装载（ETL）</a>）</p>
+<p>这里把ETL过程分成了抽取和转换装载两个部分。<strong>抽取</strong>过程负责从操作型系统获取数据，该过程一般不做数据聚合和汇总，但是会按照主题进行集成，物理上是将操作型系统的数据全量或增量复制到数据仓库系统的RDS中。</p>
+<blockquote>
+<p>抽取过程指的是把数据从操作型数据源抽取到RDS的过程，这个过程可能会有一些数据集成的操作，但不会做数据转换、清洗、格式化等工作。<br>Hadoop生态圈中的主要数据源抽取工具是 <strong>Sqoop</strong> 和 <strong>Flume</strong>。Sqoop被设计成支持在关系数据库和 Hadoop 之间传输数据，而 Flume 被设计成基于流的数据捕获，主要是从日志文件中获取数据。使用这两个工具可以完成数据仓库的抽取。<br>如果数据源是普通的文本和CSV文件，抽取过程将更加简单，只需用操作系统的<code>scp</code>或<code>ftp</code>命令将文件拉取到Hadoop集群的任一节点，然后使用HDFS的<code>put</code>命令将已在本地的文件上传到HDFS，或者使用Hive的<code>load data</code>将文件装载进表里就可以了。</p>
+</blockquote>
+<p><strong>转换装载</strong>过程将数据进行清洗、过滤、汇总、统一格式化等一系列转换操作后，使数据转换为适合查询的格式，然后装载进数据仓库系统的TDS中。</p>
+<blockquote>
+<p>转换与装载过程是将数据从RDS迁移到TDS的过程，期间会对数据进行一系列的转换和处理。经过了数据抽取步骤，此时数据已经在Hive表中了，因此<strong>Hive</strong>可以用于转换和装载。<br>Hive实际上是在MapReduce之上封装了一层SQL解释器，这样可以用类SQL语言书写复杂的MapReduce作业。Hive不但提供了丰富的数据查询功能和分析函数，还可以在某些限制下进行数据的更新，因此支持SCD1(渐变维的一种处理类型)。</p>
+</blockquote>
+<p>（关于ETL的更详细内容见 <a href="#jump4">4. 抽取-转换-装载（ETL）</a>）</p>
 <p><strong><span id="jump_RDS">RDS</span></strong> (RAW DATA STORES) 是原始数据存储的意思。将原始数据保存到数据仓库是个不错的想法。ETL过程的bug或系统中的其他错误是不可避免的，保留原始数据使得追踪并修改这些错误成为可能。有时数据仓库的用户会有查询细节数据的需求，这些细节数据的粒度与操作型系统的相同。有了RDS，这种需求很容易实现，用户可以查询RDS里的数据而不必影响业务系统的正常运行。这里的RDS实际上是起到了操作型数据存储（<a href="#jump_ODS">ODS</a>）的作用。</p>
 <blockquote>
 <p>RDS 是原始数据存储，其数据是从操作型系统抽取而来。它有两个作用，一是充当操作型系统和数据仓库之间的过渡区，二是作为细节数据查询的数据源。</p>
@@ -157,8 +163,23 @@
 <blockquote>
 <p>TDS 是转换后的数据存储，也就是数据仓库，用于后续的多维分析或即席查询。</p>
 </blockquote>
-<p><strong>自动化调度</strong>组件的作用是自动定期重复执行ETL过程。<strong>数据目录</strong>有时也被称为元数据存储，它可以提供一份数据仓库中数据的清单。用户通过它应该可以快速解决这些问题：什么类型的数据被存储在哪里，数据集的构建有何区别，数据最后的访问或更新时间等。</p>
-<p><strong>查询引擎</strong>组件负责实际执行用户查询。<strong>用户界面</strong>指的是最终用户所使用的接口程序。可能是一个GUI软件，如BI套件中的客户端软件，也可能是一个浏览器。</p>
+<p><strong>自动化调度</strong>组件的作用是自动定期重复执行ETL过程。</p>
+<blockquote>
+<p>ETL过程自动化是数据仓库成功的重要衡量标准，也是系统易用性的关键。<br>Hadoop生态圈中的主要管理工具是 <strong>Falcon</strong>。Falcon把自己看作是数据治理工具，能让用户建立定义好的ETL流水线。还有一个叫做 <strong>Oozie</strong> 的工具，它是一个Hadoop的工作流程调度系统，可以使用它将ETL过程封装进工作流自动执行。</p>
+</blockquote>
+<p><strong>数据目录</strong>有时也被称为元数据存储，它存储的是数据仓库的元数据，可以提供一份数据仓库中数据的清单，主要是描述数据属性的信息，用来支持如指示存储位置、历史数据、资源查找、文件记录等功能。用户通过它应该可以快速解决这些问题：什么类型的数据被存储在哪里，数据集的构建有何区别，数据最后的访问或更新时间等。</p>
+<blockquote>
+<p>Hadoop 生态圈中主要的数据目录工具是 <strong>HCatalog</strong>。HCatalog 是 Hadoop 上的一个表和存储管理层。使用不同的数据处理工具（如 Pig、MapReduce）的用户，通过 HCatalog 可以更加容易地读写集群中的数据。HCatalog 引入”表“的抽象，把文件看作数据集。它展现给用户的是一个 HDFS 上数据的关系视图，这样用户不必关心数据存放在哪里或者数据格式是什么等问题，就可以轻松知道系统中有哪些表，表中都包含什么。<br>HCatalog 默认支持多种文件格式的读写，如 RCFile、SequenceFile、ORC files、text files、CSV、JSON等。</p>
+</blockquote>
+<p><strong>查询引擎</strong>组件负责实际执行用户查询。</p>
+<blockquote>
+<p>由于最终用户经常需要进行交互式的即席查询，并随时动态改变和组合他们的查询条件，因此要求查询引擎具有很高的查询性能和较短的响应时间。<br>Hadoop生态圈中的主要SQL查询引擎有基于 MapReduce 的 <strong>Hive</strong>、基于 RDD 的 <strong>SparkSQL</strong> 和 Cloudera 公司的 <strong>Impala</strong>。<br>Hive可以在四种主流计算框架的三种，分别是 Tez、MapReduce 和 Spark（还有一种是Storm）上执行类SQL查询。<br>SparkSQL是Hadoop中另一个著名的SQL引擎，它实际上是一个Scala程序语言的子集。正如SparkSQL这个名字所暗示的，它以 Spark 作为底层的计算框架。<br>Impala 是 Cloudera 公司的查询系统，它提供 SQL 语言，最大的特点是速度快，主要用于 OLAP。</p>
+</blockquote>
+<p><strong>用户界面</strong>指的是最终用户所使用的接口程序。可能是一个GUI软件，如BI套件中的客户端软件，也可能是一个浏览器。</p>
+<blockquote>
+<p>数据分析的结果最终要以业务语言和形象化的方式展现给用户。数据仓库的最终用户界面通常是一个BI仪表盘或类似的一个数据可视化工具提供的浏览器页面。<br>Hadoop 生态圈中比较知名的数据可视化工具是 <strong>Hue</strong> 和 <strong>Zeppelin</strong>。<br>Hue 是一个开源的 Hadoop UI 系统，最早是由 Cloudera Desktop 演化而来，它是基于 Python Web 框架 Django 实现的。通过使用 Hue 我们可以在浏览器端的 Web 控制台上与 Hadoop 集群进行交互来分析处理数据，还可以用图形化的方式定义工作流。Hue 默认支持的数据源有 Hive 和 Impala。<br>Zeppelin 提供了 Web 版的 notebook，用于做数据分析和可视化。Zeppelin 默认只支持 SparkSQL。</p>
+</blockquote>
+<p><span style="color:blue">可以看到，普通数据仓库的8个组成部分都有相对应的 Hadoop 组件作为支撑。Hadoop 生态圈中众多更具提供的功能，完全可以满足创建传统数据仓库的需要。使用 Hadoop 建立数据仓库不仅是必要，而且是充分的。</span></p>
 <h4 id="3-2-操作数据存储（ODS）"><a href="#3-2-操作数据存储（ODS）" class="headerlink" title="3.2 操作数据存储（ODS）"></a><span id="jump_ODS">3.2 操作数据存储（ODS）</span></h4><p>操作数据存储又称为ODS (Operational Data Sore)，定义：一个<strong><span style="color:red">面向主题的、集成的、可变的、当前的</span></strong>细节数据集合，用于支持企业对于即时性的、操作性的、集成的全体信息的需求。ODS在某些方面具有类似于数据仓库的特点，在另一些方面又显著不同。</p>
 <ul>
 <li>像数据仓库一样，是面向主题的</li>
@@ -182,8 +203,6 @@
 </ul>
 <p>建立一个数据仓库就是要把来自于多个异构的源系统的数据集成在一起，放置于一个集中的位置用于数据分析。ETL系统的工作就是把异构的数据转换成同构的。</p>
 <h4 id="4-1-数据抽取"><a href="#4-1-数据抽取" class="headerlink" title="4.1 数据抽取"></a>4.1 数据抽取</h4><p>设计和建立数据抽取过程，在ETL处理乃至整个数据仓库处理过程中，一般是较为耗时的任务。需要决定抽取哪些数据。通常数据都不是只抽取一次，而是需要以一定的时间间隔反复抽取。对抽取方法的选择高度依赖于源系统和目标数据仓库环境的业务需要。一般情况下，不可能因为需要提升数据抽取的性能，而在源系统中添加额外的逻辑，也不能增加这些源系统的工作负载。</p>
-<p>抽取过程指的是把数据从操作型数据源抽取到RDS的过程，这个过程可能会有一些数据集成的操作，但不会做数据转换、清洗、格式化等工作。</p>
-<p>Hadoop生态圈中的主要数据源抽取工具是 Sqoop 和</p>
 <h5 id="4-1-1-逻辑抽取"><a href="#4-1-1-逻辑抽取" class="headerlink" title="4.1.1 逻辑抽取"></a>4.1.1 逻辑抽取</h5><p>两种逻辑抽取类型：<span style="color:red">全量抽取</span>和<span style="color:red">增量抽取</span>。</p>
 <h6 id="（1）全量抽取"><a href="#（1）全量抽取" class="headerlink" title="（1）全量抽取"></a>（1）全量抽取</h6><p>源系统的数据全部被抽取。因为这种抽取类型影响源系统上当前所有有效的数据，所以不需要跟踪自上次成功抽取以来的数据变化。源系统只需要原样提供现有的数据而不需要为附加的逻辑信息（比如时间戳等）。一个全表导出的数据文件或者一个查询源表所有数据的SQL语句，都是全量抽取的例子。</p>
 <h6 id="（2）增量抽取"><a href="#（2）增量抽取" class="headerlink" title="（2）增量抽取"></a>（2）增量抽取</h6><p>只抽取某个事件发生的特定时间点之后的数据。通过该事件发生的时间顺序能够反映数据的历史变化，它可能是最后一次成功抽取，也可能是一个复杂的业务事件，如最后一次财务结算等。必须能够标识出特定时间点之后所有的数据变化。这些发生变化的数据可以由源系统自身来提供，例如能够反映数据最后发生变化的时间戳列，或者是一个原始事务处理之外的，只用于跟踪数据变化的变更日志表。大多数情况下，使用后者意味着需要在源系统上增加抽取逻辑。</p>
@@ -219,8 +238,7 @@
 <li>在进行数据装载时，要禁用数据库约束（唯一性、非空性，检查约束等）和索引，当装载过程完全结束后，再启用这些约束，重建索引，这种方法会很大的提高装载速度。在数据仓库环境中，一般不使用数据库来保证数据的参考完整性，即不使用数据库的外键约束，它应该由ETL工具或程序来维护。</li>
 </ul>
 <p>数据装载过程可能由于多种原因而失败，比如装载过程中某些源表和目标表的结构不一致而导致失败，而这时己经有部分表装载成功了。在数据量很大的情况下，如何能在重新执行装致过程时只装载失败的部分是一个不小的挑战。对于这种情况，实现可重复装载的关键是要<strong>记录下失败点，并在装载程序中处理相关的逻辑</strong>。还有一种情况，就是<strong>装载成功，数据又发生了改变</strong>（比如有些滞后的数据在ETL执行完才进入系统，就会带来数据的更新或新增），这时需要重新再执行一遍装载过程，己经正确装载的数据可以被覆盖，但相同数据不能重复新增。简单的实现方式是<strong>先删除再插入</strong>，或者用replace into、merge into等类似功能的操作。</p>
-<p>装载到数据仓库里的数据，经过汇总、聚合等处理后交付给多维立方体或数据可视化、仪表盘等报表工其、Bl工具做进一步的数据分析。</p>
-]]></content>
+<p>装载到数据仓库里的数据，经过汇总、聚合等处理后交付给多维立方体或数据可视化、仪表盘等报表工其、Bl工具做进一步的数据分析。</p>]]></content>
       <categories>
         <category>Hadoop</category>
       </categories>
