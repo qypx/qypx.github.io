@@ -57,7 +57,8 @@
 <p>The order of the characters is determined by their Unicode code point.</p>
 <h4 id="2-2-tuple"><a href="#2-2-tuple" class="headerlink" title="2.2 tuple"></a>2.2 tuple</h4><p>使用sorted()</p>
 <p>需要使用tuple()将结果转换成tuple</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">org_tuple = (<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">new_tuple_list = sorted(org_tuple)</span><br><span class="line">print(org_tuple)</span><br><span class="line">print(new_tuple_list)</span><br><span class="line"><span class="comment"># (3, 1, 4, 5, 2)</span></span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">new_tuple = tuple(new_tuple_list)</span><br><span class="line">print(new_tuple)</span><br><span class="line"><span class="comment"># (1, 2, 3, 4, 5)</span></span><br><span class="line"></span><br><span class="line">new_tuple_reverse = tuple(sorted(new_tuple_list, reverse=<span class="literal">True</span>))</span><br><span class="line">print(new_tuple_reverse)</span><br><span class="line"><span class="comment"># (5, 4, 3, 2, 1)</span></span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">org_tuple = (<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">new_tuple_list = sorted(org_tuple)</span><br><span class="line">print(org_tuple)</span><br><span class="line">print(new_tuple_list)</span><br><span class="line"><span class="comment"># (3, 1, 4, 5, 2)</span></span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">new_tuple = tuple(new_tuple_list)</span><br><span class="line">print(new_tuple)</span><br><span class="line"><span class="comment"># (1, 2, 3, 4, 5)</span></span><br><span class="line"></span><br><span class="line">new_tuple_reverse = tuple(sorted(new_tuple_list, reverse=<span class="literal">True</span>))</span><br><span class="line">print(new_tuple_reverse)</span><br><span class="line"><span class="comment"># (5, 4, 3, 2, 1)</span></span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -535,6 +536,8 @@ JS(f(x)||g(x))=\frac{1}{2}[KL(f(x)||g(x))+KL(g(x)||f(x))]</script><p>相对熵�
     <title>决策树</title>
     <url>/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>（关于决策树与集成学习也可参考我的OneNote笔记 -&gt; preparation）</p>
+<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="#jump3.1.2.1">XGBoost并行化</a></p>
+<p><a href="#jump3.1.4">XGBoost与GBDT的比较</a></p>
 <h2 id="篇零：决策树的分类"><a href="#篇零：决策树的分类" class="headerlink" title="篇零：决策树的分类"></a>篇零：决策树的分类</h2><blockquote>
 <p>本部分内容来自 <a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a></p>
 </blockquote>
@@ -1245,7 +1248,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <h6 id="3-采样技术"><a href="#3-采样技术" class="headerlink" title="3) 采样技术"></a>3) 采样技术</h6><p>采样技术有两种，分别是行采样和列采样。</p>
 <p>列采样效果比较好的是按层随机的方法：之前提到，每次分裂节点的时候我们都要遍历所有的特征和分割点，来确定最优分割点。如果加入列采样，我们会在同一层的结点分割前先随机选一部分特征，遍历的时候只用遍历这部分特征就行了。</p>
 <p>行采样则是采用bagging的思想，每次只抽取部分样本进行训练，不使用全部的样本，可以增加树的多样性。</p>
-<h4 id="1-2-工程实现"><a href="#1-2-工程实现" class="headerlink" title="1.2 工程实现"></a>1.2 工程实现</h4><h5 id="1-2-1-块结构设计-支持并行化"><a href="#1-2-1-块结构设计-支持并行化" class="headerlink" title="1.2.1 块结构设计 - 支持并行化"></a>1.2.1 块结构设计 - 支持并行化</h5><p>一直听别人说XGBoost能并行计算，感觉这才是XGBoost最bug的地方，但是直观上并不好理解，明明每次分裂节点都用到了上一次的结果，明明是个串行执行的过程，并行这个小妖精到底在哪？答案就是：选哪个feature进行分裂的时候，就是在枚举，选择最佳分裂点的时候进行。</p>
+<h4 id="1-2-工程实现"><a href="#1-2-工程实现" class="headerlink" title="1.2 工程实现"></a>1.2 工程实现</h4><h5 id="1-2-1-块结构设计-支持并行化"><a href="#1-2-1-块结构设计-支持并行化" class="headerlink" title="1.2.1 块结构设计 - 支持并行化"></a><span id="jump3.1.2.1">1.2.1 块结构设计 - 支持并行化</span></h5><p>一直听别人说XGBoost能并行计算，感觉这才是XGBoost最bug的地方，但是直观上并不好理解，明明每次分裂节点都用到了上一次的结果，明明是个串行执行的过程，并行这个小妖精到底在哪？答案就是：选哪个feature进行分裂的时候，就是在枚举，选择最佳分裂点的时候进行。</p>
 <p><strong>注意：同层级节点之间可以并行。节点内选择最佳分裂点，候选分裂点计算增益使用并行。</strong></p>
 <p>(来自 <a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a>)</p>
 <hr>
@@ -1279,7 +1282,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <li>虽然利用预排序和近似算法可以降低寻找最佳分裂点的计算量，但在节点分裂过程中仍需要遍历数据集；</li>
 <li>预排序过程的空间复杂度过高，不仅需要存储特征值，还需要存储特征对应样本的梯度统计值的索引，相当于消耗了两倍的内存。</li>
 </ol>
-<h4 id="1-4-与GBDT的比较"><a href="#1-4-与GBDT的比较" class="headerlink" title="1.4 与GBDT的比较"></a>1.4 与GBDT的比较</h4><p>来自 <a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a></p>
+<h4 id="1-4-与GBDT的比较"><a href="#1-4-与GBDT的比较" class="headerlink" title="1.4 与GBDT的比较"></a><span id="jump3.1.4">1.4 与GBDT的比较</span></h4><p>来自 <a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a></p>
 <h5 id="1-4-1-共同点"><a href="#1-4-1-共同点" class="headerlink" title="1.4.1 共同点"></a>1.4.1 共同点</h5><ul>
 <li><p>二者都是由一堆回归树构成的模型（本次训练的模型基于上次训练的模型）。传统GBDT以CART作为基分类器，xgboost还支持线性分类器，这个时候xgboost相当于带L1和L2正则化项的Logistic回归（分类问题）或者线性回归（回归问题）。</p>
 </li>

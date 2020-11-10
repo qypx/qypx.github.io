@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="参考:https://note.nkmk.me/en/python-reverse-reversed/https://note.nkmk.me/en/python-list-sort-sorted/  1. Reverse对于list, 可以使用reverse(), reversed(), 和切片对于字符串和元组（都不可变），可以使用reversed()和切片 1.1 list List typ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-11-02T05:44:51.134Z">
+<meta property="og:updated_time" content="2020-11-06T09:03:49.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python中的reverse, reversed, sort, sorted">
 <meta name="twitter:description" content="参考:https://note.nkmk.me/en/python-reverse-reversed/https://note.nkmk.me/en/python-list-sort-sorted/  1. Reverse对于list, 可以使用reverse(), reversed(), 和切片对于字符串和元组（都不可变），可以使用reversed()和切片 1.1 list List typ">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-02T13:44:51+08:00">
-                2020-11-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-06T17:03:49+08:00">
+                2020-11-06
               </time>
             
           </span>
@@ -449,6 +449,7 @@
 <h4 id="2-2-tuple"><a href="#2-2-tuple" class="headerlink" title="2.2 tuple"></a>2.2 tuple</h4><p>使用sorted()</p>
 <p>需要使用tuple()将结果转换成tuple</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">org_tuple = (<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">new_tuple_list = sorted(org_tuple)</span><br><span class="line">print(org_tuple)</span><br><span class="line">print(new_tuple_list)</span><br><span class="line"><span class="comment"># (3, 1, 4, 5, 2)</span></span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">new_tuple = tuple(new_tuple_list)</span><br><span class="line">print(new_tuple)</span><br><span class="line"><span class="comment"># (1, 2, 3, 4, 5)</span></span><br><span class="line"></span><br><span class="line">new_tuple_reverse = tuple(sorted(new_tuple_list, reverse=<span class="literal">True</span>))</span><br><span class="line">print(new_tuple_reverse)</span><br><span class="line"><span class="comment"># (5, 4, 3, 2, 1)</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
