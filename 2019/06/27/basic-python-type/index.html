@@ -79,19 +79,20 @@
 
 
 
-<meta name="description" content="_缩进是python的灵魂_  查看内置函数  1dir(__builtins)  逻辑运算符   1df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp;&amp;amp; (df[&apos;id&apos;]&amp;lt;=2)]  比较操作符   &amp;gt;, &amp;lt;, &amp;gt;=, &amp;lt;=, ==, !=    Python中的双引号  Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号  type()函">
+<meta name="description" content="缩进是 Python的灵魂  更多Python基础见我的onenote笔记本”Python学习笔记“另：关于 Python 的教程可参考廖雪峰的网站 https://www.liaoxuefeng.com/wiki/1016959663602400  1. 逻辑运算符 1df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp;&amp;amp; (df[&apos;id&apos;]&amp;lt;=2)] 2. 比较操作符 &amp;gt;, &amp;lt">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python中的简单语法">
+<meta property="og:title" content="Python中的简单语法与常见操作">
 <meta property="og:url" content="http://qypx.github.io/2019/06/27/basic-python-type/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="_缩进是python的灵魂_  查看内置函数  1dir(__builtins)  逻辑运算符   1df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp;&amp;amp; (df[&apos;id&apos;]&amp;lt;=2)]  比较操作符   &amp;gt;, &amp;lt;, &amp;gt;=, &amp;lt;=, ==, !=    Python中的双引号  Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号  type()函">
+<meta property="og:description" content="缩进是 Python的灵魂  更多Python基础见我的onenote笔记本”Python学习笔记“另：关于 Python 的教程可参考廖雪峰的网站 https://www.liaoxuefeng.com/wiki/1016959663602400  1. 逻辑运算符 1df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp;&amp;amp; (df[&apos;id&apos;]&amp;lt;=2)] 2. 比较操作符 &amp;gt;, &amp;lt">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/logic-operator.jpg">
-<meta property="og:updated_time" content="2019-09-02T12:01:51.327Z">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/1605268940795.png">
+<meta property="og:updated_time" content="2020-11-13T12:02:48.580Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python中的简单语法">
-<meta name="twitter:description" content="_缩进是python的灵魂_  查看内置函数  1dir(__builtins)  逻辑运算符   1df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp;&amp;amp; (df[&apos;id&apos;]&amp;lt;=2)]  比较操作符   &amp;gt;, &amp;lt;, &amp;gt;=, &amp;lt;=, ==, !=    Python中的双引号  Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号  type()函">
+<meta name="twitter:title" content="Python中的简单语法与常见操作">
+<meta name="twitter:description" content="缩进是 Python的灵魂  更多Python基础见我的onenote笔记本”Python学习笔记“另：关于 Python 的教程可参考廖雪峰的网站 https://www.liaoxuefeng.com/wiki/1016959663602400  1. 逻辑运算符 1df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp;&amp;amp; (df[&apos;id&apos;]&amp;lt;=2)] 2. 比较操作符 &amp;gt;, &amp;lt">
 <meta name="twitter:image" content="http://qypx.github.io/2019/06/27/basic-python-type/logic-operator.jpg">
 
 
@@ -131,7 +132,7 @@
 <!-- 网页加载条 -->
 <script src="https://neveryu.github.io/js/src/pace.min.js"></script>
 
-  <title>Python中的简单语法 | qypx の blog</title>
+  <title>Python中的简单语法与常见操作 | qypx の blog</title>
   
 
 
@@ -307,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python中的简单语法</h1>
+          <h1 class="post-title" itemprop="name headline">Python中的简单语法与常见操作</h1>
         
 
         <div class="post-meta">
@@ -335,8 +336,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-02T20:01:51+08:00">
-                2019-09-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-13T20:02:48+08:00">
+                2020-11-13
               </time>
             
           </span>
@@ -396,41 +397,185 @@
       
 
       
-        <p><strong>_缩进是python的灵魂_</strong></p>
-<ul>
-<li>查看内置函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir(__builtins)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>逻辑运算符</li>
-</ul>
-<p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>比较操作符</li>
-</ul>
+        <p><strong><em><span style="color:blue">缩进是 Python的灵魂</span></em></strong></p>
 <blockquote>
+<p>更多Python基础见我的onenote笔记本”Python学习笔记“<br>另：关于 Python 的教程可参考廖雪峰的网站 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+</blockquote>
+<h3 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h3><p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+<h3 id="2-比较操作符"><a href="#2-比较操作符" class="headerlink" title="2. 比较操作符"></a>2. 比较操作符</h3><blockquote>
 <p>>, &lt;, &gt;=, &lt;=, ==, != </p>
 </blockquote>
-<ul>
-<li>Python中的双引号</li>
+<a id="more"></a>
+<h3 id="3-Python中的双引号"><a href="#3-Python中的双引号" class="headerlink" title="3. Python中的双引号"></a>3. Python中的双引号</h3><p>Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号</p>
+<h3 id="4-type"><a href="#4-type" class="headerlink" title="4. type()"></a>4. type()</h3><h4 id="4-1-type-函数"><a href="#4-1-type-函数" class="headerlink" title="4.1 type()函数"></a>4.1 type()函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">4</span></span><br><span class="line">type(i)</span><br><span class="line"><span class="comment"># int</span></span><br><span class="line"></span><br><span class="line">type(<span class="string">"hello"</span>)</span><br><span class="line"><span class="comment"># str</span></span><br><span class="line"></span><br><span class="line">n = <span class="literal">None</span></span><br><span class="line">type(n)</span><br><span class="line"><span class="comment"># NoneType</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-2-dtype"><a href="#4-2-dtype" class="headerlink" title="4.2 dtype"></a>4.2 dtype</h4><p>查看type<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>].dtype</span><br><span class="line"><span class="comment"># dtype('O')</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="4-3-转换type"><a href="#4-3-转换type" class="headerlink" title="4.3 转换type"></a>4.3 转换type</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>] = train[<span class="string">"ID"</span>].astype(np.int32)</span><br></pre></td></tr></table></figure>
+<h3 id="5-Python二维列表初始化"><a href="#5-Python二维列表初始化" class="headerlink" title="5. Python二维列表初始化"></a>5. Python二维列表初始化</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)] <span class="comment"># m*n的二维列表</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-查看列表中最小值所在位置-索引"><a href="#6-查看列表中最小值所在位置-索引" class="headerlink" title="6. 查看列表中最小值所在位置(索引)"></a>6. 查看列表中最小值所在位置(索引)</h3><ul>
+<li>第一个位置 <code>listA.index(min(listA))</code> ；</li>
+<li>所有位置：<code>[i for i,v in enumerate(listA) if v == min(listA)]</code></li>
 </ul>
-<p>Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号</p>
-<ul>
-<li>type()函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">4</span></span><br><span class="line">type(i)</span><br></pre></td></tr></table></figure>
-<pre><code>int
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="literal">None</span></span><br><span class="line">type(n)</span><br></pre></td></tr></table></figure>
-<pre><code>NoneType
-</code></pre><ul>
-<li>dtype</li>
-</ul>
-<p>查看type<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>].dtype</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>dtype(‘O’)</p>
+<h3 id="7-输出"><a href="#7-输出" class="headerlink" title="7. 输出"></a>7. 输出</h3><blockquote>
+<p>参考：<br><a href="https://www.runoob.com/w3cnote/python3-print-func-b.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/python3-print-func-b.html</a><br><a href="https://www.cnblogs.com/penphy/p/10028546.html" target="_blank" rel="noopener">https://www.cnblogs.com/penphy/p/10028546.html</a><br><a href="https://www.cnblogs.com/lovejh/p/9201219.html" target="_blank" rel="noopener">https://www.cnblogs.com/lovejh/p/9201219.html</a></p>
 </blockquote>
-<p>转换type<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>] = train[<span class="string">"ID"</span>].astype(np.int32)</span><br></pre></td></tr></table></figure></p>
+<p>简单的输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;print(<span class="string">'My name is'</span>, <span class="string">'John'</span>)</span><br><span class="line">My name <span class="keyword">is</span> John</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;student = (<span class="number">30</span>,<span class="string">"University of Oxford"</span>,<span class="string">"1 High Street, London, W1 1PP"</span>, <span class="string">"John Cameron"</span>)</span><br><span class="line">&gt;&gt;&gt;print(student[<span class="number">3</span>]+ <span class="string">", "</span>+student[<span class="number">1</span>] + <span class="string">", "</span> + student[<span class="number">2</span>] + <span class="string">","</span> + str(student[<span class="number">0</span>]))</span><br><span class="line">John Cameron, University of Oxford, <span class="number">1</span> High Street, London, W1 <span class="number">1</span>PP,<span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>print不换行：</p>
+<p>在 Python 中 print 默认是换行的:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">3</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">print</span> (i)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>要想不换行应该写成 <strong>print(i, end = ‘’ )</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">6</span>):</span><br><span class="line"><span class="meta">... </span>    print(i, end=<span class="string">" "</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-1-用法"><a href="#7-1-用法" class="headerlink" title="7.1 %用法"></a>7.1 %用法</h4><p>支持参数格式化，与 C 语言的 printf 类似</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;print(<span class="string">'Hello, %s. Your age is %d.'</span> % (<span class="string">'Johon'</span>, <span class="number">20</span>))</span><br><span class="line">Hello, Johon. Your age <span class="keyword">is</span> <span class="number">20.</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;str = <span class="string">"the length of (%s) is %d"</span> %(<span class="string">'runoob'</span>,len(<span class="string">'runoob'</span>))</span><br><span class="line">&gt;&gt;&gt;print(str)</span><br><span class="line">the length of (runoob) <span class="keyword">is</span> <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>python字符串格式化符号:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符   号</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%c</td>
+<td style="text-align:left">格式化字符及其ASCII码</td>
+</tr>
+<tr>
+<td style="text-align:left">%s</td>
+<td style="text-align:left">格式化字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">%d</td>
+<td style="text-align:left">格式化整数</td>
+</tr>
+<tr>
+<td style="text-align:left">%u</td>
+<td style="text-align:left">格式化无符号整型</td>
+</tr>
+<tr>
+<td style="text-align:left">%o</td>
+<td style="text-align:left">格式化无符号八进制数</td>
+</tr>
+<tr>
+<td style="text-align:left">%x</td>
+<td style="text-align:left">格式化无符号十六进制数</td>
+</tr>
+<tr>
+<td style="text-align:left">%X</td>
+<td style="text-align:left">格式化无符号十六进制数（大写）</td>
+</tr>
+<tr>
+<td style="text-align:left">%f</td>
+<td style="text-align:left">格式化浮点数字，可指定小数点后的精度</td>
+</tr>
+<tr>
+<td style="text-align:left">%e</td>
+<td style="text-align:left">用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td style="text-align:left">%E</td>
+<td style="text-align:left">作用同%e，用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td style="text-align:left">%g</td>
+<td style="text-align:left">%f和%e的简写</td>
+</tr>
+<tr>
+<td style="text-align:left">%G</td>
+<td style="text-align:left">%f 和 %E 的简写</td>
+</tr>
+<tr>
+<td style="text-align:left">%p</td>
+<td style="text-align:left">用十六进制数格式化变量的地址</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>格式化操作符辅助指令:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">定义宽度或者小数点精度</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">用做左对齐</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">在正数前面显示加号( + )</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;sp&gt;</code></td>
+<td style="text-align:left">在正数前面显示空格</td>
+</tr>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">在八进制数前面显示零(‘0’)，在十六进制前面显示’0x’或者’0X’(取决于用的是’x’还是’X’)</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">显示的数字前面填充’0’而不是默认的空格</td>
+</tr>
+<tr>
+<td style="text-align:left">%</td>
+<td style="text-align:left">‘%%’输出一个单一的’%’</td>
+</tr>
+<tr>
+<td style="text-align:left">(var)</td>
+<td style="text-align:left">映射变量(字典参数)</td>
+</tr>
+<tr>
+<td style="text-align:left">m.n.</td>
+<td style="text-align:left">m 是显示的最小总宽度,n 是小数点后的位数(如果可用的话)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="7-1-1-格式化输出整数"><a href="#7-1-1-格式化输出整数" class="headerlink" title="7.1.1 格式化输出整数"></a>7.1.1 格式化输出整数</h5><p><strong>%x</strong> —- hex 十六进制<br><strong>%d</strong> —- dec 十进制<br><strong>%o</strong> —- oct 八进制</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;nHex = <span class="number">0xFF</span></span><br><span class="line">&gt;&gt;&gt;print(<span class="string">"nHex = %x,nDec = %d,nOct = %o"</span> %(nHex,nHex,nHex))</span><br><span class="line">nHex = ff,nDec = <span class="number">255</span>,nOct = <span class="number">377</span></span><br></pre></td></tr></table></figure>
+<h5 id="7-1-2-格式化输出浮点数"><a href="#7-1-2-格式化输出浮点数" class="headerlink" title="7.1.2 格式化输出浮点数"></a>7.1.2 格式化输出浮点数</h5><p><strong>%f</strong>  —- 保留小数点后面六位有效数字<br><strong>%.3f</strong>，保留3位小数位</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;pi = <span class="number">3.141592653</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%10.3f'</span> % pi) <span class="comment">#字段宽10，精度3 (整个数包括小数点后的位数一共为10位) </span></span><br><span class="line">     <span class="number">3.142</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">"pi = %.*f"</span> % (<span class="number">3</span>,pi)) <span class="comment">#用*从后面的元组中读取字段宽度或精度  </span></span><br><span class="line">pi = <span class="number">3.142</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%010.3f'</span> % pi) <span class="comment">#用0填充空白  </span></span><br><span class="line"><span class="number">000003.142</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%-10.3f'</span> % pi) <span class="comment">#左对齐  </span></span><br><span class="line"><span class="number">3.142</span>       </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%+f'</span> % pi) <span class="comment">#在正数前面显示加号( + )</span></span><br><span class="line">+<span class="number">3.141593</span></span><br></pre></td></tr></table></figure>
+<h5 id="7-1-3-格式化输出字符串"><a href="#7-1-3-格式化输出字符串" class="headerlink" title="7.1.3 格式化输出字符串"></a>7.1.3 格式化输出字符串</h5><p><strong>%s</strong><br><strong>%10s</strong> —- 右对齐，占位符10位<br><strong>%-10s</strong> —- 左对齐，占位符10位<br><strong>%.2s</strong> —- 截取2位字符串<br><strong>%10.2s</strong> —-10位占位符，截取两位字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 字符串输出</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%20s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 右对齐，取20位，不够则补位</span></span><br><span class="line">         hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%-20s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 左对齐，取20位，不够则补位</span></span><br><span class="line">hello world         </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 取2位</span></span><br><span class="line">he</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%10.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 右对齐，取2位</span></span><br><span class="line">        he</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%-10.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 左对齐，取2位</span></span><br><span class="line">he</span><br></pre></td></tr></table></figure>
+<h4 id="7-2-format用法"><a href="#7-2-format用法" class="headerlink" title="7.2 format用法"></a>7.2 format用法</h4><p>相对基本格式化输出采用‘%’的方法，format()功能更强大，该函数把字符串当成一个模板，通过传入的参数进行格式化，并且使用大括号‘{}’作为特殊字符代替‘%’</p>
+<p>位置匹配</p>
+<p><strong>（1）不带编号，即“{}”</strong><br><strong>（2）带数字编号，可调换顺序，即“{1}”、“{2}”</strong><br><strong>（3）带关键字，即“{a}”、“{tom}”</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;&#125; &#123;&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))  <span class="comment"># 不带字段</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;0&#125; &#123;1&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))  <span class="comment"># 带数字编号</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;0&#125; &#123;1&#125; &#123;0&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))  <span class="comment"># 打乱顺序</span></span><br><span class="line">hello world hello</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;a&#125; &#123;tom&#125; &#123;a&#125;'</span>.format(tom=<span class="string">'hello'</span>,a=<span class="string">'world'</span>))  <span class="comment"># 带关键字</span></span><br><span class="line">world hello world</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;&#125; is &#123;:.2f&#125;'</span>.format(<span class="number">1.123</span>,<span class="number">1.123</span>))  <span class="comment"># 取2位小数</span></span><br><span class="line"><span class="number">1.123</span> <span class="keyword">is</span> <span class="number">1.12</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'&#123;:,&#125;'</span>.format(<span class="number">1234567890</span>)</span><br><span class="line"><span class="string">'1,234,567,890'</span></span><br></pre></td></tr></table></figure>
+<p>想输出：The percentage of female students is 68.85%.👇</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str_student = <span class="string">"The percentage of female students is &#123;:.2f&#125;%."</span>.format(<span class="number">68.8543</span>)</span><br><span class="line">print(str_student)</span><br></pre></td></tr></table></figure>
+<p>百分数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>points = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>total = <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Correct answers: &#123;:.2%&#125;'</span>.format(points/total)</span><br><span class="line"><span class="string">'Correct answers: 50.00%'</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-切片操作"><a href="#8-切片操作" class="headerlink" title="8. 切片操作"></a>8. 切片操作</h3><blockquote>
+<p>参考 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017269965565856" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1017269965565856</a></p>
+</blockquote>
+<p><span style="color:blue">Python切片操作可作用于list (包括tuple, string)</span></p>
+<p>可以想象为每个位置有两个编号：</p>
+<p><img src="/2019/06/27/basic-python-type/1605268940795.png" alt="1605268940795"></p>
+<p><strong><code>b = a[i:j]</code></strong> - 表示复制 a[i] 到 a[j-1]，以生成新的list对象。例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">a[<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># [1,2]</span></span><br><span class="line">a[:<span class="number">-2</span>] <span class="comment"># [0,1,2,3,4,5,6,7]</span></span><br><span class="line">a[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment"># [8]</span></span><br><span class="line">a[:<span class="number">2</span>] <span class="comment"># [0,1]，前2个数</span></span><br><span class="line">a[<span class="number">-2</span>:] <span class="comment">#[8,9]，后2个数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>当 i 缺省时，默认为0，即 a[:3] 等价于 a[0:3]</li>
+<li>当 j 缺省时，默认为 len(a)，即 a[1:] 等价于 a[1:len(a)]</li>
+<li>当 i, j 都缺省时，<strong>a[:] 就相当于完整复制一份 a</strong> (等价于 a.copy() 浅拷贝，注：更多关于浅拷贝与深拷贝的内容见我的博客)</li>
+</ul>
+<p><strong><code>b = a[i:j:s]</code></strong> - 其中 i 与 j 与上面一样，s 表示步进，缺省时默认为1.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">a[::<span class="number">-1</span>] <span class="comment"># [9,8,7,6,5,4,3,2,1,0]</span></span><br><span class="line">a[::<span class="number">-2</span>] <span class="comment"># [9,7,5,3,1]</span></span><br><span class="line">a[:<span class="number">5</span>:<span class="number">2</span>] <span class="comment"># 前5个数，每两个取一个，[0,2,4]</span></span><br><span class="line">a[::<span class="number">5</span>] <span class="comment">#所有数，每5个取一个，[0,5]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>a[i:j:1] 等价于 a[i:j]</li>
+<li>当 s&lt;0 时（step小于0），i 缺省时默认为-1，j 缺省时默认为 -len(a) -1</li>
+<li><strong>a[::-1]</strong> 等价于 a[-1:-len(a)-1:-1]，即从最后一个元素f复制到第一个元素，即<strong>倒序</strong></li>
+</ul>
 
       
     </div>
@@ -525,8 +670,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -543,7 +697,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">107</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -611,6 +765,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-逻辑运算符"><span class="nav-text">1. 逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-比较操作符"><span class="nav-text">2. 比较操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Python中的双引号"><span class="nav-text">3. Python中的双引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-type"><span class="nav-text">4. type()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-type-函数"><span class="nav-text">4.1 type()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-dtype"><span class="nav-text">4.2 dtype</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-转换type"><span class="nav-text">4.3 转换type</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Python二维列表初始化"><span class="nav-text">5. Python二维列表初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-查看列表中最小值所在位置-索引"><span class="nav-text">6. 查看列表中最小值所在位置(索引)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-输出"><span class="nav-text">7. 输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-用法"><span class="nav-text">7.1 %用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-1-格式化输出整数"><span class="nav-text">7.1.1 格式化输出整数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-2-格式化输出浮点数"><span class="nav-text">7.1.2 格式化输出浮点数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-3-格式化输出字符串"><span class="nav-text">7.1.3 格式化输出字符串</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-format用法"><span class="nav-text">7.2 format用法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-切片操作"><span class="nav-text">8. 切片操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

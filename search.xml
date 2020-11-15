@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python直接赋值、浅拷贝和深拷贝以及切片</title>
+    <url>/2020/11/15/Python%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%BB%A5%E5%8F%8A%E5%88%87%E7%89%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考 <a href="https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html</a></p>
+</blockquote>
+<h3 id="1-直接赋值"><a href="#1-直接赋值" class="headerlink" title="1. 直接赋值"></a>1. 直接赋值</h3><p>直接赋值： <code>b = a</code> , a 和 b 都指向同一个对象，则若改变a或b，另一个变量的值会跟着改变。</p>
+<p><strong>直接赋值：其实就是对象的引用（别名）。</strong></p>
+<p><img src="/2020/11/15/Python直接赋值、浅拷贝和深拷贝以及切片/1605435974588.png" alt="1605435974588"></p>
+<a id="more"></a>
+<p>例：</p>
+<h4 id="1-1-列表赋值实例"><a href="#1-1-列表赋值实例" class="headerlink" title="1.1 列表赋值实例"></a>1.1 列表赋值实例</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.append(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b</span><br><span class="line">([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<p>👆 改变a -&gt; b会跟着变；改变b -&gt; a会跟着变</p>
+<h4 id="1-2-字典赋值实例"><a href="#1-2-字典赋值实例" class="headerlink" title="1.2 字典赋值实例"></a>1.2 字典赋值实例</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = &#123;<span class="number">1</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>].append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">1</span>].append(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>👆 改变a -&gt; b会跟着变；改变b -&gt; a会跟着变</p>
+<h3 id="2-浅拷贝"><a href="#2-浅拷贝" class="headerlink" title="2. 浅拷贝"></a>2. 浅拷贝</h3><p>浅拷贝： <code>b = a.copy()</code> ，a 和 b 是一个独立的对象，但他们的子对象还是指向同一对象（是引用）。浅拷贝拷贝父对象，改变其中一个，另一个不会变，但如果a中还有子对象，则改变子对象中的内容，另一个的子对象中的内容会跟着变 (见下面示例)。</p>
+<p><strong>浅拷贝（copy）：拷贝父对象，不会拷贝对象内部的子对象。</strong>（即拷贝了父对象，现在改变父对象的话，不会影响到另一个变量的值，但由于子对象没有被拷贝，改变一个变量的子对象的值会影响另一个变量的值）</p>
+<p><img src="/2020/11/15/Python直接赋值、浅拷贝和深拷贝以及切片/1605436105042.png" alt="1605436105042"></p>
+<p>例：</p>
+<h4 id="2-1-列表浅拷贝实例"><a href="#2-1-列表浅拷贝实例" class="headerlink" title="2.1 列表浅拷贝实例"></a>2.1 列表浅拷贝实例</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.copy()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.append(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b</span><br><span class="line">([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<p>👆 改变a -&gt; b不会跟着变；改变b -&gt; a不会跟着变</p>
+<h4 id="2-2-字典浅拷贝实例"><a href="#2-2-字典浅拷贝实例" class="headerlink" title="2.2 字典浅拷贝实例"></a>2.2 字典浅拷贝实例</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = &#123;<span class="number">1</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.copy()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>].append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">1</span>].append(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>👆 改变子对象内容时：改变a -&gt; b会跟着变；改变b -&gt; a会跟着变</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">2</span>] = [<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">3</span>] = [<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], <span class="number">2</span>: [<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], <span class="number">3</span>: [<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>👆 改变父对象内容时：改变a -&gt; b不会跟着变；改变b -&gt; a不会跟着变</p>
+<h3 id="3-深拷贝"><a href="#3-深拷贝" class="headerlink" title="3. 深拷贝"></a>3. 深拷贝</h3><p>深度拷贝：<code>b = copy.deepcopy(a)</code>，a 和 b 完全拷贝了父对象及其子对象，两者是完全独立的。无论改变a中的任何内容，b中都没有影响，反之亦然。</p>
+<p><strong>深拷贝（deepcopy）：copy模块的deepcopy方法，完全拷贝了父对象及其子对象。</strong></p>
+<p><img src="/2020/11/15/Python直接赋值、浅拷贝和深拷贝以及切片/1605437439875.png" alt="1605437439875"></p>
+<p>例：</p>
+<h4 id="2-1-列表深拷贝实例"><a href="#2-1-列表深拷贝实例" class="headerlink" title="2.1 列表深拷贝实例"></a>2.1 列表深拷贝实例</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = copy.deepcopy(a)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.append(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b</span><br><span class="line">([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+<p>👆 改变a -&gt; b不会跟着变；改变b -&gt; a不会跟着变</p>
+<h4 id="2-2-字典深拷贝实例"><a href="#2-2-字典深拷贝实例" class="headerlink" title="2.2 字典深拷贝实例"></a>2.2 字典深拷贝实例</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = &#123;<span class="number">1</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = copy.deepcopy(a)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">1</span>].append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">1</span>].append(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>👆 改变子对象内容时：改变a -&gt; b不会跟着变；改变b -&gt; a不会跟着变</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[<span class="number">2</span>] = [<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b[<span class="number">3</span>] = [<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b</span><br><span class="line">(&#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="number">2</span>: [<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>]&#125;, &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>], <span class="number">3</span>: [<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>👆 改变父对象内容时：改变a -&gt; b不会跟着变；改变b -&gt; a不会跟着变</p>
+<h3 id="4-更多实例"><a href="#4-更多实例" class="headerlink" title="4. 更多实例"></a>4. 更多实例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,[<span class="string">'a'</span>,<span class="string">'b'</span>]] <span class="comment"># 原始对象</span></span><br><span class="line">b = a <span class="comment"># 赋值，传对象的引用</span></span><br><span class="line">c = a.copy() <span class="comment"># 对象拷贝，浅拷贝</span></span><br><span class="line">d = copy.deepcopy(a) <span class="comment"># 对象拷贝，深拷贝</span></span><br><span class="line"></span><br><span class="line">a.append(<span class="number">5</span>) <span class="comment"># 修改对象a</span></span><br><span class="line">a[<span class="number">4</span>].append(<span class="string">'c'</span>) <span class="comment">#修改对象a中的['a','b']数组对象</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'a = '</span>, a)</span><br><span class="line">print(<span class="string">'b = '</span>, b)</span><br><span class="line">print(<span class="string">'c = '</span>, c)</span><br><span class="line">print(<span class="string">'d = '</span>, d)</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>]</span><br><span class="line">b =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>]</span><br><span class="line">c =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]]</span><br><span class="line">d =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]]</span><br></pre></td></tr></table></figure>
+<h3 id="5-切片操作"><a href="#5-切片操作" class="headerlink" title="5. 切片操作"></a>5. 切片操作</h3><p>Python切片操作可作用于 list（包括 tuple, string）</p>
+<p><strong>切片操作相当于浅拷贝</strong></p>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>]]</span><br><span class="line">b = a[:]</span><br><span class="line">a.append(<span class="number">5</span>)</span><br><span class="line">a[<span class="number">2</span>].append(<span class="number">4</span>)</span><br><span class="line">print(<span class="string">'a = '</span>, a)</span><br><span class="line">print(<span class="string">'b = '</span>, b)</span><br></pre></td></tr></table></figure>
+<p>输出结果为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a =  [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]</span><br><span class="line">b =  [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>]]</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>conda常用命令</title>
+    <url>/2020/11/15/conda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考 <a href="https://blog.csdn.net/Destiny_zz/article/details/88634513" target="_blank" rel="noopener">https://blog.csdn.net/Destiny_zz/article/details/88634513</a></p>
+</blockquote>
+<p><code>conda -V</code> 检查是否安装以及当前conda的版本<br><code>conda list</code> 查看安装了哪些包<br><code>conda update conda</code> 检查更新当前conda</p>
+<h3 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h3><h4 id="1-创建python虚拟环境"><a href="#1-创建python虚拟环境" class="headerlink" title="1. 创建python虚拟环境"></a>1. 创建python虚拟环境</h4><p><code>conda create -n your_env_name python=X.X (2.7、3.6等)</code> 创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可在Anaconda安装目录envs文件夹下找到。</p>
+<h4 id="2-激活或切换不同的虚拟环境"><a href="#2-激活或切换不同的虚拟环境" class="headerlink" title="2. 激活或切换不同的虚拟环境"></a>2. 激活或切换不同的虚拟环境</h4><p><code>python --version</code> 检查当前 python 版本</p>
+<p>切换虚拟环境：<br>Linux: <code>source activate your_env_name(虚拟环境名称)</code><br>Windows: <code>activate your_env_name(虚拟环境名称)</code></p>
+<a id="more"></a>
+<h4 id="3-查看当前存在哪些虚拟环境"><a href="#3-查看当前存在哪些虚拟环境" class="headerlink" title="3. 查看当前存在哪些虚拟环境"></a>3. 查看当前存在哪些虚拟环境</h4><p><code>conda env list</code> 或 <code>conda info -e</code> 查看当前存在哪些虚拟环境</p>
+<h4 id="4-对虚拟环境中安装额外的包"><a href="#4-对虚拟环境中安装额外的包" class="headerlink" title="4. 对虚拟环境中安装额外的包"></a>4. 对虚拟环境中安装额外的包</h4><p><code>conda install -n your_env_name [package]</code> 即可安装package到your_env_name中</p>
+<h4 id="5-关闭或退出虚拟环境"><a href="#5-关闭或退出虚拟环境" class="headerlink" title="5. 关闭或退出虚拟环境"></a>5. 关闭或退出虚拟环境</h4><p>Linux: <code>conda deactivate</code><br>Windows: <code>deactivate</code></p>
+<h4 id="6-删除虚拟环境"><a href="#6-删除虚拟环境" class="headerlink" title="6. 删除虚拟环境"></a>6. 删除虚拟环境</h4><p><code>conda remove -n your_env_name(虚拟环境名称) --all</code>，即可删除</p>
+<h4 id="7-删除环境中的某个包"><a href="#7-删除环境中的某个包" class="headerlink" title="7. 删除环境中的某个包"></a>7. 删除环境中的某个包</h4><p><code>conda remove --name your_env_name package_name</code></p>
+]]></content>
+      <categories>
+        <category>Jupyter Notebook</category>
+      </categories>
+      <tags>
+        <tag>Jupyter Notebook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python中的reverse, reversed, sort, sorted</title>
     <url>/2020/10/30/Python%E4%B8%AD%E7%9A%84reverse-reversed-sort-sorted/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -3771,10 +3847,142 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
     <title>索引Index</title>
     <url>/2020/01/13/%E7%B4%A2%E5%BC%95Index/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/13/索引Index/1578902807233.png" alt="1578902807233"></p>
+<a id="more"></a>
+<p>MySQL官方文档：</p>
+<blockquote>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/</a></p>
+</blockquote>
+<p>MySQL Tutorial:</p>
+<blockquote>
+<p><a href="https://www.tutorialspoint.com/mysql/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/index.htm</a></p>
+</blockquote>
+<h2 id="第一部分：MySQL中索引的操作"><a href="#第一部分：MySQL中索引的操作" class="headerlink" title="第一部分：MySQL中索引的操作"></a>第一部分：MySQL中索引的操作</h2><blockquote>
+<p>参考：<br><a href="https://www.tutorialspoint.com/mysql/mysql-indexes" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/mysql-indexes</a><br><a href="https://www.runoob.com/mysql/mysql-index.html" target="_blank" rel="noopener">https://www.runoob.com/mysql/mysql-index.html</a></p>
+</blockquote>
+<p>索引分单列索引和组合索引。单列索引，即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。组合索引，即一个索引包含多个列。</p>
+<p>实际上，索引也是一张表，该表保存了主键与索引字段，并指向实体表的记录。</p>
+<p>用户看不到索引，它们仅用于加速查询，并且数据库搜索引擎将使用它们非常快速地定位记录。</p>
+<p>对于具有索引的表，INSERT和UPDATE语句会花费更多的时间，而SELECT语句会变得更快。原因是在执行插入或更新时，数据库还需要插入或更新索引值。</p>
 <p><img src="/2020/01/13/索引Index/1578902869016.png" alt="1578902869016"></p>
-<p><code>Create UNIQUE INDEX index_name ON TableName(col_name);</code> //建索引</p>
-<p><img src="/2020/01/13/索引Index/1578902891139.png" alt="1578902891139"></p>
+<h3 id="1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）"><a href="#1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）" class="headerlink" title="1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）"></a>1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）</h3><p>唯一索引意味着索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。<br>普通索引没有任何限制，它允许表中有重复值。</p>
+<p>下面是在表上创建索引的语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name ON table_name ( column1, column2,...);</span><br></pre></td></tr></table></figure>
+<p>可以使用一个或多个列来创建索引。例如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- create an index on tutorials_tbl using tutorial_author.</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> AUTHOR_INDEX <span class="keyword">ON</span> tutorials_tbl (tutorial_author);</span><br></pre></td></tr></table></figure>
+<p>对于普通索引，只需从query中省略UNIQUE关键字即可。</p>
+<p>如果希望按降序索引列中的值，可以在列名后添加保留字DESC。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; CREATE UNIQUE INDEX AUTHOR_INDEX ON tutorials_tbl (tutorial_author DESC)</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用-ALTER-命令添加和删除索引"><a href="#2-使用-ALTER-命令添加和删除索引" class="headerlink" title="2. 使用 ALTER 命令添加和删除索引"></a>2. 使用 ALTER 命令添加和删除索引</h3><p>有四种方式可用于向表添加索引：</p>
+<ul>
+<li><strong><code>ALTER TABLE tbl_name ADD PRIMARY KEY (column_list)</code></strong> - 该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。</li>
+<li><strong><code>ALTER TABLE tbl_name ADD UNIQUE index_name (column_list)</code></strong> - 该语句创建一个索引，其值必须是唯一的（除了NULL外，NULL可能会出现多次）。</li>
+<li><strong><code>ALTER TABLE tbl_name ADD INDEX index_name (column_list)</code></strong> - 添加普通索引，索引值可出现多次。</li>
+<li><strong><code>ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list)</code></strong> - 创建一个特殊的FULLTEXT索引，该索引用于文本搜索。</li>
+</ul>
+<p>示例：在现有表中添加索引</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD INDEX (c);</span><br></pre></td></tr></table></figure>
+<p>注：当用 create index 创建索引时，必须指定索引的名字，否则mysql会报错；用 ALTER TABLE 创建索引时，可以不指定索引名字，若不指定mysql会自动生成索引名字。</p>
+<p>可以在 ALTER 命令中使用 DROP 子句来删除索引。尝试以下示例来删除上面创建的索引。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP INDEX (c);</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用-ALTER-命令添加和删除主键"><a href="#3-使用-ALTER-命令添加和删除主键" class="headerlink" title="3. 使用 ALTER 命令添加和删除主键"></a>3. 使用 ALTER 命令添加和删除主键</h3><p>可以以相同的方式添加主键，But make sure the Primary Key works on columns, which are NOT NULL.</p>
+<p>下面的代码是在现有表中添加主键。这将首先使列不为NULL，然后将其添加为主键。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;</span><br><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);</span><br></pre></td></tr></table></figure>
+<p>也可以使用 ALTER 命令删除主键：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
+<p>删除主键时只需指定 <code>PRIMARY KEY</code>，但在删除不是 PRIMARY KEY 的索引时，必须指定索引名。</p>
+<h3 id="4-创建表时直接指定索引"><a href="#4-创建表时直接指定索引" class="headerlink" title="4. 创建表时直接指定索引"></a>4. 创建表时直接指定索引</h3><p>普通索引：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">	<span class="keyword">INDEX</span> [indexName] (username(<span class="keyword">length</span>))  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>唯一索引：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">	<span class="keyword">UNIQUE</span> [indexName] (username(<span class="keyword">length</span>))  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">    s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">    <span class="keyword">index</span> k(k)</span><br><span class="line">) <span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="5-使用-DROP-命令删除索引"><a href="#5-使用-DROP-命令删除索引" class="headerlink" title="5. 使用 DROP 命令删除索引"></a>5. 使用 DROP 命令删除索引</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> [indexName] <span class="keyword">ON</span> mytable;</span><br></pre></td></tr></table></figure>
+<h3 id="6-显示索引信息"><a href="#6-显示索引信息" class="headerlink" title="6. 显示索引信息"></a>6. 显示索引信息</h3><p>可以使用 <strong>SHOW INDEX</strong> 命令列出与表关联的所有索引。可以通过添加 \G 进行垂直格式输出，以避免长行换行。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; SHOW INDEX FROM table_name\G</span><br><span class="line">........</span><br></pre></td></tr></table></figure>
+<h3 id="7-什么时候该使用索引"><a href="#7-什么时候该使用索引" class="headerlink" title="7. 什么时候该使用索引"></a>7. 什么时候该使用索引</h3><p><img src="/2020/01/13/索引Index/1578902891139.png" alt="1578902891139"></p>
+<h3 id="8-什么时候不该使用索引"><a href="#8-什么时候不该使用索引" class="headerlink" title="8. 什么时候不该使用索引"></a>8. 什么时候不该使用索引</h3><p>索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
+<p>建立索引会占用磁盘空间的索引文件。</p>
 <p><img src="/2020/01/13/索引Index/1578902910331.png" alt="1578902910331"></p>
+<h2 id="第二部分：索引的常见模型"><a href="#第二部分：索引的常见模型" class="headerlink" title="第二部分：索引的常见模型"></a>第二部分：索引的常见模型</h2><p>索引的常见模型：哈希表、y有序数组和搜索树。</p>
+<p>例如，现在维护着一个身份证信息和姓名的表，需要根据身份证号查找对应的名字。</p>
+<h3 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1. 哈希表"></a>1. 哈希表</h3><p>哈希索引的示意图如下：</p>
+<p><img src="/2020/01/13/索引Index/1605000393037.png" alt="1605000393037"></p>
+<p>从上图可以看到，四个ID_card_n的值并不是递增的（即并不是身份证号越大，算出来的N越大）</p>
+<p><strong>优点</strong>：增加新的数据时，只需往后追加。</p>
+<p><strong>缺点</strong>：因为不是有序的，所以哈希索引做区间查询的速度是很慢的。例如查找身份证号在[ID_card_X, ID_card_Y]区间的所有用户，就必须全部扫描一遍了。</p>
+<p><strong>哈希表这种结构适用于只有等值查询的场景，比如 Memcached 及其他一些 NoSQL 引擎。</strong></p>
+<h3 id="2-有序数组"><a href="#2-有序数组" class="headerlink" title="2. 有序数组"></a>2. 有序数组</h3><p><strong>优点</strong>：有序数组在等值查询和范围查询场景中的性能都非常优秀。</p>
+<p>还是上面这个根据身份证号查名字的例子，如果我们使用有序数组来实现的话，示意图如下所示：</p>
+<p><img src="/2020/01/13/索引Index/1605000914282.png" alt="1605000914282"></p>
+<p>查找身份证号对应的名字，用二分法可以快速得到，时间复杂度 O(log(N))。</p>
+<p>同时很显然，这个索引结构支持范围查询。若要查身份证号在[ID_card_X, ID_card_Y]区间的User, 可以先二分法找到ID_card_x（如果不存在ID_card_X,就找到大于ID_card_X的第一个user)，然后向右谝历，直到查到第一个大于ID_card)Y的身份证号，退出循环。</p>
+<p><strong>缺点</strong>：如果仅仅看查询效率，有序数组就是最好的数据结构了。但是，在需要更新数据的时候就麻烦了，你往中间插入一个记录就它须得挪动后面所有的记录，成本太高。</p>
+<p>所以，<strong>有序数组索引只适用于静态存储引擎</strong>，比如你要保存的是2017年某个城市的所有人囗信息，这类不会再修改的数据。</p>
+<h3 id="3-搜索树"><a href="#3-搜索树" class="headerlink" title="3. 搜索树"></a>3. 搜索树</h3><p>还是上面根据身份证号查名字的例子，如果我们用二叉搜索树来实现的话，示意图如下所示：</p>
+<p><img src="/2020/01/13/索引Index/1605080367750.png" alt="1605080367750"></p>
+<p>二叉搜索树的特点是：每个节点的左儿子小于父节点，父节点又小于右儿子。这样如果你要查 ID_card_n2 的话，按照图中的搜索顺序就是按照 UserA -&gt; UserC -&gt; UserF -&gt; User2 这个路径得到。这个时间复杂度杂度是O(log(N))。</p>
+<p>当然为了维持 O(Iog(N)) 的查询复杂度，需要保持这棵树是平衡二叉树。为了做这个保证，更新的时间复杂度也是O(log(N))。</p>
+<p>树可以有二叉，也可以有多叉。多叉树就是每个节点有多个儿子，儿子之间的大小保证从左到右递增。二叉树是搜索效率最高的，但是实际上大多数的数据库存储却并不使用二叉树。其原因是，索引不止存在内存中，还要写到磁盘上。</p>
+<p>想象一下一棵100万节点的平衡二叉树，树高20。一次查询可能需要访问20个数据块。在机械硬盘时代，从磁盘随机读一个数据块需要10ms左右的寻址时间。也就是说，对于一个100万行的表，如果使用二叉树来存储，单独访问一个行可能需要20个10ms的时间，这个查询可真够慢的。</p>
+<p>为了让一个查询尽量少地读磁盘，就必须让查询过程访问尽量少的数据块。那么，我们就不应该使用二叉树，而是要使用<strong><span style="color:red">“N 叉”树</span></strong>。这里，“N 叉”树中的“N”取决于数据块的大小。</p>
+<p>以 InnoDB 的一个整数字段索引为例，这个 N 差不多是 1200。这棵树高是 4 的时候，就可以存 1200 的 3 次方个值，这已经 17 亿了。考虑到树根的数据块总是在内存中的，一个 10 亿行的表上一个整数字段的索引，查找一个值最多只需要访问 3 次磁盘。其实，树的第二层也有很大概率在内存中，那么访问磁盘的平均次数就更少了。</p>
+<p><strong>N 叉树由于在读写上的性能优点，以及适配磁盘的访问模式，已经被广泛应用在数据库引擎中了。</strong></p>
+<blockquote>
+<p>N叉树的N值，可以通过page大小间接控制</p>
+</blockquote>
+<h2 id="第三部分：InnoDB的索引模型"><a href="#第三部分：InnoDB的索引模型" class="headerlink" title="第三部分：InnoDB的索引模型"></a>第三部分：InnoDB的索引模型</h2><h3 id="1-InnoDB索引组织结构"><a href="#1-InnoDB索引组织结构" class="headerlink" title="1. InnoDB索引组织结构"></a>1. InnoDB索引组织结构</h3><p>在 MySQL 中，索引是在存储引擎层实现的，所以并没有统一的索引标准，即不同存储引擎的索引的工作方式并不一样。而即使多个存储引擎支持同一种类型的索引，其底层的实现也可能不同。由于 InnoDB 存储引擎在 MySQL 数据库中使用最为广泛，所以下面以 InnoDB 为例，分析一下其中的索引模型。</p>
+<p>在 InnoDB 中，表都是根据主键顺序以索引的形式存放的，这种存储方式的表称为<strong>索引组织表</strong>。又因为前面我们提到的，InnoDB 使用了 <strong>B+ 树</strong>索引模型，所以数据都是存储在 B+ 树中的。</p>
+<blockquote>
+<p><span style="color:red">每一个索引在 InnoDB 里面对应一棵 B+ 树。</span></p>
+</blockquote>
+<p>假设，我们有一个主键列为ID的表，表中有字段 k，并且在k上有索引。这个表的建表语句是：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql&gt;create table T(</span><br><span class="line">id int primary key，</span><br><span class="line">k int not null，</span><br><span class="line">name varchar(16)，</span><br><span class="line">index(k)) engine=InnoDB;</span><br></pre></td></tr></table></figure>
+<p>表中R1-R5的(ID,k)值分别为(100, 1)、(200, 2)、(300,3)、(500,5) 和 (600, 6)，两棵树的示例示意图如下。</p>
+<p><img src="/2020/01/13/索引Index/1605086187154.png" alt="1605086187154"></p>
+<p>R1代表的是一行，左边是主键索引，右边是非主键索引。</p>
+<blockquote>
+<p><strong>innoDB B+树的叶子节点是page (页)，一个页里面可以存多个行</strong><br>索引只能定位到page，page内部怎么去定位行数据：page内部有个有序数组，二分法</p>
+</blockquote>
+<p>从图中不难看出，根据叶子节点的内容，索引类型分为<span style="color:red"><strong>主键索引</strong></span>和<strong><span style="color:red">非主键索引（也叫普通索引）</span></strong>。<br><strong>主键索引的叶子节点存的是整行数据</strong>。在 InnoDB 里，主键索引也被称为<strong><span style="color:red">聚簇索引（clustered index）</span></strong>。<br><strong>非主键索引的叶子节点内容是主键的值</strong>。在 InnoDB 里，非主键索引也被称为<strong><span style="color:red">二级索引（secondary index）</span></strong>。</p>
+<p>根据上面的索引结构说明，我们来讨论一个问题：基于主键索引和普通索引的查询有什么区别？</p>
+<ul>
+<li>如果语句是 select * from T where ID=500，即主键查询方式，则只需要搜索 ID 这棵 B+ 树；</li>
+<li>如果语句是 select * from T where k=5，即普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。</li>
+</ul>
+<p>也就是说，<strong>基于非主键索引的查询需要多扫描一棵索引树</strong>。因此，我们在应用中应该尽量使用主键查询。</p>
+<h3 id="2-索引维护"><a href="#2-索引维护" class="headerlink" title="2. 索引维护"></a>2. 索引维护</h3><p>B+ 树为了维护索引有序性，在插入新值的时候需要做必要的维护。以上面这个图为例，如果插入新的行 ID 值为 700，则只需要在 R5 的记录后面插入一个新记录。如果新插入的 ID 值为 400，就相对麻烦了，需要逻辑上挪动后面的数据，空出位置。</p>
+<p>而更糟的情况是，如果 R5 所在的数据页已经满了，根据 B+ 树的算法，这时候需要申请一个新的数据页，然后挪动部分数据过去。这个过程称为<strong>页分裂</strong>。在这种情况下，性能自然会受影响。</p>
+<p>除了性能外，页分裂操作还影响数据页的利用率。原本放在一个页的数据，现在分到两个页中，整体空间利用率降低大约 50%。</p>
+<p>当然有分裂就有合并。当相邻两个页由于删除了数据，利用率很低之后，会将数据页做合并。合并的过程，可以认为是分裂过程的逆过程。</p>
+<p>基于上面的索引维护过程说明，我们来讨论一个案例：</p>
+<h3 id="3-关于自增主键"><a href="#3-关于自增主键" class="headerlink" title="3. 关于自增主键"></a>3. 关于自增主键</h3><p>你可能在一些建表规范里面见到过类似的描述，要求建表语司里一定要有自增主键。当然事无绝对，我们来分析一下哪些场景下应该使用自增主键，而哪些场景下不应该。</p>
+<p>自增主键是指自增列上定义的主键，在建表浯句中一般是这么定义的：<code>NOT NULL PRIMARY KEY AUTO INCREMENT</code>。</p>
+<p>插入新记录的时候可以不指定ID的值，系统会获取当前ID最大值加1作为下一条记录的ID值。</p>
+<p>也就是说，自增主键的插入数据模式，正符合了我们前面提到的递增插入的场景。每次插入一条新记录，都是追加操作，都不涉及到挪动其他记录，也不会触发叶子节点的分裂。</p>
+<p>而用业务逻辑的字段做主键，则往往不容易保证有序插入，这样写数据成本相对较高。</p>
+<p>除了考虑性能外，我们还可以从存储空间的角度来看。假设你的表中确实有一个唯一字段，比如字符串类型的身份证号，那应该身份证号做主键，还是用自增字段做主键呢？</p>
+<p>由于每个非主键索引的叶子节点上都是主键的值。如果身份证号做主键，那么每个二级索引的叶子节点占用约20个字节，而如果用整型做主键，则只要4个字节，如果是长整型(bigint)则是8个字节。</p>
+<p>显然，主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小。</p>
+<p>所以，从性能和存储空间方面考量，自增主键往往是更合理的选择。</p>
+<p>有没有什么场景适合用业务字段直接做主键的呢？还是有的。比如，有些业务的场景需求是这样的：</p>
+<ol>
+<li>只有一个索引；</li>
+<li>该索引必须是唯一索引。</li>
+</ol>
+<p>这就是典型的KV(key-value)场景，由于没有其他索引，所以也就不用考虑其他索引的叶子节点大小的问题。<br>这时候我们就要优先考虑上一段提到的”尽量使用主键查询”原则，直接将这个索引设置为主键，可以避免每次查询需要搜索两棵树。</p>
+<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4. 小结"></a>4. 小结</h3><p>B+ 树能够很好地配合磁盘的读写特性，减少单次查询的磁盘访问次数。</p>
+<p>由于 InnoDB 是索引组织表，一般情况下建议创建一个自增主键，这样非主键索引占用的空间最小。</p>
+<p>问题：对于上面例子中的 InnoDB 表 T，如果你要重建索引 k，你的两个 SQL 语句可以这么写：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> <span class="keyword">index</span> k;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> <span class="keyword">index</span>(k);</span><br></pre></td></tr></table></figure>
+<p>如果你要重建主键索引，也可以这么写：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> primary <span class="keyword">key</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> primary <span class="keyword">key</span>(<span class="keyword">id</span>);</span><br></pre></td></tr></table></figure>
+<p>问：对于上面这两个重建索引的做法，有没有不合适的？</p>
+<blockquote>
+<p>注：为什么要重建索引？<br>前面提到，索引可能因为删除，或者页分裂等原因，导致数据页有空洞，重建索引的过程会创建一个新的索引，把数据按顺序插入，这样页面的利用率最高，也就是索引更紧凑、更省空间。</p>
+</blockquote>
+<p>答案：重建索引 k 的做法是合理的，可以达到省空间的目的。但是，重建主键的过程不合理。<br>1.直接删掉主键索引，会使得所有二级索引都失效，并且会用ROWID来做主键索引。<br>2.不论是删除主键还是创建主键，都会将整个表重建。所以连着执行这两个语句的话，第一个语句就白做了。这两个语句，你可以用这个语句代替 ：<code>alter table T engine=InnoDB</code>。👈原地重建表结构</p>
+<p><img src="/2020/01/13/索引Index/1605236364285.png" alt="1605236364285"></p>
+<p><img src="/2020/01/13/索引Index/1605236459443.png" alt="1605236459443"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
@@ -6973,28 +7181,70 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
   <entry>
     <title>Advanced Python Types</title>
     <url>/2019/06/27/Advanced-Python-Types/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;print(x)</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&gt;&gt;&gt;x[:<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&gt;&gt;&gt;x[<span class="number">3</span>:]</span><br><span class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;x[<span class="number">-2</span>:]</span><br><span class="line">[<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;x.extend([<span class="number">7</span>,<span class="number">8</span>])</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">&gt;&gt;x.append(<span class="number">9</span>)</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">&gt;&gt;y=[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]</span><br><span class="line">&gt;&gt;&gt;listOfLists=[x,y]</span><br><span class="line">&gt;&gt;&gt;listiOfLists</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]</span><br></pre></td></tr></table></figure>
-<p>注：extend()方法接收的是列表</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.extend(list2)</span><br></pre></td></tr></table></figure>
-<p>该方法没有返回值，直接修改原列表</p>
-<h5 id="给List添加元素"><a href="#给List添加元素" class="headerlink" title="给List添加元素"></a>给List添加元素</h5><p>1.往后添加元素append</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="1-List"><a href="#1-List" class="headerlink" title="1. List"></a>1. List</h3><h4 id="1-1-常见操作"><a href="#1-1-常见操作" class="headerlink" title="1.1 常见操作"></a>1.1 常见操作</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;print(x)</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片操作</span></span><br><span class="line">&gt;&gt;&gt;x[:<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&gt;&gt;&gt;x[<span class="number">3</span>:]</span><br><span class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;x[<span class="number">-2</span>:]</span><br><span class="line">[<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># extend</span></span><br><span class="line">&gt;&gt;&gt;x.extend([<span class="number">7</span>,<span class="number">8</span>])</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># append</span></span><br><span class="line">&gt;&gt;x.append(<span class="number">9</span>)</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;y=[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]</span><br><span class="line">&gt;&gt;&gt;listOfLists=[x,y]</span><br><span class="line">&gt;&gt;&gt;listiOfLists</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="1-2-append-与-extend-方法的区别"><a href="#1-2-append-与-extend-方法的区别" class="headerlink" title="1.2 append() 与 extend() 方法的区别"></a>1.2 append() 与 extend() 方法的区别</h4><p>1.append() 方法用于在列表末尾添加新的对象。语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1.append(obj) # 向列表中添加一个对象object</span><br></pre></td></tr></table></figure>
+<p>该方法无返回值，直接修改原列表。</p>
+<p><strong>使用<code>append()</code> 的时候，是将obj看作一个对象，整体打包添加到list1对象中。</strong></p>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">list1.append([<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">print(list1)</span><br><span class="line"><span class="comment"># [1, 2, 3, [4, 5]]</span></span><br></pre></td></tr></table></figure>
+<p>2.extend() 函数用于在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）。语法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1.extend(seq) <span class="comment"># 把一个序列seq的内容添加到列表中</span></span><br></pre></td></tr></table></figure>
+<p>该方法没有返回值，直接修改原列表。</p>
+<p><strong><code>extend()</code>方法接受一个序列作为参数，并将该序列的每个元素都添加到原有的列表中。</strong></p>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">list1.extend([<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">print(list1)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">t1 = (<span class="number">5</span>, <span class="number">15</span>, <span class="number">25</span>, <span class="number">50</span>)</span><br><span class="line">s1 = <span class="string">"Apple"</span> </span><br><span class="line"></span><br><span class="line">l1 = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line">l1.extend(t1)</span><br><span class="line">print(l1)</span><br><span class="line"><span class="comment"># [[1, 2, 3, 4], 5, 15, 25, 50]</span></span><br><span class="line"></span><br><span class="line">l1 = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line">l1.extend((s1,t1))</span><br><span class="line">print(l1)</span><br><span class="line"><span class="comment"># [[1, 2, 3, 4], 'Apple', (5, 15, 25, 50)]</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-3-给List添加元素"><a href="#1-3-给List添加元素" class="headerlink" title="1.3 给List添加元素"></a>1.3 给List添加元素</h4><p>1.往后添加元素append</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">arr.append(<span class="number">3</span>)</span><br><span class="line">print(arr)</span><br><span class="line"><span class="comment"># [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
 <p>2.往前添加元素，或在指定位置添加元素 insert</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr = []</span><br><span class="line">num = <span class="number">345</span></span><br><span class="line"><span class="keyword">while</span> num:</span><br><span class="line">    arr.insert(<span class="number">0</span>,num%<span class="number">10</span>)</span><br><span class="line">    num = num//<span class="number">10</span></span><br><span class="line">	</span><br><span class="line">print(arr)</span><br><span class="line"><span class="comment"># [3, 4, 5]</span></span><br></pre></td></tr></table></figure>
-<h5 id="List的拼接"><a href="#List的拼接" class="headerlink" title="List的拼接"></a>List的拼接</h5><p>方法一：使用 “+”</p>
+<h4 id="1-4-List的拼接"><a href="#1-4-List的拼接" class="headerlink" title="1.4 List的拼接"></a>1.4 List的拼接</h4><p>方法一：使用 “+”</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr1 = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">arr2 = [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr3 = arr1 + arr2</span><br><span class="line">print(arr3)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
 <p>方法二：使用extend()</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">arr1 = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">arr2 = [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr1.extend(arr2)</span><br><span class="line">print(arr1)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
-<h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><p>法一：sort()</p>
+<h4 id="1-5-排序"><a href="#1-5-排序" class="headerlink" title="1.5 排序"></a>1.5 排序</h4><p>法一：sort()</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line">x.sort()</span><br><span class="line">x</span><br><span class="line"><span class="comment"># [1,2,3]</span></span><br><span class="line"></span><br><span class="line">x.sort(reverse=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># [3,2,1]</span></span><br></pre></td></tr></table></figure>
 <p>sort()会改变原列表</p>
 <p>法二：sorted()</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>]</span><br><span class="line">y = sorted(x)</span><br><span class="line"></span><br><span class="line">print(x)</span><br><span class="line">print(y)</span><br><span class="line"><span class="comment"># [3, 4, 1]</span></span><br><span class="line"><span class="comment"># [1, 3, 4]</span></span><br></pre></td></tr></table></figure>
 <p>sorted()不会改变原列表</p>
 <p>更多关于sort的内容见 <a href="https://qypx.github.io/2020/10/30/Python中的reverse-reversed-sort-sorted/">Python中的reverse, reversed, sort, sorted</a></p>
-<h4 id="Tuple"><a href="#Tuple" class="headerlink" title="Tuple"></a>Tuple</h4><p>Tuples are a lot like lists, but the main difference is that they are <strong>immutable</strong>. Once you create a tuple, you can’t change them.</p>
+<h4 id="1-6-列表-count-方法"><a href="#1-6-列表-count-方法" class="headerlink" title="1.6 列表 count() 方法"></a>1.6 列表 count() 方法</h4><p>count() 方法返回具有指定值的元素数量。语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list.count(value)</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">points = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>]</span><br><span class="line">x = points.count(<span class="number">9</span>)</span><br><span class="line">print(x)</span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-7-all-方法"><a href="#1-7-all-方法" class="headerlink" title="1.7 all() 方法"></a>1.7 all() 方法</h4><p>all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。元素除了是 0、空、None、False 外都算 True。语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">all(iterable)</span><br></pre></td></tr></table></figure>
+<p>iterable — 元组或列表。</p>
+<p>例：<br>Define a list with elements 11, 25, 43, 68, 76 and 94. Write code that confirms the list of numbers are over 10.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">numbers = [<span class="number">11</span>, <span class="number">25</span>, <span class="number">43</span>, <span class="number">68</span>, <span class="number">76</span> , <span class="number">94</span>]</span><br><span class="line"><span class="keyword">if</span> all([x&gt;<span class="number">10</span> <span class="keyword">for</span> x <span class="keyword">in</span> numbers]):</span><br><span class="line">    print(<span class="string">"All numbers are over 10"</span>)</span><br><span class="line"><span class="comment"># All numbers are over 10</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-8-创建一个0-99的数列"><a href="#1-8-创建一个0-99的数列" class="headerlink" title="1.8 创建一个0-99的数列"></a>1.8 创建一个0-99的数列</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = list(range(<span class="number">100</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, ..., <span class="number">99</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="1-9-列表生成式"><a href="#1-9-列表生成式" class="headerlink" title="1.9 列表生成式"></a>1.9 列表生成式</h4><blockquote>
+<p>参考 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017317609699776" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1017317609699776</a></p>
+</blockquote>
+<p>关于列表生成式中的 <code>if ... else</code> 的用法：</p>
+<p>例：输出偶数<br><span style="color:red">只需要 if 时的正确写法：</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>) <span class="keyword">if</span> x%<span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<p>但是，不能在最后的 <code>if</code> 加上 <code>else</code>：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1605269674893.png" alt="1605269674893"></p>
+<p>这是因为跟在 <code>for</code> 后面的 <code>if</code> 是一个筛选条件，不能带 <code>else</code>，否则如何筛选？</p>
+<p>另外，如果把 <code>if</code> 写在 <code>for</code> 前面，必须加 <code>else</code>，否则报错：</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1605269903917.png" alt="1605269903917"></p>
+<p>这是因为 <code>for</code> 前面的部分是一个表达式，它必须根据 <code>x</code> 计算出一个结果。因此，考察表达式： <code>x if x%2 == 0</code>，它无法根据 <code>x</code> 计算出结果，因为缺少 <code>x</code>，必须加上 <code>else</code>：<br><span style="color:red">需要 if … else 时的正确写法：</span></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x <span class="keyword">if</span> x%<span class="number">2</span> == <span class="number">0</span> <span class="keyword">else</span> -x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">[<span class="number">-1</span>, <span class="number">2</span>, <span class="number">-3</span>, <span class="number">4</span>, <span class="number">-5</span>, <span class="number">6</span>, <span class="number">-7</span>, <span class="number">8</span>, <span class="number">-9</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<p>上述 <code>for</code> 前面的表达式 <code>x if x%2 == 0 else -x</code> 才能根据 <code>x</code> 计算出确定的结果。</p>
+<blockquote>
+<p><strong>总结：在列表生成式中，<code>for</code> 前面的 <code>if ... else</code> 是表达式，而 <code>for</code> 后面的 <code>if</code> 是过滤条件，不能带 <code>else</code>.</strong></p>
+</blockquote>
+<h3 id="2-Tuple"><a href="#2-Tuple" class="headerlink" title="2. Tuple"></a>2. Tuple</h3><p>Tuples are a lot like lists, but the main difference is that they are <strong>immutable</strong>. Once you create a tuple, you can’t change them.</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054069373.jpg" alt="1578054069373"></p>
-<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><p><span style="color:red">注：3.6版本后Python的dict就是有序的了，顺序就是插入的顺序。</span></p>
+<p>向tuple添加元素：<br>注：由于元组是不可变的，您不能直接向元素例添加元素，但可以将元组连接在一起</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">primes = (<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">23</span>)</span><br><span class="line">primes = primes + (<span class="number">29</span>, <span class="number">31</span>)</span><br><span class="line">primes</span><br><span class="line"><span class="comment"># (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)</span></span><br></pre></td></tr></table></figure>
+<p>元组可以使用切片：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">primes[<span class="number">1</span>]</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line"></span><br><span class="line">primes[<span class="number">-3</span>]</span><br><span class="line"><span class="comment"># 23</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-Dictionary"><a href="#3-Dictionary" class="headerlink" title="3. Dictionary"></a>3. Dictionary</h3><p><span style="color:red">注：3.6版本后Python的dict就是有序的了，顺序就是插入的顺序。</span></p>
 <p>In other languages, you might know this as a map, or a hash table. It’s basically a lookup table, where you store values associated with some unique set of key values.</p>
 <p>参考 <a href="https://www.runoob.com/python/python-dictionary.html" target="_blank" rel="noopener">https://www.runoob.com/python/python-dictionary.html</a></p>
 <p>字典是一种可变容器模型，且可存储任意类型对象。</p>
@@ -7007,7 +7257,7 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
 <p>值可以取任何数据类型（字典值可以没有限制地取任何python对象，既可以是标准的对象，也可以是用户定义的），但键必须是不可变的，如字符串，数字或元组（列表不行）。如：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;[<span class="string">'Name'</span>]: <span class="string">'Zara'</span>, <span class="string">'Age'</span>: <span class="number">7</span>&#125; </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"dict1['Name']: "</span>, dict1[<span class="string">'Name'</span>])</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">以上实例输出结果：</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 3, in &lt;module&gt;</span><br><span class="line">    dict1 = &#123;[&apos;Name&apos;]: &apos;Zara&apos;, &apos;Age&apos;: 7&#125; </span><br><span class="line">TypeError: list objects are unhashable</span><br></pre></td></tr></table></figure>
-<h5 id="访问字典里的值"><a href="#访问字典里的值" class="headerlink" title="访问字典里的值"></a>访问字典里的值</h5><p>把相应的键放入方括弧</p>
+<h4 id="3-1-访问字典里的值"><a href="#3-1-访问字典里的值" class="headerlink" title="3.1 访问字典里的值"></a>3.1 访问字典里的值</h4><p>把相应的键放入方括弧</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg" alt="1578054637299"></p>
 <p>If you try to retrieve a value for a key that doesn’t exist, you will get an exception. </p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">captains[<span class="string">'NX-01'</span>]</span><br><span class="line">输出：</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"test.py"</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    captains[<span class="string">'NX-01'</span>]</span><br><span class="line">KeyError: <span class="string">'NX-01'</span></span><br></pre></td></tr></table></figure>
@@ -7015,9 +7265,9 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg" alt="1578054512678"></p>
 <p><code>get</code>还可指定不存在时的默认返回值，如</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(captains.get(<span class="string">"NX-01"</span>,<span class="number">0</span>))</span><br><span class="line"><span class="comment"># 0</span></span><br></pre></td></tr></table></figure>
-<h5 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="string">'Name'</span>: <span class="string">'Zara'</span>, <span class="string">'Age'</span>: <span class="number">7</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1[<span class="string">'Age'</span>] = <span class="number">8</span> <span class="comment"># 更新</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1[<span class="string">'School'</span>] = <span class="string">"RUNOOB"</span> <span class="comment"># 添加</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(dict1)</span><br><span class="line">&#123;<span class="string">'School'</span>: <span class="string">'RUNOOB'</span>, <span class="string">'Age'</span>: <span class="number">8</span>, <span class="string">'Name'</span>: <span class="string">'Zara'</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="删除字段元素"><a href="#删除字段元素" class="headerlink" title="删除字段元素"></a>删除字段元素</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">'Name'</span>: <span class="string">'Zara'</span>, <span class="string">'Age'</span>: <span class="number">7</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">del</span> dict1[<span class="string">'Name'</span>]  <span class="comment"># 删除键是'Name'的条目</span></span><br><span class="line"><span class="comment"># 此时dict为：&#123;'Age':7, 'Class':'First'&#125;</span></span><br><span class="line"></span><br><span class="line">dict1.pop(<span class="string">'Age'</span>)</span><br><span class="line"><span class="comment"># 此时会输出7，dict现为&#123;'Class':'First'&#125;</span></span><br><span class="line"><span class="comment"># pop(key[,default])</span></span><br><span class="line"><span class="comment"># 删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dict1.clear()      <span class="comment"># 清空字典所有条目</span></span><br><span class="line"><span class="comment"># 此时dict为空：&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> dict1          <span class="comment"># 删除字典</span></span><br><span class="line"><span class="comment"># 此时dict变量不存在</span></span><br></pre></td></tr></table></figure>
-<h5 id="遍历字典：-keys-、values-、items"><a href="#遍历字典：-keys-、values-、items" class="headerlink" title="遍历字典： keys()  、values() 、items()"></a>遍历字典： keys()  、values() 、items()</h5><p>Iterate:</p>
+<h4 id="3-2-修改字典"><a href="#3-2-修改字典" class="headerlink" title="3.2 修改字典"></a>3.2 修改字典</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1 = &#123;<span class="string">'Name'</span>: <span class="string">'Zara'</span>, <span class="string">'Age'</span>: <span class="number">7</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1[<span class="string">'Age'</span>] = <span class="number">8</span> <span class="comment"># 更新</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict1[<span class="string">'School'</span>] = <span class="string">"RUNOOB"</span> <span class="comment"># 添加</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(dict1)</span><br><span class="line">&#123;<span class="string">'School'</span>: <span class="string">'RUNOOB'</span>, <span class="string">'Age'</span>: <span class="number">8</span>, <span class="string">'Name'</span>: <span class="string">'Zara'</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-删除字段元素"><a href="#3-3-删除字段元素" class="headerlink" title="3.3 删除字段元素"></a>3.3 删除字段元素</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">'Name'</span>: <span class="string">'Zara'</span>, <span class="string">'Age'</span>: <span class="number">7</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">del</span> dict1[<span class="string">'Name'</span>]  <span class="comment"># 删除键是'Name'的条目</span></span><br><span class="line"><span class="comment"># 此时dict为：&#123;'Age':7, 'Class':'First'&#125;</span></span><br><span class="line"></span><br><span class="line">dict1.pop(<span class="string">'Age'</span>)</span><br><span class="line"><span class="comment"># 此时会输出7，dict现为&#123;'Class':'First'&#125;</span></span><br><span class="line"><span class="comment"># pop(key[,default])</span></span><br><span class="line"><span class="comment"># 删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dict1.clear()      <span class="comment"># 清空字典所有条目</span></span><br><span class="line"><span class="comment"># 此时dict为空：&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> dict1          <span class="comment"># 删除字典</span></span><br><span class="line"><span class="comment"># 此时dict变量不存在</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-4-遍历字典：-keys-、values-、items"><a href="#3-4-遍历字典：-keys-、values-、items" class="headerlink" title="3.4 遍历字典： keys()  、values() 、items()"></a>3.4 遍历字典： keys()  、values() 、items()</h4><p>Iterate:</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg" alt="1578054588653"></p>
 <p><a href="https://www.cnblogs.com/FlyingLiao/p/11192330.html" target="_blank" rel="noopener">https://www.cnblogs.com/FlyingLiao/p/11192330.html</a></p>
 <ul>
@@ -7035,19 +7285,19 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
 </ul>
 <p>例：</p>
 <p><img src="/2019/06/27/Advanced-Python-Types/1584001276582.png" alt="1584001276582"></p>
-<h5 id="Python中的defaultdict"><a href="#Python中的defaultdict" class="headerlink" title="Python中的defaultdict"></a>Python中的<code>defaultdict</code></h5><p>dict subclass that calls a factory function to supply missing values.</p>
+<h4 id="3-5-Python中的defaultdict"><a href="#3-5-Python中的defaultdict" class="headerlink" title="3.5 Python中的defaultdict"></a>3.5 Python中的<code>defaultdict</code></h4><p>dict subclass that calls a factory function to supply missing values.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">dict1 = collections.defaultdict(int)</span><br></pre></td></tr></table></figure>
 <p><em>defaultdict(int)</em> 创建一个类似 <em>dictionary</em> 对象，里面任何的 <em>values</em> 都是 <em>int</em> 的实例，而且就算是一个不存在的 <em>key</em>, <em>d[key]</em> 也有一个默认值，这个默认值是 <em>int()</em> 的默认值0.</p>
-<h5 id="按照字典的键或者值排序"><a href="#按照字典的键或者值排序" class="headerlink" title="按照字典的键或者值排序"></a>按照字典的键或者值排序</h5><p><a href="https://blog.csdn.net/leokingszx/article/details/81154681" target="_blank" rel="noopener">https://blog.csdn.net/leokingszx/article/details/81154681</a></p>
+<h4 id="3-6-按照字典的键或者值排序"><a href="#3-6-按照字典的键或者值排序" class="headerlink" title="3.6 按照字典的键或者值排序"></a>3.6 按照字典的键或者值排序</h4><p><a href="https://blog.csdn.net/leokingszx/article/details/81154681" target="_blank" rel="noopener">https://blog.csdn.net/leokingszx/article/details/81154681</a></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y = &#123;<span class="number">1</span>:<span class="number">3</span>, <span class="number">2</span>:<span class="number">2</span>, <span class="number">3</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line">by_value = sorted(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">1</span>])</span><br><span class="line">print(by_key)   <span class="comment">#结果为[(1, 3), (2, 2), (3, 1)]，即按照键名排列</span></span><br><span class="line">print(by_value) <span class="comment">#结果为[(3, 1), (2, 2), (1, 3)]，即按照键值排列</span></span><br></pre></td></tr></table></figure>
 <p>当然，在这样处理后，得到的结果将变成元组。这样也可以理解，毕竟对于字典而言，本身是不提供排序的需求的。如果想按照里面的元素进行排列，那么将不得不对其类型进行转化。</p>
 <p>另：Python中多条件排序：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line">y = &#123;<span class="string">"ab"</span>:<span class="number">1</span>, <span class="string">"b"</span>:<span class="number">2</span>, <span class="string">"a"</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  sorted(y.items(),key = <span class="keyword">lambda</span> item:(len(item[<span class="number">0</span>]),item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">print(by_key) </span><br><span class="line"><span class="comment"># [('a', 1), ('b', 2), ('ab', 1)]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> by_key:</span><br><span class="line">    print(value[<span class="number">0</span>])</span><br><span class="line"><span class="comment"># a</span></span><br><span class="line"><span class="comment"># b</span></span><br><span class="line"><span class="comment"># ab</span></span><br></pre></td></tr></table></figure>
-<h5 id="其他一些字典内置函数-amp-方法"><a href="#其他一些字典内置函数-amp-方法" class="headerlink" title="其他一些字典内置函数&amp;方法"></a>其他一些字典内置函数&amp;方法</h5><p><a href="https://www.runoob.com/python/att-dictionary-len.html" target="_blank" rel="noopener"><br>len(my_dict)</a><br>计算字典元素个数，即键的总数。</p>
+<h4 id="3-7-其他一些字典内置函数-amp-方法"><a href="#3-7-其他一些字典内置函数-amp-方法" class="headerlink" title="3.7 其他一些字典内置函数&amp;方法"></a>3.7 其他一些字典内置函数&amp;方法</h4><p><a href="https://www.runoob.com/python/att-dictionary-len.html" target="_blank" rel="noopener"><br>len(my_dict)</a><br>计算字典元素个数，即键的总数。</p>
 <p><a href="https://www.runoob.com/python/att-dictionary-copy.html" target="_blank" rel="noopener">my_dict.copy()</a><br>返回一个字典的浅拷贝</p>
 <p><a href="https://www.runoob.com/python/python-att-dictionary-pop.html" target="_blank" rel="noopener">pop(key[,default])</a><br>删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。</p>
 <p><a href="https://www.runoob.com/python/python-att-dictionary-popitem.html" target="_blank" rel="noopener">popitem()</a><br>返回并删除字典中的最后一对键和值。</p>
-<h5 id="两个列表合并成一个字典"><a href="#两个列表合并成一个字典" class="headerlink" title="两个列表合并成一个字典"></a>两个列表合并成一个字典</h5><p>两个列表合并成一个字典，一个列表里的值为 <em>key</em>，一个列表里的为 <em>Value</em></p>
+<h4 id="3-8-两个列表合并成一个字典"><a href="#3-8-两个列表合并成一个字典" class="headerlink" title="3.8 两个列表合并成一个字典"></a>3.8 两个列表合并成一个字典</h4><p>两个列表合并成一个字典，一个列表里的值为 <em>key</em>，一个列表里的为 <em>Value</em></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">b = [<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line">c = dict(zip(a,b))</span><br><span class="line">c</span><br><span class="line"><span class="comment"># &#123;1: 6, 2: 7, 3: 8, 4: 9&#125;</span></span><br></pre></td></tr></table></figure>
 <p>补充1：关于zip()函数：</p>
 <p><a href="https://www.runoob.com/python/python-func-zip.html" target="_blank" rel="noopener">https://www.runoob.com/python/python-func-zip.html</a></p>
@@ -7058,8 +7308,48 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Python3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zipped = zip(a,b)     <span class="comment"># 返回一个对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zipped</span><br><span class="line">&lt;zip object at <span class="number">0x103abc288</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(zipped)  <span class="comment"># list() 转换为列表</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(zip(a,c))              <span class="comment"># 元素个数与最短的列表一致</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a1, a2 = zip(*zip(a,b))        <span class="comment"># 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(a1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(a2)</span><br><span class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
 <p>补充2：字典还可以这样定义：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dict([(<span class="number">1</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">4</span>)])</span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">2</span>, <span class="number">3</span>: <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[1 2]</span><br></pre></td></tr></table></figure>
+<h4 id="3-9-合并两个字典"><a href="#3-9-合并两个字典" class="headerlink" title="3.9 合并两个字典"></a>3.9 合并两个字典</h4><p>Combine below dictionaries in order to add values for common keys:<br><code>dict1 = {&#39;alpha&#39;: 50,&#39;beta&#39;: 200, &#39;gamma&#39;:300} 
+dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta&#39;:400}</code><br>Expected output:<br><code>{&#39;alpha&#39;: 350, &#39;beta&#39;: 320, &#39;gamma&#39;: 300, &#39;b&#39;: 200, &#39;delta&#39;: 400}</code>.</p>
+<p>法一：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">'alpha'</span>: <span class="number">50</span>,<span class="string">'beta'</span>: <span class="number">200</span>, <span class="string">'gamma'</span>:<span class="number">300</span>&#125; </span><br><span class="line">dict2 = &#123;<span class="string">'alpha'</span>: <span class="number">300</span>, <span class="string">'b'</span>: <span class="number">200</span>, <span class="string">'beta'</span>: <span class="number">120</span>, <span class="string">'delta'</span>:<span class="number">400</span>&#125; </span><br><span class="line"></span><br><span class="line">dict3 = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> dict1.items():</span><br><span class="line">    dict3[k] = v + dict2.get(k,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> dict2.items():</span><br><span class="line">    <span class="keyword">if</span> k <span class="keyword">not</span> <span class="keyword">in</span> dict1:</span><br><span class="line">        dict3[k] = v</span><br><span class="line">print(dict3)</span><br><span class="line"><span class="comment"># &#123;'beta': 320, 'gamma': 300, 'b': 200, 'delta': 400, 'alpha': 350&#125;</span></span><br></pre></td></tr></table></figure>
+<p>法二：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">'alpha'</span>: <span class="number">50</span>,<span class="string">'beta'</span>: <span class="number">200</span>, <span class="string">'gamma'</span>:<span class="number">300</span>&#125;</span><br><span class="line">dict2 = &#123;<span class="string">'alpha'</span>: <span class="number">300</span>, <span class="string">'b'</span>: <span class="number">200</span>, <span class="string">'beta'</span>: <span class="number">120</span>, <span class="string">'delta'</span>:<span class="number">400</span>&#125;</span><br><span class="line">dict3 = dict(dict1) <span class="comment"># don't do `dict3=dict1`, you need to make a copy</span></span><br><span class="line">dict3.update(dict2) </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, j <span class="keyword">in</span> dict1.items():</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> dict2.items():</span><br><span class="line">        <span class="keyword">if</span> i == x:</span><br><span class="line">            dict3[i]=(j+y)</span><br><span class="line">print(dict3)</span><br><span class="line"><span class="comment"># &#123;'gamma': 300, 'delta': 400, 'alpha': 350, 'beta': 320, 'b': 200&#125;</span></span><br></pre></td></tr></table></figure>
+<p>法三：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">d = Counter(dict1) + Counter(dict2)</span><br><span class="line">print(d)</span><br><span class="line"><span class="comment"># Counter(&#123;'delta': 400, 'alpha': 350, 'beta': 320, 'gamma': 300, 'b': 200&#125;)</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-String"><a href="#4-String" class="headerlink" title="4. String"></a>4. String</h3><h4 id="4-1-endswith"><a href="#4-1-endswith" class="headerlink" title="4.1 endswith()"></a>4.1 endswith()</h4><p>Define a list called <code>files</code> which contains some file names: <code>files = [&#39;1.txt&#39;, &#39;2.txt&#39;, &#39;2.ab&#39;, &#39;2.c&#39;, &#39;3.txt&#39;, &#39;3.ann&#39;, &#39;3.ss&#39;]</code>. Delete the file name which doesn’t use the extension <code>.txt</code> from the list. Print the list, the expected output is: <code>[&#39;1.txt&#39;, &#39;2.txt&#39;, &#39;3.txt&#39;]</code></p>
+<p>法一：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">files = [<span class="string">'1.txt'</span>, <span class="string">'2.txt'</span>, <span class="string">'2.ab'</span>, <span class="string">'2.c'</span>, <span class="string">'3.txt'</span>, <span class="string">'3.ann'</span>, <span class="string">'3.ss'</span>]</span><br><span class="line">files1 = []</span><br><span class="line"><span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">    <span class="keyword">if</span> <span class="string">'.txt'</span> <span class="keyword">in</span> f: <span class="comment"># 不够严谨?</span></span><br><span class="line">        files1.append(f)</span><br><span class="line">print(files1)</span><br><span class="line"><span class="comment"># ['1.txt', '2.txt', '3.txt']</span></span><br></pre></td></tr></table></figure>
+<p>法二：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">files = [<span class="string">'1.txt'</span>, <span class="string">'2.txt'</span>, <span class="string">'2.ab'</span>, <span class="string">'2.c'</span>, <span class="string">'3.txt'</span>, <span class="string">'3.ann'</span>, <span class="string">'3.ss'</span>,]</span><br><span class="line">files = [i <span class="keyword">for</span> i <span class="keyword">in</span> files <span class="keyword">if</span> i.endswith(<span class="string">'.txt'</span>)]</span><br><span class="line">print(files)</span><br><span class="line"><span class="comment"># ['1.txt', '2.txt', '3.txt']</span></span><br></pre></td></tr></table></figure>
+<p>类似的函数还有 <a href="https://www.runoob.com/python/att-string-startswith.html" target="_blank" rel="noopener">startswith()</a></p>
+<h4 id="4-2-strip"><a href="#4-2-strip" class="headerlink" title="4.2 strip()"></a>4.2 strip()</h4><p>strip() 方法用于移除字符串头尾指定的字符（默认为空格或换行符）或字符序列。</p>
+<p><strong>注：</strong>该方法只能删除开头或是结尾的字符，不能删除中间部分的字符。</p>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cities = [<span class="string">' London'</span>, <span class="string">' Birmingham '</span>, <span class="string">' Manchester'</span>, <span class="string">'  Glasgow'</span>, <span class="string">'  Newcastle'</span>, <span class="string">'Sheffield  '</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 去除掉字符串首尾的空格</span></span><br><span class="line">cities = [city.strip() <span class="keyword">for</span> city <span class="keyword">in</span> cities]</span><br><span class="line">print(cities)</span><br><span class="line"><span class="comment"># ['London', 'Birmingham', 'Manchester', 'Glasgow', 'Newcastle', 'Sheffield']</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">"00000003210Runoob01230000000"</span>; </span><br><span class="line">print(str1.strip(<span class="string">'0'</span>));  <span class="comment"># 去除首尾字符 0</span></span><br><span class="line"><span class="comment"># 3210Runoob0123</span></span><br></pre></td></tr></table></figure>
+<p>例：<br>Define a string: <code>idx_str = &#39;use, index,numbers ,to  , specify ,positions&#39;</code>.<br>生成如下字典idx_dict：<code>{0: &#39;use&#39;, 1: &#39;index&#39;, 2: &#39;numbers&#39;, 3: &#39;to&#39;, 4: &#39;specify&#39;, 5: &#39;positions&#39;}</code></p>
+<p>法一：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">idx_str = <span class="string">'use, index,numbers ,to  , specify ,positions'</span></span><br><span class="line">idx_dict = dict([(i, val.strip()) <span class="keyword">for</span> i, val <span class="keyword">in</span> enumerate(idx_str.split(<span class="string">","</span>))])</span><br><span class="line">print(idx_dict)</span><br><span class="line"><span class="comment"># &#123;0: 'use', 1: 'index', 2: 'numbers', 3: 'to', 4: 'specify', 5: 'positions'&#125;</span></span><br></pre></td></tr></table></figure>
+<p>法二：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">idx_str = <span class="string">'use, index,numbers ,to  , specify ,positions'</span></span><br><span class="line">idx_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> idx, val <span class="keyword">in</span> enumerate(idx_str.split(<span class="string">','</span>)):</span><br><span class="line">    idx_dict[idx] = val.strip()</span><br><span class="line">print(idx_dict)</span><br><span class="line"><span class="comment"># &#123;0: 'use', 1: 'index', 2: 'numbers', 3: 'to', 4: 'specify', 5: 'positions'&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-3-大小写"><a href="#4-3-大小写" class="headerlink" title="4.3 大小写"></a>4.3 大小写</h4><ul>
+<li>s.lower()：全部转换为小写</li>
+<li>s.upper()：全部转换为大写</li>
+<li>s.title()：每个单词的首字母大写，其余小写</li>
+<li>s.capitalize()：第一个单词的首字母大写，其余小写</li>
+<li>s.islower()：判断是否全为小写</li>
+<li>s.isupper()：判断是否全为大写</li>
+<li>s.istitle()：判断是否每个单词的首字母均大写，其余均小写</li>
+</ul>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="string">"hello WorlD"</span></span><br><span class="line"></span><br><span class="line">print(s.title())</span><br><span class="line"><span class="comment"># Hello World</span></span><br><span class="line"></span><br><span class="line">print(s.capitalize())</span><br><span class="line"><span class="comment"># Hello world</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-4-判断是否为数字、字母"><a href="#4-4-判断是否为数字、字母" class="headerlink" title="4.4 判断是否为数字、字母"></a>4.4 判断是否为数字、字母</h4><ul>
+<li>s.isdigit()：判断是否全为数字（若s为空，返回False）</li>
+<li>s.isalpha()：判断是否全为字母（若s为空，返回False）</li>
+<li>s.isalnum()：判断是否全为字母数字（若s为空，返回False）</li>
+</ul>
+<p>注：Python官方定义中的字母：可默认为英文字母+汉字；Python官方定义中的数字：可默认为阿拉伯数字+带圈的数字（如①）</p>
+<h3 id="5-Array"><a href="#5-Array" class="headerlink" title="5. Array"></a>5. Array</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">print(np.array([<span class="number">1</span>,<span class="number">2</span>]))</span><br><span class="line"><span class="comment"># [1 2]</span></span><br></pre></td></tr></table></figure>
 <p>Array的合并</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.concatenate(要拼接的多个数组, axis = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 ]]></content>
@@ -7071,43 +7361,187 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
       </tags>
   </entry>
   <entry>
-    <title>Python中的简单语法</title>
+    <title>Python中的简单语法与常见操作</title>
     <url>/2019/06/27/basic-python-type/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>_缩进是python的灵魂_</strong></p>
-<ul>
-<li>查看内置函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dir(__builtins)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>逻辑运算符</li>
-</ul>
-<p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>比较操作符</li>
-</ul>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong><em><span style="color:blue">缩进是 Python的灵魂</span></em></strong></p>
 <blockquote>
+<p>更多Python基础见我的onenote笔记本”Python学习笔记“<br>另：关于 Python 的教程可参考廖雪峰的网站 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+</blockquote>
+<h3 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h3><p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+<h3 id="2-比较操作符"><a href="#2-比较操作符" class="headerlink" title="2. 比较操作符"></a>2. 比较操作符</h3><blockquote>
 <p>>, &lt;, &gt;=, &lt;=, ==, != </p>
 </blockquote>
-<ul>
-<li>Python中的双引号</li>
+<a id="more"></a>
+<h3 id="3-Python中的双引号"><a href="#3-Python中的双引号" class="headerlink" title="3. Python中的双引号"></a>3. Python中的双引号</h3><p>Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号</p>
+<h3 id="4-type"><a href="#4-type" class="headerlink" title="4. type()"></a>4. type()</h3><h4 id="4-1-type-函数"><a href="#4-1-type-函数" class="headerlink" title="4.1 type()函数"></a>4.1 type()函数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">4</span></span><br><span class="line">type(i)</span><br><span class="line"><span class="comment"># int</span></span><br><span class="line"></span><br><span class="line">type(<span class="string">"hello"</span>)</span><br><span class="line"><span class="comment"># str</span></span><br><span class="line"></span><br><span class="line">n = <span class="literal">None</span></span><br><span class="line">type(n)</span><br><span class="line"><span class="comment"># NoneType</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-2-dtype"><a href="#4-2-dtype" class="headerlink" title="4.2 dtype"></a>4.2 dtype</h4><p>查看type<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>].dtype</span><br><span class="line"><span class="comment"># dtype('O')</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="4-3-转换type"><a href="#4-3-转换type" class="headerlink" title="4.3 转换type"></a>4.3 转换type</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>] = train[<span class="string">"ID"</span>].astype(np.int32)</span><br></pre></td></tr></table></figure>
+<h3 id="5-Python二维列表初始化"><a href="#5-Python二维列表初始化" class="headerlink" title="5. Python二维列表初始化"></a>5. Python二维列表初始化</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)] <span class="comment"># m*n的二维列表</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-查看列表中最小值所在位置-索引"><a href="#6-查看列表中最小值所在位置-索引" class="headerlink" title="6. 查看列表中最小值所在位置(索引)"></a>6. 查看列表中最小值所在位置(索引)</h3><ul>
+<li>第一个位置 <code>listA.index(min(listA))</code> ；</li>
+<li>所有位置：<code>[i for i,v in enumerate(listA) if v == min(listA)]</code></li>
 </ul>
-<p>Python中双引号和单引号作用一样，即字符串可以用单引号也可以用双引号</p>
-<ul>
-<li>type()函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">4</span></span><br><span class="line">type(i)</span><br></pre></td></tr></table></figure>
-<pre><code>int
-</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n = <span class="literal">None</span></span><br><span class="line">type(n)</span><br></pre></td></tr></table></figure>
-<pre><code>NoneType
-</code></pre><ul>
-<li>dtype</li>
-</ul>
-<p>查看type<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>].dtype</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>dtype(‘O’)</p>
+<h3 id="7-输出"><a href="#7-输出" class="headerlink" title="7. 输出"></a>7. 输出</h3><blockquote>
+<p>参考：<br><a href="https://www.runoob.com/w3cnote/python3-print-func-b.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/python3-print-func-b.html</a><br><a href="https://www.cnblogs.com/penphy/p/10028546.html" target="_blank" rel="noopener">https://www.cnblogs.com/penphy/p/10028546.html</a><br><a href="https://www.cnblogs.com/lovejh/p/9201219.html" target="_blank" rel="noopener">https://www.cnblogs.com/lovejh/p/9201219.html</a></p>
 </blockquote>
-<p>转换type<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train[<span class="string">"ID"</span>] = train[<span class="string">"ID"</span>].astype(np.int32)</span><br></pre></td></tr></table></figure></p>
+<p>简单的输出：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;print(<span class="string">'My name is'</span>, <span class="string">'John'</span>)</span><br><span class="line">My name <span class="keyword">is</span> John</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;student = (<span class="number">30</span>,<span class="string">"University of Oxford"</span>,<span class="string">"1 High Street, London, W1 1PP"</span>, <span class="string">"John Cameron"</span>)</span><br><span class="line">&gt;&gt;&gt;print(student[<span class="number">3</span>]+ <span class="string">", "</span>+student[<span class="number">1</span>] + <span class="string">", "</span> + student[<span class="number">2</span>] + <span class="string">","</span> + str(student[<span class="number">0</span>]))</span><br><span class="line">John Cameron, University of Oxford, <span class="number">1</span> High Street, London, W1 <span class="number">1</span>PP,<span class="number">30</span></span><br></pre></td></tr></table></figure>
+<p>print不换行：</p>
+<p>在 Python 中 print 默认是换行的:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">3</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">print</span> (i)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>要想不换行应该写成 <strong>print(i, end = ‘’ )</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">6</span>):</span><br><span class="line"><span class="meta">... </span>    print(i, end=<span class="string">" "</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-1-用法"><a href="#7-1-用法" class="headerlink" title="7.1 %用法"></a>7.1 %用法</h4><p>支持参数格式化，与 C 语言的 printf 类似</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;print(<span class="string">'Hello, %s. Your age is %d.'</span> % (<span class="string">'Johon'</span>, <span class="number">20</span>))</span><br><span class="line">Hello, Johon. Your age <span class="keyword">is</span> <span class="number">20.</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;str = <span class="string">"the length of (%s) is %d"</span> %(<span class="string">'runoob'</span>,len(<span class="string">'runoob'</span>))</span><br><span class="line">&gt;&gt;&gt;print(str)</span><br><span class="line">the length of (runoob) <span class="keyword">is</span> <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>python字符串格式化符号:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符   号</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%c</td>
+<td style="text-align:left">格式化字符及其ASCII码</td>
+</tr>
+<tr>
+<td style="text-align:left">%s</td>
+<td style="text-align:left">格式化字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">%d</td>
+<td style="text-align:left">格式化整数</td>
+</tr>
+<tr>
+<td style="text-align:left">%u</td>
+<td style="text-align:left">格式化无符号整型</td>
+</tr>
+<tr>
+<td style="text-align:left">%o</td>
+<td style="text-align:left">格式化无符号八进制数</td>
+</tr>
+<tr>
+<td style="text-align:left">%x</td>
+<td style="text-align:left">格式化无符号十六进制数</td>
+</tr>
+<tr>
+<td style="text-align:left">%X</td>
+<td style="text-align:left">格式化无符号十六进制数（大写）</td>
+</tr>
+<tr>
+<td style="text-align:left">%f</td>
+<td style="text-align:left">格式化浮点数字，可指定小数点后的精度</td>
+</tr>
+<tr>
+<td style="text-align:left">%e</td>
+<td style="text-align:left">用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td style="text-align:left">%E</td>
+<td style="text-align:left">作用同%e，用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td style="text-align:left">%g</td>
+<td style="text-align:left">%f和%e的简写</td>
+</tr>
+<tr>
+<td style="text-align:left">%G</td>
+<td style="text-align:left">%f 和 %E 的简写</td>
+</tr>
+<tr>
+<td style="text-align:left">%p</td>
+<td style="text-align:left">用十六进制数格式化变量的地址</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>格式化操作符辅助指令:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">符号</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">定义宽度或者小数点精度</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">用做左对齐</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">在正数前面显示加号( + )</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;sp&gt;</code></td>
+<td style="text-align:left">在正数前面显示空格</td>
+</tr>
+<tr>
+<td style="text-align:left">#</td>
+<td style="text-align:left">在八进制数前面显示零(‘0’)，在十六进制前面显示’0x’或者’0X’(取决于用的是’x’还是’X’)</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">显示的数字前面填充’0’而不是默认的空格</td>
+</tr>
+<tr>
+<td style="text-align:left">%</td>
+<td style="text-align:left">‘%%’输出一个单一的’%’</td>
+</tr>
+<tr>
+<td style="text-align:left">(var)</td>
+<td style="text-align:left">映射变量(字典参数)</td>
+</tr>
+<tr>
+<td style="text-align:left">m.n.</td>
+<td style="text-align:left">m 是显示的最小总宽度,n 是小数点后的位数(如果可用的话)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="7-1-1-格式化输出整数"><a href="#7-1-1-格式化输出整数" class="headerlink" title="7.1.1 格式化输出整数"></a>7.1.1 格式化输出整数</h5><p><strong>%x</strong> —- hex 十六进制<br><strong>%d</strong> —- dec 十进制<br><strong>%o</strong> —- oct 八进制</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;nHex = <span class="number">0xFF</span></span><br><span class="line">&gt;&gt;&gt;print(<span class="string">"nHex = %x,nDec = %d,nOct = %o"</span> %(nHex,nHex,nHex))</span><br><span class="line">nHex = ff,nDec = <span class="number">255</span>,nOct = <span class="number">377</span></span><br></pre></td></tr></table></figure>
+<h5 id="7-1-2-格式化输出浮点数"><a href="#7-1-2-格式化输出浮点数" class="headerlink" title="7.1.2 格式化输出浮点数"></a>7.1.2 格式化输出浮点数</h5><p><strong>%f</strong>  —- 保留小数点后面六位有效数字<br><strong>%.3f</strong>，保留3位小数位</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;pi = <span class="number">3.141592653</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%10.3f'</span> % pi) <span class="comment">#字段宽10，精度3 (整个数包括小数点后的位数一共为10位) </span></span><br><span class="line">     <span class="number">3.142</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">"pi = %.*f"</span> % (<span class="number">3</span>,pi)) <span class="comment">#用*从后面的元组中读取字段宽度或精度  </span></span><br><span class="line">pi = <span class="number">3.142</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%010.3f'</span> % pi) <span class="comment">#用0填充空白  </span></span><br><span class="line"><span class="number">000003.142</span>  </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%-10.3f'</span> % pi) <span class="comment">#左对齐  </span></span><br><span class="line"><span class="number">3.142</span>       </span><br><span class="line">&gt;&gt;&gt;print(<span class="string">'%+f'</span> % pi) <span class="comment">#在正数前面显示加号( + )</span></span><br><span class="line">+<span class="number">3.141593</span></span><br></pre></td></tr></table></figure>
+<h5 id="7-1-3-格式化输出字符串"><a href="#7-1-3-格式化输出字符串" class="headerlink" title="7.1.3 格式化输出字符串"></a>7.1.3 格式化输出字符串</h5><p><strong>%s</strong><br><strong>%10s</strong> —- 右对齐，占位符10位<br><strong>%-10s</strong> —- 左对齐，占位符10位<br><strong>%.2s</strong> —- 截取2位字符串<br><strong>%10.2s</strong> —-10位占位符，截取两位字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 字符串输出</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%20s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 右对齐，取20位，不够则补位</span></span><br><span class="line">         hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%-20s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 左对齐，取20位，不够则补位</span></span><br><span class="line">hello world         </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 取2位</span></span><br><span class="line">he</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%10.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 右对齐，取2位</span></span><br><span class="line">        he</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'%-10.2s'</span> % <span class="string">'hello world'</span>)  <span class="comment"># 左对齐，取2位</span></span><br><span class="line">he</span><br></pre></td></tr></table></figure>
+<h4 id="7-2-format用法"><a href="#7-2-format用法" class="headerlink" title="7.2 format用法"></a>7.2 format用法</h4><p>相对基本格式化输出采用‘%’的方法，format()功能更强大，该函数把字符串当成一个模板，通过传入的参数进行格式化，并且使用大括号‘{}’作为特殊字符代替‘%’</p>
+<p>位置匹配</p>
+<p><strong>（1）不带编号，即“{}”</strong><br><strong>（2）带数字编号，可调换顺序，即“{1}”、“{2}”</strong><br><strong>（3）带关键字，即“{a}”、“{tom}”</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;&#125; &#123;&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))  <span class="comment"># 不带字段</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;0&#125; &#123;1&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))  <span class="comment"># 带数字编号</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;0&#125; &#123;1&#125; &#123;0&#125;'</span>.format(<span class="string">'hello'</span>,<span class="string">'world'</span>))  <span class="comment"># 打乱顺序</span></span><br><span class="line">hello world hello</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;a&#125; &#123;tom&#125; &#123;a&#125;'</span>.format(tom=<span class="string">'hello'</span>,a=<span class="string">'world'</span>))  <span class="comment"># 带关键字</span></span><br><span class="line">world hello world</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">'&#123;&#125; is &#123;:.2f&#125;'</span>.format(<span class="number">1.123</span>,<span class="number">1.123</span>))  <span class="comment"># 取2位小数</span></span><br><span class="line"><span class="number">1.123</span> <span class="keyword">is</span> <span class="number">1.12</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'&#123;:,&#125;'</span>.format(<span class="number">1234567890</span>)</span><br><span class="line"><span class="string">'1,234,567,890'</span></span><br></pre></td></tr></table></figure>
+<p>想输出：The percentage of female students is 68.85%.👇</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str_student = <span class="string">"The percentage of female students is &#123;:.2f&#125;%."</span>.format(<span class="number">68.8543</span>)</span><br><span class="line">print(str_student)</span><br></pre></td></tr></table></figure>
+<p>百分数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>points = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>total = <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Correct answers: &#123;:.2%&#125;'</span>.format(points/total)</span><br><span class="line"><span class="string">'Correct answers: 50.00%'</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-切片操作"><a href="#8-切片操作" class="headerlink" title="8. 切片操作"></a>8. 切片操作</h3><blockquote>
+<p>参考 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017269965565856" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1017269965565856</a></p>
+</blockquote>
+<p><span style="color:blue">Python切片操作可作用于list (包括tuple, string)</span></p>
+<p>可以想象为每个位置有两个编号：</p>
+<p><img src="/2019/06/27/basic-python-type/1605268940795.png" alt="1605268940795"></p>
+<p><strong><code>b = a[i:j]</code></strong> - 表示复制 a[i] 到 a[j-1]，以生成新的list对象。例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">a[<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># [1,2]</span></span><br><span class="line">a[:<span class="number">-2</span>] <span class="comment"># [0,1,2,3,4,5,6,7]</span></span><br><span class="line">a[<span class="number">-2</span>:<span class="number">-1</span>] <span class="comment"># [8]</span></span><br><span class="line">a[:<span class="number">2</span>] <span class="comment"># [0,1]，前2个数</span></span><br><span class="line">a[<span class="number">-2</span>:] <span class="comment">#[8,9]，后2个数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>当 i 缺省时，默认为0，即 a[:3] 等价于 a[0:3]</li>
+<li>当 j 缺省时，默认为 len(a)，即 a[1:] 等价于 a[1:len(a)]</li>
+<li>当 i, j 都缺省时，<strong>a[:] 就相当于完整复制一份 a</strong> (等价于 a.copy() 浅拷贝，注：更多关于浅拷贝与深拷贝的内容见我的博客)</li>
+</ul>
+<p><strong><code>b = a[i:j:s]</code></strong> - 其中 i 与 j 与上面一样，s 表示步进，缺省时默认为1.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">a[::<span class="number">-1</span>] <span class="comment"># [9,8,7,6,5,4,3,2,1,0]</span></span><br><span class="line">a[::<span class="number">-2</span>] <span class="comment"># [9,7,5,3,1]</span></span><br><span class="line">a[:<span class="number">5</span>:<span class="number">2</span>] <span class="comment"># 前5个数，每两个取一个，[0,2,4]</span></span><br><span class="line">a[::<span class="number">5</span>] <span class="comment">#所有数，每5个取一个，[0,5]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>a[i:j:1] 等价于 a[i:j]</li>
+<li>当 s&lt;0 时（step小于0），i 缺省时默认为-1，j 缺省时默认为 -len(a) -1</li>
+<li><strong>a[::-1]</strong> 等价于 a[-1:-len(a)-1:-1]，即从最后一个元素f复制到第一个元素，即<strong>倒序</strong></li>
+</ul>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -7125,8 +7559,8 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>机器学习</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>

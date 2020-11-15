@@ -79,22 +79,25 @@
 
 
 
-<meta name="description" content="Create UNIQUE INDEX index_name ON TableName(col_name); //建索引">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="索引Index">
 <meta property="og:url" content="http://qypx.github.io/2020/01/13/索引Index/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="Create UNIQUE INDEX index_name ON TableName(col_name); //建索引">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1578902807233.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1578902869016.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1578902891139.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1578902910331.png">
-<meta property="og:updated_time" content="2020-01-13T08:13:54.322Z">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605000393037.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605000914282.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605080367750.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605086187154.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605236364285.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605236459443.png">
+<meta property="og:updated_time" content="2020-11-13T03:16:10.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="索引Index">
-<meta name="twitter:description" content="Create UNIQUE INDEX index_name ON TableName(col_name); //建索引">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/13/索引Index/1578902807233.png">
 
 
@@ -338,8 +341,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T16:13:54+08:00">
-                2020-01-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-13T11:16:10+08:00">
+                2020-11-13
               </time>
             
           </span>
@@ -400,10 +403,142 @@
 
       
         <p><img src="/2020/01/13/索引Index/1578902807233.png" alt="1578902807233"></p>
+<a id="more"></a>
+<p>MySQL官方文档：</p>
+<blockquote>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/</a></p>
+</blockquote>
+<p>MySQL Tutorial:</p>
+<blockquote>
+<p><a href="https://www.tutorialspoint.com/mysql/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/index.htm</a></p>
+</blockquote>
+<h2 id="第一部分：MySQL中索引的操作"><a href="#第一部分：MySQL中索引的操作" class="headerlink" title="第一部分：MySQL中索引的操作"></a>第一部分：MySQL中索引的操作</h2><blockquote>
+<p>参考：<br><a href="https://www.tutorialspoint.com/mysql/mysql-indexes" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/mysql-indexes</a><br><a href="https://www.runoob.com/mysql/mysql-index.html" target="_blank" rel="noopener">https://www.runoob.com/mysql/mysql-index.html</a></p>
+</blockquote>
+<p>索引分单列索引和组合索引。单列索引，即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。组合索引，即一个索引包含多个列。</p>
+<p>实际上，索引也是一张表，该表保存了主键与索引字段，并指向实体表的记录。</p>
+<p>用户看不到索引，它们仅用于加速查询，并且数据库搜索引擎将使用它们非常快速地定位记录。</p>
+<p>对于具有索引的表，INSERT和UPDATE语句会花费更多的时间，而SELECT语句会变得更快。原因是在执行插入或更新时，数据库还需要插入或更新索引值。</p>
 <p><img src="/2020/01/13/索引Index/1578902869016.png" alt="1578902869016"></p>
-<p><code>Create UNIQUE INDEX index_name ON TableName(col_name);</code> //建索引</p>
-<p><img src="/2020/01/13/索引Index/1578902891139.png" alt="1578902891139"></p>
+<h3 id="1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）"><a href="#1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）" class="headerlink" title="1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）"></a>1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）</h3><p>唯一索引意味着索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。<br>普通索引没有任何限制，它允许表中有重复值。</p>
+<p>下面是在表上创建索引的语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name ON table_name ( column1, column2,...);</span><br></pre></td></tr></table></figure>
+<p>可以使用一个或多个列来创建索引。例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- create an index on tutorials_tbl using tutorial_author.</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> AUTHOR_INDEX <span class="keyword">ON</span> tutorials_tbl (tutorial_author);</span><br></pre></td></tr></table></figure>
+<p>对于普通索引，只需从query中省略UNIQUE关键字即可。</p>
+<p>如果希望按降序索引列中的值，可以在列名后添加保留字DESC。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE UNIQUE INDEX AUTHOR_INDEX ON tutorials_tbl (tutorial_author DESC)</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用-ALTER-命令添加和删除索引"><a href="#2-使用-ALTER-命令添加和删除索引" class="headerlink" title="2. 使用 ALTER 命令添加和删除索引"></a>2. 使用 ALTER 命令添加和删除索引</h3><p>有四种方式可用于向表添加索引：</p>
+<ul>
+<li><strong><code>ALTER TABLE tbl_name ADD PRIMARY KEY (column_list)</code></strong> - 该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。</li>
+<li><strong><code>ALTER TABLE tbl_name ADD UNIQUE index_name (column_list)</code></strong> - 该语句创建一个索引，其值必须是唯一的（除了NULL外，NULL可能会出现多次）。</li>
+<li><strong><code>ALTER TABLE tbl_name ADD INDEX index_name (column_list)</code></strong> - 添加普通索引，索引值可出现多次。</li>
+<li><strong><code>ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list)</code></strong> - 创建一个特殊的FULLTEXT索引，该索引用于文本搜索。</li>
+</ul>
+<p>示例：在现有表中添加索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD INDEX (c);</span><br></pre></td></tr></table></figure>
+<p>注：当用 create index 创建索引时，必须指定索引的名字，否则mysql会报错；用 ALTER TABLE 创建索引时，可以不指定索引名字，若不指定mysql会自动生成索引名字。</p>
+<p>可以在 ALTER 命令中使用 DROP 子句来删除索引。尝试以下示例来删除上面创建的索引。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP INDEX (c);</span><br></pre></td></tr></table></figure>
+<h3 id="3-使用-ALTER-命令添加和删除主键"><a href="#3-使用-ALTER-命令添加和删除主键" class="headerlink" title="3. 使用 ALTER 命令添加和删除主键"></a>3. 使用 ALTER 命令添加和删除主键</h3><p>可以以相同的方式添加主键，But make sure the Primary Key works on columns, which are NOT NULL.</p>
+<p>下面的代码是在现有表中添加主键。这将首先使列不为NULL，然后将其添加为主键。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;</span><br><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);</span><br></pre></td></tr></table></figure>
+<p>也可以使用 ALTER 命令删除主键：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
+<p>删除主键时只需指定 <code>PRIMARY KEY</code>，但在删除不是 PRIMARY KEY 的索引时，必须指定索引名。</p>
+<h3 id="4-创建表时直接指定索引"><a href="#4-创建表时直接指定索引" class="headerlink" title="4. 创建表时直接指定索引"></a>4. 创建表时直接指定索引</h3><p>普通索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">	<span class="keyword">INDEX</span> [indexName] (username(<span class="keyword">length</span>))  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>唯一索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">	<span class="keyword">UNIQUE</span> [indexName] (username(<span class="keyword">length</span>))  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">    s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">    <span class="keyword">index</span> k(k)</span><br><span class="line">) <span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="5-使用-DROP-命令删除索引"><a href="#5-使用-DROP-命令删除索引" class="headerlink" title="5. 使用 DROP 命令删除索引"></a>5. 使用 DROP 命令删除索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> [indexName] <span class="keyword">ON</span> mytable;</span><br></pre></td></tr></table></figure>
+<h3 id="6-显示索引信息"><a href="#6-显示索引信息" class="headerlink" title="6. 显示索引信息"></a>6. 显示索引信息</h3><p>可以使用 <strong>SHOW INDEX</strong> 命令列出与表关联的所有索引。可以通过添加 \G 进行垂直格式输出，以避免长行换行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW INDEX FROM table_name\G</span><br><span class="line">........</span><br></pre></td></tr></table></figure>
+<h3 id="7-什么时候该使用索引"><a href="#7-什么时候该使用索引" class="headerlink" title="7. 什么时候该使用索引"></a>7. 什么时候该使用索引</h3><p><img src="/2020/01/13/索引Index/1578902891139.png" alt="1578902891139"></p>
+<h3 id="8-什么时候不该使用索引"><a href="#8-什么时候不该使用索引" class="headerlink" title="8. 什么时候不该使用索引"></a>8. 什么时候不该使用索引</h3><p>索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
+<p>建立索引会占用磁盘空间的索引文件。</p>
 <p><img src="/2020/01/13/索引Index/1578902910331.png" alt="1578902910331"></p>
+<h2 id="第二部分：索引的常见模型"><a href="#第二部分：索引的常见模型" class="headerlink" title="第二部分：索引的常见模型"></a>第二部分：索引的常见模型</h2><p>索引的常见模型：哈希表、y有序数组和搜索树。</p>
+<p>例如，现在维护着一个身份证信息和姓名的表，需要根据身份证号查找对应的名字。</p>
+<h3 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1. 哈希表"></a>1. 哈希表</h3><p>哈希索引的示意图如下：</p>
+<p><img src="/2020/01/13/索引Index/1605000393037.png" alt="1605000393037"></p>
+<p>从上图可以看到，四个ID_card_n的值并不是递增的（即并不是身份证号越大，算出来的N越大）</p>
+<p><strong>优点</strong>：增加新的数据时，只需往后追加。</p>
+<p><strong>缺点</strong>：因为不是有序的，所以哈希索引做区间查询的速度是很慢的。例如查找身份证号在[ID_card_X, ID_card_Y]区间的所有用户，就必须全部扫描一遍了。</p>
+<p><strong>哈希表这种结构适用于只有等值查询的场景，比如 Memcached 及其他一些 NoSQL 引擎。</strong></p>
+<h3 id="2-有序数组"><a href="#2-有序数组" class="headerlink" title="2. 有序数组"></a>2. 有序数组</h3><p><strong>优点</strong>：有序数组在等值查询和范围查询场景中的性能都非常优秀。</p>
+<p>还是上面这个根据身份证号查名字的例子，如果我们使用有序数组来实现的话，示意图如下所示：</p>
+<p><img src="/2020/01/13/索引Index/1605000914282.png" alt="1605000914282"></p>
+<p>查找身份证号对应的名字，用二分法可以快速得到，时间复杂度 O(log(N))。</p>
+<p>同时很显然，这个索引结构支持范围查询。若要查身份证号在[ID_card_X, ID_card_Y]区间的User, 可以先二分法找到ID_card_x（如果不存在ID_card_X,就找到大于ID_card_X的第一个user)，然后向右谝历，直到查到第一个大于ID_card)Y的身份证号，退出循环。</p>
+<p><strong>缺点</strong>：如果仅仅看查询效率，有序数组就是最好的数据结构了。但是，在需要更新数据的时候就麻烦了，你往中间插入一个记录就它须得挪动后面所有的记录，成本太高。</p>
+<p>所以，<strong>有序数组索引只适用于静态存储引擎</strong>，比如你要保存的是2017年某个城市的所有人囗信息，这类不会再修改的数据。</p>
+<h3 id="3-搜索树"><a href="#3-搜索树" class="headerlink" title="3. 搜索树"></a>3. 搜索树</h3><p>还是上面根据身份证号查名字的例子，如果我们用二叉搜索树来实现的话，示意图如下所示：</p>
+<p><img src="/2020/01/13/索引Index/1605080367750.png" alt="1605080367750"></p>
+<p>二叉搜索树的特点是：每个节点的左儿子小于父节点，父节点又小于右儿子。这样如果你要查 ID_card_n2 的话，按照图中的搜索顺序就是按照 UserA -&gt; UserC -&gt; UserF -&gt; User2 这个路径得到。这个时间复杂度杂度是O(log(N))。</p>
+<p>当然为了维持 O(Iog(N)) 的查询复杂度，需要保持这棵树是平衡二叉树。为了做这个保证，更新的时间复杂度也是O(log(N))。</p>
+<p>树可以有二叉，也可以有多叉。多叉树就是每个节点有多个儿子，儿子之间的大小保证从左到右递增。二叉树是搜索效率最高的，但是实际上大多数的数据库存储却并不使用二叉树。其原因是，索引不止存在内存中，还要写到磁盘上。</p>
+<p>想象一下一棵100万节点的平衡二叉树，树高20。一次查询可能需要访问20个数据块。在机械硬盘时代，从磁盘随机读一个数据块需要10ms左右的寻址时间。也就是说，对于一个100万行的表，如果使用二叉树来存储，单独访问一个行可能需要20个10ms的时间，这个查询可真够慢的。</p>
+<p>为了让一个查询尽量少地读磁盘，就必须让查询过程访问尽量少的数据块。那么，我们就不应该使用二叉树，而是要使用<strong><span style="color:red">“N 叉”树</span></strong>。这里，“N 叉”树中的“N”取决于数据块的大小。</p>
+<p>以 InnoDB 的一个整数字段索引为例，这个 N 差不多是 1200。这棵树高是 4 的时候，就可以存 1200 的 3 次方个值，这已经 17 亿了。考虑到树根的数据块总是在内存中的，一个 10 亿行的表上一个整数字段的索引，查找一个值最多只需要访问 3 次磁盘。其实，树的第二层也有很大概率在内存中，那么访问磁盘的平均次数就更少了。</p>
+<p><strong>N 叉树由于在读写上的性能优点，以及适配磁盘的访问模式，已经被广泛应用在数据库引擎中了。</strong></p>
+<blockquote>
+<p>N叉树的N值，可以通过page大小间接控制</p>
+</blockquote>
+<h2 id="第三部分：InnoDB的索引模型"><a href="#第三部分：InnoDB的索引模型" class="headerlink" title="第三部分：InnoDB的索引模型"></a>第三部分：InnoDB的索引模型</h2><h3 id="1-InnoDB索引组织结构"><a href="#1-InnoDB索引组织结构" class="headerlink" title="1. InnoDB索引组织结构"></a>1. InnoDB索引组织结构</h3><p>在 MySQL 中，索引是在存储引擎层实现的，所以并没有统一的索引标准，即不同存储引擎的索引的工作方式并不一样。而即使多个存储引擎支持同一种类型的索引，其底层的实现也可能不同。由于 InnoDB 存储引擎在 MySQL 数据库中使用最为广泛，所以下面以 InnoDB 为例，分析一下其中的索引模型。</p>
+<p>在 InnoDB 中，表都是根据主键顺序以索引的形式存放的，这种存储方式的表称为<strong>索引组织表</strong>。又因为前面我们提到的，InnoDB 使用了 <strong>B+ 树</strong>索引模型，所以数据都是存储在 B+ 树中的。</p>
+<blockquote>
+<p><span style="color:red">每一个索引在 InnoDB 里面对应一棵 B+ 树。</span></p>
+</blockquote>
+<p>假设，我们有一个主键列为ID的表，表中有字段 k，并且在k上有索引。这个表的建表语句是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;create table T(</span><br><span class="line">id int primary key，</span><br><span class="line">k int not null，</span><br><span class="line">name varchar(16)，</span><br><span class="line">index(k)) engine=InnoDB;</span><br></pre></td></tr></table></figure>
+<p>表中R1-R5的(ID,k)值分别为(100, 1)、(200, 2)、(300,3)、(500,5) 和 (600, 6)，两棵树的示例示意图如下。</p>
+<p><img src="/2020/01/13/索引Index/1605086187154.png" alt="1605086187154"></p>
+<p>R1代表的是一行，左边是主键索引，右边是非主键索引。</p>
+<blockquote>
+<p><strong>innoDB B+树的叶子节点是page (页)，一个页里面可以存多个行</strong><br>索引只能定位到page，page内部怎么去定位行数据：page内部有个有序数组，二分法</p>
+</blockquote>
+<p>从图中不难看出，根据叶子节点的内容，索引类型分为<span style="color:red"><strong>主键索引</strong></span>和<strong><span style="color:red">非主键索引（也叫普通索引）</span></strong>。<br><strong>主键索引的叶子节点存的是整行数据</strong>。在 InnoDB 里，主键索引也被称为<strong><span style="color:red">聚簇索引（clustered index）</span></strong>。<br><strong>非主键索引的叶子节点内容是主键的值</strong>。在 InnoDB 里，非主键索引也被称为<strong><span style="color:red">二级索引（secondary index）</span></strong>。</p>
+<p>根据上面的索引结构说明，我们来讨论一个问题：基于主键索引和普通索引的查询有什么区别？</p>
+<ul>
+<li>如果语句是 select * from T where ID=500，即主键查询方式，则只需要搜索 ID 这棵 B+ 树；</li>
+<li>如果语句是 select * from T where k=5，即普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。</li>
+</ul>
+<p>也就是说，<strong>基于非主键索引的查询需要多扫描一棵索引树</strong>。因此，我们在应用中应该尽量使用主键查询。</p>
+<h3 id="2-索引维护"><a href="#2-索引维护" class="headerlink" title="2. 索引维护"></a>2. 索引维护</h3><p>B+ 树为了维护索引有序性，在插入新值的时候需要做必要的维护。以上面这个图为例，如果插入新的行 ID 值为 700，则只需要在 R5 的记录后面插入一个新记录。如果新插入的 ID 值为 400，就相对麻烦了，需要逻辑上挪动后面的数据，空出位置。</p>
+<p>而更糟的情况是，如果 R5 所在的数据页已经满了，根据 B+ 树的算法，这时候需要申请一个新的数据页，然后挪动部分数据过去。这个过程称为<strong>页分裂</strong>。在这种情况下，性能自然会受影响。</p>
+<p>除了性能外，页分裂操作还影响数据页的利用率。原本放在一个页的数据，现在分到两个页中，整体空间利用率降低大约 50%。</p>
+<p>当然有分裂就有合并。当相邻两个页由于删除了数据，利用率很低之后，会将数据页做合并。合并的过程，可以认为是分裂过程的逆过程。</p>
+<p>基于上面的索引维护过程说明，我们来讨论一个案例：</p>
+<h3 id="3-关于自增主键"><a href="#3-关于自增主键" class="headerlink" title="3. 关于自增主键"></a>3. 关于自增主键</h3><p>你可能在一些建表规范里面见到过类似的描述，要求建表语司里一定要有自增主键。当然事无绝对，我们来分析一下哪些场景下应该使用自增主键，而哪些场景下不应该。</p>
+<p>自增主键是指自增列上定义的主键，在建表浯句中一般是这么定义的：<code>NOT NULL PRIMARY KEY AUTO INCREMENT</code>。</p>
+<p>插入新记录的时候可以不指定ID的值，系统会获取当前ID最大值加1作为下一条记录的ID值。</p>
+<p>也就是说，自增主键的插入数据模式，正符合了我们前面提到的递增插入的场景。每次插入一条新记录，都是追加操作，都不涉及到挪动其他记录，也不会触发叶子节点的分裂。</p>
+<p>而用业务逻辑的字段做主键，则往往不容易保证有序插入，这样写数据成本相对较高。</p>
+<p>除了考虑性能外，我们还可以从存储空间的角度来看。假设你的表中确实有一个唯一字段，比如字符串类型的身份证号，那应该身份证号做主键，还是用自增字段做主键呢？</p>
+<p>由于每个非主键索引的叶子节点上都是主键的值。如果身份证号做主键，那么每个二级索引的叶子节点占用约20个字节，而如果用整型做主键，则只要4个字节，如果是长整型(bigint)则是8个字节。</p>
+<p>显然，主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小。</p>
+<p>所以，从性能和存储空间方面考量，自增主键往往是更合理的选择。</p>
+<p>有没有什么场景适合用业务字段直接做主键的呢？还是有的。比如，有些业务的场景需求是这样的：</p>
+<ol>
+<li>只有一个索引；</li>
+<li>该索引必须是唯一索引。</li>
+</ol>
+<p>这就是典型的KV(key-value)场景，由于没有其他索引，所以也就不用考虑其他索引的叶子节点大小的问题。<br>这时候我们就要优先考虑上一段提到的”尽量使用主键查询”原则，直接将这个索引设置为主键，可以避免每次查询需要搜索两棵树。</p>
+<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4. 小结"></a>4. 小结</h3><p>B+ 树能够很好地配合磁盘的读写特性，减少单次查询的磁盘访问次数。</p>
+<p>由于 InnoDB 是索引组织表，一般情况下建议创建一个自增主键，这样非主键索引占用的空间最小。</p>
+<p>问题：对于上面例子中的 InnoDB 表 T，如果你要重建索引 k，你的两个 SQL 语句可以这么写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> <span class="keyword">index</span> k;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> <span class="keyword">index</span>(k);</span><br></pre></td></tr></table></figure>
+<p>如果你要重建主键索引，也可以这么写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> primary <span class="keyword">key</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> primary <span class="keyword">key</span>(<span class="keyword">id</span>);</span><br></pre></td></tr></table></figure>
+<p>问：对于上面这两个重建索引的做法，有没有不合适的？</p>
+<blockquote>
+<p>注：为什么要重建索引？<br>前面提到，索引可能因为删除，或者页分裂等原因，导致数据页有空洞，重建索引的过程会创建一个新的索引，把数据按顺序插入，这样页面的利用率最高，也就是索引更紧凑、更省空间。</p>
+</blockquote>
+<p>答案：重建索引 k 的做法是合理的，可以达到省空间的目的。但是，重建主键的过程不合理。<br>1.直接删掉主键索引，会使得所有二级索引都失效，并且会用ROWID来做主键索引。<br>2.不论是删除主键还是创建主键，都会将整个表重建。所以连着执行这两个语句的话，第一个语句就白做了。这两个语句，你可以用这个语句代替 ：<code>alter table T engine=InnoDB</code>。👈原地重建表结构</p>
+<p><img src="/2020/01/13/索引Index/1605236364285.png" alt="1605236364285"></p>
+<p><img src="/2020/01/13/索引Index/1605236459443.png" alt="1605236459443"></p>
 
       
     </div>
@@ -498,8 +633,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -516,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">107</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,6 +728,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：MySQL中索引的操作"><span class="nav-text">第一部分：MySQL中索引的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）"><span class="nav-text">1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用-ALTER-命令添加和删除索引"><span class="nav-text">2. 使用 ALTER 命令添加和删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用-ALTER-命令添加和删除主键"><span class="nav-text">3. 使用 ALTER 命令添加和删除主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-创建表时直接指定索引"><span class="nav-text">4. 创建表时直接指定索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用-DROP-命令删除索引"><span class="nav-text">5. 使用 DROP 命令删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-显示索引信息"><span class="nav-text">6. 显示索引信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-什么时候该使用索引"><span class="nav-text">7. 什么时候该使用索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-什么时候不该使用索引"><span class="nav-text">8. 什么时候不该使用索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分：索引的常见模型"><span class="nav-text">第二部分：索引的常见模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-哈希表"><span class="nav-text">1. 哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-有序数组"><span class="nav-text">2. 有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-搜索树"><span class="nav-text">3. 搜索树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三部分：InnoDB的索引模型"><span class="nav-text">第三部分：InnoDB的索引模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-InnoDB索引组织结构"><span class="nav-text">1. InnoDB索引组织结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-索引维护"><span class="nav-text">2. 索引维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-关于自增主键"><span class="nav-text">3. 关于自增主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-小结"><span class="nav-text">4. 小结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
