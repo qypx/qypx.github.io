@@ -3856,7 +3856,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <blockquote>
 <p><a href="https://www.tutorialspoint.com/mysql/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/index.htm</a></p>
 </blockquote>
-<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="#jump_index_zuzhibiao">索引组织表</a><br><a href="#jump_index_several">主键索引、聚簇索引、非主键索引(普通索引、二级索引)</a></p>
+<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="#jump_index_zuzhibiao">索引组织表</a><br><a href="#jump_index_several">主键索引、聚簇索引、非主键索引(普通索引、二级索引)</a><br><a href="#jump_covering_index">覆盖索引</a><br><a href="#jump_leftmost_prefix">最左前缀</a><br><a href="#jump_pushed_down">索引下推</a></p>
 <h2 id="第一部分：MySQL中索引的操作"><a href="#第一部分：MySQL中索引的操作" class="headerlink" title="第一部分：MySQL中索引的操作"></a>第一部分：MySQL中索引的操作</h2><blockquote>
 <p>参考：<br><a href="https://www.tutorialspoint.com/mysql/mysql-indexes" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/mysql-indexes</a><br><a href="https://www.runoob.com/mysql/mysql-index.html" target="_blank" rel="noopener">https://www.runoob.com/mysql/mysql-index.html</a></p>
 </blockquote>
@@ -3866,9 +3866,9 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>对于具有索引的表，INSERT和UPDATE语句会花费更多的时间，而SELECT语句会变得更快。原因是在执行插入或更新时，数据库还需要插入或更新索引值。</p>
 <p><img src="/2020/01/13/索引Index/1578902869016.png" alt="1578902869016"></p>
 <h3 id="1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）"><a href="#1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）" class="headerlink" title="1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）"></a>1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）</h3><p>唯一索引意味着索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。<br>普通索引没有任何限制，它允许表中有重复值。</p>
-<p>下面是在表上创建索引的语法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name ON table_name ( column1, column2,...);</span><br></pre></td></tr></table></figure>
-<p>可以使用一个或多个列来创建索引。例如：</p>
+<p>下面是在表上创建索引的语法（可以使用一个或多个列来创建索引）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name ON table_name (column1, column2,...);</span><br></pre></td></tr></table></figure>
+<p>例：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- create an index on tutorials_tbl using tutorial_author.</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> AUTHOR_INDEX <span class="keyword">ON</span> tutorials_tbl (tutorial_author);</span><br></pre></td></tr></table></figure>
 <p>对于普通索引，只需从query中省略UNIQUE关键字即可。</p>
 <p>如果希望按降序索引列中的值，可以在列名后添加保留字DESC。</p>
@@ -3898,8 +3898,148 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>例：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">    s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">    <span class="keyword">index</span> k(k)</span><br><span class="line">) <span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="5-使用-DROP-命令删除索引"><a href="#5-使用-DROP-命令删除索引" class="headerlink" title="5. 使用 DROP 命令删除索引"></a>5. 使用 DROP 命令删除索引</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> [indexName] <span class="keyword">ON</span> mytable;</span><br></pre></td></tr></table></figure>
-<h3 id="6-显示索引信息"><a href="#6-显示索引信息" class="headerlink" title="6. 显示索引信息"></a>6. 显示索引信息</h3><p>可以使用 <strong>SHOW INDEX</strong> 命令列出与表关联的所有索引。可以通过添加 \G 进行垂直格式输出，以避免长行换行。</p>
+<h3 id="6-显示索引信息"><a href="#6-显示索引信息" class="headerlink" title="6. 显示索引信息"></a>6. 显示索引信息</h3><h4 id="6-1-show-index"><a href="#6-1-show-index" class="headerlink" title="6.1 show index"></a>6.1 show index</h4><p>可以使用 <strong>SHOW INDEX</strong> 命令列出与表关联的所有索引。可以通过添加 \G 进行垂直格式输出，以避免长行换行。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; SHOW INDEX FROM table_name\G</span><br><span class="line">........</span><br></pre></td></tr></table></figure>
+<h4 id="6-2-可用explain来查看是否使用索引"><a href="#6-2-可用explain来查看是否使用索引" class="headerlink" title="6.2 可用explain来查看是否使用索引"></a>6.2 可用explain来查看是否使用索引</h4><p>explain结果中key代表使用的索引名称，若为NULL，则未使用索引。</p>
+<p>explain结果输出的内容</p>
+<blockquote>
+<p>参考 <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/explain-output.html</a></p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Column</th>
+<th style="text-align:left">JSON Name</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_id" target="_blank" rel="noopener"><code>id</code></a></td>
+<td style="text-align:left"><code>select_id</code></td>
+<td style="text-align:left">The <code>SELECT</code> identifier</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_select_type" target="_blank" rel="noopener"><code>select_type</code></a></td>
+<td style="text-align:left">None</td>
+<td style="text-align:left">The <code>SELECT</code> type</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_table" target="_blank" rel="noopener"><code>table</code></a></td>
+<td style="text-align:left"><code>table_name</code></td>
+<td style="text-align:left">The table for the output row</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_partitions" target="_blank" rel="noopener"><code>partitions</code></a></td>
+<td style="text-align:left"><code>partitions</code></td>
+<td style="text-align:left">The matching partitions</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_type" target="_blank" rel="noopener"><code>type</code></a></td>
+<td style="text-align:left"><code>access_type</code></td>
+<td style="text-align:left">The join type</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_possible_keys" target="_blank" rel="noopener"><code>possible_keys</code></a></td>
+<td style="text-align:left"><code>possible_keys</code></td>
+<td style="text-align:left">The possible indexes to choose</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_key" target="_blank" rel="noopener"><code>key</code></a></td>
+<td style="text-align:left"><code>key</code></td>
+<td style="text-align:left">The index actually chosen</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_key_len" target="_blank" rel="noopener"><code>key_len</code></a></td>
+<td style="text-align:left"><code>key_length</code></td>
+<td style="text-align:left">The length of the chosen key</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_ref" target="_blank" rel="noopener"><code>ref</code></a></td>
+<td style="text-align:left"><code>ref</code></td>
+<td style="text-align:left">The columns compared to the index</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_rows" target="_blank" rel="noopener"><code>rows</code></a></td>
+<td style="text-align:left"><code>rows</code></td>
+<td style="text-align:left">Estimate of rows to be examined</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_filtered" target="_blank" rel="noopener"><code>filtered</code></a></td>
+<td style="text-align:left"><code>filtered</code></td>
+<td style="text-align:left">Percentage of rows filtered by table condition</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_extra" target="_blank" rel="noopener"><code>Extra</code></a></td>
+<td style="text-align:left">None</td>
+<td style="text-align:left">Additional information</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="6-2-1-关于explain中的type和extra"><a href="#6-2-1-关于explain中的type和extra" class="headerlink" title="6.2.1 关于explain中的type和extra"></a>6.2.1 关于explain中的type和extra</h5><p>例如：现有表city2如下：</p>
+<p><img src="/2020/01/13/索引Index/1605591080992.png" alt="1605591080992"></p>
+<p>city2上的索引如下图所示：（id为主键，(age,name)联合索引）</p>
+<p><img src="/2020/01/13/索引Index/1605591141489.png" alt="1605591141489"></p>
+<p>查询1：<strong><code>explain select name,age from city2 where age=20\G</code></strong><br>查询内容在索引内，where 条件为索引最左列</p>
+<p><img src="/2020/01/13/索引Index/1605591319736.png" alt="1605591319736"></p>
+<p>👆 type 是 ref，表明用到了索引，extra 是 using index，表示索引覆盖了.（即不用回表）</p>
+<p>查询2：<strong><code>explain select name, age from city2 where name=&#39;bob&#39;\G</code></strong><br> 查询内容在索引内，where条件为索引第二列，这次不是最左列了</p>
+<p><img src="/2020/01/13/索引Index/1605591642645.png" alt="1605591642645"></p>
+<p>👆 type 是 index，表明发生了索引扫描（因为where条件不是最左列的缘故），extra 是 using where; using index（using index代表索引覆盖了，不用回表，using where代表发生了过滤），</p>
+<p>查询3：<strong><code>explain select address from city2 where age=20\G</code></strong><br>查询内容不在索引内，where 条件为索引最左列</p>
+<p><img src="/2020/01/13/索引Index/1605592157733.png" alt="1605592157733"></p>
+<p>👆 extra 是 NULL，type 是 ref，表明虽然用到了索引，但是没有索引覆盖，产生了回表。</p>
+<p>查询4：<strong><code>explain select address from city2 where name=&#39;bob&#39;\G</code></strong><br>查询内容不在索引范围内，where条件为索引第二列</p>
+<p><img src="/2020/01/13/索引Index/1605592577124.png" alt="1605592577124"></p>
+<p>👆 type 是 all，代表全表扫描，extra 是 using where 说明在全表扫描后发生了过滤。（走全表扫描的原因是查询内容不在索引范围内，且where条件没有最左列，所以引擎选择了走全表扫描。）</p>
+<p>更多例子见 <a href="https://blog.csdn.net/jeffrey11223/article/details/79100761" target="_blank" rel="noopener">https://blog.csdn.net/jeffrey11223/article/details/79100761</a></p>
+<h6 id="1-EXPLAIN-Join-Types"><a href="#1-EXPLAIN-Join-Types" class="headerlink" title="(1) EXPLAIN Join Types"></a>(1) EXPLAIN Join Types</h6><p>explain中type的解释</p>
+<p>The <code>type</code> column of <a href="https://dev.mysql.com/doc/refman/8.0/en/explain.html" target="_blank" rel="noopener"><code>EXPLAIN</code></a> output describes how tables are joined.  The following list describes the join types, ordered from the best type to the worst:</p>
+<p>下面只列出了部分</p>
+<ul>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_system" target="_blank" rel="noopener"><code>system</code></a><br>The table has only one row (= system table). This is a special case of the <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> join type.</p>
+</li>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a><br>The table has at most one matching row, which is read at the start of the query. Because there is only one row, values from the column in this row can be regarded as constants by the rest of the optimizer. <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> tables are very fast because they are read only once.<br><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> is used when you compare all parts of a <code>PRIMARY KEY</code> or <code>UNIQUE</code> index to constant values. In the following queries, <em>tbl_name</em> can be used as a <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> table:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name <span class="keyword">WHERE</span> primary_key=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> primary_key_part1=<span class="number">1</span> <span class="keyword">AND</span> primary_key_part2=<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a><br>All rows with matching index values are read from this table for each combination of rows from the previous tables. <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a> is used if the join uses only a leftmost prefix of the key or if the key is not a <code>PRIMARY KEY</code> or <code>UNIQUE</code> index (in other words, if the join cannot select a single row based on the key value). If the key that is used matches only a few rows, this is a good join type.<br><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a> can be used for indexed columns that are compared using the <code>=</code> or <code>&lt;=&gt;</code> operator. In the following examples, MySQL can use a <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a> join to process <em>ref_table</em>:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table <span class="keyword">WHERE</span> key_column=expr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column_part1=other_table.column</span><br><span class="line">  <span class="keyword">AND</span> ref_table.key_column_part2=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_index" target="_blank" rel="noopener"><code>index</code></a><br>The <code>index</code> join type is the same as <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all" target="_blank" rel="noopener"><code>ALL</code></a>, except that the index tree is scanned. This occurs two ways:</p>
+<ul>
+<li>If the index is a covering index for the queries and can be used to satisfy all data required from the table, only the index tree is scanned. In this case, the <code>Extra</code> column says <code>Using index</code>. An index-only scan usually is faster than <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all" target="_blank" rel="noopener"><code>ALL</code></a> because the size of the index usually is smaller than the table data.</li>
+<li>A full table scan is performed using reads from the index to look up data rows in index order. <code>Uses index</code> does not appear in the <code>Extra</code> column.</li>
+</ul>
+<p>MySQL can use this join type when the query uses only columns that are part of a single index.</p>
+</li>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all" target="_blank" rel="noopener"><code>ALL</code></a><br>A full table scan is done for each combination of rows from the previous tables. This is normally not good if the table is the first table not marked const, and usually very bad in all other cases. Normally, you can avoid ALL by adding indexes that enable row retrieval from the table based on constant values or column values from earlier tables.</p>
+</li>
+</ul>
+<h6 id="2-EXPLAIN-Extra-Information"><a href="#2-EXPLAIN-Extra-Information" class="headerlink" title="(2) EXPLAIN Extra Information"></a>(2) EXPLAIN Extra Information</h6><p>explian中extra的解释</p>
+<p>If you want to make your queries as fast as possible, look out for <code>Extra</code> column values of <code>Using filesort</code> and <code>Using temporary</code>.</p>
+<p>下面只列出了一部分：</p>
+<ul>
+<li><code>Distinct</code> (JSON property: <code>distinct</code>)<br>MySQL is looking for distinct values, so it stops searching for more rows for the current row combination after it has found the first matching row.</li>
+</ul>
+<ul>
+<li><code>Full scan on NULL key</code> (JSON property: <code>message</code>)<br>This occurs for subquery optimization as a fallback strategy when the optimizer cannot use an index-lookup access method.</li>
+</ul>
+<ul>
+<li><code>Using filesort</code> (JSON property: <code>using_filesort</code>)<br>MySQL must do an extra pass to find out how to retrieve the rows in sorted order. The sort is done by going through all rows according to the join type and storing the sort key and pointer to the row for all rows that match the <code>WHERE</code> clause. The keys then are sorted and the rows are retrieved in sorted order. See <a href="https://dev.mysql.com/doc/refman/8.0/en/order-by-optimization.html" target="_blank" rel="noopener">Section 8.2.1.16, “ORDER BY Optimization”</a>.</li>
+</ul>
+<ul>
+<li><p><code>Using index</code> (JSON property: <code>using_index</code>)<br>The column information is retrieved from the table using only information in the index tree without having to do an additional seek to read the actual row. This strategy can be used when the query uses only columns that are part of a single index.<br>For <code>InnoDB</code> tables that have a user-defined clustered index, that index can be used even when <code>Using index</code> is absent from the <code>Extra</code> column. This is the case if <code>type</code> is <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_index" target="_blank" rel="noopener"><code>index</code></a> and <code>key</code> is <code>PRIMARY</code>.</p>
+</li>
+<li><p><code>Using index condition</code> (JSON property: <code>using_index_condition</code>)<br>Tables are read by accessing index tuples and testing them first to determine whether to read full table rows. In this way, index information is used to defer (“push down”) reading full table rows unless it is necessary. See <a href="https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html" target="_blank" rel="noopener">Section 8.2.1.6, “Index Condition Pushdown Optimization”</a>.</p>
+</li>
+<li><p><code>Using temporary</code> (JSON property: <code>using_temporary_table</code>)<br>To resolve the query, MySQL needs to create a temporary table to hold the result. This typically happens if the query contains <code>GROUP BY</code> and <code>ORDER BY</code> clauses that list columns differently.</p>
+</li>
+<li><p><code>Using where</code> (JSON property: <code>attached_condition</code>)<br>A <code>WHERE</code> clause is used to restrict which rows to match against the next table or send to the client. Unless you specifically intend to fetch or examine all rows from the table, you may have something wrong in your query if the <code>Extra</code> value is not <code>Using where</code> and the table join type is <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all" target="_blank" rel="noopener"><code>ALL</code></a> or <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_index" target="_blank" rel="noopener"><code>index</code></a>.</p>
+</li>
+</ul>
+<p>Tables are read by accessing index tuples and testing them first to determine whether to read full table rows. In this way, index information is used to defer (“push down”) reading full table rows unless it is necessary. See <a href="https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html" target="_blank" rel="noopener">Section 8.2.1.6, “Index Condition Pushdown Optimization”</a>.</p>
 <h3 id="7-什么时候该使用索引"><a href="#7-什么时候该使用索引" class="headerlink" title="7. 什么时候该使用索引"></a>7. 什么时候该使用索引</h3><p><img src="/2020/01/13/索引Index/1578902891139.png" alt="1578902891139"></p>
 <h3 id="8-什么时候不该使用索引"><a href="#8-什么时候不该使用索引" class="headerlink" title="8. 什么时候不该使用索引"></a>8. 什么时候不该使用索引</h3><p>索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
 <p>建立索引会占用磁盘空间的索引文件。</p>
@@ -3982,7 +4122,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>注：为什么要重建索引？<br>前面提到，索引可能因为删除，或者页分裂等原因，导致数据页有空洞，重建索引的过程会创建一个新的索引，把数据按顺序插入，这样页面的利用率最高，也就是索引更紧凑、更省空间。</p>
 </blockquote>
 <p>答案：重建索引 k 的做法是合理的，可以达到省空间的目的。但是，重建主键的过程不合理。<br>1.直接删掉主键索引，会使得所有二级索引都失效，并且会用ROWID来做主键索引。<br>2.不论是删除主键还是创建主键，都会将整个表重建。所以连着执行这两个语句的话，第一个语句就白做了。这两个语句，你可以用这个语句代替 ：<code>alter table T engine=InnoDB</code>。👈原地重建表结构</p>
-<h2 id="第四部分：覆盖索引"><a href="#第四部分：覆盖索引" class="headerlink" title="第四部分：覆盖索引"></a>第四部分：覆盖索引</h2><p>在下面这个表T中，如果执行 <code>select * from T where k between 3 and 5</code>，需要执行几次树的搜索操作，会扫描多少行？<br>表的初始化语句：</p>
+<h2 id="第四部分：覆盖索引"><a href="#第四部分：覆盖索引" class="headerlink" title="第四部分：覆盖索引"></a><span id="jump_covering_index">第四部分：覆盖索引</span></h2><p>在下面这个表T中，如果执行 <code>select * from T where k between 3 and 5</code>，需要执行几次树的搜索操作，会扫描多少行？<br>表的初始化语句：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">    <span class="keyword">index</span> k(k)</span><br><span class="line">) <span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>,<span class="string">'aa'</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">'bb'</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">'cc'</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">'cc'</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">'ff'</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">'gg'</span>);</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/01/13/索引Index/1605443844487.png" alt="1605443844487"></p>
 <p>这条SQL查询语句的执行流程：</p>
@@ -4004,8 +4144,9 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>我们知道，身份证号是市民的唯一标识。也就是说，如果有根据身份证号查询市民信息的需求，我们只要在身份证号字段上建立索引就够了。而再建立一个（身份证号、姓名）的联合索引，是不是浪费空间？</p>
 <p>如果现在有一个高频请求，要根据市民的身份证号查询他的姓名，这个联合索引就有意义了。它可以在这个高频请求上用到覆盖索引，不再需要回表查整行记录，减少语句的执行时间。</p>
 <p>当然，索引字段的维护总是有代价的。因此，在建立冗余索引来支持覆盖索引时就需要权衡考虑了。这正是业务 DBA，或者称为业务数据架构师的工作。</p>
+<p><img src="/2020/01/13/索引Index/1605236364285.png" alt="1605236364285"></p>
 <h2 id="第五部分：最左前缀原则"><a href="#第五部分：最左前缀原则" class="headerlink" title="第五部分：最左前缀原则"></a>第五部分：最左前缀原则</h2><p>如果为每一种查询都设计一个索引，索引是不是太多了。如果现在要按照市民的身份证号取查他的家庭地址呢？虽然这个查询需求在业务中出现的概率不高，但总不能让它走全表扫描吧？反过来说，单独为一个不频繁的请求创建一个（身份证号，地址）的索引又感觉有点浪费。应该怎么做呢？</p>
-<h3 id="1-最左前缀"><a href="#1-最左前缀" class="headerlink" title="1. 最左前缀"></a>1. 最左前缀</h3><p><strong>B+树这种索引结构，可以利用索引的”最左前缀“，来定位记录。</strong></p>
+<h3 id="1-最左前缀"><a href="#1-最左前缀" class="headerlink" title="1. 最左前缀"></a><span id="jump_leftmost_prefix">1. 最左前缀</span></h3><p><strong>B+树这种索引结构，可以利用索引的”最左前缀“，来定位记录。</strong></p>
 <p>用（name, age）这个联合索引来分析：</p>
 <p><img src="/2020/01/13/索引Index/1605450882634.png" alt="1605450882634"></p>
 <p>可以看到，<strong>索引项是按照索引定义里面出现的字段顺序排序的。→</strong> 即先按name排序，再按age排序</p>
@@ -4017,7 +4158,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>所以现在你知道了，这段开头的问题里，我们要为高频请求创建 (身份证号，姓名）这个联合索引，并用这个索引支持“根据身份证号查询地址”的需求。</p>
 <p>那么，如果既有联合查询，又有基于 a、b 各自的查询呢？<strong>查询条件里面只有 b 的语句，是无法使用 (a,b) 这个联合索引的</strong>，这时候你不得不维护另外一个索引，也就是说你需要同时维护 (a,b)、(b) 这两个索引。</p>
 <p>这时候，我们要<strong>考虑的原则就是空间</strong>了。比如上面这个市民表的情况，name 字段是比 age 字段大的 ，那我就建议你创建一个（name,age）的联合索引和一个 (age) 的单字段索引。</p>
-<h3 id="2-索引下推"><a href="#2-索引下推" class="headerlink" title="2. 索引下推"></a>2. 索引下推</h3><p>上一段我们说到满足最左前缀原则的时候，最左前缀可以用于在索引中定位记录。这时，你可能要问，那些不符合最左前缀的部分，会怎么样呢？</p>
+<h3 id="2-索引下推"><a href="#2-索引下推" class="headerlink" title="2. 索引下推"></a><span id="jump_pushed_down">2. 索引下推</span></h3><p>上一段我们说到满足最左前缀原则的时候，最左前缀可以用于在索引中定位记录。这时，你可能要问，那些不符合最左前缀的部分，会怎么样呢？</p>
 <p>还是以市民表的联合索引（name, age）为例。如果现在有一个需求：检索出表中“名字第一个字是张，而且年龄是 10 岁的所有男孩”。那么，SQL 语句是这么写的：</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">mysql&gt; select * from tuser where name like '张%' and age=10 and ismale=1;</span><br></pre></td></tr></table></figure>
 <p>根据前缀索引规则，这个语句在搜索索引树的时候，只能用 “张”（索引只有(name, age)），找到第一个满足条件的记录 ID3。当然，这还不错，总比全表扫描要好。然后呢？当然是判断其他条件是否满足。</p>
@@ -4026,9 +4167,7 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p>图 3 和图 4，是这两个过程的执行流程图。</p>
 <p><img src="/2020/01/13/索引Index/1605451488975.png" alt="1605451488975"></p>
 <p><img src="/2020/01/13/索引Index/1605451552321.png" alt="1605451552321"></p>
-<h3 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. 小结</h3><p>另：可用explain来看是否使用索引，例如</p>
-<p><img src="/2020/01/13/索引Index/1605451692725.png" alt="1605451692725"></p>
-<p>在满足语句需求的情况下， 尽量少地访问资源是数据库设计的重要原则之一。在使用数据库的时候，尤其是在设计表结构时，也要以减少资源消耗作为目标。</p>
+<h3 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. 小结</h3><p>在满足语句需求的情况下， 尽量少地访问资源是数据库设计的重要原则之一。在使用数据库的时候，尤其是在设计表结构时，也要以减少资源消耗作为目标。</p>
 <p>问题：实际上主键索引也是可以使用多个字段的。DBA 小吕在入职新公司的时候，就发现自己接手维护的库里面，有这么一个表，表结构定义类似这样的：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`geek`</span> (</span><br><span class="line">  <span class="string">`a`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`b`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`c`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`d`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`a`</span>,<span class="string">`b`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`c`</span> (<span class="string">`c`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`ca`</span> (<span class="string">`c`</span>,<span class="string">`a`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`cb`</span> (<span class="string">`c`</span>,<span class="string">`b`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
 <p>公司的同事告诉他说，由于历史原因，这个表需要 a、b 做联合主键，这个小吕理解了。</p>
@@ -4040,7 +4179,6 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <p><img src="/2020/01/13/索引Index/1605452080320.png" alt="1605452080320"></p>
 <p><img src="/2020/01/13/索引Index/1605452122669.png" alt="1605452122669"></p>
 <p><img src="/2020/01/13/索引Index/1605452156592.png" alt="1605452156592"></p>
-<p><img src="/2020/01/13/索引Index/1605236364285.png" alt="1605236364285"></p>
 ]]></content>
       <categories>
         <category>数据库</category>
