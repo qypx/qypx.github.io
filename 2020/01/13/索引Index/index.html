@@ -100,6 +100,7 @@
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605080367750.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605086187154.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605236459443.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605671203873.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605443844487.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605236364285.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605450882634.png">
@@ -109,7 +110,7 @@
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605452080320.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605452122669.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/索引Index/1605452156592.png">
-<meta property="og:updated_time" content="2020-11-17T06:32:11.298Z">
+<meta property="og:updated_time" content="2020-11-18T04:02:47.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="索引Index">
 <meta name="twitter:image" content="http://qypx.github.io/2020/01/13/索引Index/1578902807233.png">
@@ -355,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-17T14:32:11+08:00">
-                2020-11-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-11-18T12:02:47+08:00">
+                2020-11-18
               </time>
             
           </span>
@@ -426,7 +427,7 @@
 <blockquote>
 <p><a href="https://www.tutorialspoint.com/mysql/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/index.htm</a></p>
 </blockquote>
-<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="#jump_index_zuzhibiao">索引组织表</a><br><a href="#jump_index_several">主键索引、聚簇索引、非主键索引(普通索引、二级索引)</a><br><a href="#jump_covering_index">覆盖索引</a><br><a href="#jump_leftmost_prefix">最左前缀</a><br><a href="#jump_pushed_down">索引下推</a></p>
+<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="#jump_index_zuzhibiao">索引组织表</a><br><a href="#jump_index_several">主键索引(聚簇索引，聚集索引)、非主键索引(普通索引，二级索引，非聚簇索引)</a><br><a href="#jump_covering_index">覆盖索引</a><br><a href="#jump_leftmost_prefix">最左前缀</a><br><a href="#jump_pushed_down">索引下推</a></p>
 <h2 id="第一部分：MySQL中索引的操作"><a href="#第一部分：MySQL中索引的操作" class="headerlink" title="第一部分：MySQL中索引的操作"></a>第一部分：MySQL中索引的操作</h2><blockquote>
 <p>参考：<br><a href="https://www.tutorialspoint.com/mysql/mysql-indexes" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/mysql-indexes</a><br><a href="https://www.runoob.com/mysql/mysql-index.html" target="_blank" rel="noopener">https://www.runoob.com/mysql/mysql-index.html</a></p>
 </blockquote>
@@ -614,7 +615,10 @@
 <h3 id="8-什么时候不该使用索引"><a href="#8-什么时候不该使用索引" class="headerlink" title="8. 什么时候不该使用索引"></a>8. 什么时候不该使用索引</h3><p>索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
 <p>建立索引会占用磁盘空间的索引文件。</p>
 <p><img src="/2020/01/13/索引Index/1578902910331.png" alt="1578902910331"></p>
-<h2 id="第二部分：索引的常见模型"><a href="#第二部分：索引的常见模型" class="headerlink" title="第二部分：索引的常见模型"></a>第二部分：索引的常见模型</h2><p>索引的常见模型：哈希表、y有序数组和搜索树。</p>
+<h2 id="第二部分：索引的常见模型"><a href="#第二部分：索引的常见模型" class="headerlink" title="第二部分：索引的常见模型"></a>第二部分：索引的常见模型</h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69236" target="_blank" rel="noopener">https://time.geekbang.org/column/article/69236</a></p>
+</blockquote>
+<p>索引的常见模型：哈希表、有序数组和搜索树。</p>
 <p>例如，现在维护着一个身份证信息和姓名的表，需要根据身份证号查找对应的名字。</p>
 <h3 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1. 哈希表"></a>1. 哈希表</h3><p>哈希索引的示意图如下：</p>
 <p><img src="/2020/01/13/索引Index/1605000393037.png" alt="1605000393037"></p>
@@ -641,7 +645,10 @@
 <blockquote>
 <p>N叉树的N值，可以通过page大小间接控制</p>
 </blockquote>
-<h2 id="第三部分：InnoDB的索引模型"><a href="#第三部分：InnoDB的索引模型" class="headerlink" title="第三部分：InnoDB的索引模型"></a>第三部分：InnoDB的索引模型</h2><h3 id="1-InnoDB索引组织结构"><a href="#1-InnoDB索引组织结构" class="headerlink" title="1. InnoDB索引组织结构"></a>1. InnoDB索引组织结构</h3><p>在 MySQL 中，索引是在存储引擎层实现的，所以并没有统一的索引标准，即不同存储引擎的索引的工作方式并不一样。而即使多个存储引擎支持同一种类型的索引，其底层的实现也可能不同。由于 InnoDB 存储引擎在 MySQL 数据库中使用最为广泛，所以下面以 InnoDB 为例，分析一下其中的索引模型。</p>
+<h2 id="第三部分：InnoDB的索引模型"><a href="#第三部分：InnoDB的索引模型" class="headerlink" title="第三部分：InnoDB的索引模型"></a>第三部分：InnoDB的索引模型</h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69236" target="_blank" rel="noopener">https://time.geekbang.org/column/article/69236</a></p>
+</blockquote>
+<h3 id="1-InnoDB索引组织结构"><a href="#1-InnoDB索引组织结构" class="headerlink" title="1. InnoDB索引组织结构"></a>1. InnoDB索引组织结构</h3><p>在 MySQL 中，索引是在存储引擎层实现的，所以并没有统一的索引标准，即不同存储引擎的索引的工作方式并不一样。而即使多个存储引擎支持同一种类型的索引，其底层的实现也可能不同。由于 InnoDB 存储引擎在 MySQL 数据库中使用最为广泛，所以下面以 InnoDB 为例，分析一下其中的索引模型。</p>
 <p>在 InnoDB 中，表都是根据主键顺序以索引的形式存放的，这种存储方式的表称为<strong><span id="jump_index_zuzhibiao">索引组织表</span></strong>。又因为前面我们提到的，InnoDB 使用了 <strong>B+ 树</strong>索引模型，所以数据都是存储在 B+ 树中的。</p>
 <blockquote>
 <p><span style="color:red">每一个索引在 InnoDB 里面对应一棵 B+ 树。</span></p>
@@ -662,6 +669,51 @@
 </ul>
 <p>也就是说，<strong>基于非主键索引的查询需要多扫描一棵索引树</strong>。因此，我们在应用中应该尽量使用主键查询。</p>
 <p><img src="/2020/01/13/索引Index/1605236459443.png" alt="1605236459443"></p>
+<h4 id="1-1-聚簇索引（也称主键索引，聚集索引，clustered-index）"><a href="#1-1-聚簇索引（也称主键索引，聚集索引，clustered-index）" class="headerlink" title="1.1 聚簇索引（也称主键索引，聚集索引，clustered index）"></a><span style="color:Red">1.1 聚簇索引（也称主键索引，聚集索引，clustered index）</span></h4><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
+</blockquote>
+<p><strong>InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，聚簇索引就是按照每张表的主键构造一颗B+树，同时叶子节点中存放的就是整张表的行记录数据，也将聚集索引的叶子节点称为数据页。这个特性决定了索引组织表中数据也是索引的一部分。一张表只有一个聚簇索引。</strong></p>
+<p>聚簇索引并不是一种单独的索引类型，而<strong>是一种数据存储方式</strong>。具体细节依赖于其实现方式。</p>
+<p>MySQL数据库中innodb存储引擎，B+树索引可以分为聚簇索引（也称聚集索引，clustered index）和<span style="color:red">辅助索引（有时也称非聚簇索引或二级索引，secondary index，non-clustered index）</span>。这两种索引内部都是B+树，聚集索引的叶子节点存放着一整行的数据。</p>
+<p>Innobd中的主键索引是一种聚簇索引，非聚簇索引都是辅助索引，像复合索引、前缀索引、唯一索引。</p>
+<blockquote>
+<p><span style="color:red">Innodb使用的是聚簇索引，MyISam使用的是非聚簇索引。</span><br>MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。</p>
+<p>问：主键索引是聚集索引还是非聚集索引？<br>在Innodb下主键索引是聚集索引，在Myisam下主键索引是非聚集索引</p>
+</blockquote>
+<p>Innodb通过主键聚集数据，如果没有定义主键，innodb会选择非空的唯一索引代替。如果没有这样的索引，innodb会隐式的定义一个主键来作为聚簇索引。</p>
+<p>聚簇索引的优缺点 </p>
+<p>优点：</p>
+<ol>
+<li>数据访问更快，因为聚簇索引将索引和数据保存在同一个B+树中，因此从聚簇索引中获取数据比非聚簇索引更快</li>
+<li>聚簇索引对于主键的排序查找和范围查找速度非常快</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>插入速度严重依赖于插入顺序，按照主键的<strong>顺序插入</strong>是最快的方式，否则将会出现页分裂，严重影响性能。因此，对于InnoDB表，我们一般都会定义一个<strong>自增的ID列为主键</strong></li>
+<li><strong>更新主键的代价很高</strong>，因为将会导致被更新的行移动。因此，对于InnoDB表，我们一般定义主键为不可更新。</li>
+<li>二级索引访问需要两次索引查找，第一次找到主键值，第二次根据主键值找到行数据。</li>
+</ol>
+<h4 id="1-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）"><a href="#1-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）" class="headerlink" title="1.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）"></a><span style="color:red">1.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）</span></h4><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
+</blockquote>
+<p>在<strong>聚簇索引之上创建的索引称之为辅助索引</strong>，辅助索引访问数据总是需要二次查找。辅助索引叶子节点存储的不再是行的物理位置，而是主键值。通过辅助索引首先找到的是主键值，再通过主键值找到数据行的数据页，再通过数据页中的Page Directory找到数据行。</p>
+<p>Innodb辅助索引的叶子节点并<strong>不包含行记录的全部数据</strong>，叶子节点除了包含键值外，还包含了相应行数据的聚簇索引键。（见上图图4）</p>
+<p>辅助索引的存在不影响数据在聚簇索引中的组织，所以一张表可以有多个辅助索引。在innodb中有时也称辅助索引为二级索引。</p>
+<p>辅助索引会包含主键列，所以，<strong>如果主键定义的比较大，其他索引也将很大</strong>。如果想在表上定义 、很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。</p>
+<p><img src="/2020/01/13/索引Index/1605671203873.png" alt="1605671203873"></p>
+<h4 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h4><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
+</blockquote>
+<ul>
+<li>为什么不建议使用过长的字段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大。</li>
+<li>用非单调的字段作为主键在InnoDB中不是个好主意，因为InnoDB数据文件本身是一颗B+Tree，非单调的主键会造成在插入新记录时数据文件为了维持B+Tree的特性而频繁的分裂调整，十分低效，而使用自增字段作为主键则是一个很好的选择。</li>
+</ul>
+<p>聚簇索引和非聚簇索引的区别：</p>
+<ul>
+<li>聚簇索引的叶子节点存放的是主键值和数据行，<strong>支持覆盖索引</strong>；二级索引的叶子节点存放的是主键值或指向数据行的指针。</li>
+<li>由于节子节点(数据页)只能按照一颗B+树排序，故<strong>一张表只能有一个聚簇索引</strong>。辅助索引的存在不影响聚簇索引中数据的组织，所以一张表可以有多个辅助索引</li>
+</ul>
+<p>注： <strong><span id="jump_covering_index">覆盖索引（covering index）</span></strong>指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖。 当一条查询语句符合覆盖索引条件时，MySQL只需要通过索引就可以返回查询所需要的数据，这样避免了查到索引后再返回表操作，减少I/O提高效率。 如，表covering_index_sample中有一个普通索引 idx_key1_key2(key1,key2)。当我们通过SQL语句：select key2 from covering_index_sample where key1 = ‘keytest’;的时候，就可以通过覆盖索引查询，无需回表。（关于覆盖索引更详细内容见<a href="#jump4">第四部分：覆盖索引</a>）</p>
 <h3 id="2-索引维护"><a href="#2-索引维护" class="headerlink" title="2. 索引维护"></a>2. 索引维护</h3><p>B+ 树为了维护索引有序性，在插入新值的时候需要做必要的维护。以上面这个图为例，如果插入新的行 ID 值为 700，则只需要在 R5 的记录后面插入一个新记录。如果新插入的 ID 值为 400，就相对麻烦了，需要逻辑上挪动后面的数据，空出位置。</p>
 <p>而更糟的情况是，如果 R5 所在的数据页已经满了，根据 B+ 树的算法，这时候需要申请一个新的数据页，然后挪动部分数据过去。这个过程称为<strong>页分裂</strong>。在这种情况下，性能自然会受影响。</p>
 <p>除了性能外，页分裂操作还影响数据页的利用率。原本放在一个页的数据，现在分到两个页中，整体空间利用率降低大约 50%。</p>
@@ -692,7 +744,10 @@
 <p>注：为什么要重建索引？<br>前面提到，索引可能因为删除，或者页分裂等原因，导致数据页有空洞，重建索引的过程会创建一个新的索引，把数据按顺序插入，这样页面的利用率最高，也就是索引更紧凑、更省空间。</p>
 </blockquote>
 <p>答案：重建索引 k 的做法是合理的，可以达到省空间的目的。但是，重建主键的过程不合理。<br>1.直接删掉主键索引，会使得所有二级索引都失效，并且会用ROWID来做主键索引。<br>2.不论是删除主键还是创建主键，都会将整个表重建。所以连着执行这两个语句的话，第一个语句就白做了。这两个语句，你可以用这个语句代替 ：<code>alter table T engine=InnoDB</code>。👈原地重建表结构</p>
-<h2 id="第四部分：覆盖索引"><a href="#第四部分：覆盖索引" class="headerlink" title="第四部分：覆盖索引"></a><span id="jump_covering_index">第四部分：覆盖索引</span></h2><p>在下面这个表T中，如果执行 <code>select * from T where k between 3 and 5</code>，需要执行几次树的搜索操作，会扫描多少行？<br>表的初始化语句：</p>
+<h2 id="第四部分：覆盖索引"><a href="#第四部分：覆盖索引" class="headerlink" title="第四部分：覆盖索引"></a><span id="jump4">第四部分：覆盖索引</span></h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69636" target="_blank" rel="noopener">https://time.geekbang.org/column/article/69636</a></p>
+</blockquote>
+<p>在下面这个表T中，如果执行 <code>select * from T where k between 3 and 5</code>，需要执行几次树的搜索操作，会扫描多少行？<br>表的初始化语句：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">    <span class="keyword">index</span> k(k)</span><br><span class="line">) <span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>,<span class="string">'aa'</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">'bb'</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">'cc'</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">'cc'</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">'ff'</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">'gg'</span>);</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/01/13/索引Index/1605443844487.png" alt="1605443844487"></p>
 <p>这条SQL查询语句的执行流程：</p>
@@ -715,7 +770,10 @@
 <p>如果现在有一个高频请求，要根据市民的身份证号查询他的姓名，这个联合索引就有意义了。它可以在这个高频请求上用到覆盖索引，不再需要回表查整行记录，减少语句的执行时间。</p>
 <p>当然，索引字段的维护总是有代价的。因此，在建立冗余索引来支持覆盖索引时就需要权衡考虑了。这正是业务 DBA，或者称为业务数据架构师的工作。</p>
 <p><img src="/2020/01/13/索引Index/1605236364285.png" alt="1605236364285"></p>
-<h2 id="第五部分：最左前缀原则"><a href="#第五部分：最左前缀原则" class="headerlink" title="第五部分：最左前缀原则"></a>第五部分：最左前缀原则</h2><p>如果为每一种查询都设计一个索引，索引是不是太多了。如果现在要按照市民的身份证号取查他的家庭地址呢？虽然这个查询需求在业务中出现的概率不高，但总不能让它走全表扫描吧？反过来说，单独为一个不频繁的请求创建一个（身份证号，地址）的索引又感觉有点浪费。应该怎么做呢？</p>
+<h2 id="第五部分：最左前缀原则"><a href="#第五部分：最左前缀原则" class="headerlink" title="第五部分：最左前缀原则"></a>第五部分：最左前缀原则</h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69636" target="_blank" rel="noopener">https://time.geekbang.org/column/article/69636</a></p>
+</blockquote>
+<p>如果为每一种查询都设计一个索引，索引是不是太多了。如果现在要按照市民的身份证号取查他的家庭地址呢？虽然这个查询需求在业务中出现的概率不高，但总不能让它走全表扫描吧？反过来说，单独为一个不频繁的请求创建一个（身份证号，地址）的索引又感觉有点浪费。应该怎么做呢？</p>
 <h3 id="1-最左前缀"><a href="#1-最左前缀" class="headerlink" title="1. 最左前缀"></a><span id="jump_leftmost_prefix">1. 最左前缀</span></h3><p><strong>B+树这种索引结构，可以利用索引的”最左前缀“，来定位记录。</strong></p>
 <p>用（name, age）这个联合索引来分析：</p>
 <p><img src="/2020/01/13/索引Index/1605450882634.png" alt="1605450882634"></p>
@@ -948,7 +1006,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速导航"><span class="nav-text">快速导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：MySQL中索引的操作"><span class="nav-text">第一部分：MySQL中索引的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）"><span class="nav-text">1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用-ALTER-命令添加和删除索引"><span class="nav-text">2. 使用 ALTER 命令添加和删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用-ALTER-命令添加和删除主键"><span class="nav-text">3. 使用 ALTER 命令添加和删除主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-创建表时直接指定索引"><span class="nav-text">4. 创建表时直接指定索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用-DROP-命令删除索引"><span class="nav-text">5. 使用 DROP 命令删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-显示索引信息"><span class="nav-text">6. 显示索引信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-show-index"><span class="nav-text">6.1 show index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-可用explain来查看是否使用索引"><span class="nav-text">6.2 可用explain来查看是否使用索引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-1-关于explain中的type和extra"><span class="nav-text">6.2.1 关于explain中的type和extra</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-EXPLAIN-Join-Types"><span class="nav-text">(1) EXPLAIN Join Types</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-EXPLAIN-Extra-Information"><span class="nav-text">(2) EXPLAIN Extra Information</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-什么时候该使用索引"><span class="nav-text">7. 什么时候该使用索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-什么时候不该使用索引"><span class="nav-text">8. 什么时候不该使用索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分：索引的常见模型"><span class="nav-text">第二部分：索引的常见模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-哈希表"><span class="nav-text">1. 哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-有序数组"><span class="nav-text">2. 有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-搜索树"><span class="nav-text">3. 搜索树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三部分：InnoDB的索引模型"><span class="nav-text">第三部分：InnoDB的索引模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-InnoDB索引组织结构"><span class="nav-text">1. InnoDB索引组织结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-索引维护"><span class="nav-text">2. 索引维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-关于自增主键"><span class="nav-text">3. 关于自增主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-小结"><span class="nav-text">4. 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问：对于上面这两个重建索引的做法，有没有不合适的？"><span class="nav-text">问：对于上面这两个重建索引的做法，有没有不合适的？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四部分：覆盖索引"><span class="nav-text">第四部分：覆盖索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五部分：最左前缀原则"><span class="nav-text">第五部分：最左前缀原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-最左前缀"><span class="nav-text">1. 最左前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-索引下推"><span class="nav-text">2. 索引下推</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-小结"><span class="nav-text">3. 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？"><span class="nav-text">问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速导航"><span class="nav-text">快速导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：MySQL中索引的操作"><span class="nav-text">第一部分：MySQL中索引的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-普通索引（简单索引）与唯一索引（CREATE-UNIQUE-INDEX）"><span class="nav-text">1. 普通索引（简单索引）与唯一索引（CREATE UNIQUE INDEX）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用-ALTER-命令添加和删除索引"><span class="nav-text">2. 使用 ALTER 命令添加和删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用-ALTER-命令添加和删除主键"><span class="nav-text">3. 使用 ALTER 命令添加和删除主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-创建表时直接指定索引"><span class="nav-text">4. 创建表时直接指定索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用-DROP-命令删除索引"><span class="nav-text">5. 使用 DROP 命令删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-显示索引信息"><span class="nav-text">6. 显示索引信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-show-index"><span class="nav-text">6.1 show index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-可用explain来查看是否使用索引"><span class="nav-text">6.2 可用explain来查看是否使用索引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-1-关于explain中的type和extra"><span class="nav-text">6.2.1 关于explain中的type和extra</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-EXPLAIN-Join-Types"><span class="nav-text">(1) EXPLAIN Join Types</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-EXPLAIN-Extra-Information"><span class="nav-text">(2) EXPLAIN Extra Information</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-什么时候该使用索引"><span class="nav-text">7. 什么时候该使用索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-什么时候不该使用索引"><span class="nav-text">8. 什么时候不该使用索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分：索引的常见模型"><span class="nav-text">第二部分：索引的常见模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-哈希表"><span class="nav-text">1. 哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-有序数组"><span class="nav-text">2. 有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-搜索树"><span class="nav-text">3. 搜索树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三部分：InnoDB的索引模型"><span class="nav-text">第三部分：InnoDB的索引模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-InnoDB索引组织结构"><span class="nav-text">1. InnoDB索引组织结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-聚簇索引（也称主键索引，聚集索引，clustered-index）"><span class="nav-text">1.1 聚簇索引（也称主键索引，聚集索引，clustered index）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）"><span class="nav-text">1.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-小结"><span class="nav-text">1.3 小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-索引维护"><span class="nav-text">2. 索引维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-关于自增主键"><span class="nav-text">3. 关于自增主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-小结"><span class="nav-text">4. 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问：对于上面这两个重建索引的做法，有没有不合适的？"><span class="nav-text">问：对于上面这两个重建索引的做法，有没有不合适的？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四部分：覆盖索引"><span class="nav-text">第四部分：覆盖索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五部分：最左前缀原则"><span class="nav-text">第五部分：最左前缀原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-最左前缀"><span class="nav-text">1. 最左前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-索引下推"><span class="nav-text">2. 索引下推</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-小结"><span class="nav-text">3. 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？"><span class="nav-text">问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
