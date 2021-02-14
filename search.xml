@@ -1,6 +1,523 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SQL中的各种连接join</title>
+    <url>/2021/02/14/SQL%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E8%BF%9E%E6%8E%A5join/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考：<br><a href="https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html" target="_blank" rel="noopener">https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html</a><br><a href="https://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join_left.asp</a><br><a href="https://www.w3school.com.cn/sql/sql_join.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join.asp</a><br><a href="https://www.cnblogs.com/yelp/p/3761443.html" target="_blank" rel="noopener">https://www.cnblogs.com/yelp/p/3761443.html</a><br><a href="https://blog.csdn.net/qq_41973536/article/details/81081024" target="_blank" rel="noopener">https://blog.csdn.net/qq_41973536/article/details/81081024</a></p>
+</blockquote>
+<p>最常见的 JOIN 类型：<strong>SQL INNER JOIN（等价于 JOIN）、SQL LEFT JOIN（等价于LEFT OUTER JOIN）、SQL  RIGHT JOIN（等价于RIGHT OUTER JOIN）、SQL FULL JOIN（等价于FULL OUTER JOIN），</strong>其中前一种是内连接，后三种是外连接。</p>
+<ul>
+<li>JOIN: 内连接，又叫等值连接，只返回两个表中连接字段相等的行。（如果表中有至少一个匹配，则返回行）</li>
+<li>LEFT JOIN: 左连接，返回左表中所有的记录以及右表中连接字段相等的记录。（即使右表中没有匹配，也从左表返回所有的行）</li>
+<li>RIGHT JOIN: 右连接，返回右表中所有的记录以及左表中连接字段相等的记录。（即使左表中没有匹配，也从右表返回所有的行）</li>
+<li>FULL JOIN: 外连接，返回两个表中的行：left join + right join。（只要其中一个表中存在匹配，就返回行）</li>
+<li>cross join: 结果是笛卡尔积，就是第一个表的行数乘以第二个表的行数。</li>
+</ul>
+<p>假设我们有两张表，Table A是左边的表，Table B是右边的表。</p>
+<p>Table A:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Google</td>
+</tr>
+<tr>
+<td>2</td>
+<td>淘宝</td>
+</tr>
+<tr>
+<td>3</td>
+<td>微博</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Facebook</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Table B:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>5</td>
+<td>中国</td>
+</tr>
+<tr>
+<td>3</td>
+<td>中国</td>
+</tr>
+<tr>
+<td>6</td>
+<td>美国</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="1-INNER-JOIN"><a href="#1-INNER-JOIN" class="headerlink" title="1. INNER JOIN"></a>1. INNER JOIN</h3><p>内连接只连接匹配的行。</p>
+<p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span></span><br><span class="line"><span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
+<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229165319538-1026266241.png" alt="img1"></p>
+<p>INNER JOIN产生的结果集，是1和2的交集。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
+<p>执行以上SQL输出结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Google</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>3</td>
+<td>微博</td>
+<td>中国</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>等价于</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address</span><br><span class="line"><span class="keyword">from</span> tableA, tableB</span><br><span class="line"><span class="keyword">where</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
+<h3 id="2-LEFT-JOIN"><a href="#2-LEFT-JOIN" class="headerlink" title="2. LEFT JOIN"></a>2. LEFT JOIN</h3><p>LEFT JOIN返回左表的全部行和右表满足ON条件的行，如果左表的行在右表中没有匹配，那么这一行右表中对应数据用NULL代替。</p>
+<p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
+<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229170434726-2010021622.png" alt="img2"></p>
+<p>LEFT JOIN产生表1的完全集，而2表中匹配的则有值，没有匹配的则以null值取代。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">left</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
+<p> 执行以上SQL输出结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Google</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>2</td>
+<td>淘宝</td>
+<td>null</td>
+</tr>
+<tr>
+<td>3</td>
+<td>微博</td>
+<td>中国</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Facebook</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>注：若左表中一条记录匹配右表中多行，则都会返回</p>
+<p>例：</p>
+<p>“Persons” 表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id_P</th>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">Address</th>
+<th style="text-align:left">City</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">Oxford Street</td>
+<td style="text-align:left">London</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">Fifth Avenue</td>
+<td style="text-align:left">New York</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Carter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">Changan St</td>
+<td style="text-align:left">Beijing</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>“Orders” 表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Id_O</th>
+<th style="text-align:left">OrderNo</th>
+<th style="text-align:left">Id_P</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">77895</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">44678</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">22456</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">24562</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">34764</td>
+<td style="text-align:left">65</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Persons.LastName, Persons.FirstName, Orders.OrderNo</span><br><span class="line"><span class="keyword">FROM</span> Persons</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Orders</span><br><span class="line"><span class="keyword">ON</span> Persons.Id_P = Orders.Id_P</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Persons.LastName</span><br></pre></td></tr></table></figure>
+<p>结果集：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">LastName</th>
+<th style="text-align:left">FirstName</th>
+<th style="text-align:left">OrderNo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">22456</td>
+</tr>
+<tr>
+<td style="text-align:left">Adams</td>
+<td style="text-align:left">John</td>
+<td style="text-align:left">24562</td>
+</tr>
+<tr>
+<td style="text-align:left">Bush</td>
+<td style="text-align:left">George</td>
+<td style="text-align:left">null</td>
+</tr>
+<tr>
+<td style="text-align:left">Carter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">44678</td>
+</tr>
+<tr>
+<td style="text-align:left">Carter</td>
+<td style="text-align:left">Thomas</td>
+<td style="text-align:left">77895</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>LEFT JOIN 关键字会从左表 (Persons) 那里返回所有的行，即使在右表 (Orders) 中没有匹配的行。</p>
+<h3 id="3-RIGHT-JOIN"><a href="#3-RIGHT-JOIN" class="headerlink" title="3. RIGHT JOIN"></a>3. RIGHT JOIN</h3><p>RIGHT JOIN返回右表的全部行和左表满足ON条件的行，如果右表的行在左表中没有匹配，那么这一行左表中对应数据用NULL代替。</p>
+<p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
+<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229171503867-2027149651.png" alt="img3"></p>
+<p>RIGHT JOIN产生表2的完全集，而1表中匹配的则有值，没有匹配的则以null值取代。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">right</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
+<p>执行以上SQL输出结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Google</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>5</td>
+<td>null</td>
+<td>中国</td>
+</tr>
+<tr>
+<td>3</td>
+<td>微博</td>
+<td>中国</td>
+</tr>
+<tr>
+<td>6</td>
+<td>null</td>
+<td>美国</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="4-FULL-OUTER-JOIN"><a href="#4-FULL-OUTER-JOIN" class="headerlink" title="4. FULL OUTER JOIN"></a>4. FULL OUTER JOIN</h3><p>FULL JOIN 会从左表和右表中返回所有的行。如果其中一个表的数据行在另一个表中没有匹配的行，那么对面的数据用NULL代替。</p>
+<p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
+<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229172802179-389908324.png" alt="img4"></p>
+<p>FULL OUTER JOIN产生1和2的并集。对于没有匹配的记录，会以null做为值。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">full</span> <span class="keyword">outer</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
+<p>执行以上SQL输出结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Google</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>2</td>
+<td>淘宝</td>
+<td>null</td>
+</tr>
+<tr>
+<td>3</td>
+<td>微博</td>
+<td>中国</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Facebook</td>
+<td>null</td>
+</tr>
+<tr>
+<td>5</td>
+<td>null</td>
+<td>中国</td>
+</tr>
+<tr>
+<td>6</td>
+<td>null</td>
+<td>美国</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="5-join中on与where的区别"><a href="#5-join中on与where的区别" class="headerlink" title="5. join中on与where的区别"></a>5. join中on与where的区别</h3><p>数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的临时表，然后再将这张临时表返回给用户。</p>
+<p>在使用left join时，on和where条件的区别如下：</p>
+<p>1、 on条件是在生成临时表时使用的条件，它不管on中的条件是否为真，都会返回左边表中的记录。</p>
+<p>2、where条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有left join的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。</p>
+<p>假设有两张表：</p>
+<p>表1：table1</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>表2：table2</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>size</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>AAA</td>
+</tr>
+<tr>
+<td>20</td>
+<td>BBB</td>
+</tr>
+<tr>
+<td>20</td>
+<td>CCC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>两条SQL:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * form table1 left join table2 on (table1.size = table2.size) where table2.name=’AAA’</span><br><span class="line"></span><br><span class="line">2、select * form table1 left join table2 on (table1.size = table2.size and table2.name=’AAA’)</span><br></pre></td></tr></table></figure>
+<p>第一条SQL的过程：</p>
+<p>1、中间表on条件:<br>table1.size = table2.size</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>table1.id</th>
+<th>table1.size</th>
+<th>table2.size</th>
+<th>table2.name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10</td>
+<td>10</td>
+<td>AAA</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>20</td>
+<td>BBB</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>20</td>
+<td>CCC</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+<td>(null)</td>
+<td>(null)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>2、再对中间表过滤<br>where 条件：<br>table2.name=’AAA’</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>table1.id</th>
+<th>table1.size</th>
+<th>table2.size</th>
+<th>table2.name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10</td>
+<td>10</td>
+<td>AAA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>第二条SQL的过程：</p>
+<p>1、中间表on条件:<br>table1.size = table2.size and table2.name=’AAA’<br>(条件不为真也会返回左表中的记录)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>table1.id</th>
+<th>table1.size</th>
+<th>table2.size</th>
+<th>table2.name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10</td>
+<td>10</td>
+<td>AAA</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>(null)</td>
+<td>(null)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>30</td>
+<td>(null)</td>
+<td>(null)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>on条件是在left join之前先进行条件筛选，而后才对两个表格join操作</strong>。on比where起作用更早，先根据on条件进行多表的连接操作，生成一个临时表再通过where来筛选。</p>
+<p>以上结果的关键原因在于left join,right join,full join的特殊性，不管on上的条件是否为真都会返回 left 或 right 表中的记录，full则具有left和right的特性的并集。 而inner join没这个特殊性，则条件放在on中和where中，返回的结果集是相同的。</p>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>数据框</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python直接赋值、浅拷贝和深拷贝以及切片</title>
     <url>/2020/11/15/Python%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%BB%A5%E5%8F%8A%E5%88%87%E7%89%87/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -5627,8 +6144,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>数组</tag>
         <tag>哈希表</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -6968,8 +7485,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>链表</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -6997,8 +7514,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>数组</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -7108,8 +7625,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>栈</tag>
         <tag>数组</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
