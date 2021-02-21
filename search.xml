@@ -1,6 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux常用命令</title>
+    <url>/2021/02/21/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="0-在线使用-Linux"><a href="#0-在线使用-Linux" class="headerlink" title="0. 在线使用 Linux"></a>0. 在线使用 Linux</h3><blockquote>
+<p>参考 <a href="https://www.sohu.com/a/343421845_298038" target="_blank" rel="noopener">https://www.sohu.com/a/343421845_298038</a></p>
+</blockquote>
+<p>JS/UIX - Terminal</p>
+<p>地址：<a href="https://www.masswerk.at/jsuix/index.html" target="_blank" rel="noopener">https://www.masswerk.at/jsuix/index.html</a></p>
+<p>进入后，点击open terminal即可。它提供简单的终端环境，没有自带gcc等编译套件，不过练习基本命令和shell脚本还是可以的。</p>
+<h3 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1. 常用命令"></a>1. 常用命令</h3><h4 id="1-1-ls-命令-显示指定工作目录下的内容"><a href="#1-1-ls-命令-显示指定工作目录下的内容" class="headerlink" title="1.1 ls 命令 - 显示指定工作目录下的内容"></a>1.1 ls 命令 - 显示指定工作目录下的内容</h4><blockquote>
+<p>详见 <a href="https://www.runoob.com/linux/linux-comm-ls.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-ls.html</a></p>
+</blockquote>
+<p>显示指定工作目录下的内容（列出目前工作目录所含之文件及子目录)</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls [-alrtAFR] [name...]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-a</code> 显示所有文件及目录 (<strong>.</strong> 开头的隐藏文件也会列出)</li>
+<li><code>-l</code> 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</li>
+</ul>
+<p><img src="/2021/02/21/Linux常用命令/1613903492422.png" alt="1613903492422"></p>
+<h4 id="1-2-查看文件内容：cat"><a href="#1-2-查看文件内容：cat" class="headerlink" title="1.2 查看文件内容：cat"></a>1.2 查看文件内容：cat</h4><p><img src="/2021/02/21/Linux常用命令/1613903531146.png" alt="1613903531146"></p>
+<a id="more"></a>
+<h4 id="1-3-创建文件：-touch"><a href="#1-3-创建文件：-touch" class="headerlink" title="1.3 创建文件： touch"></a>1.3 创建文件： touch</h4><p><img src="/2021/02/21/Linux常用命令/1613903625026.png" alt="1613903625026"></p>
+<p>此时，若想往text2中写入内容，可用 <code>echo &quot;hello word&quot;&gt;&gt;text2</code></p>
+<p><img src="/2021/02/21/Linux常用命令/1613903728662.png" alt="1613903728662"></p>
+<p><code>&gt;&gt;</code>代表在末尾追加，若使用<code>&gt;</code>则会把之前的内容覆盖</p>
+<p><img src="/2021/02/21/Linux常用命令/1613903859605.png" alt="1613903859605"></p>
+<p>当然，也可直接<code>vim text2</code>对文件进行编辑</p>
+<p>注：无论是 <code>echo &quot;hello&quot;&gt;file</code> 还是 <code>echo &quot;hello&quot;&gt;&gt;file</code> ，如果file不存在都会先创建file文件</p>
+<p>类似的用法有：<code>cat ./result.lst&gt;&gt;aa.txt</code>（将result.lst文件中的内容追加到aa.txt的末尾）</p>
+<p><img src="/2021/02/21/Linux常用命令/1613904004258.png" alt="1613904004258"></p>
+<h4 id="1-4-mv-为文件或目录改名、或将文件或目录移入其它位置"><a href="#1-4-mv-为文件或目录改名、或将文件或目录移入其它位置" class="headerlink" title="1.4 mv - 为文件或目录改名、或将文件或目录移入其它位置"></a>1.4 mv - 为文件或目录改名、或将文件或目录移入其它位置</h4><blockquote>
+<p>详见 <a href="https://www.runoob.com/linux/linux-comm-mv.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-mv.html</a></p>
+</blockquote>
+<p><img src="/2021/02/21/Linux常用命令/1613904102186.png" alt="1613904102186"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613904249971.png" alt="1613904249971"></p>
+<p>👆注：若test目录不存在，则该命令将text4重命名为test</p>
+<p><img src="/2021/02/21/Linux常用命令/1613904395981.png" alt="1613904395981"></p>
+<h4 id="1-5-rm-删除一个文件或者目录"><a href="#1-5-rm-删除一个文件或者目录" class="headerlink" title="1.5 rm - 删除一个文件或者目录"></a>1.5 rm - 删除一个文件或者目录</h4><blockquote>
+<p>详见 <a href="https://www.runoob.com/linux/linux-comm-rm.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-rm.html</a></p>
+</blockquote>
+<p>删除文件：<code>rm 文件名</code></p>
+<p>删除文件夹：<code>rm -r 文件夹名</code>。-r 将目录及以下之档案亦逐一删除</p>
+<p><img src="/2021/02/21/Linux常用命令/1613904534240.png" alt="1613904534240"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613904600604.png" alt="1613904600604"></p>
+<p>-f 直接删除，无需逐一确认，见如下示例：</p>
+<p><img src="/2021/02/21/Linux常用命令/1613904845877.png" alt="1613904845877"></p>
+<h3 id="2-压缩打包命令-tar、zip、unzip"><a href="#2-压缩打包命令-tar、zip、unzip" class="headerlink" title="2. 压缩打包命令 - tar、zip、unzip"></a>2. 压缩打包命令 - tar、zip、unzip</h3><blockquote>
+<p>来自 <a href="https://blog.csdn.net/weixin_44901564/article/details/99682926" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44901564/article/details/99682926</a></p>
+</blockquote>
+<p>打包与压缩的区别：</p>
+<p>打包是指将多个文件或者目录放在一起，形成一个总的包，这样便于保存和传输，但是大小是没有变化的，压缩是指将一个或者多个大文件或者目录通过压缩算法使文件的体积变小以达到压缩的目的，可以节省存储空间。</p>
+<p>tar命令可以进行打包或压缩、解压，zip与unzip主要进行压缩与解压。（zip命令主要用于windows 系统下，例如在linux服务器上可用zip进行压缩，下载到本地windows系统，进行解压更加方便）</p>
+<h4 id="2-1-tar命令"><a href="#2-1-tar命令" class="headerlink" title="2.1 tar命令"></a>2.1 tar命令</h4><h5 id="tar命令常用参数"><a href="#tar命令常用参数" class="headerlink" title="tar命令常用参数"></a>tar命令常用参数</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>-z</th>
+<th>是否同时具有gz属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-j</td>
+<td>是否同时具有bz2属性</td>
+</tr>
+<tr>
+<td>-J</td>
+<td>是否同时具有xz属性</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>解压缩、提取打包的内容</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>查看压缩包内容</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>建立一个压缩，打包文档</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>切换到指定目录，表示指定解压缩包的内容和打包的内容存放的目录</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示压缩或者打包的内容</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>使用文件名，在f后面要接压缩后的文件的名字，只要用到tar命令，-f选项是必须要用的，-f参数在使用的时候一定排在其他参数的后面，在最右边</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>保留备份数据的原本权限与属性，常用于备份（-c）重要的配置文件</td>
+</tr>
+<tr>
+<td>-P（大写P）</td>
+<td>保留绝对路径</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="一、打包"><a href="#一、打包" class="headerlink" title="一、打包"></a>一、打包</h5><p><img src="/2021/02/21/Linux常用命令/1613918040999.png" alt="1613918040999"></p>
+<h5 id="二、压缩"><a href="#二、压缩" class="headerlink" title="二、压缩"></a>二、压缩</h5><p>linux主要有三种压缩方式：<br>1.gzip：是公认的压缩速度最快，压缩大文件的时候与其他的压缩方式相比更加明显，历史最久，应用最广泛的压缩方式<br>2.bzip：压缩形成的文件小，但是可用性不如gzip<br>3.xz：是最新的压缩方式，可以自动提供最佳的压缩率</p>
+<p>建议压缩的时候标明后缀：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>命名方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-z</td>
+<td>用于gzip压缩方式</td>
+<td>文件名.tar.gz</td>
+</tr>
+<tr>
+<td>-j</td>
+<td>用于bzip2压缩方式</td>
+<td>文件名.tar.bz2</td>
+</tr>
+<tr>
+<td>-J</td>
+<td>用于xz压缩方式</td>
+<td>文件名.tar.xz</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="/2021/02/21/Linux常用命令/1613918385198.png" alt="1613918385198"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613918409030.png" alt="1613918409030"></p>
+<h5 id="三、解压"><a href="#三、解压" class="headerlink" title="三、解压"></a>三、解压</h5><p><img src="/2021/02/21/Linux常用命令/1613918570956.png" alt="1613918570956"></p>
+<p>tar命令在解压时不需要指明压缩的方式，它会自己选择跟压缩方式对应的方式去解压</p>
+<p><img src="/2021/02/21/Linux常用命令/1613918627839.png" alt="1613918627839"></p>
+<p>👆原文中未给出命令，猜测为 <code>tar -xf Golden.apk.tar.gz</code></p>
+<p><img src="/2021/02/21/Linux常用命令/1613918698529.png" alt="1613918698529"></p>
+<h5 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h5><p>a.在打包和压缩的过程中，我们有时会看到这样的语句：<strong>tar: 从成员名中删除开头的“/”</strong>，这个并不是报错，是因为没有加上-P选项，没有保留原来的绝对路径去打包或者压缩，提取打包的内容跟解压一样，下面举一个例子：</p>
+<p><img src="/2021/02/21/Linux常用命令/1613919006930.png" alt="1613919006930"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613919034567.png" alt="1613919034567"></p>
+<p>解压的时候同理，如果在压缩文件的时候使用了-P选项，那么在解压时也要加上-P选项，不然也会出现<strong>tar: 从成员名中删除开头的“/”</strong></p>
+<p>b.在使用tar压缩或者打包的时候，可以通过增加 <code>--exclude</code> 来达到排除指定的文件的目的</p>
+<p><img src="/2021/02/21/Linux常用命令/1613919127279.png" alt="1613919127279"></p>
+<p>压缩文件 与 想要排除指定的目录压缩或者打包 同理</p>
+<p>c. 使用 <code>-r</code> 选项增加.tar归档文件的内容</p>
+<p>通过 <code>tar --help</code> 命令查看帮助</p>
+<p><code>-r</code> 选项的作用：把要存档的文件追加到档案文件的未尾。例如用户已经作好备份文件，又发现还有一个目录或是一些文件忘记备份了，这时可以使用该选项，将忘记的目录或文件追加到备份文件中</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920583973.png" alt="1613920583973"></p>
+<p>使用实例：</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920618990.png" alt="1613920618990"></p>
+<p>（先将1进行归档，再追加2）</p>
+<p>1.归档操作</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920677791.png" alt="1613920677791"></p>
+<p>生成.tar文件，目录归档完毕</p>
+<p>2.将calculating_time.sh追加进入.tar文件中</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920716990.png" alt="1613920716990"></p>
+<p>查看.tar文件的归档信息：</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920751128.png" alt="1613920751128"></p>
+<p>可以看到calculating_time.sh文件已经被追加到档案的末尾了</p>
+<p>提取Check_Configuration_20201118_PM.tar 到/mnt目录下：</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920796143.png" alt="1613920796143"></p>
+<p>使用-r选项追加文件至.tar文件成功</p>
+<h4 id="2-2-zip命令和unzip命令"><a href="#2-2-zip命令和unzip命令" class="headerlink" title="2.2 zip命令和unzip命令"></a>2.2 zip命令和unzip命令</h4><p>在使用 zip 跟 unzip 命令之前先查看系统有没有安装这两个命令的包，没有的话要自己安装<br>查看有没有安装zip跟unzip命令的命令：</p>
+<p><code>rpm -q zip unzip</code></p>
+<p>如果安装了，则会显示出命令的版本号</p>
+<p><img src="/2021/02/21/Linux常用命令/1613919407899.png" alt="1613919407899"></p>
+<h5 id="一、zip命令"><a href="#一、zip命令" class="headerlink" title="一、zip命令"></a>一、zip命令</h5><p>基本用法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">zip [参数] [压缩包名] [压缩的目录或者文件的路径]</span><br></pre></td></tr></table></figure>
+<h6 id="zip命令常用参数"><a href="#zip命令常用参数" class="headerlink" title="zip命令常用参数"></a>zip命令常用参数</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>-m</th>
+<th>将文件压缩后，删除原文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-o</td>
+<td>将压缩文件内的所有文件的最新变动时间设为压缩的时间</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>安静模式，在压缩的时候不显示指令执行的过程</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归压缩，将自定目录下的所有子文件以及文件一起处理</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>”文件列表“，压缩时排除文件列表中的文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h6><p><img src="/2021/02/21/Linux常用命令/1613919749742.png" alt="1613919749742"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613919795113.png" alt="1613919795113"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613919829367.png" alt="1613919829367"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613919855669.png" alt="1613919855669"></p>
+<h5 id="二、unzip命令"><a href="#二、unzip命令" class="headerlink" title="二、unzip命令"></a>二、unzip命令</h5><p>基本用法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip [参数] [压缩文件]  （-d [目录]）  //如果不使用括号内的内容，则解压文件到当前工作目录</span><br></pre></td></tr></table></figure>
+<h6 id="unzip命令常用参数"><a href="#unzip命令常用参数" class="headerlink" title="unzip命令常用参数"></a>unzip命令常用参数</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>-c</th>
+<th>将解压缩的结果显示到屏幕上（显示每一个目录下的每一个文件的内容），同时对字符做适当的转换，但是并没有解压压缩包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>显示压缩文件内所包含的文件</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>检查压缩文件是否正确</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>执行时显示压缩文件的详细信息</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>安静模式，执行时不显示任何信息</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>指定文件解压后存储的目录</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>指定不要处理压缩文件中的那些文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h6><p>a.将harry.zip压缩包解压缩的结果显示出来：</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920145339.png" alt="1613920145339"></p>
+<p>具体会显示到每一个文件跟每一个文件的内容</p>
+<p>b.显示jihe.zip压缩包里面所包含的文件</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920185552.png" alt="1613920185552"></p>
+<p>c.检查dajihe.zip压缩文件是否正确</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920223598.png" alt="1613920223598"></p>
+<p>全部OK表示全部文件都是正确的</p>
+<p>d.不解压压缩文件dajihe.zip，查看压缩包里面的内容（查看显示的文件列表还包含压缩比率）</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920257695.png" alt="1613920257695"></p>
+<p>使用<code>-v</code>显示的信息比使用<code>-l</code>显示的信息更加详细</p>
+<p>e.将dajihe.zip压缩包解压到/opt/目录下：</p>
+<p><img src="/2021/02/21/Linux常用命令/1613920322610.png" alt="1613920322610"></p>
+<h3 id="2-Linux属主权限，chgrp，chown，chmod"><a href="#2-Linux属主权限，chgrp，chown，chmod" class="headerlink" title="2.Linux属主权限，chgrp，chown，chmod"></a>2.Linux属主权限，chgrp，chown，chmod</h3><blockquote>
+<p>来自 <a href="https://www.cnblogs.com/CYHISTW/p/11031429.html" target="_blank" rel="noopener">https://www.cnblogs.com/CYHISTW/p/11031429.html</a></p>
+</blockquote>
+<p><img src="/2021/02/21/Linux常用命令/1613905079507.png" alt="1613905079507"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905119945.png" alt="1613905119945"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905151971.png" alt="1613905151971"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905209772.png" alt="1613905209772"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905243202.png" alt="1613905243202"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905317808.png" alt="1613905317808"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905345753.png" alt="1613905345753"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905383386.png" alt="1613905383386"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905411968.png" alt="1613905411968"></p>
+<p>可使用 <code>chmod +x 文件名</code> 使文件变为可执行文件，例如：</p>
+<p><img src="/2021/02/21/Linux常用命令/Users\zhu_r\Desktop\test\blog\source\_posts\Linux常用命令\1613905632283.png" alt="1613905632283"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905651103.png" alt="1613905651103"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905697607.png" alt="1613905697607"></p>
+<p>输入<code>i</code>进行编辑模式，完成后，按<code>esc</code>再输入<code>:wq</code> 保存并退出</p>
+<p><img src="/2021/02/21/Linux常用命令/1613905784062.png" alt="1613905784062"></p>
+<p>👆可以看到此时run.sh处于不可执行状态</p>
+<p><img src="/2021/02/21/Linux常用命令/1613905838720.png" alt="1613905838720"></p>
+<p><img src="/2021/02/21/Linux常用命令/1613905867580.png" alt="1613905867580"></p>
+<p>成功执行</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL中的各种连接join</title>
     <url>/2021/02/14/SQL%E4%B8%AD%E7%9A%84%E5%90%84%E7%A7%8D%E8%BF%9E%E6%8E%A5join/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -6144,8 +6431,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>哈希表</tag>
         <tag>数组</tag>
+        <tag>哈希表</tag>
       </tags>
   </entry>
   <entry>
@@ -7485,8 +7772,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>链表</tag>
         <tag>栈</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -7514,8 +7801,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>数组</tag>
         <tag>栈</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -7625,8 +7912,8 @@ table th:nth-of-type(2) {
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>数组</tag>
         <tag>栈</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -8575,8 +8862,8 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>机器学习</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
