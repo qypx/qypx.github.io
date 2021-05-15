@@ -139,7 +139,7 @@
 <meta property="og:image" content="http://qypx.github.io/2021/02/21/Linux常用命令/1613905784062.png">
 <meta property="og:image" content="http://qypx.github.io/2021/02/21/Linux常用命令/1613905838720.png">
 <meta property="og:image" content="http://qypx.github.io/2021/02/21/Linux常用命令/1613905867580.png">
-<meta property="og:updated_time" content="2021-02-21T15:26:03.211Z">
+<meta property="og:updated_time" content="2021-05-15T09:48:14.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令">
 <meta name="twitter:description" content="0. 在线使用 Linux 参考 https://www.sohu.com/a/343421845_298038  JS/UIX - Terminal 地址：https://www.masswerk.at/jsuix/index.html 进入后，点击open terminal即可。它提供简单的终端环境，没有自带gcc等编译套件，不过练习基本命令和shell脚本还是可以的。 1. 常用命令1.1">
@@ -386,8 +386,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-02-21T23:26:03+08:00">
-                2021-02-21
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-15T17:48:14+08:00">
+                2021-05-15
               </time>
             
           </span>
@@ -723,6 +723,62 @@
 <p><img src="/2021/02/21/Linux常用命令/1613905838720.png" alt="1613905838720"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613905867580.png" alt="1613905867580"></p>
 <p>成功执行</p>
+<h3 id="3-shell-命令行参数"><a href="#3-shell-命令行参数" class="headerlink" title="3. shell 命令行参数"></a>3. shell 命令行参数</h3><blockquote>
+<p>参考 <a href="http://c.biancheng.net/cpp/view/2739.html" target="_blank" rel="noopener">http://c.biancheng.net/cpp/view/2739.html</a></p>
+</blockquote>
+<p>运行脚本时传递给脚本的参数称为命令行参数。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>当前脚本的文件名</td>
+</tr>
+<tr>
+<td>$n</td>
+<td>传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2，以此类推</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>传递给脚本或函数的参数个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>传递给脚本或函数的所有参数。</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>传递给脚本或函数的所有参数。被双引号(“ “)包含时，与 $* 稍有不同</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例：脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;File Name: $0&quot;</span><br><span class="line">echo &quot;First Parameter : $1&quot;</span><br><span class="line">echo &quot;First Parameter : $2&quot;</span><br><span class="line">echo &quot;Quoted Values: $@&quot;</span><br><span class="line">echo &quot;Quoted Values: $*&quot;</span><br><span class="line">echo &quot;Total Number of Parameters : $#&quot;</span><br></pre></td></tr></table></figure>
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$./test.sh Zara Ali</span><br><span class="line">File Name : ./test.sh</span><br><span class="line">First Parameter : Zara</span><br><span class="line">Second Parameter : Ali</span><br><span class="line">Quoted Values: Zara Ali</span><br><span class="line">Quoted Values: Zara Ali</span><br><span class="line">Total Number of Parameters : 2</span><br></pre></td></tr></table></figure>
+<h3 id="4-shell-日期加减运算"><a href="#4-shell-日期加减运算" class="headerlink" title="4. shell 日期加减运算"></a>4. shell 日期加减运算</h3><blockquote>
+<p>参考<br><a href="http://blog.sina.com.cn/s/blog_ad6555610101b5ud.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_ad6555610101b5ud.html</a><br><a href="https://www.cnblogs.com/zhzhang/p/6846300.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhzhang/p/6846300.html</a><br><a href="https://www.cnblogs.com/simple-li/p/14040777.html" target="_blank" rel="noopener">https://www.cnblogs.com/simple-li/p/14040777.html</a><br><a href="http://www.dutycode.com/post-60.html" target="_blank" rel="noopener">http://www.dutycode.com/post-60.html</a></p>
+</blockquote>
+<p>假如今天是 2012-04-22</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ date -d &quot;+1 day&quot; +%Y-%m-%d</span><br><span class="line">2012-04-23</span><br><span class="line"></span><br><span class="line">$ date -d &quot;-1 day&quot; +%Y-%m-%d</span><br><span class="line">2012-04-21</span><br><span class="line"></span><br><span class="line">$ date -d &quot;2012-04-10 -1 day&quot; +%Y-%m-%d</span><br><span class="line">2012-04-09</span><br><span class="line"></span><br><span class="line">$ date -d &quot;+1 week&quot; +%Y-%m-%d</span><br><span class="line">2012-04-29</span><br><span class="line"></span><br><span class="line">同理还可 month, year</span><br></pre></td></tr></table></figure>
+<p>例：脚本示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">if [ $# == 0 ] ; then</span><br><span class="line">    ydate=`date -d -1days &quot;+%Y%m%d&quot;`</span><br><span class="line">    ydateother=`date -d -1days &quot;+%Y-%m-%d&quot;`</span><br><span class="line">    tdate=`date -d -0days &quot;+%Y%m%d&quot;`</span><br><span class="line">    tdateother=`date -d -0days &quot;+%Y-%m-%d&quot;`</span><br><span class="line">elif [ $# == 1 ] ; then </span><br><span class="line">    ydate=$1</span><br><span class="line">    ydateother=`date -d $&#123;ydate&#125; +&quot;%Y-%m-%d&quot;`</span><br><span class="line">    tdate=`date -d &quot;$&#123;ydate&#125; 1days&quot; +&quot;%Y%m%d&quot;`</span><br><span class="line">    tdateother=`date -d $&#123;tdate&#125; +&quot;%Y-%m-%d&quot;`</span><br><span class="line">elif [ $# == 2 ] ; then </span><br><span class="line">    ydate=$1</span><br><span class="line">    ydateother=`date -d $&#123;ydate&#125; +&quot;%Y-%m-%d&quot;`</span><br><span class="line">    tdate=$2</span><br><span class="line">    tdateother=`date -d $&#123;tdate&#125; +&quot;%Y-%m-%d&quot;`</span><br><span class="line">else</span><br><span class="line">    echo &quot;please do not input if calcute yedterday.&quot;</span><br><span class="line">    echo &quot;please input like if calcute 20170510 one day: 20170510&quot;</span><br><span class="line">    echo &quot;please input like if calcute 20170510 and 20170512 two days : 20170510 20170511&quot;</span><br><span class="line">    exit -1</span><br><span class="line">fi </span><br><span class="line">echo $&#123;ydate&#125;&apos;--&apos;$&#123;ydateother&#125;&apos;--&apos;$&#123;tdate&#125;&apos;---&apos;$&#123;tdateother&#125;</span><br></pre></td></tr></table></figure>
+<p>例： 按月执行201904到202010的py脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">i=201904 # 定义开始月份</span><br><span class="line">while [ $i -le 202010 ] # 当i小于等于202010时执行循环语句</span><br><span class="line">  do</span><br><span class="line">    dateNo1=$(date +&quot;%Y-%m-%d %H:%M:%S&quot;) # 获取当前时间(年月日时分秒)</span><br><span class="line">    echo &quot;开始执行($dateNo1): $i&quot; # 打印当前时间(年月日时分秒)</span><br><span class="line">    python tmp_sn_union_mem_20201125.py $i # 执行python脚本，传入月份参数。  此处也可做其他操作</span><br><span class="line">    dateNo2=$(date +&quot;%Y-%m-%d %H:%M:%S&quot;) # 获取当前时间(年月日时分秒) </span><br><span class="line">    echo &quot;结束执行($dateNo2): $i&quot; # 打印当前时间(年月日时分秒)</span><br><span class="line">    i=$[$i + 1] # 当前i值加1</span><br><span class="line">    if [ $i -eq 201913 ] # 判断i值是否等于201913，条件必须写在 [] 里</span><br><span class="line">     then</span><br><span class="line">      i=202001 # 如果i值等于201913，则让i值为202001</span><br><span class="line">    fi # if结束标记</span><br><span class="line">  done # while结束标记</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fi                    容易忘记判断结束标记</span><br><span class="line">done                  容易忘记循环执行结束标记</span><br><span class="line">i=$[$i + 1]           变量加减运算要写在 $[] 里面。</span><br><span class="line">if [ $i -eq 201913 ]  条件必须写在 [] 里</span><br></pre></td></tr></table></figure>
+<p>附：数值比较：</p>
+<p><code>-eq</code>   相等（equal）<br><code>-ne</code>   不等（not equal）<br><code>-gt</code>    大于（greater than）<br><code>-lt</code>     小于（less than）<br><code>-ge</code>  大于等于 （greater than or equal）<br><code>-le</code>   小于等于 （less than or equal）</p>
+<p>注：crontab任务调度中，%是个特殊字符，要在前加”\”进行转义</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 10 * * * cd /home/zzh &amp;&amp; sh test.sh $(date -d &quot;1 day ago&quot; +&quot;\%Y\%m\%d&quot;) &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -918,7 +974,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-在线使用-Linux"><span class="nav-text">0. 在线使用 Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-常用命令"><span class="nav-text">1. 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-ls-命令-显示指定工作目录下的内容"><span class="nav-text">1.1 ls 命令 - 显示指定工作目录下的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-查看文件内容：cat"><span class="nav-text">1.2 查看文件内容：cat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-创建文件：-touch"><span class="nav-text">1.3 创建文件： touch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-mv-为文件或目录改名、或将文件或目录移入其它位置"><span class="nav-text">1.4 mv - 为文件或目录改名、或将文件或目录移入其它位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-rm-删除一个文件或者目录"><span class="nav-text">1.5 rm - 删除一个文件或者目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-压缩打包命令-tar、zip、unzip"><span class="nav-text">2. 压缩打包命令 - tar、zip、unzip</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-tar命令"><span class="nav-text">2.1 tar命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tar命令常用参数"><span class="nav-text">tar命令常用参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一、打包"><span class="nav-text">一、打包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、压缩"><span class="nav-text">二、压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、解压"><span class="nav-text">三、解压</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#补充"><span class="nav-text">补充</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-zip命令和unzip命令"><span class="nav-text">2.2 zip命令和unzip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、zip命令"><span class="nav-text">一、zip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#zip命令常用参数"><span class="nav-text">zip命令常用参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、unzip命令"><span class="nav-text">二、unzip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#unzip命令常用参数"><span class="nav-text">unzip命令常用参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-1"><span class="nav-text">实例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Linux属主权限，chgrp，chown，chmod"><span class="nav-text">2.Linux属主权限，chgrp，chown，chmod</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-在线使用-Linux"><span class="nav-text">0. 在线使用 Linux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-常用命令"><span class="nav-text">1. 常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-ls-命令-显示指定工作目录下的内容"><span class="nav-text">1.1 ls 命令 - 显示指定工作目录下的内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-查看文件内容：cat"><span class="nav-text">1.2 查看文件内容：cat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-创建文件：-touch"><span class="nav-text">1.3 创建文件： touch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-mv-为文件或目录改名、或将文件或目录移入其它位置"><span class="nav-text">1.4 mv - 为文件或目录改名、或将文件或目录移入其它位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-rm-删除一个文件或者目录"><span class="nav-text">1.5 rm - 删除一个文件或者目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-压缩打包命令-tar、zip、unzip"><span class="nav-text">2. 压缩打包命令 - tar、zip、unzip</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-tar命令"><span class="nav-text">2.1 tar命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tar命令常用参数"><span class="nav-text">tar命令常用参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一、打包"><span class="nav-text">一、打包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、压缩"><span class="nav-text">二、压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、解压"><span class="nav-text">三、解压</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#补充"><span class="nav-text">补充</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-zip命令和unzip命令"><span class="nav-text">2.2 zip命令和unzip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、zip命令"><span class="nav-text">一、zip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#zip命令常用参数"><span class="nav-text">zip命令常用参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、unzip命令"><span class="nav-text">二、unzip命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#unzip命令常用参数"><span class="nav-text">unzip命令常用参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-1"><span class="nav-text">实例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Linux属主权限，chgrp，chown，chmod"><span class="nav-text">2.Linux属主权限，chgrp，chown，chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-shell-命令行参数"><span class="nav-text">3. shell 命令行参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-shell-日期加减运算"><span class="nav-text">4. shell 日期加减运算</span></a></li></ol></div>
             
 
           </div>
