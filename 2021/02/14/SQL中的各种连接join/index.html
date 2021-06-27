@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="参考：https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.htmlhttps://www.w3school.com.cn/sql/sql_join_left.asphttps://www.w3school.com.cn/sql/sql_join.asphttps://www.cnblogs.com/yelp/p/3761443.html">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229165319538-1026266241.png">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229170434726-2010021622.png">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229171503867-2027149651.png">
-<meta property="og:image" content="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229172802179-389908324.png">
-<meta property="og:updated_time" content="2021-02-14T08:20:11.378Z">
+<meta property="og:image" content="http://qypx.github.io/2021/02/14/SQL中的各种连接join/1624780519991.png">
+<meta property="og:image" content="http://qypx.github.io/2021/02/14/SQL中的各种连接join/1624780567674.png">
+<meta property="og:image" content="http://qypx.github.io/2021/02/14/SQL中的各种连接join/1624780592546.png">
+<meta property="og:image" content="http://qypx.github.io/2021/02/14/SQL中的各种连接join/1624780609082.png">
+<meta property="og:updated_time" content="2021-06-27T07:57:41.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL中的各种连接join">
 <meta name="twitter:description" content="参考：https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.htmlhttps://www.w3school.com.cn/sql/sql_join_left.asphttps://www.w3school.com.cn/sql/sql_join.asphttps://www.cnblogs.com/yelp/p/3761443.html">
-<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229165319538-1026266241.png">
+<meta name="twitter:image" content="http://qypx.github.io/2021/02/14/SQL中的各种连接join/1624780519991.png">
 
 
 
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-02-14T16:20:11+08:00">
-                2021-02-14
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T15:57:41+08:00">
+                2021-06-27
               </time>
             
           </span>
@@ -472,7 +472,7 @@
 <h3 id="1-INNER-JOIN"><a href="#1-INNER-JOIN" class="headerlink" title="1. INNER JOIN"></a>1. INNER JOIN</h3><p>内连接只连接匹配的行。</p>
 <p>语法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span></span><br><span class="line"><span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229165319538-1026266241.png" alt="img1"></p>
+<p><img src="/2021/02/14/SQL中的各种连接join/1624780519991.png" alt="1624780519991"></p>
 <p>INNER JOIN产生的结果集，是1和2的交集。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
 <p>执行以上SQL输出结果如下：</p>
@@ -501,10 +501,11 @@
 </div>
 <p>等价于</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address</span><br><span class="line"><span class="keyword">from</span> tableA, tableB</span><br><span class="line"><span class="keyword">where</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="2-LEFT-JOIN"><a href="#2-LEFT-JOIN" class="headerlink" title="2. LEFT JOIN"></a>2. LEFT JOIN</h3><p>LEFT JOIN返回左表的全部行和右表满足ON条件的行，如果左表的行在右表中没有匹配，那么这一行右表中对应数据用NULL代替。</p>
 <p>语法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229170434726-2010021622.png" alt="img2"></p>
+<p><img src="/2021/02/14/SQL中的各种连接join/1624780567674.png" alt="1624780567674"></p>
 <p>LEFT JOIN产生表1的完全集，而2表中匹配的则有值，没有匹配的则以null值取代。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">left</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
 <p> 执行以上SQL输出结果如下：</p>
@@ -663,7 +664,7 @@
 <h3 id="3-RIGHT-JOIN"><a href="#3-RIGHT-JOIN" class="headerlink" title="3. RIGHT JOIN"></a>3. RIGHT JOIN</h3><p>RIGHT JOIN返回右表的全部行和左表满足ON条件的行，如果右表的行在左表中没有匹配，那么这一行左表中对应数据用NULL代替。</p>
 <p>语法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229171503867-2027149651.png" alt="img3"></p>
+<p><img src="/2021/02/14/SQL中的各种连接join/1624780592546.png" alt="1624780592546"></p>
 <p>RIGHT JOIN产生表2的完全集，而1表中匹配的则有值，没有匹配的则以null值取代。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">right</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
 <p>执行以上SQL输出结果如下：</p>
@@ -703,7 +704,7 @@
 <h3 id="4-FULL-OUTER-JOIN"><a href="#4-FULL-OUTER-JOIN" class="headerlink" title="4. FULL OUTER JOIN"></a>4. FULL OUTER JOIN</h3><p>FULL JOIN 会从左表和右表中返回所有的行。如果其中一个表的数据行在另一个表中没有匹配的行，那么对面的数据用NULL代替。</p>
 <p>语法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229172802179-389908324.png" alt="img4"></p>
+<p><img src="/2021/02/14/SQL中的各种连接join/1624780609082.png" alt="1624780609082"></p>
 <p>FULL OUTER JOIN产生1和2的并集。对于没有匹配的记录，会以null做为值。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">full</span> <span class="keyword">outer</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
 <p>执行以上SQL输出结果如下：</p>
@@ -1027,7 +1028,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1049,7 +1050,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

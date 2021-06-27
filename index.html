@@ -284,6 +284,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/06/27/t检验与卡方检验/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/06/27/t检验与卡方检验/" itemprop="url">t检验与卡方检验</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-27T15:42:44+08:00">
+                2021-06-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T19:49:34+08:00">
+                2021-06-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>参考 <a href="https://www.statology.org/chi-square-test-vs-t-test/" target="_blank" rel="noopener">Chi-Square Test vs. t-Test: What’s the Difference? - Statology</a></p>
+</blockquote>
+<h3 id="1-卡方检验"><a href="#1-卡方检验" class="headerlink" title="1. 卡方检验"></a>1. 卡方检验</h3><p>实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（<a href="https://www.statology.org/chi-square-test-of-independence/" target="_blank" rel="noopener">Chi-Square Test of Independence</a>）。</p>
+<h4 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h4><p>当我们想要检验两个分类变量之间是否存在统计上显着的关联时，我们使用卡方独立性检验。</p>
+<p>原假设($H_0$):  两个变量之间没有显著的关联。</p>
+<p>备择假设($H_a$): 两个变量之间有显著的关联。</p>
+<p>即：拒绝原假设，表示两个变量之间有显著的关联</p>
+<h4 id="1-2-案例"><a href="#1-2-案例" class="headerlink" title="1.2 案例"></a>1.2 案例</h4><p>以下是可能用到卡方独立性检验的一些例子。</p>
+<p>（1）案例1：</p>
+<p>我们想知道性别(男性、女性)和政党偏好(共和党、民主党、独立党派)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查100个人，记录他们的性别和政党偏好。然后，我们可以对独立性进行卡方检验，以确定性别和政党偏好之间是否有统计学上的显著关联。</p>
+<p>（2）案例2：</p>
+<p>我们想知道年级(大一、大二、大三、大四)和最喜欢的电影类型(惊悚片、戏剧、西部片)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查某所学校每个年级的100名学生，并记录下他们最喜欢的电影类型。然后，我们可以对独立性进行卡方检验，以确定年级和喜爱的电影类型之间是否有统计学意义上的关联。</p>
+<p>（3）案例3：</p>
+<p>我们想知道一个人最喜欢的运动(篮球、棒球、足球)和他们成长的地方(城市、农村)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查100个人，问他们在什么样的地方长大，他们最喜欢的运动是什么。然后，我们可以对独立性进行卡方检验，以确定一个人最喜欢的运动和他们成长的地方之间是否有统计学上的显著关联</p>
+<h4 id="1-3-假设"><a href="#1-3-假设" class="headerlink" title="1.3 假设"></a>1.3 假设</h4><p>在对独立性进行卡方检验之前，我们首先需要确保满足以下假设，以确保检验有效</p>
+<ul>
+<li>随机：应该使用随机样本或随机实验来收集两个样本的数据。</li>
+<li>分类型：我们正在研究的变量应该是分类型的。</li>
+<li>样本量 ：变量的每个取值的预期观察数应至少为5。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/06/27/t检验与卡方检验/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/02/21/Linux常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -506,8 +684,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-02-14T16:20:11+08:00">
-                2021-02-14
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T15:57:41+08:00">
+                2021-06-27
               </time>
             
           </span>
@@ -563,8 +741,7 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>参考：<br><a href="https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html" target="_blank" rel="noopener">https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html</a><br><a href="https://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join_left.asp</a><br><a href="https://www.w3school.com.cn/sql/sql_join.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join.asp</a><br><a href="https://www.cnblogs.com/yelp/p/3761443.html" target="_blank" rel="noopener">https://www.cnblogs.com/yelp/p/3761443.html</a><br><a href="https://blog.csdn.net/qq_41973536/article/details/81081024" target="_blank" rel="noopener">https://blog.csdn.net/qq_41973536/article/details/81081024</a></p>
 </blockquote>
 <p>最常见的 JOIN 类型：<strong>SQL INNER JOIN（等价于 JOIN）、SQL LEFT JOIN（等价于LEFT OUTER JOIN）、SQL  RIGHT JOIN（等价于RIGHT OUTER JOIN）、SQL FULL JOIN（等价于FULL OUTER JOIN），</strong>其中前一种是内连接，后三种是外连接。</p>
@@ -637,7 +814,7 @@
 <h3 id="1-INNER-JOIN"><a href="#1-INNER-JOIN" class="headerlink" title="1. INNER JOIN"></a>1. INNER JOIN</h3><p>内连接只连接匹配的行。</p>
 <p>语法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span></span><br><span class="line"><span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229165319538-1026266241.png" alt="img1"></p>
+<p><img src="/2021/02/14/SQL中的各种连接join/1624780519991.png" alt="1624780519991"></p>
 <p>INNER JOIN产生的结果集，是1和2的交集。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
 <p>执行以上SQL输出结果如下：</p>
@@ -666,411 +843,13 @@
 </div>
 <p>等价于</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address</span><br><span class="line"><span class="keyword">from</span> tableA, tableB</span><br><span class="line"><span class="keyword">where</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-<h3 id="2-LEFT-JOIN"><a href="#2-LEFT-JOIN" class="headerlink" title="2. LEFT JOIN"></a>2. LEFT JOIN</h3><p>LEFT JOIN返回左表的全部行和右表满足ON条件的行，如果左表的行在右表中没有匹配，那么这一行右表中对应数据用NULL代替。</p>
-<p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229170434726-2010021622.png" alt="img2"></p>
-<p>LEFT JOIN产生表1的完全集，而2表中匹配的则有值，没有匹配的则以null值取代。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">left</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-<p> 执行以上SQL输出结果如下：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Google</td>
-<td>美国</td>
-</tr>
-<tr>
-<td>2</td>
-<td>淘宝</td>
-<td>null</td>
-</tr>
-<tr>
-<td>3</td>
-<td>微博</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Facebook</td>
-<td>null</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>注：若左表中一条记录匹配右表中多行，则都会返回</p>
-<p>例：</p>
-<p>“Persons” 表：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Id_P</th>
-<th style="text-align:left">LastName</th>
-<th style="text-align:left">FirstName</th>
-<th style="text-align:left">Address</th>
-<th style="text-align:left">City</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">Adams</td>
-<td style="text-align:left">John</td>
-<td style="text-align:left">Oxford Street</td>
-<td style="text-align:left">London</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">Bush</td>
-<td style="text-align:left">George</td>
-<td style="text-align:left">Fifth Avenue</td>
-<td style="text-align:left">New York</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">Carter</td>
-<td style="text-align:left">Thomas</td>
-<td style="text-align:left">Changan St</td>
-<td style="text-align:left">Beijing</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>“Orders” 表：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Id_O</th>
-<th style="text-align:left">OrderNo</th>
-<th style="text-align:left">Id_P</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">77895</td>
-<td style="text-align:left">3</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">44678</td>
-<td style="text-align:left">3</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">22456</td>
-<td style="text-align:left">1</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left">24562</td>
-<td style="text-align:left">1</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left">34764</td>
-<td style="text-align:left">65</td>
-</tr>
-</tbody>
-</table>
-</div>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Persons.LastName, Persons.FirstName, Orders.OrderNo</span><br><span class="line"><span class="keyword">FROM</span> Persons</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Orders</span><br><span class="line"><span class="keyword">ON</span> Persons.Id_P = Orders.Id_P</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Persons.LastName</span><br></pre></td></tr></table></figure>
-<p>结果集：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">LastName</th>
-<th style="text-align:left">FirstName</th>
-<th style="text-align:left">OrderNo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Adams</td>
-<td style="text-align:left">John</td>
-<td style="text-align:left">22456</td>
-</tr>
-<tr>
-<td style="text-align:left">Adams</td>
-<td style="text-align:left">John</td>
-<td style="text-align:left">24562</td>
-</tr>
-<tr>
-<td style="text-align:left">Bush</td>
-<td style="text-align:left">George</td>
-<td style="text-align:left">null</td>
-</tr>
-<tr>
-<td style="text-align:left">Carter</td>
-<td style="text-align:left">Thomas</td>
-<td style="text-align:left">44678</td>
-</tr>
-<tr>
-<td style="text-align:left">Carter</td>
-<td style="text-align:left">Thomas</td>
-<td style="text-align:left">77895</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>LEFT JOIN 关键字会从左表 (Persons) 那里返回所有的行，即使在右表 (Orders) 中没有匹配的行。</p>
-<h3 id="3-RIGHT-JOIN"><a href="#3-RIGHT-JOIN" class="headerlink" title="3. RIGHT JOIN"></a>3. RIGHT JOIN</h3><p>RIGHT JOIN返回右表的全部行和左表满足ON条件的行，如果右表的行在左表中没有匹配，那么这一行左表中对应数据用NULL代替。</p>
-<p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229171503867-2027149651.png" alt="img3"></p>
-<p>RIGHT JOIN产生表2的完全集，而1表中匹配的则有值，没有匹配的则以null值取代。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">right</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-<p>执行以上SQL输出结果如下：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Google</td>
-<td>美国</td>
-</tr>
-<tr>
-<td>5</td>
-<td>null</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>3</td>
-<td>微博</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>6</td>
-<td>null</td>
-<td>美国</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="4-FULL-OUTER-JOIN"><a href="#4-FULL-OUTER-JOIN" class="headerlink" title="4. FULL OUTER JOIN"></a>4. FULL OUTER JOIN</h3><p>FULL JOIN 会从左表和右表中返回所有的行。如果其中一个表的数据行在另一个表中没有匹配的行，那么对面的数据用NULL代替。</p>
-<p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="https://images2017.cnblogs.com/blog/1074709/201712/1074709-20171229172802179-389908324.png" alt="img4"></p>
-<p>FULL OUTER JOIN产生1和2的并集。对于没有匹配的记录，会以null做为值。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">full</span> <span class="keyword">outer</span> <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-<p>执行以上SQL输出结果如下：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Google</td>
-<td>美国</td>
-</tr>
-<tr>
-<td>2</td>
-<td>淘宝</td>
-<td>null</td>
-</tr>
-<tr>
-<td>3</td>
-<td>微博</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Facebook</td>
-<td>null</td>
-</tr>
-<tr>
-<td>5</td>
-<td>null</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>6</td>
-<td>null</td>
-<td>美国</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="5-join中on与where的区别"><a href="#5-join中on与where的区别" class="headerlink" title="5. join中on与where的区别"></a>5. join中on与where的区别</h3><p>数据库在通过连接两张或多张表来返回记录时，都会生成一张中间的临时表，然后再将这张临时表返回给用户。</p>
-<p>在使用left join时，on和where条件的区别如下：</p>
-<p>1、 on条件是在生成临时表时使用的条件，它不管on中的条件是否为真，都会返回左边表中的记录。</p>
-<p>2、where条件是在临时表生成好后，再对临时表进行过滤的条件。这时已经没有left join的含义（必须返回左边表的记录）了，条件不为真的就全部过滤掉。</p>
-<p>假设有两张表：</p>
-<p>表1：table1</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>size</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-</tr>
-<tr>
-<td>2</td>
-<td>20</td>
-</tr>
-<tr>
-<td>3</td>
-<td>30</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>表2：table2</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>size</th>
-<th>name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10</td>
-<td>AAA</td>
-</tr>
-<tr>
-<td>20</td>
-<td>BBB</td>
-</tr>
-<tr>
-<td>20</td>
-<td>CCC</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>两条SQL:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * form table1 left join table2 on (table1.size = table2.size) where table2.name=’AAA’</span><br><span class="line"></span><br><span class="line">2、select * form table1 left join table2 on (table1.size = table2.size and table2.name=’AAA’)</span><br></pre></td></tr></table></figure>
-<p>第一条SQL的过程：</p>
-<p>1、中间表on条件:<br>table1.size = table2.size</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>table1.id</th>
-<th>table1.size</th>
-<th>table2.size</th>
-<th>table2.name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>10</td>
-<td>AAA</td>
-</tr>
-<tr>
-<td>2</td>
-<td>20</td>
-<td>20</td>
-<td>BBB</td>
-</tr>
-<tr>
-<td>2</td>
-<td>20</td>
-<td>20</td>
-<td>CCC</td>
-</tr>
-<tr>
-<td>3</td>
-<td>30</td>
-<td>(null)</td>
-<td>(null)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>2、再对中间表过滤<br>where 条件：<br>table2.name=’AAA’</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>table1.id</th>
-<th>table1.size</th>
-<th>table2.size</th>
-<th>table2.name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>10</td>
-<td>AAA</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>第二条SQL的过程：</p>
-<p>1、中间表on条件:<br>table1.size = table2.size and table2.name=’AAA’<br>(条件不为真也会返回左表中的记录)</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>table1.id</th>
-<th>table1.size</th>
-<th>table2.size</th>
-<th>table2.name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>10</td>
-<td>10</td>
-<td>AAA</td>
-</tr>
-<tr>
-<td>2</td>
-<td>20</td>
-<td>(null)</td>
-<td>(null)</td>
-</tr>
-<tr>
-<td>3</td>
-<td>30</td>
-<td>(null)</td>
-<td>(null)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>on条件是在left join之前先进行条件筛选，而后才对两个表格join操作</strong>。on比where起作用更早，先根据on条件进行多表的连接操作，生成一个临时表再通过where来筛选。</p>
-<p>以上结果的关键原因在于left join,right join,full join的特殊性，不管on上的条件是否为真都会返回 left 或 right 表中的记录，full则具有left和right的特性的并集。 而inner join没这个特殊性，则条件放在on中和where中，返回的结果集是相同的。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/14/SQL中的各种连接join/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1825,8 +1604,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-10-21T13:01:46+08:00">
-                2020-10-21
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T16:04:53+08:00">
+                2021-06-27
               </time>
             
           </span>
@@ -1882,7 +1661,7 @@
 
       
         
-          <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603266494646&amp;di=43b43211cdad182f8f7dc1becc311b40&amp;imgtype=0&amp;src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180517%2F78b7e14506b34686a6c9650ef91c54a7.png" alt="熵"></p>
+          <p><img src="/2020/10/19/熵、条件熵、互信息、相对熵/1624781004437.png" alt="1624781004437"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/10/19/熵、条件熵、互信息、相对熵/#more" rel="contents">
@@ -2250,175 +2029,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/07/29/推荐系统总体架构及特征数据/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/29/推荐系统总体架构及特征数据/" itemprop="url">推荐系统总体架构及特征数据</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-29T19:23:01+08:00">
-                2020-07-29
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-29T17:45:58+08:00">
-                2020-07-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
-                    <span itemprop="name">Recommender System</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-</blockquote>
-<p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
-<p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
-<p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
-<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
-<p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
-<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
-<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
-<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/29/推荐系统总体架构及特征数据/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2471,7 +2081,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2493,7 +2103,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
