@@ -261,7 +261,10 @@
 <p><img src="/2021/02/21/Linux常用命令/1613919795113.png" alt="1613919795113"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613919829367.png" alt="1613919829367"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613919855669.png" alt="1613919855669"></p>
-<h5 id="二、unzip命令"><a href="#二、unzip命令" class="headerlink" title="二、unzip命令"></a>二、unzip命令</h5><p>基本用法：</p>
+<h5 id="二、unzip命令"><a href="#二、unzip命令" class="headerlink" title="二、unzip命令"></a>二、unzip命令</h5><p>直接使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip xxx.zip</span><br></pre></td></tr></table></figure>
+<p>便可解压到当前目录下。</p>
+<p>基本用法：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip [参数] [压缩文件]  （-d [目录]）  //如果不使用括号内的内容，则解压文件到当前工作目录</span><br></pre></td></tr></table></figure>
 <h6 id="unzip命令常用参数"><a href="#unzip命令常用参数" class="headerlink" title="unzip命令常用参数"></a>unzip命令常用参数</h6><div class="table-container">
 <table>
