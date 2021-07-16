@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Probability, odds与logodds</title>
+    <url>/2021/07/17/Probability-odds%E4%B8%8Elogodds/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p><a href="https://dataunbox.com/odds-and-log-odds/" target="_blank" rel="noopener">Odds And Log Odds In Logistic Regression - Dataunbox</a><br><a href="https://towardsdatascience.com/https-towardsdatascience-com-what-and-why-of-log-odds-64ba988bf704" target="_blank" rel="noopener">WHAT and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush Agarwal | Towards Data Science</a></p>
+</blockquote>
+<h4 id="1-probability-odds-与-log-odds"><a href="#1-probability-odds-与-log-odds" class="headerlink" title="1. probability, odds 与 log odds"></a>1. probability, odds 与 log odds</h4><p>（1）probability 是某件事与所有可能发生的事的比率。（p）</p>
+<p>（2）odds 是某件事发生和某件事没有发生的比率。</p>
+<script type="math/tex; mode=display">
+odds = \frac{p}{1-p}</script><p>（3）log odds 即对odds取对数， log(odds)</p>
+<p>例如我与人工智能(AI)系统下了10局棋，并有4次能够打败它：</p>
+<p><em>Probability of winning: 4/10 = 0.40</em><br><em>Odds of winning: 4/6 = 0.6666</em><br><em>log(Odds of winning) = log(0.6666) = -0.176</em></p>
+<h4 id="2-logistic-regression"><a href="#2-logistic-regression" class="headerlink" title="2. logistic regression"></a>2. logistic regression</h4><p>p 与 logodds 的相互转换关系</p>
+<script type="math/tex; mode=display">
+p = \frac{1}{1+e^{-(\beta_0+\beta_1x)}}\quad\quad(1)</script><p>则有，</p>
+<script type="math/tex; mode=display">
+1-p = \frac{e^{-(\beta_0+\beta_1x)}}{1+e^{-(\beta_0+\beta_1x)}}</script><script type="math/tex; mode=display">
+odds=\frac{p}{1-p}=e^{\beta_0+\beta_1x}</script><script type="math/tex; mode=display">
+log odds = ln(\frac{p}{1-p})=\beta_0+\beta_1x \quad \quad (2)</script><p>带入(1)中，可得</p>
+<script type="math/tex; mode=display">
+p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad (3)</script>]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>概率</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>find the most frequent element in a list</title>
     <url>/2021/07/17/find-the-most-frequent-element-in-a-list/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
