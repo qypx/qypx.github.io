@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>find the most frequent element in a list</title>
+    <url>/2021/07/17/find-the-most-frequent-element-in-a-list/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考 <a href="https://www.tutorialspoint.com/find-most-frequent-element-in-a-list-in-python#:~:text=Find most frequent element in a list in,from statistics module. ... 8 Example 9 Output" target="_blank" rel="noopener">Find most frequent element in a list in Python (tutorialspoint.com)</a></p>
+</blockquote>
+<h4 id="1-法一：with-max-and-count"><a href="#1-法一：with-max-and-count" class="headerlink" title="1. 法一：with max and count"></a>1. 法一：with max and count</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">res = max(set(listA), key = listA.count)</span><br><span class="line">print(&quot;Element with highest frequency:\n&quot;,res)</span><br><span class="line"># 输出 45</span><br></pre></td></tr></table></figure>
+<h4 id="2-法二：with-Counter"><a href="#2-法二：with-Counter" class="headerlink" title="2. 法二：with Counter"></a>2. 法二：with Counter</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">occurence_count = Counter(listA)</span><br><span class="line">res=occurence_count.most_common(1)[0][0]</span><br><span class="line">print(&quot;Element with highest frequency:\n&quot;,res)</span><br><span class="line"># 输出 45</span><br></pre></td></tr></table></figure>
+<h4 id="3-法三：with-mode"><a href="#3-法三：with-mode" class="headerlink" title="3. 法三：with mode"></a>3. 法三：with mode</h4><p>返回众数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from statistics import mode</span><br><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">res=mode(listA)</span><br><span class="line">print(&quot;Element with highest frequency:\n&quot;,res)</span><br><span class="line"># 输出 45</span><br></pre></td></tr></table></figure>
+<h4 id="补充：关于-Counter"><a href="#补充：关于-Counter" class="headerlink" title="补充：关于 Counter"></a>补充：关于 Counter</h4><p>将一个 list 传入 Counter，将返回一个包含每个元素出现次数的字典</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">occurence_count = Counter(listA)</span><br><span class="line">occurence_count.keys()</span><br><span class="line"># dict_keys([45, 20, 11, 50, 17, 13])</span><br><span class="line">occurence_count.values()</span><br><span class="line">dict_values([3, 1, 1, 2, 1, 1])</span><br></pre></td></tr></table></figure>
+<p><code>most_common([n])</code>方法：</p>
+<p>返回前n个出现次数最多的元素及其数量。 如果省略n或None，将返回计数器中的所有元素。 具有相同计数的元素可以任意排序</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">occurence_count.most_common(1)</span><br><span class="line"># [(45, 3)]</span><br><span class="line"></span><br><span class="line">occurence_count.most_common(2)</span><br><span class="line">#[(45, 3), (50, 2)]</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/07/17/hello-world/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><a id="more"></a>
@@ -9021,8 +9044,8 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>机器学习</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
 </search>
