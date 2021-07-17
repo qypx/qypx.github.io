@@ -89,7 +89,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2019/09/02/dataframe-operation/outcome.JPG">
 <meta property="og:image" content="http://qypx.github.io/2019/09/02/dataframe-operation/image-20210717004007434.png">
-<meta property="og:updated_time" content="2021-07-16T16:54:48.778Z">
+<meta property="og:image" content="http://qypx.github.io/2019/09/02/dataframe-operation/image-20210717170137958.png">
+<meta property="og:image" content="http://qypx.github.io/2019/09/02/dataframe-operation/image-20210717171536577.png">
+<meta property="og:updated_time" content="2021-07-17T10:15:06.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据框操作">
 <meta name="twitter:description" content="1. 创建dataframe 法一  1dat = pd.DataFrame(&amp;#123;&apos;id&apos;:[1,2,3], &apos;string&apos;: [&apos;a&apos;, &apos;b&apos;,&apos;c&apos;]&amp;#125;)  法二（若已有现成的list）  1dat = pd.DataFrame([n_clusters_start, score], columns = [&quot;分类数&quot;, &quot;得分&quot;]) 例： 1234567exclamatio">
@@ -336,7 +338,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-07-17T00:54:48+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2021-07-17T18:15:06+08:00">
                 2021-07-17
               </time>
             
@@ -409,6 +411,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'!'</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'?'</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">'EC'</span>:EC,<span class="string">'QC'</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">"freqOf "</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果"></p>
+<a id="more"></a>
 <h4 id="2-数据框拼接"><a href="#2-数据框拼接" class="headerlink" title="2.  数据框拼接"></a>2.  数据框拼接</h4><p><strong>ignore_index = True, 重新分配索引</strong></p>
 <h5 id="2-1-append"><a href="#2-1-append" class="headerlink" title="2.1 append"></a>2.1 append</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = result1.append(result2, ignore_index = <span class="literal">True</span>) <span class="comment"># 粘贴行</span></span><br></pre></td></tr></table></figure>
 <h5 id="2-2-concat"><a href="#2-2-concat" class="headerlink" title="2.2 concat"></a>2.2 concat</h5><blockquote>
@@ -423,6 +426,15 @@
 <h4 id="4-删掉行"><a href="#4-删掉行" class="headerlink" title="4. 删掉行"></a>4. 删掉行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = dat.drop(<span class="number">0</span>) <span class="comment"># 删掉第一行</span></span><br></pre></td></tr></table></figure>
 <h4 id="5-提取行索引"><a href="#5-提取行索引" class="headerlink" title="5. 提取行索引"></a>5. 提取行索引</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index0 = res.index[res[<span class="string">'label'</span>] == <span class="number">0</span>].tolist()</span><br><span class="line">X0 = X[index0] <span class="comment"># X为矩阵</span></span><br></pre></td></tr></table></figure>
 <h4 id="6-提取特定的行"><a href="#6-提取特定的行" class="headerlink" title="6. 提取特定的行"></a>6. 提取特定的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">'id'</span>]=<span class="number">1</span>] <span class="comment"># 提取id为1的行</span></span><br><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">5</span>)] <span class="comment"># 提取id在[1,5]之间的行</span></span><br><span class="line">df.loc[df[<span class="string">'id'</span>]==<span class="number">1</span>, <span class="string">'age'</span>] <span class="comment">#提取id为1的行的人的年龄</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-DataFrame-中-axis-的概念"><a href="#7-DataFrame-中-axis-的概念" class="headerlink" title="7. DataFrame 中 axis 的概念"></a>7. DataFrame 中 axis 的概念</h4><blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/100064394" target="_blank" rel="noopener">Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<p>在 DataFrame 对象的大多数方法中，都会有 <code>axis</code> 这个参数，它控制了你指定的操作是沿着0轴还是1轴进行。<strong><code>axis=0</code>代表操作对列<code>columns</code>进行，<code>axis=1</code>代表操作对行<code>row</code>进行</strong>，如下图所示。</p>
+<p><img src="/2019/09/02/dataframe-operation/image-20210717170137958.png" alt="image-20210717170137958"></p>
+<p><strong><span style="color:red">换言之，如果想增加一列（如把两个数据框横向拼接在一起(沿着axis=1的方向)），则选择axis=1，如果想增加一行（如对以上数据，对height求和(结果将显示在最下方，即”增加了一行”(沿着axis=0的方向))），则选择axis=0</span></strong></p>
+<p>假设现在需要对上述数据框中的数值列分别进行<strong>取对数</strong>和<strong>求和</strong>的操作，这时可以用<code>apply</code>进行相应的操作，因为是对列进行操作，所以需要指定<code>axis=0</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 沿着0轴求和</span></span><br><span class="line">data[[<span class="string">"height"</span>,<span class="string">"weight"</span>,<span class="string">"age"</span>]].apply(np.sum, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 沿着0轴取对数</span></span><br><span class="line">data[[<span class="string">"height"</span>,<span class="string">"weight"</span>,<span class="string">"age"</span>]].apply(np.log, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/dataframe-operation/image-20210717171536577.png" alt="image-20210717171536577"></p>
 
       
     </div>
@@ -544,7 +556,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-count">114</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -555,7 +567,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -566,7 +578,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -622,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建dataframe"><span class="nav-text">1. 创建dataframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据框拼接"><span class="nav-text">2.  数据框拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-append"><span class="nav-text">2.1 append</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-concat"><span class="nav-text">2.2 concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-merge"><span class="nav-text">2.3 merge</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-删掉列"><span class="nav-text">3. 删掉列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-删掉行"><span class="nav-text">4. 删掉行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-提取行索引"><span class="nav-text">5. 提取行索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-提取特定的行"><span class="nav-text">6. 提取特定的行</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建dataframe"><span class="nav-text">1. 创建dataframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据框拼接"><span class="nav-text">2.  数据框拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-append"><span class="nav-text">2.1 append</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-concat"><span class="nav-text">2.2 concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-merge"><span class="nav-text">2.3 merge</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-删掉列"><span class="nav-text">3. 删掉列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-删掉行"><span class="nav-text">4. 删掉行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-提取行索引"><span class="nav-text">5. 提取行索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-提取特定的行"><span class="nav-text">6. 提取特定的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-DataFrame-中-axis-的概念"><span class="nav-text">7. DataFrame 中 axis 的概念</span></a></li></ol></div>
             
 
           </div>
