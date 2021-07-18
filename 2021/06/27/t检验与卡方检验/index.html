@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="参考 Chi-Square Test vs. t-Test: What’s the Difference? - Statology  1. 卡方检验实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（Chi-Square Test of Independence）。 1.1 定义当我们想要检验两个分类变量之间是否存在统计上显着的关联时，我们使用卡方独立性检验。 原假设($H_0$):">
+<meta name="description" content="参考 Chi-Square Test vs. t-Test: What’s the Difference? - StatologyChi-Square Test | How to Calculate Chi-square using Formula with Example (byjus.com) ⬅可查看卡方表  1. 卡方检验实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（Chi">
 <meta name="keywords" content="机器学习,假设检验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="t检验与卡方检验">
 <meta property="og:url" content="http://qypx.github.io/2021/06/27/t检验与卡方检验/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="参考 Chi-Square Test vs. t-Test: What’s the Difference? - Statology  1. 卡方检验实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（Chi-Square Test of Independence）。 1.1 定义当我们想要检验两个分类变量之间是否存在统计上显着的关联时，我们使用卡方独立性检验。 原假设($H_0$):">
+<meta property="og:description" content="参考 Chi-Square Test vs. t-Test: What’s the Difference? - StatologyChi-Square Test | How to Calculate Chi-square using Formula with Example (byjus.com) ⬅可查看卡方表  1. 卡方检验实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（Chi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-06-27T11:55:13.866Z">
+<meta property="og:image" content="http://qypx.github.io/2021/06/27/t检验与卡方检验/image-20210717192910406.png">
+<meta property="og:image" content="http://qypx.github.io/2021/06/27/t检验与卡方检验/image-20210717193215478.png">
+<meta property="og:updated_time" content="2021-07-17T11:40:03.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="t检验与卡方检验">
-<meta name="twitter:description" content="参考 Chi-Square Test vs. t-Test: What’s the Difference? - Statology  1. 卡方检验实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（Chi-Square Test of Independence）。 1.1 定义当我们想要检验两个分类变量之间是否存在统计上显着的关联时，我们使用卡方独立性检验。 原假设($H_0$):">
+<meta name="twitter:description" content="参考 Chi-Square Test vs. t-Test: What’s the Difference? - StatologyChi-Square Test | How to Calculate Chi-square using Formula with Example (byjus.com) ⬅可查看卡方表  1. 卡方检验实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（Chi">
+<meta name="twitter:image" content="http://qypx.github.io/2021/06/27/t检验与卡方检验/image-20210717192910406.png">
 
 
 
@@ -333,8 +336,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T19:55:13+08:00">
-                2021-06-27
+              <time title="更新于" itemprop="dateModified" datetime="2021-07-17T19:40:03+08:00">
+                2021-07-17
               </time>
             
           </span>
@@ -395,20 +398,18 @@
 
       
         <blockquote>
-<p>参考 <a href="https://www.statology.org/chi-square-test-vs-t-test/" target="_blank" rel="noopener">Chi-Square Test vs. t-Test: What’s the Difference? - Statology</a></p>
+<p>参考<br> <a href="https://www.statology.org/chi-square-test-vs-t-test/" target="_blank" rel="noopener">Chi-Square Test vs. t-Test: What’s the Difference? - Statology</a><br><a href="https://byjus.com/maths/chi-square-test/" target="_blank" rel="noopener">Chi-Square Test | How to Calculate Chi-square using Formula with Example (byjus.com)</a> ⬅可查看卡方表</p>
 </blockquote>
 <h3 id="1-卡方检验"><a href="#1-卡方检验" class="headerlink" title="1. 卡方检验"></a>1. 卡方检验</h3><p>实际上卡方检验有几种不同的版本，但最常见的是卡方独立性检验（<a href="https://www.statology.org/chi-square-test-of-independence/" target="_blank" rel="noopener">Chi-Square Test of Independence</a>）。</p>
 <h4 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h4><p>当我们想要检验两个分类变量之间是否存在统计上显着的关联时，我们使用卡方独立性检验。</p>
-<p>原假设($H_0$):  两个变量之间没有显著的关联。</p>
-<p>备择假设($H_a$): 两个变量之间有显著的关联。</p>
+<blockquote>
+<p>原假设($H_0$):  两个变量之间没有显著的关联。<br>备择假设($H_a$): 两个变量之间有显著的关联。</p>
+</blockquote>
 <p>即：拒绝原假设，表示两个变量之间有显著的关联</p>
 <h4 id="1-2-案例"><a href="#1-2-案例" class="headerlink" title="1.2 案例"></a>1.2 案例</h4><p>以下是可能用到卡方独立性检验的一些例子。</p>
-<p>（1）案例1：</p>
-<p>我们想知道性别(男性、女性)和政党偏好(共和党、民主党、独立党派)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查100个人，记录他们的性别和政党偏好。然后，我们可以对独立性进行卡方检验，以确定性别和政党偏好之间是否有统计学上的显著关联。</p>
-<p>（2）案例2：</p>
-<p>我们想知道年级(大一、大二、大三、大四)和最喜欢的电影类型(惊悚片、戏剧、西部片)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查某所学校每个年级的100名学生，并记录下他们最喜欢的电影类型。然后，我们可以对独立性进行卡方检验，以确定年级和喜爱的电影类型之间是否有统计学意义上的关联。</p>
-<p>（3）案例3：</p>
-<p>我们想知道一个人最喜欢的运动(篮球、棒球、足球)和他们成长的地方(城市、农村)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查100个人，问他们在什么样的地方长大，他们最喜欢的运动是什么。然后，我们可以对独立性进行卡方检验，以确定一个人最喜欢的运动和他们成长的地方之间是否有统计学上的显著关联</p>
+<p>（1）案例1：<br>我们想知道性别(男性、女性)和政党偏好(共和党、民主党、独立党派)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查100个人，记录他们的性别和政党偏好。然后，我们可以对独立性进行卡方检验，以确定性别和政党偏好之间是否有统计学上的显著关联。</p>
+<p>（2）案例2：<br>我们想知道年级(大一、大二、大三、大四)和最喜欢的电影类型(惊悚片、戏剧、西部片)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查某所学校每个年级的100名学生，并记录下他们最喜欢的电影类型。然后，我们可以对独立性进行卡方检验，以确定年级和喜爱的电影类型之间是否有统计学意义上的关联。</p>
+<p>（3）案例3：<br>我们想知道一个人最喜欢的运动(篮球、棒球、足球)和他们成长的地方(城市、农村)之间是否有统计学上的显著关联。为了验证这一点，我们可以随机调查100个人，问他们在什么样的地方长大，他们最喜欢的运动是什么。然后，我们可以对独立性进行卡方检验，以确定一个人最喜欢的运动和他们成长的地方之间是否有统计学上的显著关联</p>
 <h4 id="1-3-假设"><a href="#1-3-假设" class="headerlink" title="1.3 假设"></a>1.3 假设</h4><p>在对独立性进行卡方检验之前，我们首先需要确保满足以下假设，以确保检验有效</p>
 <ul>
 <li>随机：应该使用随机样本或随机实验来收集两个样本的数据。</li>
@@ -418,15 +419,13 @@
 <a id="more"></a>
 <h3 id="2-t检验"><a href="#2-t检验" class="headerlink" title="2. t检验"></a>2. t检验</h3><p>t检验也有一些不同的版本，但最常见的是均值差异的t检验 (<a href="https://www.statology.org/two-sample-t-test/" target="_blank" rel="noopener">t-test for a difference in means</a>)。</p>
 <h4 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h4><p>当我们想检验两个总体均值之间是否有统计学上的显著差异时，我们用t检验来检验均值的差异。</p>
-<p>原假设($H_0$)：两个总体均值相等。</p>
-<p>备择假设($H_a$): 两个总体均值不相等。</p>
+<blockquote>
+<p>原假设($H_0$)：两个总体均值相等。<br>备择假设($H_a$): 两个总体均值不相等。</p>
+</blockquote>
 <p>即：拒绝原假设，表示两个总体的均值不相等</p>
-<h4 id="2-2-案例"><a href="#2-2-案例" class="headerlink" title="2.2 案例"></a>2.2 案例</h4><p>（1）案例1：</p>
-<p>我们想知道饮食A或饮食B，哪一个会导致更大的体重减轻。我们随机分配100人使用A饮食2个月，另外100人使用B饮食2个月。我们可以对平均值的差异进行t检验，以确定两组之间的平均体重减轻是否有统计学上的差异。</p>
-<p>（2）案例2：</p>
-<p>我们想知道是否两个不同的学习计划会导致学生不同的考试成绩。我们随机分配50名学生使用一个学习计划，50名学生使用另一个学习计划，为期一个月。我们可以对平均值的差异进行t检验，以确定两个学习计划的平均考试成绩是否有统计学上的显著差异。</p>
-<p>（3）案例3：</p>
-<p>我们想知道来自两个不同学校的学生是否有相同的平均身高。我们测量了100名随机来自一个学校的学生和100名随机来自另一个学校的学生的身高。我们可以对平均值的差异进行t检验，以确定两所学校学生的平均身高是否有统计学上的显著差异。</p>
+<h4 id="2-2-案例"><a href="#2-2-案例" class="headerlink" title="2.2 案例"></a>2.2 案例</h4><p>（1）案例1：<br>我们想知道饮食A或饮食B，哪一个会导致更大的体重减轻。我们随机分配100人使用A饮食2个月，另外100人使用B饮食2个月。我们可以对平均值的差异进行t检验，以确定两组之间的平均体重减轻是否有统计学上的差异。</p>
+<p>（2）案例2：<br>我们想知道是否两个不同的学习计划会导致学生不同的考试成绩。我们随机分配50名学生使用一个学习计划，50名学生使用另一个学习计划，为期一个月。我们可以对平均值的差异进行t检验，以确定两个学习计划的平均考试成绩是否有统计学上的显著差异。</p>
+<p>（3）案例3：<br>我们想知道来自两个不同学校的学生是否有相同的平均身高。我们测量了100名随机来自一个学校的学生和100名随机来自另一个学校的学生的身高。我们可以对平均值的差异进行t检验，以确定两所学校学生的平均身高是否有统计学上的显著差异。</p>
 <h4 id="2-3-假设"><a href="#2-3-假设" class="headerlink" title="2.3 假设"></a>2.3 假设</h4><p>在对两个总体均值之间的差异进行假设检验之前，我们首先需要确保满足以下条件，以确保我们的假设检验有效：</p>
 <ul>
 <li>随机：应该使用随机样本或随机实验来收集两个样本的数据。</li>
@@ -437,6 +436,44 @@
 <p>卡方独立性检验：可以检验两个分类型变量之间是否有统计学意义上的关联。当你拒绝卡方独立检验的零假设时，这意味着在两个变量之间有显著的关联。</p>
 <p>均值差异的t检验：允许你检验两个总体均值之间是否有统计学上的显著差异。拒绝均值差异的t检验的零假设意味着两个总体均值不相等。</p>
 <p>想要知道是使用卡方检验还是t检验，最简单的方法就是看看变量的类型。如果你有两个变量都是分类型的，也就是说，例如男性、女性，或共和党、民主党、独立党派，那么你应该使用卡方检验。但是如果一个变量是分类型的(例如学习计划类型 - 计划1或计划2)，而另一个变量是连续型的(例如考试分数从0到100)，那么你就应该使用t检验</p>
+<h3 id="4-使用-Python-进行t检验"><a href="#4-使用-Python-进行t检验" class="headerlink" title="4. 使用 Python 进行t检验"></a>4. 使用 Python 进行t检验</h3><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/IvyWong/p/10134012.html" target="_blank" rel="noopener">使用 Python 进行 T检验 - 败北桑 - 博客园 (cnblogs.com)</a></p>
+</blockquote>
+<p>利用第三方库 scipy</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ttest_1samp: 单样本t检验</span><br><span class="line">ttest_ind: 两独立样本t检验</span><br><span class="line">ttest_rel: 配对样本t检验</span><br></pre></td></tr></table></figure>
+<p>注：以上三种检验均默认进行双侧检验</p>
+<p>$H_0:\mu = \mu_0$<br>$H_1: \mu \neq \mu_0$</p>
+<h4 id="4-1-单样本t检验"><a href="#4-1-单样本t检验" class="headerlink" title="4.1 单样本t检验"></a>4.1 单样本t检验</h4><blockquote>
+<p>官方文档 <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html" target="_blank" rel="noopener">scipy.stats.ttest_1samp — SciPy v1.7.0 Manual</a></p>
+</blockquote>
+<p>使用<code>ttest_1samp()</code>函数可以进行单样本t检验，比如检验一列数据的均值与1的差异是否显著：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_1samp(data,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>结果会返回t值和p值，若 p&lt;0.05，认为有显著差异</p>
+<p>语法：</p>
+<p><img src="/2021/06/27/t检验与卡方检验/image-20210717192910406.png" alt="image-20210717192910406"></p>
+<h4 id="4-2-两独立样本t检验"><a href="#4-2-两独立样本t检验" class="headerlink" title="4.2 两独立样本t检验"></a>4.2 两独立样本t检验</h4><blockquote>
+<p>官方文档 <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html" target="_blank" rel="noopener">scipy.stats.ttest_ind — SciPy v1.7.0 Manual</a></p>
+</blockquote>
+<p>使用<code>ttest_ind()</code>函数可以进行两独立样本t检验。</p>
+<p>当两总体方差相等时，即具有<strong>方差齐性</strong>，可以直接检验。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_ind(data1,data2)</span><br></pre></td></tr></table></figure>
+<p>同样地，返回结果会返回t值和p值。</p>
+<p>当不确定两总体方差是否相等时，应先利用<strong>levene检验</strong>，检验两总体是否具有方差齐性:</p>
+<blockquote>
+<p>官方文档<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html" target="_blank" rel="noopener">scipy.stats.levene — SciPy v1.7.0 Manual</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.levene(data1,data2)</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/06/27/t检验与卡方检验/image-20210717193215478.png" alt="image-20210717193215478"></p>
+<p>原假设：两总体具有方差齐性。<br>如果返回结果的p值远大于0.05，那么我们认为两总体具有方差齐性。</p>
+<p>如果两总体不具有方差齐性，需要加上参数<code>equal_val</code>并设定为False。如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_ind(data1,data2,equal_var=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-配对样本t检验"><a href="#4-3-配对样本t检验" class="headerlink" title="4.3 配对样本t检验"></a>4.3 配对样本t检验</h4><blockquote>
+<p>官方文档：<a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_rel.html" target="_blank" rel="noopener">scipy.stats.ttest_rel — SciPy v1.7.0 Manual</a></p>
+</blockquote>
+<p>使用<code>ttest_rel()</code>函数可以进行配对样本t检验。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_rel(data1,data2)</span><br></pre></td></tr></table></figure>
+<p>同样地，返回结果会返回t值和p值。</p>
 
       
     </div>
@@ -638,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-卡方检验"><span class="nav-text">1. 卡方检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-定义"><span class="nav-text">1.1 定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-案例"><span class="nav-text">1.2 案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-假设"><span class="nav-text">1.3 假设</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-t检验"><span class="nav-text">2. t检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-定义"><span class="nav-text">2.1 定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-案例"><span class="nav-text">2.2 案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-假设"><span class="nav-text">2.3 假设</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-什么时候使用哪个检验"><span class="nav-text">3. 什么时候使用哪个检验</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-卡方检验"><span class="nav-text">1. 卡方检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-定义"><span class="nav-text">1.1 定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-案例"><span class="nav-text">1.2 案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-假设"><span class="nav-text">1.3 假设</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-t检验"><span class="nav-text">2. t检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-定义"><span class="nav-text">2.1 定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-案例"><span class="nav-text">2.2 案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-假设"><span class="nav-text">2.3 假设</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-什么时候使用哪个检验"><span class="nav-text">3. 什么时候使用哪个检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-使用-Python-进行t检验"><span class="nav-text">4. 使用 Python 进行t检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-单样本t检验"><span class="nav-text">4.1 单样本t检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-两独立样本t检验"><span class="nav-text">4.2 两独立样本t检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-配对样本t检验"><span class="nav-text">4.3 配对样本t检验</span></a></li></ol></li></ol></div>
             
 
           </div>
