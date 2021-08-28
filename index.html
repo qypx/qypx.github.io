@@ -663,7 +663,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-08-28T21:25:11+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2021-08-28T21:57:10+08:00">
                 2021-08-28
               </time>
             
@@ -738,7 +738,16 @@ p = \frac{1}{1+e^{-(\beta_0+\beta_1x)}}\quad\quad(1)</script><p>则有，</p>
 odds=\frac{p}{1-p}=e^{\beta_0+\beta_1x}</script><script type="math/tex; mode=display">
 log odds = ln(\frac{p}{1-p})=\beta_0+\beta_1x \quad \quad (2)</script><p>带入(1)中，可得</p>
 <script type="math/tex; mode=display">
-p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad (3)</script>
+p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad (3)</script><h4 id="3-logodds-与-sigmoid"><a href="#3-logodds-与-sigmoid" class="headerlink" title="3. logodds 与 sigmoid"></a>3. logodds 与 sigmoid</h4><script type="math/tex; mode=display">
+logodds操作：logodds(p) = log(\frac{p}{1-p})</script><script type="math/tex; mode=display">
+sigmoid function: sigmoid(x) = \frac{1}{1+e^{-x}}</script><script type="math/tex; mode=display">
+p=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}，其中\beta_0+\beta_1x为原始输出，即sigmoid作用在原始输出上得到概率值</script><script type="math/tex; mode=display">
+logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上得到原始输出</script><p>一句话概括：<span style="color:red">sigmoid与logodds为相反操作。</span></p>
+<h4 id="4-xgboost与lightgbm的几种输出结果"><a href="#4-xgboost与lightgbm的几种输出结果" class="headerlink" title="4. xgboost与lightgbm的几种输出结果"></a>4. xgboost与lightgbm的几种输出结果</h4><p>对于xgboost:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.predict(,output_margin=<span class="literal">True</span>)  <span class="comment">#原始值(output the raw untransformed margin value)(每个样本在xgboost生成的所有树中叶子节点的累加值)</span></span><br><span class="line">model.predict_proba()[:,<span class="number">1</span>]  <span class="comment"># 取1的概率</span></span><br><span class="line">model.predict()  <span class="comment"># 结果为0,1</span></span><br></pre></td></tr></table></figure>
+<p>对于lightgbm:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.predict(,raw_score=<span class="literal">True</span>)  <span class="comment"># 原始值</span></span><br><span class="line">model.predict_proba()[:,<span class="number">1</span>]  <span class="comment"># 取1的概率</span></span><br><span class="line">model.predict()  <span class="comment"># 结果为0,1</span></span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -2079,7 +2088,7 @@ p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad (3)</sc
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2090,7 +2099,7 @@ p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad (3)</sc
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
