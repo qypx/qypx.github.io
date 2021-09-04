@@ -641,7 +641,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p>使用<code>-v</code>显示的信息比使用<code>-l</code>显示的信息更加详细</p>
 <p>e.将dajihe.zip压缩包解压到/opt/目录下：</p>
 <p><img src="/2021/02/21/Linux常用命令/1613920322610.png" alt="1613920322610"></p>
-<h3 id="2-Linux属主权限，chgrp，chown，chmod"><a href="#2-Linux属主权限，chgrp，chown，chmod" class="headerlink" title="2.Linux属主权限，chgrp，chown，chmod"></a>2.Linux属主权限，chgrp，chown，chmod</h3><blockquote>
+<h3 id="3-Linux属主权限，chgrp，chown，chmod"><a href="#3-Linux属主权限，chgrp，chown，chmod" class="headerlink" title="3.Linux属主权限，chgrp，chown，chmod"></a>3.Linux属主权限，chgrp，chown，chmod</h3><blockquote>
 <p>来自 <a href="https://www.cnblogs.com/CYHISTW/p/11031429.html" target="_blank" rel="noopener">https://www.cnblogs.com/CYHISTW/p/11031429.html</a></p>
 </blockquote>
 <p><img src="/2021/02/21/Linux常用命令/1613905079507.png" alt="1613905079507"></p>
@@ -663,8 +663,8 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p><img src="/2021/02/21/Linux常用命令/1613905838720.png" alt="1613905838720"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613905867580.png" alt="1613905867580"></p>
 <p>成功执行</p>
-<h3 id="3-shell-命令行参数"><a href="#3-shell-命令行参数" class="headerlink" title="3. shell 命令行参数"></a>3. shell 命令行参数</h3><blockquote>
-<p>参考 <a href="http://c.biancheng.net/cpp/view/2739.html" target="_blank" rel="noopener">http://c.biancheng.net/cpp/view/2739.html</a></p>
+<h3 id="4-shell-命令行参数"><a href="#4-shell-命令行参数" class="headerlink" title="4. shell 命令行参数"></a>4. shell 命令行参数</h3><blockquote>
+<p>参考<br><a href="http://c.biancheng.net/cpp/view/2739.html" target="_blank" rel="noopener">http://c.biancheng.net/cpp/view/2739.html</a><br><a href="http://blog.csdn.net/jake_tian/article/details/97274630" target="_blank" rel="noopener">http://blog.csdn.net/jake_tian/article/details/97274630</a></p>
 </blockquote>
 <p>运行脚本时传递给脚本的参数称为命令行参数。</p>
 <div class="table-container">
@@ -682,7 +682,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 </tr>
 <tr>
 <td>$n</td>
-<td>传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2，以此类推</td>
+<td>传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，获取第一个参数是$1，获取第二个参数是$2，以此类推</td>
 </tr>
 <tr>
 <td>$#</td>
@@ -696,6 +696,10 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <td>$@</td>
 <td>传递给脚本或函数的所有参数。被双引号(“ “)包含时，与 $* 稍有不同</td>
 </tr>
+<tr>
+<td>$?</td>
+<td>上个命令的退出状态，或函数的返回值。</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -703,7 +707,13 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">echo &quot;File Name: $0&quot;</span><br><span class="line">echo &quot;First Parameter : $1&quot;</span><br><span class="line">echo &quot;First Parameter : $2&quot;</span><br><span class="line">echo &quot;Quoted Values: $@&quot;</span><br><span class="line">echo &quot;Quoted Values: $*&quot;</span><br><span class="line">echo &quot;Total Number of Parameters : $#&quot;</span><br></pre></td></tr></table></figure>
 <p>运行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$./test.sh Zara Ali</span><br><span class="line">File Name : ./test.sh</span><br><span class="line">First Parameter : Zara</span><br><span class="line">Second Parameter : Ali</span><br><span class="line">Quoted Values: Zara Ali</span><br><span class="line">Quoted Values: Zara Ali</span><br><span class="line">Total Number of Parameters : 2</span><br></pre></td></tr></table></figure>
-<h3 id="4-shell-日期加减运算"><a href="#4-shell-日期加减运算" class="headerlink" title="4. shell 日期加减运算"></a>4. shell 日期加减运算</h3><blockquote>
+<p>关于<code>$?</code>：上条命令的返回值。0表示没有错误，其他任何数值表示有错误。</p>
+<blockquote>
+<p>参考<br><a href="https://blog.csdn.net/aLLLiyyy/article/details/103184367" target="_blank" rel="noopener">https://blog.csdn.net/aLLLiyyy/article/details/103184367</a><br><a href="https://blog.csdn.net/weixin_39928768/article/details/111582889" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39928768/article/details/111582889</a></p>
+</blockquote>
+<p>例如：如果上条命令执行失败，则重复执行，shell脚本如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python test.py</span><br><span class="line"></span><br><span class="line"><span class="meta">while(($</span>?==1))</span><br><span class="line">do </span><br><span class="line">	sleep 30   # 休眠30s</span><br><span class="line">	python test.py</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h3 id="5-shell-日期加减运算"><a href="#5-shell-日期加减运算" class="headerlink" title="5. shell 日期加减运算"></a>5. shell 日期加减运算</h3><blockquote>
 <p>参考<br><a href="http://blog.sina.com.cn/s/blog_ad6555610101b5ud.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_ad6555610101b5ud.html</a><br><a href="https://www.cnblogs.com/zhzhang/p/6846300.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhzhang/p/6846300.html</a><br><a href="https://www.cnblogs.com/simple-li/p/14040777.html" target="_blank" rel="noopener">https://www.cnblogs.com/simple-li/p/14040777.html</a><br><a href="http://www.dutycode.com/post-60.html" target="_blank" rel="noopener">http://www.dutycode.com/post-60.html</a></p>
 </blockquote>
 <p>假如今天是 2012-04-22</p>
@@ -719,6 +729,136 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p>注：crontab任务调度中，%是个特殊字符，要在前加”\”进行转义</p>
 <p>例：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 10 * * * cd /home/zzh &amp;&amp; sh test.sh $(date -d &quot;1 day ago&quot; +&quot;\%Y\%m\%d&quot;) &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<h3 id="6-shell-变量"><a href="#6-shell-变量" class="headerlink" title="6. shell 变量"></a>6. shell 变量</h3><blockquote>
+<p>参考 runoob.com/linux/linux-shell-variable.html</p>
+</blockquote>
+<p>定义变量时，变量名不加<code>$</code>，如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">a=10</span><br></pre></td></tr></table></figure>
+<p><span style="color:red">注：变量名和等号之间不能有空格</span></p>
+<p>使用一个定义过的变量时，在变量名前加 <code>$</code>，如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">a=10</span><br><span class="line">echo $a</span><br><span class="line">echo $&#123;a&#125;</span><br></pre></td></tr></table></figure>
+<p>变量名外面的花括号是可选的，加花括号是为了帮助解释器识别变量的边界。</p>
+<p>已定义的变量，可以被重新定义：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">a=10</span><br><span class="line">echo $a</span><br><span class="line">a=20</span><br><span class="line">echo $a</span><br></pre></td></tr></table></figure>
+<p>注：第二次赋值的时候不能写成 <script type="math/tex">a=20`，使用变量时才加 `</script></p>
+<h3 id="7-shell-字符串"><a href="#7-shell-字符串" class="headerlink" title="7. shell 字符串"></a>7. shell 字符串</h3><h4 id="7-1-单引号"><a href="#7-1-单引号" class="headerlink" title="7.1 单引号"></a>7.1 单引号</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">str='this is a string'</span><br></pre></td></tr></table></figure>
+<p>单引号字符串的限制：</p>
+<ul>
+<li>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；</li>
+<li>单引号字符串中不能出现单独一个的单引号（转义后也不行），但可成对出现，作为字符串拼接使用</li>
+</ul>
+<h4 id="7-2-双引号"><a href="#7-2-双引号" class="headerlink" title="7.2 双引号"></a>7.2 双引号</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">your_name="runoob"</span><br><span class="line">str="Hello, I know you are \"$your_name\"!"</span><br><span class="line">echo $str</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 输出：</span><br><span class="line">Hello, I know you are "runoob"!</span><br></pre></td></tr></table></figure>
+<p>双引号的优点：</p>
+<ul>
+<li>双引号里可以有变量</li>
+<li>双引号里可以出现转义字符</li>
+</ul>
+<h3 id="8-shell-基本运算符"><a href="#8-shell-基本运算符" class="headerlink" title="8. shell 基本运算符"></a>8. shell 基本运算符</h3><blockquote>
+<p>参考 runoob.com/linux/linux-shell-basic-operators.html</p>
+</blockquote>
+<p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如expr。expr是一款表达式计算工具，使用它能完成表达式的求值操作。</p>
+<p>例如，两个数相加：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line">val=`expr 2 + 2`</span><br><span class="line">echo "两数之和为: $val"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 结果</span><br><span class="line">两数之和为: 4</span><br></pre></td></tr></table></figure>
+<p>注：表达式和运算符之间要有空格，例如 <code>2+2</code> 是不对的，必须写成 <code>2 + 2</code></p>
+<h4 id="8-1-算数运算符"><a href="#8-1-算数运算符" class="headerlink" title="8.1 算数运算符"></a>8.1 算数运算符</h4><p><img src="/2021/02/21/Linux常用命令/image-20210904144648161.png" alt="image-20210904144648161"></p>
+<p>注：<span style="color:red">条件表达式要放在方括号之间，并且要有空格</span>，例如: <code>[$a==$b]</code> 是错误的，必须写成 <code>[ $a == $b ]</code>。（方括号之间要有空格，运算符和变量之间也要有空格）</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904145343228.png" alt="image-20210904145343228" style="zoom: 67%;"></p>
+<h4 id="8-2-关系运算符"><a href="#8-2-关系运算符" class="headerlink" title="8.2 关系运算符"></a>8.2 关系运算符</h4><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904145650517.png" alt="image-20210904145650517"></p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904145812074.png" alt="image-20210904145812074"></p>
+<h4 id="8-3-布尔运算符"><a href="#8-3-布尔运算符" class="headerlink" title="8.3 布尔运算符"></a>8.3 布尔运算符</h4><p><img src="/2021/02/21/Linux常用命令/image-20210904150231679.png" alt="image-20210904150231679"></p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904150309883.png" alt="image-20210904150309883"></p>
+<h4 id="8-4-逻辑运算符"><a href="#8-4-逻辑运算符" class="headerlink" title="8.4 逻辑运算符"></a>8.4 逻辑运算符</h4><p><img src="/2021/02/21/Linux常用命令/image-20210904150411459.png" alt="image-20210904150411459"></p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904150440602.png" alt="image-20210904150440602"></p>
+<h4 id="8-5-字符串运算符"><a href="#8-5-字符串运算符" class="headerlink" title="8.5 字符串运算符"></a>8.5 字符串运算符</h4><p><img src="/2021/02/21/Linux常用命令/image-20210904150658570.png" alt="image-20210904150658570"></p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904150725984.png" alt="image-20210904150725984"></p>
+<h3 id="9-shell-中各种括号的作用"><a href="#9-shell-中各种括号的作用" class="headerlink" title="9. shell 中各种括号的作用"></a>9. shell 中各种括号的作用</h3><blockquote>
+<p>参考<br><a href="https://www.jb51.net/article/123081.htm" target="_blank" rel="noopener">https://www.jb51.net/article/123081.htm</a><br><a href="https://www.jianshu.com/p/3e1eaaa3fee8" target="_blank" rel="noopener">https://www.jianshu.com/p/3e1eaaa3fee8</a></p>
+</blockquote>
+<h4 id="9-1-单小括号"><a href="#9-1-单小括号" class="headerlink" title="9.1 单小括号 ()"></a>9.1 单小括号 ()</h4><p>一般在命令替换的时候使用</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line">today=$(date +%y%m%d)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> shell扫描一遍命令，发现了$()结构，便将$()中的命令执行一次，得到其标准输出，再将此输出赋值给today</span><br><span class="line"><span class="meta">#</span> 等同于today=`date +%y%m%d`</span><br></pre></td></tr></table></figure>
+<h4 id="9-2-双小括号"><a href="#9-2-双小括号" class="headerlink" title="9.2 双小括号 (())"></a>9.2 双小括号 (())</h4><p>使用双括号，在比较过程中使用<strong>高级数学表达式</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>val++</td>
+<td>后增</td>
+</tr>
+<tr>
+<td>val—</td>
+<td>后减</td>
+</tr>
+<tr>
+<td>++val</td>
+<td>先增</td>
+</tr>
+<tr>
+<td>—val</td>
+<td>先减</td>
+</tr>
+<tr>
+<td>!</td>
+<td>逻辑求反</td>
+</tr>
+<tr>
+<td>~</td>
+<td>位求反</td>
+</tr>
+<tr>
+<td>**</td>
+<td>幂操作</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左位移</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右位移</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&amp;&amp;逻辑与，||逻辑或</p>
+<p>例：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">val=10     </span><br><span class="line">echo $val  </span><br><span class="line"><span class="meta">#</span> 输出 10</span><br><span class="line"></span><br><span class="line">((val++))  </span><br><span class="line">echo $val  </span><br><span class="line"><span class="meta">#</span> 输出 11</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904180936098.png" alt="image-20210904180936098"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">可以直接使用if (($i&lt;5)), 如果不使用双括号, 则为if [ $i -lt 5 ]。</span><br></pre></td></tr></table></figure>
+<h4 id="9-3-单方括号"><a href="#9-3-单方括号" class="headerlink" title="9.3 单方括号 []"></a>9.3 单方括号 []</h4><p>方括号定义了测试条件。第一个方括号 (<code>[</code>) 后和第二个方括号 (<code>]</code>) 前都要加一个空格，否则会报错。方括号主要包括4类判断：</p>
+<p>（1）数值比较：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if [ $val1 -eq $val2 ]</span><br><span class="line">if [ $val1 -le $val2 ]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>（2）字符串比较：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if [ $str1 = $str2 ]</span><br><span class="line">if [ $str1 != $str2 ]</span><br><span class="line">if [ -n $str1 ]   # 检查str1的长度是否非0</span><br><span class="line">if [ -z $str1 ]   # 检查str1的长度是否为0</span><br></pre></td></tr></table></figure>
+<p>例：test.sh脚本如下：</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904182927259.png" alt="image-20210904182927259"></p>
+<p>运行结果：</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904183031882.png" alt="image-20210904183031882"></p>
+<p>经过测试，数值也可以使用=, !=，且对于数值与字符串，=与==效果貌似一样？</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904190918657.png" alt="image-20210904190918657"></p>
+<p>运行结果：</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904190947396.png" alt="image-20210904190947396"></p>
+<p>（3）文件比较</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904190420085.png" alt="image-20210904190420085" style="zoom:80%;"></p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904190456860.png" alt="image-20210904190456860"></p>
+<p>（4）符合条件比较</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[ condition1 ] &amp;&amp; [ condition2 ]</span><br><span class="line">[ condition1 ] || [ condition2 ]</span><br></pre></td></tr></table></figure>
+<p>注：[ ]中的 逻辑与 和 逻辑或 使用 -a 和 -o 表示，例： <code>if [ $a -ne 1 -a $a != 2 ]</code>，或写作：<code>if [ $a -ne 1 ] &amp;&amp; [ $a != 2 ]</code></p>
+<h4 id="9-4-双方括号"><a href="#9-4-双方括号" class="headerlink" title="9.4 双方括号 [[]]"></a>9.4 双方括号 [[]]</h4><ul>
+<li>双方括号提供了<strong>字符串比较</strong>的高级特性</li>
+<li>括号中可以定义一些正则表达式来匹配字符串</li>
+<li>注意不是所有的shell都支持双方括号</li>
+</ul>
+<p><img src="/2021/02/21/Linux常用命令/image-20210904190701945.png" alt="image-20210904190701945"></p>
+<p>注：&amp;&amp;、||、&lt; 和 &gt; 操作符能够正常存在于[[ ]]条件判断结构中，比如可以直接使用 <code>if [[ $a != 1 &amp;&amp; $a != 2 ]]</code></p>
+<h4 id="9-5-例子"><a href="#9-5-例子" class="headerlink" title="9.5 例子"></a>9.5 例子</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if ($i&lt;5) </span><br><span class="line">if [ $i -lt 5 ] </span><br><span class="line">if [ $a -ne 1 -a $a != 2 ] </span><br><span class="line">if [ $a -ne 1] &amp;&amp; [ $a != 2 ] </span><br><span class="line">if [[ $a != 1 &amp;&amp; $a != 2 ]] </span><br><span class="line">for i in $(seq 0 4);do echo $i;done</span><br><span class="line">for i in `seq 0 4`;do echo $i;done</span><br><span class="line">for ((i=0;i&lt;5;i++));do echo $i;done</span><br><span class="line">for i in &#123;0..4&#125;;do echo $i;done</span><br></pre></td></tr></table></figure>
+<h3 id="10-if-语句"><a href="#10-if-语句" class="headerlink" title="10. if 语句"></a>10. if 语句</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then </span><br><span class="line">	statement(s)</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
