@@ -777,7 +777,10 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 </blockquote>
 <h4 id="9-1-单小括号"><a href="#9-1-单小括号" class="headerlink" title="9.1 单小括号 ()"></a>9.1 单小括号 ()</h4><p>一般在命令替换的时候使用</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line">today=$(date +%y%m%d)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> shell扫描一遍命令，发现了$()结构，便将$()中的命令执行一次，得到其标准输出，再将此输出赋值给today</span><br><span class="line"><span class="meta">#</span> 等同于today=`date +%y%m%d`</span><br></pre></td></tr></table></figure>
-<h4 id="9-2-双小括号"><a href="#9-2-双小括号" class="headerlink" title="9.2 双小括号 (())"></a>9.2 双小括号 (())</h4><p>使用双括号，在比较过程中使用<strong>高级数学表达式</strong></p>
+<h4 id="9-2-双小括号"><a href="#9-2-双小括号" class="headerlink" title="9.2 双小括号 (())"></a>9.2 双小括号 (())</h4><blockquote>
+<p>参考 <a href="http://c.biancheng.net/view/2480.html" target="_blank" rel="noopener">http://c.biancheng.net/view/2480.html</a></p>
+</blockquote>
+<p>使用双括号，在比较过程中使用<strong>高级数学表达式</strong></p>
 <div class="table-container">
 <table>
 <thead>
@@ -827,10 +830,28 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 </table>
 </div>
 <p>&amp;&amp;逻辑与，||逻辑或</p>
-<p>例：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">val=10     </span><br><span class="line">echo $val  </span><br><span class="line"><span class="meta">#</span> 输出 10</span><br><span class="line"></span><br><span class="line">((val++))  </span><br><span class="line">echo $val  </span><br><span class="line"><span class="meta">#</span> 输出 11</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/21/Linux常用命令/image-20210904180936098.png" alt="image-20210904180936098"></p>
+<p>双小括号 (( )) 是 Bash Shell 中专门用来进行整数运算的命令，它的效率很高，写法灵活，是企业运维中常用的运算命令。<code>(())</code>是一种数学计算命令，它除了可以进行最基本的加减乘除运算，还可以进行大于、小于、等于等关系运算，以及与、或、非逻辑运算。</p>
+<p>注：<span style="color:red">(( )) 只能进行整数运算，不能对小数（浮点数）或者字符串进行运算。</span></p>
+<p>双小括号 (( )) 的语法格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">((表达式))</span><br></pre></td></tr></table></figure>
+<p>通俗地讲，就是将数学运算表达式放在<code>((</code>和<code>))</code>之间。</p>
+<p>表达式可以只有一个，也可以有多个，多个表达式之间以逗号<code>,</code>分隔。对于多个表达式的情况，以最后一个表达式的值作为整个 (( )) 命令的执行结果。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">可以使用 $ 获取 (( )) 命令的结果，这和使用 $ 获得变量值是类似的。</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905110953010.png" alt="image-20210905110953010" style="zoom:150%;"></p>
+<p><span style="color:red">在 (( )) 中使用变量无需加上<code>$</code>前缀，(( )) 会自动解析变量名，这使得代码更加简洁，也符合程序员的书写习惯。</span></p>
+<p>【实例1】利用 (( )) 进行简单的数值计算。</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905111242247.png" alt="image-20210905111242247"></p>
+<p>【实例2】利用 (( )) 进行逻辑运算。</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905111449347.png" alt="image-20210905111449347"></p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905115217853.png" alt="image-20210905115217853"></p>
+<p>运行结果如下：</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905115317618.png" alt="image-20210905115317618"></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">可以直接使用if (($i&lt;5)), 如果不使用双括号, 则为if [ $i -lt 5 ]。</span><br></pre></td></tr></table></figure>
+<p>【实例3】利用 (( )) 进行自增（++）和自减（—）运算。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">val=10     </span><br><span class="line">((val++))  </span><br><span class="line">echo $val  </span><br><span class="line"><span class="meta">#</span> 输出 11</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905111705126.png" alt="image-20210905111705126" style="zoom:150%;"></p>
+<p>【实例4】利用 (( )) 同时对多个表达式进行计算。</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905112032741.png" alt="image-20210905112032741"></p>
 <h4 id="9-3-单方括号"><a href="#9-3-单方括号" class="headerlink" title="9.3 单方括号 []"></a>9.3 单方括号 []</h4><p>方括号定义了测试条件。第一个方括号 (<code>[</code>) 后和第二个方括号 (<code>]</code>) 前都要加一个空格，否则会报错。方括号主要包括4类判断：</p>
 <p>（1）数值比较：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if [ $val1 -eq $val2 ]</span><br><span class="line">if [ $val1 -le $val2 ]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
@@ -858,7 +879,36 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p><img src="/2021/02/21/Linux常用命令/image-20210904190701945.png" alt="image-20210904190701945"></p>
 <p>注：&amp;&amp;、||、&lt; 和 &gt; 操作符能够正常存在于[[ ]]条件判断结构中，比如可以直接使用 <code>if [[ $a != 1 &amp;&amp; $a != 2 ]]</code></p>
 <h4 id="9-5-例子"><a href="#9-5-例子" class="headerlink" title="9.5 例子"></a>9.5 例子</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if ($i&lt;5) </span><br><span class="line">if [ $i -lt 5 ] </span><br><span class="line">if [ $a -ne 1 -a $a != 2 ] </span><br><span class="line">if [ $a -ne 1] &amp;&amp; [ $a != 2 ] </span><br><span class="line">if [[ $a != 1 &amp;&amp; $a != 2 ]] </span><br><span class="line">for i in $(seq 0 4);do echo $i;done</span><br><span class="line">for i in `seq 0 4`;do echo $i;done</span><br><span class="line">for ((i=0;i&lt;5;i++));do echo $i;done</span><br><span class="line">for i in &#123;0..4&#125;;do echo $i;done</span><br></pre></td></tr></table></figure>
-<h3 id="10-if-语句"><a href="#10-if-语句" class="headerlink" title="10. if 语句"></a>10. if 语句</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then </span><br><span class="line">	statement(s)</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="10-shell-if-else-语句"><a href="#10-shell-if-else-语句" class="headerlink" title="10. shell if else 语句"></a>10. shell if else 语句</h3><blockquote>
+<p>参考 <a href="http://c.biancheng.net/view/1262.html" target="_blank" rel="noopener">http://c.biancheng.net/view/1262.html</a></p>
+</blockquote>
+<h4 id="10-1-if-语句"><a href="#10-1-if-语句" class="headerlink" title="10.1 if 语句"></a>10.1 if 语句</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then </span><br><span class="line">    statement(s)</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>如果要将then 和 if 写在一行，要加个分号：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if  condition;  then</span><br><span class="line">    statement(s)</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>实例1：下面的例子使用 if 语句来比较两个数字的大小：</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905110030266.png" alt="image-20210905110030266"></p>
+<p>实例2：在判断条件中也可以使用逻辑运算符，例如：</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905112205882.png" alt="image-20210905112205882"></p>
+<h4 id="10-2-if-else-语句"><a href="#10-2-if-else-语句" class="headerlink" title="10.2 if else 语句"></a>10.2 if else 语句</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if  condition</span><br><span class="line">then</span><br><span class="line">   statement1</span><br><span class="line">else</span><br><span class="line">   statement2</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905113102953.png" alt="image-20210905113102953"></p>
+<h4 id="10-3-if-elif-else-语句"><a href="#10-3-if-elif-else-语句" class="headerlink" title="10.3 if elif else 语句"></a>10.3 if elif else 语句</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if  condition1</span><br><span class="line">then</span><br><span class="line">   statement1</span><br><span class="line">elif condition2</span><br><span class="line">then</span><br><span class="line">    statement2</span><br><span class="line">elif condition3</span><br><span class="line">then</span><br><span class="line">    statement3</span><br><span class="line">...</span><br><span class="line">else</span><br><span class="line">   statementn</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905113316626.png" alt="image-20210905113316626"></p>
+<p>例2:</p>
+<blockquote>
+<p>来自 <a href="https://www.tutorialspoint.com/unix/if-elif-statement.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/unix/if-elif-statement.htm</a></p>
+</blockquote>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905113545472.png" alt="image-20210905113545472" style="zoom:67%;"></p>
+<h3 id="11-shell-while"><a href="#11-shell-while" class="headerlink" title="11. shell while"></a>11. shell while</h3><blockquote>
+<p>参考<br><a href="http://c.biancheng.net/view/2804.html" target="_blank" rel="noopener">http://c.biancheng.net/view/2804.html</a><br><a href="https://blog.csdn.net/weixin_44324367/article/details/111312156" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44324367/article/details/111312156</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">while condition</span><br><span class="line">do</span><br><span class="line">    statements</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>while 语句和 if else 语句中的 condition 用法都是一样的，可以使用 test 或 [] 命令，也可以使用 (()) 或 [[]]</p>
+<p>【实例1】计算从 1 加到 100 的和。</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905114028564.png" alt="image-20210905114028564"></p>
+<p>【实例2】计算从 m 加到 n 的值。</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905115543470.png" alt="image-20210905115543470"></p>
+<p>【实例3】输出0~10的所有整数</p>
+<p><img src="/2021/02/21/Linux常用命令/image-20210905115630118.png" alt="image-20210905115630118"></p>
 ]]></content>
       <categories>
         <category>Linux</category>
