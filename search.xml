@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python变量作用域（全局变量和局部变量）</title>
+    <url>/2022/01/02/Python%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%89/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考 <a href="http://c.biancheng.net/view/2259.html" target="_blank" rel="noopener">Python变量作用域（全局变量和局部变量） (biancheng.net)</a></p>
+</blockquote>
+<h4 id="1-局部变量"><a href="#1-局部变量" class="headerlink" title="1. 局部变量"></a>1. 局部变量</h4><p>在函数内部定义的变量，它的作用域也仅限于函数内部，出了函数就不能使用了，我们将这样的变量称为局部变量（Local Variable）。</p>
+<p>当函数被执行时，Python 会为其分配一块临时的存储空间，所有在函数内部定义的变量，都会存储在这块空间中。而在函数执行完毕后，这块临时存储空间随即会被释放并回收，该空间中存储的变量自然也就无法再被使用。</p>
+<h4 id="2-全局变量"><a href="#2-全局变量" class="headerlink" title="2. 全局变量"></a>2. 全局变量</h4><p>除了在函数内部定义变量，Python 还允许在所有函数的外部定义变量，这样的变量称为全局变量（Global Variable）。<br>和局部变量不同，全局变量的默认作用域是整个程序，即全局变量既可以在各个函数的外部使用，也可以在各函数内部使用。</p>
+<p>定义全局变量的方式有以下 2 种：</p>
+<ul>
+<li>在函数体外定义的变量，一定是全局变量；</li>
+<li>在函数体内定义全局变量。即使用 global 关键字对变量进行修饰后，该变量就会变为全局变量。例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">text</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> add</span><br><span class="line">    add= <span class="string">"http://c.biancheng.net/java/"</span></span><br><span class="line">    print(<span class="string">"函数体内访问："</span>,add)</span><br><span class="line">    </span><br><span class="line">text()</span><br><span class="line">print(<span class="string">'函数体外访问：'</span>,add)</span><br></pre></td></tr></table></figure>
+<p>运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">函数体内访问： http://c.biancheng.net/java/</span><br><span class="line">函数体外访问： http://c.biancheng.net/java/</span><br></pre></td></tr></table></figure>
+<p>注：在使用 global 关键字修饰变量名时，不能直接给变量赋初值，否则会引发语法错误</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python文件编码说明</title>
     <url>/2021/12/30/python%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -4756,8 +4782,8 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p><img src="/2020/02/16/B树介绍/1581863461822.png" alt="1581863461822"></p>
 <p>这两种树都是平衡的多分树，它们都可以用于文件的索引结构，但B树只能支持随机检索，而B+树是有序的树，既能支持随机检索，又能支持顺序检索。</p>]]></content>
       <tags>
-        <tag>B树</tag>
         <tag>知识点</tag>
+        <tag>B树</tag>
       </tags>
   </entry>
   <entry>
@@ -5015,8 +5041,8 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>知识点</tag>
         <tag>HashSet</tag>
+        <tag>知识点</tag>
       </tags>
   </entry>
   <entry>
