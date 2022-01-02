@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="参考 WOE与IV值浅谈 - 知乎 (zhihu.com)  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量。（3）对离散型变量，woe可以观察各个level间的跳转对odds">
+<meta name="description" content="参考 WOE与IV值浅谈 - 知乎https://zhuanlan.zhihu.com/p/78809853  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WOE编码与IV值">
 <meta property="og:url" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="参考 WOE与IV值浅谈 - 知乎 (zhihu.com)  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量。（3）对离散型变量，woe可以观察各个level间的跳转对odds">
+<meta property="og:description" content="参考 WOE与IV值浅谈 - 知乎https://zhuanlan.zhihu.com/p/78809853  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175233815.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175451426.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175623456.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175912098.png">
-<meta property="og:updated_time" content="2021-07-17T11:02:36.275Z">
+<meta property="og:updated_time" content="2021-12-15T13:41:10.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WOE编码与IV值">
-<meta name="twitter:description" content="参考 WOE与IV值浅谈 - 知乎 (zhihu.com)  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量。（3）对离散型变量，woe可以观察各个level间的跳转对odds">
+<meta name="twitter:description" content="参考 WOE与IV值浅谈 - 知乎https://zhuanlan.zhihu.com/p/78809853  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示">
 <meta name="twitter:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175233815.png">
 
 
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-07-17T19:02:36+08:00">
-                2021-07-17
+              <time title="更新于" itemprop="dateModified" datetime="2021-12-15T21:41:10+08:00">
+                2021-12-15
               </time>
             
           </span>
@@ -400,16 +400,19 @@
 
       
         <blockquote>
-<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎 (zhihu.com)</a></p>
+<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎</a><br><a href="https://zhuanlan.zhihu.com/p/78809853" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/78809853</a></p>
 </blockquote>
 <h4 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0. Introduction"></a>0. Introduction</h4><p>WOE (weight of evidence): 证据权重<br>IV (information value): 信息值</p>
-<p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
+<p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的<strong>预测能力</strong>，用于筛选变量，IV值越大，表示该变量的预测能力越强。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
 <a id="more"></a>
 <h4 id="1-WOE"><a href="#1-WOE" class="headerlink" title="1. WOE"></a>1. WOE</h4><h5 id="1-1-WOE的计算方式"><a href="#1-1-WOE的计算方式" class="headerlink" title="1. 1 WOE的计算方式"></a>1. 1 WOE的计算方式</h5><script type="math/tex; mode=display">
 WOE_i = ln(\frac{\#B_i/\#B_T}{\#G_i/\#G_T})</script><p>其中 $i$ 表示第 $i$ 个分箱，即<strong>一个变量的每个分箱都有一个 WOE 值</strong>，</p>
 <p> $#B_i$ 是第 $i$ 箱中坏客户的人数<br>$#G_i$ 是第i箱中好客户人数<br>$#B_T$ 是总共坏客户人数<br>$#G_T$ 是总共好客户人数</p>
 <p>实质上WOE表示的是 <em>当前分箱中好坏客户的比例</em> 与 <em>总体好坏客户比例</em>  的差异</p>
 <p>如果WOE的<strong>绝对值</strong>越大，这种差异就越明显，<strong>绝对值</strong>越小就表明差异越不明显。如果WOE为0，则说明该分箱中好坏客户比例等于随机好坏客户比值，此时这个分箱就无预测能力。</p>
+<blockquote>
+<p>可以理解为<strong>当前组中正负样本的比值，与所有样本中正负样本比值的差异</strong>。这个差异是用这两个比值的比值，再取对数来表示的。差异越大，WOE越大，这个分组里的样本响应的可能性就越大；差异越小，WOE越小，这个分组里的样本响应的可能性就越小。<span style="color:red">WOE可能为负</span>，但其绝对值越大，对于分类贡献越大。当分箱中正负的比例等于随机（大盘）正负样本的比值时，说明这个分箱没有预测能力，即WOE=0。</p>
+</blockquote>
 <p><img src="/2021/07/17/WOE编码与IV值/image-20210717175233815.png" alt="image-20210717175233815"></p>
 <h5 id="1-2-WOE编码的好处"><a href="#1-2-WOE编码的好处" class="headerlink" title="1.2 WOE编码的好处"></a>1.2 WOE编码的好处</h5><p><img src="/2021/07/17/WOE编码与IV值/image-20210717175451426.png" alt="image-20210717175451426" style="zoom:80%;"></p>
 <h5 id="1-3-对于连续型变量，如何进行-WOE-编码"><a href="#1-3-对于连续型变量，如何进行-WOE-编码" class="headerlink" title="1.3 对于连续型变量，如何进行 WOE 编码"></a>1.3 对于连续型变量，如何进行 WOE 编码</h5><p>在计算WOE编码前需要对连续变量进行分箱（binning）处理</p>
@@ -438,11 +441,12 @@ WOE_i = ln(\frac{(\#B_i+0.5)/\#B_T}{(\#G_i+0.5)/\#G_T})</script><h6 id="1-3-3-�
 <h4 id="2-IV值"><a href="#2-IV值" class="headerlink" title="2. IV值"></a>2. IV值</h4><h5 id="2-1-IV值的计算方式"><a href="#2-1-IV值的计算方式" class="headerlink" title="2.1 IV值的计算方式"></a>2.1 IV值的计算方式</h5><p>信息值是预测模型中选择重要变量的方式之一，它能根据预测变量的重要性对预测变量进行排序，IV值计算公式如下：</p>
 <script type="math/tex; mode=display">
 IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
-=\sum_i^n(\frac{\#Bad_i}{\#Bad_T}-\frac{\#Good_i}{\#Good_T})*WOE_i</script><p>IV值是对一个变量而言，即<strong>每个变量有一个IV值</strong>（其值等于每个分箱的IV值相加）。</p>
+=\sum_i^n(\frac{\#Bad_i}{\#Bad_T}-\frac{\#Good_i}{\#Good_T})*WOE_i</script><p>IV值是对一个变量而言，即<strong>每个变量有一个IV值</strong>（其值等于每个分箱的IV值相加）。<span style="color:red">IV值在WOE的基础上保证了结果非负</span>。</p>
 <p>假设变量 $X$ 有 $n$ 个分箱，每个分箱的 WOE 编码取值为 $WOE_i$ ,该分箱的IV值就是用该分箱响应比例与未响应比例之差再乘上 $WOE_i$。注意这里的响应比例和未响应比例都是用当前分箱中响应数量/整体样本响应数量和当前分箱未响应数量/整体样本未响应数量计算得到。</p>
 <p>IV值是看单个变量好坏客户分布的差异，这种差异越大表明这个变量对于好坏客户的区分度越高.</p>
+<p>WOE可能为负值，IV值不可能为负，根据IV值选择变量后，用WOE替换变量各分组的值进入模型。</p>
 <h5 id="2-2-利用IV值进行变量筛选"><a href="#2-2-利用IV值进行变量筛选" class="headerlink" title="2.2 利用IV值进行变量筛选"></a>2.2 利用IV值进行变量筛选</h5><p><img src="/2021/07/17/WOE编码与IV值/image-20210717175912098.png" alt="image-20210717175912098"></p>
-<p>如果IV值大于0.5，则考虑要对这个变量进行分群处理。即根据这个变量拆分成几个样本子集，分别在各个样本子集上建模。</p>
+<p>一般我们选择 IV值大于0.02的那些变量进入模型。如果IV值大于0.5，则考虑要对这个变量进行分群处理。即根据这个变量拆分成几个样本子集，分别在各个样本子集上建模。</p>
 <h5 id="2-3-在python中计算IV"><a href="#2-3-在python中计算IV" class="headerlink" title="2.3 在python中计算IV"></a>2.3 在python中计算IV</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calIV</span><span class="params">(df, var, y)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    计算IV值</span></span><br><span class="line"><span class="string">    param df：数据集X</span></span><br><span class="line"><span class="string">    param var：已分组的列名</span></span><br><span class="line"><span class="string">    param y：响应变量y（0,1）</span></span><br><span class="line"><span class="string">    return：IV值</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    df_woe_iv = pd.crosstab(df[var], y, normalize=<span class="string">'columns'</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>))).assign(iv=<span class="keyword">lambda</span> dfx: np.sum(dfx[<span class="string">'woe'</span>] * (dfx[<span class="number">1</span>] - dfx[<span class="number">0</span>])))</span><br><span class="line"></span><br><span class="line">    a = df_woe_iv[<span class="string">'iv'</span>].reset_index()</span><br><span class="line">    <span class="keyword">return</span> a.loc[<span class="number">0</span>, <span class="string">'iv'</span>]</span><br></pre></td></tr></table></figure>
 
       
@@ -565,7 +569,7 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -576,7 +580,7 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -663,7 +667,7 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

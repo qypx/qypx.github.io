@@ -93,11 +93,11 @@
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1602655688379.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110047789.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011151956385.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/myblog/test/blog/source/_posts/Precision-Recall-ROC曲线等/image-20211011152920681.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011152920681.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165053284.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165146743.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png">
-<meta property="og:updated_time" content="2021-10-11T08:53:37.764Z">
+<meta property="og:updated_time" content="2022-01-01T13:48:39.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Precision, Recall, ROC曲线等">
 <meta name="twitter:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110616770.png">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-10-11T16:53:37+08:00">
-                2021-10-11
+              <time title="更新于" itemprop="dateModified" datetime="2022-01-01T21:48:39+08:00">
+                2022-01-01
               </time>
             
           </span>
@@ -476,12 +476,15 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p>显然，lift(提升指数)越大，模型的运行效果越好。如果这个模型的预测能力跟 baseline model 一样（lift 等于 1），这个模型就没有任何 “提升” 了（套一句金融市场的话，它的业绩没有跑过市场）。</p>
 <p>以信用评分卡模型为例，LIFT提升度衡量的是评分模型对坏样本的预测能力相比随机选择的倍数，LIFT大于1说明模型表现优于随机选择。我们通常会将打分后的样本按分数从低到高（违约概率从高到低）排序，取10或20等分（有同分数对应多条观测的情况，所以各组观测数未必完全相等），并对组内观测数与坏样本数进行统计。用评分卡模型捕捉到的坏客户的占比，可由该组坏样本数除以总的坏样本数计算得出；而不使用此评分卡，以随机选择的方法覆盖到的坏客户占比，等价于该组观测数占总观测数的比例（分子分母同时乘以样本整体的坏账率）。对两者取累计值，取其比值，则得到提升度Lift，即该评分卡抓取坏客户的能力是随机选择的多少倍。</p>
 <h5 id="6-2-为什么要看-Lift"><a href="#6-2-为什么要看-Lift" class="headerlink" title="6.2 为什么要看 Lift"></a>6.2 为什么要看 Lift</h5><p>举个例子，一个贷款产品目标客群有10000个人，其中混合了500个坏客户。如果随机选择1000个人放款，可能会遇到50个坏客户。但是如果运用模型对坏客户加以预测，只选择模型分数最高的1000人放款，如果这1000个客户表现出来最终逾期的只有20户，说明模型在其中是起到作用的，此时的LIFT就是大于1的。如果表现出来逾期客户超过或等于50个，LIFT小于等于1，那么从效果上来看这个模型用了还不如不用。LIFT就是这样一个指标，可以衡量使用这个模型比随机选择对坏样本的预测能力提升了多少倍。</p>
-<h5 id="6-3-Lift-如何计算"><a href="#6-3-Lift-如何计算" class="headerlink" title="6.3 Lift 如何计算"></a>6.3 Lift 如何计算</h5><p>通常计算LIFT的时候会把模型的最终得分按照从低到高（违约概率从高到低）排序并等频分为10组或20组（有同分数对应多条观测的情况，所以各组观测数未必完全相等），计算分数最低（违约概率最高）的一组对应的<span style="color:red">累计坏样本占比/累计总样本占比</span>就等于LIFT值了。累计坏样本占比相当于是使用模型的情况下该组能够从所有的坏样本中挑出多少比例的坏样本<span style="color:red">（该组坏样本数/总坏样本数）</span>，而累计总样本占比等于随机抽样的情况下从所有坏样本抽取了多少比例的坏样本<span style="color:red">（该组人数/总人数）</span>（即以随机选择的方法覆盖到的坏客户占比，等价于该组观测数占总观测数的比例（分子分母同时乘以样本整体的坏账率），也即完全随机的情况下，抽取10%的样本也会对应抽到坏样本中的10%，以6.2中的例子：(1000<em>(500/10000))/10000\</em>(500/10000)=1000/10000）。</p>
+<h5 id="6-3-Lift-如何计算"><a href="#6-3-Lift-如何计算" class="headerlink" title="6.3 Lift 如何计算"></a>6.3 Lift 如何计算</h5><p>通常计算LIFT的时候会把模型的最终得分按照从低到高（违约概率从高到低）排序并等频分为10组或20组（有同分数对应多条观测的情况，所以各组观测数未必完全相等），计算分数最低（违约概率最高）的一组对应的<span style="color:red">累计坏样本占比/累计总样本占比</span>就等于LIFT值了。累计坏样本占比相当于是使用模型的情况下该组能够从所有的坏样本中挑出多少比例的坏样本<span style="color:red">（该组坏样本数/总坏样本数）</span>，而累计总样本占比等于随机抽样的情况下从所有坏样本抽取了多少比例的坏样本<span style="color:red">（该组人数/总人数）</span>（即以随机选择的方法覆盖到的坏客户占比，等价于该组观测数占总观测数的比例（分子分母同时乘以样本整体的坏账率），也即完全随机的情况下，抽取10%的样本也会对应抽到坏样本中的10%，以6.2中的例子：<script type="math/tex">(1000*(500/10000))/(10000*(500/10000))=1000/10000</script>。</p>
 <p>注：关于提升度与累计提升度：通常提升度指的就是累计提升度？<br>每组都可以算一个累计提升度：衡量到目前组的情况<br>最大值：到前多少组，两者比值达到最大（一定在第一组？）</p>
+<blockquote>
+<p>个人理解：累计提升度可以理解为用百分之多少的人数覆盖了百分之多少的目标人群，如果用很少的人数覆盖了很大一部分的目标人群，则累计提升度会比较大。比较两个模型的效果时，以一个模型划分结果去等人数划分另一个模型，哪个模型覆盖的目标人群更多，则其提升度越大。</p>
+</blockquote>
 <p>下图是一个提升表（Lift Table）的示例：</p>
 <p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011151956385.png" alt="image-20211011151956385"></p>
 <p> 以分数段为横轴，以提升度为纵轴，可绘制出累计提升图，示例如下：</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/myblog\test\blog\source\_posts\Precision-Recall-ROC曲线等\image-20211011152920681.png" alt="image-20211011152920681" style="zoom:80%;"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011152920681.png" alt="image-20211011152920681" style="zoom:80%;"></p>
 <p> 有了累计提升图，我们就能直观地去比较不同模型或策略给我们带来的区分能力增益程度。</p>
 <p>对累计提升度的解释：</p>
 <blockquote>
@@ -616,7 +619,7 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -627,7 +630,7 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -714,7 +717,7 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

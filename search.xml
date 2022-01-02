@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python文件编码说明</title>
+    <url>/2021/12/30/python%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考<br><a href="https://www.cnblogs.com/sixbeauty/p/4284427.html" target="_blank" rel="noopener">python文件编码说明 coding=utf-8 - 不笑猫 - 博客园 (cnblogs.com)</a><br><a href="https://www.python.org/dev/peps/pep-0263/" target="_blank" rel="noopener">PEP 263 — Defining Python Source Code Encodings | Python.org</a></p>
+</blockquote>
+<p>在python 文件开头（一般是第一行或第二行），用来说明你的Python源程序文件用使用的编码。缺省情况下默认使用ascii编码，但如果在其中写中文的话，python解释器一般会报错，但如果加上你所用的文件编码，python就会自动处理不再报错。</p>
+<p>通常写法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: &lt;encoding name&gt; -*-</span><br></pre></td></tr></table></figure>
+<p>或：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># coding=&lt;encoding name&gt;</span><br></pre></td></tr></table></figure>
+<p>More precisely, the first or second line must match the following regular expression:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于环境变量path与classpath</title>
+    <url>/2021/12/30/%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E4%B8%8Eclasspath/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考<br><a href="https://blog.csdn.net/handsome_boy_wsq/article/details/82178724" target="_blank" rel="noopener">环境变量——关于PATH与CLASSPATH的区别（作用）</a><br><a href="https://blog.csdn.net/mydreamongo/article/details/8155408" target="_blank" rel="noopener">path与classpath区别</a></p>
+</blockquote>
+<h4 id="1-Path"><a href="#1-Path" class="headerlink" title="1. Path"></a>1. Path</h4><p>PATH是系统用来指定可执行文件的完整路径。</p>
+<p>当在cmd中执行命令时，如果执行的可执行文件不在当前目录下，那么系统就会依次搜索PATH中设置的路径。例如，若在PATH中设置了python的安装目录（D:\python\python-3.6.3），那么就可以在任意路径下使用python xxx.py执行python程序，而不必在CMD中切换到python的安装目录下运行该命令。</p>
+<h4 id="2-classpath"><a href="#2-classpath" class="headerlink" title="2. classpath"></a>2. classpath</h4><p>CLASSPATH是指定程序中所使用的类文件所在的位置。classpath是java专用的查找类的路径。一般只在配置java环境时会用到。</p>
+<h4 id="3-用户变量与系统变量"><a href="#3-用户变量与系统变量" class="headerlink" title="3. 用户变量与系统变量"></a>3. 用户变量与系统变量</h4><p>用户变量只对当前用户有效；系统变量对所有用户有效。对于当前用户而言，设置用户变量与系统变量的效果大致相同，只是系统变量的路径排在用户变量的路径之前。</p>
+<p>小结：一般安装软件时环境变量的配置，编辑系统变量下的path内容即可。</p>
+]]></content>
+      <categories>
+        <category>软件环境配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于python2与python3中的可变参数</title>
     <url>/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -52,16 +91,19 @@
     <title>WOE编码与IV值</title>
     <url>/2021/07/17/WOE%E7%BC%96%E7%A0%81%E4%B8%8EIV%E5%80%BC/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎 (zhihu.com)</a></p>
+<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎</a><br><a href="https://zhuanlan.zhihu.com/p/78809853" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/78809853</a></p>
 </blockquote>
 <h4 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0. Introduction"></a>0. Introduction</h4><p>WOE (weight of evidence): 证据权重<br>IV (information value): 信息值</p>
-<p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
+<p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的<strong>预测能力</strong>，用于筛选变量，IV值越大，表示该变量的预测能力越强。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
 <a id="more"></a>
 <h4 id="1-WOE"><a href="#1-WOE" class="headerlink" title="1. WOE"></a>1. WOE</h4><h5 id="1-1-WOE的计算方式"><a href="#1-1-WOE的计算方式" class="headerlink" title="1. 1 WOE的计算方式"></a>1. 1 WOE的计算方式</h5><script type="math/tex; mode=display">
 WOE_i = ln(\frac{\#B_i/\#B_T}{\#G_i/\#G_T})</script><p>其中 $i$ 表示第 $i$ 个分箱，即<strong>一个变量的每个分箱都有一个 WOE 值</strong>，</p>
 <p> $#B_i$ 是第 $i$ 箱中坏客户的人数<br>$#G_i$ 是第i箱中好客户人数<br>$#B_T$ 是总共坏客户人数<br>$#G_T$ 是总共好客户人数</p>
 <p>实质上WOE表示的是 <em>当前分箱中好坏客户的比例</em> 与 <em>总体好坏客户比例</em>  的差异</p>
 <p>如果WOE的<strong>绝对值</strong>越大，这种差异就越明显，<strong>绝对值</strong>越小就表明差异越不明显。如果WOE为0，则说明该分箱中好坏客户比例等于随机好坏客户比值，此时这个分箱就无预测能力。</p>
+<blockquote>
+<p>可以理解为<strong>当前组中正负样本的比值，与所有样本中正负样本比值的差异</strong>。这个差异是用这两个比值的比值，再取对数来表示的。差异越大，WOE越大，这个分组里的样本响应的可能性就越大；差异越小，WOE越小，这个分组里的样本响应的可能性就越小。<span style="color:red">WOE可能为负</span>，但其绝对值越大，对于分类贡献越大。当分箱中正负的比例等于随机（大盘）正负样本的比值时，说明这个分箱没有预测能力，即WOE=0。</p>
+</blockquote>
 <p><img src="/2021/07/17/WOE编码与IV值/image-20210717175233815.png" alt="image-20210717175233815"></p>
 <h5 id="1-2-WOE编码的好处"><a href="#1-2-WOE编码的好处" class="headerlink" title="1.2 WOE编码的好处"></a>1.2 WOE编码的好处</h5><p><img src="/2021/07/17/WOE编码与IV值/image-20210717175451426.png" alt="image-20210717175451426" style="zoom:80%;"></p>
 <h5 id="1-3-对于连续型变量，如何进行-WOE-编码"><a href="#1-3-对于连续型变量，如何进行-WOE-编码" class="headerlink" title="1.3 对于连续型变量，如何进行 WOE 编码"></a>1.3 对于连续型变量，如何进行 WOE 编码</h5><p>在计算WOE编码前需要对连续变量进行分箱（binning）处理</p>
@@ -90,11 +132,12 @@ WOE_i = ln(\frac{(\#B_i+0.5)/\#B_T}{(\#G_i+0.5)/\#G_T})</script><h6 id="1-3-3-�
 <h4 id="2-IV值"><a href="#2-IV值" class="headerlink" title="2. IV值"></a>2. IV值</h4><h5 id="2-1-IV值的计算方式"><a href="#2-1-IV值的计算方式" class="headerlink" title="2.1 IV值的计算方式"></a>2.1 IV值的计算方式</h5><p>信息值是预测模型中选择重要变量的方式之一，它能根据预测变量的重要性对预测变量进行排序，IV值计算公式如下：</p>
 <script type="math/tex; mode=display">
 IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
-=\sum_i^n(\frac{\#Bad_i}{\#Bad_T}-\frac{\#Good_i}{\#Good_T})*WOE_i</script><p>IV值是对一个变量而言，即<strong>每个变量有一个IV值</strong>（其值等于每个分箱的IV值相加）。</p>
+=\sum_i^n(\frac{\#Bad_i}{\#Bad_T}-\frac{\#Good_i}{\#Good_T})*WOE_i</script><p>IV值是对一个变量而言，即<strong>每个变量有一个IV值</strong>（其值等于每个分箱的IV值相加）。<span style="color:red">IV值在WOE的基础上保证了结果非负</span>。</p>
 <p>假设变量 $X$ 有 $n$ 个分箱，每个分箱的 WOE 编码取值为 $WOE_i$ ,该分箱的IV值就是用该分箱响应比例与未响应比例之差再乘上 $WOE_i$。注意这里的响应比例和未响应比例都是用当前分箱中响应数量/整体样本响应数量和当前分箱未响应数量/整体样本未响应数量计算得到。</p>
 <p>IV值是看单个变量好坏客户分布的差异，这种差异越大表明这个变量对于好坏客户的区分度越高.</p>
+<p>WOE可能为负值，IV值不可能为负，根据IV值选择变量后，用WOE替换变量各分组的值进入模型。</p>
 <h5 id="2-2-利用IV值进行变量筛选"><a href="#2-2-利用IV值进行变量筛选" class="headerlink" title="2.2 利用IV值进行变量筛选"></a>2.2 利用IV值进行变量筛选</h5><p><img src="/2021/07/17/WOE编码与IV值/image-20210717175912098.png" alt="image-20210717175912098"></p>
-<p>如果IV值大于0.5，则考虑要对这个变量进行分群处理。即根据这个变量拆分成几个样本子集，分别在各个样本子集上建模。</p>
+<p>一般我们选择 IV值大于0.02的那些变量进入模型。如果IV值大于0.5，则考虑要对这个变量进行分群处理。即根据这个变量拆分成几个样本子集，分别在各个样本子集上建模。</p>
 <h5 id="2-3-在python中计算IV"><a href="#2-3-在python中计算IV" class="headerlink" title="2.3 在python中计算IV"></a>2.3 在python中计算IV</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calIV</span><span class="params">(df, var, y)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    计算IV值</span></span><br><span class="line"><span class="string">    param df：数据集X</span></span><br><span class="line"><span class="string">    param var：已分组的列名</span></span><br><span class="line"><span class="string">    param y：响应变量y（0,1）</span></span><br><span class="line"><span class="string">    return：IV值</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    df_woe_iv = pd.crosstab(df[var], y, normalize=<span class="string">'columns'</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>))).assign(iv=<span class="keyword">lambda</span> dfx: np.sum(dfx[<span class="string">'woe'</span>] * (dfx[<span class="number">1</span>] - dfx[<span class="number">0</span>])))</span><br><span class="line"></span><br><span class="line">    a = df_woe_iv[<span class="string">'iv'</span>].reset_index()</span><br><span class="line">    <span class="keyword">return</span> a.loc[<span class="number">0</span>, <span class="string">'iv'</span>]</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -1991,12 +2034,15 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p>显然，lift(提升指数)越大，模型的运行效果越好。如果这个模型的预测能力跟 baseline model 一样（lift 等于 1），这个模型就没有任何 “提升” 了（套一句金融市场的话，它的业绩没有跑过市场）。</p>
 <p>以信用评分卡模型为例，LIFT提升度衡量的是评分模型对坏样本的预测能力相比随机选择的倍数，LIFT大于1说明模型表现优于随机选择。我们通常会将打分后的样本按分数从低到高（违约概率从高到低）排序，取10或20等分（有同分数对应多条观测的情况，所以各组观测数未必完全相等），并对组内观测数与坏样本数进行统计。用评分卡模型捕捉到的坏客户的占比，可由该组坏样本数除以总的坏样本数计算得出；而不使用此评分卡，以随机选择的方法覆盖到的坏客户占比，等价于该组观测数占总观测数的比例（分子分母同时乘以样本整体的坏账率）。对两者取累计值，取其比值，则得到提升度Lift，即该评分卡抓取坏客户的能力是随机选择的多少倍。</p>
 <h5 id="6-2-为什么要看-Lift"><a href="#6-2-为什么要看-Lift" class="headerlink" title="6.2 为什么要看 Lift"></a>6.2 为什么要看 Lift</h5><p>举个例子，一个贷款产品目标客群有10000个人，其中混合了500个坏客户。如果随机选择1000个人放款，可能会遇到50个坏客户。但是如果运用模型对坏客户加以预测，只选择模型分数最高的1000人放款，如果这1000个客户表现出来最终逾期的只有20户，说明模型在其中是起到作用的，此时的LIFT就是大于1的。如果表现出来逾期客户超过或等于50个，LIFT小于等于1，那么从效果上来看这个模型用了还不如不用。LIFT就是这样一个指标，可以衡量使用这个模型比随机选择对坏样本的预测能力提升了多少倍。</p>
-<h5 id="6-3-Lift-如何计算"><a href="#6-3-Lift-如何计算" class="headerlink" title="6.3 Lift 如何计算"></a>6.3 Lift 如何计算</h5><p>通常计算LIFT的时候会把模型的最终得分按照从低到高（违约概率从高到低）排序并等频分为10组或20组（有同分数对应多条观测的情况，所以各组观测数未必完全相等），计算分数最低（违约概率最高）的一组对应的<span style="color:red">累计坏样本占比/累计总样本占比</span>就等于LIFT值了。累计坏样本占比相当于是使用模型的情况下该组能够从所有的坏样本中挑出多少比例的坏样本<span style="color:red">（该组坏样本数/总坏样本数）</span>，而累计总样本占比等于随机抽样的情况下从所有坏样本抽取了多少比例的坏样本<span style="color:red">（该组人数/总人数）</span>（即以随机选择的方法覆盖到的坏客户占比，等价于该组观测数占总观测数的比例（分子分母同时乘以样本整体的坏账率），也即完全随机的情况下，抽取10%的样本也会对应抽到坏样本中的10%，以6.2中的例子：(1000<em>(500/10000))/10000\</em>(500/10000)=1000/10000）。</p>
+<h5 id="6-3-Lift-如何计算"><a href="#6-3-Lift-如何计算" class="headerlink" title="6.3 Lift 如何计算"></a>6.3 Lift 如何计算</h5><p>通常计算LIFT的时候会把模型的最终得分按照从低到高（违约概率从高到低）排序并等频分为10组或20组（有同分数对应多条观测的情况，所以各组观测数未必完全相等），计算分数最低（违约概率最高）的一组对应的<span style="color:red">累计坏样本占比/累计总样本占比</span>就等于LIFT值了。累计坏样本占比相当于是使用模型的情况下该组能够从所有的坏样本中挑出多少比例的坏样本<span style="color:red">（该组坏样本数/总坏样本数）</span>，而累计总样本占比等于随机抽样的情况下从所有坏样本抽取了多少比例的坏样本<span style="color:red">（该组人数/总人数）</span>（即以随机选择的方法覆盖到的坏客户占比，等价于该组观测数占总观测数的比例（分子分母同时乘以样本整体的坏账率），也即完全随机的情况下，抽取10%的样本也会对应抽到坏样本中的10%，以6.2中的例子：<script type="math/tex">(1000*(500/10000))/(10000*(500/10000))=1000/10000</script>。</p>
 <p>注：关于提升度与累计提升度：通常提升度指的就是累计提升度？<br>每组都可以算一个累计提升度：衡量到目前组的情况<br>最大值：到前多少组，两者比值达到最大（一定在第一组？）</p>
+<blockquote>
+<p>个人理解：累计提升度可以理解为用百分之多少的人数覆盖了百分之多少的目标人群，如果用很少的人数覆盖了很大一部分的目标人群，则累计提升度会比较大。比较两个模型的效果时，以一个模型划分结果去等人数划分另一个模型，哪个模型覆盖的目标人群更多，则其提升度越大。</p>
+</blockquote>
 <p>下图是一个提升表（Lift Table）的示例：</p>
 <p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011151956385.png" alt="image-20211011151956385"></p>
 <p> 以分数段为横轴，以提升度为纵轴，可绘制出累计提升图，示例如下：</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/myblog\test\blog\source\_posts\Precision-Recall-ROC曲线等\image-20211011152920681.png" alt="image-20211011152920681" style="zoom:80%;"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011152920681.png" alt="image-20211011152920681" style="zoom:80%;"></p>
 <p> 有了累计提升图，我们就能直观地去比较不同模型或策略给我们带来的区分能力增益程度。</p>
 <p>对累计提升度的解释：</p>
 <blockquote>
@@ -2873,12 +2919,9 @@ p_c=\frac{exp(f_c(x_1))}{∑_{k=1}^3exp(f_k(x_1))}</script><p>(GBDT 多分类举
 <hr>
 <h2 id="篇三：XGBoost"><a href="#篇三：XGBoost" class="headerlink" title="篇三：XGBoost"></a>篇三：XGBoost</h2><p><img src="/2020/07/25/决策树/1595667573239.png" alt="1595667573239"></p>
 <blockquote>
-<p>本部分内容参考公众号Datawhale</p>
-<p><a href="https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ</a></p>
-<p>以及文章：</p>
-<p><a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a></p>
-<p>XGBoost原论文：</p>
-<p><a href="https://arxiv.org/pdf/1603.02754.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1603.02754.pdf</a></p>
+<p>本部分内容参考公众号Datawhale<br><a href="https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ</a></p>
+<p>以及文章：<br><a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a></p>
+<p>XGBoost原论文：<br><a href="https://arxiv.org/pdf/1603.02754.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1603.02754.pdf</a></p>
 </blockquote>
 <p>（注：以下内容只包含XGBoost部分，LightGBM部分可见原文链接）</p>
 <h3 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h3><p>XGBoost 是大规模并行 boosting tree 的工具，它是目前最快最好的开源 boosting tree 工具包，比常见的工具包快 10 倍以上。Xgboost 和 GBDT 两者都是 boosting 方法，除了工程实现、解决问题上的一些差异外，最大的不同就是目标函数的定义。</p>
@@ -3869,6 +3912,12 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install package-name</span><br></pre></td></tr></table></figure>
 <p>若安装过程中出现[WinError 5]错误，可尝试使用<code>pip install --user package-name</code></p>
 <p>参考<a href="https://www.lizenghai.com/archives/585.html" target="_blank" rel="noopener">https://www.lizenghai.com/archives/585.html</a></p>
+<p>指定源：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/dss875914213/article/details/86500146" target="_blank" rel="noopener">https://blog.csdn.net/dss875914213/article/details/86500146</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install package-name -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">清华：https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line">华中理工大学：http://pypi.hustunique.com/</span><br><span class="line">山东理工大学：http://pypi.sdutlinux.org/ </span><br><span class="line">豆瓣：http://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
 <h4 id="所有已安装的包"><a href="#所有已安装的包" class="headerlink" title="所有已安装的包"></a>所有已安装的包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip list</span><br></pre></td></tr></table></figure>
 <h4 id="查看某个已安装包"><a href="#查看某个已安装包" class="headerlink" title="查看某个已安装包"></a>查看某个已安装包</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip show package_name</span><br></pre></td></tr></table></figure>
 <h4 id="检查哪些包需要更新"><a href="#检查哪些包需要更新" class="headerlink" title="检查哪些包需要更新"></a>检查哪些包需要更新</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip list --outdated</span><br></pre></td></tr></table></figure>
@@ -4593,8 +4642,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>文章及网站访问量：</p>
 <p><img src="/2020/02/17/hexo相关问题/1595773900727.png" alt="1595773900727"></p>
 <p>注：由于原链接已失效，还需修改</p>
-<p>themes\next\layout_third_party\analytics\busuanzi-counter.swig 中</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">src = <span class="string">"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">themes\next\layout\_third_party\analytics\busuanzi-counter.swig 中</span><br><span class="line">src = <span class="string">"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2020/02/17/hexo相关问题/1595774099538.png" alt="1595774099538"></p>
 <h4 id="给博客加上萌宠或萌妹子"><a href="#给博客加上萌宠或萌妹子" class="headerlink" title="给博客加上萌宠或萌妹子"></a>给博客加上萌宠或萌妹子</h4><p>参考 <a href="https://www.jianshu.com/p/c59a15d90759" target="_blank" rel="noopener">https://www.jianshu.com/p/c59a15d90759</a></p>
 <p>不同的选择效果见 <a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">https://huaji8.top/post/live2d-plugin-2.0/</a></p>
@@ -4613,7 +4661,8 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p><img src="/2020/02/17/hexo相关问题/1582014322346.png" alt="1582014322346"></p>
 <h4 id="关于目录"><a href="#关于目录" class="headerlink" title="关于目录"></a>关于目录</h4><p>在 themes\next\_config.yml 中设定，不要去安装 hexo-toc，否则会冲突</p>
 <p><img src="/2020/02/17/hexo相关问题/1582014793720.png" alt="1582014793720"></p>
-<h4 id="嵌入视频"><a href="#嵌入视频" class="headerlink" title="嵌入视频"></a>嵌入视频</h4><p>参考 <a href="https://www.bilibili.com/video/av23207325/" target="_blank" rel="noopener">https://www.bilibili.com/video/av23207325/</a></p>]]></content>
+<h4 id="嵌入视频"><a href="#嵌入视频" class="headerlink" title="嵌入视频"></a>嵌入视频</h4><p>参考 <a href="https://www.bilibili.com/video/av23207325/" target="_blank" rel="noopener">https://www.bilibili.com/video/av23207325/</a></p>
+<h4 id="NexT主题官方文档"><a href="#NexT主题官方文档" class="headerlink" title="NexT主题官方文档"></a>NexT主题官方文档</h4><p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a></p>]]></content>
       <categories>
         <category>hexo</category>
       </categories>
@@ -9067,34 +9116,44 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
   <entry>
     <title>读取与保存csv和txt文件</title>
     <url>/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="一、csv文件"><a href="#一、csv文件" class="headerlink" title="一、csv文件"></a>一、csv文件</h4><ul>
-<li>读取</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_csv(<span class="string">"Google_Stock_Price_Train.csv"</span>)</span><br><span class="line">train.head()</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120531625.png" alt="1594120531625"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="一、csv文件"><a href="#一、csv文件" class="headerlink" title="一、csv文件"></a>一、csv文件</h4><h5 id="1-读取"><a href="#1-读取" class="headerlink" title="1. 读取"></a>1. 读取</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_csv(<span class="string">"Google_Stock_Price_Train.csv"</span>)</span><br><span class="line">train.head()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120531625.png" alt="1594120531625" style="zoom:80%;"></p>
 <p>若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）</p>
-<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120744906.png" alt="1594120744906"></p>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120744906.png" alt="1594120744906" style="zoom:80%;"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">"dataset.csv"</span>, header=<span class="literal">None</span>)</span><br><span class="line">data.head()</span><br><span class="line"><span class="comment">#data.columns = ['date','open','high','low','close','volume']</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120675413.png" alt="1594120675413"></p>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/1594120675413.png" alt="1594120675413" style="zoom:80%;"></p>
 <p>或者用names指定需要的列表头</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">'dataset.csv'</span>, names =  [<span class="string">'date'</span>,<span class="string">'open'</span>,<span class="string">'high'</span>,<span class="string">'low'</span>,<span class="string">'close'</span>,<span class="string">'volume'</span>])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>保存</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">save = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">save.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br></pre></td></tr></table></figure>
-<h4 id="二、txt文件"><a href="#二、txt文件" class="headerlink" title="二、txt文件"></a>二、txt文件</h4><ul>
-<li>读取(注：法一和法二都有可能会造成行数缺少或数据分割不正确的现象，建议采用法三)</li>
-</ul>
+<p><strong>另：关于读取csv文件，报错：</strong></p>
+<blockquote>
+<p>参考 <a href="https://www.cnblogs.com/huangchenggener/p/10983812.html" target="_blank" rel="noopener">https://www.cnblogs.com/huangchenggener/p/10983812.html</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&apos;utf-8&apos; codec can&apos;t decode byte 0xd4 in position 0: invalid continuation byte</span><br></pre></td></tr></table></figure>
+<p>法一：csv文件的保存格式改为 “CSV UTF-8 (逗号分割) (*.csv)”</p>
+<p>法二：pd.read_csv()中加上编码方式：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.read_csv(<span class="string">"xxx.csv"</span>, encoding=<span class="string">'gbk'</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="2-保存"><a href="#2-保存" class="headerlink" title="2. 保存"></a>2. 保存</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">df.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br></pre></td></tr></table></figure>
+<p><strong>另：关于使用to_csv保存后，打开csv有中文乱码问题：</strong></p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/zhuzuwei/article/details/80890007" target="_blank" rel="noopener">pandas 之 to_csv 保存数据出现中文乱码问题及解决办法</a></p>
+</blockquote>
+<p>若有乱码问题，使用如下语句：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.to_csv(<span class="string">"xxx.csv"</span>, index=<span class="literal">False</span>, encoding=<span class="string">'utf_8'</span>)</span><br><span class="line">若仍有乱码，可使用：</span><br><span class="line">df.to_csv(<span class="string">"xxx.csv"</span>, index=<span class="literal">False</span>, encoding=<span class="string">'utf_8_sig'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="二、txt文件"><a href="#二、txt文件" class="headerlink" title="二、txt文件"></a>二、txt文件</h4><h5 id="1-读取-1"><a href="#1-读取-1" class="headerlink" title="1. 读取"></a>1. 读取</h5><p>(注：法一和法二都有可能会造成行数缺少或数据分割不正确的现象，建议采用法三)</p>
 <p>法一</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_table(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
 <p>法二</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_fwf(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
 <p>法三</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">####### example 1 #########</span></span><br><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### example 2 #########</span></span><br><span class="line">stream = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'dataset.txt'</span>):</span><br><span class="line">    row = [eval(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.strip().split(<span class="string">' '</span>)]</span><br><span class="line">    stream.append(row)</span><br><span class="line">    </span><br><span class="line">arms = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">0</span>]</span><br><span class="line">    arms.append(temp)</span><br><span class="line">    </span><br><span class="line">rewards = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">1</span>]</span><br><span class="line">    rewards.append(temp)</span><br><span class="line">    </span><br><span class="line">contexts = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    contexts.append(stream[i][<span class="number">2</span>:])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>保存(方法同csv)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">RF_test.to_csv(<span class="string">"RF_test.txt"</span>, sep = <span class="string">'\t'</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>]]></content>
+<h5 id="2-保存-1"><a href="#2-保存-1" class="headerlink" title="2. 保存"></a>2. 保存</h5><p>方法同csv</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">RF_test.to_csv(<span class="string">"RF_test.txt"</span>, sep = <span class="string">'\t'</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="三、json文件"><a href="#三、json文件" class="headerlink" title="三、json文件"></a>三、json文件</h4><p>读取：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./config.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	dicts = json.load(f)</span><br></pre></td></tr></table></figure>
+<h4 id="四、pickle文件"><a href="#四、pickle文件" class="headerlink" title="四、pickle文件"></a>四、pickle文件</h4><h5 id="1-保存"><a href="#1-保存" class="headerlink" title="1. 保存"></a>1. 保存</h5><p>例：保存xgb模型</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line">pickle.dump(xgb, open(<span class="string">"./xgb.pkl"</span>, <span class="string">"wb"</span>))</span><br></pre></td></tr></table></figure>
+<h5 id="2-读取"><a href="#2-读取" class="headerlink" title="2. 读取"></a>2. 读取</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./xgb.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	model = pickle.load(f)</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -9507,7 +9566,7 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
 <p>更多Python基础见我的onenote笔记本”Python学习笔记“<br>另：关于 Python 的教程可参考廖雪峰的网站 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
 </blockquote>
 <h3 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h3><p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp;&amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
 <h3 id="2-比较操作符"><a href="#2-比较操作符" class="headerlink" title="2. 比较操作符"></a>2. 比较操作符</h3><blockquote>
 <p>>, &lt;, &gt;=, &lt;=, ==, != </p>
 </blockquote>
@@ -9717,8 +9776,8 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>机器学习</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
 </search>

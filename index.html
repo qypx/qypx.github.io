@@ -284,6 +284,332 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/12/30/python文件编码说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/30/python文件编码说明/" itemprop="url">python文件编码说明</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-30T16:05:21+08:00">
+                2021-12-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-01-01T20:11:44+08:00">
+                2022-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考<br><a href="https://www.cnblogs.com/sixbeauty/p/4284427.html" target="_blank" rel="noopener">python文件编码说明 coding=utf-8 - 不笑猫 - 博客园 (cnblogs.com)</a><br><a href="https://www.python.org/dev/peps/pep-0263/" target="_blank" rel="noopener">PEP 263 — Defining Python Source Code Encodings | Python.org</a></p>
+</blockquote>
+<p>在python 文件开头（一般是第一行或第二行），用来说明你的Python源程序文件用使用的编码。缺省情况下默认使用ascii编码，但如果在其中写中文的话，python解释器一般会报错，但如果加上你所用的文件编码，python就会自动处理不再报错。</p>
+<p>通常写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: &lt;encoding name&gt; -*-</span><br></pre></td></tr></table></figure>
+<p>或：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># coding=&lt;encoding name&gt;</span><br></pre></td></tr></table></figure>
+<p>More precisely, the first or second line must match the following regular expression:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/12/30/关于环境变量path与classpath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/30/关于环境变量path与classpath/" itemprop="url">关于环境变量path与classpath</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-30T15:53:28+08:00">
+                2021-12-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-01-01T21:09:02+08:00">
+                2022-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">软件环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考<br><a href="https://blog.csdn.net/handsome_boy_wsq/article/details/82178724" target="_blank" rel="noopener">环境变量——关于PATH与CLASSPATH的区别（作用）</a><br><a href="https://blog.csdn.net/mydreamongo/article/details/8155408" target="_blank" rel="noopener">path与classpath区别</a></p>
+</blockquote>
+<h4 id="1-Path"><a href="#1-Path" class="headerlink" title="1. Path"></a>1. Path</h4><p>PATH是系统用来指定可执行文件的完整路径。</p>
+<p>当在cmd中执行命令时，如果执行的可执行文件不在当前目录下，那么系统就会依次搜索PATH中设置的路径。例如，若在PATH中设置了python的安装目录（D:\python\python-3.6.3），那么就可以在任意路径下使用python xxx.py执行python程序，而不必在CMD中切换到python的安装目录下运行该命令。</p>
+<h4 id="2-classpath"><a href="#2-classpath" class="headerlink" title="2. classpath"></a>2. classpath</h4><p>CLASSPATH是指定程序中所使用的类文件所在的位置。classpath是java专用的查找类的路径。一般只在配置java环境时会用到。</p>
+<h4 id="3-用户变量与系统变量"><a href="#3-用户变量与系统变量" class="headerlink" title="3. 用户变量与系统变量"></a>3. 用户变量与系统变量</h4><p>用户变量只对当前用户有效；系统变量对所有用户有效。对于当前用户而言，设置用户变量与系统变量的效果大致相同，只是系统变量的路径排在用户变量的路径之前。</p>
+<p>小结：一般安装软件时环境变量的配置，编辑系统变量下的path内容即可。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/10/12/关于python2与python3中的可变参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -663,8 +989,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-07-17T19:02:36+08:00">
-                2021-07-17
+              <time title="更新于" itemprop="dateModified" datetime="2021-12-15T21:41:10+08:00">
+                2021-12-15
               </time>
             
           </span>
@@ -721,10 +1047,10 @@
       
         
           <blockquote>
-<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎 (zhihu.com)</a></p>
+<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎</a><br><a href="https://zhuanlan.zhihu.com/p/78809853" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/78809853</a></p>
 </blockquote>
 <h4 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0. Introduction"></a>0. Introduction</h4><p>WOE (weight of evidence): 证据权重<br>IV (information value): 信息值</p>
-<p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
+<p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的<strong>预测能力</strong>，用于筛选变量，IV值越大，表示该变量的预测能力越强。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/07/17/WOE编码与IV值/#more" rel="contents">
@@ -1614,440 +1940,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/02/21/Linux常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/21/Linux常用命令/" itemprop="url">Linux常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-21T17:36:29+08:00">
-                2021-02-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-10-09T11:03:19+08:00">
-                2021-10-09
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="0-在线使用-Linux"><a href="#0-在线使用-Linux" class="headerlink" title="0. 在线使用 Linux"></a>0. 在线使用 Linux</h3><blockquote>
-<p>参考 <a href="https://www.sohu.com/a/343421845_298038" target="_blank" rel="noopener">https://www.sohu.com/a/343421845_298038</a></p>
-</blockquote>
-<p>JS/UIX - Terminal</p>
-<p>地址：<a href="https://www.masswerk.at/jsuix/index.html" target="_blank" rel="noopener">https://www.masswerk.at/jsuix/index.html</a></p>
-<p>进入后，点击open terminal即可。它提供简单的终端环境，没有自带gcc等编译套件，不过练习基本命令和shell脚本还是可以的。</p>
-<h3 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1. 常用命令"></a>1. 常用命令</h3><h4 id="1-1-ls-命令-显示指定工作目录下的内容"><a href="#1-1-ls-命令-显示指定工作目录下的内容" class="headerlink" title="1.1 ls 命令 - 显示指定工作目录下的内容"></a>1.1 ls 命令 - 显示指定工作目录下的内容</h4><blockquote>
-<p>详见 <a href="https://www.runoob.com/linux/linux-comm-ls.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-ls.html</a></p>
-</blockquote>
-<p>显示指定工作目录下的内容（列出目前工作目录所含之文件及子目录)</p>
-<p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [-alrtAFR] [name...]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>-a</code> 显示所有文件及目录 (<strong>.</strong> 开头的隐藏文件也会列出)</li>
-<li><code>-l</code> 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</li>
-</ul>
-<p><img src="/2021/02/21/Linux常用命令/1613903492422.png" alt="1613903492422"></p>
-<h4 id="1-2-查看文件内容：cat"><a href="#1-2-查看文件内容：cat" class="headerlink" title="1.2 查看文件内容：cat"></a>1.2 查看文件内容：cat</h4><p><img src="/2021/02/21/Linux常用命令/1613903531146.png" alt="1613903531146"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/02/21/Linux常用命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/02/14/SQL中的各种连接join/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/14/SQL中的各种连接join/" itemprop="url">SQL中的各种连接join</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-14T15:03:41+08:00">
-                2021-02-14
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T15:57:41+08:00">
-                2021-06-27
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>参考：<br><a href="https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html" target="_blank" rel="noopener">https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html</a><br><a href="https://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join_left.asp</a><br><a href="https://www.w3school.com.cn/sql/sql_join.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join.asp</a><br><a href="https://www.cnblogs.com/yelp/p/3761443.html" target="_blank" rel="noopener">https://www.cnblogs.com/yelp/p/3761443.html</a><br><a href="https://blog.csdn.net/qq_41973536/article/details/81081024" target="_blank" rel="noopener">https://blog.csdn.net/qq_41973536/article/details/81081024</a></p>
-</blockquote>
-<p>最常见的 JOIN 类型：<strong>SQL INNER JOIN（等价于 JOIN）、SQL LEFT JOIN（等价于LEFT OUTER JOIN）、SQL  RIGHT JOIN（等价于RIGHT OUTER JOIN）、SQL FULL JOIN（等价于FULL OUTER JOIN），</strong>其中前一种是内连接，后三种是外连接。</p>
-<ul>
-<li>JOIN: 内连接，又叫等值连接，只返回两个表中连接字段相等的行。（如果表中有至少一个匹配，则返回行）</li>
-<li>LEFT JOIN: 左连接，返回左表中所有的记录以及右表中连接字段相等的记录。（即使右表中没有匹配，也从左表返回所有的行）</li>
-<li>RIGHT JOIN: 右连接，返回右表中所有的记录以及左表中连接字段相等的记录。（即使左表中没有匹配，也从右表返回所有的行）</li>
-<li>FULL JOIN: 外连接，返回两个表中的行：left join + right join。（只要其中一个表中存在匹配，就返回行）</li>
-<li>cross join: 结果是笛卡尔积，就是第一个表的行数乘以第二个表的行数。</li>
-</ul>
-<p>假设我们有两张表，Table A是左边的表，Table B是右边的表。</p>
-<p>Table A:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Google</td>
-</tr>
-<tr>
-<td>2</td>
-<td>淘宝</td>
-</tr>
-<tr>
-<td>3</td>
-<td>微博</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Facebook</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Table B:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>美国</td>
-</tr>
-<tr>
-<td>5</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>3</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>6</td>
-<td>美国</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="1-INNER-JOIN"><a href="#1-INNER-JOIN" class="headerlink" title="1. INNER JOIN"></a>1. INNER JOIN</h3><p>内连接只连接匹配的行。</p>
-<p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span></span><br><span class="line"><span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/14/SQL中的各种连接join/1624780519991.png" alt="1624780519991"></p>
-<p>INNER JOIN产生的结果集，是1和2的交集。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-<p>执行以上SQL输出结果如下：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Google</td>
-<td>美国</td>
-</tr>
-<tr>
-<td>3</td>
-<td>微博</td>
-<td>中国</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>等价于</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address</span><br><span class="line"><span class="keyword">from</span> tableA, tableB</span><br><span class="line"><span class="keyword">where</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/02/14/SQL中的各种连接join/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2100,7 +1992,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2111,7 +2003,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2182,7 +2074,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
