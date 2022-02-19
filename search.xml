@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于python2与python3使用上的差异</title>
+    <url>/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要对比版本：python27与python36</p>
+<h4 id="1-关于copy"><a href="#1-关于copy" class="headerlink" title="1. 关于copy()"></a>1. 关于copy()</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy()</span><br></pre></td></tr></table></figure>
+<p>python3中没问题，python2中报错：</p>
+<p><img src="/2022/01/05/关于python2与python3使用上的差异/image-20220105160555692.png" alt="image-20220105160555692"></p>
+<p>解决方法：改为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">values2 = list(values)</span><br><span class="line"><span class="comment"># 或 values2 = values[:]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-Python2-不支持中文问题"><a href="#2-Python2-不支持中文问题" class="headerlink" title="2. Python2 不支持中文问题"></a>2. Python2 不支持中文问题</h4><p>创建test.py程序如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(&quot;你好&quot;)</span><br></pre></td></tr></table></figure>
+<p>python3运行时，输出 你好，python2运行时，输出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character &apos;\xe4&apos; in file e:/pycharmProject/ml_module/main5.py on line 7, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details</span><br></pre></td></tr></table></figure>
+<p>解决方法：在python文件最开头加上：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="3-关于除法"><a href="#3-关于除法" class="headerlink" title="3. 关于除法"></a>3. 关于除法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(2/3)</span><br><span class="line"></span><br><span class="line">python3中：0.6666666666666666</span><br><span class="line">pyhon2中：0</span><br></pre></td></tr></table></figure>
+<p>python2中的除法等价于python3中的//</p>
+<p>解决方法：</p>
+<p>法一：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;float(2)/3</span><br><span class="line">0.6666666666666666</span><br><span class="line"></span><br><span class="line">不能直接float()的，例如array等，可.astype(float) </span><br><span class="line">float 应该是等价于 &quot;float64&quot;</span><br><span class="line">int 应该是等价于 &quot;int32&quot;</span><br></pre></td></tr></table></figure>
+<p>法二：更简单的方法：</p>
+<blockquote>
+<p>参考 <a href="https://stackoverflow.com/questions/21316968/division-in-python-2-7-and-3-3" target="_blank" rel="noopener">Division in Python 2.7. and 3.3 - Stack Overflow</a></p>
+</blockquote>
+<p>在python文件的最开头加上：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from __future__ import division</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<p><img src="/2022/01/05/关于python2与python3使用上的差异/image-20220105162421744.png" alt="image-20220105162421744"></p>
+<h4 id="4-关于在python3环境中保存，python2环境中读取文件"><a href="#4-关于在python3环境中保存，python2环境中读取文件" class="headerlink" title="4. 关于在python3环境中保存，python2环境中读取文件"></a>4. 关于在python3环境中保存，python2环境中读取文件</h4><p>详见 <a href="https://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">读取与保存csv和txt文件</a></p>
+<h4 id="5-关于python2与python3中可变参数的差异"><a href="#5-关于python2与python3中可变参数的差异" class="headerlink" title="5. 关于python2与python3中可变参数的差异"></a>5. 关于python2与python3中可变参数的差异</h4><p>详见 <a href="https://qypx.github.io/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">关于python2与python3中的可变参数</a></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python变量作用域（全局变量和局部变量）</title>
     <url>/2022/01/02/Python%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%89/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -68,8 +107,8 @@
   <entry>
     <title>关于python2与python3中的可变参数</title>
     <url>/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>参考 <a href="https://www.it1352.com/734786.html" target="_blank" rel="noopener">python2和python3中的可变参数有什么不同? - IT屋-程序员软件开发技术分享社区 (it1352.com)</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-函数定义中的-与"><a href="#1-函数定义中的-与" class="headerlink" title="1. 函数定义中的*与**"></a>1. 函数定义中的*与**</h4><blockquote>
+<p> 参考 <a href="https://www.it1352.com/734786.html" target="_blank" rel="noopener">python2和python3中的可变参数有什么不同?</a></p>
 </blockquote>
 <p>python2中参数定义的顺序必须是：必选参数、默认参数、可变参数和关键字参数。python3中不一定要如此。</p>
 <p>例：</p>
@@ -86,8 +125,21 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">concat2</span><span class="params">(sep=<span class="string">"/"</span>, *args)</span>:</span></span><br><span class="line">	print(sep.join(args))</span><br></pre></td></tr></table></figure>
 <p>↑此定义在python2, python3中均正确.</p>
 <p>调用时：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;concat2(&quot;.&quot;, &quot;aaa&quot;, &quot;bbb&quot;,&quot;ccc&quot;)</span><br><span class="line">aaaa.bbb.ccc</span><br><span class="line"></span><br><span class="line">1.不能写为 concat1(sep=&quot;.&quot;, &quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;)</span><br><span class="line">2.第一个参数默认代入sep中，若写为concat1(&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;)则结果为:</span><br><span class="line">bbbaaaccc</span><br><span class="line">3并且，也不能将sep=&quot;.&quot;写在末尾，例如，若写为concat(&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,sep=&quot;.&quot;)</span><br><span class="line">会报错:</span><br><span class="line">TypeError: concat2() got multiple values for keyword argument &apos;sep&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;concat2(<span class="string">"."</span>, <span class="string">"aaa"</span>, <span class="string">"bbb"</span>,<span class="string">"ccc"</span>)</span><br><span class="line">aaaa.bbb.ccc</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>不能写为 concat1(sep=<span class="string">"."</span>, <span class="string">"aaa"</span>,<span class="string">"bbb"</span>,<span class="string">"ccc"</span>)</span><br><span class="line"><span class="number">2.</span>第一个参数默认代入sep中，若写为concat1(<span class="string">"aaa"</span>,<span class="string">"bbb"</span>,<span class="string">"ccc"</span>)则结果为:</span><br><span class="line">bbbaaaccc</span><br><span class="line"><span class="number">3</span>并且，也不能将sep=<span class="string">"."</span>写在末尾，例如，若写为concat(<span class="string">"aaa"</span>,<span class="string">"bbb"</span>,<span class="string">"ccc"</span>,sep=<span class="string">"."</span>)</span><br><span class="line">会报错:</span><br><span class="line">TypeError: concat2() got multiple values <span class="keyword">for</span> keyword argument <span class="string">'sep'</span></span><br></pre></td></tr></table></figure>
 <p>↑ python2, python3中一致</p>
+<h4 id="2-函数调用中的-与"><a href="#2-函数调用中的-与" class="headerlink" title="2. 函数调用中的*与**"></a>2. 函数调用中的*与**</h4><blockquote>
+<p>参考 <a href="https://blog.csdn.net/jarthong/article/details/88853156" target="_blank" rel="noopener">Python函数传参中的<em>与*</em></a></p>
+</blockquote>
+<p>假设有函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">	print(<span class="string">"a ="</span>, a, <span class="string">", b ="</span>, b, <span class="string">", c ="</span>, c)</span><br></pre></td></tr></table></figure>
+<p><code>test(*args)</code>：<code>*</code>的作用其实就是把<code>args</code>中的每个元素，作为位置参数传进去。<br><code>test(**kwargs)</code>：<code>**</code> 的作用则是把 <code>kwargs</code> 变成关键字参数传递。</p>
+<p>例1：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">args = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">test(*args)</span><br><span class="line"><span class="comment"># 结果：a = 1 , b = 2 , c = 3</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 写成 args = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] 也可以，结果一样</span><br><span class="line"><span class="number">2.</span> 若令 args = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)，报错：TypeError: test() takes <span class="number">3</span> positional arguments but <span class="number">4</span> were given</span><br></pre></td></tr></table></figure>
+<p>例2：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">kwargs = &#123;<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>:<span class="number">3</span>&#125;</span><br><span class="line">test(**kwargs)</span><br><span class="line"><span class="comment"># 结果：a = 1 , b = 2 , c = 3</span></span><br></pre></td></tr></table></figure>
+<p>例3：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(*args)</span>:</span></span><br><span class="line">	<span class="keyword">for</span> item <span class="keyword">in</span> args:</span><br><span class="line">		print(item)</span><br><span class="line">        </span><br><span class="line">args = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">test(*args)</span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="comment"># ↑ 1,2,3 被看作多个参数，分别被print出来</span></span><br><span class="line"></span><br><span class="line">test(args)</span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="comment"># ↑ (1,2,3) 被看作一个整体</span></span><br><span class="line"></span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line"><span class="number">1</span>  </span><br><span class="line"><span class="number">2</span>  </span><br><span class="line"><span class="number">3</span>  </span><br><span class="line"></span><br><span class="line">test((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>（↑ python2, python3 中结果一致）</p>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -117,7 +169,7 @@
     <title>WOE编码与IV值</title>
     <url>/2021/07/17/WOE%E7%BC%96%E7%A0%81%E4%B8%8EIV%E5%80%BC/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎</a><br><a href="https://zhuanlan.zhihu.com/p/78809853" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/78809853</a></p>
+<p>参考<br><a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈</a><br><a href="https://zhuanlan.zhihu.com/p/78809853" target="_blank" rel="noopener">机器学习-变量筛选之IV值和WOE</a></p>
 </blockquote>
 <h4 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0. Introduction"></a>0. Introduction</h4><p>WOE (weight of evidence): 证据权重<br>IV (information value): 信息值</p>
 <p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的<strong>预测能力</strong>，用于筛选变量，IV值越大，表示该变量的预测能力越强。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
@@ -2222,6 +2274,9 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p>ds-cheatsheets</p>
 <p><a href="https://github.com/FavioVazquez/ds-cheatsheets" target="_blank" rel="noopener">https://github.com/FavioVazquez/ds-cheatsheets</a></p>
 <p>各种cheatsheet，关于python, R, big data, machine learning, deep learning, SQL, data visulization等等。</p>
+<hr>
+<p><a href="https://github.com/MachineLP/CodeFun" target="_blank" rel="noopener">https://github.com/MachineLP/CodeFun</a></p>
+<p>包含编程语言（python, scala, c++）, 深度学习（tensorflow, keras, pytorch），机器学习（pyspark, feature engineering），AutoML/DL， 模型部署，sql等内容。</p>
 ]]></content>
       <categories>
         <category>机器学习</category>
@@ -4782,8 +4837,8 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p><img src="/2020/02/16/B树介绍/1581863461822.png" alt="1581863461822"></p>
 <p>这两种树都是平衡的多分树，它们都可以用于文件的索引结构，但B树只能支持随机检索，而B+树是有序的树，既能支持随机检索，又能支持顺序检索。</p>]]></content>
       <tags>
-        <tag>知识点</tag>
         <tag>B树</tag>
+        <tag>知识点</tag>
       </tags>
   </entry>
   <entry>
@@ -5041,8 +5096,8 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>HashSet</tag>
         <tag>知识点</tag>
+        <tag>HashSet</tag>
       </tags>
   </entry>
   <entry>
@@ -5381,19 +5436,28 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
   <entry>
     <title>Spark</title>
     <url>/2020/01/14/Spark/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
-<h3 id="Introduction-to-Spark"><a href="#Introduction-to-Spark" class="headerlink" title="Introduction to Spark"></a>Introduction to Spark</h3><p><img src="/2020/01/14/Spark/1578976053911.png" alt="1578976053911"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考 <a href="http://dblab.xmu.edu.cn/blog/985-2/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/985-2/</a></p>
+</blockquote>
+<h3 id="1-Introduction-to-Spark"><a href="#1-Introduction-to-Spark" class="headerlink" title="1. Introduction to Spark"></a>1. Introduction to Spark</h3><p><img src="/2020/01/14/Spark/1578976053911.png" alt="1578976053911"></p>
 <p><img src="/2020/01/14/Spark/1578976261212.png" alt="1578976261212"></p>
 <p>There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data.</p>
-<h4 id="Scalable"><a href="#Scalable" class="headerlink" title="Scalable"></a>Scalable</h4><p><img src="/2020/01/14/Spark/捕获.JPG" alt="捕获"></p>
-<h4 id="Fast"><a href="#Fast" class="headerlink" title="Fast"></a>Fast</h4><p><img src="/2020/01/14/Spark/1578977218206.png" alt="1578977218206"></p>
+<h4 id="1-1-Spark-运行架构"><a href="#1-1-Spark-运行架构" class="headerlink" title="1.1 Spark 运行架构"></a>1.1 Spark 运行架构</h4><h5 id="1-1-1-架构设计"><a href="#1-1-1-架构设计" class="headerlink" title="1.1.1 架构设计"></a>1.1.1 架构设计</h5><p><img src="/2020/01/14/Spark/image-20220110152940708.png" alt="image-20220110152940708"></p>
+<p>Spark运行架构包括集群资源管理器（Cluster Manager）、运行作业任务的工作节点（Worker  Node）、每个应用的任务控制节点（Driver）和每个工作节点上负责具体任务的执行进程（Executor）。其中，集群资源管理器可以是Spark自带的资源管理器，也可以是YARN或Mesos等资源管理框架。</p>
+<p>如下图所示，在Spark中，一个应用（Application）由一个任务控制节点（Driver）和若干个作业（Job）构成，一个作业由多个阶段（Stage）构成，一个阶段由多个任务（Task）组成。当执行一个应用时，任务控制节点会向集群管理器（Cluster  Manager）申请资源，启动Executor，并向Executor发送应用程序代码和文件，然后在Executor上执行任务，运行结束后，执行结果会返回给任务控制节点，或者写到HDFS或者其他数据库中。</p>
+<p><img src="/2020/01/14/Spark/image-20220110153314705.png" alt="image-20220110153314705"></p>
+<h5 id="1-1-2-运行流程"><a href="#1-1-2-运行流程" class="headerlink" title="1.1.2 运行流程"></a>1.1.2 运行流程</h5><p>Spark的基本运行流程如下：<br> （1）当一个Spark应用被提交时，首先需要为这个应用构建起基本的运行环境，即由任务控制节点（Driver）创建一个SparkContext，由SparkContext负责和资源管理器（Cluster Manager）的通信以及进行资源的申请、任务的分配和监控等。SparkContext会向资源管理器注册并申请运行Executor的资源；<br> （2）资源管理器为Executor分配资源，并启动Executor进程，Executor运行情况将随着“心跳”发送到资源管理器上；<br> （3）SparkContext根据RDD的依赖关系构建DAG图，DAG图提交给DAG调度器（DAGScheduler）进行解析，将DAG图分解成多个“阶段”（每个阶段都是一个任务集），并且计算出各个阶段之间的依赖关系，然后把一个个“任务集”提交给底层的任务调度器（TaskScheduler）进行处理；Executor向SparkContext申请任务，任务调度器将任务分发给Executor运行，同时，SparkContext将应用程序代码发放给Executor；<br> （4）任务在Executor上运行，把执行结果反馈给任务调度器，然后反馈给DAG调度器，运行完毕后写入数据并释放所有资源。</p>
+<p><img src="/2020/01/14/Spark/image-20220110154056575.png" alt="image-20220110154056575"></p>
+<p>总体而言，Spark运行架构具有以下特点：<br> （1）每个应用都有自己专属的Executor进程，并且该进程在应用运行期间一直驻留。Executor进程以多线程的方式运行任务，减少了多进程任务频繁的启动开销，使得任务执行变得非常高效和可靠；<br> （2）Spark运行过程与资源管理器无关，只要能够获取Executor进程并保持通信即可；<br> （3）Executor上有一个BlockManager存储模块，类似于键值存储系统（把内存和磁盘共同作为存储设备），在处理迭代计算任务时，不需要把中间结果写入到HDFS等文件系统，而是直接放在这个存储系统上，后续有需要时就可以直接读取；在交互式查询场景下，也可以把表提前缓存到这个存储系统上，提高读写IO性能；<br> （4）任务采用了数据本地性和推测执行等优化机制。数据本地性是尽量将计算移到数据所在的节点上进行，即“计算向数据靠拢”，因为移动计算比移动数据所占的网络资源要少得多。而且，Spark采用了延时调度机制，可以在更大的程度上实现执行过程优化。比如，拥有数据的节点当前正被其他的任务占用，那么，在这种情况下是否需要将数据移动到其他的空闲节点呢？答案是不一定。因为，如果经过预测发现当前节点结束当前任务的时间要比移动数据的时间还要少，那么，调度就会等待，直到当前节点可用。</p>
+<h4 id="1-2-Spark-特点"><a href="#1-2-Spark-特点" class="headerlink" title="1.2 Spark 特点"></a>1.2 Spark 特点</h4><h5 id="1-2-1-Scalable"><a href="#1-2-1-Scalable" class="headerlink" title="1.2.1 Scalable"></a>1.2.1 Scalable</h5><p><img src="/2020/01/14/Spark/捕获.JPG" alt="捕获"></p>
+<h5 id="1-2-2-Fast"><a href="#1-2-2-Fast" class="headerlink" title="1.2.2 Fast"></a>1.2.2 Fast</h5><p><img src="/2020/01/14/Spark/1578977218206.png" alt="1578977218206"></p>
 <p>Spark除了比MapReduce更快以外，还有一个优势：MapReduce is very limited in what it can do. You have to think about things in terms of mappers and reducers, whereas Spark provides a framework for removing that level of though from you, you can just think more about your end results and program toward that and think less about how to actual distribute it across the cluster.</p>
 <a id="more"></a>
-<h4 id="Hot"><a href="#Hot" class="headerlink" title="Hot"></a>Hot</h4><p><img src="/2020/01/14/Spark/1578977501017.png" alt="1578977501017"></p>
-<h4 id="Not-that-hard-可使用的语言，RDD"><a href="#Not-that-hard-可使用的语言，RDD" class="headerlink" title="Not that hard (可使用的语言，RDD)"></a>Not that hard (可使用的语言，RDD)</h4><p><img src="/2020/01/14/Spark/1578977890605.png" alt="1578977890605"></p>
+<h5 id="1-2-3-Hot"><a href="#1-2-3-Hot" class="headerlink" title="1.2.3 Hot"></a>1.2.3 Hot</h5><p><img src="/2020/01/14/Spark/1578977501017.png" alt="1578977501017"></p>
+<h5 id="1-2-4-Not-that-hard-可使用的语言，RDD"><a href="#1-2-4-Not-that-hard-可使用的语言，RDD" class="headerlink" title="1.2.4 Not that hard (可使用的语言，RDD)"></a>1.2.4 Not that hard (可使用的语言，RDD)</h5><p><img src="/2020/01/14/Spark/1578977890605.png" alt="1578977890605"></p>
 <p>A few lines of code can actually kick off some very complex analysis on a cluster.</p>
 <p>Spark 2.0 which came out in 2006, they’ve built on top of RDDs to produce something called a data set. That’s a little bit more of a SQL focused take on an RDD, but at the end of the day, it’s still built around the RDD.</p>
-<h4 id="Components-of-Spark"><a href="#Components-of-Spark" class="headerlink" title="Components of Spark"></a>Components of Spark</h4><p><img src="/2020/01/14/Spark/1578978133377.png" alt="1578978133377"></p>
+<h4 id="1-3-Components-of-Spark"><a href="#1-3-Components-of-Spark" class="headerlink" title="1.3 Components of Spark"></a>1.3 Components of Spark</h4><p><img src="/2020/01/14/Spark/1578978133377.png" alt="1578978133377"></p>
 <p>Spark has a lot of depth to it, so while you could just program at the RDD level within <strong>Spark Core</strong>, there are also libraries built on top of Spark that are part of Spark itself.</p>
 <p><strong>Spark Streaming</strong>: Instead of doing batch processing of data, you can actually input data in real time. Data can be ingested as it’s being produced, and then Spark can analyze it across some window of time, and you can output the results of that analysis to a database or some NoSQL data store, all within a few lines of code.</p>
 <p><strong>Spark SQL</strong>: Very hot area right now. It’s basically a SQL interface to Spark. You can write SQL queries against your data using Spark SQL. It allows us to do more optimizations beyond the directed acyclic graph, because it can do SQL optimizations on the queries that you’re actually running.</p>
@@ -5404,17 +5468,28 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>If you do want to end up using Spark in production in the real world, Python is OK to start with, but you probably want to move to Scala. </p>
 <p><img src="/2020/01/14/Spark/1578979634184.png" alt="1578979634184"></p>
 <p>It’s not very hard to move from Python to Scala. </p>
-<h3 id="RDD-The-Resilient-Distributed-Dataset"><a href="#RDD-The-Resilient-Distributed-Dataset" class="headerlink" title="RDD (The Resilient Distributed Dataset)"></a>RDD (The Resilient Distributed Dataset)</h3><p><img src="/2020/01/14/Spark/1578989468387.png" alt="1578989468387"></p>
-<h4 id="What-is-RDD"><a href="#What-is-RDD" class="headerlink" title="What is RDD?"></a>What is RDD?</h4><p><img src="/2020/01/14/Spark/1578989673088.png" alt="1578989673088"></p>
+<h3 id="2-RDD-The-Resilient-Distributed-Dataset"><a href="#2-RDD-The-Resilient-Distributed-Dataset" class="headerlink" title="2. RDD (The Resilient Distributed Dataset)"></a>2. RDD (The Resilient Distributed Dataset)</h3><p><img src="/2020/01/14/Spark/1578989468387.png" alt="1578989468387"></p>
+<h4 id="2-1-What-is-RDD"><a href="#2-1-What-is-RDD" class="headerlink" title="2.1 What is RDD?"></a>2.1 What is RDD?</h4><p><img src="/2020/01/14/Spark/1578989673088.png" alt="1578989673088"></p>
 <p>It’s an abstraction across all the nastiness that happens under the hood to actually make sure your job is evenly distributed across your cluster that it can handle failures in a resilient manner, and at the end of the day, it just looks like a dataset to you.</p>
 <p>From a programming standpoint, an RDD is just a dataset to you. But under the hood, it’s resilient and distributed and you don’t have to think about that very much.</p>
-<h4 id="How-do-you-make-RDD"><a href="#How-do-you-make-RDD" class="headerlink" title="How do you make RDD"></a>How do you make RDD</h4><p><img src="/2020/01/14/Spark/1578989938843.png" alt="1578989938843"></p>
+<p>一个RDD就是一个分布式对象集合，本质上是一个只读的分区记录集合，每个RDD可以分成多个分区，每个分区就是一个数据集片段，并且一个RDD的不同分区可以被保存到集群中不同的节点上，从而可以在集群中的不同节点上进行并行计算。</p>
+<p>RDD是只读的记录分区的集合，不能直接修改，只能基于稳定的物理存储中的数据集来创建RDD，或者通过在其他RDD上执行确定的转换操作（如map、join和groupBy）而创建得到新的RDD。</p>
+<p>RDD提供了一组丰富的操作以支持常见的数据运算，分为<strong>“行动”（Action）</strong>和<strong>“转换”（Transformation）</strong>两种类型，前者用于执行计算并指定输出的形式，后者指定RDD之间的相互依赖关系。两类操作的主要区别是，转换操作（比如map、filter、groupBy、join等）接受RDD并返回RDD，而行动操作（比如count、collect等）接受RDD但是返回非RDD（即输出一个值或结果）。</p>
+<p>RDD典型的执行过程如下：</p>
+<ol>
+<li>RDD读入外部数据源（或者内存中的集合）进行创建；</li>
+<li>RDD经过一系列的“转换”操作，每一次都会产生不同的RDD，供给下一个“转换”使用；</li>
+<li>最后一个RDD经“行动”操作进行处理，并输出到外部数据源（或者变成Scala集合或标量）。</li>
+</ol>
+<p>需要说明的是，RDD采用了<strong>惰性调用</strong>（更多关于惰性调用的内容见后文），即在RDD的执行过程中（如图9-8所示），真正的计算发生在RDD的“行动”操作，对于“行动”之前的所有“转换”操作，Spark只是记录下“转换”操作应用的一些基础数据集以及RDD生成的轨迹，即相互之间的依赖关系，而不会触发真正的计算。</p>
+<p><img src="/2020/01/14/Spark/image-20220110150112274.png" alt="image-20220110150112274"></p>
+<h4 id="2-2-How-do-you-make-RDD"><a href="#2-2-How-do-you-make-RDD" class="headerlink" title="2.2 How do you make RDD"></a>2.2 How do you make RDD</h4><p><img src="/2020/01/14/Spark/1578989938843.png" alt="1578989938843"></p>
 <p>The SparkContext is sort of the environment that your driver program runs within Spark, and it is what creates RDDs.</p>
-<h4 id="Create-RDD"><a href="#Create-RDD" class="headerlink" title="Create RDD"></a>Create RDD</h4><p><img src="/2020/01/14/Spark/1578990141827.png" alt="1578990141827"></p>
+<h4 id="2-3-Create-RDD"><a href="#2-3-Create-RDD" class="headerlink" title="2.3 Create RDD"></a>2.3 Create RDD</h4><p><img src="/2020/01/14/Spark/1578990141827.png" alt="1578990141827"></p>
 <p><img src="/2020/01/14/Spark/1579012530332.png" alt="1579012530332"></p>
 <p><img src="/2020/01/14/Spark/1578990969096.png" alt="1578990969096"></p>
 <p>Once you have an RDD, what do you do with it?</p>
-<h4 id="Transform-RDD"><a href="#Transform-RDD" class="headerlink" title="Transform RDD"></a>Transform RDD</h4><p><img src="/2020/01/14/Spark/1579008653516.png" alt="1579008653516"></p>
+<h4 id="2-4-Transform-RDD"><a href="#2-4-Transform-RDD" class="headerlink" title="2.4 Transform RDD"></a>2.4 Transform RDD</h4><p><img src="/2020/01/14/Spark/1579008653516.png" alt="1579008653516"></p>
 <p><em>map</em>: apply some function to every input row of your RDD and create a new RDD that is transformed in some way. Map is used when you have a one to one relationship </p>
 <p><em>flatmap</em>: 与map的区别在于，使用map, input于output是一对一的关系，使用flatmap, can have any relationship, where your input lines may or may not result in one or more output lines. 例如，maybe you want to split out each input line into multiple rows, or maybe you want to discard some of the input lines if they’re invalid.</p>
 <p><em>filter</em>: can be used to take stuff out of an RDD so you can provide that with some function that determines whether or not a row survives.</p>
@@ -5422,13 +5497,51 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p><em>sample</em>: sample them randomly.</p>
 <p><img src="/2020/01/14/Spark/1579008991727.png" alt="1579008991727"></p>
 <p><img src="/2020/01/14/Spark/1579009321705.png" alt="1579009321705"></p>
-<h4 id="RDD-actions"><a href="#RDD-actions" class="headerlink" title="RDD actions"></a>RDD actions</h4><p><img src="/2020/01/14/Spark/1579009474269.png" alt="1579009474269"></p>
-<h4 id="Lazy-evaluation"><a href="#Lazy-evaluation" class="headerlink" title="Lazy evaluation"></a>Lazy evaluation</h4><p><img src="/2020/01/14/Spark/1579009528882.png" alt="1579009528882"></p>
+<h4 id="2-5-RDD-actions"><a href="#2-5-RDD-actions" class="headerlink" title="2.5 RDD actions"></a>2.5 RDD actions</h4><p><img src="/2020/01/14/Spark/1579009474269.png" alt="1579009474269"></p>
+<h4 id="2-6-Lazy-evaluation-惰性调用"><a href="#2-6-Lazy-evaluation-惰性调用" class="headerlink" title="2.6 Lazy evaluation 惰性调用"></a>2.6 Lazy evaluation 惰性调用</h4><p><img src="/2020/01/14/Spark/1579009528882.png" alt="1579009528882"></p>
 <p>So basically, as you go through this script and transform your RDD’s, until you hit an action, all that’s doing is building up this graph, this chain of dependencies within your driver script, and only when that action is called does it actually figure out the quickest path through those dependencies. And it’s at that point that it actually kicks off the job on your cluster.</p>
-<h4 id="Using-RDD’s-in-Spark"><a href="#Using-RDD’s-in-Spark" class="headerlink" title="Using RDD’s in Spark"></a>Using RDD’s in Spark</h4><p>Find the movie with the lowest average rating - with RDD’s.</p>
+<p>RDD采用了惰性调用，即在RDD的执行过程中，真正的计算发生在RDD的“行动”操作，对于“行动”之前的所有“转换”操作，Spark只是记录下“转换”操作应用的一些基础数据集以及RDD生成的轨迹，即相互之间的依赖关系，而不会触发真正的计算。</p>
+<p>例：一个Spark的“Hello World”程序<br> 这里以一个“Hello World”入门级Spark程序来解释RDD执行过程，这个程序的功能是读取一个HDFS文件，计算出包含字符串“Hello World”的行数。</p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line"><span class="keyword">val</span> sc= <span class="keyword">new</span> <span class="type">SparkContext</span>(“spark:<span class="comment">//localhost:7077”,”Hello World”, “YOUR_SPARK_HOME”,”YOUR_APP_JAR”)</span></span><br><span class="line"><span class="keyword">val</span> fileRDD = sc.textFile(“hdfs:<span class="comment">//192.168.0.103:9000/examplefile”)</span></span><br><span class="line"><span class="keyword">val</span> filterRDD = fileRDD.filter(_.contains(“<span class="type">Hello</span> <span class="type">World</span>”))</span><br><span class="line">filterRDD.cache()</span><br><span class="line">filterRDD.count()</span><br></pre></td></tr></table></figure>
+<p>第1行代码用于创建SparkContext对象；第2行代码从HDFS文件中读取数据创建一个RDD；第3行代码对fileRDD进行转换操作得到一个新的RDD，即filterRDD；第4行代码表示对filterRDD进行持久化，把它保存在内存或磁盘中（这里采用cache接口把数据集保存在内存中），方便后续重复使用，当数据被反复访问时（比如查询一些热点数据，或者运行迭代算法），这是非常有用的，而且通过cache()可以缓存非常大的数据集，支持跨越几十甚至上百个节点；第5行代码中的count()是一个行动操作，用于计算一个RDD集合中包含的元素个数。这个程序的执行过程如下：</p>
+<ul>
+<li>创建这个Spark程序的执行上下文，即创建SparkContext对象；</li>
+<li>从外部数据源（即HDFS文件）中读取数据创建fileRDD对象；</li>
+<li>构建起fileRDD和filterRDD之间的依赖关系，形成DAG图，这时候并没有发生真正的计算，只是记录转换的轨迹；</li>
+<li>执行到第5行代码时，count()是一个行动类型的操作，触发真正的计算，开始实际执行从fileRDD到filterRDD的转换操作，并把结果持久化到内存中，最后计算出filterRDD中包含的元素个数。</li>
+</ul>
+<h4 id="2-7-RDD-特性"><a href="#2-7-RDD-特性" class="headerlink" title="2.7 RDD 特性"></a>2.7 RDD 特性</h4><p>总体而言，Spark采用RDD以后能够实现高效计算的主要原因如下：<br> （1）高效的容错性。现有的分布式共享内存、键值存储、内存数据库等，为了实现容错，必须在集群节点之间进行数据复制或者记录日志，也就是在节点之间会发生大量的数据传输，这对于数据密集型应用而言会带来很大的开销。在RDD的设计中，数据只读，不可修改，如果需要修改数据，必须从父RDD转换到子RDD，由此在不同RDD之间建立了血缘关系。所以，RDD是一种天生具有容错机制的特殊集合，不需要通过数据冗余的方式（比如检查点）实现容错，而只需通过RDD父子依赖（血缘）关系重新计算得到丢失的分区来实现容错，无需回滚整个系统，这样就避免了数据复制的高开销，而且重算过程可以在不同节点之间并行进行，实现了高效的容错。此外，RDD提供的转换操作都是一些粗粒度的操作（比如map、filter和join），RDD依赖关系只需要记录这种粗粒度的转换操作，而不需要记录具体的数据和各种细粒度操作的日志（比如对哪个数据项进行了修改），这就大大降低了数据密集型应用中的容错开销；<br> （2）中间结果持久化到内存。数据在内存中的多个RDD操作之间进行传递，不需要“落地”到磁盘上，避免了不必要的读写磁盘开销；<br> （3）存放的数据可以是Java对象，避免了不必要的对象序列化和反序列化开销。</p>
+<h4 id="2-8-RDD-之间的依赖关系"><a href="#2-8-RDD-之间的依赖关系" class="headerlink" title="2.8 RDD 之间的依赖关系"></a>2.8 RDD 之间的依赖关系</h4><blockquote>
+<p>参考<br><a href="https://blog.csdn.net/weixin_43958974/article/details/122292746" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43958974/article/details/122292746</a><br><a href="http://dblab.xmu.edu.cn/blog/985-2/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/985-2/</a></p>
+</blockquote>
+<p>在 Spark 中，RDD 分区的数据不支持修改，是只读的。如果想更新 RDD 分区中的数据，那么只能对原有 RDD 进行转化操作，也就是在原来 RDD 基础上创建一个新的RDD。</p>
+<p>那么，在整个任务的运算过程中，RDD 的每次转换都会生成一个新的 RDD，因此 RDD 们之间会产生前后依赖的关系。</p>
+<p>说白了，就是相当于将对原始 RDD 分区数据的整个运算进行了拆解，当运算中出现异常情况导致分区数据丢失时，Spark 可以通过依赖关系从上一个 RDD 中重新计算丢失的数据，而不是对最开始的 RDD 分区数据重新进行计算。</p>
+<p>在 RDD 的依赖关系中，我们将上一个 RDD 称为父RDD，下一个 RDD 称为子RDD。RDD中的依赖关系分为窄依赖（Narrow Dependency）与宽依赖（Wide Dependency），下图展示了两种依赖之间的区别。</p>
+<p><img src="/2020/01/14/Spark/image-20220111154127159.png" alt="image-20220111154127159"></p>
+<p><strong>窄依赖</strong>表现为一个父RDD的分区对应于一个子RDD的分区，或多个父RDD的分区对应于一个子RDD的分区。<br><strong>宽依赖</strong>则表现为存在一个父RDD的一个分区对应一个子RDD的多个分区。</p>
+<p>总体而言，如果父RDD的一个分区只被一个子RDD的一个分区所使用就是窄依赖，否则就是宽依赖。</p>
+<blockquote>
+<p>有个形象的比喻，如果父 RDD 中的一个分区有多个孩子（被多个分区依赖），也就是超生了，就为宽依赖；反之，如果只有一个孩子（只被一个分区依赖），那么就为窄依赖。</p>
+</blockquote>
+<p>窄依赖典型的操作包括map、filter、union等，宽依赖典型的操作包括groupByKey、sortByKey等。对于连接（join）操作，可以分为两种情况。<br> （1）对输入进行协同划分，属于窄依赖（上图(a)所示）。所谓协同划分（co-partitioned）是指多个父RDD的某一分区的所有“键（key）”，落在子RDD的同一个分区内，不会产生同一个父RDD的某一分区，落在子RDD的两个分区的情况。<br> （2）对输入做非协同划分，属于宽依赖，如上图(b)所示。</p>
+<p> 对于窄依赖的RDD，可以以流水线的方式计算所有父分区，不会造成网络之间的数据混合。对于宽依赖的RDD，则通常伴随着<strong>Shuffle</strong>操作，即首先需要计算好所有父分区数据，然后在节点之间进行Shuffle。</p>
+<blockquote>
+<p>在窄依赖中子 RDD 的每个分区数据的生成操作都是可以并行执行的，而在宽依赖中需要所有父 RDD 的 Shuffle 结果完成后再执行。</p>
+</blockquote>
+<p>Spark的这种依赖关系设计，使其具有了天生的容错性，大大加快了Spark的执行速度。因为，RDD数据集通过“血缘关系”记住了它是如何从其它RDD中演变过来的，血缘关系记录的是粗颗粒度的转换操作行为，当这个RDD的部分分区数据丢失时，它可以通过血缘关系获取足够的信息来重新运算和恢复丢失的数据分区，由此带来了性能的提升。相对而言，在两种依赖关系中，窄依赖的失败恢复更为高效，它只需要根据父RDD分区重新计算丢失的分区即可（不需要重新计算所有分区），而且可以并行地在不同节点进行重新计算。而对于宽依赖而言，单个节点失效通常意味着重新计算过程会涉及多个父RDD分区，开销较大。此外，Spark还提供了数据检查点和记录日志，用于持久化中间RDD，从而使得在进行失败恢复时不需要追溯到最开始的阶段。在进行故障恢复时，Spark会对数据检查点开销和重新计算RDD分区的开销进行比较，从而自动选择最优的恢复策略。</p>
+<h4 id="2-9-阶段的划分"><a href="#2-9-阶段的划分" class="headerlink" title="2.9 阶段的划分"></a>2.9 阶段的划分</h4><p>在 Spark 执行作业时，会按照 Stage 划分不同的 RDD，生成一个完整的最优执行计划，使每个 Stage 内的 RDD 都尽可能在各个节点上并行地被执行。</p>
+<p>Spark通过分析各个RDD的依赖关系生成了DAG，再通过分析各个RDD中的分区之间的依赖关系来决定如何划分阶段。具体划分方法是：在DAG中进行反向解析，遇到宽依赖就断开，遇到窄依赖就把当前的RDD加入到当前的阶段中；将窄依赖尽量划分在同一个阶段中，可以实现流水线计算。</p>
+<p>因此，划分宽窄依赖也是 Spark 优化执行计划的一个重要步骤，宽依赖是划分执行计划中 Stage 的依据，对于宽依赖必须要等到上一个 Stage 计算完成之后才能计算下一个阶段。</p>
+<p>例：如图9-11所示，假设从HDFS中读入数据生成3个不同的RDD（即A、C和E），通过一系列转换操作后再将计算结果保存回HDFS。对DAG进行解析时，在依赖图中进行反向解析，由于从RDD A到RDD B的转换以及从RDD B和F到RDD  G的转换，都属于宽依赖，因此，在宽依赖处断开后可以得到三个阶段，即阶段1、阶段2和阶段3。可以看出，在阶段2中，从map到union都是窄依赖，这两步操作可以形成一个流水线操作，比如，分区7通过map操作生成的分区9，可以不用等待分区8到分区9这个转换操作的计算结束，而是继续进行union操作，转换得到分区13，这样流水线执行大大提高了计算的效率。</p>
+<p><img src="/2020/01/14/Spark/image-20220111155020607.png" alt="image-20220111155020607"></p>
+<p>由上述论述可知，把一个DAG图划分成多个“阶段”以后，每个阶段都代表了一组关联的、相互之间没有Shuffle依赖关系的任务组成的任务集合。每个任务集合会被提交给任务调度器（TaskScheduler）进行处理，由任务调度器将任务分发给Executor运行。</p>
+<h4 id="2-10-RDD-运行过程"><a href="#2-10-RDD-运行过程" class="headerlink" title="2.10 RDD 运行过程"></a>2.10 RDD 运行过程</h4><p>总结一下RDD在Spark架构中的运行过程（如下图所示）：<br> （1）创建RDD对象；<br> （2）SparkContext负责计算RDD之间的依赖关系，构建DAG；<br> （3）DAGScheduler负责把DAG图分解成多个阶段，每个阶段中包含了多个任务，每个任务会被任务调度器分发给各个工作节点（Worker Node）上的Executor去执行。</p>
+<p><img src="/2020/01/14/Spark/image-20220111155253448.png" alt="image-20220111155253448"></p>
+<h4 id="2-9-Using-RDD’s-in-Spark"><a href="#2-9-Using-RDD’s-in-Spark" class="headerlink" title="2.9 Using RDD’s in Spark"></a>2.9 Using RDD’s in Spark</h4><p>Find the movie with the lowest average rating - with RDD’s.</p>
 <p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6082670#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6082670#overview</a></p>
 <p><img src="/2020/01/14/Spark/1579014872589.png" alt="1579014872589"></p>
-<h3 id="Spark-SQL-DataFrames-and-DataSets"><a href="#Spark-SQL-DataFrames-and-DataSets" class="headerlink" title="Spark SQL (DataFrames and DataSets)"></a>Spark SQL (DataFrames and DataSets)</h3><p><img src="/2020/01/14/Spark/1579012722667.png" alt="1579012722667"></p>
+<h3 id="3-Spark-SQL-DataFrames-and-DataSets"><a href="#3-Spark-SQL-DataFrames-and-DataSets" class="headerlink" title="3. Spark SQL (DataFrames and DataSets)"></a>3. Spark SQL (DataFrames and DataSets)</h3><p><img src="/2020/01/14/Spark/1579012722667.png" alt="1579012722667"></p>
 <p>Now, let’s talk about Spark SQL and the Spark 2.0 way of doing things using dataframes and datasets.</p>
 <p><img src="/2020/01/14/Spark/1579012953410.png" alt="1579012953410"></p>
 <p><img src="/2020/01/14/Spark/1579013215223.png" alt="1579013215223"></p>
@@ -5443,7 +5556,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <h4 id="Using-DataSets-in-Spark-2"><a href="#Using-DataSets-in-Spark-2" class="headerlink" title="Using DataSets in Spark 2"></a>Using DataSets in Spark 2</h4><p>Find the movie with lowest average rating - with DataFrames.</p>
 <p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963108#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963108#overview</a></p>
 <p><img src="/2020/01/14/Spark/1579014920753.png" alt="1579014920753"></p>
-<h3 id="Using-MLLib-in-Spark"><a href="#Using-MLLib-in-Spark" class="headerlink" title="Using MLLib in Spark"></a>Using MLLib in Spark</h3><p>movie recommendations (通过predict rating)</p>
+<h3 id="4-Using-MLLib-in-Spark"><a href="#4-Using-MLLib-in-Spark" class="headerlink" title="4. Using MLLib in Spark"></a>4. Using MLLib in Spark</h3><p>movie recommendations (通过predict rating)</p>
 <p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963112#overview" target="_blank" rel="noopener">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963112#overview</a></p>
 <p><img src="/2020/01/14/Spark/1579059887637.png" alt="1579059887637"></p>
 <h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><p><img src="/2020/01/14/Spark/1579060756315.png" alt="1579060756315"></p>
@@ -9158,7 +9271,13 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
 <p>法一：csv文件的保存格式改为 “CSV UTF-8 (逗号分割) (*.csv)”</p>
 <p>法二：pd.read_csv()中加上编码方式：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pd.read_csv(<span class="string">"xxx.csv"</span>, encoding=<span class="string">'gbk'</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="2-保存"><a href="#2-保存" class="headerlink" title="2. 保存"></a>2. 保存</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">df.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>>
+
+
+
+##### 2. 保存
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">df.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br></pre></td></tr></table></figure>
 <p><strong>另：关于使用to_csv保存后，打开csv有中文乱码问题：</strong></p>
 <blockquote>
 <p>参考 <a href="https://blog.csdn.net/zhuzuwei/article/details/80890007" target="_blank" rel="noopener">pandas 之 to_csv 保存数据出现中文乱码问题及解决办法</a></p>
@@ -9172,13 +9291,109 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_fwf(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
 <p>法三</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">####### example 1 #########</span></span><br><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### example 2 #########</span></span><br><span class="line">stream = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'dataset.txt'</span>):</span><br><span class="line">    row = [eval(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.strip().split(<span class="string">' '</span>)]</span><br><span class="line">    stream.append(row)</span><br><span class="line">    </span><br><span class="line">arms = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">0</span>]</span><br><span class="line">    arms.append(temp)</span><br><span class="line">    </span><br><span class="line">rewards = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">1</span>]</span><br><span class="line">    rewards.append(temp)</span><br><span class="line">    </span><br><span class="line">contexts = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    contexts.append(stream[i][<span class="number">2</span>:])</span><br></pre></td></tr></table></figure>
-<h5 id="2-保存-1"><a href="#2-保存-1" class="headerlink" title="2. 保存"></a>2. 保存</h5><p>方法同csv</p>
+<h5 id="2-保存"><a href="#2-保存" class="headerlink" title="2. 保存"></a>2. 保存</h5><p>方法同csv</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">RF_test.to_csv(<span class="string">"RF_test.txt"</span>, sep = <span class="string">'\t'</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="三、json文件"><a href="#三、json文件" class="headerlink" title="三、json文件"></a>三、json文件</h4><p>读取：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./config.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	dicts = json.load(f)</span><br></pre></td></tr></table></figure>
-<h4 id="四、pickle文件"><a href="#四、pickle文件" class="headerlink" title="四、pickle文件"></a>四、pickle文件</h4><h5 id="1-保存"><a href="#1-保存" class="headerlink" title="1. 保存"></a>1. 保存</h5><p>例：保存xgb模型</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line">pickle.dump(xgb, open(<span class="string">"./xgb.pkl"</span>, <span class="string">"wb"</span>))</span><br></pre></td></tr></table></figure>
-<h5 id="2-读取"><a href="#2-读取" class="headerlink" title="2. 读取"></a>2. 读取</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./xgb.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	model = pickle.load(f)</span><br></pre></td></tr></table></figure>
+<h4 id="三、json文件"><a href="#三、json文件" class="headerlink" title="三、json文件"></a>三、json文件</h4><blockquote>
+<p>参考 <a href="https://blog.csdn.net/weixin_38842821/article/details/108359551" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38842821/article/details/108359551</a><br><a href="https://zhuanlan.zhihu.com/p/373661877" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/373661877</a><br><a href="https://vimsky.com/examples/usage/json-dump-in-python.html" target="_blank" rel="noopener">https://vimsky.com/examples/usage/json-dump-in-python.html</a></p>
+</blockquote>
+<h5 id="1-保存"><a href="#1-保存" class="headerlink" title="1. 保存"></a>1. 保存</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">dicts = &#123;<span class="string">'name'</span>:<span class="string">'Alice'</span>, <span class="string">'age'</span>:<span class="number">100</span>&#125;</span><br><span class="line">json.dump(dicts, open(<span class="string">"./myfile.json"</span>,<span class="string">'w'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或写为：</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./myfile.json"</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	json.dump(dicts, f)</span><br></pre></td></tr></table></figure>
+<h5 id="2-读取"><a href="#2-读取" class="headerlink" title="2.读取"></a>2.读取</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./myfile.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	dicts = json.load(f)</span><br></pre></td></tr></table></figure>
+<h5 id="3-含中文时"><a href="#3-含中文时" class="headerlink" title="3. 含中文时"></a>3. 含中文时</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#如果是在python3环境，可使用：</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">dicts = &#123;<span class="string">'name'</span>:<span class="string">'张三'</span>&#125;</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./my_file.json"</span>, <span class="string">'w'</span>, encoding=<span class="string">'gbk'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	json.dump(dicts, f, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">	</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./my_file.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	res = json.load(f, encoding=<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line">print(res)</span><br><span class="line"><span class="comment"># &#123;'name':'张三'&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果是在python3环境保存，python2环境中读取：含中文时，先使用json.dumps()将python对象转换成json字符串，再使用pickle保存</span></span><br><span class="line"><span class="comment"># 例：</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">dicts = &#123;<span class="string">'province'</span>: [<span class="string">'广东省'</span>,<span class="string">'福建省'</span>]&#125;</span><br><span class="line">json_str = json.dumps(dicts, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"><span class="comment"># ↑具体参数解释见后文</span></span><br><span class="line">pickle.dump(json_str, open(<span class="string">"./myfile.pkl"</span>, <span class="string">"wb"</span>))</span><br><span class="line"><span class="comment"># ↑如果要在python3中保存，python2中读取，此处应加上参数protocol=2:</span></span><br><span class="line"><span class="comment"># pickle.dump(json_str, open("./myfile.pkl", "wb"), protocol=2)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./myfile.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	dicts = pickle.load(f)</span><br><span class="line">print(dicts)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果如下：</span></span><br><span class="line"><span class="comment"># &#123;"province": ["广东省","福建省"]&#125;</span></span><br></pre></td></tr></table></figure>
+<p>关于 <strong>json.dump(), json.dumps(), json.load(), json.loads()：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json.dump()</td>
+<td>将python对象转化成json存储到文件中</td>
+</tr>
+<tr>
+<td>json.dumps()</td>
+<td>将python对象编码成json字符串</td>
+</tr>
+<tr>
+<td>json.load()</td>
+<td>将json文件转化成python对象提取出来</td>
+</tr>
+<tr>
+<td>json.loads()</td>
+<td>将json字符串解码成python对象</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/image-20220105152837291.png" alt="image-20220105152837291"></p>
+<p>用法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">json.dumps(obj, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&quot;utf-8&quot;, default=None, sort_keys=False, **kw)</span><br><span class="line"></span><br><span class="line">obj:转化成json的对象。</span><br><span class="line">skipkeys: 如果key不是标准允许的类型，如int, float, string, None或bool, 则在转储时将产生错误，若将此参数设置为True, 可避免这种情况。</span><br><span class="line">indent:参数根据数据格式缩进显示，读起来更加清晰</span><br><span class="line">sort_keys=True:告诉编码器按照字典排序(a到z)输出。如果是字典类型的python对象，就把关键字按照字典排序。</span><br><span class="line">ensure_ascii=True：默认输出ascii码，如果把设置成False,则将非ASCII字符原样转储到输出文件中，即可以输出中文</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/image-20220105154116425.png" alt="image-20220105154116425"></p>
+<h4 id="四、pickle文件"><a href="#四、pickle文件" class="headerlink" title="四、pickle文件"></a>四、pickle文件</h4><blockquote>
+<p>官方文档：<a href="https://docs.python.org/3/library/pickle.html" target="_blank" rel="noopener">https://docs.python.org/3/library/pickle.html</a></p>
+</blockquote>
+<p>The <a href="https://docs.python.org/3/library/pickle.html#module-pickle" target="_blank" rel="noopener"><code>pickle</code></a> module implements binary protocols for serializing and de-serializing a Python object structure. <em>“Pickling”</em> is the process whereby a Python object hierarchy is converted into a byte stream, and <em>“unpickling”</em> is the inverse operation, whereby a byte stream (from a <a href="https://docs.python.org/3/glossary.html#term-binary-file" target="_blank" rel="noopener">binary file</a> or <a href="https://docs.python.org/3/glossary.html#term-bytes-like-object" target="_blank" rel="noopener">bytes-like object</a>) is converted back into an object hierarchy. Pickling (and unpickling) is alternatively known as “serialization”, “marshalling,” [1](<a href="https://docs.python.org/3/library/pickle.html#id7" target="_blank" rel="noopener">https://docs.python.org/3/library/pickle.html#id7</a>) or “flattening”; however, to avoid confusion, the terms used here are “pickling” and “unpickling”.</p>
+<p>pickle模块实现了用于序列化和反序列化Python对象结构的二进制协议。pickle是将Python对象层次结构转换为字节流的过程，而unpickle是反向操作，即将字节流(从二进制文件或字节类对象)转换回对象层次结构。</p>
+<blockquote>
+<p>Warning：</p>
+<p> The <code>pickle</code> module <strong>is not secure</strong>. Only unpickle data you trust.</p>
+<p>It is possible to construct malicious pickle data which will <strong>execute arbitrary code during unpickling</strong>. Never unpickle data that could have come from an untrusted source, or that could have been tampered with.</p>
+<p>Consider signing data with <a href="https://docs.python.org/3/library/hmac.html#module-hmac" target="_blank" rel="noopener"><code>hmac</code></a> if you need to ensure that it has not been tampered with.</p>
+<p>Safer serialization formats such as <a href="https://docs.python.org/3/library/json.html#module-json" target="_blank" rel="noopener"><code>json</code></a> may be more appropriate if you are processing untrusted data. See <a href="https://docs.python.org/3/library/pickle.html#comparison-with-json" target="_blank" rel="noopener">Comparison with json</a>.</p>
+</blockquote>
+<p><strong>pickle与json的区别：</strong></p>
+<ul>
+<li>JSON is a text serialization format (it outputs unicode text, although most of the time it is then encoded to <code>utf-8</code>), while pickle is a binary serialization format; JSON是一种文本序列化格式(它输出unicode文本，尽管大多数时候它会被编码成utf-8)，而pickle是一种二进制序列化格式</li>
+<li>JSON is human-readable, while pickle is not; JSON是人类可读的，而pickle不是</li>
+<li>JSON is interoperable and widely used outside of the Python ecosystem, while pickle is Python-specific; JSON是可互操作的，在Python生态系统之外被广泛使用，而pickle是特定于Python的</li>
+<li>JSON, by default, can only represent a subset of the Python built-in types, and no custom classes; pickle can represent an extremely large number of Python types (many of them automatically, by clever usage of Python’s introspection facilities; complex cases can be tackled by implementing <a href="https://docs.python.org/3/library/pickle.html#pickle-inst" target="_blank" rel="noopener">specific object APIs</a>); 默认情况下，JSON只能表示Python内置类型的子集，而不能表示自定义类;pickle可以表示非常多的Python类型(其中许多是通过巧妙地使用Python的内省工具自动实现的;复杂的情况可以通过实现特定的对象api来解决)</li>
+<li>Unlike pickle, deserializing untrusted JSON does not in itself create an arbitrary code execution vulnerability. 与pickle不同，反序列化不受信任的JSON本身并不会产生任意代码执行漏洞。</li>
+</ul>
+<p>目前有6种不同的协议可以用于pickling。使用的协议越高，读取生成的pickle所需的Python版本就得越新。</p>
+<ul>
+<li>Protocol version 0 is the original “human-readable” protocol and is backwards compatible with earlier versions of Python. 协议版本0是原始的人类可读的协议，并向后兼容较早版本的Python</li>
+<li>Protocol version 1 is an old binary format which is also compatible with earlier versions of Python. 协议版本1是一种旧的二进制格式，它也与早期版本的Python兼容。</li>
+<li>Protocol version 2 was introduced in Python 2.3. It provides much more efficient pickling of <a href="https://docs.python.org/3/glossary.html#term-new-style-class" target="_blank" rel="noopener">new-style class</a>es. Refer to <a href="https://www.python.org/dev/peps/pep-0307" target="_blank" rel="noopener"><strong>PEP 307</strong></a> for information about improvements brought by protocol 2. 协议版本2是在Python 2.3中引入的。它针对 new-style classes 提供了更有效的pickling。</li>
+<li>Protocol version 3 was added in Python 3.0. It has explicit support for <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener"><code>bytes</code></a> objects and cannot be unpickled by Python 2.x. This was the default protocol in Python 3.0–3.7. 协议版本3是在Python 3.0中添加的。它对bytes对象有显式的支持，并且不能被Python 2.x unpickle。这是Python 3.0-3.7中的默认协议。</li>
+<li>Protocol version 4 was added in Python 3.4. It adds support for very large objects, pickling more kinds of objects, and some data format optimizations. It is the default protocol starting with Python 3.8. Refer to <a href="https://www.python.org/dev/peps/pep-3154" target="_blank" rel="noopener"><strong>PEP 3154</strong></a> for information about improvements brought by protocol 4. 协议版本4是在Python 3.4中添加的。它增加了对非常大的对象的支持，pickle更多类型的对象，以及一些数据格式优化。这是从Python 3.8开始的默认协议。</li>
+<li>Protocol version 5 was added in Python 3.8. It adds support for out-of-band data and speedup for in-band data. Refer to <a href="https://www.python.org/dev/peps/pep-0574" target="_blank" rel="noopener"><strong>PEP 574</strong></a> for information about improvements brought by protocol 5. 协议版本5是在Python 3.8中添加的。它增加了对带外数据的支持和对带内数据的加速。</li>
+</ul>
+<p>关于 pickle.dump(), pickle.dumps(), pickle.load(), pickle.loads()：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pickle.dump(<em>obj</em>, <em>file</em>, <em>protocol=None</em>, <em>*</em>)</td>
+<td>将对象obj的pickle表示写入打开的文件对象file</td>
+</tr>
+<tr>
+<td>pickle.dumps(<em>obj</em>, <em>protocol=None</em>, <em>*</em>)</td>
+<td>将对象obj的pickle表示作为一个bytes object返回，而不是将其写入文件。</td>
+</tr>
+<tr>
+<td>pickle.load(<em>file</em>, <em>**, </em>fix_imports=True<em>, </em>encoding=’ASCII’<em>, </em>errors=’strict’<em>, </em>buffers=None*)</td>
+<td>从打开的文件对象file中读取对象的pickle表示，并返回其中指定的 reconstituted object hierarchy。</td>
+</tr>
+<tr>
+<td>pickle.loads(<em>data</em>, <em>/</em>, <em>**, </em>fix_imports=True<em>, </em>encoding=”ASCII”<em>, </em>errors=”strict”<em>, </em>buffers=None*)</td>
+<td>Return the reconstituted object hierarchy of the pickled representation <em>data</em> of an object. <em>data</em> must be a <a href="https://docs.python.org/3/glossary.html#term-bytes-like-object" target="_blank" rel="noopener">bytes-like object</a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="1-保存-1"><a href="#1-保存-1" class="headerlink" title="1. 保存"></a>1. 保存</h5><p>例：保存xgb模型</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line">pickle.dump(xgb, open(<span class="string">"./xgb.pkl"</span>, <span class="string">"wb"</span>))</span><br><span class="line"><span class="comment"># ↑如果要在python3中保存，python2中读取，此处应加上参数protocol=2:</span></span><br><span class="line"><span class="comment"># pickle.dump(xgb, open("./xgb.pkl", "wb"), protocol=2)</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-读取-1"><a href="#2-读取-1" class="headerlink" title="2. 读取"></a>2. 读取</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./xgb.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	model = pickle.load(f)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Python</category>

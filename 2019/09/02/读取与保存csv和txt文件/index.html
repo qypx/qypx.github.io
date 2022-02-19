@@ -90,7 +90,9 @@
 <meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/1594120531625.png">
 <meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/1594120744906.png">
 <meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/1594120675413.png">
-<meta property="og:updated_time" content="2022-01-02T11:24:38.909Z">
+<meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/image-20220105152837291.png">
+<meta property="og:image" content="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/image-20220105154116425.png">
+<meta property="og:updated_time" content="2022-01-19T02:22:32.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读取与保存csv和txt文件">
 <meta name="twitter:description" content="一、csv文件1. 读取123import pandas as pdtrain = pd.read_csv(&quot;Google_Stock_Price_Train.csv&quot;)train.head()  若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）  1234import pandas as pddata = pd.read_csv(&quot;dataset.csv&quot;,">
@@ -337,8 +339,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2022-01-02T19:24:38+08:00">
-                2022-01-02
+              <time title="更新于" itemprop="dateModified" datetime="2022-01-19T10:22:32+08:00">
+                2022-01-19
               </time>
             
           </span>
@@ -414,7 +416,13 @@
 <p>法一：csv文件的保存格式改为 “CSV UTF-8 (逗号分割) (*.csv)”</p>
 <p>法二：pd.read_csv()中加上编码方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(<span class="string">"xxx.csv"</span>, encoding=<span class="string">'gbk'</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="2-保存"><a href="#2-保存" class="headerlink" title="2. 保存"></a>2. 保存</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">df.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>>
+
+
+
+##### 2. 保存
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(np_data, columns = [<span class="string">'year'</span>, <span class="string">'month'</span>, <span class="string">'day'</span>])</span><br><span class="line">df.to_csv(<span class="string">'E:\test\modified.csv'</span>, index = <span class="literal">False</span>, header = <span class="literal">False</span>) <span class="comment"># index = False, header = False表示不保存行索引和列标题</span></span><br><span class="line"><span class="comment"># save.to_csv("RF_test.csv", index = False)</span></span><br></pre></td></tr></table></figure>
 <p><strong>另：关于使用to_csv保存后，打开csv有中文乱码问题：</strong></p>
 <blockquote>
 <p>参考 <a href="https://blog.csdn.net/zhuzuwei/article/details/80890007" target="_blank" rel="noopener">pandas 之 to_csv 保存数据出现中文乱码问题及解决办法</a></p>
@@ -428,13 +436,109 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_fwf(<span class="string">'train_tweets.txt'</span>, sep = <span class="string">'\t'</span>, header = <span class="literal">None</span>, encoding = <span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure>
 <p>法三</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">####### example 1 #########</span></span><br><span class="line">ids = []</span><br><span class="line">tweets = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'/content/Twitter-Authorship/train_tweets.txt'</span>, encoding=<span class="string">'utf-8'</span>):</span><br><span class="line">    (id,tweet) = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">    ids.append(id)</span><br><span class="line">    tweets.append(tweet)</span><br><span class="line">train = pd.DataFrame(&#123;<span class="string">"ID"</span>: ids, <span class="string">"tweet"</span>: tweets&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### example 2 #########</span></span><br><span class="line">stream = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">'dataset.txt'</span>):</span><br><span class="line">    row = [eval(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.strip().split(<span class="string">' '</span>)]</span><br><span class="line">    stream.append(row)</span><br><span class="line">    </span><br><span class="line">arms = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">0</span>]</span><br><span class="line">    arms.append(temp)</span><br><span class="line">    </span><br><span class="line">rewards = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    temp = stream[i][<span class="number">1</span>]</span><br><span class="line">    rewards.append(temp)</span><br><span class="line">    </span><br><span class="line">contexts = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(stream)):</span><br><span class="line">    contexts.append(stream[i][<span class="number">2</span>:])</span><br></pre></td></tr></table></figure>
-<h5 id="2-保存-1"><a href="#2-保存-1" class="headerlink" title="2. 保存"></a>2. 保存</h5><p>方法同csv</p>
+<h5 id="2-保存"><a href="#2-保存" class="headerlink" title="2. 保存"></a>2. 保存</h5><p>方法同csv</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RF_test.to_csv(<span class="string">"RF_test.txt"</span>, sep = <span class="string">'\t'</span>, index = <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="三、json文件"><a href="#三、json文件" class="headerlink" title="三、json文件"></a>三、json文件</h4><p>读取：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./config.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	dicts = json.load(f)</span><br></pre></td></tr></table></figure>
-<h4 id="四、pickle文件"><a href="#四、pickle文件" class="headerlink" title="四、pickle文件"></a>四、pickle文件</h4><h5 id="1-保存"><a href="#1-保存" class="headerlink" title="1. 保存"></a>1. 保存</h5><p>例：保存xgb模型</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line">pickle.dump(xgb, open(<span class="string">"./xgb.pkl"</span>, <span class="string">"wb"</span>))</span><br></pre></td></tr></table></figure>
-<h5 id="2-读取"><a href="#2-读取" class="headerlink" title="2. 读取"></a>2. 读取</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./xgb.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	model = pickle.load(f)</span><br></pre></td></tr></table></figure>
+<h4 id="三、json文件"><a href="#三、json文件" class="headerlink" title="三、json文件"></a>三、json文件</h4><blockquote>
+<p>参考 <a href="https://blog.csdn.net/weixin_38842821/article/details/108359551" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38842821/article/details/108359551</a><br><a href="https://zhuanlan.zhihu.com/p/373661877" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/373661877</a><br><a href="https://vimsky.com/examples/usage/json-dump-in-python.html" target="_blank" rel="noopener">https://vimsky.com/examples/usage/json-dump-in-python.html</a></p>
+</blockquote>
+<h5 id="1-保存"><a href="#1-保存" class="headerlink" title="1. 保存"></a>1. 保存</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">dicts = &#123;<span class="string">'name'</span>:<span class="string">'Alice'</span>, <span class="string">'age'</span>:<span class="number">100</span>&#125;</span><br><span class="line">json.dump(dicts, open(<span class="string">"./myfile.json"</span>,<span class="string">'w'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或写为：</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./myfile.json"</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	json.dump(dicts, f)</span><br></pre></td></tr></table></figure>
+<h5 id="2-读取"><a href="#2-读取" class="headerlink" title="2.读取"></a>2.读取</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./myfile.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	dicts = json.load(f)</span><br></pre></td></tr></table></figure>
+<h5 id="3-含中文时"><a href="#3-含中文时" class="headerlink" title="3. 含中文时"></a>3. 含中文时</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果是在python3环境，可使用：</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">dicts = &#123;<span class="string">'name'</span>:<span class="string">'张三'</span>&#125;</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./my_file.json"</span>, <span class="string">'w'</span>, encoding=<span class="string">'gbk'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	json.dump(dicts, f, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">	</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./my_file.json"</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	res = json.load(f, encoding=<span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line">print(res)</span><br><span class="line"><span class="comment"># &#123;'name':'张三'&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果是在python3环境保存，python2环境中读取：含中文时，先使用json.dumps()将python对象转换成json字符串，再使用pickle保存</span></span><br><span class="line"><span class="comment"># 例：</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">dicts = &#123;<span class="string">'province'</span>: [<span class="string">'广东省'</span>,<span class="string">'福建省'</span>]&#125;</span><br><span class="line">json_str = json.dumps(dicts, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line"><span class="comment"># ↑具体参数解释见后文</span></span><br><span class="line">pickle.dump(json_str, open(<span class="string">"./myfile.pkl"</span>, <span class="string">"wb"</span>))</span><br><span class="line"><span class="comment"># ↑如果要在python3中保存，python2中读取，此处应加上参数protocol=2:</span></span><br><span class="line"><span class="comment"># pickle.dump(json_str, open("./myfile.pkl", "wb"), protocol=2)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./myfile.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	dicts = pickle.load(f)</span><br><span class="line">print(dicts)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果如下：</span></span><br><span class="line"><span class="comment"># &#123;"province": ["广东省","福建省"]&#125;</span></span><br></pre></td></tr></table></figure>
+<p>关于 <strong>json.dump(), json.dumps(), json.load(), json.loads()：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json.dump()</td>
+<td>将python对象转化成json存储到文件中</td>
+</tr>
+<tr>
+<td>json.dumps()</td>
+<td>将python对象编码成json字符串</td>
+</tr>
+<tr>
+<td>json.load()</td>
+<td>将json文件转化成python对象提取出来</td>
+</tr>
+<tr>
+<td>json.loads()</td>
+<td>将json字符串解码成python对象</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/image-20220105152837291.png" alt="image-20220105152837291"></p>
+<p>用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">json.dumps(obj, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&quot;utf-8&quot;, default=None, sort_keys=False, **kw)</span><br><span class="line"></span><br><span class="line">obj:转化成json的对象。</span><br><span class="line">skipkeys: 如果key不是标准允许的类型，如int, float, string, None或bool, 则在转储时将产生错误，若将此参数设置为True, 可避免这种情况。</span><br><span class="line">indent:参数根据数据格式缩进显示，读起来更加清晰</span><br><span class="line">sort_keys=True:告诉编码器按照字典排序(a到z)输出。如果是字典类型的python对象，就把关键字按照字典排序。</span><br><span class="line">ensure_ascii=True：默认输出ascii码，如果把设置成False,则将非ASCII字符原样转储到输出文件中，即可以输出中文</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/读取与保存csv和txt文件/image-20220105154116425.png" alt="image-20220105154116425"></p>
+<h4 id="四、pickle文件"><a href="#四、pickle文件" class="headerlink" title="四、pickle文件"></a>四、pickle文件</h4><blockquote>
+<p>官方文档：<a href="https://docs.python.org/3/library/pickle.html" target="_blank" rel="noopener">https://docs.python.org/3/library/pickle.html</a></p>
+</blockquote>
+<p>The <a href="https://docs.python.org/3/library/pickle.html#module-pickle" target="_blank" rel="noopener"><code>pickle</code></a> module implements binary protocols for serializing and de-serializing a Python object structure. <em>“Pickling”</em> is the process whereby a Python object hierarchy is converted into a byte stream, and <em>“unpickling”</em> is the inverse operation, whereby a byte stream (from a <a href="https://docs.python.org/3/glossary.html#term-binary-file" target="_blank" rel="noopener">binary file</a> or <a href="https://docs.python.org/3/glossary.html#term-bytes-like-object" target="_blank" rel="noopener">bytes-like object</a>) is converted back into an object hierarchy. Pickling (and unpickling) is alternatively known as “serialization”, “marshalling,” [1](<a href="https://docs.python.org/3/library/pickle.html#id7" target="_blank" rel="noopener">https://docs.python.org/3/library/pickle.html#id7</a>) or “flattening”; however, to avoid confusion, the terms used here are “pickling” and “unpickling”.</p>
+<p>pickle模块实现了用于序列化和反序列化Python对象结构的二进制协议。pickle是将Python对象层次结构转换为字节流的过程，而unpickle是反向操作，即将字节流(从二进制文件或字节类对象)转换回对象层次结构。</p>
+<blockquote>
+<p>Warning：</p>
+<p> The <code>pickle</code> module <strong>is not secure</strong>. Only unpickle data you trust.</p>
+<p>It is possible to construct malicious pickle data which will <strong>execute arbitrary code during unpickling</strong>. Never unpickle data that could have come from an untrusted source, or that could have been tampered with.</p>
+<p>Consider signing data with <a href="https://docs.python.org/3/library/hmac.html#module-hmac" target="_blank" rel="noopener"><code>hmac</code></a> if you need to ensure that it has not been tampered with.</p>
+<p>Safer serialization formats such as <a href="https://docs.python.org/3/library/json.html#module-json" target="_blank" rel="noopener"><code>json</code></a> may be more appropriate if you are processing untrusted data. See <a href="https://docs.python.org/3/library/pickle.html#comparison-with-json" target="_blank" rel="noopener">Comparison with json</a>.</p>
+</blockquote>
+<p><strong>pickle与json的区别：</strong></p>
+<ul>
+<li>JSON is a text serialization format (it outputs unicode text, although most of the time it is then encoded to <code>utf-8</code>), while pickle is a binary serialization format; JSON是一种文本序列化格式(它输出unicode文本，尽管大多数时候它会被编码成utf-8)，而pickle是一种二进制序列化格式</li>
+<li>JSON is human-readable, while pickle is not; JSON是人类可读的，而pickle不是</li>
+<li>JSON is interoperable and widely used outside of the Python ecosystem, while pickle is Python-specific; JSON是可互操作的，在Python生态系统之外被广泛使用，而pickle是特定于Python的</li>
+<li>JSON, by default, can only represent a subset of the Python built-in types, and no custom classes; pickle can represent an extremely large number of Python types (many of them automatically, by clever usage of Python’s introspection facilities; complex cases can be tackled by implementing <a href="https://docs.python.org/3/library/pickle.html#pickle-inst" target="_blank" rel="noopener">specific object APIs</a>); 默认情况下，JSON只能表示Python内置类型的子集，而不能表示自定义类;pickle可以表示非常多的Python类型(其中许多是通过巧妙地使用Python的内省工具自动实现的;复杂的情况可以通过实现特定的对象api来解决)</li>
+<li>Unlike pickle, deserializing untrusted JSON does not in itself create an arbitrary code execution vulnerability. 与pickle不同，反序列化不受信任的JSON本身并不会产生任意代码执行漏洞。</li>
+</ul>
+<p>目前有6种不同的协议可以用于pickling。使用的协议越高，读取生成的pickle所需的Python版本就得越新。</p>
+<ul>
+<li>Protocol version 0 is the original “human-readable” protocol and is backwards compatible with earlier versions of Python. 协议版本0是原始的人类可读的协议，并向后兼容较早版本的Python</li>
+<li>Protocol version 1 is an old binary format which is also compatible with earlier versions of Python. 协议版本1是一种旧的二进制格式，它也与早期版本的Python兼容。</li>
+<li>Protocol version 2 was introduced in Python 2.3. It provides much more efficient pickling of <a href="https://docs.python.org/3/glossary.html#term-new-style-class" target="_blank" rel="noopener">new-style class</a>es. Refer to <a href="https://www.python.org/dev/peps/pep-0307" target="_blank" rel="noopener"><strong>PEP 307</strong></a> for information about improvements brought by protocol 2. 协议版本2是在Python 2.3中引入的。它针对 new-style classes 提供了更有效的pickling。</li>
+<li>Protocol version 3 was added in Python 3.0. It has explicit support for <a href="https://docs.python.org/3/library/stdtypes.html#bytes" target="_blank" rel="noopener"><code>bytes</code></a> objects and cannot be unpickled by Python 2.x. This was the default protocol in Python 3.0–3.7. 协议版本3是在Python 3.0中添加的。它对bytes对象有显式的支持，并且不能被Python 2.x unpickle。这是Python 3.0-3.7中的默认协议。</li>
+<li>Protocol version 4 was added in Python 3.4. It adds support for very large objects, pickling more kinds of objects, and some data format optimizations. It is the default protocol starting with Python 3.8. Refer to <a href="https://www.python.org/dev/peps/pep-3154" target="_blank" rel="noopener"><strong>PEP 3154</strong></a> for information about improvements brought by protocol 4. 协议版本4是在Python 3.4中添加的。它增加了对非常大的对象的支持，pickle更多类型的对象，以及一些数据格式优化。这是从Python 3.8开始的默认协议。</li>
+<li>Protocol version 5 was added in Python 3.8. It adds support for out-of-band data and speedup for in-band data. Refer to <a href="https://www.python.org/dev/peps/pep-0574" target="_blank" rel="noopener"><strong>PEP 574</strong></a> for information about improvements brought by protocol 5. 协议版本5是在Python 3.8中添加的。它增加了对带外数据的支持和对带内数据的加速。</li>
+</ul>
+<p>关于 pickle.dump(), pickle.dumps(), pickle.load(), pickle.loads()：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pickle.dump(<em>obj</em>, <em>file</em>, <em>protocol=None</em>, <em>*</em>)</td>
+<td>将对象obj的pickle表示写入打开的文件对象file</td>
+</tr>
+<tr>
+<td>pickle.dumps(<em>obj</em>, <em>protocol=None</em>, <em>*</em>)</td>
+<td>将对象obj的pickle表示作为一个bytes object返回，而不是将其写入文件。</td>
+</tr>
+<tr>
+<td>pickle.load(<em>file</em>, <em>**, </em>fix_imports=True<em>, </em>encoding=’ASCII’<em>, </em>errors=’strict’<em>, </em>buffers=None*)</td>
+<td>从打开的文件对象file中读取对象的pickle表示，并返回其中指定的 reconstituted object hierarchy。</td>
+</tr>
+<tr>
+<td>pickle.loads(<em>data</em>, <em>/</em>, <em>**, </em>fix_imports=True<em>, </em>encoding=”ASCII”<em>, </em>errors=”strict”<em>, </em>buffers=None*)</td>
+<td>Return the reconstituted object hierarchy of the pickled representation <em>data</em> of an object. <em>data</em> must be a <a href="https://docs.python.org/3/glossary.html#term-bytes-like-object" target="_blank" rel="noopener">bytes-like object</a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="1-保存-1"><a href="#1-保存-1" class="headerlink" title="1. 保存"></a>1. 保存</h5><p>例：保存xgb模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line">pickle.dump(xgb, open(<span class="string">"./xgb.pkl"</span>, <span class="string">"wb"</span>))</span><br><span class="line"><span class="comment"># ↑如果要在python3中保存，python2中读取，此处应加上参数protocol=2:</span></span><br><span class="line"><span class="comment"># pickle.dump(xgb, open("./xgb.pkl", "wb"), protocol=2)</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-读取-1"><a href="#2-读取-1" class="headerlink" title="2. 读取"></a>2. 读取</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle </span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"./xgb.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	model = pickle.load(f)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -556,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -634,7 +738,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、csv文件"><span class="nav-text">一、csv文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-读取"><span class="nav-text">1. 读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-保存"><span class="nav-text">2. 保存</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、txt文件"><span class="nav-text">二、txt文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-读取-1"><span class="nav-text">1. 读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-保存-1"><span class="nav-text">2. 保存</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、json文件"><span class="nav-text">三、json文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、pickle文件"><span class="nav-text">四、pickle文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-保存"><span class="nav-text">1. 保存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-读取"><span class="nav-text">2. 读取</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、csv文件"><span class="nav-text">一、csv文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-读取"><span class="nav-text">1. 读取</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、txt文件"><span class="nav-text">二、txt文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-读取-1"><span class="nav-text">1. 读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-保存"><span class="nav-text">2. 保存</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、json文件"><span class="nav-text">三、json文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-保存"><span class="nav-text">1. 保存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-读取"><span class="nav-text">2.读取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-含中文时"><span class="nav-text">3. 含中文时</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、pickle文件"><span class="nav-text">四、pickle文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-保存-1"><span class="nav-text">1. 保存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-读取-1"><span class="nav-text">2. 读取</span></a></li></ol></li></ol></div>
             
 
           </div>

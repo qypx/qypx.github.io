@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="参考 WOE与IV值浅谈 - 知乎https://zhuanlan.zhihu.com/p/78809853  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示">
+<meta name="description" content="参考WOE与IV值浅谈机器学习-变量筛选之IV值和WOE  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示该变量的预测能力越强。（3）对离散型变量，woe可以">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WOE编码与IV值">
 <meta property="og:url" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="参考 WOE与IV值浅谈 - 知乎https://zhuanlan.zhihu.com/p/78809853  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示">
+<meta property="og:description" content="参考WOE与IV值浅谈机器学习-变量筛选之IV值和WOE  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示该变量的预测能力越强。（3）对离散型变量，woe可以">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175233815.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175451426.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175623456.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175912098.png">
-<meta property="og:updated_time" content="2021-12-15T13:41:10.444Z">
+<meta property="og:updated_time" content="2022-02-18T09:22:26.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WOE编码与IV值">
-<meta name="twitter:description" content="参考 WOE与IV值浅谈 - 知乎https://zhuanlan.zhihu.com/p/78809853  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示">
+<meta name="twitter:description" content="参考WOE与IV值浅谈机器学习-变量筛选之IV值和WOE  0. IntroductionWOE (weight of evidence): 证据权重IV (information value): 信息值 计算WOE与IV值的意义：（1）用woe编码可以处理缺失值问题。（2）IV值可以衡量各变量对 y 的预测能力，用于筛选变量，IV值越大，表示该变量的预测能力越强。（3）对离散型变量，woe可以">
 <meta name="twitter:image" content="http://qypx.github.io/2021/07/17/WOE编码与IV值/image-20210717175233815.png">
 
 
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-12-15T21:41:10+08:00">
-                2021-12-15
+              <time title="更新于" itemprop="dateModified" datetime="2022-02-18T17:22:26+08:00">
+                2022-02-18
               </time>
             
           </span>
@@ -400,7 +400,7 @@
 
       
         <blockquote>
-<p>参考 <a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈 - 知乎</a><br><a href="https://zhuanlan.zhihu.com/p/78809853" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/78809853</a></p>
+<p>参考<br><a href="https://zhuanlan.zhihu.com/p/74165987" target="_blank" rel="noopener">WOE与IV值浅谈</a><br><a href="https://zhuanlan.zhihu.com/p/78809853" target="_blank" rel="noopener">机器学习-变量筛选之IV值和WOE</a></p>
 </blockquote>
 <h4 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0. Introduction"></a>0. Introduction</h4><p>WOE (weight of evidence): 证据权重<br>IV (information value): 信息值</p>
 <p>计算WOE与IV值的意义：<br>（1）用woe编码可以处理缺失值问题。<br>（2）IV值可以衡量各变量对 y 的<strong>预测能力</strong>，用于筛选变量，IV值越大，表示该变量的预测能力越强。<br>（3）对离散型变量，woe可以观察各个level间的跳转对odds的提升是否呈线性，而IV可以衡量变量整体（而不是每个level）的预测能力。<br>（4）对连续型变量，woe和IV值为分箱的合理性提供了一定的依据。</p>
@@ -569,7 +569,7 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
