@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165053284.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165146743.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png">
-<meta property="og:updated_time" content="2022-01-01T13:48:39.220Z">
+<meta property="og:updated_time" content="2022-03-01T06:52:20.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Precision, Recall, ROC曲线等">
 <meta name="twitter:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110616770.png">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2022-01-01T21:48:39+08:00">
-                2022-01-01
+              <time title="更新于" itemprop="dateModified" datetime="2022-03-01T14:52:20+08:00">
+                2022-03-01
               </time>
             
           </span>
@@ -422,8 +422,8 @@ TPR (True\ Positive\ Rate) = \frac{TP}{TP+FN}</script><p><strong>TPR 等价于 R
 <script type="math/tex; mode=display">
 FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错分的比例（所有真实的0中，有多少被模型误判为1）</p>
 <p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110748865.png" alt="image-20210718110748865" style="zoom: 50%;"></p>
-<h4 id="3-Sensitivity-Specificity"><a href="#3-Sensitivity-Specificity" class="headerlink" title="3. Sensitivity, Specificity"></a>3. Sensitivity, Specificity</h4><p>灵敏度 <script type="math/tex">Sensitivity = \frac{TP}{TP+FN}</script>，<strong>等价于 Recall</strong>，正样本中正确分类的比例 (Accuracy with respect to positive cases, also called <script type="math/tex">True\ Positive\ Rate</script>) (预测为positive占实际真正为positive的比例)</p>
-<p>特异度 <script type="math/tex">Specificity = \frac{TN}{TN+FP}</script>，负样本中正确分类的比例 (Accuracy with respect to negative cases) (将negative预测为positive占实际真正为negative的比例)</p>
+<h4 id="3-Sensitivity-Specificity"><a href="#3-Sensitivity-Specificity" class="headerlink" title="3. Sensitivity, Specificity"></a>3. Sensitivity, Specificity</h4><p>灵敏度 <script type="math/tex">Sensitivity = \frac{TP}{TP+FN}</script>，<strong>等价于 Recall</strong>，正样本中正确分类的比例 (Accuracy with respect to positive cases, also called <script type="math/tex">True\ Positive\ Rate</script>) </p>
+<p>特异度 <script type="math/tex">Specificity = \frac{TN}{TN+FP}</script>，负样本中正确分类的比例 (Accuracy with respect to negative cases)</p>
 <script type="math/tex; mode=display">FPR=1-Specificity</script><p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596783235673.png" alt="1596783235673" style="zoom: 67%;"></p>
 <hr>
 <h4 id="4-ROC-曲线"><a href="#4-ROC-曲线" class="headerlink" title="4. ROC 曲线"></a>4. ROC 曲线</h4><p>ROC曲线：ROC曲线是一个画在二维平面上的曲线，横坐标是FPR（负样本中错分的比例）,纵坐标是TPR（TPR等价于recall，正样本中正确分类的比例）。对某个分类器而言，根据其在测试样本上的表现可以得到一个(FPR,TPR)点对，调整分类时使用的阈值，可以得到一个曲线，就是ROC曲线。一般情况下，这个曲线应该处于对角线的上方（对角线代表的是一个随机分类器）。</p>
