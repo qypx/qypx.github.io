@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165053284.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165146743.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png">
-<meta property="og:updated_time" content="2022-03-01T06:52:20.297Z">
+<meta property="og:updated_time" content="2022-03-01T08:08:16.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Precision, Recall, ROC曲线等">
 <meta name="twitter:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110616770.png">
@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2022-03-01T14:52:20+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2022-03-01T16:08:16+08:00">
                 2022-03-01
               </time>
             
@@ -434,7 +434,7 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 </blockquote>
 <p>最理想的模型，当然是TPR尽量高而FPR尽量低啦，然而任何模型在提高正确预测概率的同时，也会难以避免地增加误判率。听起来有点抽象，好在有ROC曲线非常形象地表达了二者之间的关系。</p>
 <p>对于一个二分类模型，输出的最初结果是连续的（概率）；假设已经确定一个阈值，那么最初结果大于阈值时，则输出最终结果为1，小于阈值则输出为0。假如阈值取值为0.6，那么FPR和TPR就可以计算出此时的取值，标记为一个点，记为(FPR1,TPR1)；如果阈值取值为0.5，同理可以计算出另一个点，记为(FPR2,TPR2)。设定不同的阈值，就可以计算不同的点(FPR,TPR)，以FPR为横坐标,TPR为纵坐标，把不同的点连成曲线，就得到了<strong>ROC曲线</strong>。那么问题来了，阈值如何确定？</p>
-<p>以Logistic模型为例，模型输出的结果其实是概率，我们通过设定阈值，把概率转化为最终的输出结果0和1。首先出现在我们脑中的直观想法，就是把(0,1)区间进行等分，比如等分为十个区间（其实分成多少份都可以，大家可以自由发挥），那么就可以分别以0.1，0.2，0.3，0.4，0.5，0.6，0.7，0.8，0.9为阈值，首先计算出根据阈值判定出的0和1有多少，以及“判定为1真实为1”和“判断为1真实为0”的有多少；然后计算出不同的(FPR,TPR)值；最后把点之间进行连线，画出的曲线即是ROC曲线。</p>
+<p>以Logistic模型为例，模型输出的结果其实是概率，我们通过设定阈值，把概率转化为最终的输出结果0和1。首先出现在我们脑中的直观想法，就是把(0,1)区间进行等分，比如等分为十个区间（其实分成多少份都可以，大家可以自由发挥），那么就可以分别以0.1，0.2，0.3，0.4，0.5，0.6，0.7，0.8，0.9为阈值，首先计算出根据阈值判定出的0和1有多少，以及“真实为1判定为1”和“真实为0判断为1”的有多少；然后计算出不同的(FPR,TPR)值；最后把点之间进行连线，画出的曲线即是ROC曲线。</p>
 <p>下面，我们以某商业银行某时间段内某支行客户的逾期相关数据为例详细说明：P代表此支行的某客户的逾期率（暂且定义为在此时间段内某客户的逾期可能性），Y代表是否为高逾期客户，X是与逾期有关的相关指标，比如行业、企业规模、客户的五级分类等等。</p>
 <p>然而，当把这个直观的想法对案例数据付诸实施的时候，我们发现计算出的概率值都落在[0.0092,0.578]区间范围内。这种情况下，如果还用上面的“直观想法”（即仍然假定P小于阈值时，判定为0），那么设定阈值为0.1到0.5时，能够计算出不同的(FPR,TPR)值；而将阈值取到0.6到0.9时，模型的判定结果为所有的样本就都是0了……so sad！此时计算出的(FPR,TPR)值都是(0,0)，ROC曲线的点由11个变成了6个…….</p>
 <p>面对这个特殊案例，我们的直观想法肯定需要改进。最终，我们的实现方法是：</p>
