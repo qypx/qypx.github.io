@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165053284.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165146743.png">
 <meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png">
-<meta property="og:updated_time" content="2022-03-01T08:08:16.950Z">
+<meta property="og:updated_time" content="2022-03-01T10:23:51.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Precision, Recall, ROC曲线等">
 <meta name="twitter:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110616770.png">
@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2022-03-01T16:08:16+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2022-03-01T18:23:51+08:00">
                 2022-03-01
               </time>
             
@@ -451,9 +451,10 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p>ROC曲线画好后，就要发挥用处！对于一个模型一组参数可以画出一条ROC曲线，此时最优的阈值是什么呢（即以什么阈值为准，去最终划分为0，1）？TPR和FPR是正相关的，也就是说，正确判定出1的数量增加时，必然要伴随着代价：误判为1的FP也增加。</p>
 <p>从ROC曲线上也可以反映出这种变化，从ΔTPR&gt;ΔFPR到ΔTPR&lt;ΔFPR（一开始曲线比较陡，TPR增长得快，FPR增长得慢，即ΔTPR&gt;ΔFPR；到后面，曲线比较平缓，TPR增长得慢，FPR增长得快，有ΔTPR&lt;ΔFPR），最理想的阀值是ΔTPR=ΔFPR时。但是在实际应用中，我们很少能够给出ROC曲线的函数表达式，这时的解决方法包括：</p>
 <blockquote>
-<p>（1）给出ROC曲线的拟合函数表达式，然后计算出最优的阈值，这个目前通过软件实现难度不大；如何给出最优拟合函数，计算数学上有很多方法；</p>
-<p>（2）计算出ΔTPR≈ΔFPR的点即为最优的阀值；</p>
-<p>（3）从业务上给出最优的阀值。</p>
+<ol>
+<li>给出ROC曲线的拟合函数表达式，然后计算出最优的阈值，这个目前通过软件实现难度不大：如何给出最优拟合函数，计算数学上有很多方法；计算出 ΔTPR≈ΔFPR 的点即为最优的阀值。</li>
+<li>从业务上给出最优的阀值。</li>
+</ol>
 </blockquote>
 <p>对于一个模型多个参数的情况，就可以画出多条ROC曲线，此时哪组参数是最优的呢？我们可以结合<strong>AUC指标</strong>，哪组参数的AUC值越高，说明此组参数下的模型效果越好。另外，在SAS的评分模型输出中，常用来判断收入分配公平程度的gini系数也用来评价模型，此时gini=2*AUC-1.</p>
 <hr>
@@ -497,7 +498,7 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png" alt="image-20211011165243837" style="zoom:150%;"></p>
 <h5 id="6-4-关于提升度与混淆矩阵"><a href="#6-4-关于提升度与混淆矩阵" class="headerlink" title="6.4  关于提升度与混淆矩阵"></a>6.4  关于提升度与混淆矩阵</h5><p>While the confusion matrix gives proportions between all negatives and positives, <strong>Gain and lift charts focus on the true positives.</strong> One of their most common uses is in marketing, to decide if a prospective client is worth calling.</p>
 <p><strong>Gain and lift charts work with a sample</strong> (a fraction of the population). In comparison, a confusion matrix uses the whole population to evaluate a model.</p>
-<p>注：Gain 和提升度类似（其实就是Lift的分母部分？）</p>
+<p>注：Gain 和提升度类似（其实就是Lift的分子部分）</p>
 <h4 id="7-在-Python-中的实现"><a href="#7-在-Python-中的实现" class="headerlink" title="7. 在 Python 中的实现"></a>7. 在 Python 中的实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score, f1_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluation_metric</span><span class="params">(y_true, y_pred, y_pred_prob)</span>:</span></span><br><span class="line">    print(<span class="string">"precision: "</span>, precision_score(y_true, y_pred))</span><br><span class="line">    print(<span class="string">"recall: "</span>, recall_score(y_true, y_pred))</span><br><span class="line">    print(<span class="string">"f1_score: "</span>, f1_score(y_true,  y_pred))</span><br><span class="line">    print(<span class="string">"========="</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"confusion matrix: "</span>)</span><br><span class="line">    cm = confusion_matrix(y_true, y_pred)</span><br><span class="line">    print(cm)</span><br><span class="line">    print(<span class="string">"========="</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"auc: "</span>, roc_auc_score(y_true, y_pred_prob)) <span class="comment"># auc用预测概率进行计算</span></span><br><span class="line">    </span><br><span class="line">    fpr, tpr, thresholds = roc_curve(y_true, y_pred_prob)</span><br><span class="line">    ks = max(tpr-fpr)</span><br><span class="line">    print(<span class="string">"ks: "</span>, ks)</span><br></pre></td></tr></table></figure>
       
     </div>

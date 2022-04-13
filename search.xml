@@ -570,6 +570,9 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <li><code>-l</code> 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</li>
 </ul>
 <p><img src="/2021/02/21/Linux常用命令/1613903492422.png" alt="1613903492422"></p>
+<p>结合 <code>grep</code> 使用：</p>
+<p>查看文件 log.txt 是否存在于当前目录下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;ls | grep log.txt</span><br><span class="line">log.txt</span><br><span class="line">&gt;ls -al | grep log.txt</span><br><span class="line">-rw-rw-r--.  1 mozhiyan mozhiyan    0 4月  15 17:26 log.txt</span><br></pre></td></tr></table></figure>
 <h4 id="1-2-查看文件内容：cat"><a href="#1-2-查看文件内容：cat" class="headerlink" title="1.2 查看文件内容：cat"></a>1.2 查看文件内容：cat</h4><p><img src="/2021/02/21/Linux常用命令/1613903531146.png" alt="1613903531146"></p>
 <a id="more"></a>
 <h4 id="1-3-创建文件：-touch"><a href="#1-3-创建文件：-touch" class="headerlink" title="1.3 创建文件： touch"></a>1.3 创建文件： touch</h4><p><img src="/2021/02/21/Linux常用命令/1613903625026.png" alt="1613903625026"></p>
@@ -595,8 +598,16 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p>删除文件夹：<code>rm -r 文件夹名</code>。-r 将目录及以下之档案亦逐一删除</p>
 <p><img src="/2021/02/21/Linux常用命令/1613904534240.png" alt="1613904534240"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613904600604.png" alt="1613904600604"></p>
-<p>-f 直接删除，无需逐一确认，见如下示例：</p>
+<p><code>-f</code> 直接删除，无需逐一确认，见如下示例：</p>
 <p><img src="/2021/02/21/Linux常用命令/1613904845877.png" alt="1613904845877"></p>
+<h4 id="1-6-cp-复制文件或文件夹"><a href="#1-6-cp-复制文件或文件夹" class="headerlink" title="1.6 cp - 复制文件或文件夹"></a>1.6 cp - 复制文件或文件夹</h4><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp [options] source dest</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</span><br><span class="line">-d：复制时保留链接。这里所说的链接相当于 Windows 系统中的快捷方式。</span><br><span class="line">-f：覆盖已经存在的目标文件而不给出提示。</span><br><span class="line">-i：与 -f 选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答 y 时目标文件将被覆盖。</span><br><span class="line">-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</span><br><span class="line">-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</span><br><span class="line">-l：不复制文件，只是生成链接文件。</span><br></pre></td></tr></table></figure>
+<p>例如，将当前路径下的a.txt复制到另外一个文件夹下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;cp a.txt /data/<span class="built_in">test</span>/</span><br></pre></td></tr></table></figure>
+<p>将文件夹xgb_pipeline复制到另一个路径下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;cp -r xgb_pipeline /data/<span class="built_in">test</span>/</span><br></pre></td></tr></table></figure>
+<p>将当前路径下的多个文件复制到另一个路径下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;cp a.txt b.json /data/<span class="built_in">test</span>/</span><br></pre></td></tr></table></figure>
 <h3 id="2-压缩打包命令-tar、zip、unzip"><a href="#2-压缩打包命令-tar、zip、unzip" class="headerlink" title="2. 压缩打包命令 - tar、zip、unzip"></a>2. 压缩打包命令 - tar、zip、unzip</h3><blockquote>
 <p>来自 <a href="https://blog.csdn.net/weixin_44901564/article/details/99682926" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44901564/article/details/99682926</a></p>
 </blockquote>
@@ -724,6 +735,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p><img src="/2021/02/21/Linux常用命令/1613919407899.png" alt="1613919407899"></p>
 <h5 id="一、zip命令"><a href="#一、zip命令" class="headerlink" title="一、zip命令"></a>一、zip命令</h5><p>基本用法：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">zip [参数] [压缩包名] [压缩的目录或者文件的路径]</span><br></pre></td></tr></table></figure>
+<p>示例：<br><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;zip -r xgb_pipeline.zip xgb_pipeline</span><br></pre></td></tr></table></figure></p>
 <h6 id="zip命令常用参数"><a href="#zip命令常用参数" class="headerlink" title="zip命令常用参数"></a>zip命令常用参数</h6><div class="table-container">
 <table>
 <thead>
@@ -823,7 +835,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p><img src="/2021/02/21/Linux常用命令/1613905383386.png" alt="1613905383386"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613905411968.png" alt="1613905411968"></p>
 <p>可使用 <code>chmod +x 文件名</code> 使文件变为可执行文件，例如：</p>
-<p><img src="/2021/02/21/Linux常用命令/Users\zhu_r\Desktop\test\blog\source\_posts\Linux常用命令\1613905632283.png" alt="1613905632283"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613905651103.png" alt="1613905651103"></p>
 <p><img src="/2021/02/21/Linux常用命令/1613905697607.png" alt="1613905697607"></p>
 <p>输入<code>i</code>进行编辑模式，完成后，按<code>esc</code>再输入<code>:wq</code> 保存并退出</p>
@@ -1084,6 +1095,8 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 </blockquote>
 <p>例：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;./test_run.sh &gt;test_run.sh.log 2&gt;&amp;1</span><br><span class="line">输出结果保存到test_run.sh.log（标准输出与错误）（&gt;会覆盖已存在的内容）</span><br><span class="line"></span><br><span class="line">&gt;./test_run.sh &gt;&gt;test_run.sh.log 2&gt;&amp;1</span><br><span class="line">输出结果追加到test_run.sh.log（标准输出与错误）（&gt;&gt;追加到末尾）</span><br><span class="line"></span><br><span class="line">&gt;./test_run.sh &gt;test_run.sh.log</span><br><span class="line">输出结果保存到test_run.sh.log（标准输出），错误信息输出到屏幕</span><br><span class="line"></span><br><span class="line">&gt;./test_run.sh 2&gt;test_run.sh.log</span><br><span class="line">输出结果（不包含错误信息）到屏幕，错误信息保存到test_run.sh.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例有crontab任务：</span><br><span class="line">*/2 * * * * root cd /opt/xxxx/test_S1/html/xxxx/admin; php index.php task testOne &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line">可以把/dev/null 可以看作&quot;黑洞&quot;. 它等价于一个只写文件. 所有写入它的内容都会永远丢失. 而尝试从它那儿读取内容则什么也读不到.</span><br><span class="line">可以把 &amp; 在命令的最后加上，表示让程序后台执行。</span><br><span class="line"></span><br><span class="line">0 5 * * * 表示每天5:00执行</span><br></pre></td></tr></table></figure>
+<p>补充：如何既将结果保存到文件，又输出到屏幕：可使用 <code>tee</code>，示例如下</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;./pythonsql.sh | tee pythonsql.log</span><br></pre></td></tr></table></figure>
 <h3 id="13-crontab-定时执行shell脚本"><a href="#13-crontab-定时执行shell脚本" class="headerlink" title="13. crontab 定时执行shell脚本"></a>13. crontab 定时执行shell脚本</h3><blockquote>
 <p>参考<br><a href="https://www.cnblogs.com/chen-lhx/p/5996781.html" target="_blank" rel="noopener">linux crontab定时执行shell脚本 - 龙昊雪 - 博客园 (cnblogs.com)</a><br><a href="https://blog.csdn.net/ithomer/article/details/6817019" target="_blank" rel="noopener">linux定时运行命令脚本——crontab_阳光岛主-CSDN博客</a></p>
 </blockquote>
@@ -1100,6 +1113,84 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p>建议使用此方式，先进入该目录，然后再执行脚本；否则，执行脚本中的其它脚本都需要加绝对路径</p>
 <h4 id="13-2-crontab-中传入时间参数"><a href="#13-2-crontab-中传入时间参数" class="headerlink" title="13.2 crontab 中传入时间参数"></a>13.2 crontab 中传入时间参数</h4><p>参考 <a href="https://blog.csdn.net/weixin_45744450/article/details/108409803" target="_blank" rel="noopener">linux内crontab传时间参数_大大盒子的博客-CSDN博客</a></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">15 4 * * * /home/temp/post_analysis/post_analysis_sqoop.sh $(date -d &quot;1 day ago&quot; +&quot;\%Y-\%m-\%d&quot;) &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<h3 id="14-Linux-shell-管道"><a href="#14-Linux-shell-管道" class="headerlink" title="14 Linux shell 管道"></a>14 Linux shell 管道</h3><blockquote>
+<p>参考 <a href="http://c.biancheng.net/view/3131.html" target="_blank" rel="noopener">http://c.biancheng.net/view/3131.html</a></p>
+</blockquote>
+<p>Shell 有一种功能，就是可以将两个或者多个命令（程序或者进程）连接到一起，把一个命令的输出作为下一个命令的输入，以这种方式连接的两个或者多个命令就形成了<strong>管道（pipe）</strong>。</p>
+<p>Linux 管道使用竖线<code>|</code>连接多个命令，这被称为管道符。Linux 管道的具体语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">command1 | command2</span><br><span class="line">command1 | command2 [ | commandN... ]</span><br></pre></td></tr></table></figure>
+<p> 管道符<code>|</code>与两侧的命令之间可以存在也可以不存在空格。</p>
+<p>当在两个命令之间设置管道时，管道符<code>|</code>左边命令的输出就变成了右边命令的输入。只要第一个命令向标准输出写入，而第二个命令是从标准输入读取，那么这两个命令就可以形成一个管道。大部分的 Linux 命令都可以用来形成管道。</p>
+<p>使用管道的优点：省去创建临时文件。</p>
+<p>【示例】将 ls 命令的输出发送到 grep 命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[c.biancheng.net]$ ls | grep log.txt</span><br><span class="line">log.txt</span><br></pre></td></tr></table></figure>
+<p>上述命令是查看文件 log.txt 是否存在于当前目录下。</p>
+<p>我们可以在命令的后面使用选项，例如使用<code>-al</code>选项：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[c.biancheng.net]$ ls -al | grep log.txt</span><br><span class="line">-rw-rw-r--.  1 mozhiyan mozhiyan    0 4月  15 17:26 log.txt</span><br></pre></td></tr></table></figure>
+<p>我们也可以重定向管道的输出到一个文件（使用重定向操作符&gt;或&gt;&gt;将管道中的最后一个命令的标准输出进行重定向），比如将上述管道命令的输出结果发送到文件 output.txt 中： </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[c.biancheng.net]$ ls -al | grep log.txt &gt;output.txt</span><br><span class="line">[c.biancheng.net]$ cat output.txt</span><br><span class="line">-rw-rw-r--.  1 mozhiyan mozhiyan    0 4月  15 17:26 log.txt</span><br></pre></td></tr></table></figure>
+<h3 id="15-在-Linux-shell-中查看与处理文件常用的命令"><a href="#15-在-Linux-shell-中查看与处理文件常用的命令" class="headerlink" title="15. 在 Linux shell 中查看与处理文件常用的命令"></a>15. 在 Linux shell 中查看与处理文件常用的命令</h3><h4 id="15-1-less"><a href="#15-1-less" class="headerlink" title="15.1 less"></a>15.1 less</h4><p>使用管道将 cat 命令的输出作为 less 命令的输入，这样就可以将 cat 命令的输出每次按照一个屏幕的长度显示，这对于查看长度大于一个屏幕的文件内容很有帮助。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat /var/<span class="built_in">log</span>/message | less</span><br></pre></td></tr></table></figure>
+<h4 id="15-2-grep"><a href="#15-2-grep" class="headerlink" title="15.2 grep"></a>15.2 grep</h4><blockquote>
+<p>参考 <a href="https://www.runoob.com/linux/linux-comm-grep.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-grep.html</a></p>
+</blockquote>
+<p>grep 命令用于查找文件里符合条件的字符串。</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep [-abcEFGhHilLnqrsvVwxy][-A&lt;显示行数&gt;][-B&lt;显示列数&gt;][-C&lt;显示列数&gt;][-d&lt;进行动作&gt;][-e&lt;范本样式&gt;][-f&lt;范本文件&gt;][--help][范本样式][文件或目录...]</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">-a 或 --text : 不要忽略二进制的数据。</span><br><span class="line">-A&lt;显示行数&gt; 或 --after-context=&lt;显示行数&gt; : 除了显示符合范本样式的那一列之外，并显示该行之后的内容。</span><br><span class="line">-b 或 --byte-offset : 在显示符合样式的那一行之前，标示出该行第一个字符的编号。</span><br><span class="line">-B&lt;显示行数&gt; 或 --before-context=&lt;显示行数&gt; : 除了显示符合样式的那一行之外，并显示该行之前的内容。</span><br><span class="line">-c 或 --count : 计算符合样式的列数。</span><br><span class="line">-C&lt;显示行数&gt; 或 --context=&lt;显示行数&gt;或-&lt;显示行数&gt; : 除了显示符合样式的那一行之外，并显示该行之前后的内容。</span><br><span class="line">-d &lt;动作&gt; 或 --directories=&lt;动作&gt; : 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。</span><br><span class="line">-e&lt;范本样式&gt; 或 --regexp=&lt;范本样式&gt; : 指定字符串做为查找文件内容的样式。</span><br><span class="line">-E 或 --extended-regexp : 将样式为延伸的正则表达式来使用。</span><br><span class="line">-f&lt;规则文件&gt; 或 --file=&lt;规则文件&gt; : 指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。</span><br><span class="line">-F 或 --fixed-regexp : 将样式视为固定字符串的列表。</span><br><span class="line">-G 或 --basic-regexp : 将样式视为普通的表示法来使用。</span><br><span class="line">-h 或 --no-filename : 在显示符合样式的那一行之前，不标示该行所属的文件名称。</span><br><span class="line">-H 或 --with-filename : 在显示符合样式的那一行之前，表示该行所属的文件名称。</span><br><span class="line">-i 或 --ignore-case : 忽略字符大小写的差别。</span><br><span class="line">-l 或 --file-with-matches : 列出文件内容符合指定的样式的文件名称。</span><br><span class="line">-L 或 --files-without-match : 列出文件内容不符合指定的样式的文件名称。</span><br><span class="line">-n 或 --line-number : 在显示符合样式的那一行之前，标示出该行的列数编号。</span><br><span class="line">-o 或 --only-matching : 只显示匹配PATTERN 部分。</span><br><span class="line">-q 或 --quiet或--silent : 不显示任何信息。</span><br><span class="line">-r 或 --recursive : 此参数的效果和指定&quot;-d recurse&quot;参数相同。</span><br><span class="line">-s 或 --no-messages : 不显示错误信息。</span><br><span class="line">-v 或 --invert-match : 显示不包含匹配文本的所有行。</span><br><span class="line">-V 或 --version : 显示版本信息。</span><br><span class="line">-w 或 --word-regexp : 只显示全字符合的列。</span><br><span class="line">-x --line-regexp : 只显示全列符合的列。</span><br><span class="line">-y : 此参数的效果和指定&quot;-i&quot;参数相同。</span><br></pre></td></tr></table></figure>
+<p>【示例1】在当前路径下，查找后缀有 file 字样的文件中包含 test 字符串的文件，并打印出该字符串的行。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">grep <span class="built_in">test</span> *file</span><br></pre></td></tr></table></figure>
+<p>结果如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;grep test test* #查找前缀有“test”的文件包含“test”字符串的文件  </span><br><span class="line">testfile1:This a Linux testfile! #列出testfile1 文件中包含test字符的行  </span><br><span class="line">testfile_2:This is a linux testfile! #列出testfile_2 文件中包含test字符的行  </span><br><span class="line">testfile_2:Linux test #列出testfile_2 文件中包含test字符的行</span><br></pre></td></tr></table></figure>
+<p>【示例2】以递归的方式查找符合条件的文件。例如，查找指定目录/etc/acpi 及其子目录（如果存在子目录的话）下所有文件中包含字符串”update”的文件，并打印出该字符串所在行的内容，使用的命令为： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep -r update /etc/acpi</span><br></pre></td></tr></table></figure>
+<p>【示例3】查看result.csv中出现100001的行并输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;cat result.csv | grep 100001</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/1649855242323.png" alt="1649855242323"></p>
+<p>将输出结果存入文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;cat result.csv | grep 100001 &gt;output.txt</span><br></pre></td></tr></table></figure>
+<p>查找并返回行号：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;cat result.csv | grep -n 100001</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/1649856944592.png" alt="1649856944592"></p>
+<p>若想在另一个文件中查看相同行号的内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; cat result2.csv | sed -n &apos;334007p&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/1649858199759.png" alt="1649858199759"></p>
+<h4 id="15-3-wc"><a href="#15-3-wc" class="headerlink" title="15.3 wc"></a>15.3 wc</h4><blockquote>
+<p>参考 <a href="https://www.runoob.com/linux/linux-comm-wc.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-wc.html</a></p>
+</blockquote>
+<p>wc命令用于计算字数</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wc [-clw][--help][--version][文件...]</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">-c或--bytes或--chars 只显示Bytes数。</span><br><span class="line">-l或--lines 显示行数。</span><br><span class="line">-w或--words 只显示字数。</span><br><span class="line">--help 在线帮助。</span><br><span class="line">--version 显示版本信息。</span><br></pre></td></tr></table></figure>
+<p>【示例1】返回行数，字数，字节数</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ cat testfile  </span><br><span class="line">Linux networks are becoming more and more common, but scurity is often an overlooked  </span><br><span class="line">issue. Unfortunately, <span class="keyword">in</span> today’s environment all networks are potential hacker targets,  </span><br><span class="line">fro0m tp-secret military research networks to small home LANs.  </span><br><span class="line">Linux Network Securty focuses on securing Linux <span class="keyword">in</span> a networked environment, <span class="built_in">where</span> the  </span><br><span class="line">security of the entire network needs to be considered rather than just isolated machines.  </span><br><span class="line">It uses a mix of theory and practicl techniques to teach administrators how to install and  </span><br><span class="line">use security applications, as well as how the applcations work and why they are necesary. </span><br><span class="line"></span><br><span class="line">$ wc testfile           <span class="comment"># testfile文件的统计信息  </span></span><br><span class="line">3 92 598 testfile       <span class="comment"># testfile文件的行数为3、单词数92、字节数598</span></span><br></pre></td></tr></table></figure>
+<p>【示例2】查看文件中包含多少个逗号，结合 <code>grep</code>：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;cat result.txt | grep -o <span class="string">','</span> | wc -l</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/02/21/Linux常用命令/1649857332971.png" alt="1649857332971"></p>
+<h4 id="15-4-sed"><a href="#15-4-sed" class="headerlink" title="15.4 sed"></a>15.4 sed</h4><p>sed 可依照脚本的指令来处理、编辑文本文件。</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件]</span><br><span class="line"></span><br><span class="line">参数说明：</span><br><span class="line">-e&lt;script&gt;或--expression=&lt;script&gt; 以选项中指定的script来处理输入的文本文件。</span><br><span class="line">-f&lt;script文件&gt;或--file=&lt;script文件&gt; 以选项中指定的script文件来处理输入的文本文件。</span><br><span class="line">-h或--help 显示帮助。</span><br><span class="line">-n或--quiet或--silent 仅显示script处理后的结果。</span><br><span class="line">-V或--version 显示版本信息。</span><br><span class="line"></span><br><span class="line">动作说明：</span><br><span class="line">a ：新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</span><br><span class="line">c ：取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</span><br><span class="line">d ：删除，因为是删除啊，所以 d 后面通常不接任何东东；</span><br><span class="line">i ：插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</span><br><span class="line">p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -n 一起运行～</span><br><span class="line">s ：取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</span><br></pre></td></tr></table></figure>
+<p>假如有如下文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ cat testfile <span class="comment">#查看testfile 中的内容  </span></span><br><span class="line">HELLO LINUX!  </span><br><span class="line">Linux is a free unix-type opterating system.  </span><br><span class="line">This is a linux testfile!  </span><br><span class="line">Linux <span class="built_in">test</span> </span><br><span class="line">Google</span><br><span class="line">Taobao</span><br><span class="line">Runoob</span><br><span class="line">Tesetfile</span><br><span class="line">Wiki</span><br></pre></td></tr></table></figure>
+<p>【示例1】列出文件的5到7行：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ cat testfile | sed -n <span class="string">'5,7p'</span></span><br><span class="line">Google</span><br><span class="line">Taobao</span><br><span class="line">Runoob</span><br></pre></td></tr></table></figure>
+<p>【示例2】搜索 testfile 有 oo 关键字的行:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ cat testfile | sed -n <span class="string">'/oo/p'</span></span><br><span class="line">Google</span><br><span class="line">Runoob</span><br></pre></td></tr></table></figure>
+<p>【示例3】数据的查找与替换：</p>
+<p>除了整行的处理模式之外， sed 还可以用行为单位进行部分数据的查找与替换</p>
+<p>语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sed &apos;s/要被取代的字串/新的字串/g&apos;</span><br></pre></td></tr></table></figure>
+<p>将 testfile 文件中每行第一次出现的 oo 用字符串 kk 替换，然后将该文件内容输出到标准输出: </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;sed -e <span class="string">'s/oo/kk/'</span> testfile</span><br></pre></td></tr></table></figure>
+<p>注：sed 后面接的动作，要以 ‘…’ 两个单引号括住</p>
+<p><code>g</code> 标识符表示全局查找替换，使 sed 对文件中所有符合的字符串都被替换，修改后内容会到标准输出，不会修改原文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;sed -e <span class="string">'s/oo/kk/g'</span> testfile</span><br></pre></td></tr></table></figure>
+<p>选项 <code>i</code> 使 sed 修改文件:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;sed -i <span class="string">'s/oo/kk/g'</span> testfile</span><br></pre></td></tr></table></figure>
+<p>批量操作当前目录下以 <strong>test</strong> 开头的文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;sed -i <span class="string">'s/oo/kk/g'</span> ./<span class="built_in">test</span>*</span><br></pre></td></tr></table></figure>
+<p>【示例4】将文件中的的逗号替换为\t，写入另一个文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;cat ./docs/a.txt |sed <span class="string">'s/,/\t/g'</span> &gt;./docs/b.txt</span><br></pre></td></tr></table></figure>
+<p>直接修改原文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;sed -i <span class="string">'s/,/\t/g'</span> ./docs/a.txt</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -2089,9 +2180,10 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p>ROC曲线画好后，就要发挥用处！对于一个模型一组参数可以画出一条ROC曲线，此时最优的阈值是什么呢（即以什么阈值为准，去最终划分为0，1）？TPR和FPR是正相关的，也就是说，正确判定出1的数量增加时，必然要伴随着代价：误判为1的FP也增加。</p>
 <p>从ROC曲线上也可以反映出这种变化，从ΔTPR&gt;ΔFPR到ΔTPR&lt;ΔFPR（一开始曲线比较陡，TPR增长得快，FPR增长得慢，即ΔTPR&gt;ΔFPR；到后面，曲线比较平缓，TPR增长得慢，FPR增长得快，有ΔTPR&lt;ΔFPR），最理想的阀值是ΔTPR=ΔFPR时。但是在实际应用中，我们很少能够给出ROC曲线的函数表达式，这时的解决方法包括：</p>
 <blockquote>
-<p>（1）给出ROC曲线的拟合函数表达式，然后计算出最优的阈值，这个目前通过软件实现难度不大；如何给出最优拟合函数，计算数学上有很多方法；</p>
-<p>（2）计算出ΔTPR≈ΔFPR的点即为最优的阀值；</p>
-<p>（3）从业务上给出最优的阀值。</p>
+<ol>
+<li>给出ROC曲线的拟合函数表达式，然后计算出最优的阈值，这个目前通过软件实现难度不大：如何给出最优拟合函数，计算数学上有很多方法；计算出 ΔTPR≈ΔFPR 的点即为最优的阀值。</li>
+<li>从业务上给出最优的阀值。</li>
+</ol>
 </blockquote>
 <p>对于一个模型多个参数的情况，就可以画出多条ROC曲线，此时哪组参数是最优的呢？我们可以结合<strong>AUC指标</strong>，哪组参数的AUC值越高，说明此组参数下的模型效果越好。另外，在SAS的评分模型输出中，常用来判断收入分配公平程度的gini系数也用来评价模型，此时gini=2*AUC-1.</p>
 <hr>
@@ -2135,7 +2227,7 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png" alt="image-20211011165243837" style="zoom:150%;"></p>
 <h5 id="6-4-关于提升度与混淆矩阵"><a href="#6-4-关于提升度与混淆矩阵" class="headerlink" title="6.4  关于提升度与混淆矩阵"></a>6.4  关于提升度与混淆矩阵</h5><p>While the confusion matrix gives proportions between all negatives and positives, <strong>Gain and lift charts focus on the true positives.</strong> One of their most common uses is in marketing, to decide if a prospective client is worth calling.</p>
 <p><strong>Gain and lift charts work with a sample</strong> (a fraction of the population). In comparison, a confusion matrix uses the whole population to evaluate a model.</p>
-<p>注：Gain 和提升度类似（其实就是Lift的分母部分？）</p>
+<p>注：Gain 和提升度类似（其实就是Lift的分子部分）</p>
 <h4 id="7-在-Python-中的实现"><a href="#7-在-Python-中的实现" class="headerlink" title="7. 在 Python 中的实现"></a>7. 在 Python 中的实现</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score, f1_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluation_metric</span><span class="params">(y_true, y_pred, y_pred_prob)</span>:</span></span><br><span class="line">    print(<span class="string">"precision: "</span>, precision_score(y_true, y_pred))</span><br><span class="line">    print(<span class="string">"recall: "</span>, recall_score(y_true, y_pred))</span><br><span class="line">    print(<span class="string">"f1_score: "</span>, f1_score(y_true,  y_pred))</span><br><span class="line">    print(<span class="string">"========="</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"confusion matrix: "</span>)</span><br><span class="line">    cm = confusion_matrix(y_true, y_pred)</span><br><span class="line">    print(cm)</span><br><span class="line">    print(<span class="string">"========="</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"auc: "</span>, roc_auc_score(y_true, y_pred_prob)) <span class="comment"># auc用预测概率进行计算</span></span><br><span class="line">    </span><br><span class="line">    fpr, tpr, thresholds = roc_curve(y_true, y_pred_prob)</span><br><span class="line">    ks = max(tpr-fpr)</span><br><span class="line">    print(<span class="string">"ks: "</span>, ks)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>机器学习</category>
@@ -6592,7 +6684,7 @@ table th:nth-of-type(2) {
 </ul>
 <p>例：将HDFS中的文件导入分区表</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOAD DATA INPATH &apos;/user/kelly/test-ml/20210901predict_result.csv&apos; OVERWRITE INTO TABLE &apos;ads_base.xxxx&apos; partition(dt=20210901)</span><br></pre></td></tr></table></figure>
-<h4 id="实例：将CSV文件导入Hive表"><a href="#实例：将CSV文件导入Hive表" class="headerlink" title="实例：将CSV文件导入Hive表"></a>实例：将CSV文件导入Hive表</h4><blockquote>
+<h4 id="实例1：将CSV文件导入Hive表"><a href="#实例1：将CSV文件导入Hive表" class="headerlink" title="实例1：将CSV文件导入Hive表"></a>实例1：将CSV文件导入Hive表</h4><blockquote>
 <p>参考：<a href="https://sparkbyexamples.com/apache-hive/hive-load-csv-file-into-table/" target="_blank" rel="noopener">Hive Load CSV File into Table — SparkByExamples</a></p>
 </blockquote>
 <p>首先需创建hive表：</p>
@@ -6612,6 +6704,11 @@ table th:nth-of-type(2) {
 <p>（4) 使用 <code>partition</code></p>
 <p>如果目标表是分区表，使用 <code>partition</code> 将数据导入特定的分区中。并且可使用 <code>overwrite</code> 覆盖该分区（删掉原有的数据并装载现在的数据）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOAD DATA LOCAL INPATH &apos;/home/hive/data.csv&apos; OVERWRITE INTO TABLE emp.employee PARTITION(date=2020);</span><br></pre></td></tr></table></figure>
+<h4 id="实例2：将hive表内容导出为dsv"><a href="#实例2：将hive表内容导出为dsv" class="headerlink" title="实例2：将hive表内容导出为dsv"></a>实例2：将hive表内容导出为dsv</h4><p>hive表的内容实际是存在hdfs上的，可以直接导出到服务器本地：</p>
+<p>read_data.sh</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">local_path=<span class="string">'./docs/predict_data.csv'</span></span><br><span class="line"></span><br><span class="line">hive -e <span class="string">"insert overwrite local directory './docs/predict_data_dir/'</span></span><br><span class="line"><span class="string">ROW FORMAT DELIMITED FIELDS TERMINATED BY '\u0000'</span></span><br><span class="line"><span class="string">select * from xx_db.xx_table</span></span><br><span class="line"><span class="string">where dt=xxx;</span></span><br><span class="line"><span class="string">"</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果需要表头：</span></span><br><span class="line"><span class="comment"># 生成表头，并写入最终的csv文件中</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 法一：执行完后，最好检查一下csv的表头是否正确</span></span><br><span class="line"><span class="comment">#hive  -e 'SET hive.cli.print.header=true; SELECT * FROM xx_db.xx_table LIMIT 0' &gt; ./docs/predict_data.csv </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二：先表表头存入文件</span></span><br><span class="line">cat ./docs/final_features.txt | sed <span class="string">'s/,/\t/g'</span>&gt; <span class="variable">$local_path</span></span><br><span class="line">cat ./docs/predict_data_dir/* &gt;&gt; <span class="variable">$local_path</span>  <span class="comment">#把000000_0，000001_0这样的文件通过追加的方式，写入最终的csv文件中</span></span><br><span class="line">sed -i <span class="string">'s/,/-/g'</span> <span class="variable">$local_path</span></span><br><span class="line">sed -i <span class="string">'s/[\t]/,/g'</span> <span class="variable">$local_path</span></span><br><span class="line">sed -i <span class="string">'s/\x00/,/g'</span> <span class="variable">$local_path</span></span><br></pre></td></tr></table></figure>
+<p>可指定分隔符为逗号：<code>ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</code>，但若字段中的内容含有逗号，则需使用其他分隔符。</p>
+<p>注：<code>sed s/,/\t/g</code> 意思是将所有逗号替换为\t</p>
 <h3 id="5-2-Insert"><a href="#5-2-Insert" class="headerlink" title="5.2 Insert"></a>5.2 Insert</h3><h4 id="5-2-1-INSERT-INTO-OVERWRITE-TABLE-SELECT"><a href="#5-2-1-INSERT-INTO-OVERWRITE-TABLE-SELECT" class="headerlink" title="5.2.1 INSERT INTO/OVERWRITE TABLE SELECT"></a><span id="jump5.2.1">5.2.1 INSERT INTO/OVERWRITE TABLE SELECT</span></h4><blockquote>
 <p>参考 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-InsertingdataintoHiveTablesfromqueries" target="_blank" rel="noopener">LanguageManual DML - Apache Hive - Apache Software Foundation</a></p>
 </blockquote>
