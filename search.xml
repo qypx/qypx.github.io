@@ -9651,9 +9651,15 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
     <title>Jupyter Notebook中的快捷键</title>
     <url>/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li>shift+enter: 运行代码块</li>
-<li>shift+tab: show the documentation pop up for the method</li>
-<li>Esc+m: markdown语句</li>
+<li><p>shift+enter: 运行代码块</p>
+</li>
+<li><p>shift+tab: show the documentation pop up for the method</p>
+</li>
+<li><p>Esc+m: markdown语句</p>
+</li>
+<li><p>jupyter notebook中reload模块：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line">importlib.reload(feature_transform)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 ]]></content>
       <categories>
