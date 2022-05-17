@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>&#39;Python中运行linux命令&#39;</title>
+    <url>/2022/05/17/Python%E4%B8%AD%E8%BF%90%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/cwp-bg/p/8465566.html" target="_blank" rel="noopener">https://www.cnblogs.com/cwp-bg/p/8465566.html</a></p>
+</blockquote>
+<h3 id="os的system原理"><a href="#os的system原理" class="headerlink" title="os的system原理"></a>os的system原理</h3><p>system函数可以将字符串转化成命令在服务器上运行；其原理是每一条system函数执行时，其会创建一个子进程在系统上执行命令行，子进程的执行结果无法影响主进程；</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">'mkdir /usr/local'</span>)</span><br></pre></td></tr></table></figure>
+<p>使用system执行多条命令时，为保证命令可以成功，多条命令需要在同一个子进程中运行：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">'cd /usr/local &amp;&amp; mkdir aaa.txt'</span>)</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">os.system(<span class="string">'cd /usr/local ; mkdir aaa.txt'</span>)</span><br></pre></td></tr></table></figure>
+<p>↑如果写在两个system()中：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">'cd /usr/local'</span>)</span><br><span class="line">os.mkdir(<span class="string">'aaa.txt)</span></span><br></pre></td></tr></table></figure>
+<p>会发现txt文件并没有创建在/usr/local文件夹下，而是在当前的目录下</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于python2与python3使用上的差异</title>
     <url>/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要对比版本：python27与python36</p>
@@ -553,7 +576,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
   <entry>
     <title>Linux常用命令</title>
     <url>/2021/02/21/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="0-在线使用-Linux"><a href="#0-在线使用-Linux" class="headerlink" title="0. 在线使用 Linux"></a>0. 在线使用 Linux</h3><blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="0-在线使用-Linux-Shell"><a href="#0-在线使用-Linux-Shell" class="headerlink" title="0. 在线使用 Linux Shell"></a>0. 在线使用 Linux Shell</h3><blockquote>
 <p>参考 <a href="https://www.sohu.com/a/343421845_298038" target="_blank" rel="noopener">https://www.sohu.com/a/343421845_298038</a></p>
 </blockquote>
 <p>JS/UIX - Terminal</p>
@@ -564,11 +587,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 </blockquote>
 <p>显示指定工作目录下的内容（列出目前工作目录所含之文件及子目录)</p>
 <p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls [-alrtAFR] [name...]</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>-a</code> 显示所有文件及目录 (<strong>.</strong> 开头的隐藏文件也会列出)</li>
-<li><code>-l</code> 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls [-alrtAFR] [name...]</span><br><span class="line"> </span><br><span class="line">参数：</span><br><span class="line">-a： 显示所有文件及目录 (.开头的隐藏文件也会列出)</span><br><span class="line">-l： 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</span><br><span class="line"></span><br><span class="line">ls -l  可写作 ll</span><br><span class="line"></span><br><span class="line">常用写法：</span><br><span class="line">ll</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
 <p><img src="/2021/02/21/Linux常用命令/1613903492422.png" alt="1613903492422"></p>
 <p>结合 <code>grep</code> 使用：</p>
 <p>查看文件 log.txt 是否存在于当前目录下：</p>
@@ -822,6 +841,8 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p>使用<code>-v</code>显示的信息比使用<code>-l</code>显示的信息更加详细</p>
 <p>e.将dajihe.zip压缩包解压到/opt/目录下：</p>
 <p><img src="/2021/02/21/Linux常用命令/1613920322610.png" alt="1613920322610"></p>
+<p>注：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unzip -l dajihe.zip</span><br><span class="line">unzip -v dajihe.zip</span><br><span class="line">unzip -c dajihe.zip</span><br><span class="line">都不会解压，只是查看</span><br><span class="line">unzip dajihe.zip会解压</span><br></pre></td></tr></table></figure>
 <h3 id="3-Linux属主权限，chgrp，chown，chmod"><a href="#3-Linux属主权限，chgrp，chown，chmod" class="headerlink" title="3.Linux属主权限，chgrp，chown，chmod"></a>3.Linux属主权限，chgrp，chown，chmod</h3><blockquote>
 <p>来自 <a href="https://www.cnblogs.com/CYHISTW/p/11031429.html" target="_blank" rel="noopener">https://www.cnblogs.com/CYHISTW/p/11031429.html</a></p>
 </blockquote>
@@ -1191,6 +1212,16 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;cat ./docs/a.txt |sed <span class="string">'s/,/\t/g'</span> &gt;./docs/b.txt</span><br></pre></td></tr></table></figure>
 <p>直接修改原文件：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt;sed -i <span class="string">'s/,/\t/g'</span> ./docs/a.txt</span><br></pre></td></tr></table></figure>
+<h4 id="15-5-关于vim"><a href="#15-5-关于vim" class="headerlink" title="15.5 关于vim"></a>15.5 关于vim</h4><h5 id="15-5-1-快速清空文件内容"><a href="#15-5-1-快速清空文件内容" class="headerlink" title="15.5.1 快速清空文件内容"></a>15.5.1 快速清空文件内容</h5><blockquote>
+<p>参考 <a href="https://blog.csdn.net/qq_21238607/article/details/119541193" target="_blank" rel="noopener">https://blog.csdn.net/qq_21238607/article/details/119541193</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#命令模式下</span><br><span class="line">G # 跳至文件最后一行</span><br><span class="line">d1G # 删除首行至光标所在行的所有数据</span><br></pre></td></tr></table></figure>
+<p>👆 注：输入完 <code>d1G</code>后，会立马清空，不会要求确认等操作。</p>
+<h5 id="15-5-2-撤销与恢复"><a href="#15-5-2-撤销与恢复" class="headerlink" title="15.5.2 撤销与恢复"></a>15.5.2 撤销与恢复</h5><blockquote>
+<p>参考 <a href="http://c.biancheng.net/view/6332.html" target="_blank" rel="noopener">http://c.biancheng.net/view/6332.html</a></p>
+</blockquote>
+<p><img src="/2021/02/21/Linux常用命令/1650364215210.png" alt="1650364215210"></p>
+<p>注意，以上这 3 种命令都必须在 Vim 编辑器处于命令模式时才能使用。</p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -6338,7 +6369,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 </blockquote>
 <h6 id="a-向非分区表中装载数据"><a href="#a-向非分区表中装载数据" class="headerlink" title="a. 向非分区表中装载数据"></a>a. 向非分区表中装载数据</h6><p><strong>（1）使用 LOAD</strong></p>
 <p>先准备一个本地文本文件 a.txt，其中只有一行记录 ‘aaa’.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">echo &apos;aaa&apos; &gt; a.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;mkdir test</span><br><span class="line">&gt;cd test</span><br><span class="line">&gt;echo &apos;aaa&apos; &gt; a.txt</span><br></pre></td></tr></table></figure>
 <p>将这行记录装载到一个表中，并查看HDFS上生成的数据文件</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt; use test;</span><br><span class="line">hive&gt; drop table if exists t1;</span><br><span class="line">hive&gt; create table t1(name string);</span><br><span class="line">hive&gt; load data local inpath &apos;/root/test&apos; into table t1;</span><br><span class="line">hive&gt; select * from t1;</span><br><span class="line">aaa</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t1;</span><br><span class="line">Found 1 items</span><br><span class="line">-rwxrwxrwt	3	root	hive	4	2016-10-20	13:52	/user/hive/warehouse/test.db/t1/a.txt</span><br><span class="line">hive&gt; dfs -cat /user/hive/warehouse/test.db/t1/a.txt;</span><br><span class="line">aaa</span><br></pre></td></tr></table></figure>
 <p>可以看到，hive命令行中除了可以执行HiveQL语句，还可以执行Hadoop的dfs命令。<strong>Load语句实际执行了一个复制文件的操作</strong>。通常我们在load语句中指定的路径是一个目录，而不是单个独立的文件。Hive会将该目录下的所有文件都复制到目标位置。这使得用户将更方便地组织数据到多个文件中，同时可以在不修改Hive脚本的前提下修改文件命名规则。文件会被复制到目标路径下而且文件名保持不变。</p>
@@ -6687,24 +6718,26 @@ table th:nth-of-type(2) {
 <h4 id="实例1：将CSV文件导入Hive表"><a href="#实例1：将CSV文件导入Hive表" class="headerlink" title="实例1：将CSV文件导入Hive表"></a>实例1：将CSV文件导入Hive表</h4><blockquote>
 <p>参考：<a href="https://sparkbyexamples.com/apache-hive/hive-load-csv-file-into-table/" target="_blank" rel="noopener">Hive Load CSV File into Table — SparkByExamples</a></p>
 </blockquote>
-<p>首先需创建hive表：</p>
+<p>（1）首先需创建hive表：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> emp.employee (</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="keyword">string</span>,</span><br><span class="line">	age <span class="built_in">int</span>,</span><br><span class="line">	gender <span class="keyword">string</span> </span><br><span class="line">)</span><br><span class="line"><span class="keyword">COMMENT</span> <span class="string">'Employee Table'</span></span><br><span class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></span><br><span class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>注:</strong> 为了将csv文件导入Hive表, 建表时需要使用 <code>ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</code></p>
-<p>（1）将HDFS中的csv导入Hive表</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOAD DATA INPATH &apos;/user/hive/data/data.csv&apos; INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
+<p>（2）使用 <code>rz</code> 命令将电脑本地文件上传至服务器</p>
+<p>注：先关闭本地文件，再 <code>rz</code>，且文件中不要包含header，否则会被一起导入表中</p>
+<p>（3）将服务器上的文件上传至HDFS</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">登录hive</span><br><span class="line">hive&gt;dfs -put 服务器上的文件路径 HDFS中的文件路径</span><br><span class="line">例：</span><br><span class="line">hive&gt;dfs -put /data/test/data.csv /user/kelly/data;</span><br><span class="line">若目标路径不存在，需先新建路径：</span><br><span class="line">hive&gt;dfs -mkdir /user/kelly/data;</span><br><span class="line">↑其中/user/kelly为已存在路径</span><br><span class="line">（若多个层级缺失，加上-p参数，创建所有缺失目录）</span><br><span class="line"></span><br><span class="line">如果像重跑覆盖，加上-f参数：</span><br><span class="line">hive&gt;dfs -put -f xxx xxx</span><br></pre></td></tr></table></figure>
+<p>（4）将HDFS中的csv导入Hive表</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;LOAD DATA INPATH &apos;/user/kelly/data/data.csv&apos; OVERWRITE INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
+<p>若使用 <code>overwrite</code>，则会删掉目标表里已有的数据，并导入文件中的数据</p>
 <p>使用 <code>select * from emp.employee</code> 查看是否写入成功。</p>
 <p><span style="color:red"><strong>注：</strong>对于LOAD DATA INAPTH：LOAD 后，HDFS中的源数据会被删掉</span></p>
-<p>（2）将服务器（即local filesystem）上的csv导入Hive表</p>
+<p>法二：直接将服务器（即local filesystem）上的csv导入Hive表</p>
 <p>Use <code>LOCAL</code> optional clause to load CSV file from the local filesystem into the Hive table without uploading to HDFS.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOAD DATA LOCAL INPATH &apos;/home/hive/data.csv&apos; INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;LOAD DATA LOCAL INPATH &apos;/data/test/data.csv&apos; OVERWRITE INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
 <p><span style="color:red"><strong>注：</strong>对于LOAD DATA LOCAL INAPTH：与从HDFS导入不同，local file system 中的源数据不会被删掉。</span></p>
-<p>（3）使用 <code>overwrite</code></p>
-<p>若使用 <code>overwrite</code>，则会删掉目标表里已有的数据，并导入文件中的数据</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOAD DATA LOCAL INPATH &apos;/home/hive/data.csv&apos; OVERWRITE INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
-<p>（4) 使用 <code>partition</code></p>
+<p>另：使用 <code>partition</code></p>
 <p>如果目标表是分区表，使用 <code>partition</code> 将数据导入特定的分区中。并且可使用 <code>overwrite</code> 覆盖该分区（删掉原有的数据并装载现在的数据）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LOAD DATA LOCAL INPATH &apos;/home/hive/data.csv&apos; OVERWRITE INTO TABLE emp.employee PARTITION(date=2020);</span><br></pre></td></tr></table></figure>
-<h4 id="实例2：将hive表内容导出为dsv"><a href="#实例2：将hive表内容导出为dsv" class="headerlink" title="实例2：将hive表内容导出为dsv"></a>实例2：将hive表内容导出为dsv</h4><p>hive表的内容实际是存在hdfs上的，可以直接导出到服务器本地：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;LOAD DATA INPATH &apos;/user/kelly/data/data.csv&apos; OVERWRITE INTO TABLE emp.employee PARTITION(date=2020);</span><br></pre></td></tr></table></figure>
+<h4 id="实例2：将hive表内容导出为csv"><a href="#实例2：将hive表内容导出为csv" class="headerlink" title="实例2：将hive表内容导出为csv"></a>实例2：将hive表内容导出为csv</h4><p>hive表的内容实际是存在hdfs上的，可以直接导出到服务器本地：</p>
 <p>read_data.sh</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">local_path=<span class="string">'./docs/predict_data.csv'</span></span><br><span class="line"></span><br><span class="line">hive -e <span class="string">"insert overwrite local directory './docs/predict_data_dir/'</span></span><br><span class="line"><span class="string">ROW FORMAT DELIMITED FIELDS TERMINATED BY '\u0000'</span></span><br><span class="line"><span class="string">select * from xx_db.xx_table</span></span><br><span class="line"><span class="string">where dt=xxx;</span></span><br><span class="line"><span class="string">"</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果需要表头：</span></span><br><span class="line"><span class="comment"># 生成表头，并写入最终的csv文件中</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 法一：执行完后，最好检查一下csv的表头是否正确</span></span><br><span class="line"><span class="comment">#hive  -e 'SET hive.cli.print.header=true; SELECT * FROM xx_db.xx_table LIMIT 0' &gt; ./docs/predict_data.csv </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二：先表表头存入文件</span></span><br><span class="line">cat ./docs/final_features.txt | sed <span class="string">'s/,/\t/g'</span>&gt; <span class="variable">$local_path</span></span><br><span class="line">cat ./docs/predict_data_dir/* &gt;&gt; <span class="variable">$local_path</span>  <span class="comment">#把000000_0，000001_0这样的文件通过追加的方式，写入最终的csv文件中</span></span><br><span class="line">sed -i <span class="string">'s/,/-/g'</span> <span class="variable">$local_path</span></span><br><span class="line">sed -i <span class="string">'s/[\t]/,/g'</span> <span class="variable">$local_path</span></span><br><span class="line">sed -i <span class="string">'s/\x00/,/g'</span> <span class="variable">$local_path</span></span><br></pre></td></tr></table></figure>
 <p>可指定分隔符为逗号：<code>ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</code>，但若字段中的内容含有逗号，则需使用其他分隔符。</p>
@@ -10117,8 +10150,8 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>

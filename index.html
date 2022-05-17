@@ -284,6 +284,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2022/05/17/Python中运行linux命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/05/17/Python中运行linux命令/" itemprop="url">'Python中运行linux命令'</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-05-17T16:05:52+08:00">
+                2022-05-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-05-17T16:12:25+08:00">
+                2022-05-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考 <a href="https://www.cnblogs.com/cwp-bg/p/8465566.html" target="_blank" rel="noopener">https://www.cnblogs.com/cwp-bg/p/8465566.html</a></p>
+</blockquote>
+<h3 id="os的system原理"><a href="#os的system原理" class="headerlink" title="os的system原理"></a>os的system原理</h3><p>system函数可以将字符串转化成命令在服务器上运行；其原理是每一条system函数执行时，其会创建一个子进程在系统上执行命令行，子进程的执行结果无法影响主进程；</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">'mkdir /usr/local'</span>)</span><br></pre></td></tr></table></figure>
+<p>使用system执行多条命令时，为保证命令可以成功，多条命令需要在同一个子进程中运行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">'cd /usr/local &amp;&amp; mkdir aaa.txt'</span>)</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">os.system(<span class="string">'cd /usr/local ; mkdir aaa.txt'</span>)</span><br></pre></td></tr></table></figure>
+<p>↑如果写在两个system()中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">'cd /usr/local'</span>)</span><br><span class="line">os.mkdir(<span class="string">'aaa.txt)</span></span><br></pre></td></tr></table></figure>
+<p>会发现txt文件并没有创建在/usr/local文件夹下，而是在当前的目录下</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2022/01/05/关于python2与python3使用上的差异/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1790,176 +1965,11 @@ logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/07/17/find-the-most-frequent-element-in-a-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/07/17/find-the-most-frequent-element-in-a-list/" itemprop="url">find the most frequent element in a list</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-17T01:03:55+08:00">
-                2021-07-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-07-17T01:05:50+08:00">
-                2021-07-17
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>参考 <a href="https://www.tutorialspoint.com/find-most-frequent-element-in-a-list-in-python#:~:text=Find most frequent element in a list in,from statistics module. ... 8 Example 9 Output" target="_blank" rel="noopener">Find most frequent element in a list in Python (tutorialspoint.com)</a></p>
-</blockquote>
-<h4 id="1-法一：with-max-and-count"><a href="#1-法一：with-max-and-count" class="headerlink" title="1. 法一：with max and count"></a>1. 法一：with max and count</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">res = max(set(listA), key = listA.count)</span><br><span class="line">print(&quot;Element with highest frequency:\n&quot;,res)</span><br><span class="line"># 输出 45</span><br></pre></td></tr></table></figure>
-<h4 id="2-法二：with-Counter"><a href="#2-法二：with-Counter" class="headerlink" title="2. 法二：with Counter"></a>2. 法二：with Counter</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">occurence_count = Counter(listA)</span><br><span class="line">res=occurence_count.most_common(1)[0][0]</span><br><span class="line">print(&quot;Element with highest frequency:\n&quot;,res)</span><br><span class="line"># 输出 45</span><br></pre></td></tr></table></figure>
-<h4 id="3-法三：with-mode"><a href="#3-法三：with-mode" class="headerlink" title="3. 法三：with mode"></a>3. 法三：with mode</h4><p>返回众数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from statistics import mode</span><br><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">res=mode(listA)</span><br><span class="line">print(&quot;Element with highest frequency:\n&quot;,res)</span><br><span class="line"># 输出 45</span><br></pre></td></tr></table></figure>
-<h4 id="补充：关于-Counter"><a href="#补充：关于-Counter" class="headerlink" title="补充：关于 Counter"></a>补充：关于 Counter</h4><p>将一个 list 传入 Counter，将返回一个包含每个元素出现次数的字典</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from collections import Counter</span><br><span class="line"></span><br><span class="line"># Given list</span><br><span class="line">listA = [45, 20, 11, 50, 17, 45, 50,13, 45]</span><br><span class="line"></span><br><span class="line">occurence_count = Counter(listA)</span><br><span class="line">occurence_count.keys()</span><br><span class="line"># dict_keys([45, 20, 11, 50, 17, 13])</span><br><span class="line">occurence_count.values()</span><br><span class="line">dict_values([3, 1, 1, 2, 1, 1])</span><br></pre></td></tr></table></figure>
-<p><code>most_common([n])</code>方法：</p>
-<p>返回前n个出现次数最多的元素及其数量。 如果省略n或None，将返回计数器中的所有元素。 具有相同计数的元素可以任意排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">occurence_count.most_common(1)</span><br><span class="line"># [(45, 3)]</span><br><span class="line"></span><br><span class="line">occurence_count.most_common(2)</span><br><span class="line">#[(45, 3), (50, 2)]</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2007,7 +2017,7 @@ logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">120</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2018,7 +2028,7 @@ logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
