@@ -6793,7 +6793,19 @@ table th:nth-of-type(2) {
 <p>在安装了hive的服务器上运行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive --version</span><br></pre></td></tr></table></figure>
 <p>Hive shell 中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;quit;</span><br><span class="line">退出interactive shell（或使用ctrl + c）</span><br><span class="line"></span><br><span class="line">! &lt;command&gt;</span><br><span class="line">Executes a shell command from the Hive shell.</span><br><span class="line">例如：</span><br><span class="line">hive&gt;!ls;</span><br><span class="line">（查看进入hive shell前所在路径下的文件）</span><br><span class="line"></span><br><span class="line">dfs &lt;dfs command&gt;</span><br><span class="line">Executes a dfs command from the Hive shell.</span><br><span class="line">例如：</span><br><span class="line">hive&gt;dfs -ls /user;</span><br><span class="line">（查看hdfs中/user目录下的文件）</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;quit;</span><br><span class="line">退出interactive shell（或使用ctrl + c）</span><br><span class="line"></span><br><span class="line">! &lt;command&gt;</span><br><span class="line">Executes a shell command from the Hive shell.</span><br><span class="line">例如：</span><br><span class="line">hive&gt;!ls;</span><br><span class="line">（查看进入hive shell前所在路径下的文件）</span><br><span class="line"></span><br><span class="line">dfs &lt;dfs command&gt;</span><br><span class="line">Executes a dfs command from the Hive shell.</span><br><span class="line">例如：</span><br><span class="line">hive&gt;dfs -ls /user;</span><br><span class="line">（查看hdfs中/user目录下的文件）</span><br></pre></td></tr></table></figure>
+<p>Linux命令行中：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/weixin_42073408/article/details/120483485" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42073408/article/details/120483485</a></p>
+</blockquote>
+<p>不进入 hive shell , 直接在linux界面执行hive命令,可使用 <strong>-e</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$hive -e &apos;select * from test_table&apos;</span><br></pre></td></tr></table></figure>
+<p>增加 <code>-S</code> 选项可以开启静默模式，这样可以输出结果中去掉‘OK’,’Time Taken’等行，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$hive -S -e &apos;select * from test_table&apos;</span><br></pre></td></tr></table></figure>
+<p>使用 <code>-f</code> 执行文件中的查询语句：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$hive -f /tem/myquery.hql</span><br></pre></td></tr></table></figure>
+<p>在 hive shell 中可以使用 <code>source</code> 命令执行文件中的查询语句：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;source /tem/myquery.hql</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Hadoop</category>
       </categories>
@@ -9692,7 +9704,10 @@ y = \frac{a}{b+c}</script><p>(hexo中公式显示问题：在文章的Front-matt
 <li><p>Esc+m: markdown语句</p>
 </li>
 <li><p>jupyter notebook中reload模块：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line">importlib.reload(feature_transform)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727" target="_blank" rel="noopener">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">  <span class="comment">#对于python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 ]]></content>
