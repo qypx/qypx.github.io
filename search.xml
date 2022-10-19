@@ -6720,20 +6720,20 @@ table th:nth-of-type(2) {
 </blockquote>
 <p>（1）首先需创建hive表：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> emp.employee (</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">int</span>,</span><br><span class="line">	<span class="keyword">name</span> <span class="keyword">string</span>,</span><br><span class="line">	age <span class="built_in">int</span>,</span><br><span class="line">	gender <span class="keyword">string</span> </span><br><span class="line">)</span><br><span class="line"><span class="keyword">COMMENT</span> <span class="string">'Employee Table'</span></span><br><span class="line"><span class="keyword">ROW</span> <span class="keyword">FORMAT</span> <span class="keyword">DELIMITED</span></span><br><span class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span>;</span><br></pre></td></tr></table></figure>
-<p><strong>注:</strong> 为了将csv文件导入Hive表, 建表时需要使用 <code>ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</code></p>
+<p><strong>注:</strong> 为了将csv文件导入Hive表, 建表时需要使用 <code>ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</code>，并且不能加上<code>stored as ORC</code>，否则 load 时会报错，文件格式不匹配</p>
 <p>（2）使用 <code>rz</code> 命令将电脑本地文件上传至服务器</p>
 <p>注：先关闭本地文件，再 <code>rz</code>，且文件中不要包含header，否则会被一起导入表中</p>
 <p>（3）将服务器上的文件上传至HDFS</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">登录hive</span><br><span class="line">hive&gt;dfs -put 服务器上的文件路径 HDFS中的文件路径</span><br><span class="line">例：</span><br><span class="line">hive&gt;dfs -put /data/test/data.csv /user/kelly/data;</span><br><span class="line">若目标路径不存在，需先新建路径：</span><br><span class="line">hive&gt;dfs -mkdir /user/kelly/data;</span><br><span class="line">↑其中/user/kelly为已存在路径</span><br><span class="line">（若多个层级缺失，加上-p参数，创建所有缺失目录）</span><br><span class="line"></span><br><span class="line">如果像重跑覆盖，加上-f参数：</span><br><span class="line">hive&gt;dfs -put -f xxx xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">登录hive</span><br><span class="line">hive&gt;dfs -put 服务器上的文件路径 HDFS中的文件路径</span><br><span class="line">例：</span><br><span class="line">hive&gt;dfs -put /data/test/data.csv /user/kelly/data;</span><br><span class="line">若目标路径不存在，需先新建路径：</span><br><span class="line">hive&gt;dfs -mkdir /user/kelly/data;</span><br><span class="line">↑其中/user/kelly为已存在路径</span><br><span class="line">（若多个层级缺失，加上-p参数，创建所有缺失目录）</span><br><span class="line"></span><br><span class="line">如果想重跑覆盖，加上-f参数：</span><br><span class="line">hive&gt;dfs -put -f xxx xxx</span><br></pre></td></tr></table></figure>
 <p>（4）将HDFS中的csv导入Hive表</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;LOAD DATA INPATH &apos;/user/kelly/data/data.csv&apos; OVERWRITE INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
 <p>若使用 <code>overwrite</code>，则会删掉目标表里已有的数据，并导入文件中的数据</p>
 <p>使用 <code>select * from emp.employee</code> 查看是否写入成功。</p>
 <p><span style="color:red"><strong>注：</strong>对于LOAD DATA INAPTH：LOAD 后，HDFS中的源数据会被删掉</span></p>
-<p>法二：直接将服务器（即local filesystem）上的csv导入Hive表</p>
+<p>法二：跳过步骤(3)，直接将服务器（即local filesystem）上的csv导入Hive表</p>
 <p>Use <code>LOCAL</code> optional clause to load CSV file from the local filesystem into the Hive table without uploading to HDFS.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;LOAD DATA LOCAL INPATH &apos;/data/test/data.csv&apos; OVERWRITE INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
-<p><span style="color:red"><strong>注：</strong>对于LOAD DATA LOCAL INAPTH：与从HDFS导入不同，local file system 中的源数据不会被删掉。</span></p>
+<p><span style="color:red"><strong>注：</strong>对于LOAD DATA LOCAL INAPTH：local file system 中的源数据不会被删掉。</span></p>
 <p>另：使用 <code>partition</code></p>
 <p>如果目标表是分区表，使用 <code>partition</code> 将数据导入特定的分区中。并且可使用 <code>overwrite</code> 覆盖该分区（删掉原有的数据并装载现在的数据）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hive&gt;LOAD DATA INPATH &apos;/user/kelly/data/data.csv&apos; OVERWRITE INTO TABLE emp.employee PARTITION(date=2020);</span><br></pre></td></tr></table></figure>
