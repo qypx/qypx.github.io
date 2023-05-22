@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="参考:https://note.nkmk.me/en/python-reverse-reversed/https://note.nkmk.me/en/python-list-sort-sorted/  1. Reverse对于list, 可以使用reverse(), reversed(), 和切片对于字符串和元组（都不可变），可以使用reversed()和切片 1.1 list List typ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-11-13T08:03:14.740Z">
+<meta property="og:updated_time" content="2023-05-22T08:32:05.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python中的reverse, reversed, sort, sorted">
 <meta name="twitter:description" content="参考:https://note.nkmk.me/en/python-reverse-reversed/https://note.nkmk.me/en/python-list-sort-sorted/  1. Reverse对于list, 可以使用reverse(), reversed(), 和切片对于字符串和元组（都不可变），可以使用reversed()和切片 1.1 list List typ">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-13T16:03:14+08:00">
-                2020-11-13
+              <time title="更新于" itemprop="dateModified" datetime="2023-05-22T16:32:05+08:00">
+                2023-05-22
               </time>
             
           </span>
@@ -427,28 +427,34 @@
 <p>法二：切片</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new_tuple = org_tuple[::<span class="number">-1</span>]</span><br><span class="line">print(new_tuple)</span><br><span class="line"><span class="comment"># (5, 4, 3, 2, 1)</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="2-Sort"><a href="#2-Sort" class="headerlink" title="2. Sort"></a>2. Sort</h3><p><span style="color:red">对于list，可使用sort()或sorted()</span><br><span style="color:red">对于字符串和元组，可使用sorted()</span></p>
+<h3 id="2-Sort"><a href="#2-Sort" class="headerlink" title="2. Sort"></a>2. Sort</h3><p><span style="color:red">对于list，可使用 sort() 或 sorted()</span><br><span style="color:red">对于字符串和元组，可使用 sorted()</span></p>
 <h4 id="2-1-list"><a href="#2-1-list" class="headerlink" title="2.1 list"></a>2.1 list</h4><ul>
 <li>List type method <code>sort()</code> sorts the original list</li>
 </ul>
-<p>sort()是列表的一个内置方法，改变原列表，sort()返回None，默认按升序排列</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">org_list = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">org_list.sort()</span><br><span class="line"><span class="comment"># sort in-place</span></span><br><span class="line">print(org_list)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">print(org_list.sort())</span><br><span class="line"><span class="comment"># None</span></span><br></pre></td></tr></table></figure>
+<p>sort() 是列表的一个内置方法，改变原列表，sort() 返回None，默认按升序排列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">org_list = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">org_list.sort()    <span class="comment"># sort in-place，默认升序排序</span></span><br><span class="line">print(org_list)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">print(org_list.sort())</span><br><span class="line"><span class="comment"># None</span></span><br></pre></td></tr></table></figure>
 <p>降序排列：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">org_list.sort(reverse=<span class="literal">True</span>)</span><br><span class="line">print(org_list)</span><br><span class="line"><span class="comment"># [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Built-in function <code>sorted()</code> returns a sorted list</li>
 </ul>
-<p>sorted()是python的一个内置方法，不会改变原列表，返回一个sorted list，默认按升序排列</p>
+<p>sorted() 是python的一个内置方法，不会改变原列表，返回一个sorted list，默认按升序排列</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">org_list = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">new_list = sorted(org_list)</span><br><span class="line">print(org_list)</span><br><span class="line">print(new_list)</span><br><span class="line"><span class="comment"># [3, 1, 4, 5, 2]</span></span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
 <p>降序排列：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new_list_reverse = sorted(org_list, reverse=<span class="literal">True</span>)</span><br><span class="line">print(org_list)</span><br><span class="line">print(new_list_reverse)</span><br><span class="line"><span class="comment"># [3, 1, 4, 5, 2]</span></span><br><span class="line"><span class="comment"># [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-2-string"><a href="#2-2-string" class="headerlink" title="2.2 string"></a>2.2 string</h4><p>使用sorted()</p>
-<p>因为sorted()返回一个list，还需使用join()转换成string</p>
+<h4 id="2-2-string"><a href="#2-2-string" class="headerlink" title="2.2 string"></a>2.2 string</h4><p>使用 sorted()</p>
+<p>因为 sorted() 返回一个list，还需使用 join() 转换成 string</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">org_str = <span class="string">'cebad'</span></span><br><span class="line"></span><br><span class="line">new_str_list = sorted(org_str)</span><br><span class="line">print(org_str)</span><br><span class="line">print(new_str_list)</span><br><span class="line"><span class="comment"># cebad</span></span><br><span class="line"><span class="comment"># ['a', 'b', 'c', 'd', 'e']</span></span><br><span class="line"></span><br><span class="line">new_str = <span class="string">''</span>.join(new_str_list)</span><br><span class="line">print(new_str)</span><br><span class="line"><span class="comment"># abcde</span></span><br><span class="line"></span><br><span class="line">new_str_reverse = <span class="string">''</span>.join(sorted(org_str, reverse=<span class="literal">True</span>))</span><br><span class="line">print(new_str_reverse)</span><br><span class="line"><span class="comment"># edcba</span></span><br></pre></td></tr></table></figure>
 <p>The order of the characters is determined by their Unicode code point.</p>
 <h4 id="2-2-tuple"><a href="#2-2-tuple" class="headerlink" title="2.2 tuple"></a>2.2 tuple</h4><p>使用sorted()</p>
 <p>需要使用tuple()将结果转换成tuple</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">org_tuple = (<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">new_tuple_list = sorted(org_tuple)</span><br><span class="line">print(org_tuple)</span><br><span class="line">print(new_tuple_list)</span><br><span class="line"><span class="comment"># (3, 1, 4, 5, 2)</span></span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line">new_tuple = tuple(new_tuple_list)</span><br><span class="line">print(new_tuple)</span><br><span class="line"><span class="comment"># (1, 2, 3, 4, 5)</span></span><br><span class="line"></span><br><span class="line">new_tuple_reverse = tuple(sorted(new_tuple_list, reverse=<span class="literal">True</span>))</span><br><span class="line">print(new_tuple_reverse)</span><br><span class="line"><span class="comment"># (5, 4, 3, 2, 1)</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-3-按指定的-key-排序"><a href="#2-3-按指定的-key-排序" class="headerlink" title="2.3 按指定的 key 排序"></a>2.3 按指定的 key 排序</h4><p>sort() 和 sorted 都支持按 <code>key</code> 进行排序。<code>key</code> 参数接收一个可调用的对象（例如一个函数），该可调用对象只接收单个参数。</p>
+<p>例如，可以按绝对值或字符长度进行排序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">-3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">-5</span>, <span class="number">2</span>]</span><br><span class="line">print(sorted(l))</span><br><span class="line"><span class="comment"># [-5, -3, 1, 2, 4]</span></span><br><span class="line"></span><br><span class="line">print(sorted(l, key=abs))</span><br><span class="line"><span class="comment"># [1, 2, -3, 4, -5]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="string">'b'</span>, <span class="string">'cc'</span>, <span class="string">'aaa'</span>]</span><br><span class="line">print(sorted(l))</span><br><span class="line"><span class="comment"># ['aaa', 'b', 'cc']</span></span><br><span class="line"></span><br><span class="line">print(sorted(l, key=len))</span><br><span class="line"><span class="comment"># ['b', 'cc', 'aaa']</span></span><br></pre></td></tr></table></figure>
+<p>sort() 用法同上。</p>
+<p>关于字典的排序见 <a href="https://qypx.github.io/2019/06/27/Advanced-Python-Types/#3-6-按照字典的键或者值排序">Advanced Python Types | qypx の blog</a></p>
 
       
     </div>
@@ -648,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Reverse"><span class="nav-text">1. Reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-list"><span class="nav-text">1.1 list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-string"><span class="nav-text">1.2 string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-tuple"><span class="nav-text">1.3 tuple</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Sort"><span class="nav-text">2. Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-list"><span class="nav-text">2.1 list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-string"><span class="nav-text">2.2 string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-tuple"><span class="nav-text">2.2 tuple</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Reverse"><span class="nav-text">1. Reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-list"><span class="nav-text">1.1 list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-string"><span class="nav-text">1.2 string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-tuple"><span class="nav-text">1.3 tuple</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Sort"><span class="nav-text">2. Sort</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-list"><span class="nav-text">2.1 list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-string"><span class="nav-text">2.2 string</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-tuple"><span class="nav-text">2.2 tuple</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-按指定的-key-排序"><span class="nav-text">2.3 按指定的 key 排序</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -668,7 +674,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
