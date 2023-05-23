@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1584001011558.png">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1584001175719.png">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1584001276582.png">
-<meta property="og:updated_time" content="2023-05-23T07:10:58.782Z">
+<meta property="og:updated_time" content="2023-05-23T07:18:08.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Advanced Python Types">
 <meta name="twitter:description" content="1. List1.1 常见操作1234567891011121314151617181920212223242526&amp;gt;&amp;gt;&amp;gt;x = [1,2,3,4,5,6]&amp;gt;&amp;gt;&amp;gt;print(x)[1,2,3]# 切片操作&amp;gt;&amp;gt;&amp;gt;x[:3][1,2,3]&amp;gt;&amp;gt;&amp;gt;x[3:][4,5,6]&amp;gt;&amp;gt;&amp;gt;x[-2:][5,6]# extend&amp;">
@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-05-23T15:10:58+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2023-05-23T15:18:08+08:00">
                 2023-05-23
               </time>
             
@@ -602,7 +602,7 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
 <p>如果要用相同的字符串替换多个不同的字符串，可以使用接下来会描述的正则表达式方法，如果要用不同的字符串替换多个不同的字符串，需要重复使用 <code>replace()</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'one two one two one'</span></span><br><span class="line"></span><br><span class="line">print(s.replace(<span class="string">'one'</span>, <span class="string">'XXX'</span>).replace(<span class="string">'two'</span>, <span class="string">'YYY'</span>))</span><br><span class="line"><span class="comment"># XXX YYY XXX YYY XXX</span></span><br></pre></td></tr></table></figure>
 <p>第一次replace的结果，传入第二个replace。</p>
-<h5 id="4-5-2-Replace-multiple-different-characters-translate"><a href="#4-5-2-Replace-multiple-different-characters-translate" class="headerlink" title="4.5.2 Replace multiple different characters: translate()"></a>4.5.2 Replace multiple different characters: <code>translate()</code></h5><p>使用 <code>translate()</code> 方法替换多个不同的字符。通过使用 <code>`str.maketrans()</code> 来创建 <code>translate()</code> 中指定的翻译表：</p>
+<h5 id="4-5-2-Replace-multiple-different-characters-translate"><a href="#4-5-2-Replace-multiple-different-characters-translate" class="headerlink" title="4.5.2 Replace multiple different characters: translate()"></a>4.5.2 Replace multiple different characters: <code>translate()</code></h5><p>使用 <code>translate()</code> 方法替换多个不同的字符。通过使用 <code>str.maketrans()</code> 来创建 <code>translate()</code> 中指定的翻译表：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">'one two one two one'</span></span><br><span class="line"></span><br><span class="line">print(s.translate(str.maketrans(&#123;<span class="string">'o'</span>: <span class="string">'O'</span>, <span class="string">'t'</span>: <span class="string">'T'</span>&#125;)))</span><br><span class="line"><span class="comment"># One TwO One TwO One</span></span><br><span class="line"></span><br><span class="line">print(s.translate(str.maketrans(&#123;<span class="string">'o'</span>: <span class="string">'XXX'</span>, <span class="string">'t'</span>: <span class="literal">None</span>&#125;)))</span><br><span class="line"><span class="comment"># XXXne wXXX XXXne wXXX XXXne</span></span><br></pre></td></tr></table></figure>
 <h5 id="4-5-3-Replace-by-regex-re-sub-re-subn"><a href="#4-5-3-Replace-by-regex-re-sub-re-subn" class="headerlink" title="4.5.3 Replace by regex: re.sub(), re.subn()"></a>4.5.3 Replace by regex: <code>re.sub()</code>, <code>re.subn()</code></h5><p>如果想替换匹配正则表达式(regex)而不是精确匹配的字符串，可以使用re模块的sub()。</p>
 <p>在re.sub()中，在第一个参数中指定regex pattern，在第二个参数中指定新字符串，在第三个参数中指定要处理的字符串。</p>
