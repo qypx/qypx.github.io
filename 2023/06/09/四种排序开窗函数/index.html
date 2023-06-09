@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="sql,数据框,">
+  <meta name="keywords" content="数据库,sql,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="参考https://zhuanlan.zhihu.com/p/484290987SqlServer四种排序：ROW_NUMBER()/RANK()/DENSE_RANK()/ntile() over()  总结：     使用方法 区别     row_number() over(partition by col1 order by col2) 若有并列的排名，序号递增。序号从1到n连续。e.">
-<meta name="keywords" content="sql,数据框">
+<meta name="keywords" content="数据库,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="四种排序开窗函数">
 <meta property="og:url" content="http://qypx.github.io/2023/06/09/四种排序开窗函数/index.html">
@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://qypx.github.io/2023/06/09/四种排序开窗函数/image-20210511113708257.png">
 <meta property="og:image" content="http://qypx.github.io/2023/06/09/四种排序开窗函数/image-20210511113739831.png">
 <meta property="og:image" content="http://qypx.github.io/2023/06/09/四种排序开窗函数/image-20210726163619866.png">
-<meta property="og:updated_time" content="2023-06-09T07:43:36.659Z">
+<meta property="og:updated_time" content="2023-06-09T08:02:20.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="四种排序开窗函数">
 <meta name="twitter:description" content="参考https://zhuanlan.zhihu.com/p/484290987SqlServer四种排序：ROW_NUMBER()/RANK()/DENSE_RANK()/ntile() over()  总结：     使用方法 区别     row_number() over(partition by col1 order by col2) 若有并列的排名，序号递增。序号从1到n连续。e.">
@@ -339,7 +339,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-06-09T15:43:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2023-06-09T16:02:20+08:00">
                 2023-06-09
               </time>
             
@@ -594,6 +594,74 @@
 <p><img src="/2023/06/09/四种排序开窗函数/image-20210726163619866.png" alt="image-20210726163619866"></p>
 <h6 id="4-1-rand"><a href="#4-1-rand" class="headerlink" title="4.1 rand()"></a>4.1 rand()</h6><p>另：还可通过rand()，结合ntile() 实现随机均分<br>例：一共1600个用户，想随机均分为4组，每组400个</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">    login_id</span><br><span class="line">    ,ntile(4) over(order by rand()) as group_id</span><br><span class="line">from ...</span><br></pre></td></tr></table></figure>
+<h5 id="5-其他类似的开窗函数"><a href="#5-其他类似的开窗函数" class="headerlink" title="5 其他类似的开窗函数"></a>5 其他类似的开窗函数</h5><h6 id="5-1-sum-over"><a href="#5-1-sum-over" class="headerlink" title="5.1 sum() over()"></a>5.1 sum() over()</h6><p>进行累加</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    login_id</span><br><span class="line">    ,amt</span><br><span class="line">    ,create_time</span><br><span class="line">    ,<span class="keyword">sum</span>(amt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> login_id <span class="keyword">order</span> <span class="keyword">by</span> create_time) <span class="keyword">as</span> cumsum</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>login_id</th>
+<th>amt</th>
+<th>create_time</th>
+<th>cumsum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1001</td>
+<td>100</td>
+<td>2023-06-01</td>
+<td>100</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>50</td>
+<td>2023-06-07</td>
+<td>150</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>24</td>
+<td>2023-06-02</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="5-2-max-over"><a href="#5-2-max-over" class="headerlink" title="5.2 max() over()"></a>5.2 max() over()</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    *, </span><br><span class="line">    <span class="keyword">max</span>(age) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>) <span class="keyword">as</span> max_age</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>class</th>
+<th>name</th>
+<th>age</th>
+<th>max_age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class1</td>
+<td>bob</td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr>
+<td>class1</td>
+<td>alice</td>
+<td>20</td>
+<td>30</td>
+</tr>
+<tr>
+<td>class2</td>
+<td>cathy</td>
+<td>25</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+</div>
 
       
     </div>
@@ -611,9 +679,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sql/" rel="tag"># sql</a>
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
           
-            <a href="/tags/数据框/" rel="tag"># 数据框</a>
+            <a href="/tags/sql/" rel="tag"># sql</a>
           
         </div>
       
@@ -791,7 +859,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-ROW-NUMBER"><span class="nav-text">1 ROW_NUMBER()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-结合-case-when-使用"><span class="nav-text">1.1 结合 case when 使用</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-RANK"><span class="nav-text">2 RANK()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-DENSE-RANK"><span class="nav-text">3 DENSE RANK()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-NTILE"><span class="nav-text">4 NTILE()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1-rand"><span class="nav-text">4.1 rand()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-ROW-NUMBER"><span class="nav-text">1 ROW_NUMBER()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1-结合-case-when-使用"><span class="nav-text">1.1 结合 case when 使用</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-RANK"><span class="nav-text">2 RANK()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-DENSE-RANK"><span class="nav-text">3 DENSE RANK()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-NTILE"><span class="nav-text">4 NTILE()</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1-rand"><span class="nav-text">4.1 rand()</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-其他类似的开窗函数"><span class="nav-text">5 其他类似的开窗函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#5-1-sum-over"><span class="nav-text">5.1 sum() over()</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-2-max-over"><span class="nav-text">5.2 max() over()</span></a></li></ol></li></ol></div>
             
 
           </div>

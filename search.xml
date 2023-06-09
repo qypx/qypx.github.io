@@ -197,13 +197,81 @@
 <p><img src="/2023/06/09/四种排序开窗函数/image-20210726163619866.png" alt="image-20210726163619866"></p>
 <h6 id="4-1-rand"><a href="#4-1-rand" class="headerlink" title="4.1 rand()"></a>4.1 rand()</h6><p>另：还可通过rand()，结合ntile() 实现随机均分<br>例：一共1600个用户，想随机均分为4组，每组400个</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select </span><br><span class="line">    login_id</span><br><span class="line">    ,ntile(4) over(order by rand()) as group_id</span><br><span class="line">from ...</span><br></pre></td></tr></table></figure>
+<h5 id="5-其他类似的开窗函数"><a href="#5-其他类似的开窗函数" class="headerlink" title="5 其他类似的开窗函数"></a>5 其他类似的开窗函数</h5><h6 id="5-1-sum-over"><a href="#5-1-sum-over" class="headerlink" title="5.1 sum() over()"></a>5.1 sum() over()</h6><p>进行累加</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    login_id</span><br><span class="line">    ,amt</span><br><span class="line">    ,create_time</span><br><span class="line">    ,<span class="keyword">sum</span>(amt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> login_id <span class="keyword">order</span> <span class="keyword">by</span> create_time) <span class="keyword">as</span> cumsum</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>login_id</th>
+<th>amt</th>
+<th>create_time</th>
+<th>cumsum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1001</td>
+<td>100</td>
+<td>2023-06-01</td>
+<td>100</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>50</td>
+<td>2023-06-07</td>
+<td>150</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>24</td>
+<td>2023-06-02</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="5-2-max-over"><a href="#5-2-max-over" class="headerlink" title="5.2 max() over()"></a>5.2 max() over()</h6><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    *, </span><br><span class="line">    <span class="keyword">max</span>(age) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>) <span class="keyword">as</span> max_age</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>class</th>
+<th>name</th>
+<th>age</th>
+<th>max_age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class1</td>
+<td>bob</td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr>
+<td>class1</td>
+<td>alice</td>
+<td>20</td>
+<td>30</td>
+</tr>
+<tr>
+<td>class2</td>
+<td>cathy</td>
+<td>25</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+</div>
 ]]></content>
       <categories>
         <category>数据库</category>
       </categories>
       <tags>
+        <tag>数据库</tag>
         <tag>sql</tag>
-        <tag>数据框</tag>
       </tags>
   </entry>
   <entry>
