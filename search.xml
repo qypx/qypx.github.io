@@ -232,7 +232,9 @@
 </tbody>
 </table>
 </div>
-<h6 id="5-2-max-over"><a href="#5-2-max-over" class="headerlink" title="5.2 max() over()"></a>5.2 max() over()</h6><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    *, </span><br><span class="line">    <span class="keyword">max</span>(age) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>) <span class="keyword">as</span> max_age</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
+<h6 id="5-2-max-over"><a href="#5-2-max-over" class="headerlink" title="5.2 max() over()"></a>5.2 max() over()</h6><p><code>max(A) over(partition by B order by C)</code></p>
+<p>根据B分组，组内通过C排序，取A最大值作为这个字段的值。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    *, </span><br><span class="line">    <span class="keyword">max</span>(age) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>) <span class="keyword">as</span> max_age</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
 <div class="table-container">
 <table>
 <thead>

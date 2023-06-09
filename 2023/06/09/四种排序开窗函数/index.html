@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://qypx.github.io/2023/06/09/四种排序开窗函数/image-20210511113708257.png">
 <meta property="og:image" content="http://qypx.github.io/2023/06/09/四种排序开窗函数/image-20210511113739831.png">
 <meta property="og:image" content="http://qypx.github.io/2023/06/09/四种排序开窗函数/image-20210726163619866.png">
-<meta property="og:updated_time" content="2023-06-09T08:02:20.775Z">
+<meta property="og:updated_time" content="2023-06-09T08:11:03.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="四种排序开窗函数">
 <meta name="twitter:description" content="参考https://zhuanlan.zhihu.com/p/484290987SqlServer四种排序：ROW_NUMBER()/RANK()/DENSE_RANK()/ntile() over()  总结：     使用方法 区别     row_number() over(partition by col1 order by col2) 若有并列的排名，序号递增。序号从1到n连续。e.">
@@ -339,7 +339,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-06-09T16:02:20+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2023-06-09T16:11:03+08:00">
                 2023-06-09
               </time>
             
@@ -629,7 +629,9 @@
 </tbody>
 </table>
 </div>
-<h6 id="5-2-max-over"><a href="#5-2-max-over" class="headerlink" title="5.2 max() over()"></a>5.2 max() over()</h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    *, </span><br><span class="line">    <span class="keyword">max</span>(age) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>) <span class="keyword">as</span> max_age</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
+<h6 id="5-2-max-over"><a href="#5-2-max-over" class="headerlink" title="5.2 max() over()"></a>5.2 max() over()</h6><p><code>max(A) over(partition by B order by C)</code></p>
+<p>根据B分组，组内通过C排序，取A最大值作为这个字段的值。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    *, </span><br><span class="line">    <span class="keyword">max</span>(age) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">class</span> <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>) <span class="keyword">as</span> max_age</span><br><span class="line"><span class="keyword">from</span> xxx</span><br></pre></td></tr></table></figure>
 <div class="table-container">
 <table>
 <thead>
