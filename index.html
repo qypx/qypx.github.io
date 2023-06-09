@@ -284,6 +284,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2023/06/09/四种排序开窗函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/06/09/四种排序开窗函数/" itemprop="url">四种排序开窗函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-06-09T12:04:37+08:00">
+                2023-06-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-06-09T15:43:36+08:00">
+                2023-06-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p> 参考<br><a href="https://zhuanlan.zhihu.com/p/484290987" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/484290987</a><br><a href="https://blog.csdn.net/a11112244444/article/details/80453397" target="_blank" rel="noopener">SqlServer四种排序：ROW_NUMBER()/RANK()/DENSE_RANK()/ntile() over()</a></p>
+</blockquote>
+<p>总结：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>使用方法</th>
+<th>区别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row_number() over(partition by col1 order by col2)</td>
+<td>若有并列的排名，序号递增。序号从1到n连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,4,…</td>
+</tr>
+<tr>
+<td>rank() over(partition by col1 order by col2)</td>
+<td>若有并列的排名，会占用下一名次的。序号从1到n不连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,3,5,…</td>
+</tr>
+<tr>
+<td>dense_rank() over(partition by col1 order by col2)</td>
+<td>若有并列的排名，不会占用下一名次的。序号从1到n连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,3,4,…</td>
+</tr>
+<tr>
+<td>ntile(n) over(partition by col1 order by col2)</td>
+<td>将每个分区内排序后的结果均分成N个桶，排序对应的数字为桶号。如果不能平均分配，则较小桶号的桶分配额外的行，并且各个桶中能放的数据条数最多相差1</td>
+</tr>
+</tbody>
+</table>
+</div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2023/06/09/四种排序开窗函数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2022/05/17/Python中运行linux命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1786,185 +1975,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/07/17/Probability-odds与logodds/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/07/17/Probability-odds与logodds/" itemprop="url">Probability, odds与logodds</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-17T01:13:16+08:00">
-                2021-07-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-08-28T21:57:10+08:00">
-                2021-08-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p><a href="https://dataunbox.com/odds-and-log-odds/" target="_blank" rel="noopener">Odds And Log Odds In Logistic Regression - Dataunbox</a><br><a href="https://towardsdatascience.com/https-towardsdatascience-com-what-and-why-of-log-odds-64ba988bf704" target="_blank" rel="noopener">WHAT and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush Agarwal | Towards Data Science</a></p>
-</blockquote>
-<h4 id="1-probability-odds-与-log-odds"><a href="#1-probability-odds-与-log-odds" class="headerlink" title="1. probability, odds 与 log odds"></a>1. probability, odds 与 log odds</h4><p>（1）probability 是某件事与所有可能发生的事的比率。（p）</p>
-<p>（2）odds 是某件事发生和某件事没有发生的比率。</p>
-<script type="math/tex; mode=display">
-odds = \frac{p}{1-p}</script><p>（3）log odds 即对odds取对数， log(odds)</p>
-<p>例如我与人工智能(AI)系统下了10局棋，并有4次能够打败它：</p>
-<p><em>Probability of winning: 4/10 = 0.40</em><br><em>Odds of winning: 4/6 = 0.6666</em><br><em>log(Odds of winning) = log(0.6666) = -0.176</em></p>
-<h4 id="2-logistic-regression"><a href="#2-logistic-regression" class="headerlink" title="2. logistic regression"></a>2. logistic regression</h4><p>p 与 logodds 的相互转换关系</p>
-<script type="math/tex; mode=display">
-p = \frac{1}{1+e^{-(\beta_0+\beta_1x)}}\quad\quad(1)</script><p>则有，</p>
-<script type="math/tex; mode=display">
-1-p = \frac{e^{-(\beta_0+\beta_1x)}}{1+e^{-(\beta_0+\beta_1x)}}</script><script type="math/tex; mode=display">
-odds=\frac{p}{1-p}=e^{\beta_0+\beta_1x}</script><script type="math/tex; mode=display">
-log odds = ln(\frac{p}{1-p})=\beta_0+\beta_1x \quad \quad (2)</script><p>带入(1)中，可得</p>
-<script type="math/tex; mode=display">
-p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad (3)</script><h4 id="3-logodds-与-sigmoid"><a href="#3-logodds-与-sigmoid" class="headerlink" title="3. logodds 与 sigmoid"></a>3. logodds 与 sigmoid</h4><script type="math/tex; mode=display">
-logodds操作：logodds(p) = log(\frac{p}{1-p})</script><script type="math/tex; mode=display">
-sigmoid function: sigmoid(x) = \frac{1}{1+e^{-x}}</script><script type="math/tex; mode=display">
-p=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}，其中\beta_0+\beta_1x为原始输出，即sigmoid作用在原始输出上得到概率值</script><script type="math/tex; mode=display">
-logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上得到原始输出</script><p>一句话概括：<span style="color:red">sigmoid与logodds为相反操作。</span></p>
-<h4 id="4-xgboost与lightgbm的几种输出结果"><a href="#4-xgboost与lightgbm的几种输出结果" class="headerlink" title="4. xgboost与lightgbm的几种输出结果"></a>4. xgboost与lightgbm的几种输出结果</h4><p>对于xgboost:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.predict(,output_margin=<span class="literal">True</span>)  <span class="comment">#原始值(output the raw untransformed margin value)(每个样本在xgboost生成的所有树中叶子节点的累加值)</span></span><br><span class="line">model.predict_proba()[:,<span class="number">1</span>]  <span class="comment"># 取1的概率</span></span><br><span class="line">model.predict()  <span class="comment"># 结果为0,1</span></span><br></pre></td></tr></table></figure>
-<p>对于lightgbm:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.predict(,raw_score=<span class="literal">True</span>)  <span class="comment"># 原始值</span></span><br><span class="line">model.predict_proba()[:,<span class="number">1</span>]  <span class="comment"># 取1的概率</span></span><br><span class="line">model.predict()  <span class="comment"># 结果为0,1</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2017,7 +2027,7 @@ logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">122</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

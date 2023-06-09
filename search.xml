@@ -1,6 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>四种排序开窗函数</title>
+    <url>/2023/06/09/%E5%9B%9B%E7%A7%8D%E6%8E%92%E5%BA%8F%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p> 参考<br><a href="https://zhuanlan.zhihu.com/p/484290987" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/484290987</a><br><a href="https://blog.csdn.net/a11112244444/article/details/80453397" target="_blank" rel="noopener">SqlServer四种排序：ROW_NUMBER()/RANK()/DENSE_RANK()/ntile() over()</a></p>
+</blockquote>
+<p>总结：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>使用方法</th>
+<th>区别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row_number() over(partition by col1 order by col2)</td>
+<td>若有并列的排名，序号递增。序号从1到n连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,4,…</td>
+</tr>
+<tr>
+<td>rank() over(partition by col1 order by col2)</td>
+<td>若有并列的排名，会占用下一名次的。序号从1到n不连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,3,5,…</td>
+</tr>
+<tr>
+<td>dense_rank() over(partition by col1 order by col2)</td>
+<td>若有并列的排名，不会占用下一名次的。序号从1到n连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,3,4,…</td>
+</tr>
+<tr>
+<td>ntile(n) over(partition by col1 order by col2)</td>
+<td>将每个分区内排序后的结果均分成N个桶，排序对应的数字为桶号。如果不能平均分配，则较小桶号的桶分配额外的行，并且各个桶中能放的数据条数最多相差1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a id="more"></a>
+<h5 id="1-ROW-NUMBER"><a href="#1-ROW-NUMBER" class="headerlink" title="1 ROW_NUMBER()"></a>1 ROW_NUMBER()</h5><p>例：table1: 学生考试成绩表</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>score</th>
+<th>date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice</td>
+<td>90</td>
+<td>2023-06-01</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>87</td>
+<td>2023-06-08</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>77</td>
+<td>2023-06-01</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>想要取每个学生最近一次的考试成绩：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>, score, <span class="string">`date`</span></span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">       * ,</span><br><span class="line">       row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> <span class="string">`date`</span> <span class="keyword">desc</span>) <span class="keyword">as</span> rn </span><br><span class="line">    <span class="keyword">from</span> table1</span><br><span class="line">)t1 </span><br><span class="line"><span class="keyword">where</span> rn=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>score</th>
+<th>date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice</td>
+<td>87</td>
+<td>2023-06-08</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>77</td>
+<td>2023-06-01</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>中间结果：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>score</th>
+<th>date</th>
+<th>rn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice</td>
+<td>87</td>
+<td>2023-06-08</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>90</td>
+<td>2023-06-01</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>77</td>
+<td>2023-06-01</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>当排序出现<strong>重复值</strong>时，结果如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>score</th>
+<th>date</th>
+<th>rn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alice</td>
+<td>87</td>
+<td>2023-06-08</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>90</td>
+<td>2023-06-01</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>80</td>
+<td>2023-07-01</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>77</td>
+<td>2023-06-01</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>71</td>
+<td>2023-06-01</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="1-1-结合-case-when-使用"><a href="#1-1-结合-case-when-使用" class="headerlink" title="1.1 结合 case when 使用"></a>1.1 结合 case when 使用</h6><p>另外，排序规则还可结合case when 使用：</p>
+<blockquote>
+<p>参考 <a href="https://bl og.csdn.net/zghnpdswyp/article/details/53634584" target="_blank" rel="noopener">再看case when 在row_number中的使用</a></p>
+</blockquote>
+<p>例：用户群组有不同的状态：status=1 代表近期有过交易，status=2 代表已开户但近期未交易，status=3 代表未开户。<br>规则：<br>1、首先根据status由小到大排序，即近期有过交易的优先，未开户的排最后。<br>2、status=1时，根据被联系次数由高到低排；status=2时，先根据被联系次数由高到低排，相等的情况下根据开户时间由近到远排；status=3时，根据被联系次数由低到高排。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">row_number() over(partition by group_id order by status, case when status=1 or status=2 then call_count end desc, case when status=2 then open_account_time end desc, case when status=3 then call_count end) as row_rank</span><br></pre></td></tr></table></figure>
+<h5 id="2-RANK"><a href="#2-RANK" class="headerlink" title="2 RANK()"></a>2 RANK()</h5><p>与ROW_NUMBER() 的区别主要在于对于重复值的处理</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    a.userName</span><br><span class="line">    ,a.userid</span><br><span class="line">    ,RANK() OVER(ORDER by a.userName) AS RN </span><br><span class="line">FROM dbo.t_user a</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/06/09/四种排序开窗函数/image-20210511113347415.png" alt="image-20210511113347415"></p>
+<p>这时排序的应该为3的值，因为出现重复数据，所以也变成了2，但是最后的行数和最后编号的值是一样的。</p>
+<h5 id="3-DENSE-RANK"><a href="#3-DENSE-RANK" class="headerlink" title="3 DENSE RANK()"></a>3 DENSE RANK()</h5><p>例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    a.userName</span><br><span class="line">    ,a.userid</span><br><span class="line">    ,DENSE_RANK() over(ORDER by a.userName) AS RN </span><br><span class="line">FROM dbo.t_user a</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/06/09/四种排序开窗函数/image-20210511113527128.png" alt="image-20210511113527128"></p>
+<p>保持了重复的数据RN值相同，但值得注意的是第4行数据变成了3，也就是说行数和最后的编号是发生了变化的。</p>
+<h5 id="4-NTILE"><a href="#4-NTILE" class="headerlink" title="4 NTILE()"></a>4 NTILE()</h5><blockquote>
+<p><a href="https://www.yiibai.com/sqlserver/sql-server-ntile-function.html" target="_blank" rel="noopener">SQL Server Ntile()函数 - SQL Server教程™</a></p>
+</blockquote>
+<p>NTILE() 括号里面是几，就会分成几组。</p>
+<p>例如5行数据，<br>分成2组: NTILE(2) -&gt; 前面3个，后面2个，默认把多余的行分给前面；<br>分成3组：NTILE(3) -&gt; 第一组2个，第二组2个，第三组1个</p>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    a.userName</span><br><span class="line">    ,a.userid</span><br><span class="line">    ,NTILE(2) over(ORDER by a.userName) AS RN </span><br><span class="line">FROM dbo.t_user a</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/06/09/四种排序开窗函数/image-20210511113708257.png" alt="image-20210511113708257"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT </span><br><span class="line">    a.userName</span><br><span class="line">    ,a.userid</span><br><span class="line">    ,NTILE(3) over(ORDER by a.userName) AS RN </span><br><span class="line">FROM dbo.t_user a</span><br></pre></td></tr></table></figure>
+<p><img src="/2023/06/09/四种排序开窗函数/image-20210511113739831.png" alt="image-20210511113739831"></p>
+<p><img src="/2023/06/09/四种排序开窗函数/image-20210726163619866.png" alt="image-20210726163619866"></p>
+<h6 id="4-1-rand"><a href="#4-1-rand" class="headerlink" title="4.1 rand()"></a>4.1 rand()</h6><p>另：还可通过rand()，结合ntile() 实现随机均分<br>例：一共1600个用户，想随机均分为4组，每组400个</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select </span><br><span class="line">    login_id</span><br><span class="line">    ,ntile(4) over(order by rand()) as group_id</span><br><span class="line">from ...</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>数据框</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python中运行linux命令</title>
     <url>/2022/05/17/Python%E4%B8%AD%E8%BF%90%E8%A1%8Clinux%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
