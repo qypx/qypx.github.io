@@ -284,6 +284,230 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2023/06/12/Excel中的常见操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2023/06/12/Excel中的常见操作/" itemprop="url">Excel中的常见操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-06-12T16:32:42+08:00">
+                2023-06-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-06-13T18:19:41+08:00">
+                2023-06-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Excel/" itemprop="url" rel="index">
+                    <span itemprop="name">Excel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-筛选后求和、求平均值"><a href="#1-筛选后求和、求平均值" class="headerlink" title="1.筛选后求和、求平均值"></a>1.筛选后求和、求平均值</h4><blockquote>
+<p> 参考：subtotal函数，<a href="https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939" target="_blank" rel="noopener">SUBTOTAL function - Microsoft Support</a></p>
+</blockquote>
+<p>在经过筛选后，如果使用sum()函数进行求和，选择的其实包含了被筛选掉的列。也即选中时并没有选中筛选后的列，这样求出来的和不是想要的。注：在选中筛选的内容后，excel右下角的求和是正确的。</p>
+<p>改用subtotal函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBTOTAL(function_num,ref1,[ref2],...)</span><br></pre></td></tr></table></figure>
+<p>求和：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBTOTAL(109,选中列)</span><br></pre></td></tr></table></figure>
+<p>求均值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBTOTAL(101,选中列)</span><br></pre></td></tr></table></figure>
+<p><strong>Function_num</strong>     Required. The number 1-11 or 101-111 that specifies the function to use for the subtotal. 1-11 includes manually-hidden rows, while 101-111 excludes them; filtered-out cells are always excluded. （1-11包含了hidden rows，101-111剔除了filtered-out cells）</p>
+<p><img src="/2023/06/12/Excel中的常见操作/1680515921780.png" alt="1680515921780"></p>
+<p>注：且筛选内容变了后，对应的结果也会跟着变，不用把函数删掉再重写。</p>
+<h4 id="2-vlookup根据两列数据匹配"><a href="#2-vlookup根据两列数据匹配" class="headerlink" title="2.vlookup根据两列数据匹配"></a>2.vlookup根据两列数据匹配</h4><blockquote>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/68744986" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/68744986</a></p>
+</blockquote>
+<p>当两列数据确定唯一值时，例如：有数据：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>季度</th>
+<th>客户经理</th>
+<th>接待人数</th>
+<th>开户数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>21Q1</td>
+<td>A</td>
+<td>xx</td>
+<td>？</td>
+</tr>
+<tr>
+<td>21Q2</td>
+<td>A</td>
+<td>xx</td>
+<td></td>
+</tr>
+<tr>
+<td>21Q3</td>
+<td>A</td>
+<td>xx</td>
+<td></td>
+</tr>
+<tr>
+<td>21Q1</td>
+<td>B</td>
+<td>xx</td>
+<td></td>
+</tr>
+<tr>
+<td>21Q2</td>
+<td>B</td>
+<td>xx</td>
+<td></td>
+</tr>
+<tr>
+<td>21Q3</td>
+<td>B</td>
+<td>xx</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>此时想根据季度与客户经理去匹配另一张表中的开户数时，有如下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VLOOKUP(E2&amp;F2,IF(&#123;1,0&#125;,A1:A13&amp;B1:B13,C1:C13),2,FALSE)</span><br></pre></td></tr></table></figure>
+<p>↑在开户数这一列，写入上面的公式，其中E2与F2指季度与客户经理这两列(单元格)，A1:A13与B1:B13指有开户数的那张表中的季度与客户经理两列（用&amp;拼接起来），C1:C13为开户数那一列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">IF(&#123;1,0&#125;,A1:A13&amp;B1:B13,C1:C13) 的含义：</span><br><span class="line">IF(条件,返回值1,返回值2)，如果条件为真，返回&quot;返回值1&quot;，如果条件为假，返回&quot;返回值2&quot;。</span><br><span class="line">&#123;1,0&#125;，则代表选择一个数组，第一列为真，即第一列返回&quot;返回值1&quot;，A1:A13&amp;B1:B13，第二列为假，即第二列返回&quot;返回值2&quot;，C1:C13</span><br><span class="line"></span><br><span class="line">可以认为IF(&#123;1,0&#125;)的写法是为了选取不连续的列(拼接后的数组看成一列，并再选中其他列)放到一个参数中</span><br></pre></td></tr></table></figure>
+<p>倒数第二个参数2代表C1:C13开户数这列，位于选取的范围中的第2列（A1:A13&amp;B1:B13视为第1列）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2023/06/09/四种排序开窗函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1805,176 +2029,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/07/17/Pandas中的常用函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/07/17/Pandas中的常用函数/" itemprop="url">Pandas中的常用函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-17T13:53:48+08:00">
-                2021-07-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-08-07T16:43:09+08:00">
-                2021-08-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="map、apply、applymap"><a href="#map、apply、applymap" class="headerlink" title="map、apply、applymap"></a>map、apply、applymap</h4><blockquote>
-<p><a href="https://zhuanlan.zhihu.com/p/100064394" target="_blank" rel="noopener">Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)</a></p>
-</blockquote>
-<p>在日常的数据处理中，经常会对一个<code>DataFrame</code>进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的<code>map</code>、<code>apply</code>和<code>applymap</code>可以解决绝大部分这样的数据处理需求。</p>
-<p>生成100行示例数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">boolean=[<span class="literal">True</span>,<span class="literal">False</span>]</span><br><span class="line">gender=[<span class="string">"男"</span>,<span class="string">"女"</span>]</span><br><span class="line">color=[<span class="string">"white"</span>,<span class="string">"black"</span>,<span class="string">"yellow"</span>]</span><br><span class="line">data=pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">"height"</span>:np.random.randint(<span class="number">150</span>,<span class="number">190</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">"weight"</span>:np.random.randint(<span class="number">40</span>,<span class="number">90</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">"smoker"</span>:[boolean[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="number">2</span>,<span class="number">100</span>)],</span><br><span class="line">    <span class="string">"gender"</span>:[gender[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="number">2</span>,<span class="number">100</span>)],</span><br><span class="line">    <span class="string">"age"</span>:np.random.randint(<span class="number">15</span>,<span class="number">90</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">"color"</span>:[color[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,len(color),<span class="number">100</span>) ]</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717144622753.png" alt="image-20210717144622753"></p>
-<h5 id="Series数据处理"><a href="#Series数据处理" class="headerlink" title="Series数据处理"></a>Series数据处理</h5><h6 id="1-map用法"><a href="#1-map用法" class="headerlink" title="1. map用法"></a>1. map用法</h6><p>若想把数据集中<code>gender</code>列的男替换为1，女替换为0，可使用 <code>Series.map()</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 法一：使用字典进行映射</span></span><br><span class="line">data[<span class="string">"gender"</span>] = data[<span class="string">"gender"</span>].map(&#123;<span class="string">"男"</span>:<span class="number">1</span>, <span class="string">"女"</span>:<span class="number">0</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二：使用函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gender_map</span><span class="params">(x)</span>:</span></span><br><span class="line">    gender = <span class="number">1</span> <span class="keyword">if</span> x == <span class="string">"男"</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> gender</span><br><span class="line"><span class="comment"># 注意这里传入的是函数名，不带括号</span></span><br><span class="line">data[<span class="string">"gender"</span>] = data[<span class="string">"gender"</span>].map(gender_map)</span><br></pre></td></tr></table></figure>
-<p>不论是利用字典还是函数进行映射，<code>map</code>方法都是把对应的数据<strong>逐个当作参数</strong>传入到字典或函数中，得到映射后的值。</p>
-<blockquote>
-<p> 注：若该列中存在map字典中不存在的值，例如，gender 中还存在“未知”，则“未知”会被映射为Nan，此时可选择使用函数进行映射，定义一个else，同时使用函数会更加灵活，例如当满足多个条件时，都映射到某个值</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/07/17/Pandas中的常用函数/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2027,7 +2081,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">122</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2038,7 +2092,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2049,7 +2103,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
