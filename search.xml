@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>强化学习简介</title>
+    <url>/2023/08/17/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>强化学习的有趣应用例如：</p>
+<ul>
+<li><a href="https://deepmind.com/research/alphago/" target="_blank" rel="noopener">AlphaGo</a><br> <a href="https://gogameguru.com/i/2016/03/deepmind-mastering-go.pdf" target="_blank" rel="noopener">Mastering the Game of Go with Deep Neural Networks and Tree Search</a></li>
+<li>Atari 2600 games<br> <a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html#ref12" target="_blank" rel="noopener">Human-level control through deep reinforcement learning</a><br> <a href="https://arxiv.org/pdf/1507.04296.pdf" target="_blank" rel="noopener">Massively Parallel Methods for Deep Reinforcement Learning</a> </li>
+</ul>]]></content>
+      <categories>
+        <category>强化学习</category>
+      </categories>
+      <tags>
+        <tag>强化学习，机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>参数学习与非参数学习</title>
     <url>/2023/08/17/%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9D%9E%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>参考 <a href="https://www.zybuluo.com/vivounicorn/note/446479" target="_blank" rel="noopener">https://www.zybuluo.com/vivounicorn/note/446479</a></p>
-</blockquote>
-<p><strong>从参数与样本的关系角度看待模型。</strong></p>
-<h4 id="1、参数学习"><a href="#1、参数学习" class="headerlink" title="1、参数学习"></a>1、参数学习</h4><p>参数学习的特点是：<br>1、选择某种形式的函数并通过机器学习用一系列固定个数的参数尽可能表征这些数据的某种模式；<br>2、<strong>不管数据量有多大，函数参数的个数是固定的</strong>，即参数个数不随着样本量的增大而增加，从关系上说它们相互独立；<br>3、往往<strong>对数据有较强的假设</strong>，如分布的假设，空间的假设等。<br>4、常用参数学习的模型有： </p>
-<blockquote>
-<ul>
-<li>Logistic Regression</li>
-<li>Linear Regression</li>
-<li>Polynomial regression</li>
-<li>Linear Discriminant Analysis</li>
-<li>Perceptron</li>
-<li>Naive Bayes</li>
-<li>Simple Neural Networks</li>
-<li>使用线性核的 SVM</li>
-<li>Mixture models</li>
-<li>K-means</li>
-<li>Hidden Markov models</li>
-<li>Factor analysis / pPCA / PMF</li>
-</ul>
-</blockquote>
-<h4 id="2、非参数学习"><a href="#2、非参数学习" class="headerlink" title="2、非参数学习"></a>2、非参数学习</h4><p>非参数学习的特点是：<br>1、数据决定了函数形式，函数参数个数不固定；<br>2、<strong>随着数据量的增加，参数个数一般也会随之增长</strong>；<br>3、对数据本身做较少的先验假设。<br>4、一些常用的非参学习模型：  </p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="2、非参数学习"><a href="#2、非参数学习" class="headerlink" title="2、非参数学习"></a>2、非参数学习</h4><p>非参数学习的特点是：<br>1、数据决定了函数形式，函数参数个数不固定；<br>2、<strong>随着数据量的增加，参数个数一般也会随之增长</strong>；<br>3、对数据本身做较少的先验假设。<br>4、一些常用的非参学习模型：  </p>
 <blockquote>
 <ul>
 <li>k-Nearest Neighbors</li>
@@ -36,8 +30,7 @@
 <li>infinite HMMs</li>
 <li>infinite latent factor models</li>
 </ul>
-</blockquote>
-]]></content>
+</blockquote>]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
@@ -10792,8 +10785,8 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>
