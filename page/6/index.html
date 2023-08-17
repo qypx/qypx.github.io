@@ -284,6 +284,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/" itemprop="url">Using relational data stores with Hadoop —— Hive & Sqoop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-15T12:50:44+08:00">
+                2020-01-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-16T15:39:33+08:00">
+                2020-01-16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">Hadoop</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!-- toc -->
+<h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064046135.png" alt="1579064046135"></p>
+<h3 id="What-is-Hive"><a href="#What-is-Hive" class="headerlink" title="What is Hive?"></a>What is Hive?</h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579064255091.png" alt="1579064255091"></p>
+<h4 id="Why-Hive"><a href="#Why-Hive" class="headerlink" title="Why Hive"></a>Why Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579082214734.png" alt="1579082214734"></p>
+<h4 id="Why-not-Hive"><a href="#Why-not-Hive" class="headerlink" title="Why not Hive"></a>Why not Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/1579083363568.png" alt="1579083363568"></p>
+<p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
+<p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/15/Using-relational-data-stores-with-Hadoop-——-Hive/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/14/Hadoop-Course-Overview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1753,215 +1919,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/sql语句中的drop-truncate-delete/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/sql语句中的drop-truncate-delete/" itemprop="url">sql语句中的drop, truncate, delete</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T18:34:28+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-10-13T20:59:20+08:00">
-                2020-10-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考：</p>
-<p><a href="https://blog.csdn.net/lovezhaohaimig/article/details/80184994" target="_blank" rel="noopener">https://blog.csdn.net/lovezhaohaimig/article/details/80184994</a></p>
-<p><a href="https://www.cnblogs.com/xianyao/p/11613021.html" target="_blank" rel="noopener">https://www.cnblogs.com/xianyao/p/11613021.html</a></p>
-<h4 id="1-drop-table-表名称"><a href="#1-drop-table-表名称" class="headerlink" title="1.drop table 表名称"></a>1.drop table 表名称</h4><p><strong>drop (删除表)：删除表内容和表定义，释放空间。</strong></p>
-<p>简单来说就是把整个表去掉，以后要新增数据是不可能的，除非新增一个表。</p>
-<p>把表的结构也删除了，下次要使用的时候要重新创建表的结构再插入数据。</p>
-<p>drop语句将删除表结构被依赖的约束(constrain)，触发器(trigger)，索引(index)；依赖于该表的存储过程/函数将被保留，但其状态会变为：invalid。</p>
-<p><strong>不能回滚</strong></p>
-<h4 id="2-truncate-table-表名称"><a href="#2-truncate-table-表名称" class="headerlink" title="2.truncate table 表名称"></a>2.truncate table 表名称</h4><p><strong>truncate (清空表中的数据)：删除表内容、释放空间但不删除表定义。</strong>与drop不同的是，他只是清空表数据而已，不删除表结构。其列、约束、索引等保持不变。</p>
-<p>truncate table test 后，向test表添加数据，插入的字段的id重新从1开始递增 1、2、3…..（体现了truncate删除是释放空间）</p>
-<p><strong>in MySQL, resets auto_increment PKs</strong></p>
-<p><strong>不能回滚</strong></p>
-<p>注意:truncate 不能删除行数据,要删就要把表清空。</p>
-<h4 id="3-delete-from-表名称-where-列名称-值"><a href="#3-delete-from-表名称-where-列名称-值" class="headerlink" title="3.delete from 表名称 where 列名称 = 值"></a>3.delete from 表名称 where 列名称 = 值</h4><p>delete (删除表中的数据)：删除整表中的行，表结构不会删除。</p>
-<p><strong>删除内容，不删除定义，不释放空间。</strong></p>
-<p>用delete删除数据，然后添加。可以看到添加之后id标识不连续。（说明delete删除不释放空间）</p>
-<p>如果重新插入数据时，对应的id在上次基础之上递增 4、5、6….</p>
-<p>delete语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存,以便进行回滚操作。</p>
-<p><strong>即不带where的delete: 删除表内容，不删除表结构</strong></p>
-<p><strong>可回滚</strong></p>
-<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h4><ul>
-<li><p>执行速度，一般来说: drop&gt; truncate &gt; delete。</p>
-</li>
-<li><p>delete语句是数据库操作语言(dml)，这个操作会放到 rollback segment中，事务提交之后才生效；如果有相应的 trigger，执行的时候将被触发。</p>
-</li>
-<li><p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger。</p>
-</li>
-<li><p>在实际应用中，三者的区别是明确的。</p>
-<ul>
-<li><p>当你不再需要该表时， 用 drop;</p>
-</li>
-<li><p>当你仍要保留该表，但要删除所有记录时， 用 truncate; </p>
-</li>
-<li><p>当你要删除部分记录时（always with a WHERE clause), 用 delete.</p>
-</li>
-</ul>
-</li>
-<li><p>truncate 与delete 比较：</p>
-<ul>
-<li><p>truncate table 在功能上与不带 WHERE 子句的 delete语句相同：二者均删除表中的全部行。</p>
-</li>
-<li><p>truncate 比 delete速度快，且使用的系统和事务日志资源少。</p>
-</li>
-<li><p>truncate 操作后的表比Delete操作后的表要快得多。</p>
-</li>
-<li><p>当表被清空后，表和表的索引将重新设置成初始大小，而delete则不能。</p>
-</li>
-<li>truncate 删除不能恢复，delete 可以恢复数据</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>(<a href="http://www.itpub.net/thread-392126-1-1.html" target="_blank" rel="noopener">http://www.itpub.net/thread-392126-1-1.html</a>)</p>
-<p>问：执行truncate table，除了rows会删除，index也会删除，但我执行之后，查看user_indexes，索引仍在，重新加入新资料再做查询，一样可以用到索引，是不是这里所说的删除，是指删除索引的内容，可是一般我们用delete，索引的内容不是也会跟着删除吗? 那么用truncate和delete，索引的删除又有什么不同呢?</p>
-<p>答：你truncate后，你只是删除索引相应的数据，也就是你所说的内容，索引的定义并没有删除，因此在数据字典里面还有相关信息。重新插入数据后，当然还会用到原来定义的索引。你要真正删除一个索引的话，那么得用drop index index_name把索引DROP掉。delete的话，索引的内容跟truncate一样是删除的，只是物理上事实上并没有删除，这个你不要去管，你就知道索引条目也相应删除就是了。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2014,7 +1971,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">124</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

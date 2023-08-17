@@ -284,6 +284,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/10/12/命令行中使用不同版本的python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/12/命令行中使用不同版本的python/" itemprop="url">命令行中使用不同版本的python</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-12T17:08:34+08:00">
+                2021-10-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-10-12T17:23:44+08:00">
+                2021-10-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>假设安装anaconda时选择的python版本为Python3.8，又新创建了虚拟环境python36（python版本选择的Python3.6），如何在命令行中使用不同版本的python：</p>
+<p>由于环境变量中加入了anaconda的路径，此时直接在命令行中运行python时，默认使用的是anaconda\python.exe所对应的版本（即Python3.8）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;python --version</span><br><span class="line">Python 3.8.5</span><br></pre></td></tr></table></figure>
+<p>如何使用Python3.6：</p>
+<p>首先cd到对应的虚拟环境的python.exe路径下，此时执行python命令时便使用的相应版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;cd d:\anaconda\anaconda\envs\python36</span><br><span class="line">&gt;python --version</span><br><span class="line">Python 3.6.12 :: Anaconda, Inc.</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/07/17/WOE编码与IV值/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1880,170 +2039,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/11/15/conda常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/15/conda常用命令/" itemprop="url">conda常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-15T11:56:36+08:00">
-                2020-11-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-15T12:50:30+08:00">
-                2020-11-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Jupyter-Notebook/" itemprop="url" rel="index">
-                    <span itemprop="name">Jupyter Notebook</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>参考 <a href="https://blog.csdn.net/Destiny_zz/article/details/88634513" target="_blank" rel="noopener">https://blog.csdn.net/Destiny_zz/article/details/88634513</a></p>
-</blockquote>
-<p><code>conda -V</code> 检查是否安装以及当前conda的版本<br><code>conda list</code> 查看安装了哪些包<br><code>conda update conda</code> 检查更新当前conda</p>
-<h3 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h3><h4 id="1-创建python虚拟环境"><a href="#1-创建python虚拟环境" class="headerlink" title="1. 创建python虚拟环境"></a>1. 创建python虚拟环境</h4><p><code>conda create -n your_env_name python=X.X (2.7、3.6等)</code> 创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可在Anaconda安装目录envs文件夹下找到。</p>
-<h4 id="2-激活或切换不同的虚拟环境"><a href="#2-激活或切换不同的虚拟环境" class="headerlink" title="2. 激活或切换不同的虚拟环境"></a>2. 激活或切换不同的虚拟环境</h4><p><code>python --version</code> 检查当前 python 版本</p>
-<p>切换虚拟环境：<br>Linux: <code>source activate your_env_name(虚拟环境名称)</code><br>Windows: <code>activate your_env_name(虚拟环境名称)</code></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/11/15/conda常用命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2096,7 +2091,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">124</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

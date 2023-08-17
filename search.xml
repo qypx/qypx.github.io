@@ -1,11 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>参数学习与非参数学习</title>
+    <url>/2023/08/17/%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%9D%9E%E5%8F%82%E6%95%B0%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考 <a href="https://www.zybuluo.com/vivounicorn/note/446479" target="_blank" rel="noopener">https://www.zybuluo.com/vivounicorn/note/446479</a></p>
+</blockquote>
+<p><strong>从参数与样本的关系角度看待模型。</strong></p>
+<h4 id="1、参数学习"><a href="#1、参数学习" class="headerlink" title="1、参数学习"></a>1、参数学习</h4><p>参数学习的特点是：<br>1、选择某种形式的函数并通过机器学习用一系列固定个数的参数尽可能表征这些数据的某种模式；<br>2、<strong>不管数据量有多大，函数参数的个数是固定的</strong>，即参数个数不随着样本量的增大而增加，从关系上说它们相互独立；<br>3、往往<strong>对数据有较强的假设</strong>，如分布的假设，空间的假设等。<br>4、常用参数学习的模型有： </p>
+<blockquote>
+<ul>
+<li>Logistic Regression</li>
+<li>Linear Regression</li>
+<li>Polynomial regression</li>
+<li>Linear Discriminant Analysis</li>
+<li>Perceptron</li>
+<li>Naive Bayes</li>
+<li>Simple Neural Networks</li>
+<li>使用线性核的 SVM</li>
+<li>Mixture models</li>
+<li>K-means</li>
+<li>Hidden Markov models</li>
+<li>Factor analysis / pPCA / PMF</li>
+</ul>
+</blockquote>
+<h4 id="2、非参数学习"><a href="#2、非参数学习" class="headerlink" title="2、非参数学习"></a>2、非参数学习</h4><p>非参数学习的特点是：<br>1、数据决定了函数形式，函数参数个数不固定；<br>2、<strong>随着数据量的增加，参数个数一般也会随之增长</strong>；<br>3、对数据本身做较少的先验假设。<br>4、一些常用的非参学习模型：  </p>
+<blockquote>
+<ul>
+<li>k-Nearest Neighbors</li>
+<li>Decision Trees like CART and C4.5</li>
+<li>使用非线性核的 SVM</li>
+<li>Gradient Boosted Decision Trees</li>
+<li>Gaussian processes for regression</li>
+<li>Dirichlet process mixtures</li>
+<li>infinite HMMs</li>
+<li>infinite latent factor models</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>生成式模型与判别式模型</title>
     <url>/2023/08/16/%E7%94%9F%E6%88%90%E5%BC%8F%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%A4%E5%88%AB%E5%BC%8F%E6%A8%A1%E5%9E%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>参考：<a href="https://www.zybuluo.com/vivounicorn/note/446479" target="_blank" rel="noopener">https://www.zybuluo.com/vivounicorn/note/446479</a></p>
 </blockquote>
+<p><strong>从概率分布的角度看待模型。</strong></p>
 <p>例如，如果我想知道一个人A说的是哪个国家的语言，我应该怎么办呢?</p>
 <blockquote>
 <ul>
@@ -10746,8 +10792,8 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>机器学习</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
 </search>
