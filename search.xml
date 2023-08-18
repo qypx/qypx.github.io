@@ -3,20 +3,7 @@
   <entry>
     <title>常见的概率分布</title>
     <url>/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="1-离散型分布"><a href="#1-离散型分布" class="headerlink" title="1.离散型分布"></a>1.离散型分布</h3><h4 id="1-1-两点分布（伯努利分布-贝努利分布-0-1分布）"><a href="#1-1-两点分布（伯努利分布-贝努利分布-0-1分布）" class="headerlink" title="1.1 两点分布（伯努利分布/贝努利分布/0-1分布）"></a>1.1 两点分布（伯努利分布/贝努利分布/0-1分布）</h4><p>称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​</p>
-<script type="math/tex; mode=display">
-P(X=k)=p^k(1-p)^{1-k}, \quad k=0,1\\
-X\sim B(1,p)\\
-E(X)=p\\
-D(X)=p(1-p)</script><h4 id="1-2-二项分布"><a href="#1-2-二项分布" class="headerlink" title="1.2 二项分布"></a>1.2 二项分布</h4><p>n次独立的伯努利试验。如果事件发生的概率是 $p$，n次独立重复试验中发生k次的概率是</p>
-<script type="math/tex; mode=display">
-P(X=k)=C_n^k p^k(1-p)^{n-k},\quad k=0,1,...,n\\
-X\sim B(n,p)\\
-E(X)=np\\
-D(X)=np(1-p)</script><blockquote>
-<p>有 n 件产品，其中  m 件次品 (m&lt;n)，从中不放回地任意抽取 k 件产品和有放回地任意抽取 k 件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 $\frac{m}{n}$，抽得次品数的期望值也相同，都为 $k\frac{m}{n}$，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
-</blockquote>
-<h4 id="1-3-几何分布"><a href="#1-3-几何分布" class="headerlink" title="1.3 几何分布"></a>1.3 几何分布</h4><p>在n次伯努利试验中，试验k次才第一次成功的概率。几何分布是帕斯卡分布当 $r=1$ 时的特例</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-3-几何分布"><a href="#1-3-几何分布" class="headerlink" title="1.3 几何分布"></a>1.3 几何分布</h4><p>在n次伯努利试验中，试验k次才第一次成功的概率。几何分布是帕斯卡分布当 $r=1$ 时的特例</p>
 <script type="math/tex; mode=display">
 P(X=k)=(1-p)^{k-1}p,\quad k=1,2,...\\
 X \sim GE(p)\\
@@ -107,8 +94,7 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
 <p>如果 $t\sim t(n)$，则 $t^2\sim F(1,n)$；<br>如果 $F\sim F(n_1,n_2)$，则 $\frac1F \sim F(n_2, n_1)$.</p>
 <blockquote>
 <p>F分布在回归方程的显著性检验中具有重要作用</p>
-</blockquote>
-]]></content>
+</blockquote>]]></content>
       <categories>
         <category>统计学知识</category>
       </categories>
