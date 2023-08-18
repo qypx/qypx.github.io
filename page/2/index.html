@@ -284,6 +284,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/12/30/关于环境变量path与classpath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/30/关于环境变量path与classpath/" itemprop="url">关于环境变量path与classpath</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-30T15:53:28+08:00">
+                2021-12-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-01-01T21:09:02+08:00">
+                2022-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">软件环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考<br><a href="https://blog.csdn.net/handsome_boy_wsq/article/details/82178724" target="_blank" rel="noopener">环境变量——关于PATH与CLASSPATH的区别（作用）</a><br><a href="https://blog.csdn.net/mydreamongo/article/details/8155408" target="_blank" rel="noopener">path与classpath区别</a></p>
+</blockquote>
+<h4 id="1-Path"><a href="#1-Path" class="headerlink" title="1. Path"></a>1. Path</h4><p>PATH是系统用来指定可执行文件的完整路径。</p>
+<p>当在cmd中执行命令时，如果执行的可执行文件不在当前目录下，那么系统就会依次搜索PATH中设置的路径。例如，若在PATH中设置了python的安装目录（D:\python\python-3.6.3），那么就可以在任意路径下使用python xxx.py执行python程序，而不必在CMD中切换到python的安装目录下运行该命令。</p>
+<h4 id="2-classpath"><a href="#2-classpath" class="headerlink" title="2. classpath"></a>2. classpath</h4><p>CLASSPATH是指定程序中所使用的类文件所在的位置。classpath是java专用的查找类的路径。一般只在配置java环境时会用到。</p>
+<h4 id="3-用户变量与系统变量"><a href="#3-用户变量与系统变量" class="headerlink" title="3. 用户变量与系统变量"></a>3. 用户变量与系统变量</h4><p>用户变量只对当前用户有效；系统变量对所有用户有效。对于当前用户而言，设置用户变量与系统变量的效果大致相同，只是系统变量的路径排在用户变量的路径之前。</p>
+<p>小结：一般安装软件时环境变量的配置，编辑系统变量下的path内容即可。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/10/12/关于python2与python3中的可变参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -676,8 +837,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2022-02-18T17:22:26+08:00">
-                2022-02-18
+              <time title="更新于" itemprop="dateModified" datetime="2023-08-17T15:31:34+08:00">
+                2023-08-17
               </time>
             
           </span>
@@ -1493,8 +1654,8 @@ logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上�
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-08-28T22:40:38+08:00">
-                2021-08-28
+              <time title="更新于" itemprop="dateModified" datetime="2023-08-17T15:24:49+08:00">
+                2023-08-17
               </time>
             
           </span>
@@ -1512,8 +1673,8 @@ logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/统计学知识/" itemprop="url" rel="index">
+                    <span itemprop="name">统计学知识</span>
                   </a>
                 </span>
 
@@ -1801,267 +1962,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/02/14/SQL中的各种连接join/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/14/SQL中的各种连接join/" itemprop="url">SQL中的各种连接join</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-14T15:03:41+08:00">
-                2021-02-14
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-06-09T11:53:33+08:00">
-                2023-06-09
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>参考：<br><a href="https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html" target="_blank" rel="noopener">https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html</a><br><a href="https://www.w3school.com.cn/sql/sql_join_left.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join_left.asp</a><br><a href="https://www.w3school.com.cn/sql/sql_join.asp" target="_blank" rel="noopener">https://www.w3school.com.cn/sql/sql_join.asp</a><br><a href="https://www.cnblogs.com/yelp/p/3761443.html" target="_blank" rel="noopener">https://www.cnblogs.com/yelp/p/3761443.html</a><br><a href="https://blog.csdn.net/qq_41973536/article/details/81081024" target="_blank" rel="noopener">https://blog.csdn.net/qq_41973536/article/details/81081024</a></p>
-</blockquote>
-<p>最常见的 JOIN 类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、INNER JOIN（等价于 JOIN）</span><br><span class="line">2、LEFT JOIN（等价于LEFT OUTER JOIN）</span><br><span class="line">3、RIGHT JOIN（等价于RIGHT OUTER JOIN）</span><br><span class="line">4、SQL FULL JOIN（等价于FULL OUTER JOIN）</span><br></pre></td></tr></table></figure>
-<p>其中第一种是内连接，后三种是外连接。</p>
-<ul>
-<li>JOIN: 内连接，又叫等值连接，只返回两个表中连接字段相等的行。（如果表中有至少一个匹配，则返回行）</li>
-<li>LEFT JOIN: 左连接，返回左表中所有的记录以及右表中连接字段相等的记录。（即使右表中没有匹配，也从左表返回所有的行）</li>
-<li>RIGHT JOIN: 右连接，返回右表中所有的记录以及左表中连接字段相等的记录。（即使左表中没有匹配，也从右表返回所有的行）</li>
-<li>FULL JOIN: 外连接，返回两个表中的行：left join + right join。（只要其中一个表中存在匹配，就返回行）</li>
-<li>cross join: 结果是笛卡尔积，就是第一个表的行数乘以第二个表的行数。</li>
-</ul>
-<p>假设我们有两张表，Table A是左边的表，Table B是右边的表。</p>
-<p>Table A:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Google</td>
-</tr>
-<tr>
-<td>2</td>
-<td>淘宝</td>
-</tr>
-<tr>
-<td>3</td>
-<td>微博</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Facebook</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Table B:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>美国</td>
-</tr>
-<tr>
-<td>5</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>3</td>
-<td>中国</td>
-</tr>
-<tr>
-<td>6</td>
-<td>美国</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="1-INNER-JOIN"><a href="#1-INNER-JOIN" class="headerlink" title="1. INNER JOIN"></a>1. INNER JOIN</h3><p>内连接只连接匹配的行。</p>
-<p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span></span><br><span class="line"><span class="keyword">table</span> <span class="number">1.</span>column_name=<span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/14/SQL中的各种连接join/1624780519991.png" alt="1624780519991"></p>
-<p>INNER JOIN产生的结果集，是1和2的交集。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-<p>执行以上SQL输出结果如下：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Google</td>
-<td>美国</td>
-</tr>
-<tr>
-<td>3</td>
-<td>微博</td>
-<td>中国</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>等价于</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, <span class="keyword">name</span>, address</span><br><span class="line"><span class="keyword">from</span> tableA, tableB</span><br><span class="line"><span class="keyword">where</span> tableA.id = tableB.id</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/02/14/SQL中的各种连接join/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2114,7 +2014,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">126</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2125,7 +2025,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2136,7 +2036,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

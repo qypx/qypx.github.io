@@ -284,6 +284,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/02/dataframe-operation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/02/dataframe-operation/" itemprop="url">数据框操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T19:50:22+08:00">
+                2019-09-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-01-20T11:48:21+08:00">
+                2022-01-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="1-创建dataframe"><a href="#1-创建dataframe" class="headerlink" title="1. 创建dataframe"></a>1. 创建dataframe</h4><ul>
+<li>法一</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = pd.DataFrame(&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">'string'</span>: [<span class="string">'a'</span>, <span class="string">'b'</span>,<span class="string">'c'</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>法二（若已有现成的list）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = pd.DataFrame([n_clusters_start, score], columns = [<span class="string">"分类数"</span>, <span class="string">"得分"</span>])</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'!'</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'?'</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">'EC'</span>:EC,<span class="string">'QC'</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">"freqOf "</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/02/dataframe-operation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/02/读取与保存csv和txt文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1332,7 +1501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">126</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1343,7 +1512,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1354,7 +1523,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
