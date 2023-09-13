@@ -284,6 +284,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/07/29/隐语义模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/29/隐语义模型/" itemprop="url">隐语义模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-29T19:13:28+08:00">
+                2020-07-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-29T17:19:21+08:00">
+                2020-07-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>来源于:</p>
+<p> <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System" target="_blank" rel="noopener">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<h3 id="1-基本思想"><a href="#1-基本思想" class="headerlink" title="1. 基本思想"></a>1. 基本思想</h3><p>推荐系统中一个重要的分支，隐语义建模。隐语义模型<strong>LFM</strong>：Latent Factor Model，其核心思想就是<span style="color:red">通过隐含特征联系用户兴趣和物品</span>。</p>
+<p><strong>过程分为三个部分，将物品映射到隐含分类，确定用户对隐含分类的兴趣，然后选择用户感兴趣的分类中的物品推荐给用户。它是基于用户行为统计的自动聚类。</strong></p>
+<p>隐语义模型在Top-N推荐中的应用十分广泛。常用的隐语义模型，LSA(Latent Semantic Analysis)，LDA(Latent Dirichlet Allocation)，主题模型(Topic Model)，矩阵分解(Matrix Factorization)等等。</p>
+<p>首先通过一个例子来理解一下这个模型，比如说有两个用户A和B，目前有用户的阅读列表，用户A的兴趣涉及侦探小说，科普图书以及一些计算机技术书，而用户B的兴趣比较集中在数学和机器学习方面。那么如何给A和B推荐图书呢？</p>
+<p>对于UserCF，首先需要找到和他们看了同样书的其他用户(兴趣相似的用户)，然后在给他们推荐那些用户喜欢的其他书。 对于ItemCF, 需要给他们推荐和他们已经看的书相似的书，比如用户B 看了很多数据挖掘方面的书，那么可以给他推荐机器学习或者模式识别方面的书。</p>
+<p>还有一种方法就是使用隐语义模型，可以对书和物品的兴趣进行分类。对于某个用户，首先得到他的兴趣分类，然后从分类中挑选他可能喜欢的物品。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/29/隐语义模型/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/07/28/机器学习相关资料/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1745,164 +1912,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/02/17/hexo相关问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/17/hexo相关问题/" itemprop="url">hexo相关问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-17T22:56:26+08:00">
-                2020-02-17
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-12-30T19:26:23+08:00">
-                2021-12-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://i.imgur.com/OE5CXF7.png" alt="img"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/02/17/hexo相关问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1955,7 +1964,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1977,7 +1986,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

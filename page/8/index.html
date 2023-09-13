@@ -284,6 +284,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/05/A-Recommender-Engine-Framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/A-Recommender-Engine-Framework/" itemprop="url">A Recommender Engine Framework</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T14:19:43+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-06T12:22:48+08:00">
+                2020-01-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867"></p>
+<h3 id="1-Our-Recommender-Engine-Architecture"><a href="#1-Our-Recommender-Engine-Architecture" class="headerlink" title="1. Our Recommender Engine Architecture"></a>1. Our Recommender Engine Architecture</h3><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375"></p>
+<p>Object oriented design allows us to have base classes, for example, AlgoBase, that contain functions and variables that can be shared by other classes that inherit from that base class. 例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
+<p>Custom指的是any custom algorithm we might develop (自己写的recommender system), and make them part of the supriselib framework.</p>
+<h4 id="Create-a-custom-algorithm"><a href="#Create-a-custom-algorithm" class="headerlink" title="Create a custom algorithm"></a>Create a custom algorithm</h4><p>So, how do you write your own recommender algorithm that’s compatible with surpiselib?</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207092161.png" alt="1578207092161"></p>
+<p>All you have to do is create a new class that inherits form AlgoBase, and as far as supriselib is concerned, your algorithm has one job: to predict ratings.</p>
+<blockquote>
+<p>As we mentioned, supriselib is built around the architecture of predicting the ratings of every movie for every user, and giving back the top predictions as your recommendations. </p>
+</blockquote>
+<p>Your class have to implement an estimate function.</p>
+<p>When estimate is called by supriselib framework, it’s asking you to predict a rating for the user and item passed in. </p>
+<blockquote>
+<p>注：这里的user id和item id是inner id. Must be mapped back to the raw user and item ids in your source data.</p>
+</blockquote>
+<ul>
+<li>Now, we want to do more than just predict ratings. 我们想要很简单的将之前在<code>RecommenderMetrics</code>中实现的不同的evaluation metrics应用到algorithms we work with. </li>
+</ul>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207683880.png" alt="1578207683880"></p>
+<p>为了做到这一点，我们将创建一个新的class叫做<code>EvaluatedAlgoritm</code>，里面创建了一个新的函数叫做<code>Evaluate</code>，that runs all the metrics in RecommenderMetrics on that algorithm. So this class makes it easy to measure accuracy, coverage, diversity and everything else on a given algorithm.</p>
+<ul>
+<li><p>不同的评估方法，要求对数据集的不同分割方式，于是我们创建了另一个新的class: <code>EvaluationData</code>来做到这一点。</p>
+</li>
+<li><p>如何连接这一切？</p>
+</li>
+</ul>
+<p>We create an <code>EvaluationData</code> instance with our data set, create an <code>EvaluatedAlgorithm</code> for each algorithm we want to evaluate, and call <code>Evaluate</code> on each algorithm using the same <code>EvaluationData</code>. Under the hood, <code>EvaluatedAlgorithm</code> will use all the functions we defined in <code>RecommenderMetrics</code> to measure accuracy, hit rate, diversity, novelty, and coverage.</p>
+<ul>
+<li>Since what we generally want to do is 比较不同推荐系统, we can make life even easier by writing a class that takes care of all the comparison for us. 于是我们创建了新的class：<code>Evaluator</code>.</li>
+</ul>
+<p>Ideally, we want to just submit algorithms we want to evaluate against each other into this class, and let it do everything from there.</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208719473.png" alt="1578208719473"></p>
+<p>The beauty of this is that you don’t even have to use the <code>EvalutedAlgorithm</code> or <code>EvaluatedData</code> classed at all, when you want to start playing around with new algorithms and testing them against each other. All you need to do is use this <code>Evaluator</code> class, which has a really simple interface.</p>
+<p>将上述framework写好后，如下这是我们比较SVD算法与random算法所需要的所有代码：</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208901255.png" alt="1578208901255"></p>
+<h3 id="2-Code-Walkthrough"><a href="#2-Code-Walkthrough" class="headerlink" title="2. Code Walkthrough"></a>2. Code Walkthrough</h3><p>Framework文件夹里：</p>
+<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578209106245.png" alt="1578209106245"></p>
+<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578283638478.png" alt="1578283638478"></p>
+<p>我们比较的是SVD和随机推荐。SVD is one of the best algorithms available right now, so it shouldn’t be surprise that SVD beats random recommendation in accuracy and hit rate no matter how we measure it.</p>
+<ul>
+<li>RMSE和MAE: lower is better.</li>
+<li>Hit rate,包括cHR, ARHR: higher is better.</li>
+<li>Coverage, diversity, novelty: need to apply some common sense to, as it’s not a clear higher-is-better sort of thing. There are trade-offs involved with these metrics.</li>
+</ul>
+<p>就Coverage而言，SVD的要低一些: that’s just because we are enforcing a quality threshold on the top-N recommendations we’re making with SVD, while our random recommender isn’t actually making totally random recommendations, it’s predicting movie ratings using what’s called a normal distribution centered around the average rating value, which ends up meaning all of the rating predictions it makes fall above our rating threshold, giving us 100% coverage. Having 100% coverage at the expense of having bad recommendations isn’t a trade-off worth making.</p>
+<p>就Diversity和Novelty而言，SVD的都要低一些，这是我们所预期会出现的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/04/Evaluate-Recommender-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1884,165 +2084,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/02/单调递增的数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/单调递增的数字/" itemprop="url">单调递增的数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T14:46:09+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-02T15:02:16+08:00">
-                2020-01-02
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://leetcode-cn.com/problems/monotone-increasing-digits/" target="_blank" rel="noopener">单调递增的数字（难度：中等）</a></p>
-<p><img src="/2020/01/02/单调递增的数字/1.jpg" alt="1"></p>
-<h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><p><img src="/2020/01/02/单调递增的数字/2.jpg" alt="2"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">monotoneIncreasingDigits</span><span class="params">(self, N: int)</span> -&gt; int:</span></span><br><span class="line">        s = list(str(N))</span><br><span class="line">        i = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &lt;= s[i]:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> <span class="number">0</span> &lt; i &lt; len(s) <span class="keyword">and</span> s[i<span class="number">-1</span>] &gt; s[i]:</span><br><span class="line">            s[i<span class="number">-1</span>] = str(int(s[i<span class="number">-1</span>])<span class="number">-1</span>)</span><br><span class="line">            i-=<span class="number">1</span></span><br><span class="line">        s[i+<span class="number">1</span>:] = <span class="string">'9'</span>*(len(s)-i<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">return</span> int(<span class="string">''</span>.join(s))</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/单调递增的数字/3.jpg" alt="3"></p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(D)。其中 D≈logN，N 是数字的长度。<br>空间复杂度：O(D)。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2095,7 +2136,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2117,7 +2158,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

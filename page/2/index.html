@@ -284,6 +284,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/12/30/python文件编码说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qypx">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/30/python文件编码说明/" itemprop="url">python文件编码说明</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-30T16:05:21+08:00">
+                2021-12-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-01-01T20:11:44+08:00">
+                2022-01-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考<br><a href="https://www.cnblogs.com/sixbeauty/p/4284427.html" target="_blank" rel="noopener">python文件编码说明 coding=utf-8 - 不笑猫 - 博客园 (cnblogs.com)</a><br><a href="https://www.python.org/dev/peps/pep-0263/" target="_blank" rel="noopener">PEP 263 — Defining Python Source Code Encodings | Python.org</a></p>
+</blockquote>
+<p>在python 文件开头（一般是第一行或第二行），用来说明你的Python源程序文件用使用的编码。缺省情况下默认使用ascii编码，但如果在其中写中文的话，python解释器一般会报错，但如果加上你所用的文件编码，python就会自动处理不再报错。</p>
+<p>通常写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: &lt;encoding name&gt; -*-</span><br></pre></td></tr></table></figure>
+<p>或：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># coding=&lt;encoding name&gt;</span><br></pre></td></tr></table></figure>
+<p>More precisely, the first or second line must match the following regular expression:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/12/30/关于环境变量path与classpath/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1788,180 +1953,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/02/21/Linux常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="qypx の blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/21/Linux常用命令/" itemprop="url">Linux常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-21T17:36:29+08:00">
-                2021-02-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2022-04-19T18:35:30+08:00">
-                2022-04-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="0-在线使用-Linux-Shell"><a href="#0-在线使用-Linux-Shell" class="headerlink" title="0. 在线使用 Linux Shell"></a>0. 在线使用 Linux Shell</h3><blockquote>
-<p>参考 <a href="https://www.sohu.com/a/343421845_298038" target="_blank" rel="noopener">https://www.sohu.com/a/343421845_298038</a></p>
-</blockquote>
-<p>JS/UIX - Terminal</p>
-<p>地址：<a href="https://www.masswerk.at/jsuix/index.html" target="_blank" rel="noopener">https://www.masswerk.at/jsuix/index.html</a></p>
-<p>进入后，点击open terminal即可。它提供简单的终端环境，没有自带gcc等编译套件，不过练习基本命令和shell脚本还是可以的。</p>
-<h3 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1. 常用命令"></a>1. 常用命令</h3><h4 id="1-1-ls-命令-显示指定工作目录下的内容"><a href="#1-1-ls-命令-显示指定工作目录下的内容" class="headerlink" title="1.1 ls 命令 - 显示指定工作目录下的内容"></a>1.1 ls 命令 - 显示指定工作目录下的内容</h4><blockquote>
-<p>详见 <a href="https://www.runoob.com/linux/linux-comm-ls.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-comm-ls.html</a></p>
-</blockquote>
-<p>显示指定工作目录下的内容（列出目前工作目录所含之文件及子目录)</p>
-<p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ls [-alrtAFR] [name...]</span><br><span class="line"> </span><br><span class="line">参数：</span><br><span class="line">-a： 显示所有文件及目录 (.开头的隐藏文件也会列出)</span><br><span class="line">-l： 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</span><br><span class="line"></span><br><span class="line">ls -l  可写作 ll</span><br><span class="line"></span><br><span class="line">常用写法：</span><br><span class="line">ll</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/21/Linux常用命令/1613903492422.png" alt="1613903492422"></p>
-<p>结合 <code>grep</code> 使用：</p>
-<p>查看文件 log.txt 是否存在于当前目录下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;ls | grep log.txt</span><br><span class="line">log.txt</span><br><span class="line">&gt;ls -al | grep log.txt</span><br><span class="line">-rw-rw-r--.  1 mozhiyan mozhiyan    0 4月  15 17:26 log.txt</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-查看文件内容：cat"><a href="#1-2-查看文件内容：cat" class="headerlink" title="1.2 查看文件内容：cat"></a>1.2 查看文件内容：cat</h4><p><img src="/2021/02/21/Linux常用命令/1613903531146.png" alt="1613903531146"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/02/21/Linux常用命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2014,7 +2005,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2036,7 +2027,7 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
