@@ -40,15 +40,20 @@ P \subseteq NP</script><h3 id="NP-Complete-NPC-问题"><a href="#NP-Complete-NPC
 </ol>
 <p>对于问题1，是无法令确定型图灵机在多项式时间内验证答案的，所以问题1不是NP问题，因此也不是NPC问题，但是Hamilton回路问题可以约化为TSP问题，而Hamilton回路问题是NP问题，因此是NP-Hard问题。</p>
 <p>对于问题2，可以令确定型图灵机在多项式时间内验证答案，所以问题2是NP问题，同时Hamilton回路问题可以约化为TSP问题，而Hamilton回路问题是NP问题，因此问题2是NP-Hard问题，同时它也是NPC问题。</p>
-<h3 id="四者之间的联系"><a href="#四者之间的联系" class="headerlink" title="四者之间的联系"></a>四者之间的联系</h3><p>将四种问题用集合表示，它们的关系图如下所示。</p>
-<p><img src="/2023/09/13/浅谈P、NP、NP-Complete和NP-Hard问题/1694593710620.png" alt="1694593710620"></p>
-<p><strong>说明：</strong></p>
-<ol>
-<li>P问题属于NP问题，NPC问题属于NP问题。</li>
-<li>NPC问题同时属于NP hard问题，是NP与NP hard的交集。</li>
-</ol>
-<p><strong>PS:</strong> 尚未有人能提出证明，说明NPC问题是否能在多项式时间中解决，使得此问题成为著名的数学中未解决的问题。位于剑桥市的<strong>克雷数学研究所</strong>(Clay Mathematics Institute，简称CMI)提供了一百万美金奖金给任何可以证明P=NP或P≠NP的人。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>说了这么多，个人认为为什么要判断一个问题是哪类问题，原因在于，它有助于让我们在决心实现这类问题之前对问题的难易程度进行一个有效的判断。如果一个问题是一个NP难问题，众所周知我们是不一定能够找到最优解的，有时候持有次优解即可（其实既然是工程问题，我们与其钻牛角尖寻求最优解，不如用小得多的代价寻求次优解）。如果一个问题连NP问题都不是，也就是说我在多项式时间内连验证它都很费劲，又谈何解决出来呢？这类问题就不大有研究的必要了。</p>
+<h2 id="P-NP"><a href="#P-NP" class="headerlink" title="P=NP?"></a>P=NP?</h2><blockquote>
+<p>来自 <a href="https://zhuanlan.zhihu.com/p/141884913" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/141884913</a></p>
+</blockquote>
+<p><strong>P 是否等于 NP</strong>。早在 2000 年 5 月的时候，<strong>Clay Institute</strong> 将这个问题列为了<strong>数学里的七大千禧问题之一</strong>，如果有人能证明出 P = NP 或 P ≠ NP，就会获得该机构整整 100 万美元的奖金。并且一旦证明出 P = NP 将会改变现有人类所有的知识体系，下面我们就来看看这个问题到底在讲什么吧。</p>
+<p><img src="/2023/09/13/浅谈P、NP、NP-Complete和NP-Hard问题/1694747131453.png" alt="1694747131453"></p>
+<h3 id="P-问题与-NP-问题"><a href="#P-问题与-NP-问题" class="headerlink" title="P 问题与 NP 问题"></a>P 问题与 NP 问题</h3><p>首先我们要知道什么是 P 问题和 NP 问题，所谓的 <strong>P 问题就是能够在多项式的时间复杂度内解决的问题</strong>，这里的 P 指的是<strong>多项式时间</strong>（<strong>polynomial time</strong>）的意思。比如<strong>排序问题，二分查找，图的遍历，最小生成树</strong>等。</p>
+<p>对于那些不能在多项式的时间复杂度内解决的问题，比如说<strong>背包问题</strong>，<strong>分配问题</strong>等等，我们会认为这个问题很难，<strong>可能需要在指数或阶乘的时间复杂度内解决</strong>，但是如果我们<strong>能够在多项式的时间复杂度内验证一个答案是否正确，我们就把这类问题称为 NP 问题</strong>，其中 NP 表示<strong>不确定的多项式时间</strong>（<strong>non-deterministic polynomial time</strong>）。简单来说就是<strong>解决 NP 问题很难，但验证它却很容易</strong>。打个比方，数独是一个解决起来比较难的问题，但是如果我们<strong>往格子里随机填一些数字，然后验证它是否满足数独的规则就会比较容易。</strong>因此，这类问题也是科学家们最关心的问题。</p>
+<h3 id="多项式规约"><a href="#多项式规约" class="headerlink" title="多项式规约"></a>多项式规约</h3><p>既然 NP 问题都是比较难的问题，那么<strong>是否存在一个 NP 问题，使得所有 NP 问题可以通过多项式规约</strong>（<strong>polynomially reducible</strong>）<strong>得到它</strong>？这里的多项式规约指的是<strong>问题 A 的所有实例都能够在多项式的时间复杂度内转化为问题 B 的所有实例。规约后，如果问题依然是一个 NP 问题，我们就把它称作 NP-complete 问题；相反如果不是一个 NP 问题，我们称它为 NP-hard 问题。</strong></p>
+<p>举个例子，一元一次方程和一元二次方程的问题都是 NP 问题，因为我们可以选取一个 $x$ 值，然后代入验证是否满足方程。我们发现，一元一次方程的问题可以规约成一元二次方程的问题，规约的过程很简单，只需要将 $x$ 二次项系数改为0即可。而且一元二次方程有求根公式，所以对于一元一次方程而言，我们也可以代入到求根公式中得到方程的解。因此，我们可以说只要能解决一元二次方程，便可以解决一元一次方程，因为后者可以规约到前者。</p>
+<h3 id="P-NP-？"><a href="#P-NP-？" class="headerlink" title="P = NP ？"></a>P = NP ？</h3><p>那么问题来了，规约过后的 NP 问题能否在多项式的复杂度内解决呢？换句话说，<strong>P 问题和 NP 问题是否等价。如果 P = NP 就意味着任何能够在多项式的复杂度验证的问题也能够在多项式的复杂度解决它，</strong>反之则不成立。下图表示了 P, NP, NP-complete 和 NP-hard 之间的关系。</p>
+<p><img src="/2023/09/13/浅谈P、NP、NP-Complete和NP-Hard问题/1694747477690.png" alt="1694747477690"></p>
+<h3 id="问题的意义"><a href="#问题的意义" class="headerlink" title="问题的意义"></a>问题的意义</h3><p>那就要小伙伴要说了，这个问题太深奥了，跟我们这种普通人没有关系呀。正是这个超级难的问题，还没有人证明出来，才保证了我们普通人的正常生活，因为<strong>很多关于密码学的问题都是基于 P ≠ NP 来的，正是基于这种假设才使我们的各种加密算法暂时不能被轻易的破解。</strong>所以，一旦证明出 P = NP，那将可能会导致一些颠覆性的变化。</p>
+<p>首先来说说它的好处，因为 NP 问题大多数都是不能够在多项式的复杂度内解决的，所以一旦 P = NP，我们就可以将任何一个 NP 问题转化为一个 P 问题。因此，一些现在看起来很难的问题都能够轻松的解决它，比如围棋有了终极解，生物领域中可以轻松破解遗传密码来任意操纵基因序列，很多数学猜想能够用计算机来演算推导<strong>，</strong>大量难题被解决等等，这些都是一些好的方面。</p>
+<p>但是也会带来很多负面的影响，P 如果等于 NP 会导致所有加密算法彻底失效<strong>，</strong>你的银行卡，手机密码，社交账号变得不再安全，黑客能够轻松进入你的电脑，比特币，区块链这些近年来很火的概念将会成为无人问津的领域，这样的例子还有很多很多。</p>
 ]]></content>
       <tags>
         <tag>NP问题</tag>
