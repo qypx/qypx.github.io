@@ -5606,15 +5606,15 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 </li>
 <li><p>非叶子结点的关键字个数 = 指向儿子的指针个数 - 1；    </p>
 </li>
-<li><p>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且 K[i] &lt; K[i+1] ；    </p>
+<li><p>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且 K[i] &lt; K[i+1] ；（有序序列）    </p>
 </li>
-<li><p>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1] 指向关键字小于 K[1] 的子树，P[M] 指向关键字大于            K[M-1] 的子树，其它 P[i] 指向关键字属于(K[i-1], K[i]) 的子树；    </p>
+<li><p>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1] 指向关键字小于 K[1] 的子树，P[M] 指向关键字大于 K[M-1] 的子树，其它 P[i] 指向关键字属于(K[i-1], K[i]) 的子树；    </p>
 </li>
 <li><p>所有叶子结点位于同一层；    </p>
 </li>
 </ol>
 <p>如 (M = 3)：</p>
-<p><img src="https://img-blog.csdnimg.cn/20190815211241789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="/2020/02/16/B树介绍/1695630380486.png" alt="1695630380486"></p>
 <p><strong>B-树的搜索：</strong></p>
 <p>从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点；重复，直到所对应的儿子指针为空，或已经是叶子结点.</p>
 <p><strong>B-树的特性：</strong></p>
@@ -5636,12 +5636,12 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <li>所有关键字都在叶子结点出现；</li>
 </ol>
 <p>如（M=3）:</p>
-<p><img src="https://img-blog.csdnimg.cn/20190817142029576.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="/2020/02/16/B树介绍/1695631109344.png" alt="1695631109344"></p>
 <p><strong>B+树的搜索</strong>：</p>
 <p>与B-树基本相同，区别是B+树只有达到叶子结点才命中（B-树可以在非叶子结点命中），其性能也等价于在关键字全集做一次二分查找；</p>
 <p><strong>B+树的特性：</strong></p>
 <ul>
-<li>所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是<strong>有序</strong>的；</li>
+<li>所有关键字都出现在叶子结点的链表中（稠密索引），且链表中的关键字恰好是<strong>有序</strong>的；（所有<strong>叶子节点</strong>形成<strong>有序链表</strong>，便于<strong>范围查询</strong>）</li>
 <li>不可能在非叶子结点命中；</li>
 <li>非叶子结点相当于是叶子结点的索引（稀疏索引），叶子结点相当于是存储（关键字）数据的数据层；</li>
 <li>更适合文件索引系统；</li>
@@ -5654,7 +5654,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <hr>
 <h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B*树"></a>B*树</h3><p>B*树是B+树的一种变形，它是在B+树的基础上，将索引层以指针连接起来（在B+树的非根和非叶子结点再增加指向兄弟的指针），使搜索取值更加快捷。 </p>
 <p>如下图（M = 3）：</p>
-<p><img src="https://img-blog.csdnimg.cn/20190817142644325.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0Ffemhhbmdx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="/2020/02/16/B树介绍/1695631313384.png" alt="1695631313384"></p>
 <p>B*树在B+树的基础上产生了一系列的变化，如下：</p>
 <ol>
 <li>B*树定义了非叶子结点关键字个数至少为(2/3)M，即块的最低使用率为2/3（代替B+树的1/2）；</li>
