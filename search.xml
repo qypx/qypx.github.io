@@ -6533,15 +6533,10 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
     <url>/2020/01/13/%E7%B4%A2%E5%BC%95Index/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/13/索引Index/1578902807233.png" alt="1578902807233"></p>
 <a id="more"></a>
-<p>MySQL官方文档：</p>
 <blockquote>
-<p><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/</a></p>
+<p>MySQL官方文档：<a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-indexes.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/innodb-indexes.html</a><br>MySQL Tutorial：<a href="https://www.tutorialspoint.com/mysql/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/index.htm</a></p>
 </blockquote>
-<p>MySQL Tutorial:</p>
-<blockquote>
-<p><a href="https://www.tutorialspoint.com/mysql/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/index.htm</a></p>
-</blockquote>
-<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html" target="_blank" rel="noopener">CREATE TABLE 官方手册</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html" target="_blank" rel="noopener">CREATE INDEX 官方手册</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener">ALTER TABLE 官方手册</a><br><a href="#jump6.2">使用explain查看是否使用索引</a><br><a href="#jump_index_zuzhibiao">索引组织表</a><br><a href="#jump_index_several">主键索引(聚簇索引，聚集索引)、非主键索引(普通索引，二级索引，非聚簇索引)</a><br><a href="#jump_covering_index">覆盖索引</a><br><a href="#jump_leftmost_prefix">最左前缀</a><br><a href="#jump_pushed_down">索引下推</a></p>
+<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html" target="_blank" rel="noopener">CREATE TABLE 官方手册</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html" target="_blank" rel="noopener">CREATE INDEX 官方手册</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener">ALTER TABLE 官方手册</a><br><a href="#jump6.2">使用explain查看是否使用索引</a><br><a href="#jump_index_zuzhibiao">索引组织表</a><br><a href="#jump_index_several">主键索引（聚簇索引，聚集索引）、非主键索引（普通索引，二级索引，非聚簇索引）</a><br><a href="#jump_covering_index">覆盖索引</a><br><a href="#jump_leftmost_prefix">最左前缀</a><br><a href="#jump_pushed_down">索引下推</a></p>
 <h2 id="第一部分：MySQL中索引的操作"><a href="#第一部分：MySQL中索引的操作" class="headerlink" title="第一部分：MySQL中索引的操作"></a>第一部分：MySQL中索引的操作</h2><blockquote>
 <p>参考：<br><a href="https://www.tutorialspoint.com/mysql/mysql-indexes" target="_blank" rel="noopener">https://www.tutorialspoint.com/mysql/mysql-indexes</a><br><a href="https://www.runoob.com/mysql/mysql-index.html" target="_blank" rel="noopener">https://www.runoob.com/mysql/mysql-index.html</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html#create-table-indexes-keys" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/en/create-table.html#create-table-indexes-keys</a></p>
 </blockquote>
@@ -6550,14 +6545,23 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>用户看不到索引，它们仅用于加速查询，并且数据库搜索引擎将使用它们非常快速地定位记录。</p>
 <p>对于具有索引的表，INSERT和UPDATE语句会花费更多的时间，而SELECT语句会变得更快。原因是在执行插入或更新时，数据库还需要插入或更新索引值。</p>
 <p><img src="/2020/01/13/索引Index/1578902869016.png" alt="1578902869016"></p>
-<h3 id="1-MySQL中的索引有哪些"><a href="#1-MySQL中的索引有哪些" class="headerlink" title="1. MySQL中的索引有哪些"></a>1. MySQL中的索引有哪些</h3><ul>
-<li><code>PRIMAY KEY</code><br>A unique index where all key columns must be defined as <code>NOT NULL</code>. If they are not explicitly declared as <code>NOT NULL</code>, MySQL declares them so implicitly (and silently). 一个表只能有一个 <code>PRIMARY KEY</code>.  <code>PRIMARY KEY</code> 的名字始终是 <code>PRIMARY</code>, which thus cannot be used as the name for any other kind of index.<br>If you do not have a <code>PRIMARY KEY</code> and an application asks for the <code>PRIMARY KEY</code> in your tables, MySQL returns the first <code>UNIQUE</code> index that has no <code>NULL</code> columns as the <code>PRIMARY KEY</code>.<br>In <code>InnoDB</code> tables, keep the <code>PRIMARY KEY</code> short to minimize storage overhead for secondary indexes. Each secondary index entry contains a copy of the primary key columns for the corresponding row. (See <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-index-types.html" target="_blank" rel="noopener">Section 14.6.2.1, “Clustered and Secondary Indexes”</a>.)<br>In the created table, a <code>PRIMARY KEY</code> is placed first, followed by all <code>UNIQUE</code> indexes, and then the nonunique indexes. This helps the MySQL optimizer to prioritize which index to use and also more quickly to detect duplicated <code>UNIQUE</code> keys.<br>A <code>PRIMARY KEY</code> can be a multiple-column index. <code>PRIMARY KEY(key_part, ...)</code> clause.<br>In MySQL, the name of a <code>PRIMARY KEY</code> is <code>PRIMARY</code>. For other indexes, if you do not assign a name, the index is assigned the same name as the first indexed column, with an optional suffix (<code>_2</code>, <code>_3</code>, <code>...</code>) to make it unique. You can see index names for a table using <code>SHOW INDEX FROM tbl_name</code>. See <a href="https://dev.mysql.com/doc/refman/5.6/en/show-index.html" target="_blank" rel="noopener">Section 13.7.5.23, “SHOW INDEX Statement”</a>.</li>
+<h3 id="1-MySQL建表语句中关于索引的keywords"><a href="#1-MySQL建表语句中关于索引的keywords" class="headerlink" title="1. MySQL建表语句中关于索引的keywords"></a>1. MySQL建表语句中关于索引的keywords</h3><ul>
+<li><p><code>PRIMAY KEY</code><br>A unique index where all key columns must be defined as <code>NOT NULL</code>. If they are not explicitly declared as <code>NOT NULL</code>, MySQL declares them so implicitly (and silently). 一个表只能有一个主键.  主键的key_name始终是 <code>PRIMARY</code>, 所以其他类型的索引不能使用 <code>PRIMARY</code> 作为索引名.</p>
+<p>If you do not have a <code>PRIMARY KEY</code> and an application asks for the <code>PRIMARY KEY</code> in your tables, MySQL returns the first <code>UNIQUE</code> index that has no <code>NULL</code> columns as the <code>PRIMARY KEY</code>.</p>
+<p>In <code>InnoDB</code> tables, keep the <code>PRIMARY KEY</code> short to minimize storage overhead for secondary indexes. Each secondary index entry contains a copy of the primary key columns for the corresponding row. (See <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-index-types.html" target="_blank" rel="noopener">Section 14.6.2.1, “Clustered and Secondary Indexes”</a>.)</p>
+<p>In the created table, a <code>PRIMARY KEY</code> is placed first, followed by all <code>UNIQUE</code> indexes, and then the nonunique indexes. This helps the MySQL optimizer to prioritize which index to use and also more quickly to detect duplicated <code>UNIQUE</code> keys.</p>
+<p>A <code>PRIMARY KEY</code> can be a multiple-column index. 建表时创建一个复合主键： <code>PRIMARY KEY(key_part, ...)</code> .</p>
+<p>In MySQL, the name of a <code>PRIMARY KEY</code> is <code>PRIMARY</code>. For other indexes, if you do not assign a name, the index is assigned the same name as the first indexed column, with an optional suffix (<code>_2</code>, <code>_3</code>, <code>...</code>) to make it unique. 查看表有哪些索引：<code>SHOW INDEX FROM tbl_name</code>. See <a href="https://dev.mysql.com/doc/refman/5.6/en/show-index.html" target="_blank" rel="noopener">Section 13.7.5.23, “SHOW INDEX Statement”</a>. （使用 <code>show create table tbl_name</code>也能看到有哪些索引）</p>
+<p>（例如上图中，主键是 <code>id</code>，索引名为 <code>PRIMARY</code>，还添加了索引：<code>Topic</code>，索引名为 <code>topicIndex</code>）</p>
+</li>
 </ul>
 <ul>
-<li><code>KEY | INDEX</code><br><code>KEY</code> is normally a synonym for <code>INDEX</code>. The key attribute <code>PRIMARY KEY</code> can also be specified as just <code>KEY</code> when given in a column definition. This was implemented for compatibility with other database systems.<br>也就是说key和index通常是一样的，这样是为了和其他数据库的兼容性而实现的。<br>但是并不是所有的key和index都是一样的，如果创建的是约束，比如PRIMARY KEY，FOREIGN KEY这种表示约束的，只能用key。(<a href="https://blog.csdn.net/kusedexingfu/article/details/78347354" target="_blank" rel="noopener">https://blog.csdn.net/kusedexingfu/article/details/78347354</a>)</li>
-</ul>
-<ul>
-<li><code>UNIQUE</code><br>A <code>UNIQUE</code> index creates a constraint such that all values in the index must be distinct. An error occurs if you try to add a new row with a key value that matches an existing row. For all engines, a <code>UNIQUE</code> index permits multiple <code>NULL</code> values for columns that can contain <code>NULL</code>. If you specify a prefix value for a column in a <code>UNIQUE</code> index, the column values must be unique within the prefix length.<br>If a table has a <code>PRIMARY KEY</code> or <code>UNIQUE NOT NULL</code> index that consists of a single column that has an integer type, you can use <code>_rowid</code> to refer to the indexed column in <a href="https://dev.mysql.com/doc/refman/5.6/en/select.html" target="_blank" rel="noopener"><code>SELECT</code></a> statements, as described in <a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html#create-index-unique" target="_blank" rel="noopener">Unique Indexes</a>.</li>
+<li><p><code>KEY | INDEX</code><br><code>KEY</code> is normally a synonym for <code>INDEX</code>（同义词）. The key attribute <code>PRIMARY KEY</code> can also be specified as just <code>KEY</code> when given in a column definition. This was implemented for compatibility with other database systems.</p>
+<p>（通常创建索引的时候可以用 <code>KEY</code> 也可以用 <code>INDEX</code>，但如果是创建主键等具有约束性质的，不能用 <code>INDEX</code>，具体区别见 <a href="https://blog.csdn.net/kusedexingfu/article/details/78347354" target="_blank" rel="noopener">https://blog.csdn.net/kusedexingfu/article/details/78347354</a> ）</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> index_test <span class="keyword">ADD</span> <span class="keyword">KEY</span> key_1(staff_id);</span><br><span class="line">或</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> index_test <span class="keyword">ADD</span> <span class="keyword">INDEX</span> index_1(staff_id);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>UNIQUE</code><br>A <code>UNIQUE</code> index creates a constraint such that all values in the index must be distinct. An error occurs if you try to add a new row with a key value that matches an existing row. For all engines, a <code>UNIQUE</code> index permits multiple <code>NULL</code> values for columns that can contain <code>NULL</code>. If you specify a prefix value for a column in a <code>UNIQUE</code> index, the column values must be unique within the prefix length.</p>
+</li>
 </ul>
 <ul>
 <li><code>FULLTEXT</code><br>A <code>FULLTEXT</code> index is a special type of index used for full-text searches. Only the <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-storage-engine.html" target="_blank" rel="noopener"><code>InnoDB</code></a> and <a href="https://dev.mysql.com/doc/refman/5.6/en/myisam-storage-engine.html" target="_blank" rel="noopener"><code>MyISAM</code></a> storage engines support <code>FULLTEXT</code> indexes. They can be created only from <a href="https://dev.mysql.com/doc/refman/5.6/en/char.html" target="_blank" rel="noopener"><code>CHAR</code></a>, <a href="https://dev.mysql.com/doc/refman/5.6/en/char.html" target="_blank" rel="noopener"><code>VARCHAR</code></a>, and <a href="https://dev.mysql.com/doc/refman/5.6/en/blob.html" target="_blank" rel="noopener"><code>TEXT</code></a> columns.  See <a href="https://dev.mysql.com/doc/refman/5.6/en/fulltext-search.html" target="_blank" rel="noopener">Section 12.10, “Full-Text Search Functions”</a>, for details of operation.</li>
@@ -6572,144 +6576,134 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>对于普通索引，只需从上述statement中省略UNIQUE关键字即可。</p>
 <p>如果希望按降序索引列中的值，可以在列名后添加保留字DESC。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; CREATE UNIQUE INDEX AUTHOR_INDEX ON tutorials_tbl (tutorial_author DESC)</span><br></pre></td></tr></table></figure>
-<p>注：<strong>CREATE INDEX 不能用来创建 PRIMARY KEY.</strong><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html" target="_blank" rel="noopener"><code>CREATE INDEX</code></a> is mapped to an <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener"><code>ALTER TABLE</code></a> statement to create indexes. See <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener">Section 13.1.7, “ALTER TABLE Statement”</a>.<br> <a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html" target="_blank" rel="noopener"><code>CREATE INDEX</code></a> cannot be used to create a <code>PRIMARY KEY</code>; use <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener"><code>ALTER TABLE</code></a> instead. </p>
-<h3 id="3-使用-ALTER-命令添加和删除索引"><a href="#3-使用-ALTER-命令添加和删除索引" class="headerlink" title="3. 使用 ALTER 命令添加和删除索引"></a>3. 使用 ALTER 命令添加和删除索引</h3><ul>
-<li><strong><code>ALTER TABLE tbl_name ADD PRIMARY KEY (column_list)</code></strong> - 该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。</li>
-<li><strong><code>ALTER TABLE tbl_name ADD UNIQUE [INDEX | KEY] [index_name] (column_list)</code></strong> - 该语句创建一个索引，其值必须是唯一的（除了NULL外，NULL可能会出现多次）。</li>
-<li><strong><code>ALTER TABLE tbl_name ADD {INDEX | KEY} [index_name] (column_list)</code></strong> - 添加普通索引，索引值可出现多次。</li>
-<li><strong><code>ALTER TABLE tbl_name ADD FULLTEXT [INDEX | KEY] [index_name] (column_list)</code></strong> - 创建一个特殊的FULLTEXT索引，该索引用于文本搜索。</li>
-</ul>
+<p>注：<strong>CREATE INDEX 不能用来创建 PRIMARY KEY. Use <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener"><code>ALTER TABLE</code></a> instead. </strong><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html" target="_blank" rel="noopener"><code>CREATE INDEX</code></a> is mapped to an <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener"><code>ALTER TABLE</code></a> statement to create indexes. See <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener">Section 13.1.7, “ALTER TABLE Statement”</a>.</p>
+<h3 id="3-使用-ALTER-命令添加和删除索引"><a href="#3-使用-ALTER-命令添加和删除索引" class="headerlink" title="3. 使用 ALTER 命令添加和删除索引"></a>3. 使用 ALTER 命令添加和删除索引</h3><h4 id="3-1-添加索引"><a href="#3-1-添加索引" class="headerlink" title="3.1 添加索引"></a>3.1 添加索引</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ALTER TABLE tbl_name ADD PRIMARY KEY (column_list)</span><br><span class="line">该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL</span><br><span class="line"></span><br><span class="line">ALTER TABLE tbl_name ADD UNIQUE [INDEX | KEY] [index_name] (column_list)</span><br><span class="line">该语句创建一个索引，其值必须是唯一的（除了NULL外，NULL可以出现多次）</span><br><span class="line"></span><br><span class="line">ALTER TABLE tbl_name ADD &#123;INDEX | KEY&#125; [index_name] (column_list)</span><br><span class="line">添加普通索引，索引值可出现多次</span><br><span class="line"></span><br><span class="line">ALTER TABLE tbl_name ADD FULLTEXT [INDEX | KEY] [index_name] (column_list)</span><br><span class="line">创建一个特殊的FULLTEXT索引，该索引用于文本搜索</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p> 更多关于 alter table 的语法见 <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/en/alter-table.html</a></p>
 </blockquote>
 <p>示例：在现有表中添加索引</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD INDEX (c);</span><br></pre></td></tr></table></figure>
 <p>注：当用 create index 创建索引时，必须指定索引的名字，否则mysql会报错；用 ALTER TABLE 创建索引时，可以不指定索引名字，若不指定mysql会自动生成索引名字。</p>
-<p>可以在 ALTER 命令中使用 DROP 子句来删除索引。</p>
+<h4 id="3-2-删除索引"><a href="#3-2-删除索引" class="headerlink" title="3.2 删除索引"></a>3.2 删除索引</h4><p>可以在 ALTER 命令中使用 DROP 子句来删除索引。</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> &#123;<span class="keyword">INDEX</span> | <span class="keyword">KEY</span>&#125; index_name;</span><br></pre></td></tr></table></figure>
 <p>尝试以下示例来删除上面创建的索引。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP INDEX (c);</span><br></pre></td></tr></table></figure>
-<h4 id="3-1-使用-ALTER-命令添加和删除主键"><a href="#3-1-使用-ALTER-命令添加和删除主键" class="headerlink" title="3. 1 使用 ALTER 命令添加和删除主键"></a>3. 1 使用 ALTER 命令添加和删除主键</h4><p>可以以相同的方式添加主键，But make sure the Primary Key works on columns, which are NOT NULL.</p>
-<p>下面的代码是在现有表中添加主键。这将首先使列不为NULL，然后将其添加为主键。</p>
+<h4 id="3-3-使用-ALTER-命令添加和删除主键"><a href="#3-3-使用-ALTER-命令添加和删除主键" class="headerlink" title="3.3 使用 ALTER 命令添加和删除主键"></a>3.3 使用 ALTER 命令添加和删除主键</h4><p>可以以相同的方式添加主键，但要先确保该column(s)不含NULL。下面的代码是在现有表中添加主键。首先使列不为NULL，然后将其添加为主键。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;</span><br><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);</span><br></pre></td></tr></table></figure>
 <p>也可以使用 ALTER 命令删除主键：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
 <p>删除主键时只需指定 <code>PRIMARY KEY</code>，但在删除不是 PRIMARY KEY 的索引时，必须指定索引名。</p>
 <h3 id="4-创建表时直接指定索引"><a href="#4-创建表时直接指定索引" class="headerlink" title="4. 创建表时直接指定索引"></a>4. 创建表时直接指定索引</h3><p>普通索引：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">	&#123;<span class="keyword">INDEX</span> | <span class="keyword">KEY</span>&#125; [indexName] (username)  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">    &#123;<span class="keyword">INDEX</span> | <span class="keyword">KEY</span>&#125; [indexName] (username)  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>唯一索引：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">	<span class="keyword">UNIQUE</span> [indexName] (username)  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,   </span><br><span class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  </span><br><span class="line">    <span class="keyword">UNIQUE</span> [indexName] (username)  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>主键索引：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(</span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	PRIMARY <span class="keyword">KEY</span>(<span class="keyword">ID</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 法二</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(</span><br><span class="line">	<span class="keyword">ID</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(<span class="keyword">ID</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 法二</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    <span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">    s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">    <span class="keyword">index</span> k(k)</span><br><span class="line">) <span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="5-使用-DROP-命令删除索引"><a href="#5-使用-DROP-命令删除索引" class="headerlink" title="5. 使用 DROP 命令删除索引"></a>5. 使用 DROP 命令删除索引</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">INDEX</span> [indexName] <span class="keyword">ON</span> mytable;</span><br></pre></td></tr></table></figure>
 <h3 id="6-显示索引信息"><a href="#6-显示索引信息" class="headerlink" title="6. 显示索引信息"></a>6. 显示索引信息</h3><h4 id="6-1-show-index"><a href="#6-1-show-index" class="headerlink" title="6.1 show index"></a>6.1 show index</h4><p>可以使用 <strong>SHOW INDEX</strong> 命令列出与表关联的所有索引。可以通过添加 \G 进行垂直格式输出，以避免长行换行。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; SHOW INDEX FROM table_name\G</span><br><span class="line">........</span><br></pre></td></tr></table></figure>
-<h4 id="6-2-可用explain来查看是否使用索引"><a href="#6-2-可用explain来查看是否使用索引" class="headerlink" title="6.2 可用explain来查看是否使用索引"></a><span id="jump6.2">6.2 可用explain来查看是否使用索引</span></h4><p>explain结果中key代表使用的索引名称，若为NULL，则未使用索引。</p>
-<p>explain结果输出的内容</p>
+<h4 id="6-2-可用explain来查看是否使用索引"><a href="#6-2-可用explain来查看是否使用索引" class="headerlink" title="6.2 可用explain来查看是否使用索引"></a><span id="jump6.2">6.2 可用explain来查看是否使用索引</span></h4><p>explain结果中 <code>key</code> 代表使用的索引名称，若为NULL，则未使用索引。</p>
 <blockquote>
 <p>参考 <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/explain-output.html</a></p>
 </blockquote>
-<div class="table-container">
+<h5 id="6-2-1-explain-输出列"><a href="#6-2-1-explain-输出列" class="headerlink" title="6.2.1 explain 输出列"></a>6.2.1 explain 输出列</h5><div class="table-container">
 <table>
 <thead>
 <tr>
 <th style="text-align:left">Column</th>
-<th style="text-align:left">JSON Name</th>
 <th style="text-align:left">Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_id" target="_blank" rel="noopener"><code>id</code></a></td>
-<td style="text-align:left"><code>select_id</code></td>
 <td style="text-align:left">The <code>SELECT</code> identifier</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_select_type" target="_blank" rel="noopener"><code>select_type</code></a></td>
-<td style="text-align:left">None</td>
 <td style="text-align:left">The <code>SELECT</code> type</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_table" target="_blank" rel="noopener"><code>table</code></a></td>
-<td style="text-align:left"><code>table_name</code></td>
 <td style="text-align:left">The table for the output row</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_partitions" target="_blank" rel="noopener"><code>partitions</code></a></td>
-<td style="text-align:left"><code>partitions</code></td>
 <td style="text-align:left">The matching partitions</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_type" target="_blank" rel="noopener"><code>type</code></a></td>
-<td style="text-align:left"><code>access_type</code></td>
 <td style="text-align:left">The join type</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_possible_keys" target="_blank" rel="noopener"><code>possible_keys</code></a></td>
-<td style="text-align:left"><code>possible_keys</code></td>
 <td style="text-align:left">The possible indexes to choose</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_key" target="_blank" rel="noopener"><code>key</code></a></td>
-<td style="text-align:left"><code>key</code></td>
 <td style="text-align:left">The index actually chosen</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_key_len" target="_blank" rel="noopener"><code>key_len</code></a></td>
-<td style="text-align:left"><code>key_length</code></td>
 <td style="text-align:left">The length of the chosen key</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_ref" target="_blank" rel="noopener"><code>ref</code></a></td>
-<td style="text-align:left"><code>ref</code></td>
 <td style="text-align:left">The columns compared to the index</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_rows" target="_blank" rel="noopener"><code>rows</code></a></td>
-<td style="text-align:left"><code>rows</code></td>
 <td style="text-align:left">Estimate of rows to be examined</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_filtered" target="_blank" rel="noopener"><code>filtered</code></a></td>
-<td style="text-align:left"><code>filtered</code></td>
 <td style="text-align:left">Percentage of rows filtered by table condition</td>
 </tr>
 <tr>
 <td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_extra" target="_blank" rel="noopener"><code>Extra</code></a></td>
-<td style="text-align:left">None</td>
 <td style="text-align:left">Additional information</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h5 id="6-2-1-关于explain中的type和extra"><a href="#6-2-1-关于explain中的type和extra" class="headerlink" title="6.2.1 关于explain中的type和extra"></a>6.2.1 关于explain中的type和extra</h5><p>例如：现有表city2如下：</p>
+<h5 id="6-2-2-示例（关于-type-与-extra）"><a href="#6-2-2-示例（关于-type-与-extra）" class="headerlink" title="6.2.2 示例（关于 type 与 extra）"></a>6.2.2 示例（关于 type 与 extra）</h5><p>例如：现有表city2如下：</p>
 <p><img src="/2020/01/13/索引Index/1605591080992.png" alt="1605591080992"></p>
 <p>city2上的索引如下图所示：（id为主键，(age,name)联合索引）</p>
 <p><img src="/2020/01/13/索引Index/1605591141489.png" alt="1605591141489"></p>
-<p>查询1：<strong><code>explain select name,age from city2 where age=20\G</code></strong><br>查询内容在索引内，where 条件为索引最左列</p>
+<p>查询1：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> <span class="keyword">name</span>,age <span class="keyword">from</span> city2 <span class="keyword">where</span> age=<span class="number">20</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容在索引内，where 条件为索引最左列</p>
 <p><img src="/2020/01/13/索引Index/1605591319736.png" alt="1605591319736"></p>
 <p>👆 type 是 ref，表明用到了索引，extra 是 using index，表示索引覆盖了.（即不用回表）</p>
-<p>查询2：<strong><code>explain select name, age from city2 where name=&#39;bob&#39;\G</code></strong><br> 查询内容在索引内，where条件为索引第二列，这次不是最左列了</p>
+<p>查询2：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> <span class="keyword">name</span>, age <span class="keyword">from</span> city2 <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'bob'</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容在索引内，where条件为索引第二列，这次不是最左列了</p>
 <p><img src="/2020/01/13/索引Index/1605591642645.png" alt="1605591642645"></p>
 <p>👆 type 是 index，表明发生了索引扫描（因为where条件不是最左列的缘故），extra 是 using where; using index（using index代表索引覆盖了，不用回表，using where代表发生了过滤），</p>
-<p>查询3：<strong><code>explain select address from city2 where age=20\G</code></strong><br>查询内容不在索引内，where 条件为索引最左列</p>
+<p>查询3：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> address <span class="keyword">from</span> city2 <span class="keyword">where</span> age=<span class="number">20</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容不在索引内，where 条件为索引最左列</p>
 <p><img src="/2020/01/13/索引Index/1605592157733.png" alt="1605592157733"></p>
 <p>👆 extra 是 NULL，type 是 ref，表明虽然用到了索引，但是没有索引覆盖，产生了回表。</p>
-<p>查询4：<strong><code>explain select address from city2 where name=&#39;bob&#39;\G</code></strong><br>查询内容不在索引范围内，where条件为索引第二列</p>
+<p>查询4：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> address <span class="keyword">from</span> city2 <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'bob'</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容不在索引范围内，where条件为索引第二列</p>
 <p><img src="/2020/01/13/索引Index/1605592577124.png" alt="1605592577124"></p>
 <p>👆 type 是 all，代表全表扫描，extra 是 using where 说明在全表扫描后发生了过滤。（走全表扫描的原因是查询内容不在索引范围内，且where条件没有最左列，所以引擎选择了走全表扫描。）</p>
 <p>更多例子见 <a href="https://blog.csdn.net/jeffrey11223/article/details/79100761" target="_blank" rel="noopener">https://blog.csdn.net/jeffrey11223/article/details/79100761</a></p>
-<h6 id="1-EXPLAIN-Join-Types"><a href="#1-EXPLAIN-Join-Types" class="headerlink" title="(1) EXPLAIN Join Types"></a>(1) EXPLAIN Join Types</h6><p>explain中type的解释</p>
+<h5 id="6-2-3-EXPLAIN-Join-Types"><a href="#6-2-3-EXPLAIN-Join-Types" class="headerlink" title="6.2.3 EXPLAIN Join Types"></a>6.2.3 EXPLAIN Join Types</h5><p>explain中type的解释</p>
 <p>The <code>type</code> column of <a href="https://dev.mysql.com/doc/refman/8.0/en/explain.html" target="_blank" rel="noopener"><code>EXPLAIN</code></a> output describes how tables are joined.  The following list describes the join types, ordered from the best type to the worst:</p>
 <p>下面只列出了部分</p>
 <ul>
 <li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_system" target="_blank" rel="noopener"><code>system</code></a><br>The table has only one row (= system table). This is a special case of the <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> join type.</p>
 </li>
 <li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a><br>The table has at most one matching row, which is read at the start of the query. Because there is only one row, values from the column in this row can be regarded as constants by the rest of the optimizer. <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> tables are very fast because they are read only once.<br><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> is used when you compare all parts of a <code>PRIMARY KEY</code> or <code>UNIQUE</code> index to constant values. In the following queries, <em>tbl_name</em> can be used as a <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const" target="_blank" rel="noopener"><code>const</code></a> table:</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name <span class="keyword">WHERE</span> primary_key=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line">  <span class="keyword">WHERE</span> primary_key_part1=<span class="number">1</span> <span class="keyword">AND</span> primary_key_part2=<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name <span class="keyword">WHERE</span> primary_key=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbl_name</span><br><span class="line"><span class="keyword">WHERE</span> primary_key_part1=<span class="number">1</span> </span><br><span class="line"><span class="keyword">AND</span> primary_key_part2=<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<ul>
 <li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a><br>All rows with matching index values are read from this table for each combination of rows from the previous tables. <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a> is used if the join uses only a leftmost prefix of the key or if the key is not a <code>PRIMARY KEY</code> or <code>UNIQUE</code> index (in other words, if the join cannot select a single row based on the key value). If the key that is used matches only a few rows, this is a good join type.<br><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a> can be used for indexed columns that are compared using the <code>=</code> or <code>&lt;=&gt;</code> operator. In the following examples, MySQL can use a <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref" target="_blank" rel="noopener"><code>ref</code></a> join to process <em>ref_table</em>:</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table <span class="keyword">WHERE</span> key_column=expr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> ref_table,other_table</span><br><span class="line">  <span class="keyword">WHERE</span> ref_table.key_column_part1=other_table.column</span><br><span class="line">  <span class="keyword">AND</span> ref_table.key_column_part2=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 </li>
@@ -6723,7 +6717,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all" target="_blank" rel="noopener"><code>ALL</code></a><br>A full table scan is done for each combination of rows from the previous tables. This is normally not good if the table is the first table not marked const, and usually very bad in all other cases. Normally, you can avoid ALL by adding indexes that enable row retrieval from the table based on constant values or column values from earlier tables.</p>
 </li>
 </ul>
-<h6 id="2-EXPLAIN-Extra-Information"><a href="#2-EXPLAIN-Extra-Information" class="headerlink" title="(2) EXPLAIN Extra Information"></a>(2) EXPLAIN Extra Information</h6><p>explian中extra的解释</p>
+<h5 id="6-2-4-EXPLAIN-Extra-Information"><a href="#6-2-4-EXPLAIN-Extra-Information" class="headerlink" title="6.2.4 EXPLAIN Extra Information"></a>6.2.4 EXPLAIN Extra Information</h5><p>explian中extra的解释</p>
 <p>If you want to make your queries as fast as possible, look out for <code>Extra</code> column values of <code>Using filesort</code> and <code>Using temporary</code>.</p>
 <p>下面只列出了一部分：</p>
 <ul>
@@ -6747,7 +6741,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 </ul>
 <p>Tables are read by accessing index tuples and testing them first to determine whether to read full table rows. In this way, index information is used to defer (“push down”) reading full table rows unless it is necessary. See <a href="https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html" target="_blank" rel="noopener">Section 8.2.1.6, “Index Condition Pushdown Optimization”</a>.</p>
 <h3 id="7-什么时候该使用索引"><a href="#7-什么时候该使用索引" class="headerlink" title="7. 什么时候该使用索引"></a>7. 什么时候该使用索引</h3><p><img src="/2020/01/13/索引Index/1578902891139.png" alt="1578902891139"></p>
-<h3 id="8-什么时候不该使用索引"><a href="#8-什么时候不该使用索引" class="headerlink" title="8. 什么时候不该使用索引"></a>8. 什么时候不该使用索引</h3><p>索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行INSERT、UPDATE和DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
+<h3 id="8-什么时候不该使用索引"><a href="#8-什么时候不该使用索引" class="headerlink" title="8. 什么时候不该使用索引"></a>8. 什么时候不该使用索引</h3><p>索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行 INSERT、UPDATE 和 DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
 <p>建立索引会占用磁盘空间的索引文件。</p>
 <p><img src="/2020/01/13/索引Index/1578902910331.png" alt="1578902910331"></p>
 <h2 id="第二部分：索引的常见模型"><a href="#第二部分：索引的常见模型" class="headerlink" title="第二部分：索引的常见模型"></a>第二部分：索引的常见模型</h2><blockquote>
@@ -6765,7 +6759,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>还是上面这个根据身份证号查名字的例子，如果我们使用有序数组来实现的话，示意图如下所示：</p>
 <p><img src="/2020/01/13/索引Index/1605000914282.png" alt="1605000914282"></p>
 <p>查找身份证号对应的名字，用二分法可以快速得到，时间复杂度 O(log(N))。</p>
-<p>同时很显然，这个索引结构支持范围查询。若要查身份证号在[ID_card_X, ID_card_Y]区间的User, 可以先二分法找到ID_card_x（如果不存在ID_card_X,就找到大于ID_card_X的第一个user)，然后向右谝历，直到查到第一个大于ID_card)Y的身份证号，退出循环。</p>
+<p>同时很显然，这个索引结构支持范围查询。若要查身份证号在 [ID_card_X, ID_card_Y] 区间的 User, 可以先二分法找到 ID_card_x（如果不存在 ID_card_X,就找到大于 ID_card_X 的第一个 user），然后向右谝历，直到查到第一个大于  ID_card_Y 的身份证号，退出循环。</p>
 <p><strong>缺点</strong>：如果仅仅看查询效率，有序数组就是最好的数据结构了。但是，在需要更新数据的时候就麻烦了，你往中间插入一个记录就它须得挪动后面所有的记录，成本太高。</p>
 <p>所以，<strong>有序数组索引只适用于静态存储引擎</strong>，比如你要保存的是2017年某个城市的所有人囗信息，这类不会再修改的数据。</p>
 <h3 id="3-搜索树"><a href="#3-搜索树" class="headerlink" title="3. 搜索树"></a>3. 搜索树</h3><p>还是上面根据身份证号查名字的例子，如果我们用二叉搜索树来实现的话，示意图如下所示：</p>
@@ -6778,23 +6772,90 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>以 InnoDB 的一个整数字段索引为例，这个 N 差不多是 1200。这棵树高是 4 的时候，就可以存 1200 的 3 次方个值，这已经 17 亿了。考虑到树根的数据块总是在内存中的，一个 10 亿行的表上一个整数字段的索引，查找一个值最多只需要访问 3 次磁盘。其实，树的第二层也有很大概率在内存中，那么访问磁盘的平均次数就更少了。</p>
 <p><strong>N 叉树由于在读写上的性能优点，以及适配磁盘的访问模式，已经被广泛应用在数据库引擎中了。</strong></p>
 <blockquote>
-<p>N叉树的N值，可以通过page大小间接控制</p>
+<p>N叉树的N值，在 MySQL 5.6 以后可以通过调整 page（数据页）大小间接控制</p>
+<p>（page 指的 InnoDB的页，默认大小16K）</p>
+</blockquote>
+<h4 id="3-1-The-Index-Leaf-Node-索引叶子节点"><a href="#3-1-The-Index-Leaf-Node-索引叶子节点" class="headerlink" title="3.1 The Index Leaf Node 索引叶子节点"></a>3.1 The Index Leaf Node 索引叶子节点</h4><blockquote>
+<p>参考： <a href="https://use-the-index-luke.com/sql/anatomy/the-leaf-nodes" target="_blank" rel="noopener">The Leaf Nodes of an SQL Index</a></p>
+</blockquote>
+<p>索引的主要目的是为 indexed data 提供有序表示。然而不可能按顺序存储数据，因为插入语句需要移动 the following entries来为新条目腾出空间。移动大量数据非常耗时，因此插入语句将非常缓慢。解决这个问题的方法是在内存中建立一个独立于物理顺序的逻辑顺序。</p>
+<p>逻辑顺序是通过一个双链表（doubly linked list）建立的。每个节点都有指向两个相邻 entries 的 links。通过更新两个现有节点的链接指向新节点，来插入新节点。新节点的物理位置并不重要，因为双链表维护了逻辑顺序。</p>
+<p>双链表的结构使得数据库能够根据需要向前或向后读取索引。这样就可以在不移动大量数据的情况下插入新条目——只需要改变一些指针。</p>
+<p>数据库使用双链表来连接所谓的索引叶节点（index leaf nodes）。每个叶节点存储在一个数据库块或页中，即数据库的最小存储单元。所有索引块的大小相同，通常是 a few kilobytes。数据库尽可能地利用每个块中的空间，并在每个块中存储尽可能多的索引条目。这意味着索引的顺序在两个不同的 level 上维护着：每个叶节点内的索引条目，以及使用双链表连接的叶节点（the index entries within each leaf node, and the leaf nodes among each other using a doubly linked list）。</p>
+<p><img src="/2020/01/13/索引Index/1695715497966.png" alt="1695715497966"></p>
+<p>图1.1 展示了索引叶节点及其与表数据的联系。每个索引项由 index columns (the key, column 2) 组成，并 refer to 相应的表行（通过 ROWID 或 RID ）。与索引不同，表数据存储在堆结构中，根本不排序，存储在同一个 table block 中的行之间没有任何关系，blocks 之间也没有任何联系。</p>
+<h4 id="3-2-搜索树-B-Tree-使索引更快"><a href="#3-2-搜索树-B-Tree-使索引更快" class="headerlink" title="3.2 搜索树 (B-Tree) 使索引更快"></a>3.2 搜索树 (B-Tree) 使索引更快</h4><p>The index leaf nodes 以任意顺序存储，磁盘上的位置与根据索引顺序的逻辑位置并不是对应的。它就像一个打乱了页面的电话簿。如果你搜索 Smith，但首先打开Robinson 的目录，这绝不意味着 Sminth 跟在 Robinson 后面。数据库需要第二种结构来快速地在打乱的页面中找到条目：简而言之就是平衡的搜索树：b树。</p>
+<p><img src="/2020/01/13/索引Index/1695716281948.png" alt="1695716281948"></p>
+<p>图1.2 展示了一个包含30个条目的示例索引。双链表建立了叶节点之间的逻辑顺序。根节点和分支节点支持在叶节点之间快速搜索。</p>
+<p>该图突出显示了一个分支节点和它所指向的叶节点。每个分支节点条目对应于各自叶节点中的最大值。以第一个叶子节点为例，该节点的最大值为46，因此存储在相应的分支节点 entry 中。对于其他叶节点也是如此，因此最终分支节点的值为 46、53、57和83。根据这个机制，一个分支层被建立起来，直到所有叶节点都被分支节点覆盖。</p>
+<p>The next layer is built similarly, but on top of the first branch node level. 这个过程不断重复，直到 all keys fit into a single node, the <em>root node</em>。这个结构是一个平衡搜索树，因为树的深度在每个位置都是相等的；根节点和叶节点之间的距离在任何地方都是一样的。</p>
+<blockquote>
+<p>A B-tree is a balanced tree—not a binary tree.</p>
+</blockquote>
+<p>创建索引后，数据库将自动维护索引。它将每次插入、删除和更新应用于索引，并保持树的平衡，从而导致写操作的维护开销。</p>
+<p><img src="/2020/01/13/索引Index/1695717265022.png" alt="1695717265022"></p>
+<p>图1.3 展示了一个索引片段，用于演示对 key 57 的搜索。树遍历从左侧的根节点开始。每个条目按升序处理，直到一个值大于等于搜索项(57)。在图中，它是条目83。The database follows the reference to the corresponding branch node ，并重复该过程，直到树遍历到达叶节点。</p>
+<blockquote>
+<p>The B-tree enables the database to find a leaf node quickly.</p>
+</blockquote>
+<p>树遍历是一个非常高效的操作。这主要是因为树的平衡，which allows accessing all elements with the same number of steps，其次是因为树的深度呈对数增长。这意味着与叶节点的数量相比，树的深度增长得非常慢。 Real world indexes with millions of records have a tree depth of four or five. A tree depth of six is hardly ever seen.</p>
+<blockquote>
+<p><a href="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html" target="_blank" rel="noopener">B+ Tree Visualization (usfca.edu)</a></p>
 </blockquote>
 <h2 id="第三部分：InnoDB的索引模型"><a href="#第三部分：InnoDB的索引模型" class="headerlink" title="第三部分：InnoDB的索引模型"></a>第三部分：InnoDB的索引模型</h2><blockquote>
 <p>参考 <a href="https://time.geekbang.org/column/article/69236" target="_blank" rel="noopener">https://time.geekbang.org/column/article/69236</a></p>
 </blockquote>
 <h3 id="1-InnoDB索引组织结构"><a href="#1-InnoDB索引组织结构" class="headerlink" title="1. InnoDB索引组织结构"></a>1. InnoDB索引组织结构</h3><p>在 MySQL 中，索引是在存储引擎层实现的，所以并没有统一的索引标准，即不同存储引擎的索引的工作方式并不一样。而即使多个存储引擎支持同一种类型的索引，其底层的实现也可能不同。由于 InnoDB 存储引擎在 MySQL 数据库中使用最为广泛，所以下面以 InnoDB 为例，分析一下其中的索引模型。</p>
-<p>在 InnoDB 中，表都是根据主键顺序以索引的形式存放的，这种存储方式的表称为<strong><span id="jump_index_zuzhibiao">索引组织表</span></strong>。又因为前面我们提到的，InnoDB 使用了 <strong>B+ 树</strong>索引模型，所以数据都是存储在 B+ 树中的。</p>
+<p>在 InnoDB 中，表都是根据主键顺序以索引的形式存放的，这种存储方式的表称为<strong><span id="jump_index_zuzhibiao">索引组织表</span></strong>。InnoDB 使用了 <strong>B+ 树</strong>索引模型，所以数据都是存储在 B+ 树中的。</p>
 <blockquote>
 <p><span style="color:red">每一个索引在 InnoDB 里面对应一棵 B+ 树。</span></p>
 </blockquote>
 <p>假设，我们有一个主键列为ID的表，表中有字段 k，并且在k上有索引。这个表的建表语句是：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql&gt;create table T(</span><br><span class="line">id int primary key，</span><br><span class="line">k int not null，</span><br><span class="line">name varchar(16)，</span><br><span class="line">index(k)) engine=InnoDB;</span><br></pre></td></tr></table></figure>
-<p>表中R1-R5的(ID,k)值分别为(100, 1)、(200, 2)、(300,3)、(500,5) 和 (600, 6)，两棵树的示例示意图如下。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql&gt;create table T(</span><br><span class="line">    id int primary key，</span><br><span class="line">    k int not null，</span><br><span class="line">    name varchar(16)，</span><br><span class="line">    index(k)</span><br><span class="line">) engine=InnoDB;</span><br></pre></td></tr></table></figure>
+<p>表中R1-R5的 (ID,k) 值分别为(100, 1)、(200, 2)、(300,3)、(500,5) 和 (600, 6)，</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>k</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>1</td>
+<td>…</td>
+</tr>
+<tr>
+<td>200</td>
+<td>2</td>
+<td>…</td>
+</tr>
+<tr>
+<td>300</td>
+<td>3</td>
+<td>…</td>
+</tr>
+<tr>
+<td>500</td>
+<td>5</td>
+<td>…</td>
+</tr>
+<tr>
+<td>600</td>
+<td>6</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>两棵树的示例示意图如下。</p>
 <p><img src="/2020/01/13/索引Index/1605086187154.png" alt="1605086187154"></p>
-<p>R1代表的是一行，左边是主键索引，右边是非主键索引。</p>
+<p>👆 R1代表的是一行，左边是主键索引，右边是非主键索引。</p>
 <blockquote>
-<p><strong>innoDB B+树的叶子节点是page (页)，一个页里面可以存多个行</strong><br>索引只能定位到page，page内部怎么去定位行数据：page内部有个有序数组，二分法</p>
+<p><strong>innoDB B+树的叶子节点是 page (页)，一个页里面可以存多个行</strong><br>索引只能定位到 page，page内部怎么去定位行数据：page内部有个有序数组，二分法</p>
 </blockquote>
 <p>从图中不难看出，根据叶子节点的内容，索引类型分为<span style="color:red" id="jump_index_several"><strong>主键索引</strong></span>和<strong><span style="color:red">非主键索引（也叫普通索引）</span></strong>。<br><strong>主键索引的叶子节点存的是整行数据</strong>。在 InnoDB 里，主键索引也被称为<strong><span style="color:red">聚簇索引（clustered index）</span></strong>。<br><strong>非主键索引的叶子节点内容是主键的值</strong>。在 InnoDB 里，非主键索引也被称为<strong><span style="color:red">二级索引（secondary index）</span></strong>。</p>
 <p>根据上面的索引结构说明，我们来讨论一个问题：基于主键索引和普通索引的查询有什么区别？</p>
@@ -6804,7 +6865,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 </ul>
 <p>也就是说，<strong>基于非主键索引的查询需要多扫描一棵索引树</strong>。因此，我们在应用中应该尽量使用主键查询。</p>
 <p><img src="/2020/01/13/索引Index/1605236459443.png" alt="1605236459443"></p>
-<h4 id="1-1-聚簇索引（也称主键索引，聚集索引，clustered-index）"><a href="#1-1-聚簇索引（也称主键索引，聚集索引，clustered-index）" class="headerlink" title="1.1 聚簇索引（也称主键索引，聚集索引，clustered index）"></a><span style="color:Red">1.1 聚簇索引（也称主键索引，聚集索引，clustered index）</span></h4><blockquote>
+<h3 id="2-聚簇索引与二级索引"><a href="#2-聚簇索引与二级索引" class="headerlink" title="2. 聚簇索引与二级索引"></a>2. 聚簇索引与二级索引</h3><h4 id="2-1-聚簇索引（也称主键索引，聚集索引，clustered-index）"><a href="#2-1-聚簇索引（也称主键索引，聚集索引，clustered-index）" class="headerlink" title="2.1 聚簇索引（也称主键索引，聚集索引，clustered index）"></a><span style="color:Red">2.1 聚簇索引（也称主键索引，聚集索引，clustered index）</span></h4><blockquote>
 <p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
 </blockquote>
 <p><strong>InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，聚簇索引就是按照每张表的主键构造一颗B+树，同时叶子节点中存放的就是整张表的行记录数据，也将聚集索引的叶子节点称为数据页。这个特性决定了索引组织表中数据也是索引的一部分。一张表只有一个聚簇索引。</strong></p>
@@ -6816,7 +6877,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>问：主键索引是聚集索引还是非聚集索引？<br>在Innodb下主键索引是聚集索引，在Myisam下主键索引是非聚集索引</p>
 </blockquote>
 <p>Innodb通过主键聚集数据，如果没有定义主键，innodb会选择非空的唯一索引代替。如果没有这样的索引，innodb会隐式的定义一个主键来作为聚簇索引。</p>
-<p>聚簇索引的优缺点 </p>
+<p>聚簇索引的优缺点：</p>
 <p>优点：</p>
 <ol>
 <li>数据访问更快，因为聚簇索引将索引和数据保存在同一个B+树中，因此从聚簇索引中获取数据比非聚簇索引更快</li>
@@ -6828,19 +6889,19 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <li><strong>更新主键的代价很高</strong>，因为将会导致被更新的行移动。因此，对于InnoDB表，我们一般定义主键为不可更新。</li>
 <li>二级索引访问需要两次索引查找，第一次找到主键值，第二次根据主键值找到行数据。</li>
 </ol>
-<h4 id="1-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）"><a href="#1-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）" class="headerlink" title="1.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）"></a><span style="color:red">1.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）</span></h4><blockquote>
+<h4 id="2-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）"><a href="#2-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）" class="headerlink" title="2.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）"></a><span style="color:red">2.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）</span></h4><blockquote>
 <p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
 </blockquote>
 <p>在<strong>聚簇索引之上创建的索引称之为辅助索引</strong>，辅助索引访问数据总是需要二次查找。辅助索引叶子节点存储的不再是行的物理位置，而是主键值。通过辅助索引首先找到的是主键值，再通过主键值找到数据行的数据页，再通过数据页中的Page Directory找到数据行。</p>
 <p>Innodb辅助索引的叶子节点并<strong>不包含行记录的全部数据</strong>，叶子节点除了包含键值外，还包含了相应行数据的聚簇索引键。（见上图图4）</p>
 <p>辅助索引的存在不影响数据在聚簇索引中的组织，所以一张表可以有多个辅助索引。在innodb中有时也称辅助索引为二级索引。</p>
-<p>辅助索引会包含主键列，所以，<strong>如果主键定义的比较大，其他索引也将很大</strong>。如果想在表上定义 、很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。</p>
+<p>辅助索引会包含主键列，所以，<strong>如果主键定义的比较大，其他索引也将很大</strong>。如果想在表上定义很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。</p>
 <blockquote>
 <p>In <code>InnoDB</code> tables, keep the <code>PRIMARY KEY</code> short to minimize storage overhead for secondary indexes. Each secondary index entry contains a copy of the primary key columns for the corresponding row. (See <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-index-types.html" target="_blank" rel="noopener">Section 14.6.2.1, “Clustered and Secondary Indexes”</a>.)</p>
 <p>(来自 <a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/en/create-table.html</a>)</p>
 </blockquote>
 <p><img src="/2020/01/13/索引Index/1605671203873.png" alt="1605671203873"></p>
-<h4 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h4><blockquote>
+<h4 id="2-3-小结"><a href="#2-3-小结" class="headerlink" title="2.3 小结"></a>2.3 小结</h4><blockquote>
 <p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html" target="_blank" rel="noopener">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
 </blockquote>
 <ul>
@@ -6850,32 +6911,31 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>聚簇索引和非聚簇索引的区别：</p>
 <ul>
 <li>聚簇索引的叶子节点存放的是主键值和数据行，<strong>支持覆盖索引</strong>；二级索引的叶子节点存放的是主键值或指向数据行的指针。</li>
-<li>由于节子节点(数据页)只能按照一颗B+树排序，故<strong>一张表只能有一个聚簇索引</strong>。辅助索引的存在不影响聚簇索引中数据的组织，所以一张表可以有多个辅助索引</li>
+<li>由于叶子节点(数据页)只能按照一颗B+树排序，故<strong>一张表只能有一个聚簇索引</strong>。辅助索引的存在不影响聚簇索引中数据的组织，所以一张表可以有多个辅助索引</li>
 </ul>
+<blockquote>
 <p>注： <strong><span id="jump_covering_index">覆盖索引（covering index）</span></strong>指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖。 当一条查询语句符合覆盖索引条件时，MySQL只需要通过索引就可以返回查询所需要的数据，这样避免了查到索引后再返回表操作，减少I/O提高效率。 如，表covering_index_sample中有一个普通索引 idx_key1_key2(key1,key2)。当我们通过SQL语句：select key2 from covering_index_sample where key1 = ‘keytest’;的时候，就可以通过覆盖索引查询，无需回表。（关于覆盖索引更详细内容见<a href="#jump4">第四部分：覆盖索引</a>）</p>
-<h3 id="2-索引维护"><a href="#2-索引维护" class="headerlink" title="2. 索引维护"></a>2. 索引维护</h3><p>B+ 树为了维护索引有序性，在插入新值的时候需要做必要的维护。以上面这个图为例，如果插入新的行 ID 值为 700，则只需要在 R5 的记录后面插入一个新记录。如果新插入的 ID 值为 400，就相对麻烦了，需要逻辑上挪动后面的数据，空出位置。</p>
+</blockquote>
+<h3 id="3-索引维护"><a href="#3-索引维护" class="headerlink" title="3. 索引维护"></a>3. 索引维护</h3><p>B+ 树为了维护索引有序性，在插入新值的时候需要做必要的维护。以上面图4为例，如果插入新的行 ID 值为 700，则只需要在 R5 的记录后面插入一个新记录。如果新插入的 ID 值为 400，就相对麻烦了，需要逻辑上挪动后面的数据，空出位置。</p>
 <p>而更糟的情况是，如果 R5 所在的数据页已经满了，根据 B+ 树的算法，这时候需要申请一个新的数据页，然后挪动部分数据过去。这个过程称为<strong>页分裂</strong>。在这种情况下，性能自然会受影响。</p>
 <p>除了性能外，页分裂操作还影响数据页的利用率。原本放在一个页的数据，现在分到两个页中，整体空间利用率降低大约 50%。</p>
 <p>当然有分裂就有合并。当相邻两个页由于删除了数据，利用率很低之后，会将数据页做合并。合并的过程，可以认为是分裂过程的逆过程。</p>
-<p>基于上面的索引维护过程说明，我们来讨论一个案例：</p>
-<h3 id="3-关于自增主键"><a href="#3-关于自增主键" class="headerlink" title="3. 关于自增主键"></a>3. 关于自增主键</h3><p>你可能在一些建表规范里面见到过类似的描述，要求建表语司里一定要有自增主键。当然事无绝对，我们来分析一下哪些场景下应该使用自增主键，而哪些场景下不应该。</p>
+<h3 id="4-关于自增主键"><a href="#4-关于自增主键" class="headerlink" title="4. 关于自增主键"></a>4. 关于自增主键</h3><p>你可能在一些建表规范里面见到过类似的描述，要求建表语句里一定要有自增主键。当然事无绝对，我们来分析一下哪些场景下应该使用自增主键，而哪些场景下不应该。</p>
 <p>自增主键是指自增列上定义的主键，在建表浯句中一般是这么定义的：<code>NOT NULL PRIMARY KEY AUTO INCREMENT</code>。</p>
 <p>插入新记录的时候可以不指定ID的值，系统会获取当前ID最大值加1作为下一条记录的ID值。</p>
-<p>也就是说，自增主键的插入数据模式，正符合了我们前面提到的递增插入的场景。每次插入一条新记录，都是追加操作，都不涉及到挪动其他记录，也不会触发叶子节点的分裂。</p>
-<p>而用业务逻辑的字段做主键，则往往不容易保证有序插入，这样写数据成本相对较高。</p>
-<p>除了考虑性能外，我们还可以从存储空间的角度来看。假设你的表中确实有一个唯一字段，比如字符串类型的身份证号，那应该身份证号做主键，还是用自增字段做主键呢？</p>
-<p>由于每个非主键索引的叶子节点上都是主键的值。如果身份证号做主键，那么每个二级索引的叶子节点占用约20个字节，而如果用整型做主键，则只要4个字节，如果是长整型(bigint)则是8个字节。</p>
-<p>显然，主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小。</p>
-<p>所以，从性能和存储空间方面考量，自增主键往往是更合理的选择。</p>
+<p>也就是说，自增主键的插入数据模式，正符合了我们前面提到的递增插入的场景。每次插入一条新记录，都是追加操作，都不涉及到挪动其他记录，也不会触发叶子节点的分裂。而用业务逻辑的字段做主键，则往往不容易保证有序插入，这样写数据成本相对较高。</p>
+<p>除了考虑性能外，我们还可以从存储空间的角度来看。假设你的表中确实有一个唯一字段，比如字符串类型的身份证号，那应该用身份证号做主键，还是用自增字段做主键呢？</p>
+<p>由于每个非主键索引的叶子节点上都是主键的值，如果用身份证号做主键，那么每个二级索引的叶子节点占用约20个字节，而如果用整型做主键，则只要4个字节，如果是长整型(bigint)则是8个字节。</p>
+<p>显然，主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小。所以，从性能和存储空间方面考量，自增主键往往是更合理的选择。</p>
 <p>有没有什么场景适合用业务字段直接做主键的呢？还是有的。比如，有些业务的场景需求是这样的：</p>
 <ol>
 <li>只有一个索引；</li>
 <li>该索引必须是唯一索引。</li>
 </ol>
 <p>这就是典型的KV(key-value)场景，由于没有其他索引，所以也就不用考虑其他索引的叶子节点大小的问题。<br>这时候我们就要优先考虑上一段提到的”尽量使用主键查询”原则，直接将这个索引设置为主键，可以避免每次查询需要搜索两棵树。</p>
-<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4. 小结"></a>4. 小结</h3><p>B+ 树能够很好地配合磁盘的读写特性，减少单次查询的磁盘访问次数。</p>
+<h3 id="5-小结"><a href="#5-小结" class="headerlink" title="5. 小结"></a>5. 小结</h3><p>B+ 树能够很好地配合磁盘的读写特性，减少单次查询的磁盘访问次数。</p>
 <p>由于 InnoDB 是索引组织表，一般情况下建议创建一个自增主键，这样非主键索引占用的空间最小。</p>
-<p>问题：对于上面例子中的 InnoDB 表 T，如果你要重建索引 k，你的两个 SQL 语句可以这么写：</p>
+<p>对于上面例子中的 InnoDB 表 T，如果你要重建索引 k，你的两个 SQL 语句可以这么写：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> <span class="keyword">index</span> k;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> <span class="keyword">index</span>(k);</span><br></pre></td></tr></table></figure>
 <p>如果你要重建主键索引，也可以这么写：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> primary <span class="keyword">key</span>;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> primary <span class="keyword">key</span>(<span class="keyword">id</span>);</span><br></pre></td></tr></table></figure>
@@ -6897,16 +6957,15 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <li>再回到 ID 索引树查到 ID=500对应的R4；</li>
 <li>在 k 索引树取下一个值 k=6，不满足条件，循环结束。</li>
 </ol>
-<p>在这个过程中，<strong>回到主键索引树搜索的过程，我们称为回表</strong>。可以看到，这个查询过程读了 k 索引树的 3 条记录（步骤 1、3 和 5），回表了两次（步骤 2 和 4）。</p>
+<p>在这个过程中，<strong>回到主键索引树搜索的过程，我们称为<span style="color:red">回表</span></strong>。可以看到，这个查询过程读了 k 索引树的 3 条记录（步骤 1、3 和 5），回表了两次（步骤 2 和 4）。</p>
 <p>在这个例子中，由于查询结果所需要的数据只在主键索引上有，所以不得不回表。那么，有没有可能经过索引优化，避免回表过程呢？</p>
 <p>如果执行的语句是 select ID from T where k between 3 and 5，这时只需要查 ID 的值，而 ID 的值已经在 k 索引树上了，因此可以直接提供查询结果，不需要回表。也就是说，在这个查询里面，索引 k 已经“覆盖了”我们的查询需求，我们称为<strong>覆盖索引</strong>。</p>
 <p><strong>由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。</strong></p>
 <p>需要注意的是，在引擎内部使用覆盖索引在索引k上其实读了三个记录，R3~R5（对应的索引k上的记录项），但是对于MySQL的 Server 层来说，它就是找引擎拿到了两条记录，因此 MySQL 认为扫描行数是2。</p>
-<p>基于上面覆盖索引的说明，我们来讨论一个问题：在一个市民信息表，是否有必要将身份证号和名字建立联合索引？</p>
+<p>基于上面覆盖索引的说明，我们来讨论一个问题：<strong>在一个市民信息表，是否有必要将身份证号和名字建立联合索引？</strong></p>
 <p>假设这个市民表的定义是这样的：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`tuser`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`id_card`</span> <span class="built_in">varchar</span>(<span class="number">32</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">32</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`age`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`ismale`</span> <span class="built_in">tinyint</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`id_card`</span> (<span class="string">`id_card`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`name_age`</span> (<span class="string">`name`</span>,<span class="string">`age`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span></span><br></pre></td></tr></table></figure>
-<p>我们知道，身份证号是市民的唯一标识。也就是说，如果有根据身份证号查询市民信息的需求，我们只要在身份证号字段上建立索引就够了。而再建立一个（身份证号、姓名）的联合索引，是不是浪费空间？</p>
-<p>如果现在有一个高频请求，要根据市民的身份证号查询他的姓名，这个联合索引就有意义了。它可以在这个高频请求上用到覆盖索引，不再需要回表查整行记录，减少语句的执行时间。</p>
+<p>我们知道，身份证号是市民的唯一标识。也就是说，如果有根据身份证号查询市民信息的需求，我们只要在身份证号字段上建立索引就够了。而再建立一个（身份证号，姓名）的联合索引，是不是浪费空间？如果现在有一个高频请求，要根据市民的身份证号查询他的姓名，这个联合索引就有意义了。它可以在这个高频请求上用到覆盖索引，不再需要回表查整行记录，减少语句的执行时间。</p>
 <p>当然，索引字段的维护总是有代价的。因此，在建立冗余索引来支持覆盖索引时就需要权衡考虑了。这正是业务 DBA，或者称为业务数据架构师的工作。</p>
 <p><img src="/2020/01/13/索引Index/1605236364285.png" alt="1605236364285"></p>
 <h2 id="第五部分：最左前缀原则"><a href="#第五部分：最左前缀原则" class="headerlink" title="第五部分：最左前缀原则"></a>第五部分：最左前缀原则</h2><blockquote>
