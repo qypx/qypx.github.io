@@ -105,11 +105,11 @@
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578905290193.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578905458095.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578923170158.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190516203512941.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODExODAxNg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1695721841348.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190516203204823.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODExODAxNg==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1578905609640.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190516203204496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODExODAxNg==,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2020-01-13T15:13:52.440Z">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/事务与锁/1695722167499.png">
+<meta property="og:updated_time" content="2023-09-26T09:56:44.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务与锁">
 <meta name="twitter:description" content="事务 Transaction事务：是一系列的数据库操作 (a group of SQL statement)，是数据库应用的基本逻辑单位。 事务性质：(ACID)  原子性（atomicity）。即不可分割性，事务要么全部被执行，要么就全部不被执行。 一致性或可串性（consistency）。事务的执行使得数据库从一种正确状态转换成另一种正确状态。 隔离性（isolation）。在事务正确提交之">
@@ -356,8 +356,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-13T23:13:52+08:00">
-                2020-01-13
+              <time title="更新于" itemprop="dateModified" datetime="2023-09-26T17:56:44+08:00">
+                2023-09-26
               </time>
             
           </span>
@@ -460,7 +460,7 @@
 </blockquote>
 <p><a href="https://blog.csdn.net/weixin_38118016/article/details/90271468" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38118016/article/details/90271468</a></p>
 <p>举个例子，假设有一个表 t，主键是 id，其中一个字段是 k，在下面的操作中，事务 B 的 update 语句执行时，会是什么现象呢 ？</p>
-<p><img src="https://img-blog.csdnimg.cn/20190516203512941.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODExODAxNg==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p><img src="/2020/01/13/事务与锁/1695721841348.png" alt="1695721841348"></p>
 <p>这个问题的结论取决于事务 A 执行完前两条语句后，持有哪些锁，以及在什么时候释放。</p>
 <p>实际上，事务 A 持有两个记录的行锁，都是在 commit 的时候才释放的，所以事务 B 的 update 就会被阻塞，直到事务 A 执行 commit 之后，事务 B 才能被继续执行。也就是说，行锁是在需要的时候才加上的，但并不是不需要了就立刻释放，需要等事务结束时才释放，这就是两阶段锁协议，分为加锁阶段和解锁阶段，所有的 lock 操作都在 unlock 操作之后。</p>
 <p>假设你负责实现一个电影票在线交易业务，顾客 userA 要在影院 cinema 购买电影票，需要涉及以下操作：</p>
@@ -479,7 +479,7 @@
 <p><img src="/2020/01/13/事务与锁/1578905609640.png" alt="1578905609640"></p>
 <p><a href="https://blog.csdn.net/weixin_38118016/article/details/90271468" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38118016/article/details/90271468</a></p>
 <p>如下图所示，事务 A 在等待事务 B 释放 id = 2 的行锁，而事务 B 在等待 事务 A 释放 id = 1 的行锁，事务 A 和事务 B 在互相等待对方的资源释放，就是进入了死锁状态。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190516203204496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODExODAxNg==,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p><img src="/2020/01/13/事务与锁/1695722167499.png" alt="1695722167499"></p>
 <p>在并发系统中，<strong>不同线程出现循环资源依赖，涉及的线程都在等待别的线程释放资源时，就会导致这几个线程进入无限等待的状态</strong>，成为死锁。</p>
 <p>当进入死锁状态时，有下列 2 种策略：</p>
 <ol>
