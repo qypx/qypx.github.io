@@ -5671,7 +5671,10 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <li>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</li>
 </ul>
 <p><img src="/2020/02/16/B树介绍/1581863461822.png" alt="1581863461822"></p>
-<p>这两种树都是平衡的多分树，它们都可以用于文件的索引结构，但B树只能支持随机检索，而B+树是有序的树，既能支持随机检索，又能支持顺序检索。</p>]]></content>
+<p>这两种树都是平衡的多分树，它们都可以用于文件的索引结构，但B树只能支持随机检索，而B+树是有序的树，既能支持随机检索，又能支持顺序检索。</p>
+<blockquote>
+<p>B+树动画演示：<a href="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html" target="_blank" rel="noopener">B+ Tree Visualization (usfca.edu)</a></p>
+</blockquote>]]></content>
       <tags>
         <tag>B树</tag>
         <tag>知识点</tag>
