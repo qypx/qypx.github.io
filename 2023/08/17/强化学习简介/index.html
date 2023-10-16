@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="参考 https://www.zybuluo.com/vivounicorn/note/446479  强化学习是最接近人类学习过程的，很多情况下我们无法直接表达什么是正确的什么是错误的（比如：我正在爬山，迈了一大步，又迈了一小步，那么没法儿说我迈了大步正确还是错误），但是可以通过惩罚不好的结果或者奖励好的结果来强化学习的效果（我迈了个大步，导致没有站稳，那么对迈大步做惩罚，然后接下来我会迈小一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-08-17T07:22:52.513Z">
+<meta property="og:image" content="http://qypx.github.io/2023/08/17/强化学习简介/1692255003996.png">
+<meta property="og:updated_time" content="2023-10-16T06:25:36.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="强化学习简介">
 <meta name="twitter:description" content="参考 https://www.zybuluo.com/vivounicorn/note/446479  强化学习是最接近人类学习过程的，很多情况下我们无法直接表达什么是正确的什么是错误的（比如：我正在爬山，迈了一大步，又迈了一小步，那么没法儿说我迈了大步正确还是错误），但是可以通过惩罚不好的结果或者奖励好的结果来强化学习的效果（我迈了个大步，导致没有站稳，那么对迈大步做惩罚，然后接下来我会迈小一">
+<meta name="twitter:image" content="http://qypx.github.io/2023/08/17/强化学习简介/1692255003996.png">
 
 
 
@@ -333,8 +335,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-08-17T15:22:52+08:00">
-                2023-08-17
+              <time title="更新于" itemprop="dateModified" datetime="2023-10-16T14:25:36+08:00">
+                2023-10-16
               </time>
             
           </span>
@@ -394,11 +396,26 @@
       
 
       
-        <p>强化学习的有趣应用例如：</p>
+        <blockquote>
+<p>参考 <a href="https://www.zybuluo.com/vivounicorn/note/446479" target="_blank" rel="noopener">https://www.zybuluo.com/vivounicorn/note/446479</a></p>
+</blockquote>
+<p>强化学习是最接近人类学习过程的，很多情况下我们无法直接表达什么是正确的什么是错误的（比如：我正在爬山，迈了一大步，又迈了一小步，那么没法儿说我迈了大步正确还是错误），但是可以通过<strong>惩罚不好的结果或者奖励好的结果</strong>来强化学习的效果（我迈了个大步，导致没有站稳，那么对迈大步做惩罚，然后接下来我会迈小一点）。所以强化学习是一个<strong>序列的决策过程</strong>，学习器的学习目标是通过在给定状态下选择某种动作，寻找合适动作的策略序列使得它可以获得某种最优结果的过程。</p>
+<p>强化学习的几个要素，体现其序列、交互性：</p>
+<ul>
+<li>环境(environment)：强化学习所处的上下文；</li>
+<li>学习器(agent)：与环境的交互并学习的对象，具有主动性；</li>
+<li>动作(action)：处于环境下的可行动作集合；</li>
+<li>反馈(feedback)：对动作的回报或惩罚；</li>
+<li>策略(policy)：学习到的策略链。 </li>
+</ul>
+<p><img src="/2023/08/17/强化学习简介/1692255003996.png" alt="1692255003996"></p>
+<a id="more"></a>
+<p>强化学习的有趣应用例如：</p>
 <ul>
 <li><a href="https://deepmind.com/research/alphago/" target="_blank" rel="noopener">AlphaGo</a><br> <a href="https://gogameguru.com/i/2016/03/deepmind-mastering-go.pdf" target="_blank" rel="noopener">Mastering the Game of Go with Deep Neural Networks and Tree Search</a></li>
 <li>Atari 2600 games<br> <a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html#ref12" target="_blank" rel="noopener">Human-level control through deep reinforcement learning</a><br> <a href="https://arxiv.org/pdf/1507.04296.pdf" target="_blank" rel="noopener">Massively Parallel Methods for Deep Reinforcement Learning</a> </li>
 </ul>
+
       
     </div>
     
