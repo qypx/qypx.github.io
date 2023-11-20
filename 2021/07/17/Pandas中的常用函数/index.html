@@ -100,7 +100,9 @@
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717173652106.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717173734785.png">
 <meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717174228449.png">
-<meta property="og:updated_time" content="2021-08-07T08:43:09.444Z">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/1700463583029.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/1700463682010.png">
+<meta property="og:updated_time" content="2023-11-20T07:07:11.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pandas中的常用函数">
 <meta name="twitter:description" content="map、apply、applymap Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)  在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map、apply和applymap可以解决绝大部分这样的数据处理需求。 生成100行示例数据： 123456789101112boo">
@@ -347,8 +349,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-08-07T16:43:09+08:00">
-                2021-08-07
+              <time title="更新于" itemprop="dateModified" datetime="2023-11-20T15:07:11+08:00">
+                2023-11-20
               </time>
             
           </span>
@@ -525,6 +527,13 @@
 <p>↑因为iv值是是对于一个变量而言（关于iv和woe的介绍详见我的博客 <a href="https://qypx.github.io/2021/07/17/WOE%E7%BC%96%E7%A0%81%E4%B8%8EIV%E5%80%BC/">WOE编码与IV值</a>），所以上面的两个iv值是一样的，那么如何从上述结果中提取出iv值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df_woe_iv = pd.crosstab(df[<span class="string">"col1"</span>], df[<span class="string">"y"</span>], normalize=<span class="string">'columns'</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>))).assign(iv=<span class="keyword">lambda</span> dfx: np.sum(dfx[<span class="string">'woe'</span>] * (dfx[<span class="number">1</span>] - dfx[<span class="number">0</span>])))</span><br><span class="line"></span><br><span class="line">a = df_woe_iv[<span class="string">'iv'</span>].reset_index()</span><br><span class="line">print(a.loc[<span class="number">0</span>, <span class="string">'iv'</span>])</span><br></pre></td></tr></table></figure>
 <p><img src="/2021/07/17/Pandas中的常用函数/image-20210717174228449.png" alt="image-20210717174228449"></p>
+<hr>
+<h4 id="pivot"><a href="#pivot" class="headerlink" title="pivot"></a>pivot</h4><p>原数据：</p>
+<p><img src="/2021/07/17/Pandas中的常用函数/1700463583029.png" alt="1700463583029"></p>
+<p>想要把数据转换成，每一行是一个 state，每一列是每一年的数据：（把数据打横）</p>
+<p><img src="/2021/07/17/Pandas中的常用函数/1700463682010.png" alt="1700463682010"></p>
+<p>语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.pivot(index=<span class="string">'state'</span>,columns=<span class="string">'year'</span>, values=<span class="string">'cigsale'</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -724,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#map、apply、applymap"><span class="nav-text">map、apply、applymap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Series数据处理"><span class="nav-text">Series数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-map用法"><span class="nav-text">1. map用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-apply"><span class="nav-text">2. apply</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataFrame数据处理"><span class="nav-text">DataFrame数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-apply"><span class="nav-text">1. apply</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-applymap"><span class="nav-text">2. applymap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#groupby"><span class="nav-text">groupby</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#agg聚合操作"><span class="nav-text">agg聚合操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#transform操作"><span class="nav-text">transform操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply"><span class="nav-text">apply</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crosstab"><span class="nav-text">crosstab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assign"><span class="nav-text">assign</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#map、apply、applymap"><span class="nav-text">map、apply、applymap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Series数据处理"><span class="nav-text">Series数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-map用法"><span class="nav-text">1. map用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-apply"><span class="nav-text">2. apply</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataFrame数据处理"><span class="nav-text">DataFrame数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-apply"><span class="nav-text">1. apply</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-applymap"><span class="nav-text">2. applymap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#groupby"><span class="nav-text">groupby</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#agg聚合操作"><span class="nav-text">agg聚合操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#transform操作"><span class="nav-text">transform操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply"><span class="nav-text">apply</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crosstab"><span class="nav-text">crosstab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assign"><span class="nav-text">assign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pivot"><span class="nav-text">pivot</span></a></li></ol></div>
             
 
           </div>
