@@ -10847,7 +10847,7 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
 <p>更多Python基础见我的onenote笔记本”Python学习笔记“<br>另：关于 Python 的教程可参考廖雪峰的网站 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
 </blockquote>
 <h3 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h3><p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[(df[<span class="string">'id'</span>]&gt;=<span class="number">1</span>) &amp; (df[<span class="string">'id'</span>]&lt;=<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上写法等价于：</span></span><br><span class="line">df.query(<span class="string">'id&gt;=1 &amp; id&lt;=2'</span>)</span><br><span class="line"><span class="comment"># (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.query.html)</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-比较操作符"><a href="#2-比较操作符" class="headerlink" title="2. 比较操作符"></a>2. 比较操作符</h3><blockquote>
 <p>>, &lt;, &gt;=, &lt;=, ==, != </p>
 </blockquote>
