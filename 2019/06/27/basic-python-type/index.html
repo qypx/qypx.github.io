@@ -89,7 +89,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/logic-operator.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/1605268940795.png">
-<meta property="og:updated_time" content="2023-11-30T08:14:43.979Z">
+<meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/1701332841052.png">
+<meta property="og:updated_time" content="2023-11-30T08:28:50.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python中的简单语法与常见操作">
 <meta name="twitter:description" content="缩进是 Python的灵魂  更多Python基础见我的onenote笔记本”Python学习笔记“另：关于 Python 的教程可参考廖雪峰的网站 https://www.liaoxuefeng.com/wiki/1016959663602400  1. 逻辑运算符 12345df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp; (df[&apos;id&apos;]&amp;lt;=2)]# 以上写法等价于：df.quer">
@@ -336,7 +337,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-11-30T16:14:43+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2023-11-30T16:28:50+08:00">
                 2023-11-30
               </time>
             
@@ -590,6 +591,10 @@
 <li>当 s&lt;0 时（step小于0），i 缺省时默认为-1，j 缺省时默认为 -len(a) -1</li>
 <li><strong>a[::-1]</strong> 等价于 a[-1:-len(a)-1:-1]，即从最后一个元素f复制到第一个元素，即<strong>倒序</strong></li>
 </ul>
+<p>练习：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">python = <span class="string">'I am PYHTON'</span></span><br><span class="line"></span><br><span class="line">print(python[<span class="number">1</span>:<span class="number">4</span>])</span><br><span class="line">print(python[<span class="number">1</span>:])</span><br><span class="line">print(python[:])</span><br><span class="line">print(python[<span class="number">1</span>:<span class="number">100</span>])</span><br><span class="line">print(python[<span class="number">-1</span>])</span><br><span class="line">print(python[<span class="number">-4</span>])</span><br><span class="line">print(python[:<span class="number">-3</span>])</span><br><span class="line">print(python[<span class="number">-3</span>:])</span><br><span class="line">print(python[::<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
+<p>答案：</p>
+<p><img src="/2019/06/27/basic-python-type/1701332841052.png" alt="1701332841052"></p>
 <hr>
 <p>另：dataframe中：</p>
 <ul>

@@ -11035,6 +11035,10 @@ dict2 = {&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;delta
 <li>当 s&lt;0 时（step小于0），i 缺省时默认为-1，j 缺省时默认为 -len(a) -1</li>
 <li><strong>a[::-1]</strong> 等价于 a[-1:-len(a)-1:-1]，即从最后一个元素f复制到第一个元素，即<strong>倒序</strong></li>
 </ul>
+<p>练习：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python = <span class="string">'I am PYHTON'</span></span><br><span class="line"></span><br><span class="line">print(python[<span class="number">1</span>:<span class="number">4</span>])</span><br><span class="line">print(python[<span class="number">1</span>:])</span><br><span class="line">print(python[:])</span><br><span class="line">print(python[<span class="number">1</span>:<span class="number">100</span>])</span><br><span class="line">print(python[<span class="number">-1</span>])</span><br><span class="line">print(python[<span class="number">-4</span>])</span><br><span class="line">print(python[:<span class="number">-3</span>])</span><br><span class="line">print(python[<span class="number">-3</span>:])</span><br><span class="line">print(python[::<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
+<p>答案：</p>
+<p><img src="/2019/06/27/basic-python-type/1701332841052.png" alt="1701332841052"></p>
 <hr>
 <p>另：dataframe中：</p>
 <ul>
