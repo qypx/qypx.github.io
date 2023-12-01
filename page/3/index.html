@@ -1093,8 +1093,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-05-22T17:00:59+08:00">
-                2023-05-22
+              <time title="更新于" itemprop="dateModified" datetime="2023-12-01T14:44:54+08:00">
+                2023-12-01
               </time>
             
           </span>
@@ -1153,7 +1153,8 @@
           <blockquote>
 <p>参考:<br><a href="https://note.nkmk.me/en/python-reverse-reversed/" target="_blank" rel="noopener">https://note.nkmk.me/en/python-reverse-reversed/</a><br><a href="https://note.nkmk.me/en/python-list-sort-sorted/" target="_blank" rel="noopener">https://note.nkmk.me/en/python-list-sort-sorted/</a></p>
 </blockquote>
-<h3 id="1-Reverse"><a href="#1-Reverse" class="headerlink" title="1. Reverse"></a>1. Reverse</h3><p><span style="color:red">对于list, 可以使用reverse(), reversed(), 和切片</span><br><span style="color:red">对于字符串和元组（都不可变），可以使用reversed()和切片</span></p>
+<h3 id="1-Reverse"><a href="#1-Reverse" class="headerlink" title="1. Reverse"></a>1. Reverse</h3><p><span style="color:red">对于list, 可以使用 .reverse(), reversed(), 和切片[::-1]</span><br><span style="color:red">对于字符串和元组（都不可变），可以使用reversed()和切片[::-1]</span></p>
+<p>↑ .reverse() 是列表的方法，是in-place的，会改变原列表，所以String和Tuple不能使用（切片操作实际是一种copy，会生成一个新的列表而不会改变原列表）</p>
 <h4 id="1-1-list"><a href="#1-1-list" class="headerlink" title="1.1 list"></a>1.1 list</h4><ul>
 <li>List type method <code>reverse()</code> reverses the original list.</li>
 </ul>
