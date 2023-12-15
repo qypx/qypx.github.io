@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="参考:https://note.nkmk.me/en/python-reverse-reversed/https://note.nkmk.me/en/python-list-sort-sorted/  1. Reverse对于list, 可以使用 .reverse(), reversed(), 和切片[::-1]对于字符串和元组（都不可变），可以使用reversed()和切片[::-1] ↑ .">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-12-01T07:06:07.584Z">
+<meta property="og:updated_time" content="2023-12-15T07:32:25.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python中的reverse, reversed, sort, sorted">
 <meta name="twitter:description" content="参考:https://note.nkmk.me/en/python-reverse-reversed/https://note.nkmk.me/en/python-list-sort-sorted/  1. Reverse对于list, 可以使用 .reverse(), reversed(), 和切片[::-1]对于字符串和元组（都不可变），可以使用reversed()和切片[::-1] ↑ .">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-12-01T15:06:07+08:00">
-                2023-12-01
+              <time title="更新于" itemprop="dateModified" datetime="2023-12-15T15:32:25+08:00">
+                2023-12-15
               </time>
             
           </span>
@@ -457,6 +457,7 @@
 <p>例如，可以按绝对值或字符长度进行排序：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">-3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">-5</span>, <span class="number">2</span>]</span><br><span class="line">print(sorted(l))</span><br><span class="line"><span class="comment"># [-5, -3, 1, 2, 4]</span></span><br><span class="line"></span><br><span class="line">print(sorted(l, key=abs))</span><br><span class="line"><span class="comment"># [1, 2, -3, 4, -5]</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="string">'b'</span>, <span class="string">'cc'</span>, <span class="string">'aaa'</span>]</span><br><span class="line">print(sorted(l))</span><br><span class="line"><span class="comment"># ['aaa', 'b', 'cc']</span></span><br><span class="line"></span><br><span class="line">print(sorted(l, key=len))</span><br><span class="line"><span class="comment"># ['b', 'cc', 'aaa']</span></span><br></pre></td></tr></table></figure>
+<p>结合lambda表达式：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按照元组的第二个元素进行排序</span></span><br><span class="line">a= [(<span class="number">0</span>,<span class="number">2</span>), (<span class="number">4</span>,<span class="number">3</span>), (<span class="number">9</span>,<span class="number">9</span>), (<span class="number">10</span>,<span class="number">-1</span>)]</span><br><span class="line">print(sorted(a, key = <span class="keyword">lambda</span> item: item[<span class="number">1</span>]))</span><br><span class="line"><span class="comment"># [(10, -1), (0, 2), (4, 3), (9, 9)]</span></span><br></pre></td></tr></table></figure></p>
 <p>.sort() 用法同上。</p>
 <p>关于字典的排序见 <a href="https://qypx.github.io/2019/06/27/Advanced-Python-Types/#3-6-按照字典的键或者值排序">Advanced Python Types | qypx の blog</a></p>
 
