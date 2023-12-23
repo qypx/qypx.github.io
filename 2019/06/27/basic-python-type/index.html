@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/logic-operator.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/1605268940795.png">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/1701332841052.png">
-<meta property="og:updated_time" content="2023-12-03T04:28:22.224Z">
+<meta property="og:updated_time" content="2023-12-23T07:33:04.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python中的简单语法与常见操作">
 <meta name="twitter:description" content="缩进是 Python的灵魂  更多Python基础见我的onenote笔记本”Python学习笔记“另：关于 Python 的教程可参考廖雪峰的网站 https://www.liaoxuefeng.com/wiki/1016959663602400  1. 逻辑运算符 12345df[(df[&apos;id&apos;]&amp;gt;=1) &amp;amp; (df[&apos;id&apos;]&amp;lt;=2)]# 以上写法等价于：df.quer">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-12-03T12:28:22+08:00">
-                2023-12-03
+              <time title="更新于" itemprop="dateModified" datetime="2023-12-23T15:33:04+08:00">
+                2023-12-23
               </time>
             
           </span>
@@ -619,6 +619,7 @@
 <h3 id="9-日期操作"><a href="#9-日期操作" class="headerlink" title="9. 日期操作"></a>9. 日期操作</h3><blockquote>
 <p>参考：<br><a href="https://blog.csdn.net/u010159842/article/details/78331490" target="_blank" rel="noopener">https://blog.csdn.net/u010159842/article/details/78331490</a><br><a href="https://blog.csdn.net/sinat_30715661/article/details/82534033" target="_blank" rel="noopener">https://blog.csdn.net/sinat_30715661/article/details/82534033</a></p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line">print(datetime.time(5,42,2))</span><br><span class="line">#05:42:02</span><br><span class="line"># ↑get time object</span><br><span class="line"></span><br><span class="line">print(datetime.date.today())</span><br><span class="line">#2023-12-23</span><br></pre></td></tr></table></figure>
 <p>字符转日期：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">import</span> datetime</span><br><span class="line">&gt;d1 = datetime.datetime.strptime(<span class="string">'20220920'</span>,<span class="string">'%Y%m%d'</span>)</span><br><span class="line">&gt;d1</span><br><span class="line">datetime.datetime(<span class="number">2022</span>, <span class="number">9</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">&gt;datetime.strptime(<span class="string">'2018-09-08'</span>,<span class="string">'%Y-%m-%d'</span>)</span><br><span class="line">datetime.datetime(<span class="number">2018</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <p>↑ strptime函数接收两个参数，第一个是要转换的字符串日期，第二个是日期时间的格式化形式。</p>
