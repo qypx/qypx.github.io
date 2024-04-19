@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="shift+enter: 运行代码块  shift+tab: show the documentation pop up for the method  Esc+m: markdown语句  jupyter notebook中reload模块：  参考 https://blog.csdn.net/ybdesire/article/details/86709727  123456789101112">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2022-07-13T08:00:57.839Z">
+<meta property="og:updated_time" content="2024-04-17T02:53:29.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jupyter Notebook中的快捷键">
 <meta name="twitter:description" content="shift+enter: 运行代码块  shift+tab: show the documentation pop up for the method  Esc+m: markdown语句  jupyter notebook中reload模块：  参考 https://blog.csdn.net/ybdesire/article/details/86709727  123456789101112">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2022-07-13T16:00:57+08:00">
-                2022-07-13
+              <time title="更新于" itemprop="dateModified" datetime="2024-04-17T10:53:29+08:00">
+                2024-04-17
               </time>
             
           </span>
@@ -405,7 +405,7 @@
 <blockquote>
 <p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727" target="_blank" rel="noopener">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">#对于python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
