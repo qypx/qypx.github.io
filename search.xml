@@ -2905,19 +2905,18 @@ H(X|Y,Z)=-\sum_{x\in X,y\in Y,z\in Z}p(x,y,z)\log p(x,y,z)</script><p>还可以�
 <h4 id="3-互信息"><a href="#3-互信息" class="headerlink" title="3.互信息"></a>3.互信息</h4><p>在上一节中提到，当获取的信息和要研究的事物“有关系”时，这些信息才能帮助我们消除不确定性。如何量化地度量“相关性”，香农在信息论中提出了一个<strong>“互信息”（Mutual Information）</strong>的概念作为<strong>两个随机事件“相关性”的量化度量</strong>。</p>
 <p>假定有两个随机事件 $X$ 和 $Y$，它们的互信息定义如下：</p>
 <script type="math/tex; mode=display">
-I(X;Y)=\sum_{x\in X,y\in Y}P(x,y)\log\frac{P(x,y)}{P(x)P(y)}</script><p>这个互信息就是上节介绍的随机事件 $X$ 的不确定性（熵 $H(X)$），以及在知道随机事件 $Y$ 的条件下的不确定性（条件熵 $H(X|Y)$）之间的差异，即</p>
+I(X;Y)=\sum_{x\in X,y\in Y}P(x,y)\log\frac{P(x,y)}{P(x)P(y)}</script><p>这个互信息就是上节介绍的随机事件 $X$ 的不确定性（熵 $H(X)$）以及在知道随机事件 $Y$ 的条件下的不确定性（条件熵 $H(X|Y)$）之间的差异，即</p>
 <script type="math/tex; mode=display">
 I(X;Y)=H(X)-H(X|Y)</script><blockquote>
 <p>即决策树中的信息增益</p>
 </blockquote>
 <p><span style="color:red">所谓两个事件相关的量化度量，就是在了解了其中一个 $Y$ 的前提下，对消除另一个 $X$ 的不确定性所提供的信息量。</span></p>
 <p>互信息是一个取值在 $0$ 到 $min(H(X),H(Y))$ 之间的函数，当 $X$ 和 $Y$ 完全相关时，它的取值是 $H(X)$，同时 $H(X)=H(Y)$；当二者完全无关时，它的取值是0。</p>
-<p>在自然语言处理中，两个随机事件，或者语言特征的互信息是很容易计算的。只要有足够的语料，就不难估计出互信息公式中的 $P(X,Y),P(X)$ 和 $P(Y)$ 三个概率，进而算出互信息。因此，<span style="color:red">互信息被广泛用于度量一些语言现象的相关性。</span></p>
+<p>在自然语言处理中，两个随机事件，或者语言特征的互信息是很容易计算的。只要有足够的语料，就不难估计出互信息公式中的 $P(X,Y),P(X)$ 和 $P(Y)$ 三个概率，进而算出互信息。因此，<strong>互信息被广泛用于度量一些语言现象的相关性</strong>。</p>
 <p>机器翻译中，最难的两个问题之一是<span style="color:blue">词义的二义性</span>（又称歧义性，Ambiguation）问题。比如 Bush 可以是美国总统布什的名字，也可以是灌木丛。那么如何正确地翻译这些词呢？</p>
 <p>法一：用语法，分析语句，等等。-&gt; 迄今为止没有一种语法能很好地解决这个问题，Bush不论翻译成人名还是灌木丛，都是名词，在语法上没有太大问题。</p>
 <p>法二：加规则“总统做宾语时，主语得是一个人”。-&gt; 要是这样，语法规则就多得数不清，而且还有许多例外。</p>
-<p>真正简单却非常实用的方法是实用互信息：</p>
-<p><span style="color:blue">首先从大量文本中找出和总统布什一起出现的互信息量最大的一些词，比如总统、美国、国会、华盛顿，等等。再用同样的方法找出和灌木丛一起出现的互信息量最大的词，比如土壤、植物、野生，等等。有了这两组词，再翻译 Bush 时，看看上下文中哪类相关的词多就可以了。</span></p>
+<p>真正简单却非常实用的方法是使用互信息：<br><span style="color:blue">首先从大量文本中找出和总统布什一起出现的互信息量最大的一些词，比如总统、美国、国会、华盛顿，等等。再用同样的方法找出和灌木丛一起出现的互信息量最大的词，比如土壤、植物、野生，等等。有了这两组词，再翻译 Bush 时，看看上下文中哪类相关的词多就可以了。</span></p>
 <p>这种方法最初由吉尔（William Gale），丘奇（Kenneth Church）和雅让斯基（David Yarowsky）提出。</p>
 <h4 id="4-相对熵"><a href="#4-相对熵" class="headerlink" title="4.相对熵"></a>4.相对熵</h4><p><strong>“相对熵”</strong>，在有些文献中它被称为<strong>“交叉熵”</strong>，在英语中是 $Kullback-Leibler Divergence$（KL散度）。</p>
 <p><span style="color:red">相对熵也用来衡量相关性，但和变量的互信息的不同，它用来衡量两个取值为正数的函数的相似性</span>，定义如下：</p>
@@ -2929,7 +2928,7 @@ KL(f(x)||g(x))=\sum_{x\in X} f(x)log\frac{f(x)}{g(x)}</script><p>结论：</p>
 <li><span style="color:blue">对于概率分布或概率密度函数，如果取值均大于零，相对熵可以度量两个随机分布的差异性。</span></li>
 <li>$KL(f(x)||g(x))&gt;=0$</li>
 </ol>
-<p><strong>总结</strong>：相对熵可以用来衡量两个概率分布之间的差异。</p>
+<p><strong>总结：相对熵可以用来衡量两个概率分布之间的差异。</strong></p>
 <p>相对熵是不对称的，即</p>
 <script type="math/tex; mode=display">
 KL(f(x)||g(x)) \neq KL(g(x)||f(x))</script><p>这样使用起来有时不是很方便，为了让它对称，詹森和香农提出一种新的相对熵的计算方法，将上面的不等式两边取平均，即</p>
@@ -10222,7 +10221,7 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
 <ul>
 <li>法二（若已有现成的list）</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dat = pd.DataFrame([n_clusters_start, score], columns = [<span class="string">"分类数"</span>, <span class="string">"得分"</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dat = pd.DataFrame([n_clusters_start, score], columns = [<span class="string">"分类数"</span>, <span class="string">"得分"</span>])</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">"分类数"</span>: n_clusters_start, <span class="string">"得分"</span>: score&#125;)</span><br></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'!'</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">'?'</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">'EC'</span>:EC,<span class="string">'QC'</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: sum([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">'abcdefghijklmnopqrstuvwxyz'</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">"freqOf "</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
@@ -10251,6 +10250,7 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
 <p>假设现在需要对上述数据框中的数值列分别进行<strong>取对数</strong>和<strong>求和</strong>的操作，这时可以用<code>apply</code>进行相应的操作，因为是对列进行操作，所以需要指定<code>axis=0</code>：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 沿着0轴求和</span></span><br><span class="line">data[[<span class="string">"height"</span>,<span class="string">"weight"</span>,<span class="string">"age"</span>]].apply(np.sum, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 沿着0轴取对数</span></span><br><span class="line">data[[<span class="string">"height"</span>,<span class="string">"weight"</span>,<span class="string">"age"</span>]].apply(np.log, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/09/02/dataframe-operation/image-20210717171536577.png" alt="image-20210717171536577"></p>
+<h4 id="8-重命名列"><a href="#8-重命名列" class="headerlink" title="8. 重命名列"></a>8. 重命名列</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Change variable: Date -&gt; ds, time-series (Udemy) -&gt; y</span></span><br><span class="line">df = df.rename(columns = &#123;<span class="string">'Date'</span>: <span class="string">'ds'</span>,</span><br><span class="line">                          <span class="string">'Udemy'</span>: <span class="string">'y'</span>&#125;)</span><br><span class="line">                          </span><br><span class="line"><span class="comment"># 或使用inplace=True</span></span><br><span class="line"></span><br><span class="line">df.rename(columns = &#123;<span class="string">'InvoiceDate'</span>: <span class="string">'Recency'</span>,</span><br><span class="line">                     <span class="string">'InvoiceNo'</span>: <span class="string">'Frequency'</span>&#125;, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Python</category>
