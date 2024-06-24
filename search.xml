@@ -2874,6 +2874,9 @@ H=-(p_1\log p_1+p_2\log p_2+...+p_{32}\log p_{32})</script><p>香农把它称为
 <script type="math/tex; mode=display">
 H(X)=-\sum _{x\in X}P(x)\log P(x)</script></blockquote>
 <p><span style="color:Red">变量的不确定性越大，熵也就越大，要把它搞清楚，所需信息量也就越大。</span></p>
+<blockquote>
+<p>信息量度量的是一个具体事件发生所带来的信息，而熵则是在结果出来之前对可能产生的信息量的期望——考虑该随机变量的所有可能取值，即所有可能发生事件所带来的<strong>信息量的期望</strong>。<br>(<a href="https://blog.csdn.net/wchwdog13/article/details/108783819" target="_blank" rel="noopener">https://blog.csdn.net/wchwdog13/article/details/108783819</a>)</p>
+</blockquote>
 <h4 id="2-信息的作用，条件熵"><a href="#2-信息的作用，条件熵" class="headerlink" title="2.信息的作用，条件熵"></a>2.信息的作用，条件熵</h4><blockquote>
 <p>有些时候，在战争中1比特的信息能抵过干军万马。在第二次世界大战中．当纳粹德国兵临前苏联莫斯科城下时，斯大林在欧湖已经无兵可派，他们在西伯利亚的中苏边界有60万大军却不敢使用，因为苏联人不知道德国的轴心国盟友日本当时的军事策略是北上进攻前苏联，还是南下和美国开战。如果是南下，那么苏联人就可以放心大胆地从亚洲撤回60万大军增援莫斯科会战。事实上日本人选择了南下，其直接行动是后来的偷袭珍珠港，但是苏联人并不知骁。斯大林不能猜，因为猜错了后果是很严重的。这个“猜“既是指扔钢镚儿似的卜卦，也包括主观的臆断。最后传奇间谍佐尔格向莫斯科发去了信息量仅1比特却价值无限的情报（信息）：“日本将南下”，于是前苏联就把西伯利亚所有的军队调往了欧洲战场。后面的故事大家都知道了。</p>
 </blockquote>
@@ -2934,7 +2937,10 @@ KL(f(x)||g(x))=\sum_{x\in X} f(x)log\frac{f(x)}{g(x)}</script><p>结论：</p>
 KL(f(x)||g(x)) \neq KL(g(x)||f(x))</script><p>这样使用起来有时不是很方便，为了让它对称，詹森和香农提出一种新的相对熵的计算方法，将上面的不等式两边取平均，即</p>
 <script type="math/tex; mode=display">
 JS(f(x)||g(x))=\frac{1}{2}[KL(f(x)||g(x))+KL(g(x)||f(x))]</script><p>相对熵最早是用在信号处理上。如果两个随机信号，它们的相对熵越小，说明这两个信号越接近，否则信号的差异越大。后来研究信息处理的学者们也用它来<span style="color:red">衡量两段信息的相似程度，比如说如果一篇文章是照抄或者改写另一篇，那么这两篇文章中词频分布的相对熵就非常小，接近于零</span>。在Google自动问答系统中，我们采用了上面的詹森-香农度量来衡量两个答案的相似性。</p>
-<p>相对熵在自然语言处理中还有很多应用，比如用来衡量两个常用词（在语法和语义上）在不同文本中的概率分布，看它们是否同义。另外，利用相对熵，还可以得到信息检索中最重要的一个概念：词频率-逆向文档频率（TF-IDF）。</p>]]></content>
+<p>相对熵在自然语言处理中还有很多应用，比如用来衡量两个常用词（在语法和语义上）在不同文本中的概率分布，看它们是否同义。另外，利用相对熵，还可以得到信息检索中最重要的一个概念：词频率-逆向文档频率（TF-IDF）。</p>
+<h4 id="5-交叉熵"><a href="#5-交叉熵" class="headerlink" title="5. 交叉熵"></a>5. 交叉熵</h4><blockquote>
+<p>参考 (<a href="https://blog.csdn.net/qq_41296039/article/details/129949230" target="_blank" rel="noopener">https://blog.csdn.net/qq_41296039/article/details/129949230</a>)</p>
+</blockquote>]]></content>
       <categories>
         <category>统计学知识</category>
       </categories>
@@ -3239,7 +3245,7 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <blockquote>
 <p>Occam’s Razor: Given two models of similar generalization errors,  one should prefer the simpler model over the more complex model. For complex models, there is a greater chance that it was fitted accidentally by errors in data.<br>来自 <a href="https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf" target="_blank" rel="noopener">https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf</a></p>
 </blockquote>
-<h4 id="1-1-思想"><a href="#1-1-思想" class="headerlink" title="1.1 思想"></a>1.1 思想</h4><p>从信息论的知识中我们知道：期望信息越小，信息熵越大，从而样本纯度越低。ID3 算法的核心思想就是以信息增益来度量特征选择，<strong>选择<span style="color:red">信息增益</span>最大的特征进行分裂</strong>。算法采用自顶向下的贪婪搜索遍历可能的决策树空间（C4.5 也是贪婪搜索 ).</p>
+<h4 id="1-1-思想"><a href="#1-1-思想" class="headerlink" title="1.1 思想"></a>1.1 思想</h4><p>从信息论的知识中我们知道：信息熵越大，样本纯度越低。ID3 算法的核心思想就是以信息增益来度量特征选择，<strong>选择<span style="color:red">信息增益最大</span>的特征进行分裂</strong>。算法采用自顶向下的贪婪搜索遍历可能的决策树空间（C4.5 也是贪婪搜索 ).</p>
 <p>其大致步骤为：</p>
 <ol>
 <li>初始化特征集合和数据集合；</li>
@@ -3258,20 +3264,22 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <script type="math/tex; mode=display">
 P(X=x_i)=p_i,i=1,2,...,n</script><p>则随机变量 $X$ 的熵定义为</p>
 <script type="math/tex; mode=display">
-H(X)=-\sum_{i=1}^n p_ilog p_i</script><p>若 $p_i=0$，则定义 $0log0=0$。通常对数以2为底或以e为底，这时熵的单位分别称作比特(bit)或纳特(nat)。由定义可知，熵只依赖于 $X$ 的分布，而与 $X$ 的取值无关，所以也可将 $X$ 的熵记作 $H(p)$，即</p>
+H(X)=-\sum_{i=1}^n p_i\log p_i</script><p>若 $p_i=0$，则定义 $0\log0=0$。通常对数以2为底或以e为底，这时熵的单位分别称作比特(bit)或纳特(nat)。由定义可知，熵只依赖于 $X$ 的分布，而与 $X$ 的取值无关，所以也可将 $X$ 的熵记作 $H(p)$，即</p>
 <script type="math/tex; mode=display">
-H(p)=-\sum_{i=1}^n p_ilog p_i</script><p><span style="color:red">熵越大，随机变量的不确定性就越大，要把它搞清楚，所需要的信息量也就越大。</span>从定义可验证</p>
+H(p)=-\sum_{i=1}^n p_i\log p_i</script><p><span style="color:red">熵越大，随机变量的不确定性就越大，要把它搞清楚，所需要的信息量也就越大。</span>从定义可验证</p>
 <script type="math/tex; mode=display">
-0 \leq H(p) \leq logn</script><p>当随机变量只取两个值，例如1，0时，即 $X$ 的分布为</p>
+0 \leq H(p) \leq \log n</script><hr>
+<p>当随机变量只取两个值，例如1，0时，即 $X$ 的分布为</p>
 <script type="math/tex; mode=display">
 P(X=1)=p, \ P(X=0)=1-p, \quad 0\leq p\leq 1</script><p>熵为</p>
 <script type="math/tex; mode=display">
-H(p)=-plog_2p-(1-p)log_2(1-p)</script><p>这时，熵 $H(p)$ 随概率 $p$ 变化的曲线如下图所示（单位为比特）</p>
+H(p)=-p\log_2p-(1-p)\log_2(1-p)</script><p>这时，熵 $H(p)$ 随概率 $p$ 变化的曲线如下图所示（单位为比特）</p>
 <p><img src="/2020/07/25/决策树/1602345214652.png" alt="1602345214652"></p>
 <p>当 $p=0$ 或 $p=1$ 时 $H(p)=0$，随机变量完全没有不确定性。当 $p=0.5$ 时，$H(p)=1$，熵取值最大，随机变量不确定性最大。</p>
+<hr>
 <p>设有随机变量 $(X,Y)$，其联合概率分布为</p>
 <script type="math/tex; mode=display">
-P(X=x_i,Y=y_i)=p_{ij}，\quad i=1,2,...,n；j=1,2,...,m</script><p>条件熵 $H(Y|X)$ 表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性。随机变量 $X$ 给定条件下随机变量 $Y$ 的<strong><span id="jump_conditional_entropy">条件熵</span></strong>（conditional entropy）$H(Y|X)$，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望</p>
+P(X=x_i,Y=y_i)=p_{ij}，\quad i=1,2,...,n；j=1,2,...,m</script><p>随机变量 $X$ 给定条件下随机变量 $Y$ 的<strong><span id="jump_conditional_entropy">条件熵</span></strong>（conditional entropy）$H(Y|X)$，表示在已知随机变量 $X$ 的条件下随机变量 $Y$ 的不确定性，定义为 $X$ 给定条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 H(Y|X) &= -\sum_{x\in X,y\in Y}p(x,y)logp(x,y)\\
@@ -3283,13 +3291,13 @@ H(X|Y,Z)=-\sum_{x\in X,y\in Y,z\in Z}p(x,y,z)logp(x,y,z)</script><p>还可以证
 <blockquote>
 <p>上述的等号什么时候成立？等号成立说明增加了信息，不确定性却没有降低。如果我们获取的信息与要研究的事物毫无关系，等号就成立。</p>
 </blockquote>
-<p>当熵和条件熵中的概率由数据估计（特别时极大似然估计）得到时，所对应的熵与条件熵分别称为<strong>经验熵</strong>（empirical entropy）和<strong>经验条件熵</strong>（empirical conditional entropy）. 此时，如果有概率0，令0log0=0 .</p>
+<p>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵与条件熵分别称为<strong>经验熵</strong>（empirical entropy）和<strong>经验条件熵</strong>（empirical conditional entropy）. 此时，如果有概率0，令0log0=0 .</p>
 <p><strong><span id="jump_IG">信息增益</span>（information gain）表示得知特征$X$的信息而使得类$Y$的信息的不确定性减少的程度。</strong></p>
 <blockquote>
 <p><strong>定义（信息增益）</strong>  特征 $A$ 对训练数据集 $D$ 的信息增益 $g(D,A)$ ，定义为集合 $D$ 的经验熵 $H(D)$ 与特征 $A$ 给定条件下 $D$ 的经验条件熵 $H(D|A)$ 之差，即</p>
 <script type="math/tex; mode=display">
 g(D,A)=H(D)-H(D|A)</script></blockquote>
-<p>一般地，熵 $H(Y)$ 与条件熵 $H(Y|X)$ 之差称为<strong><span id="jump_MI">互信息</span>（mutual information）</strong>. 决策树学习中的信息增益等价于训练数据集中类与特征的互信息。</p>
+<p>一般地，熵 $H(Y)$ 与条件熵 $H(Y|X)$ 之差称为<strong><span id="jump_MI">互信息</span>（mutual information）</strong>. <strong>决策树学习中的信息增益等价于训练数据集中类与特征的互信息。</strong></p>
 <p>决策树学习应用信息增益准则选择特征。给定训练数据集 $D$ 和特征 $A$，经验熵 $H(D)$ 表示对数据集 $D$ 进行分类的不确定性。而经验条件熵 $H(D|A)$ 表示在特征 $A$ 给定的条件下对数据集 $D$ 进行分类的不确定性。它们的差，即信息增益，就表示由于特征 $A$ 而使得对数据集 $D$ 的分类的不确定性减少的程度。显然，对于数据集 $D$ 而言，信息增益依赖于特征，不同的特征往往具有不同的信息增益。信息增益大的特征具有更强的分类能力。</p>
 <p>根据信息增益准则的特征选择方法是：对训练数据集（或子集）$D$，计算其每个特征的信息增益，并比较它们的大小，选择信息增益最大的特征。</p>
 <p>设训练数据集为 $D$，$|D|$ 表示其样本容量，即样本个数。设有 $K$ 个类 $C_k，k=1,2,…,K$，$|C_k|$ 为属于类$C_k$的样本个数，$\sum_{k=1}^K |C_k|=|D|.$ 设特征 $A$ 有 $n$ 个不同的取值 $\{a_1,a_2,…,a_n\}$，根据特征 $A$ 的取值将 $D$ 划分为 $n$ 个 $D_1,D_2,…,D_n，|D_i|$ 为 $D_i$ 的样本个数，$\sum_{i=1}^n|D_i|=|D|.$ 记子集 $D_i$ 中属于类 $C_k$ 的样本的集合 $D_{ik}$，即 $D_{ik}=D_i∩C_k, |D_{ik}|$ 为 $D_{ik}$ 的样本个数。于是信息增益的算法如下：</p>
@@ -3438,7 +3446,7 @@ E(subtree\_err\_count)+std(subtree\_err\_count)>E(leaf\_err\_count)</script><p><
 <p>以下内容来自西瓜书</p>
 </blockquote>
 <p>到目前为止我们仅讨论了基于离散属性来生成决策树。现实学习任务中常会遇到连续属性，有必要讨论如何在决策树学习中使用连续属性。</p>
-<p>由于连续属性的可取值数目不再有限，因此不能直接根据连续属性的可取值来对结点进行划分。此时，<strong>连续属性离散化</strong>技术可派上用场。最简单的策略是采用<strong>二分法</strong>（bi-partition）对连续属性进行处理，这正是C4.5决策树算法中采用的机制。</p>
+<p>由于连续属性的可取值数目不再有限，因此不能直接根据连续属性的可取值来对结点进行划分。此时，<strong>连续属性离散化</strong>技术可派上用场。最简单的策略是采用<strong>二分法</strong>（bi-partition）对连续属性进行处理，这正是C4.5决策树算法中采用的机制。（不再是根据”特征A = xxx”来划分，而是”特征A&lt;=xxx”来划分）</p>
 <p>给定样本集 $D$ 和连续属性 $a$，假定 $a$ 在 $D$ 上出现了 <span style="color:blue">$n$</span> 个不同的取值，将这些值从小到大进行排序，记为 $\{a^1,a^2,…,a^n \}$.  基于划分点 $t$ 可将 $D$ 分为子集 $D_t^-$ 和 $D_t^+$，其中 $D_t^-$ 包含那些在属性 $a$ 上取值不大于 $t$ 的样本，而 $D_t^+$ 则包含那些在属性 $a$ 上取值大于 $t$ 的样本。显然，对相邻的属性取值 $a^i$与 $a^{i+1}$ 来说，$t$ 在区间 $[a^i,a^{i+1})$ 中取任意值所产生的划分结果相同。因此，对连续属性 $a$，我们可考察包含 <span style="color:blue">$n-1$</span> 个元素的候选划分点集合</p>
 <script type="math/tex; mode=display">
 T_a=\{\frac{a^i+a^{i+1}}{2}|1\leq i \leq n-1 \}.</script><p>即把区间 $[a^i,a^{i+1})$ 的中位点 $\frac{a^i+a^{i+1}}{2}$作为候选划分点。</p>
@@ -3447,7 +3455,7 @@ T_a=\{\frac{a^i+a^{i+1}}{2}|1\leq i \leq n-1 \}.</script><p>即把区间 $[a^i,a
 </blockquote>
 <p>然后就可以像离散属性值一样来考察这些划分点，选取最优的划分点进行样本集合的划分。例如：</p>
 <script type="math/tex; mode=display">
-Gain(D,a)=max_{t∈T_a} Gain(D,a,t)=max_{t∈T_a} Ent(D) - 
+Gain(D,a)=\max_{t∈T_a} Gain(D,a,t)=\max_{t∈T_a} Ent(D) - 
 \sum_{\lambda∈\{-,+\}} \frac{|D_t^\lambda|}{|D|}Ent(D_t^\lambda)</script><p>其中 $Gain(D,a,t)$ 是样本集 $D$ 基于划分点 $t$ 二分后的信息增益。于是，我们就可选择使 $Gain(D,a,t)$ 最大化的划分点。</p>
 <p>例：</p>
 <p><img src="/2020/07/25/决策树/1602392020465.png" alt="1602392020465"></p>
@@ -3496,7 +3504,7 @@ Gain(D,a)=max_{t∈T_a} Gain(D,a,t)=max_{t∈T_a} Ent(D) -
 <li>CART 采用代理测试来估计缺失值，而 C4.5 以不同概率划分到不同节点中；</li>
 <li>CART 采用“基于代价复杂度剪枝”方法进行剪枝，而 C4.5 采用悲观剪枝方法。</li>
 </ul>
-<h4 id="3-2-划分标准"><a href="#3-2-划分标准" class="headerlink" title="3.2 划分标准"></a>3.2 划分标准</h4><p>最优划分属性 $a^*=argmin_{a∈A}Gini$_$index (D,a)$.</p>
+<h4 id="3-2-划分标准"><a href="#3-2-划分标准" class="headerlink" title="3.2 划分标准"></a>3.2 划分标准</h4><p>最优划分属性 $a^*=\arg\min_{a∈A}Gini$_$index (D,a)$.</p>
 <p>对回归树用平方误差最小化准则，对分类树用基尼指数（Gini index）最小化准则，进行特征选择，生成二叉树。关于回归树，见后面 <a href="#jump3.6">3.6 回归树</a>.</p>
 <p>熵模型拥有大量耗时的对数运算，基尼指数在简化模型的同时还保留了熵模型的优点。<strong><span id="jump_Gini">基尼指数代表了模型的不纯度，基尼系数越小，不纯度越低，特征越好。这和信息增益（率）正好相反。</span></strong></p>
 <hr>
@@ -3581,8 +3589,7 @@ g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}\\
 <p><img src="/2020/07/25/决策树/1595649090585.png" alt="1595649090585"></p>
 <p><img src="/2020/07/25/决策树/1595649112772.png" alt="1595649112772"></p>
 <p><img src="/2020/07/25/决策树/1595649135709.png" alt="1595649135709"></p>
-<p>信息增益，信息增益率 -&gt; 选最大</p>
-<p>基尼系数 -&gt; 选最小</p>
+<p>信息增益，信息增益率 -&gt; 选最大<br>基尼系数 -&gt; 选最小</p>
 <hr>
 <h2 id="篇二：Random-Forest-Adaboost-GBDT算法"><a href="#篇二：Random-Forest-Adaboost-GBDT算法" class="headerlink" title="篇二：Random Forest, Adaboost, GBDT算法"></a>篇二：Random Forest, Adaboost, GBDT算法</h2><blockquote>
 <p>本部分内容主要参考公众号Datawhale<br><a href="https://mp.weixin.qq.com/s/Nl_-PdF0nHBq8yGp6AdI-Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Nl_-PdF0nHBq8yGp6AdI-Q</a></p>

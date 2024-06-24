@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qypx.github.io/2020/10/19/熵、条件熵、互信息、相对熵/1603102832279.png">
-<meta property="og:updated_time" content="2024-06-21T09:18:13.621Z">
+<meta property="og:updated_time" content="2024-06-24T03:09:23.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="熵、条件熵、互信息、相对熵">
 <meta name="twitter:image" content="http://qypx.github.io/2020/10/19/熵、条件熵、互信息、相对熵/1603102832279.png">
@@ -332,8 +332,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2024-06-21T17:18:13+08:00">
-                2024-06-21
+              <time title="更新于" itemprop="dateModified" datetime="2024-06-24T11:09:23+08:00">
+                2024-06-24
               </time>
             
           </span>
@@ -410,6 +410,9 @@ H=-(p_1\log p_1+p_2\log p_2+...+p_{32}\log p_{32})</script><p>香农把它称为
 <script type="math/tex; mode=display">
 H(X)=-\sum _{x\in X}P(x)\log P(x)</script></blockquote>
 <p><span style="color:Red">变量的不确定性越大，熵也就越大，要把它搞清楚，所需信息量也就越大。</span></p>
+<blockquote>
+<p>信息量度量的是一个具体事件发生所带来的信息，而熵则是在结果出来之前对可能产生的信息量的期望——考虑该随机变量的所有可能取值，即所有可能发生事件所带来的<strong>信息量的期望</strong>。<br>(<a href="https://blog.csdn.net/wchwdog13/article/details/108783819" target="_blank" rel="noopener">https://blog.csdn.net/wchwdog13/article/details/108783819</a>)</p>
+</blockquote>
 <h4 id="2-信息的作用，条件熵"><a href="#2-信息的作用，条件熵" class="headerlink" title="2.信息的作用，条件熵"></a>2.信息的作用，条件熵</h4><blockquote>
 <p>有些时候，在战争中1比特的信息能抵过干军万马。在第二次世界大战中．当纳粹德国兵临前苏联莫斯科城下时，斯大林在欧湖已经无兵可派，他们在西伯利亚的中苏边界有60万大军却不敢使用，因为苏联人不知道德国的轴心国盟友日本当时的军事策略是北上进攻前苏联，还是南下和美国开战。如果是南下，那么苏联人就可以放心大胆地从亚洲撤回60万大军增援莫斯科会战。事实上日本人选择了南下，其直接行动是后来的偷袭珍珠港，但是苏联人并不知骁。斯大林不能猜，因为猜错了后果是很严重的。这个“猜“既是指扔钢镚儿似的卜卦，也包括主观的臆断。最后传奇间谍佐尔格向莫斯科发去了信息量仅1比特却价值无限的情报（信息）：“日本将南下”，于是前苏联就把西伯利亚所有的军队调往了欧洲战场。后面的故事大家都知道了。</p>
 </blockquote>
@@ -471,6 +474,9 @@ KL(f(x)||g(x)) \neq KL(g(x)||f(x))</script><p>这样使用起来有时不是很�
 <script type="math/tex; mode=display">
 JS(f(x)||g(x))=\frac{1}{2}[KL(f(x)||g(x))+KL(g(x)||f(x))]</script><p>相对熵最早是用在信号处理上。如果两个随机信号，它们的相对熵越小，说明这两个信号越接近，否则信号的差异越大。后来研究信息处理的学者们也用它来<span style="color:red">衡量两段信息的相似程度，比如说如果一篇文章是照抄或者改写另一篇，那么这两篇文章中词频分布的相对熵就非常小，接近于零</span>。在Google自动问答系统中，我们采用了上面的詹森-香农度量来衡量两个答案的相似性。</p>
 <p>相对熵在自然语言处理中还有很多应用，比如用来衡量两个常用词（在语法和语义上）在不同文本中的概率分布，看它们是否同义。另外，利用相对熵，还可以得到信息检索中最重要的一个概念：词频率-逆向文档频率（TF-IDF）。</p>
+<h4 id="5-交叉熵"><a href="#5-交叉熵" class="headerlink" title="5. 交叉熵"></a>5. 交叉熵</h4><blockquote>
+<p>参考 (<a href="https://blog.csdn.net/qq_41296039/article/details/129949230" target="_blank" rel="noopener">https://blog.csdn.net/qq_41296039/article/details/129949230</a>)</p>
+</blockquote>
       
     </div>
     
@@ -669,7 +675,7 @@ JS(f(x)||g(x))=\frac{1}{2}[KL(f(x)||g(x))+KL(g(x)||f(x))]</script><p>相对熵�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-信息熵"><span class="nav-text">1.信息熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-信息的作用，条件熵"><span class="nav-text">2.信息的作用，条件熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-互信息"><span class="nav-text">3.互信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-相对熵"><span class="nav-text">4.相对熵</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-信息熵"><span class="nav-text">1.信息熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-信息的作用，条件熵"><span class="nav-text">2.信息的作用，条件熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-互信息"><span class="nav-text">3.互信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-相对熵"><span class="nav-text">4.相对熵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-交叉熵"><span class="nav-text">5. 交叉熵</span></a></li></ol></div>
             
 
           </div>
