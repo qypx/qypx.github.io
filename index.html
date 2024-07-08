@@ -476,7 +476,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2024-07-08T14:51:27+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2024-07-08T18:49:33+08:00">
                 2024-07-08
               </time>
             
@@ -538,13 +538,14 @@
 P(X=k)=p^k(1-p)^{1-k}, \quad k=0,1\\
 X\sim B(1,p)\\
 E(X)=p\\
-D(X)=p(1-p)</script><h4 id="1-2-二项分布"><a href="#1-2-二项分布" class="headerlink" title="1.2 二项分布"></a>1.2 二项分布</h4><p>n次独立的伯努利试验。如果事件发生的概率是 $p$，n次独立重复试验中发生k次的概率是</p>
+D(X)=p(1-p)</script><h4 id="1-2-二项分布"><a href="#1-2-二项分布" class="headerlink" title="1.2 二项分布"></a>1.2 二项分布</h4><p>n次独立的伯努利试验。如果事件发生的概率是 $p$，n次独立重复试验中发生k次的概率是（有放回抽样）</p>
 <script type="math/tex; mode=display">
 P(X=k)=\mathrm C_n^k p^k(1-p)^{n-k},\quad k=0,1,...,n\\
 X\sim B(n,p)\\
 E(X)=np\\
 D(X)=np(1-p)</script><blockquote>
-<p>有 n 件产品，其中  m 件次品 (m&lt;n)，从中不放回地任意抽取 k 件产品和有放回地任意抽取 k 件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 $\frac{m}{n}$，抽得次品数的期望值也相同，都为 $k\frac{m}{n}$，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
+<p>有  $n$ 件产品，其中  $m$ 件次品 ($m&lt;n$)，从中不放回地任意抽取 $k$ 件产品和有放回地任意抽取 $k$ 件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 $\frac{m}{n}$，抽得次品数的期望值也相同，都为 $k\frac{m}{n}$，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
+<p>关于为什么不放回抽样，每次抽到次品的概率都是 $\frac{m}{n}$，因为不放回抽样，每次抽样，都是与前些次的抽样相关的。<br>第一次抽样，抽中次品的概率为 $\frac{m}{n}$，<br>第二次抽样，抽中次品的概率为 $\frac{m}{n}\times\frac{m-1}{n-1}+\frac{n-m}{n}\times\frac{m}{n-1}=\frac{m}{n}$，<br>第三次抽样，抽中次品的概率为<br>$\frac{m}{n}\times\frac{m-1}{n-1}\times\frac{m-2}{n-2}+\frac{m}{n}\times\frac{n-m}{n-1}\times\frac{m-1}{n-2}+\frac{n-m}{n}\times\frac{m}{n-1}\times\frac{m-1}{n-2}+\frac{n-m}{n}\times\frac{n-m-1}{n-1}\times\frac{m}{n-2}$，<br>经过计算可得仍为 $\frac{m}{n}$</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
