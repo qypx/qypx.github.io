@@ -1764,31 +1764,6 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
       </tags>
   </entry>
   <entry>
-    <title>Jupyter Notebook中的快捷键</title>
-    <url>/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li><p>shift+enter: 运行代码块</p>
-</li>
-<li><p>shift+tab: show the documentation pop up for the method</p>
-</li>
-<li><p>Esc+m: markdown语句</p>
-</li>
-<li><p>jupyter notebook中reload模块：</p>
-<blockquote>
-<p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Jupyter Notebook</category>
-      </categories>
-      <tags>
-        <tag>Jupyter Notebook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hive介绍</title>
     <url>/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -2341,6 +2316,31 @@ table th:nth-of-type(2) {
       <tags>
         <tag>Hadoop</tag>
         <tag>Hive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jupyter Notebook中的快捷键</title>
+    <url>/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><p>shift+enter: 运行代码块</p>
+</li>
+<li><p>shift+tab: show the documentation pop up for the method</p>
+</li>
+<li><p>Esc+m: markdown语句</p>
+</li>
+<li><p>jupyter notebook中reload模块：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Jupyter Notebook</category>
+      </categories>
+      <tags>
+        <tag>Jupyter Notebook</tag>
       </tags>
   </entry>
   <entry>
@@ -5540,19 +5540,6 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       </tags>
   </entry>
   <entry>
-    <title>test blog</title>
-    <url>/2019/06/26/test-blog/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一篇测试文章.</p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>sql语言</title>
     <url>/2020/01/12/sql%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
@@ -5617,6 +5604,19 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       <tags>
         <tag>sql</tag>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test blog</title>
+    <url>/2019/06/26/test-blog/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一篇测试文章.</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -8073,28 +8073,6 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       </tags>
   </entry>
   <entry>
-    <title>寻找峰值</title>
-    <url>/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/find-peak-element/">寻找峰值（难度：中等）</a></p>
-<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/1.jpg" alt="1"></p>
-<h4 id="方法一：线性扫描"><a href="#方法一：线性扫描" class="headerlink" title="方法一：线性扫描"></a>方法一：线性扫描</h4><p>利用连续的两个元素 <code>nums[j]</code> 和 <code>nums[j+1]</code> 不会相等这一事实，我们可以从头开始遍历 <code>nums</code>数组，当遇到<code>nums[i] &gt; nums[i+1]</code> ，即可判断 <code>nums[i]</code>为峰值。</p>
-<p><strong>注意：不需要判断<code>nums[i]&gt;nums[i-1]</code>。这是由于“遍历会到达第i个元素”本身就说明上一个元素（第i- 1个）不满足 <code>nums[i] &gt; nums[i+1]</code>这一条件，也就说明 <code>nums[i-1] &lt; nums[i]</code>。</strong></p>
-<h5 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(n)。  只进行一次遍历。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="方法二：二分法查找"><a href="#方法二：二分法查找" class="headerlink" title="方法二：二分法查找"></a>方法二：二分法查找</h4><h5 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(logn)。  每一步都将搜索空间减半。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往左搜索</span></span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid]&lt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往右搜索</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/2.jpg" alt="2"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>寻找重复数</title>
     <url>/2019/12/31/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/">寻找重复数（难度：中等）</a></p>
@@ -8108,6 +8086,28 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>空间复杂度：O(n)</p>
 <h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findDuplicate</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> num : nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(num))</span><br><span class="line">                <span class="keyword">return</span> num;</span><br><span class="line">            set.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/12/31/%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>寻找峰值</title>
+    <url>/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/find-peak-element/">寻找峰值（难度：中等）</a></p>
+<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/1.jpg" alt="1"></p>
+<h4 id="方法一：线性扫描"><a href="#方法一：线性扫描" class="headerlink" title="方法一：线性扫描"></a>方法一：线性扫描</h4><p>利用连续的两个元素 <code>nums[j]</code> 和 <code>nums[j+1]</code> 不会相等这一事实，我们可以从头开始遍历 <code>nums</code>数组，当遇到<code>nums[i] &gt; nums[i+1]</code> ，即可判断 <code>nums[i]</code>为峰值。</p>
+<p><strong>注意：不需要判断<code>nums[i]&gt;nums[i-1]</code>。这是由于“遍历会到达第i个元素”本身就说明上一个元素（第i- 1个）不满足 <code>nums[i] &gt; nums[i+1]</code>这一条件，也就说明 <code>nums[i-1] &lt; nums[i]</code>。</strong></p>
+<h5 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(n)。  只进行一次遍历。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="方法二：二分法查找"><a href="#方法二：二分法查找" class="headerlink" title="方法二：二分法查找"></a>方法二：二分法查找</h4><h5 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(logn)。  每一步都将搜索空间减半。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往左搜索</span></span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid]&lt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往右搜索</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/2.jpg" alt="2"></p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -8350,75 +8350,6 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       </tags>
   </entry>
   <entry>
-    <title>排序算法</title>
-    <url>/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png" alt="1578640411160"></p>
-<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
-<p><span style="color:red">* 基选归堆不变（运行时间不发生变化，与初始状态无关）</span></p>
-<p><span style="color:red">* 快选希堆不稳（是不稳定的排序） </span></p>
-<p><u>快 速 排 序 ：</u> </p>
-<p>思 想 ： </p>
-<p>1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为 基 准 （ 通 常 选 第 一 个 元 素 ， 但 最 的 选 择 方 法 是 从 待 排 序 元 素 中 随 机 选 取 一 个 作 为 基 准 ） ， 称 为 基 准 元 素 ； </p>
-<p>2 ． 将 待 排 序 的 元 素 进 行 分 区 ， 比 基 准 元 素 大 的 元 素 放 在 它 的 右 边 ， 比 其 小 的 放 在 它 的 左 边 ； </p>
-<p>3 ． 对 左 右 两 个 分 区 重 复 以 上 步 骤 直 到 所 有 元 素 都 是 有 序 的 </p>
-<p> <u>冒 泡 排 序 ：</u> </p>
-<p>1 ． 比 较 相 邻 的 元 素 。 如 果 第 一 个 比 第 二 个 大 ， 就 交 换 他 们 两 个 </p>
-<p>2 ． 对 每 一 对 相 邻 元 素 作 同 样 的 工 作 ， 从 开 始 第 一 对 到 结 尾 的 最 后 一 对 。 在 这 一 点 ， 最 后 的 元 素 应 该 会 是 最 大 的 数 。 </p>
-<p>3 ． 针 对 所 有 的 元 素 重 复 以 上 的 步 骤 ， 除 了 最 后 一 个 </p>
-<p>4 ． 持 续 每 次 对 越 来 越 少 的 元 素 重 复 上 面 的 步 骤 ， 直 到 没 有 任 何 一 对 数 字 需 要 比 较 。 </p>
-<p><u>归 并 排 序 ：</u> </p>
-<p>第 一 步 ： 申 请 空 间 ， 使 其 大 小 为 两 个 已 经 排 序 序 列 之 和 ， 该 空 间 用 来 存 放 合 并 后 的 序 列 </p>
-<p>第 二 步 ： 设 定 两 个 指 针 ， 最 初 位 置 分 别 为 两 个 已 经 排 序 序 列 的 起 始 位 置 </p>
-<p>第 三 步 ： 比 较 两 个 指 针 所 指 向 的 元 素 ， 选 择 相 对 小 的 元 素 放 入 到 合 并 空 </p>
-<p>间 ， 并 移 动 指 针 到 下 一 位 置 </p>
-<p>重 复 步 骤 3 直 到 某 一 指 针 超 出 序 列 尾 </p>
-<p>将 另 一 序 列 剩 下 的 所 有 元 素 直 接 复 制 到 合 并 序 列 尾 </p>
-<p><u>插 入 排 序 ：</u> </p>
-<p>1 ． 从 有 序 数 列 和 无 序 数 列 { a2 ， a3 ,  …, an} 开 始 进 行 排 序 </p>
-<p>2 ． 处 理 第 i 个 元 素 时 { i ： 2 ， 3 ，… , n } , 数 列 { a1 ， a2 ，…， ai-1} 是 已 有 序 的 ， 而 数 列 {ai,ai+1, …， an } 是 无 序 的 。 用 ai 与 ai-1, a i-2, …， a1 进 行 比 较 ， 找 出 合 适 的 位 置 将 ai 插 入 ； </p>
-<p>3 ． 重 复 第 二 步 ， 共 进 行 n - i 次 插 入 处 理 ， 数 列 全 部 有 序 。 </p>
-<p><u>选 择 排 序 (Selection sort)：</u></p>
-<p>是 一 种 简 单 直 观 的 排 序 算 法 。 它 的 工 作 原 理 是 每 一 次 从 待 排 序 的 数 据 元 素 中 选 出 最 小 （ 或 最 大 ） 的 一 个元 素 ， 存 放 在 序 列 的 起 始 位 置 ， 直 到 全 部 待 排 序 的 数 据 元 素 排 完 ，所 以 每 一 趟 选 择 的 元 素 都 会 放 在 他 的 最 终 位 置 </p>
-<p>第 i 趟排序，找到L[i…n]中最小的元素与L[i]交换位置，这样保证每一趟排序确定一个元素的最终位置</p>
-<p><u>堆 排 序 ：</u></p>
-<p>如 果 要 求 升 序 则 建 立 大 根 堆 ， 降 序 则 建 立 小 根 堆 ， 堆 顶 元 素 为 最 大 或 者 最 小 的 元 素 ， 将 这 个 元 素 与 最 后 一 个 位 置 的 元 素 交 换 ， 再 将 剩 余 元 素 还 原 成 大 小 跟 堆 ， 每 一 趙 都 会 选 出 一 个 未 排 序 中 的 最 大 或 者 最 小 放 大 他 的 最 终 位 置 </p>
-<p><u>希 尔 排 序 (shell’s sort)：</u> </p>
-<p>希尔排序(Shell’s Sort)是<a href="https://baike.baidu.com/item/插入排序/7214992">插入排序</a>的一种，又称“缩小增量排序”（Diminishing Increment Sort），是直接插入<a href="https://baike.baidu.com/item/排序算法/5399605">排序算法</a>的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
-<p>希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，<a href="https://baike.baidu.com/item/算法/209025">算法</a>便终止。</p>
-<p>由 于 是 按 照 增 量 排 序 ， 步 长 不 同 可 能 元 素 不 一 定 到 他 最 终 位 置 </p>
-]]></content>
-      <tags>
-        <tag>知识点</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>推荐系统冷启动问题</title>
-    <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-</blockquote>
-<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
-<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
-<ol>
-<li>利用用户的账号信息。</li>
-<li>利用用户的手机 IMEI 号进行冷启动。</li>
-<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
-</ol>
-<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
-<ol>
-<li>利用物品的内容、分类信息。</li>
-<li>利用专家标注的数据。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Recommender System</category>
-      </categories>
-      <tags>
-        <tag>Recommender System</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>推荐系统总体架构及特征数据</title>
     <url>/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -8657,6 +8588,75 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       <tags>
         <tag>Hadoop</tag>
         <tag>数据仓库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排序算法</title>
+    <url>/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png" alt="1578640411160"></p>
+<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
+<p><span style="color:red">* 基选归堆不变（运行时间不发生变化，与初始状态无关）</span></p>
+<p><span style="color:red">* 快选希堆不稳（是不稳定的排序） </span></p>
+<p><u>快 速 排 序 ：</u> </p>
+<p>思 想 ： </p>
+<p>1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为 基 准 （ 通 常 选 第 一 个 元 素 ， 但 最 的 选 择 方 法 是 从 待 排 序 元 素 中 随 机 选 取 一 个 作 为 基 准 ） ， 称 为 基 准 元 素 ； </p>
+<p>2 ． 将 待 排 序 的 元 素 进 行 分 区 ， 比 基 准 元 素 大 的 元 素 放 在 它 的 右 边 ， 比 其 小 的 放 在 它 的 左 边 ； </p>
+<p>3 ． 对 左 右 两 个 分 区 重 复 以 上 步 骤 直 到 所 有 元 素 都 是 有 序 的 </p>
+<p> <u>冒 泡 排 序 ：</u> </p>
+<p>1 ． 比 较 相 邻 的 元 素 。 如 果 第 一 个 比 第 二 个 大 ， 就 交 换 他 们 两 个 </p>
+<p>2 ． 对 每 一 对 相 邻 元 素 作 同 样 的 工 作 ， 从 开 始 第 一 对 到 结 尾 的 最 后 一 对 。 在 这 一 点 ， 最 后 的 元 素 应 该 会 是 最 大 的 数 。 </p>
+<p>3 ． 针 对 所 有 的 元 素 重 复 以 上 的 步 骤 ， 除 了 最 后 一 个 </p>
+<p>4 ． 持 续 每 次 对 越 来 越 少 的 元 素 重 复 上 面 的 步 骤 ， 直 到 没 有 任 何 一 对 数 字 需 要 比 较 。 </p>
+<p><u>归 并 排 序 ：</u> </p>
+<p>第 一 步 ： 申 请 空 间 ， 使 其 大 小 为 两 个 已 经 排 序 序 列 之 和 ， 该 空 间 用 来 存 放 合 并 后 的 序 列 </p>
+<p>第 二 步 ： 设 定 两 个 指 针 ， 最 初 位 置 分 别 为 两 个 已 经 排 序 序 列 的 起 始 位 置 </p>
+<p>第 三 步 ： 比 较 两 个 指 针 所 指 向 的 元 素 ， 选 择 相 对 小 的 元 素 放 入 到 合 并 空 </p>
+<p>间 ， 并 移 动 指 针 到 下 一 位 置 </p>
+<p>重 复 步 骤 3 直 到 某 一 指 针 超 出 序 列 尾 </p>
+<p>将 另 一 序 列 剩 下 的 所 有 元 素 直 接 复 制 到 合 并 序 列 尾 </p>
+<p><u>插 入 排 序 ：</u> </p>
+<p>1 ． 从 有 序 数 列 和 无 序 数 列 { a2 ， a3 ,  …, an} 开 始 进 行 排 序 </p>
+<p>2 ． 处 理 第 i 个 元 素 时 { i ： 2 ， 3 ，… , n } , 数 列 { a1 ， a2 ，…， ai-1} 是 已 有 序 的 ， 而 数 列 {ai,ai+1, …， an } 是 无 序 的 。 用 ai 与 ai-1, a i-2, …， a1 进 行 比 较 ， 找 出 合 适 的 位 置 将 ai 插 入 ； </p>
+<p>3 ． 重 复 第 二 步 ， 共 进 行 n - i 次 插 入 处 理 ， 数 列 全 部 有 序 。 </p>
+<p><u>选 择 排 序 (Selection sort)：</u></p>
+<p>是 一 种 简 单 直 观 的 排 序 算 法 。 它 的 工 作 原 理 是 每 一 次 从 待 排 序 的 数 据 元 素 中 选 出 最 小 （ 或 最 大 ） 的 一 个元 素 ， 存 放 在 序 列 的 起 始 位 置 ， 直 到 全 部 待 排 序 的 数 据 元 素 排 完 ，所 以 每 一 趟 选 择 的 元 素 都 会 放 在 他 的 最 终 位 置 </p>
+<p>第 i 趟排序，找到L[i…n]中最小的元素与L[i]交换位置，这样保证每一趟排序确定一个元素的最终位置</p>
+<p><u>堆 排 序 ：</u></p>
+<p>如 果 要 求 升 序 则 建 立 大 根 堆 ， 降 序 则 建 立 小 根 堆 ， 堆 顶 元 素 为 最 大 或 者 最 小 的 元 素 ， 将 这 个 元 素 与 最 后 一 个 位 置 的 元 素 交 换 ， 再 将 剩 余 元 素 还 原 成 大 小 跟 堆 ， 每 一 趙 都 会 选 出 一 个 未 排 序 中 的 最 大 或 者 最 小 放 大 他 的 最 终 位 置 </p>
+<p><u>希 尔 排 序 (shell’s sort)：</u> </p>
+<p>希尔排序(Shell’s Sort)是<a href="https://baike.baidu.com/item/插入排序/7214992">插入排序</a>的一种，又称“缩小增量排序”（Diminishing Increment Sort），是直接插入<a href="https://baike.baidu.com/item/排序算法/5399605">排序算法</a>的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
+<p>希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，<a href="https://baike.baidu.com/item/算法/209025">算法</a>便终止。</p>
+<p>由 于 是 按 照 增 量 排 序 ， 步 长 不 同 可 能 元 素 不 一 定 到 他 最 终 位 置 </p>
+]]></content>
+      <tags>
+        <tag>知识点</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐系统冷启动问题</title>
+    <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
+<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
+<ol>
+<li>利用用户的账号信息。</li>
+<li>利用用户的手机 IMEI 号进行冷启动。</li>
+<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
+</ol>
+<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
+<ol>
+<li>利用物品的内容、分类信息。</li>
+<li>利用专家标注的数据。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
       </tags>
   </entry>
   <entry>
@@ -9093,46 +9093,6 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       </tags>
   </entry>
   <entry>
-    <title>求众数2</title>
-    <url>/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/majority-element-ii/">求众数2（难度：中等）</a></p>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/1.jpg" alt="1"></p>
-<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/3的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        set1 = <span class="built_in">set</span>(nums)</span><br><span class="line">        <span class="keyword">return</span> [s <span class="keyword">for</span> s <span class="keyword">in</span> set1 <span class="keyword">if</span> nums.count(s) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/2.jpg" alt="2"></p>
-<p>然而时间复杂度不为O(n)。</p>
-<hr>
-<h4 id="方法二：Boyer-Moore-投票算法"><a href="#方法二：Boyer-Moore-投票算法" class="headerlink" title="方法二：Boyer-Moore 投票算法"></a>方法二：Boyer-Moore 投票算法</h4><p>超过n/3的数最多只能有两个。先选出两个候选人A,B（都令为nums[0]）。 遍历数组：</p>
-<ol>
-<li>若当前元素等于A，则A的票数++;</li>
-<li><p>若当前元素等于B，则B的票数++；</p>
-</li>
-<li><p>若当前元素与A，B都不相等，那么检查此时A或B的票数是否减为0：</p>
-<ul>
-<li><p>若为0，则当前元素成为新的候选人；</p>
-</li>
-<li><p>若A、B票数均不为0，则A、B两个候选人的票数均减一；</p>
-</li>
-</ul>
-</li>
-</ol>
-<p>遍历结束后选出了两个候选人，但是这两个候选人是否满足&gt;n//3，还需要再遍历一遍数组，找出两个候选人的具体票数。</p>
-<p><strong>复杂度</strong></p>
-<p>时间复杂度：O(n)</p>
-<p>空间复杂度：O(1)</p>
-<p><strong>代码</strong> </p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(nums)==<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        count1 = <span class="number">0</span></span><br><span class="line">        count2 = <span class="number">0</span></span><br><span class="line">        candidate1 = nums[<span class="number">0</span>]</span><br><span class="line">        candidate2 = nums[<span class="number">0</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num == candidate1:</span><br><span class="line">                count1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> num == candidate2:</span><br><span class="line">                count2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> count1 == <span class="number">0</span>:</span><br><span class="line">                    candidate1 = num</span><br><span class="line">                    count1 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> count2 == <span class="number">0</span>:</span><br><span class="line">                    candidate2 = num</span><br><span class="line">                    count2 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    count1 -= <span class="number">1</span>;</span><br><span class="line">                    count2 -= <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">set</span>([num <span class="keyword">for</span> num <span class="keyword">in</span> [candidate1, candidate2] <span class="keyword">if</span> nums.count(num) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]) <span class="comment">#加set的原因是避免返回两个相同的数</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/3.jpg" alt="3"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>浅谈P、NP、NP-Complete和NP-Hard问题</title>
     <url>/2023/09/13/%E6%B5%85%E8%B0%88P%E3%80%81NP%E3%80%81NP-Complete%E5%92%8CNP-Hard%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>来自：<a href="https://zhuanlan.zhihu.com/p/433308577">浅谈P、NP、NP-Complate和NP-Hard问题</a></p>
@@ -9189,6 +9149,46 @@ P \subseteq NP</script><h3 id="NP-Complete-NPC-问题"><a href="#NP-Complete-NPC
 ]]></content>
       <tags>
         <tag>NP问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>求众数2</title>
+    <url>/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/majority-element-ii/">求众数2（难度：中等）</a></p>
+<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/1.jpg" alt="1"></p>
+<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/3的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        set1 = <span class="built_in">set</span>(nums)</span><br><span class="line">        <span class="keyword">return</span> [s <span class="keyword">for</span> s <span class="keyword">in</span> set1 <span class="keyword">if</span> nums.count(s) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/2.jpg" alt="2"></p>
+<p>然而时间复杂度不为O(n)。</p>
+<hr>
+<h4 id="方法二：Boyer-Moore-投票算法"><a href="#方法二：Boyer-Moore-投票算法" class="headerlink" title="方法二：Boyer-Moore 投票算法"></a>方法二：Boyer-Moore 投票算法</h4><p>超过n/3的数最多只能有两个。先选出两个候选人A,B（都令为nums[0]）。 遍历数组：</p>
+<ol>
+<li>若当前元素等于A，则A的票数++;</li>
+<li><p>若当前元素等于B，则B的票数++；</p>
+</li>
+<li><p>若当前元素与A，B都不相等，那么检查此时A或B的票数是否减为0：</p>
+<ul>
+<li><p>若为0，则当前元素成为新的候选人；</p>
+</li>
+<li><p>若A、B票数均不为0，则A、B两个候选人的票数均减一；</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>遍历结束后选出了两个候选人，但是这两个候选人是否满足&gt;n//3，还需要再遍历一遍数组，找出两个候选人的具体票数。</p>
+<p><strong>复杂度</strong></p>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
+<p><strong>代码</strong> </p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(nums)==<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        count1 = <span class="number">0</span></span><br><span class="line">        count2 = <span class="number">0</span></span><br><span class="line">        candidate1 = nums[<span class="number">0</span>]</span><br><span class="line">        candidate2 = nums[<span class="number">0</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num == candidate1:</span><br><span class="line">                count1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> num == candidate2:</span><br><span class="line">                count2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> count1 == <span class="number">0</span>:</span><br><span class="line">                    candidate1 = num</span><br><span class="line">                    count1 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> count2 == <span class="number">0</span>:</span><br><span class="line">                    candidate2 = num</span><br><span class="line">                    count2 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    count1 -= <span class="number">1</span>;</span><br><span class="line">                    count2 -= <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">set</span>([num <span class="keyword">for</span> num <span class="keyword">in</span> [candidate1, candidate2] <span class="keyword">if</span> nums.count(num) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]) <span class="comment">#加set的原因是避免返回两个相同的数</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>

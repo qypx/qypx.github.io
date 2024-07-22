@@ -1,37 +1,576 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="参考 http:&#x2F;&#x2F;dblab.xmu.edu.cn&#x2F;blog&#x2F;985-2&#x2F;  1. Introduction to Spark  There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data. 1.1 Spa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark">
+<meta property="og:url" content="http://qypx.github.io/2020/01/14/Spark/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="参考 http:&#x2F;&#x2F;dblab.xmu.edu.cn&#x2F;blog&#x2F;985-2&#x2F;  1. Introduction to Spark  There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data. 1.1 Spa">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578976053911.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578976261212.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/image-20220110152940708.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/image-20220110153314705.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/image-20220110154056575.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/%E6%8D%95%E8%8E%B7.JPG">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578977218206.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578977501017.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578977890605.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578978133377.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578979417251.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578979634184.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578989468387.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578989673088.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/image-20220110150112274.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578989938843.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578990141827.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579012530332.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1578990969096.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579008653516.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579008991727.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579009321705.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579009474269.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579009528882.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/image-20220111154127159.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/image-20220111155020607.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/image-20220111155253448.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579014872589.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579012722667.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579012953410.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579013215223.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579013233354.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579013961536.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579014168231.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579014221441.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579014920753.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579059887637.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579060756315.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579062594969.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/14/Spark/1579062687242.png">
+<meta property="article:published_time" content="2020-01-14T04:25:34.000Z">
+<meta property="article:modified_time" content="2022-01-19T02:20:43.285Z">
+<meta property="article:author" content="qypx">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="Spark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qypx.github.io/2020/01/14/Spark/1578976053911.png">
 
 
-{% block content %}
+<link rel="canonical" href="http://qypx.github.io/2020/01/14/Spark/">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/01/14/Spark/","path":"2020/01/14/Spark/","title":"Spark"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Spark | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">qypx の blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">机会是留给有准备的人的.</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Introduction-to-Spark"><span class="nav-text">1. Introduction to Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Spark-%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84"><span class="nav-text">1.1 Spark 运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-text">1.1.1 架构设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-2-%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">1.1.2 运行流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Spark-%E7%89%B9%E7%82%B9"><span class="nav-text">1.2 Spark 特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1-Scalable"><span class="nav-text">1.2.1 Scalable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2-Fast"><span class="nav-text">1.2.2 Fast</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3-Hot"><span class="nav-text">1.2.3 Hot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4-Not-that-hard-%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%EF%BC%8CRDD"><span class="nav-text">1.2.4 Not that hard (可使用的语言，RDD)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Components-of-Spark"><span class="nav-text">1.3 Components of Spark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E9%97%A8%E8%AF%BE%E5%B0%86%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%E5%8F%8AScala"><span class="nav-text">这门课将使用的语言及Scala</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RDD-The-Resilient-Distributed-Dataset"><span class="nav-text">2. RDD (The Resilient Distributed Dataset)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-What-is-RDD"><span class="nav-text">2.1 What is RDD?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-How-do-you-make-RDD"><span class="nav-text">2.2 How do you make RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Create-RDD"><span class="nav-text">2.3 Create RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-Transform-RDD"><span class="nav-text">2.4 Transform RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-RDD-actions"><span class="nav-text">2.5 RDD actions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-Lazy-evaluation-%E6%83%B0%E6%80%A7%E8%B0%83%E7%94%A8"><span class="nav-text">2.6 Lazy evaluation 惰性调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-RDD-%E7%89%B9%E6%80%A7"><span class="nav-text">2.7 RDD 特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-RDD-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="nav-text">2.8 RDD 之间的依赖关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-%E9%98%B6%E6%AE%B5%E7%9A%84%E5%88%92%E5%88%86"><span class="nav-text">2.9 阶段的划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10-RDD-%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-text">2.10 RDD 运行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-Using-RDD%E2%80%99s-in-Spark"><span class="nav-text">2.9 Using RDD’s in Spark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Spark-SQL-DataFrames-and-DataSets"><span class="nav-text">3. Spark SQL (DataFrames and DataSets)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-DataSets-in-Spark-2"><span class="nav-text">Using DataSets in Spark 2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Using-MLLib-in-Spark"><span class="nav-text">4. Using MLLib in Spark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise"><span class="nav-text">Exercise</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">qypx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/14/Spark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Spark | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spark
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-14 12:25:34" itemprop="dateCreated datePublished" datetime="2020-01-14T12:25:34+08:00">2020-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-01-19 10:20:43" itemprop="dateModified" datetime="2022-01-19T10:20:43+08:00">2022-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>参考 <a href="http://dblab.xmu.edu.cn/blog/985-2/">http://dblab.xmu.edu.cn/blog/985-2/</a></p>
+</blockquote>
+<h3 id="1-Introduction-to-Spark"><a href="#1-Introduction-to-Spark" class="headerlink" title="1. Introduction to Spark"></a>1. Introduction to Spark</h3><p><img src="/2020/01/14/Spark/1578976053911.png" alt="1578976053911"></p>
+<p><img src="/2020/01/14/Spark/1578976261212.png" alt="1578976261212"></p>
+<p>There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data.</p>
+<h4 id="1-1-Spark-运行架构"><a href="#1-1-Spark-运行架构" class="headerlink" title="1.1 Spark 运行架构"></a>1.1 Spark 运行架构</h4><h5 id="1-1-1-架构设计"><a href="#1-1-1-架构设计" class="headerlink" title="1.1.1 架构设计"></a>1.1.1 架构设计</h5><p><img src="/2020/01/14/Spark/image-20220110152940708.png" alt="image-20220110152940708"></p>
+<p>Spark运行架构包括集群资源管理器（Cluster Manager）、运行作业任务的工作节点（Worker  Node）、每个应用的任务控制节点（Driver）和每个工作节点上负责具体任务的执行进程（Executor）。其中，集群资源管理器可以是Spark自带的资源管理器，也可以是YARN或Mesos等资源管理框架。</p>
+<p>如下图所示，在Spark中，一个应用（Application）由一个任务控制节点（Driver）和若干个作业（Job）构成，一个作业由多个阶段（Stage）构成，一个阶段由多个任务（Task）组成。当执行一个应用时，任务控制节点会向集群管理器（Cluster  Manager）申请资源，启动Executor，并向Executor发送应用程序代码和文件，然后在Executor上执行任务，运行结束后，执行结果会返回给任务控制节点，或者写到HDFS或者其他数据库中。</p>
+<p><img src="/2020/01/14/Spark/image-20220110153314705.png" alt="image-20220110153314705"></p>
+<h5 id="1-1-2-运行流程"><a href="#1-1-2-运行流程" class="headerlink" title="1.1.2 运行流程"></a>1.1.2 运行流程</h5><p>Spark的基本运行流程如下：<br> （1）当一个Spark应用被提交时，首先需要为这个应用构建起基本的运行环境，即由任务控制节点（Driver）创建一个SparkContext，由SparkContext负责和资源管理器（Cluster Manager）的通信以及进行资源的申请、任务的分配和监控等。SparkContext会向资源管理器注册并申请运行Executor的资源；<br> （2）资源管理器为Executor分配资源，并启动Executor进程，Executor运行情况将随着“心跳”发送到资源管理器上；<br> （3）SparkContext根据RDD的依赖关系构建DAG图，DAG图提交给DAG调度器（DAGScheduler）进行解析，将DAG图分解成多个“阶段”（每个阶段都是一个任务集），并且计算出各个阶段之间的依赖关系，然后把一个个“任务集”提交给底层的任务调度器（TaskScheduler）进行处理；Executor向SparkContext申请任务，任务调度器将任务分发给Executor运行，同时，SparkContext将应用程序代码发放给Executor；<br> （4）任务在Executor上运行，把执行结果反馈给任务调度器，然后反馈给DAG调度器，运行完毕后写入数据并释放所有资源。</p>
+<p><img src="/2020/01/14/Spark/image-20220110154056575.png" alt="image-20220110154056575"></p>
+<p>总体而言，Spark运行架构具有以下特点：<br> （1）每个应用都有自己专属的Executor进程，并且该进程在应用运行期间一直驻留。Executor进程以多线程的方式运行任务，减少了多进程任务频繁的启动开销，使得任务执行变得非常高效和可靠；<br> （2）Spark运行过程与资源管理器无关，只要能够获取Executor进程并保持通信即可；<br> （3）Executor上有一个BlockManager存储模块，类似于键值存储系统（把内存和磁盘共同作为存储设备），在处理迭代计算任务时，不需要把中间结果写入到HDFS等文件系统，而是直接放在这个存储系统上，后续有需要时就可以直接读取；在交互式查询场景下，也可以把表提前缓存到这个存储系统上，提高读写IO性能；<br> （4）任务采用了数据本地性和推测执行等优化机制。数据本地性是尽量将计算移到数据所在的节点上进行，即“计算向数据靠拢”，因为移动计算比移动数据所占的网络资源要少得多。而且，Spark采用了延时调度机制，可以在更大的程度上实现执行过程优化。比如，拥有数据的节点当前正被其他的任务占用，那么，在这种情况下是否需要将数据移动到其他的空闲节点呢？答案是不一定。因为，如果经过预测发现当前节点结束当前任务的时间要比移动数据的时间还要少，那么，调度就会等待，直到当前节点可用。</p>
+<h4 id="1-2-Spark-特点"><a href="#1-2-Spark-特点" class="headerlink" title="1.2 Spark 特点"></a>1.2 Spark 特点</h4><h5 id="1-2-1-Scalable"><a href="#1-2-1-Scalable" class="headerlink" title="1.2.1 Scalable"></a>1.2.1 Scalable</h5><p><img src="/2020/01/14/Spark/捕获.JPG" alt="捕获"></p>
+<h5 id="1-2-2-Fast"><a href="#1-2-2-Fast" class="headerlink" title="1.2.2 Fast"></a>1.2.2 Fast</h5><p><img src="/2020/01/14/Spark/1578977218206.png" alt="1578977218206"></p>
+<p>Spark除了比MapReduce更快以外，还有一个优势：MapReduce is very limited in what it can do. You have to think about things in terms of mappers and reducers, whereas Spark provides a framework for removing that level of though from you, you can just think more about your end results and program toward that and think less about how to actual distribute it across the cluster.</p>
+<span id="more"></span>
+<h5 id="1-2-3-Hot"><a href="#1-2-3-Hot" class="headerlink" title="1.2.3 Hot"></a>1.2.3 Hot</h5><p><img src="/2020/01/14/Spark/1578977501017.png" alt="1578977501017"></p>
+<h5 id="1-2-4-Not-that-hard-可使用的语言，RDD"><a href="#1-2-4-Not-that-hard-可使用的语言，RDD" class="headerlink" title="1.2.4 Not that hard (可使用的语言，RDD)"></a>1.2.4 Not that hard (可使用的语言，RDD)</h5><p><img src="/2020/01/14/Spark/1578977890605.png" alt="1578977890605"></p>
+<p>A few lines of code can actually kick off some very complex analysis on a cluster.</p>
+<p>Spark 2.0 which came out in 2006, they’ve built on top of RDDs to produce something called a data set. That’s a little bit more of a SQL focused take on an RDD, but at the end of the day, it’s still built around the RDD.</p>
+<h4 id="1-3-Components-of-Spark"><a href="#1-3-Components-of-Spark" class="headerlink" title="1.3 Components of Spark"></a>1.3 Components of Spark</h4><p><img src="/2020/01/14/Spark/1578978133377.png" alt="1578978133377"></p>
+<p>Spark has a lot of depth to it, so while you could just program at the RDD level within <strong>Spark Core</strong>, there are also libraries built on top of Spark that are part of Spark itself.</p>
+<p><strong>Spark Streaming</strong>: Instead of doing batch processing of data, you can actually input data in real time. Data can be ingested as it’s being produced, and then Spark can analyze it across some window of time, and you can output the results of that analysis to a database or some NoSQL data store, all within a few lines of code.</p>
+<p><strong>Spark SQL</strong>: Very hot area right now. It’s basically a SQL interface to Spark. You can write SQL queries against your data using Spark SQL. It allows us to do more optimizations beyond the directed acyclic graph, because it can do SQL optimizations on the queries that you’re actually running.</p>
+<p><strong>MLLib</strong>: An entire library of machine learning and data mining tools that you can run on a data set that’s in Spark.</p>
+<p><strong>GraphX</strong>: That’s the graph in terms of graph theory. Imagine for example, you have a social network graph, and you want to analyze the properties of that graph, and see who’s connected to who and what way, and what are the shortest path and things like that, GraphX provides a very extensible way of doing that.</p>
+<p>SO, very rich ecosystem surrounding Spark that lets you do a wide variety of tasks on big data across the cluster.</p>
+<h4 id="这门课将使用的语言及Scala"><a href="#这门课将使用的语言及Scala" class="headerlink" title="这门课将使用的语言及Scala"></a>这门课将使用的语言及Scala</h4><p><img src="/2020/01/14/Spark/1578979417251.png" alt="1578979417251"></p>
+<p>If you do want to end up using Spark in production in the real world, Python is OK to start with, but you probably want to move to Scala. </p>
+<p><img src="/2020/01/14/Spark/1578979634184.png" alt="1578979634184"></p>
+<p>It’s not very hard to move from Python to Scala. </p>
+<h3 id="2-RDD-The-Resilient-Distributed-Dataset"><a href="#2-RDD-The-Resilient-Distributed-Dataset" class="headerlink" title="2. RDD (The Resilient Distributed Dataset)"></a>2. RDD (The Resilient Distributed Dataset)</h3><p><img src="/2020/01/14/Spark/1578989468387.png" alt="1578989468387"></p>
+<h4 id="2-1-What-is-RDD"><a href="#2-1-What-is-RDD" class="headerlink" title="2.1 What is RDD?"></a>2.1 What is RDD?</h4><p><img src="/2020/01/14/Spark/1578989673088.png" alt="1578989673088"></p>
+<p>It’s an abstraction across all the nastiness that happens under the hood to actually make sure your job is evenly distributed across your cluster that it can handle failures in a resilient manner, and at the end of the day, it just looks like a dataset to you.</p>
+<p>From a programming standpoint, an RDD is just a dataset to you. But under the hood, it’s resilient and distributed and you don’t have to think about that very much.</p>
+<p>一个RDD就是一个分布式对象集合，本质上是一个只读的分区记录集合，每个RDD可以分成多个分区，每个分区就是一个数据集片段，并且一个RDD的不同分区可以被保存到集群中不同的节点上，从而可以在集群中的不同节点上进行并行计算。</p>
+<p>RDD是只读的记录分区的集合，不能直接修改，只能基于稳定的物理存储中的数据集来创建RDD，或者通过在其他RDD上执行确定的转换操作（如map、join和groupBy）而创建得到新的RDD。</p>
+<p>RDD提供了一组丰富的操作以支持常见的数据运算，分为<strong>“行动”（Action）</strong>和<strong>“转换”（Transformation）</strong>两种类型，前者用于执行计算并指定输出的形式，后者指定RDD之间的相互依赖关系。两类操作的主要区别是，转换操作（比如map、filter、groupBy、join等）接受RDD并返回RDD，而行动操作（比如count、collect等）接受RDD但是返回非RDD（即输出一个值或结果）。</p>
+<p>RDD典型的执行过程如下：</p>
+<ol>
+<li>RDD读入外部数据源（或者内存中的集合）进行创建；</li>
+<li>RDD经过一系列的“转换”操作，每一次都会产生不同的RDD，供给下一个“转换”使用；</li>
+<li>最后一个RDD经“行动”操作进行处理，并输出到外部数据源（或者变成Scala集合或标量）。</li>
+</ol>
+<p>需要说明的是，RDD采用了<strong>惰性调用</strong>（更多关于惰性调用的内容见后文），即在RDD的执行过程中（如图9-8所示），真正的计算发生在RDD的“行动”操作，对于“行动”之前的所有“转换”操作，Spark只是记录下“转换”操作应用的一些基础数据集以及RDD生成的轨迹，即相互之间的依赖关系，而不会触发真正的计算。</p>
+<p><img src="/2020/01/14/Spark/image-20220110150112274.png" alt="image-20220110150112274"></p>
+<h4 id="2-2-How-do-you-make-RDD"><a href="#2-2-How-do-you-make-RDD" class="headerlink" title="2.2 How do you make RDD"></a>2.2 How do you make RDD</h4><p><img src="/2020/01/14/Spark/1578989938843.png" alt="1578989938843"></p>
+<p>The SparkContext is sort of the environment that your driver program runs within Spark, and it is what creates RDDs.</p>
+<h4 id="2-3-Create-RDD"><a href="#2-3-Create-RDD" class="headerlink" title="2.3 Create RDD"></a>2.3 Create RDD</h4><p><img src="/2020/01/14/Spark/1578990141827.png" alt="1578990141827"></p>
+<p><img src="/2020/01/14/Spark/1579012530332.png" alt="1579012530332"></p>
+<p><img src="/2020/01/14/Spark/1578990969096.png" alt="1578990969096"></p>
+<p>Once you have an RDD, what do you do with it?</p>
+<h4 id="2-4-Transform-RDD"><a href="#2-4-Transform-RDD" class="headerlink" title="2.4 Transform RDD"></a>2.4 Transform RDD</h4><p><img src="/2020/01/14/Spark/1579008653516.png" alt="1579008653516"></p>
+<p><em>map</em>: apply some function to every input row of your RDD and create a new RDD that is transformed in some way. Map is used when you have a one to one relationship </p>
+<p><em>flatmap</em>: 与map的区别在于，使用map, input于output是一对一的关系，使用flatmap, can have any relationship, where your input lines may or may not result in one or more output lines. 例如，maybe you want to split out each input line into multiple rows, or maybe you want to discard some of the input lines if they’re invalid.</p>
+<p><em>filter</em>: can be used to take stuff out of an RDD so you can provide that with some function that determines whether or not a row survives.</p>
+<p><em>distinct</em>: gives you back the distinct unique values in an RDD. </p>
+<p><em>sample</em>: sample them randomly.</p>
+<p><img src="/2020/01/14/Spark/1579008991727.png" alt="1579008991727"></p>
+<p><img src="/2020/01/14/Spark/1579009321705.png" alt="1579009321705"></p>
+<h4 id="2-5-RDD-actions"><a href="#2-5-RDD-actions" class="headerlink" title="2.5 RDD actions"></a>2.5 RDD actions</h4><p><img src="/2020/01/14/Spark/1579009474269.png" alt="1579009474269"></p>
+<h4 id="2-6-Lazy-evaluation-惰性调用"><a href="#2-6-Lazy-evaluation-惰性调用" class="headerlink" title="2.6 Lazy evaluation 惰性调用"></a>2.6 Lazy evaluation 惰性调用</h4><p><img src="/2020/01/14/Spark/1579009528882.png" alt="1579009528882"></p>
+<p>So basically, as you go through this script and transform your RDD’s, until you hit an action, all that’s doing is building up this graph, this chain of dependencies within your driver script, and only when that action is called does it actually figure out the quickest path through those dependencies. And it’s at that point that it actually kicks off the job on your cluster.</p>
+<p>RDD采用了惰性调用，即在RDD的执行过程中，真正的计算发生在RDD的“行动”操作，对于“行动”之前的所有“转换”操作，Spark只是记录下“转换”操作应用的一些基础数据集以及RDD生成的轨迹，即相互之间的依赖关系，而不会触发真正的计算。</p>
+<p>例：一个Spark的“Hello World”程序<br> 这里以一个“Hello World”入门级Spark程序来解释RDD执行过程，这个程序的功能是读取一个HDFS文件，计算出包含字符串“Hello World”的行数。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> sc= <span class="keyword">new</span> <span class="type">SparkContext</span>(“spark:<span class="comment">//localhost:7077”,”Hello World”, “YOUR_SPARK_HOME”,”YOUR_APP_JAR”)</span></span><br><span class="line"><span class="keyword">val</span> fileRDD = sc.textFile(“hdfs:<span class="comment">//192.168.0.103:9000/examplefile”)</span></span><br><span class="line"><span class="keyword">val</span> filterRDD = fileRDD.filter(_.contains(“<span class="type">Hello</span> <span class="type">World</span>”))</span><br><span class="line">filterRDD.cache()</span><br><span class="line">filterRDD.count()</span><br></pre></td></tr></table></figure>
+<p>第1行代码用于创建SparkContext对象；第2行代码从HDFS文件中读取数据创建一个RDD；第3行代码对fileRDD进行转换操作得到一个新的RDD，即filterRDD；第4行代码表示对filterRDD进行持久化，把它保存在内存或磁盘中（这里采用cache接口把数据集保存在内存中），方便后续重复使用，当数据被反复访问时（比如查询一些热点数据，或者运行迭代算法），这是非常有用的，而且通过cache()可以缓存非常大的数据集，支持跨越几十甚至上百个节点；第5行代码中的count()是一个行动操作，用于计算一个RDD集合中包含的元素个数。这个程序的执行过程如下：</p>
+<ul>
+<li>创建这个Spark程序的执行上下文，即创建SparkContext对象；</li>
+<li>从外部数据源（即HDFS文件）中读取数据创建fileRDD对象；</li>
+<li>构建起fileRDD和filterRDD之间的依赖关系，形成DAG图，这时候并没有发生真正的计算，只是记录转换的轨迹；</li>
+<li>执行到第5行代码时，count()是一个行动类型的操作，触发真正的计算，开始实际执行从fileRDD到filterRDD的转换操作，并把结果持久化到内存中，最后计算出filterRDD中包含的元素个数。</li>
+</ul>
+<h4 id="2-7-RDD-特性"><a href="#2-7-RDD-特性" class="headerlink" title="2.7 RDD 特性"></a>2.7 RDD 特性</h4><p>总体而言，Spark采用RDD以后能够实现高效计算的主要原因如下：<br> （1）高效的容错性。现有的分布式共享内存、键值存储、内存数据库等，为了实现容错，必须在集群节点之间进行数据复制或者记录日志，也就是在节点之间会发生大量的数据传输，这对于数据密集型应用而言会带来很大的开销。在RDD的设计中，数据只读，不可修改，如果需要修改数据，必须从父RDD转换到子RDD，由此在不同RDD之间建立了血缘关系。所以，RDD是一种天生具有容错机制的特殊集合，不需要通过数据冗余的方式（比如检查点）实现容错，而只需通过RDD父子依赖（血缘）关系重新计算得到丢失的分区来实现容错，无需回滚整个系统，这样就避免了数据复制的高开销，而且重算过程可以在不同节点之间并行进行，实现了高效的容错。此外，RDD提供的转换操作都是一些粗粒度的操作（比如map、filter和join），RDD依赖关系只需要记录这种粗粒度的转换操作，而不需要记录具体的数据和各种细粒度操作的日志（比如对哪个数据项进行了修改），这就大大降低了数据密集型应用中的容错开销；<br> （2）中间结果持久化到内存。数据在内存中的多个RDD操作之间进行传递，不需要“落地”到磁盘上，避免了不必要的读写磁盘开销；<br> （3）存放的数据可以是Java对象，避免了不必要的对象序列化和反序列化开销。</p>
+<h4 id="2-8-RDD-之间的依赖关系"><a href="#2-8-RDD-之间的依赖关系" class="headerlink" title="2.8 RDD 之间的依赖关系"></a>2.8 RDD 之间的依赖关系</h4><blockquote>
+<p>参考<br><a href="https://blog.csdn.net/weixin_43958974/article/details/122292746">https://blog.csdn.net/weixin_43958974/article/details/122292746</a><br><a href="http://dblab.xmu.edu.cn/blog/985-2/">http://dblab.xmu.edu.cn/blog/985-2/</a></p>
+</blockquote>
+<p>在 Spark 中，RDD 分区的数据不支持修改，是只读的。如果想更新 RDD 分区中的数据，那么只能对原有 RDD 进行转化操作，也就是在原来 RDD 基础上创建一个新的RDD。</p>
+<p>那么，在整个任务的运算过程中，RDD 的每次转换都会生成一个新的 RDD，因此 RDD 们之间会产生前后依赖的关系。</p>
+<p>说白了，就是相当于将对原始 RDD 分区数据的整个运算进行了拆解，当运算中出现异常情况导致分区数据丢失时，Spark 可以通过依赖关系从上一个 RDD 中重新计算丢失的数据，而不是对最开始的 RDD 分区数据重新进行计算。</p>
+<p>在 RDD 的依赖关系中，我们将上一个 RDD 称为父RDD，下一个 RDD 称为子RDD。RDD中的依赖关系分为窄依赖（Narrow Dependency）与宽依赖（Wide Dependency），下图展示了两种依赖之间的区别。</p>
+<p><img src="/2020/01/14/Spark/image-20220111154127159.png" alt="image-20220111154127159"></p>
+<p><strong>窄依赖</strong>表现为一个父RDD的分区对应于一个子RDD的分区，或多个父RDD的分区对应于一个子RDD的分区。<br><strong>宽依赖</strong>则表现为存在一个父RDD的一个分区对应一个子RDD的多个分区。</p>
+<p>总体而言，如果父RDD的一个分区只被一个子RDD的一个分区所使用就是窄依赖，否则就是宽依赖。</p>
+<blockquote>
+<p>有个形象的比喻，如果父 RDD 中的一个分区有多个孩子（被多个分区依赖），也就是超生了，就为宽依赖；反之，如果只有一个孩子（只被一个分区依赖），那么就为窄依赖。</p>
+</blockquote>
+<p>窄依赖典型的操作包括map、filter、union等，宽依赖典型的操作包括groupByKey、sortByKey等。对于连接（join）操作，可以分为两种情况。<br> （1）对输入进行协同划分，属于窄依赖（上图(a)所示）。所谓协同划分（co-partitioned）是指多个父RDD的某一分区的所有“键（key）”，落在子RDD的同一个分区内，不会产生同一个父RDD的某一分区，落在子RDD的两个分区的情况。<br> （2）对输入做非协同划分，属于宽依赖，如上图(b)所示。</p>
+<p> 对于窄依赖的RDD，可以以流水线的方式计算所有父分区，不会造成网络之间的数据混合。对于宽依赖的RDD，则通常伴随着<strong>Shuffle</strong>操作，即首先需要计算好所有父分区数据，然后在节点之间进行Shuffle。</p>
+<blockquote>
+<p>在窄依赖中子 RDD 的每个分区数据的生成操作都是可以并行执行的，而在宽依赖中需要所有父 RDD 的 Shuffle 结果完成后再执行。</p>
+</blockquote>
+<p>Spark的这种依赖关系设计，使其具有了天生的容错性，大大加快了Spark的执行速度。因为，RDD数据集通过“血缘关系”记住了它是如何从其它RDD中演变过来的，血缘关系记录的是粗颗粒度的转换操作行为，当这个RDD的部分分区数据丢失时，它可以通过血缘关系获取足够的信息来重新运算和恢复丢失的数据分区，由此带来了性能的提升。相对而言，在两种依赖关系中，窄依赖的失败恢复更为高效，它只需要根据父RDD分区重新计算丢失的分区即可（不需要重新计算所有分区），而且可以并行地在不同节点进行重新计算。而对于宽依赖而言，单个节点失效通常意味着重新计算过程会涉及多个父RDD分区，开销较大。此外，Spark还提供了数据检查点和记录日志，用于持久化中间RDD，从而使得在进行失败恢复时不需要追溯到最开始的阶段。在进行故障恢复时，Spark会对数据检查点开销和重新计算RDD分区的开销进行比较，从而自动选择最优的恢复策略。</p>
+<h4 id="2-9-阶段的划分"><a href="#2-9-阶段的划分" class="headerlink" title="2.9 阶段的划分"></a>2.9 阶段的划分</h4><p>在 Spark 执行作业时，会按照 Stage 划分不同的 RDD，生成一个完整的最优执行计划，使每个 Stage 内的 RDD 都尽可能在各个节点上并行地被执行。</p>
+<p>Spark通过分析各个RDD的依赖关系生成了DAG，再通过分析各个RDD中的分区之间的依赖关系来决定如何划分阶段。具体划分方法是：在DAG中进行反向解析，遇到宽依赖就断开，遇到窄依赖就把当前的RDD加入到当前的阶段中；将窄依赖尽量划分在同一个阶段中，可以实现流水线计算。</p>
+<p>因此，划分宽窄依赖也是 Spark 优化执行计划的一个重要步骤，宽依赖是划分执行计划中 Stage 的依据，对于宽依赖必须要等到上一个 Stage 计算完成之后才能计算下一个阶段。</p>
+<p>例：如图9-11所示，假设从HDFS中读入数据生成3个不同的RDD（即A、C和E），通过一系列转换操作后再将计算结果保存回HDFS。对DAG进行解析时，在依赖图中进行反向解析，由于从RDD A到RDD B的转换以及从RDD B和F到RDD  G的转换，都属于宽依赖，因此，在宽依赖处断开后可以得到三个阶段，即阶段1、阶段2和阶段3。可以看出，在阶段2中，从map到union都是窄依赖，这两步操作可以形成一个流水线操作，比如，分区7通过map操作生成的分区9，可以不用等待分区8到分区9这个转换操作的计算结束，而是继续进行union操作，转换得到分区13，这样流水线执行大大提高了计算的效率。</p>
+<p><img src="/2020/01/14/Spark/image-20220111155020607.png" alt="image-20220111155020607"></p>
+<p>由上述论述可知，把一个DAG图划分成多个“阶段”以后，每个阶段都代表了一组关联的、相互之间没有Shuffle依赖关系的任务组成的任务集合。每个任务集合会被提交给任务调度器（TaskScheduler）进行处理，由任务调度器将任务分发给Executor运行。</p>
+<h4 id="2-10-RDD-运行过程"><a href="#2-10-RDD-运行过程" class="headerlink" title="2.10 RDD 运行过程"></a>2.10 RDD 运行过程</h4><p>总结一下RDD在Spark架构中的运行过程（如下图所示）：<br> （1）创建RDD对象；<br> （2）SparkContext负责计算RDD之间的依赖关系，构建DAG；<br> （3）DAGScheduler负责把DAG图分解成多个阶段，每个阶段中包含了多个任务，每个任务会被任务调度器分发给各个工作节点（Worker Node）上的Executor去执行。</p>
+<p><img src="/2020/01/14/Spark/image-20220111155253448.png" alt="image-20220111155253448"></p>
+<h4 id="2-9-Using-RDD’s-in-Spark"><a href="#2-9-Using-RDD’s-in-Spark" class="headerlink" title="2.9 Using RDD’s in Spark"></a>2.9 Using RDD’s in Spark</h4><p>Find the movie with the lowest average rating - with RDD’s.</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6082670#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6082670#overview</a></p>
+<p><img src="/2020/01/14/Spark/1579014872589.png" alt="1579014872589"></p>
+<h3 id="3-Spark-SQL-DataFrames-and-DataSets"><a href="#3-Spark-SQL-DataFrames-and-DataSets" class="headerlink" title="3. Spark SQL (DataFrames and DataSets)"></a>3. Spark SQL (DataFrames and DataSets)</h3><p><img src="/2020/01/14/Spark/1579012722667.png" alt="1579012722667"></p>
+<p>Now, let’s talk about Spark SQL and the Spark 2.0 way of doing things using dataframes and datasets.</p>
+<p><img src="/2020/01/14/Spark/1579012953410.png" alt="1579012953410"></p>
+<p><img src="/2020/01/14/Spark/1579013215223.png" alt="1579013215223"></p>
+<p><img src="/2020/01/14/Spark/1579013233354.png" alt="1579013233354"></p>
+<p><img src="/2020/01/14/Spark/1579013961536.png" alt="1579013961536"></p>
+<p>DataFrame is really a dataset of row objects, and DataSet is a more general term that can contain any sort of typed information, not necessarily a row like you have in a DataFrame.</p>
+<p><img src="/2020/01/14/Spark/1579014168231.png" alt="1579014168231"></p>
+<p><img src="/2020/01/14/Spark/1579014221441.png" alt="1579014221441"></p>
+<p>Spark SQL is very extensible, you can create user defined functions that plug into a SQL and create your own functions you can use within your SQL queries.</p>
+<p>SO, this is the power of DataFrames and DataSets in Spark 2.0 and Spark SQL. The other thing that’s worth noting is that this is sort of the unified API between different subsystems of Spark going forward. You’ll see that in Spark 2 the MLLib machine learning library of the Spark streaming library, all now have DataSet based APIs that you can use, so DataSets are kind of the common denominator between these different systems that allow you to pass data between them. </p>
+<p>So, not only do you get performance benefits by using DataSets in Spark 2, you also get easier ways of actually using all these capabilities built on top of Spark we can mix and match them in interesting ways.</p>
+<h4 id="Using-DataSets-in-Spark-2"><a href="#Using-DataSets-in-Spark-2" class="headerlink" title="Using DataSets in Spark 2"></a>Using DataSets in Spark 2</h4><p>Find the movie with lowest average rating - with DataFrames.</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963108#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963108#overview</a></p>
+<p><img src="/2020/01/14/Spark/1579014920753.png" alt="1579014920753"></p>
+<h3 id="4-Using-MLLib-in-Spark"><a href="#4-Using-MLLib-in-Spark" class="headerlink" title="4. Using MLLib in Spark"></a>4. Using MLLib in Spark</h3><p>movie recommendations (通过predict rating)</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963112#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963112#overview</a></p>
+<p><img src="/2020/01/14/Spark/1579059887637.png" alt="1579059887637"></p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><p><img src="/2020/01/14/Spark/1579060756315.png" alt="1579060756315"></p>
+<p><img src="/2020/01/14/Spark/1579062594969.png" alt="1579062594969"></p>
+<p><img src="/2020/01/14/Spark/1579062687242.png" alt="1579062687242"></p>
+<p>check your result</p>
+<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6115596#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/6115596#overview</a></p>
+<p>The DataFrame approach is a lot easier to use, and when you’re running it at a large scale it’s going to be faster as well.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>qypx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://qypx.github.io/2020/01/14/Spark/" title="Spark">http://qypx.github.io/2020/01/14/Spark/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+              <a href="/tags/Spark/" rel="tag"># Spark</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/13/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" rel="prev" title="存储过程">
+                  <i class="fa fa-angle-left"></i> 存储过程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/14/Hadoop-Course-Overview/" rel="next" title="Hadoop Course Overview">
+                  Hadoop Course Overview <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">qypx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left"},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

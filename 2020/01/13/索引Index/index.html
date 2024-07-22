@@ -1,37 +1,921 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="索引Index">
+<meta property="og:url" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902807233.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902869016.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591080992.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591141489.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591319736.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591642645.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605592157733.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605592577124.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902891139.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902910331.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605000393037.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605000914282.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605080367750.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1695715497966.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1695716281948.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1695717265022.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605086187154.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605236459443.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605671203873.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605443844487.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605236364285.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605450882634.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605451488975.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605451552321.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452048904.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452080320.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452122669.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452156592.png">
+<meta property="article:published_time" content="2020-01-13T08:06:08.000Z">
+<meta property="article:modified_time" content="2023-10-09T09:42:56.634Z">
+<meta property="article:author" content="qypx">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902807233.png">
 
 
-{% block content %}
+<link rel="canonical" href="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/","path":"2020/01/13/索引Index/","title":"索引Index"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>索引Index | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">qypx の blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">机会是留给有准备的人的.</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%AF%BC%E8%88%AA"><span class="nav-text">快速导航</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9AMySQL%E4%B8%AD%E7%B4%A2%E5%BC%95%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-text">第一部分：MySQL中索引的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MySQL%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5%E4%B8%AD%E5%85%B3%E4%BA%8E%E7%B4%A2%E5%BC%95%E7%9A%84keywords"><span class="nav-text">1. MySQL建表语句中关于索引的keywords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-CREATE-UNIQUE-INDEX-%E5%88%9B%E5%BB%BA%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95-%E7%AE%80%E5%8D%95%E7%B4%A2%E5%BC%95-%E4%B8%8E%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95"><span class="nav-text">2. CREATE [UNIQUE] INDEX 创建普通索引(简单索引)与唯一索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8-ALTER-%E5%91%BD%E4%BB%A4%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-text">3. 使用 ALTER 命令添加和删除索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%B7%BB%E5%8A%A0%E7%B4%A2%E5%BC%95"><span class="nav-text">3.1 添加索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-text">3.2 删除索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E4%BD%BF%E7%94%A8-ALTER-%E5%91%BD%E4%BB%A4%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4%E4%B8%BB%E9%94%AE"><span class="nav-text">3.3 使用 ALTER 命令添加和删除主键</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E8%A1%A8%E6%97%B6%E7%9B%B4%E6%8E%A5%E6%8C%87%E5%AE%9A%E7%B4%A2%E5%BC%95"><span class="nav-text">4. 创建表时直接指定索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E4%BD%BF%E7%94%A8-DROP-%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="nav-text">5. 使用 DROP 命令删除索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%98%BE%E7%A4%BA%E7%B4%A2%E5%BC%95%E4%BF%A1%E6%81%AF"><span class="nav-text">6. 显示索引信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-show-index"><span class="nav-text">6.1 show index</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-%E5%8F%AF%E7%94%A8explain%E6%9D%A5%E6%9F%A5%E7%9C%8B%E6%9F%A5%E8%AF%A2%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="nav-text">6.2 可用explain来查看查询是否使用索引</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-1-explain-%E8%BE%93%E5%87%BA%E5%88%97"><span class="nav-text">6.2.1 explain 输出列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-2-%E7%A4%BA%E4%BE%8B%EF%BC%88%E5%85%B3%E4%BA%8E-type-%E4%B8%8E-extra%EF%BC%89"><span class="nav-text">6.2.2 示例（关于 type 与 extra）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-3-EXPLAIN-Join-Types"><span class="nav-text">6.2.3 EXPLAIN Join Types</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-4-EXPLAIN-Extra-Information"><span class="nav-text">6.2.4 EXPLAIN Extra Information</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%AF%A5%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="nav-text">7. 什么时候该使用索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%B8%8D%E8%AF%A5%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="nav-text">8. 什么时候不该使用索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E7%B4%A2%E5%BC%95%E7%9A%84%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B"><span class="nav-text">第二部分：索引的常见模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-text">1. 哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-text">2. 有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-text">3. 搜索树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-The-Index-Leaf-Node-%E7%B4%A2%E5%BC%95%E5%8F%B6%E5%AD%90%E8%8A%82%E7%82%B9"><span class="nav-text">3.1 The Index Leaf Node 索引叶子节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%90%9C%E7%B4%A2%E6%A0%91-B-Tree-%E4%BD%BF%E7%B4%A2%E5%BC%95%E6%9B%B4%E5%BF%AB"><span class="nav-text">3.2 搜索树 (B-Tree) 使索引更快</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-slow-index-%E6%85%A2%E7%B4%A2%E5%BC%95"><span class="nav-text">3.3 slow index 慢索引</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9AInnoDB%E7%9A%84%E7%B4%A2%E5%BC%95%E6%A8%A1%E5%9E%8B"><span class="nav-text">第三部分：InnoDB的索引模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-InnoDB%E7%B4%A2%E5%BC%95%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84"><span class="nav-text">1. InnoDB索引组织结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E4%B8%8E%E4%BA%8C%E7%BA%A7%E7%B4%A2%E5%BC%95"><span class="nav-text">2. 聚簇索引与二级索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%EF%BC%88%E4%B9%9F%E7%A7%B0%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%EF%BC%8C%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%EF%BC%8Cclustered-index%EF%BC%89"><span class="nav-text">2.1 聚簇索引（也称主键索引，聚集索引，clustered index）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E8%BE%85%E5%8A%A9%E7%B4%A2%E5%BC%95%EF%BC%88%E4%B9%9F%E7%A7%B0%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%EF%BC%8C%E4%BA%8C%E7%BA%A7%E7%B4%A2%E5%BC%95%EF%BC%8C%E9%9D%9E%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%EF%BC%8C%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%EF%BC%8Csecondary-index%EF%BC%89"><span class="nav-text">2.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E5%B0%8F%E7%BB%93"><span class="nav-text">2.3 小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%B4%A2%E5%BC%95%E7%BB%B4%E6%8A%A4"><span class="nav-text">3. 索引维护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%85%B3%E4%BA%8E%E8%87%AA%E5%A2%9E%E4%B8%BB%E9%94%AE"><span class="nav-text">4. 关于自增主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%B0%8F%E7%BB%93"><span class="nav-text">5. 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%EF%BC%9A%E5%AF%B9%E4%BA%8E%E4%B8%8A%E9%9D%A2%E8%BF%99%E4%B8%A4%E4%B8%AA%E9%87%8D%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%8C%E6%9C%89%E6%B2%A1%E6%9C%89%E4%B8%8D%E5%90%88%E9%80%82%E7%9A%84%EF%BC%9F"><span class="nav-text">问：对于上面这两个重建索引的做法，有没有不合适的？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="nav-text">第四部分：覆盖索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80%E5%8E%9F%E5%88%99"><span class="nav-text">第五部分：最左前缀原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80"><span class="nav-text">1. 最左前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8"><span class="nav-text">2. 索引下推</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%B0%8F%E7%BB%93"><span class="nav-text">3. 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%EF%BC%9A%E8%BF%99%E4%BD%8D%E5%90%8C%E4%BA%8B%E7%9A%84%E8%A7%A3%E9%87%8A%E5%AF%B9%E5%90%97%EF%BC%8C%E4%B8%BA%E4%BA%86%E8%BF%99%E4%B8%A4%E4%B8%AA%E6%9F%A5%E8%AF%A2%E6%A8%A1%E5%BC%8F%EF%BC%8C%E8%BF%99%E4%B8%A4%E4%B8%AA%E7%B4%A2%E5%BC%95%E6%98%AF%E5%90%A6%E9%83%BD%E6%98%AF%E5%BF%85%E9%A1%BB%E7%9A%84%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E5%91%A2%EF%BC%9F"><span class="nav-text">问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">qypx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="索引Index | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          索引Index
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-13 16:06:08" itemprop="dateCreated datePublished" datetime="2020-01-13T16:06:08+08:00">2020-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-09 17:42:56" itemprop="dateModified" datetime="2023-10-09T17:42:56+08:00">2023-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902807233.png" alt="1578902807233"></p>
+<span id="more"></span>
+<blockquote>
+<p>MySQL官方文档：<a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-indexes.html">https://dev.mysql.com/doc/refman/8.0/en/innodb-indexes.html</a><br>MySQL Tutorial：<a href="https://www.tutorialspoint.com/mysql/index.htm">https://www.tutorialspoint.com/mysql/index.htm</a></p>
+</blockquote>
+<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html">CREATE TABLE 官方手册</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html">CREATE INDEX 官方手册</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html">ALTER TABLE 官方手册</a><br><a href="#jump6.2">使用explain查看是否使用索引</a><br><a href="#jump_index_zuzhibiao">索引组织表</a><br><a href="#jump_index_several">主键索引（聚簇索引，聚集索引）、非主键索引（普通索引，二级索引，非聚簇索引）</a><br><a href="#jump_covering_index">覆盖索引</a><br><a href="#jump_leftmost_prefix">最左前缀</a><br><a href="#jump_pushed_down">索引下推</a></p>
+<h2 id="第一部分：MySQL中索引的操作"><a href="#第一部分：MySQL中索引的操作" class="headerlink" title="第一部分：MySQL中索引的操作"></a>第一部分：MySQL中索引的操作</h2><blockquote>
+<p>参考：<br><a href="https://www.tutorialspoint.com/mysql/mysql-indexes">https://www.tutorialspoint.com/mysql/mysql-indexes</a><br><a href="https://www.runoob.com/mysql/mysql-index.html">https://www.runoob.com/mysql/mysql-index.html</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html#create-table-indexes-keys">https://dev.mysql.com/doc/refman/5.6/en/create-table.html#create-table-indexes-keys</a></p>
+</blockquote>
+<p>索引分单列索引和组合索引。单列索引，即一个索引只包含单个列，一个表可以有多个单列索引，但这不是组合索引。组合索引，即一个索引包含多个列。</p>
+<p>实际上，索引也是一张表，该表保存了主键与索引字段，并指向实体表的记录。</p>
+<p>用户看不到索引，它们仅用于加速查询，并且数据库搜索引擎将使用它们非常快速地定位记录。</p>
+<p>对于具有索引的表，INSERT和UPDATE语句会花费更多的时间，而SELECT语句会变得更快。原因是在执行插入或更新时，数据库还需要插入或更新索引值。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902869016.png" alt="1578902869016"></p>
+<h3 id="1-MySQL建表语句中关于索引的keywords"><a href="#1-MySQL建表语句中关于索引的keywords" class="headerlink" title="1. MySQL建表语句中关于索引的keywords"></a>1. MySQL建表语句中关于索引的keywords</h3><ul>
+<li><p><code>PRIMAY KEY</code><br>A unique index where all key columns must be defined as <code>NOT NULL</code>. If they are not explicitly declared as <code>NOT NULL</code>, MySQL declares them so implicitly (and silently). 一个表只能有一个主键.  主键的key_name始终是 <code>PRIMARY</code>, 所以其他类型的索引不能使用 <code>PRIMARY</code> 作为索引名.</p>
+<p>If you do not have a <code>PRIMARY KEY</code> and an application asks for the <code>PRIMARY KEY</code> in your tables, MySQL returns the first <code>UNIQUE</code> index that has no <code>NULL</code> columns as the <code>PRIMARY KEY</code>.</p>
+<p>In <code>InnoDB</code> tables, keep the <code>PRIMARY KEY</code> short to minimize storage overhead for secondary indexes. Each secondary index entry contains a copy of the primary key columns for the corresponding row. (See <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-index-types.html">Section 14.6.2.1, “Clustered and Secondary Indexes”</a>.)</p>
+<p>In the created table, a <code>PRIMARY KEY</code> is placed first, followed by all <code>UNIQUE</code> indexes, and then the nonunique indexes. This helps the MySQL optimizer to prioritize which index to use and also more quickly to detect duplicated <code>UNIQUE</code> keys.</p>
+<p>A <code>PRIMARY KEY</code> can be a multiple-column index. 建表时创建一个复合主键： <code>PRIMARY KEY(key_part, ...)</code> .</p>
+<p>In MySQL, the name of a <code>PRIMARY KEY</code> is <code>PRIMARY</code>. For other indexes, if you do not assign a name, the index is assigned the same name as the first indexed column, with an optional suffix (<code>_2</code>, <code>_3</code>, <code>...</code>) to make it unique. 查看表有哪些索引：<code>SHOW INDEX FROM tbl_name</code>. See <a href="https://dev.mysql.com/doc/refman/5.6/en/show-index.html">Section 13.7.5.23, “SHOW INDEX Statement”</a>. （使用 <code>show create table tbl_name</code>也能看到有哪些索引）</p>
+<p>（例如上图中，主键是 <code>id</code>，索引名为 <code>PRIMARY</code>，还添加了索引：<code>Topic</code>，索引名为 <code>topicIndex</code>）</p>
+</li>
+</ul>
+<ul>
+<li><p><code>KEY | INDEX</code><br><code>KEY</code> is normally a synonym for <code>INDEX</code>（同义词）. The key attribute <code>PRIMARY KEY</code> can also be specified as just <code>KEY</code> when given in a column definition. This was implemented for compatibility with other database systems.</p>
+<p>（通常创建索引的时候可以用 <code>KEY</code> 也可以用 <code>INDEX</code>，但如果是创建主键等具有约束性质的，不能用 <code>INDEX</code>，具体区别见 <a href="https://blog.csdn.net/kusedexingfu/article/details/78347354">https://blog.csdn.net/kusedexingfu/article/details/78347354</a> ）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> index_test <span class="keyword">ADD</span> KEY key_1(staff_id);</span><br><span class="line">或</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> index_test <span class="keyword">ADD</span> INDEX index_1(staff_id);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>UNIQUE</code><br>A <code>UNIQUE</code> index creates a constraint such that all values in the index must be distinct. An error occurs if you try to add a new row with a key value that matches an existing row. For all engines, a <code>UNIQUE</code> index permits multiple <code>NULL</code> values for columns that can contain <code>NULL</code>. If you specify a prefix value for a column in a <code>UNIQUE</code> index, the column values must be unique within the prefix length.</p>
+</li>
+</ul>
+<ul>
+<li><code>FULLTEXT</code><br>A <code>FULLTEXT</code> index is a special type of index used for full-text searches. Only the <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-storage-engine.html"><code>InnoDB</code></a> and <a href="https://dev.mysql.com/doc/refman/5.6/en/myisam-storage-engine.html"><code>MyISAM</code></a> storage engines support <code>FULLTEXT</code> indexes. They can be created only from <a href="https://dev.mysql.com/doc/refman/5.6/en/char.html"><code>CHAR</code></a>, <a href="https://dev.mysql.com/doc/refman/5.6/en/char.html"><code>VARCHAR</code></a>, and <a href="https://dev.mysql.com/doc/refman/5.6/en/blob.html"><code>TEXT</code></a> columns.  See <a href="https://dev.mysql.com/doc/refman/5.6/en/fulltext-search.html">Section 12.10, “Full-Text Search Functions”</a>, for details of operation.</li>
+</ul>
+<p>还有 SPATIAL, FOREIGN KEY 等的介绍见 <a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html#create-table-indexes-keys">https://dev.mysql.com/doc/refman/5.6/en/create-table.html#create-table-indexes-keys</a>.</p>
+<h3 id="2-CREATE-UNIQUE-INDEX-创建普通索引-简单索引-与唯一索引"><a href="#2-CREATE-UNIQUE-INDEX-创建普通索引-简单索引-与唯一索引" class="headerlink" title="2. CREATE [UNIQUE] INDEX 创建普通索引(简单索引)与唯一索引"></a>2. CREATE [UNIQUE] INDEX 创建普通索引(简单索引)与唯一索引</h3><p>唯一索引意味着索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。<br>普通索引没有任何限制，它允许表中有重复值。</p>
+<p>下面是在表上创建索引的语法（可以使用一个或多个列来创建索引）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] INDEX index_name <span class="keyword">ON</span> table_name (column1, column2,...);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [ONLINE <span class="operator">|</span> OFFLINE] [<span class="keyword">UNIQUE</span> <span class="operator">|</span> FULLTEXT <span class="operator">|</span> SPATIAL] INDEX index_name</span><br><span class="line">    [index_type]</span><br><span class="line">    <span class="keyword">ON</span> tbl_name (key_part,...)</span><br><span class="line">    [index_option]</span><br><span class="line">    [algorithm_option <span class="operator">|</span> lock_option] ...</span><br><span class="line"></span><br><span class="line">key_part:</span><br><span class="line">    col_name [(length)] [<span class="keyword">ASC</span> <span class="operator">|</span> <span class="keyword">DESC</span>]</span><br><span class="line"></span><br><span class="line">index_option: &#123;</span><br><span class="line">    KEY_BLOCK_SIZE [<span class="operator">=</span>] <span class="keyword">value</span></span><br><span class="line">  <span class="operator">|</span> index_type</span><br><span class="line">  <span class="operator">|</span> <span class="keyword">WITH</span> PARSER parser_name</span><br><span class="line">  <span class="operator">|</span> COMMENT <span class="string">&#x27;string&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">index_type:</span><br><span class="line">    <span class="keyword">USING</span> &#123;BTREE <span class="operator">|</span> HASH&#125;</span><br><span class="line"></span><br><span class="line">algorithm_option:</span><br><span class="line">    ALGORITHM [<span class="operator">=</span>] &#123;<span class="keyword">DEFAULT</span> <span class="operator">|</span> INPLACE <span class="operator">|</span> <span class="keyword">COPY</span>&#125;</span><br><span class="line"></span><br><span class="line">lock_option:</span><br><span class="line">    LOCK [<span class="operator">=</span>] &#123;<span class="keyword">DEFAULT</span> <span class="operator">|</span> <span class="keyword">NONE</span> <span class="operator">|</span> SHARED <span class="operator">|</span> EXCLUSIVE&#125;</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- create an index on tutorials_tbl using tutorial_author.</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">UNIQUE</span> INDEX AUTHOR_INDEX <span class="keyword">ON</span> tutorials_tbl (tutorial_author);</span><br></pre></td></tr></table></figure>
+<p>对于普通索引，只需从上述statement中省略UNIQUE关键字即可。</p>
+<p>如果希望按降序索引列中的值，可以在列名后添加保留字DESC。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE UNIQUE INDEX AUTHOR_INDEX ON tutorials_tbl (tutorial_author DESC)</span><br></pre></td></tr></table></figure>
+<p>注：<strong>CREATE INDEX 不能用来创建 PRIMARY KEY. Use <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html"><code>ALTER TABLE</code></a> instead. </strong><br><a href="https://dev.mysql.com/doc/refman/5.6/en/create-index.html"><code>CREATE INDEX</code></a> is mapped to an <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html"><code>ALTER TABLE</code></a> statement to create indexes. See <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html">Section 13.1.7, “ALTER TABLE Statement”</a>.</p>
+<h3 id="3-使用-ALTER-命令添加和删除索引"><a href="#3-使用-ALTER-命令添加和删除索引" class="headerlink" title="3. 使用 ALTER 命令添加和删除索引"></a>3. 使用 ALTER 命令添加和删除索引</h3><h4 id="3-1-添加索引"><a href="#3-1-添加索引" class="headerlink" title="3.1 添加索引"></a>3.1 添加索引</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name ADD PRIMARY KEY (column_list)</span><br><span class="line">该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL</span><br><span class="line"></span><br><span class="line">ALTER TABLE tbl_name ADD UNIQUE [INDEX | KEY] [index_name] (column_list)</span><br><span class="line">该语句创建一个索引，其值必须是唯一的（除了NULL外，NULL可以出现多次）</span><br><span class="line"></span><br><span class="line">ALTER TABLE tbl_name ADD &#123;INDEX | KEY&#125; [index_name] (column_list)</span><br><span class="line">添加普通索引，索引值可出现多次</span><br><span class="line"></span><br><span class="line">ALTER TABLE tbl_name ADD FULLTEXT [INDEX | KEY] [index_name] (column_list)</span><br><span class="line">创建一个特殊的FULLTEXT索引，该索引用于文本搜索</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 更多关于 alter table 的语法见 <a href="https://dev.mysql.com/doc/refman/5.6/en/alter-table.html">https://dev.mysql.com/doc/refman/5.6/en/alter-table.html</a></p>
+</blockquote>
+<p>示例：在现有表中添加索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD INDEX (c);</span><br></pre></td></tr></table></figure>
+<p>注：当用 create index 创建索引时，必须指定索引的名字，否则mysql会报错；用 ALTER TABLE 创建索引时，可以不指定索引名字，若不指定mysql会自动生成索引名字。</p>
+<h4 id="3-2-删除索引"><a href="#3-2-删除索引" class="headerlink" title="3.2 删除索引"></a>3.2 删除索引</h4><p>可以在 ALTER 命令中使用 DROP 子句来删除索引。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> <span class="keyword">PRIMARY</span> KEY;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tbl_name <span class="keyword">DROP</span> &#123;INDEX <span class="operator">|</span> KEY&#125; index_name;</span><br></pre></td></tr></table></figure>
+<p>尝试以下示例来删除上面创建的索引。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP INDEX (c);</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-使用-ALTER-命令添加和删除主键"><a href="#3-3-使用-ALTER-命令添加和删除主键" class="headerlink" title="3.3 使用 ALTER 命令添加和删除主键"></a>3.3 使用 ALTER 命令添加和删除主键</h4><p>可以以相同的方式添加主键，但要先确保该column(s)不含NULL。下面的代码是在现有表中添加主键。首先使列不为NULL，然后将其添加为主键。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl MODIFY i INT NOT NULL;</span><br><span class="line">mysql&gt; ALTER TABLE testalter_tbl ADD PRIMARY KEY (i);</span><br></pre></td></tr></table></figure>
+<p>也可以使用 ALTER 命令删除主键：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; ALTER TABLE testalter_tbl DROP PRIMARY KEY;</span><br></pre></td></tr></table></figure>
+<p>删除主键时只需指定 <code>PRIMARY KEY</code>，但在删除不是 PRIMARY KEY 的索引时，必须指定索引名。</p>
+<h3 id="4-创建表时直接指定索引"><a href="#4-创建表时直接指定索引" class="headerlink" title="4. 创建表时直接指定索引"></a>4. 创建表时直接指定索引</h3><p>普通索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">    ID <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,   </span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,  </span><br><span class="line">    &#123;INDEX <span class="operator">|</span> KEY&#125; [indexName] (username)  </span><br><span class="line">); </span><br></pre></td></tr></table></figure>
+<p>唯一索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(  </span><br><span class="line">    ID <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,   </span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,  </span><br><span class="line">    <span class="keyword">UNIQUE</span> [indexName] (username)  </span><br><span class="line">);  </span><br></pre></td></tr></table></figure>
+<p>主键索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(</span><br><span class="line">    ID <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(ID)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 法二</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable(</span><br><span class="line">    ID <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    ID <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">    k <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">    s <span class="type">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    index k(k)</span><br><span class="line">) engine<span class="operator">=</span>InnoDB;</span><br></pre></td></tr></table></figure>
+<h3 id="5-使用-DROP-命令删除索引"><a href="#5-使用-DROP-命令删除索引" class="headerlink" title="5. 使用 DROP 命令删除索引"></a>5. 使用 DROP 命令删除索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> INDEX [indexName] <span class="keyword">ON</span> mytable; </span><br></pre></td></tr></table></figure>
+<h3 id="6-显示索引信息"><a href="#6-显示索引信息" class="headerlink" title="6. 显示索引信息"></a>6. 显示索引信息</h3><h4 id="6-1-show-index"><a href="#6-1-show-index" class="headerlink" title="6.1 show index"></a>6.1 show index</h4><p>可以使用 <strong>SHOW INDEX</strong> 命令列出与表关联的所有索引。可以通过添加 \G 进行垂直格式输出，以避免长行换行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW INDEX FROM table_name\G</span><br><span class="line">........</span><br></pre></td></tr></table></figure>
+<h4 id="6-2-可用explain来查看查询是否使用索引"><a href="#6-2-可用explain来查看查询是否使用索引" class="headerlink" title="6.2 可用explain来查看查询是否使用索引"></a><span id="jump6.2">6.2 可用explain来查看查询是否使用索引</span></h4><blockquote>
+<p>参考 <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html">https://dev.mysql.com/doc/refman/8.0/en/explain-output.html</a></p>
+</blockquote>
+<p>执行计划（有时称解释计划或查询计划）显示数据库执行SQL语句所采取的步骤。</p>
+<p>explain 结果中 <code>key</code> 代表使用的索引名称，若为NULL，则未使用索引。</p>
+<h5 id="6-2-1-explain-输出列"><a href="#6-2-1-explain-输出列" class="headerlink" title="6.2.1 explain 输出列"></a>6.2.1 explain 输出列</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Column</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_id"><code>id</code></a></td>
+<td style="text-align:left">The <code>SELECT</code> identifier</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_select_type"><code>select_type</code></a></td>
+<td style="text-align:left">The <code>SELECT</code> type</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_table"><code>table</code></a></td>
+<td style="text-align:left">The table for the output row</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_partitions"><code>partitions</code></a></td>
+<td style="text-align:left">The matching partitions</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_type"><code>type</code></a></td>
+<td style="text-align:left">The join type</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_possible_keys"><code>possible_keys</code></a></td>
+<td style="text-align:left">The possible indexes to choose</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_key"><code>key</code></a></td>
+<td style="text-align:left">The index actually chosen</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_key_len"><code>key_len</code></a></td>
+<td style="text-align:left">The length of the chosen key</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_ref"><code>ref</code></a></td>
+<td style="text-align:left">The columns compared to the index</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_rows"><code>rows</code></a></td>
+<td style="text-align:left">Estimate of rows to be examined</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_filtered"><code>filtered</code></a></td>
+<td style="text-align:left">Percentage of rows filtered by table condition</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain_extra"><code>Extra</code></a></td>
+<td style="text-align:left">Additional information</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="6-2-2-示例（关于-type-与-extra）"><a href="#6-2-2-示例（关于-type-与-extra）" class="headerlink" title="6.2.2 示例（关于 type 与 extra）"></a>6.2.2 示例（关于 type 与 extra）</h5><p>例如：现有表city2如下：</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591080992.png" alt="1605591080992"></p>
+<p>city2上的索引如下图所示：（id为主键，(age,name)联合索引）</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591141489.png" alt="1605591141489"></p>
+<p>查询1：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain <span class="keyword">select</span> name,age <span class="keyword">from</span> city2 <span class="keyword">where</span> age<span class="operator">=</span><span class="number">20</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容在索引内，where 条件为索引最左列</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591319736.png" alt="1605591319736"></p>
+<p>👆 type 是 ref，表明用到了索引（ref 与 Oracle 中的 INDEX RANGE SCAN 意思一样，因为索引列不是 unique 的，还需要 follow the leaf nodes in order to find all matching entries），extra 是 using index，表示索引覆盖了.（即不用回表）</p>
+<p>查询2：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain <span class="keyword">select</span> name, age <span class="keyword">from</span> city2 <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;bob&#x27;</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容在索引内，where条件为索引第二列，这次不是最左列了</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605591642645.png" alt="1605591642645"></p>
+<p>👆 type 是 index，表明发生了索引扫描（因为where条件不是最左列的缘故），extra 是 using where; using index（using index代表索引覆盖了，不用回表，using where代表发生了过滤），</p>
+<p>查询3：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain <span class="keyword">select</span> address <span class="keyword">from</span> city2 <span class="keyword">where</span> age<span class="operator">=</span><span class="number">20</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容不在索引内，where 条件为索引最左列</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605592157733.png" alt="1605592157733"></p>
+<p>👆 extra 是 NULL，type 是 ref，表明虽然用到了索引，但是没有索引覆盖，产生了回表。</p>
+<p>查询4：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain <span class="keyword">select</span> address <span class="keyword">from</span> city2 <span class="keyword">where</span> name<span class="operator">=</span><span class="string">&#x27;bob&#x27;</span>\G</span><br></pre></td></tr></table></figure>
+<p>查询内容不在索引范围内，where条件为索引第二列</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605592577124.png" alt="1605592577124"></p>
+<p>👆 type 是 all，代表全表扫描（将每一行与where条件进行比较，执行时间随表的大小增长），extra 是 using where 说明在全表扫描后发生了过滤。（走全表扫描的原因是查询内容不在索引范围内，且where条件没有最左列，所以引擎选择了走全表扫描。）</p>
+<p>查询5：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explain <span class="keyword">select</span> name <span class="keyword">from</span> city2 <span class="keyword">where</span> id<span class="operator">=</span>xxx</span><br></pre></td></tr></table></figure>
+<p>👆 此时，type为 const（只遍历索引树，因为是通过主键查询，保证了数据的唯一性，不用再搜索叶子节点，速度很快，几乎与表的大小无关），extra 为 NULL。</p>
+<p>更多例子见 <a href="https://blog.csdn.net/jeffrey11223/article/details/79100761">https://blog.csdn.net/jeffrey11223/article/details/79100761</a></p>
+<h5 id="6-2-3-EXPLAIN-Join-Types"><a href="#6-2-3-EXPLAIN-Join-Types" class="headerlink" title="6.2.3 EXPLAIN Join Types"></a>6.2.3 EXPLAIN Join Types</h5><p>explain中type的解释</p>
+<p>The <code>type</code> column of <a href="https://dev.mysql.com/doc/refman/8.0/en/explain.html"><code>EXPLAIN</code></a> output describes how tables are joined.  The following list describes the join types, ordered from the best type to the worst:</p>
+<p>下面只列出了部分</p>
+<ul>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_system"><code>system</code></a><br>The table has only one row (= system table). This is a special case of the <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const"><code>const</code></a> join type.</p>
+</li>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const"><code>const</code></a><br>The table has at most one matching row, which is read at the start of the query. Because there is only one row, values from the column in this row can be regarded as constants by the rest of the optimizer. <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const"><code>const</code></a> tables are very fast because they are read only once.<br><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const"><code>const</code></a> is used when you compare all parts of a <code>PRIMARY KEY</code> or <code>UNIQUE</code> index to constant values. In the following queries, <em>tbl_name</em> can be used as a <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_const"><code>const</code></a> table:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tbl_name <span class="keyword">WHERE</span> primary_key<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tbl_name</span><br><span class="line"><span class="keyword">WHERE</span> primary_key_part1<span class="operator">=</span><span class="number">1</span> </span><br><span class="line"><span class="keyword">AND</span> primary_key_part2<span class="operator">=</span><span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">- [`ref`](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref)</span><br><span class="line">  All rows with matching index values are read from this table for each combination of rows from the previous tables. [`ref`](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref) is used if the join uses only a leftmost prefix of the key or if the key is not a `PRIMARY KEY` or `UNIQUE` index (in other words, if the join cannot select a single row based on the key value). If the key that is used matches only a few rows, this is a good join type.</span><br><span class="line">  [`ref`](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref) can be used for indexed columns that are compared using the `=` or `&lt;=&gt;` operator. In the following examples, MySQL can use a [`ref`](https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_ref) join to process *ref_table*:</span><br><span class="line"></span><br><span class="line">  ```sql</span><br><span class="line">  SELECT * FROM ref_table WHERE key_column=expr;</span><br><span class="line">  </span><br><span class="line">  SELECT * FROM ref_table,other_table</span><br><span class="line">    WHERE ref_table.key_column=other_table.column;</span><br><span class="line">  </span><br><span class="line">  SELECT * FROM ref_table,other_table</span><br><span class="line">    WHERE ref_table.key_column_part1=other_table.column</span><br><span class="line">    AND ref_table.key_column_part2=1;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_index"><code>index</code></a><br>The <code>index</code> join type is the same as <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all"><code>ALL</code></a>, except that the index tree is scanned. This occurs two ways:</p>
+<ul>
+<li>If the index is a covering index for the queries and can be used to satisfy all data required from the table, only the index tree is scanned. In this case, the <code>Extra</code> column says <code>Using index</code>. An index-only scan usually is faster than <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all"><code>ALL</code></a> because the size of the index usually is smaller than the table data.</li>
+<li>A full table scan is performed using reads from the index to look up data rows in index order. <code>Uses index</code> does not appear in the <code>Extra</code> column.</li>
+</ul>
+<p>MySQL can use this join type when the query uses only columns that are part of a single index.</p>
+</li>
+<li><p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all"><code>ALL</code></a><br>A full table scan is done for each combination of rows from the previous tables. This is normally not good if the table is the first table not marked const, and usually very bad in all other cases. Normally, you can avoid ALL by adding indexes that enable row retrieval from the table based on constant values or column values from earlier tables.</p>
+</li>
+</ul>
+<h5 id="6-2-4-EXPLAIN-Extra-Information"><a href="#6-2-4-EXPLAIN-Extra-Information" class="headerlink" title="6.2.4 EXPLAIN Extra Information"></a>6.2.4 EXPLAIN Extra Information</h5><p>explian中extra的解释</p>
+<p>If you want to make your queries as fast as possible, look out for <code>Extra</code> column values of <code>Using filesort</code> and <code>Using temporary</code>.</p>
+<p>下面只列出了一部分：</p>
+<ul>
+<li><code>Distinct</code> (JSON property: <code>distinct</code>)<br>MySQL is looking for distinct values, so it stops searching for more rows for the current row combination after it has found the first matching row.</li>
+</ul>
+<ul>
+<li><code>Full scan on NULL key</code> (JSON property: <code>message</code>)<br>This occurs for subquery optimization as a fallback strategy when the optimizer cannot use an index-lookup access method.</li>
+</ul>
+<ul>
+<li><code>Using filesort</code> (JSON property: <code>using_filesort</code>)<br>MySQL must do an extra pass to find out how to retrieve the rows in sorted order. The sort is done by going through all rows according to the join type and storing the sort key and pointer to the row for all rows that match the <code>WHERE</code> clause. The keys then are sorted and the rows are retrieved in sorted order. See <a href="https://dev.mysql.com/doc/refman/8.0/en/order-by-optimization.html">Section 8.2.1.16, “ORDER BY Optimization”</a>.</li>
+</ul>
+<ul>
+<li><p><code>Using index</code> (JSON property: <code>using_index</code>)<br>The column information is retrieved from the table using only information in the index tree without having to do an additional seek to read the actual row. This strategy can be used when the query uses only columns that are part of a single index.<br>For <code>InnoDB</code> tables that have a user-defined clustered index, that index can be used even when <code>Using index</code> is absent from the <code>Extra</code> column. This is the case if <code>type</code> is <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_index"><code>index</code></a> and <code>key</code> is <code>PRIMARY</code>.</p>
+</li>
+<li><p><code>Using index condition</code> (JSON property: <code>using_index_condition</code>)<br>Tables are read by accessing index tuples and testing them first to determine whether to read full table rows. In this way, index information is used to defer (“push down”) reading full table rows unless it is necessary. See <a href="https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html">Section 8.2.1.6, “Index Condition Pushdown Optimization”</a>.</p>
+</li>
+<li><p><code>Using temporary</code> (JSON property: <code>using_temporary_table</code>)<br>To resolve the query, MySQL needs to create a temporary table to hold the result. This typically happens if the query contains <code>GROUP BY</code> and <code>ORDER BY</code> clauses that list columns differently.</p>
+</li>
+<li><p><code>Using where</code> (JSON property: <code>attached_condition</code>)<br>A <code>WHERE</code> clause is used to restrict which rows to match against the next table or send to the client. Unless you specifically intend to fetch or examine all rows from the table, you may have something wrong in your query if the <code>Extra</code> value is not <code>Using where</code> and the table join type is <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_all"><code>ALL</code></a> or <a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#jointype_index"><code>index</code></a>.</p>
+</li>
+</ul>
+<p>Tables are read by accessing index tuples and testing them first to determine whether to read full table rows. In this way, index information is used to defer (“push down”) reading full table rows unless it is necessary. See <a href="https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html">Section 8.2.1.6, “Index Condition Pushdown Optimization”</a>.</p>
+<h3 id="7-什么时候该使用索引"><a href="#7-什么时候该使用索引" class="headerlink" title="7. 什么时候该使用索引"></a>7. 什么时候该使用索引</h3><p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902891139.png" alt="1578902891139"></p>
+<h3 id="8-什么时候不该使用索引"><a href="#8-什么时候不该使用索引" class="headerlink" title="8. 什么时候不该使用索引"></a>8. 什么时候不该使用索引</h3><p>索引也会有它的缺点：虽然索引大大提高了查询速度，同时却会降低更新表的速度，如对表进行 INSERT、UPDATE 和 DELETE。因为更新表时，MySQL不仅要保存数据，还要保存一下索引文件。</p>
+<p>建立索引会占用磁盘空间的索引文件。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902910331.png" alt="1578902910331"></p>
+<h2 id="第二部分：索引的常见模型"><a href="#第二部分：索引的常见模型" class="headerlink" title="第二部分：索引的常见模型"></a>第二部分：索引的常见模型</h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69236">https://time.geekbang.org/column/article/69236</a></p>
+</blockquote>
+<p>索引的常见模型：哈希表、有序数组和搜索树。</p>
+<p>例如，现在维护着一个身份证信息和姓名的表，需要根据身份证号查找对应的名字。</p>
+<h3 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1. 哈希表"></a>1. 哈希表</h3><p>哈希索引的示意图如下：</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605000393037.png" alt="1605000393037"></p>
+<p>从上图可以看到，四个ID_card_n的值并不是递增的（即并不是身份证号越大，算出来的N越大）</p>
+<p><strong>优点</strong>：增加新的数据时，只需往后追加。</p>
+<p><strong>缺点</strong>：因为不是有序的，所以哈希索引做区间查询的速度是很慢的。例如查找身份证号在[ID_card_X, ID_card_Y]区间的所有用户，就必须全部扫描一遍了。</p>
+<p><strong>哈希表这种结构适用于只有等值查询的场景，比如 Memcached 及其他一些 NoSQL 引擎。</strong></p>
+<h3 id="2-有序数组"><a href="#2-有序数组" class="headerlink" title="2. 有序数组"></a>2. 有序数组</h3><p><strong>优点</strong>：有序数组在等值查询和范围查询场景中的性能都非常优秀。</p>
+<p>还是上面这个根据身份证号查名字的例子，如果我们使用有序数组来实现的话，示意图如下所示：</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605000914282.png" alt="1605000914282"></p>
+<p>查找身份证号对应的名字，用二分法可以快速得到，时间复杂度 O(log(N))。</p>
+<p>同时很显然，这个索引结构支持范围查询。若要查身份证号在 [ID_card_X, ID_card_Y] 区间的 User, 可以先二分法找到 ID_card_x（如果不存在 ID_card_X,就找到大于 ID_card_X 的第一个 user），然后向右谝历，直到查到第一个大于  ID_card_Y 的身份证号，退出循环。</p>
+<p><strong>缺点</strong>：如果仅仅看查询效率，有序数组就是最好的数据结构了。但是，在需要更新数据的时候就麻烦了，你往中间插入一个记录就它须得挪动后面所有的记录，成本太高。</p>
+<p>所以，<strong>有序数组索引只适用于静态存储引擎</strong>，比如你要保存的是2017年某个城市的所有人囗信息，这类不会再修改的数据。</p>
+<h3 id="3-搜索树"><a href="#3-搜索树" class="headerlink" title="3. 搜索树"></a>3. 搜索树</h3><p>还是上面根据身份证号查名字的例子，如果我们用二叉搜索树来实现的话，示意图如下所示：</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605080367750.png" alt="1605080367750"></p>
+<p>二叉搜索树的特点是：每个节点的左儿子小于父节点，父节点又小于右儿子。这样如果你要查 ID_card_n2 的话，按照图中的搜索顺序就是按照 UserA -&gt; UserC -&gt; UserF -&gt; User2 这个路径得到。这个时间复杂度杂度是O(log(N))。</p>
+<p>当然为了维持 O(Iog(N)) 的查询复杂度，需要保持这棵树是平衡二叉树。为了做这个保证，更新的时间复杂度也是O(log(N))。</p>
+<p>树可以有二叉，也可以有多叉。多叉树就是每个节点有多个儿子，儿子之间的大小保证从左到右递增。二叉树是搜索效率最高的，但是实际上大多数的数据库存储却并不使用二叉树。其原因是，索引不止存在内存中，还要写到磁盘上。</p>
+<p>想象一下一棵100万节点的平衡二叉树，树高20。一次查询可能需要访问20个数据块。在机械硬盘时代，从磁盘随机读一个数据块需要10ms左右的寻址时间。也就是说，对于一个100万行的表，如果使用二叉树来存储，单独访问一个行可能需要20个10ms的时间，这个查询可真够慢的。</p>
+<p>为了让一个查询尽量少地读磁盘，就必须让查询过程访问尽量少的数据块。那么，我们就不应该使用二叉树，而是要使用<strong><span style="color:red">“N 叉”树</span></strong>。这里，“N 叉”树中的“N”取决于数据块的大小。</p>
+<p>以 InnoDB 的一个整数字段索引为例，这个 N 差不多是 1200。这棵树高是 4 的时候，就可以存 1200 的 3 次方个值，这已经 17 亿了。考虑到树根的数据块总是在内存中的，一个 10 亿行的表上一个整数字段的索引，查找一个值最多只需要访问 3 次磁盘。其实，树的第二层也有很大概率在内存中，那么访问磁盘的平均次数就更少了。</p>
+<p><strong>N 叉树由于在读写上的性能优点，以及适配磁盘的访问模式，已经被广泛应用在数据库引擎中了。</strong></p>
+<blockquote>
+<p>N叉树的N值，在 MySQL 5.6 以后可以通过调整 page（数据页）大小间接控制<br>（page 指的 InnoDB的页，默认大小16K）</p>
+</blockquote>
+<h4 id="3-1-The-Index-Leaf-Node-索引叶子节点"><a href="#3-1-The-Index-Leaf-Node-索引叶子节点" class="headerlink" title="3.1 The Index Leaf Node 索引叶子节点"></a>3.1 The Index Leaf Node 索引叶子节点</h4><blockquote>
+<p>参考： <a href="https://use-the-index-luke.com/sql/anatomy/the-leaf-nodes">The Leaf Nodes of an SQL Index</a></p>
+</blockquote>
+<p>索引的主要目的是为 indexed data 提供有序表示。然而不可能按顺序存储数据，因为插入语句需要移动 the following entries来为新条目腾出空间。移动大量数据非常耗时，因此插入语句将非常缓慢。解决这个问题的方法是在内存中建立一个独立于物理顺序的逻辑顺序。</p>
+<p>逻辑顺序是通过一个双链表（doubly linked list）建立的。每个节点都有指向两个相邻 entries 的 links。通过更新两个现有节点的链接指向新节点，来插入新节点。新节点的物理位置并不重要，因为双链表维护了逻辑顺序。</p>
+<p>双链表的结构使得数据库能够根据需要向前或向后读取索引。这样就可以在不移动大量数据的情况下插入新条目——只需要改变一些指针。</p>
+<p>数据库使用双链表来连接所谓的索引叶节点（index leaf nodes）。每个叶节点存储在一个数据库块或页中，即数据库的最小存储单元。所有索引块的大小相同，通常是 a few kilobytes。数据库尽可能地利用每个块中的空间，并在每个块中存储尽可能多的索引条目。这意味着索引的顺序在两个不同的 level 上维护着：每个叶节点内的索引条目，以及使用双链表连接的叶节点（the index entries within each leaf node, and the leaf nodes among each other using a doubly linked list）。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1695715497966.png" alt="1695715497966"></p>
+<p>图1.1 展示了索引叶节点及其与表数据的联系。每个索引项由 index columns (the key, column 2) 组成，并 refer to 相应的表行（通过 ROWID 或 RID ）。与索引不同，表数据存储在堆结构中，根本不排序，存储在同一个 table block 中的行之间没有任何关系，blocks 之间也没有任何联系。</p>
+<h4 id="3-2-搜索树-B-Tree-使索引更快"><a href="#3-2-搜索树-B-Tree-使索引更快" class="headerlink" title="3.2 搜索树 (B-Tree) 使索引更快"></a>3.2 搜索树 (B-Tree) 使索引更快</h4><p>The index leaf nodes 以任意顺序存储，磁盘上的位置与根据索引顺序的逻辑位置并不是对应的。它就像一个打乱了页面的电话簿。如果你搜索 Smith，但首先打开Robinson 的目录，这绝不意味着 Sminth 跟在 Robinson 后面。数据库需要第二种结构来快速地在打乱的页面中找到条目：简而言之就是平衡的搜索树：b树。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1695716281948.png" alt="1695716281948"></p>
+<p>图1.2 展示了一个包含30个条目的示例索引。双链表建立了叶节点之间的逻辑顺序。根节点和分支节点支持在叶节点之间快速搜索。</p>
+<p>该图突出显示了一个分支节点和它所指向的叶节点。每个分支节点条目对应于各自叶节点中的最大值。以第一个叶子节点为例，该节点的最大值为46，因此存储在相应的分支节点 entry 中。对于其他叶节点也是如此，因此最终分支节点的值为 46、53、57和83。根据这个机制，一个分支层被建立起来，直到所有叶节点都被分支节点覆盖。</p>
+<p>The next layer is built similarly, but on top of the first branch node level. 这个过程不断重复，直到 all keys fit into a single node, the <em>root node</em>。这个结构是一个平衡搜索树，因为树的深度在每个位置都是相等的；根节点和叶节点之间的距离在任何地方都是一样的。</p>
+<blockquote>
+<p>A B-tree is a balanced tree—not a binary tree.</p>
+</blockquote>
+<p>创建索引后，数据库将自动维护索引。它将每次插入、删除和更新应用于索引，并保持树的平衡，从而导致写操作的维护开销。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1695717265022.png" alt="1695717265022"></p>
+<p>图1.3 展示了一个索引片段，用于演示对 key 57 的搜索。树遍历从左侧的根节点开始。每个条目按升序处理，直到一个值大于等于搜索项(57)。在图中，它是条目83。The database follows the reference to the corresponding branch node ，并重复该过程，直到树遍历到达叶节点。</p>
+<blockquote>
+<p>The B-tree enables the database to find a leaf node quickly.</p>
+</blockquote>
+<p>树遍历是一个非常高效的操作。这主要是因为树的平衡，which allows accessing all elements with the same number of steps，其次是因为树的深度呈对数增长。这意味着与叶节点的数量相比，树的深度增长得非常慢。 Real world indexes with millions of records have a tree depth of four or five. A tree depth of six is hardly ever seen.</p>
+<blockquote>
+<p><a href="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html">B+ Tree Visualization (usfca.edu)</a></p>
+</blockquote>
+<h4 id="3-3-slow-index-慢索引"><a href="#3-3-slow-index-慢索引" class="headerlink" title="3.3 slow index 慢索引"></a>3.3 slow index 慢索引</h4><blockquote>
+<p>参考 <a href="https://use-the-index-luke.com/sql/anatomy/slow-indexes">Slow Indexes in RDBMS</a></p>
+</blockquote>
+<p>尽管树遍历效率很高，但仍然存在索引查找不如预期快的情况。</p>
+<p>导致索引查找缓慢的第一个因素是叶节点链（the leaf node chain）。以图1.3中对 57 的搜索为例，显然，索引中有两个匹配的项。更准确地说，至少有两个条目是相同的，下一个叶节点可能有更多的57。数据库必须读取下一个叶节点，以查看是否有更多匹配条目。这意味着索引查找不仅需要执行树遍历，还需要遵循叶节点链。</p>
+<p>导致索引查找缓慢的第二个因素是访问表（accessing the table）。即使是单个叶节点也可能包含许多命中，通常是数百个。相应的表数据通常分散在许多表块中（参见图1.1）。这意味着每次命中都有一个额外的表访问。</p>
+<p>索引查找需要三个步骤:</p>
+<p>（1）遍历树;<br>（2）沿叶节点链;<br>（3）获取表数据。</p>
+<p>树遍历是唯一具有访问块数上限的步骤（索引深度）。另外两个步骤可能需要访问许多 blocks，它们会导致索引查找缓慢。</p>
+<h2 id="第三部分：InnoDB的索引模型"><a href="#第三部分：InnoDB的索引模型" class="headerlink" title="第三部分：InnoDB的索引模型"></a>第三部分：InnoDB的索引模型</h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69236">https://time.geekbang.org/column/article/69236</a></p>
+</blockquote>
+<h3 id="1-InnoDB索引组织结构"><a href="#1-InnoDB索引组织结构" class="headerlink" title="1. InnoDB索引组织结构"></a>1. InnoDB索引组织结构</h3><p>在 MySQL 中，索引是在存储引擎层实现的，所以并没有统一的索引标准，即不同存储引擎的索引的工作方式并不一样。而即使多个存储引擎支持同一种类型的索引，其底层的实现也可能不同。由于 InnoDB 存储引擎在 MySQL 数据库中使用最为广泛，所以下面以 InnoDB 为例，分析一下其中的索引模型。</p>
+<p>在 InnoDB 中，表都是根据主键顺序以索引的形式存放的，这种存储方式的表称为<strong><span id="jump_index_zuzhibiao">索引组织表</span></strong>。InnoDB 使用了 <strong>B+ 树</strong>索引模型，所以数据都是存储在 B+ 树中的。</p>
+<blockquote>
+<p><span style="color:red">每一个索引在 InnoDB 里面对应一棵 B+ 树。</span></p>
+</blockquote>
+<p>假设，我们有一个主键列为ID的表，表中有字段 k，并且在k上有索引。这个表的建表语句是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span><span class="keyword">create</span> <span class="keyword">table</span> T(</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">primary</span> key，</span><br><span class="line">    k <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span>，</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>)，</span><br><span class="line">    index(k)</span><br><span class="line">) engine<span class="operator">=</span>InnoDB;</span><br></pre></td></tr></table></figure>
+<p>表中R1-R5的 (ID,k) 值分别为(100, 1)、(200, 2)、(300,3)、(500,5) 和 (600, 6)，</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>k</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>1</td>
+<td>…</td>
+</tr>
+<tr>
+<td>200</td>
+<td>2</td>
+<td>…</td>
+</tr>
+<tr>
+<td>300</td>
+<td>3</td>
+<td>…</td>
+</tr>
+<tr>
+<td>500</td>
+<td>5</td>
+<td>…</td>
+</tr>
+<tr>
+<td>600</td>
+<td>6</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>两棵树的示例示意图如下。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605086187154.png" alt="1605086187154"></p>
+<p>👆 R1代表的是一行，左边是主键索引，右边是非主键索引。</p>
+<blockquote>
+<p><strong>innoDB B+树的叶子节点是 page (页)，一个页里面可以存多个行</strong><br>索引只能定位到 page，page内部怎么去定位行数据：page内部有个有序数组，二分法</p>
+</blockquote>
+<p>从图中不难看出，根据叶子节点的内容，索引类型分为<span style="color:red" id="jump_index_several"><strong>主键索引</strong></span>和<strong><span style="color:red">非主键索引（也叫普通索引）</span></strong>。<br><strong>主键索引的叶子节点存的是整行数据</strong>。在 InnoDB 里，主键索引也被称为<strong><span style="color:red">聚簇索引（clustered index）</span></strong>。<br><strong>非主键索引的叶子节点内容是主键的值</strong>。在 InnoDB 里，非主键索引也被称为<strong><span style="color:red">二级索引（secondary index）</span></strong>。</p>
+<p>根据上面的索引结构说明，我们来讨论一个问题：基于主键索引和普通索引的查询有什么区别？</p>
+<ul>
+<li>如果语句是 select * from T where ID=500，即主键查询方式，则只需要搜索 ID 这棵 B+ 树；</li>
+<li>如果语句是 select * from T where k=5，即普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。</li>
+</ul>
+<p>也就是说，<strong>基于非主键索引的查询需要多扫描一棵索引树</strong>。因此，我们在应用中应该尽量使用主键查询。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605236459443.png" alt="1605236459443"></p>
+<h3 id="2-聚簇索引与二级索引"><a href="#2-聚簇索引与二级索引" class="headerlink" title="2. 聚簇索引与二级索引"></a>2. 聚簇索引与二级索引</h3><h4 id="2-1-聚簇索引（也称主键索引，聚集索引，clustered-index）"><a href="#2-1-聚簇索引（也称主键索引，聚集索引，clustered-index）" class="headerlink" title="2.1 聚簇索引（也称主键索引，聚集索引，clustered index）"></a><span style="color:Red">2.1 聚簇索引（也称主键索引，聚集索引，clustered index）</span></h4><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
+</blockquote>
+<p><strong>InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，聚簇索引就是按照每张表的主键构造一颗B+树，同时叶子节点中存放的就是整张表的行记录数据，也将聚集索引的叶子节点称为数据页。这个特性决定了索引组织表中数据也是索引的一部分。一张表只有一个聚簇索引。</strong></p>
+<p>聚簇索引并不是一种单独的索引类型，而<strong>是一种数据存储方式</strong>。具体细节依赖于其实现方式。</p>
+<p>MySQL数据库中innodb存储引擎，B+树索引可以分为聚簇索引（也称聚集索引，clustered index）和<span style="color:red">辅助索引（有时也称非聚簇索引或二级索引，secondary index，non-clustered index）</span>。这两种索引内部都是B+树，聚集索引的叶子节点存放着一整行的数据。</p>
+<p>Innobd中的主键索引是一种聚簇索引，非聚簇索引都是辅助索引，像复合索引、前缀索引、唯一索引。</p>
+<blockquote>
+<p><span style="color:red">Innodb使用的是聚簇索引，MyISam使用的是非聚簇索引。</span><br>MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。</p>
+<p>问：主键索引是聚集索引还是非聚集索引？<br>在Innodb下主键索引是聚集索引，在Myisam下主键索引是非聚集索引</p>
+</blockquote>
+<p>Innodb通过主键聚集数据，如果没有定义主键，innodb会选择非空的唯一索引代替。如果没有这样的索引，innodb会隐式的定义一个主键来作为聚簇索引。</p>
+<p>聚簇索引的优缺点：</p>
+<p>优点：</p>
+<ol>
+<li>数据访问更快，因为聚簇索引将索引和数据保存在同一个B+树中，因此从聚簇索引中获取数据比非聚簇索引更快</li>
+<li>聚簇索引对于主键的排序查找和范围查找速度非常快</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>插入速度严重依赖于插入顺序，按照主键的<strong>顺序插入</strong>是最快的方式，否则将会出现页分裂，严重影响性能。因此，对于InnoDB表，我们一般都会定义一个<strong>自增的ID列为主键</strong></li>
+<li><strong>更新主键的代价很高</strong>，因为将会导致被更新的行移动。因此，对于InnoDB表，我们一般定义主键为不可更新。</li>
+<li>二级索引访问需要两次索引查找，第一次找到主键值，第二次根据主键值找到行数据。</li>
+</ol>
+<h4 id="2-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）"><a href="#2-2-辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary-index）" class="headerlink" title="2.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）"></a><span style="color:red">2.2 辅助索引（也称非聚簇索引，二级索引，非主键索引，普通索引，secondary index）</span></h4><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
+</blockquote>
+<p>在<strong>聚簇索引之上创建的索引称之为辅助索引</strong>，辅助索引访问数据总是需要二次查找。辅助索引叶子节点存储的不再是行的物理位置，而是主键值。通过辅助索引首先找到的是主键值，再通过主键值找到数据行的数据页，再通过数据页中的Page Directory找到数据行。</p>
+<p>Innodb辅助索引的叶子节点并<strong>不包含行记录的全部数据</strong>，叶子节点除了包含键值外，还包含了相应行数据的聚簇索引键。（见上图图4）</p>
+<p>辅助索引的存在不影响数据在聚簇索引中的组织，所以一张表可以有多个辅助索引。在innodb中有时也称辅助索引为二级索引。</p>
+<p>辅助索引会包含主键列，所以，<strong>如果主键定义的比较大，其他索引也将很大</strong>。如果想在表上定义很多索引，则争取尽量把主键定义得小一些。InnoDB 不会压缩索引。</p>
+<blockquote>
+<p>In <code>InnoDB</code> tables, keep the <code>PRIMARY KEY</code> short to minimize storage overhead for secondary indexes. Each secondary index entry contains a copy of the primary key columns for the corresponding row. (See <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-index-types.html">Section 14.6.2.1, “Clustered and Secondary Indexes”</a>.)</p>
+<p>(来自 <a href="https://dev.mysql.com/doc/refman/5.6/en/create-table.html">https://dev.mysql.com/doc/refman/5.6/en/create-table.html</a>)</p>
+</blockquote>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605671203873.png" alt="1605671203873"></p>
+<h4 id="2-3-小结"><a href="#2-3-小结" class="headerlink" title="2.3 小结"></a>2.3 小结</h4><blockquote>
+<p>参考 <a href="https://www.cnblogs.com/jiawen010/p/11805241.html">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
+</blockquote>
+<ul>
+<li>为什么不建议使用过长的字段作为主键，因为所有辅助索引都引用主索引，过长的主索引会令辅助索引变得过大。</li>
+<li>用非单调的字段作为主键在InnoDB中不是个好主意，因为InnoDB数据文件本身是一颗B+Tree，非单调的主键会造成在插入新记录时数据文件为了维持B+Tree的特性而频繁的分裂调整，十分低效，而使用自增字段作为主键则是一个很好的选择。</li>
+</ul>
+<p>聚簇索引和非聚簇索引的区别：</p>
+<ul>
+<li>聚簇索引的叶子节点存放的是主键值和数据行，<strong>支持覆盖索引</strong>；二级索引的叶子节点存放的是主键值或指向数据行的指针。</li>
+<li>由于叶子节点(数据页)只能按照一颗B+树排序，故<strong>一张表只能有一个聚簇索引</strong>。辅助索引的存在不影响聚簇索引中数据的组织，所以一张表可以有多个辅助索引</li>
+</ul>
+<blockquote>
+<p>注： <strong><span id="jump_covering_index">覆盖索引（covering index）</span></strong>指一个查询语句的执行只用从索引中就能够取得，不必从数据表中读取。也可以称之为实现了索引覆盖。 当一条查询语句符合覆盖索引条件时，MySQL只需要通过索引就可以返回查询所需要的数据，这样避免了查到索引后再返回表操作，减少I/O提高效率。 如，表covering_index_sample中有一个普通索引 idx_key1_key2(key1,key2)。当我们通过SQL语句：select key2 from covering_index_sample where key1 = ‘keytest’;的时候，就可以通过覆盖索引查询，无需回表。（关于覆盖索引更详细内容见<a href="#jump4">第四部分：覆盖索引</a>）</p>
+</blockquote>
+<h3 id="3-索引维护"><a href="#3-索引维护" class="headerlink" title="3. 索引维护"></a>3. 索引维护</h3><p>B+ 树为了维护索引有序性，在插入新值的时候需要做必要的维护。以上面图4为例，如果插入新的行 ID 值为 700，则只需要在 R5 的记录后面插入一个新记录。如果新插入的 ID 值为 400，就相对麻烦了，需要逻辑上挪动后面的数据，空出位置。</p>
+<p>而更糟的情况是，如果 R5 所在的数据页已经满了，根据 B+ 树的算法，这时候需要申请一个新的数据页，然后挪动部分数据过去。这个过程称为<strong>页分裂</strong>。在这种情况下，性能自然会受影响。</p>
+<p>除了性能外，页分裂操作还影响数据页的利用率。原本放在一个页的数据，现在分到两个页中，整体空间利用率降低大约 50%。</p>
+<p>当然有分裂就有合并。当相邻两个页由于删除了数据，利用率很低之后，会将数据页做合并。合并的过程，可以认为是分裂过程的逆过程。</p>
+<h3 id="4-关于自增主键"><a href="#4-关于自增主键" class="headerlink" title="4. 关于自增主键"></a>4. 关于自增主键</h3><p>你可能在一些建表规范里面见到过类似的描述，要求建表语句里一定要有自增主键。当然事无绝对，我们来分析一下哪些场景下应该使用自增主键，而哪些场景下不应该。</p>
+<p>自增主键是指自增列上定义的主键，在建表浯句中一般是这么定义的：<code>NOT NULL PRIMARY KEY AUTO INCREMENT</code>。</p>
+<p>插入新记录的时候可以不指定ID的值，系统会获取当前ID最大值加1作为下一条记录的ID值。</p>
+<p>也就是说，自增主键的插入数据模式，正符合了我们前面提到的递增插入的场景。每次插入一条新记录，都是追加操作，都不涉及到挪动其他记录，也不会触发叶子节点的分裂。而用业务逻辑的字段做主键，则往往不容易保证有序插入，这样写数据成本相对较高。</p>
+<p>除了考虑性能外，我们还可以从存储空间的角度来看。假设你的表中确实有一个唯一字段，比如字符串类型的身份证号，那应该用身份证号做主键，还是用自增字段做主键呢？</p>
+<p>由于每个非主键索引的叶子节点上都是主键的值，如果用身份证号做主键，那么每个二级索引的叶子节点占用约20个字节，而如果用整型做主键，则只要4个字节，如果是长整型(bigint)则是8个字节。</p>
+<p>显然，主键长度越小，普通索引的叶子节点就越小，普通索引占用的空间也就越小。所以，从性能和存储空间方面考量，自增主键往往是更合理的选择。</p>
+<p>有没有什么场景适合用业务字段直接做主键的呢？还是有的。比如，有些业务的场景需求是这样的：</p>
+<ol>
+<li>只有一个索引；</li>
+<li>该索引必须是唯一索引。</li>
+</ol>
+<p>这就是典型的KV(key-value)场景，由于没有其他索引，所以也就不用考虑其他索引的叶子节点大小的问题。<br>这时候我们就要优先考虑上一段提到的”尽量使用主键查询”原则，直接将这个索引设置为主键，可以避免每次查询需要搜索两棵树。</p>
+<h3 id="5-小结"><a href="#5-小结" class="headerlink" title="5. 小结"></a>5. 小结</h3><p>B+ 树能够很好地配合磁盘的读写特性，减少单次查询的磁盘访问次数。</p>
+<p>由于 InnoDB 是索引组织表，一般情况下建议创建一个自增主键，这样非主键索引占用的空间最小。</p>
+<p>对于上面例子中的 InnoDB 表 T，如果你要重建索引 k，你的两个 SQL 语句可以这么写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> index k;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> index(k);</span><br></pre></td></tr></table></figure>
+<p>如果你要重建主键索引，也可以这么写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">drop</span> <span class="keyword">primary</span> key;</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> T <span class="keyword">add</span> <span class="keyword">primary</span> key(id);</span><br></pre></td></tr></table></figure>
+<h4 id="问：对于上面这两个重建索引的做法，有没有不合适的？"><a href="#问：对于上面这两个重建索引的做法，有没有不合适的？" class="headerlink" title="问：对于上面这两个重建索引的做法，有没有不合适的？"></a>问：对于上面这两个重建索引的做法，有没有不合适的？</h4><blockquote>
+<p>注：为什么要重建索引？<br>前面提到，索引可能因为删除，或者页分裂等原因，导致数据页有空洞，重建索引的过程会创建一个新的索引，把数据按顺序插入，这样页面的利用率最高，也就是索引更紧凑、更省空间。</p>
+</blockquote>
+<p>答案：重建索引 k 的做法是合理的，可以达到省空间的目的。但是，重建主键的过程不合理。<br>1.直接删掉主键索引，会使得所有二级索引都失效，并且会用ROWID来做主键索引。<br>2.不论是删除主键还是创建主键，都会将整个表重建。所以连着执行这两个语句的话，第一个语句就白做了。这两个语句，你可以用这个语句代替 ：<code>alter table T engine=InnoDB</code>。👈原地重建表结构</p>
+<h2 id="第四部分：覆盖索引"><a href="#第四部分：覆盖索引" class="headerlink" title="第四部分：覆盖索引"></a><span id="jump4">第四部分：覆盖索引</span></h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69636">https://time.geekbang.org/column/article/69636</a></p>
+</blockquote>
+<p>在下面这个表T中，如果执行 <code>select * from T where k between 3 and 5</code>，需要执行几次树的搜索操作，会扫描多少行？<br>表的初始化语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    ID <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">    k <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">    s <span class="type">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    index k(k)</span><br><span class="line">) engine<span class="operator">=</span>InnoDB;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>,<span class="string">&#x27;aa&#x27;</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">&#x27;bb&#x27;</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">&#x27;cc&#x27;</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">&#x27;cc&#x27;</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">&#x27;ff&#x27;</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">&#x27;gg&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605443844487.png" alt="1605443844487"></p>
+<p>这条SQL查询语句的执行流程：</p>
+<ol>
+<li>在k索引树上找到 k=3 的记录，取得 ID=300;</li>
+<li>再到 ID 索引树查到 ID=300 对应的 R3；</li>
+<li>在 k 索引树取下一个值 k=5，取得 ID=500；</li>
+<li>再回到 ID 索引树查到 ID=500对应的R4；</li>
+<li>在 k 索引树取下一个值 k=6，不满足条件，循环结束。</li>
+</ol>
+<p>在这个过程中，<strong>回到主键索引树搜索的过程，我们称为<span style="color:red">回表</span></strong>。可以看到，这个查询过程读了 k 索引树的 3 条记录（步骤 1、3 和 5），回表了两次（步骤 2 和 4）。</p>
+<p>在这个例子中，由于查询结果所需要的数据只在主键索引上有，所以不得不回表。那么，有没有可能经过索引优化，避免回表过程呢？</p>
+<p>如果执行的语句是 select ID from T where k between 3 and 5，这时只需要查 ID 的值，而 ID 的值已经在 k 索引树上了，因此可以直接提供查询结果，不需要回表。也就是说，在这个查询里面，索引 k 已经“覆盖了”我们的查询需求，我们称为<strong>覆盖索引</strong>。</p>
+<p><strong>由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。</strong></p>
+<p>需要注意的是，在引擎内部使用覆盖索引在索引k上其实读了三个记录，R3~R5（对应的索引k上的记录项），但是对于MySQL的 Server 层来说，它就是找引擎拿到了两条记录，因此 MySQL 认为扫描行数是2。</p>
+<p>基于上面覆盖索引的说明，我们来讨论一个问题：<strong>在一个市民信息表，是否有必要将身份证号和名字建立联合索引？</strong></p>
+<p>假设这个市民表的定义是这样的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `tuser` (</span><br><span class="line">  `id` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `id_card` <span class="type">varchar</span>(<span class="number">32</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">32</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `age` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `ismale` tinyint(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`),</span><br><span class="line">  KEY `id_card` (`id_card`),</span><br><span class="line">  KEY `name_age` (`name`,`age`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB</span><br></pre></td></tr></table></figure>
+<p>我们知道，身份证号是市民的唯一标识。也就是说，如果有根据身份证号查询市民信息的需求，我们只要在身份证号字段上建立索引就够了。而再建立一个（身份证号，姓名）的联合索引，是不是浪费空间？如果现在有一个高频请求，要根据市民的身份证号查询他的姓名，这个联合索引就有意义了。它可以在这个高频请求上用到覆盖索引，不再需要回表查整行记录，减少语句的执行时间。</p>
+<p>当然，索引字段的维护总是有代价的。因此，在建立冗余索引来支持覆盖索引时就需要权衡考虑了。这正是业务 DBA，或者称为业务数据架构师的工作。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605236364285.png" alt="1605236364285"></p>
+<h2 id="第五部分：最左前缀原则"><a href="#第五部分：最左前缀原则" class="headerlink" title="第五部分：最左前缀原则"></a>第五部分：最左前缀原则</h2><blockquote>
+<p>参考 <a href="https://time.geekbang.org/column/article/69636">https://time.geekbang.org/column/article/69636</a></p>
+</blockquote>
+<p>如果为每一种查询都设计一个索引，索引是不是太多了。如果现在要按照市民的身份证号取查他的家庭地址呢？虽然这个查询需求在业务中出现的概率不高，但总不能让它走全表扫描吧？反过来说，单独为一个不频繁的请求创建一个（身份证号，地址）的索引又感觉有点浪费。应该怎么做呢？</p>
+<h3 id="1-最左前缀"><a href="#1-最左前缀" class="headerlink" title="1. 最左前缀"></a><span id="jump_leftmost_prefix">1. 最左前缀</span></h3><p><strong>B+树这种索引结构，可以利用索引的”最左前缀“，来定位记录。</strong></p>
+<p>用（name, age）这个联合索引来分析：</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605450882634.png" alt="1605450882634"></p>
+<p>可以看到，<strong>索引项是按照索引定义里面出现的字段顺序排序的。→</strong> 即先按name排序，再按age排序</p>
+<p>当你的逻辑需求是查到所有名字是“张三”的人时，可以快速定位到 ID4，然后向后遍历得到所有需要的结果。</p>
+<p>如果你要查的是所有名字第一个字是“张”的人，你的 SQL 语句的条件是<code>where name like ‘张%’</code>。这时，你也能够用上这个索引，查找到第一个符合条件的记录是 ID3，然后向后遍历，直到不满足条件为止。</p>
+<p>可以看到，<span style="color:blue">不只是索引的全部定义，只要满足最左前缀，就可以利用索引来加速检索。这个最左前缀可以是联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符。</span></p>
+<p>基于上面对最左前缀索引的说明，我们来讨论一个问题：<strong>在建立联合索引的时候，如何安排索引内的字段顺序。</strong></p>
+<p>这里我们的评估标准是，<span style="color:blue">索引的复用能力</span>。<strong><span style="color:orange">因为可以支持最左前缀，所以当已经有了 (a,b) 这个联合索引后，一般就不需要单独在 a 上建立索引了</span></strong>。<strong>因此，第一原则是，如果通过调整顺序，可以少维护一个索引，那么这个顺序往往就是需要优先考虑采用的</strong>。</p>
+<blockquote>
+<p>The most important consideration when defining a concatenated index is how to choose the column order so it can be used as often as possible.</p>
+<p>In general, a database can use a concatenated index when searching with the leading (leftmost) columns. An index with three columns can be used when searching for the first column, when searching with the first two columns together, and when searching using all columns.</p>
+<p>（ <a href="https://use-the-index-luke.com/sql/where-clause/the-equals-operator/concatenated-keys">The right column order in multi-column indexes</a>）</p>
+</blockquote>
+<p>所以现在你知道了，这段开头的问题里，我们要为高频请求创建 (身份证号，姓名）这个联合索引，并用这个索引支持“根据身份证号查询地址”的需求。</p>
+<p>那么，如果既有联合查询，又有基于 a、b 各自的查询呢？<strong>查询条件里面只有 b 的语句，是无法使用 (a,b) 这个联合索引的</strong>（ a two-column index does not support searching on the second column alone），这时候你不得不维护另外一个索引，也就是说你需要同时维护 (a,b)、(b) 这两个索引。</p>
+<p>这时候，我们要<strong>考虑的原则就是空间</strong>了。比如上面这个市民表的情况，name 字段是比 age 字段大的 ，那我就建议你创建一个（name,age）的联合索引和一个 (age) 的单字段索引。</p>
+<h3 id="2-索引下推"><a href="#2-索引下推" class="headerlink" title="2. 索引下推"></a><span id="jump_pushed_down">2. 索引下推</span></h3><p>上一段我们说到满足最左前缀原则的时候，最左前缀可以用于在索引中定位记录。这时，你可能要问，那些不符合最左前缀的部分，会怎么样呢？</p>
+<p>还是以市民表的联合索引（name, age）为例。如果现在有一个需求：检索出表中“名字第一个字是张，而且年龄是 10 岁的所有男孩”。那么，SQL 语句是这么写的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tuser <span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;张%&#x27;</span> <span class="keyword">and</span> age<span class="operator">=</span><span class="number">10</span> <span class="keyword">and</span> ismale<span class="operator">=</span><span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>根据前缀索引规则，这个语句在搜索索引树的时候，只能用 “张”（索引只有(name, age)），找到第一个满足条件的记录 ID3。当然，这还不错，总比全表扫描要好。然后呢？当然是判断其他条件是否满足。</p>
+<p>在 MySQL 5.6 之前，只能从 ID3 开始一个个回表。到主键索引上找出数据行，再对比字段值。</p>
+<p>而 MySQL 5.6 引入的<strong>索引下推优化（index condition pushdown)</strong>， 可以<strong>在索引遍历过程中，对索引中包含的字段先做判断，直接过滤掉不满足条件的记录，减少回表次数</strong>。</p>
+<p>图 3 和图 4，是这两个过程的执行流程图。</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605451488975.png" alt="1605451488975"></p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605451552321.png" alt="1605451552321"></p>
+<h3 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. 小结</h3><p>在满足语句需求的情况下， 尽量少地访问资源是数据库设计的重要原则之一。在使用数据库的时候，尤其是在设计表结构时，也要以减少资源消耗作为目标。</p>
+<p>问题：实际上主键索引也是可以使用多个字段的。DBA 小吕在入职新公司的时候，就发现自己接手维护的库里面，有这么一个表，表结构定义类似这样的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `geek` (</span><br><span class="line">  `a` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `b` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `c` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `d` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`a`,`b`),</span><br><span class="line">  KEY `c` (`c`),</span><br><span class="line">  KEY `ca` (`c`,`a`),</span><br><span class="line">  KEY `cb` (`c`,`b`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB;</span><br></pre></td></tr></table></figure>
+<p>公司的同事告诉他说，由于历史原因，这个表需要 a、b 做联合主键，这个小吕理解了。</p>
+<p>但是，学过本章内容的小吕又纳闷了，既然主键包含了 a、b 这两个字段，那意味着单独在字段 c 上创建一个索引，就已经包含了三个字段了呀，为什么要创建“ca”“cb”这两个索引？</p>
+<p>同事告诉他，是因为他们的业务里面有这样的两种语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> geek <span class="keyword">where</span> c<span class="operator">=</span>N <span class="keyword">order</span> <span class="keyword">by</span> a limit <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> geek <span class="keyword">where</span> c<span class="operator">=</span>N <span class="keyword">order</span> <span class="keyword">by</span> b limit <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？"><a href="#问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？" class="headerlink" title="问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？"></a>问：这位同事的解释对吗，为了这两个查询模式，这两个索引是否都是必须的？为什么呢？</h4><p>答案：ca索引不需要，cb索引需要</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452048904.png" alt="1605452048904"></p>
+<p>联合索引：The first column is the primary sort criterion and the second column determines the order only if two entries have the same value in the first column and so on</p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452080320.png" alt="1605452080320"></p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452122669.png" alt="1605452122669"></p>
+<p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1605452156592.png" alt="1605452156592"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>qypx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://qypx.github.io/2020/01/13/%E7%B4%A2%E5%BC%95Index/" title="索引Index">http://qypx.github.io/2020/01/13/索引Index/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/13/%E8%A7%86%E5%9B%BEView/" rel="prev" title="视图View">
+                  <i class="fa fa-angle-left"></i> 视图View
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/13/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/" rel="next" title="事务与锁">
+                  事务与锁 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">qypx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left"},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

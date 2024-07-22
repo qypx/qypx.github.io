@@ -1,37 +1,471 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data. Cosine Similarity  为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0. 角度">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Content-Based Filtering">
+<meta property="og:url" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data. Cosine Similarity  为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0. 角度">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578288453177.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578288708324.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578289233556.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578289272295.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578289294315.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578289387292.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578289605079.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578291075846.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578292209772.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578293123577.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578309826515.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578310985921.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578311747376.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578311877667.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578312959234.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578314301934.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578313486050.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578314783671.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578315361933.png">
+<meta property="article:published_time" content="2020-01-06T05:25:00.000Z">
+<meta property="article:modified_time" content="2020-01-06T13:03:04.541Z">
+<meta property="article:author" content="qypx">
+<meta property="article:tag" content="Recommender System">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qypx.github.io/2020/01/06/Content-Based-Filtering/1578288453177.png">
 
 
-{% block content %}
+<link rel="canonical" href="http://qypx.github.io/2020/01/06/Content-Based-Filtering/">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/01/06/Content-Based-Filtering/","path":"2020/01/06/Content-Based-Filtering/","title":"Content-Based Filtering"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Content-Based Filtering | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">qypx の blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">机会是留给有准备的人的.</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cosine-Similarity"><span class="nav-text">Cosine Similarity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-nearest-neighbors"><span class="nav-text">K-nearest-neighbors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Walkthrough"><span class="nav-text">Code Walkthrough</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bleeding-Edge-Alert"><span class="nav-text">Bleeding Edge Alert</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mise-en-scene"><span class="nav-text">mise en scene</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise"><span class="nav-text">Exercise</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">qypx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/06/Content-Based-Filtering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Content-Based Filtering | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Content-Based Filtering
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-01-06 13:25:00 / 修改时间：21:03:04" itemprop="dateCreated datePublished" datetime="2020-01-06T13:25:00+08:00">2020-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Recommender-System/" itemprop="url" rel="index"><span itemprop="name">Recommender System</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
+<h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
+<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
+<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
+<p>How do we assign a similarity score based on release years alone?</p>
+<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
+<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
+<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
+<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
+<h3 id="K-nearest-neighbors"><a href="#K-nearest-neighbors" class="headerlink" title="K-nearest-neighbors"></a>K-nearest-neighbors</h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
+<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>ContentBased里的文件：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
+<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
+<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><blockquote>
+<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
+<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
+</blockquote>
+<h4 id="mise-en-scene"><a href="#mise-en-scene" class="headerlink" title="mise en scene"></a>mise en scene</h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
+<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
+<p>What sort of attributes are we talking about：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
+<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
+<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
+<p>更改代码：</p>
+<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
+<p>再运行ContentRec.py，可得到结果如下：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
+<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
+<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
+<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
+<p>Here’s a reference to the original research paper:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><ul>
+<li>Use genre, release year, and mise en scene data independently.</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
+<ul>
+<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
+<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>qypx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://qypx.github.io/2020/01/06/Content-Based-Filtering/" title="Content-Based Filtering">http://qypx.github.io/2020/01/06/Content-Based-Filtering/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Recommender-System/" rel="tag"># Recommender System</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/05/A-Recommender-Engine-Framework/" rel="prev" title="A Recommender Engine Framework">
+                  <i class="fa fa-angle-left"></i> A Recommender Engine Framework
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/" rel="next" title="Neighborhood-Based Collaborative Filtering 协同过滤">
+                  Neighborhood-Based Collaborative Filtering 协同过滤 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">qypx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left"},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

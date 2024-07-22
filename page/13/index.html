@@ -1,23 +1,1082 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+<link rel="stylesheet" href="/css/main.css">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="qypx の blog">
+<meta property="og:url" content="http://qypx.github.io/page/13/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="qypx">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://qypx.github.io/page/13/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/13/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">qypx の blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">机会是留给有准备的人的.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">qypx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/17/Python-working-directory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/09/17/Python-working-directory/" class="post-title-link" itemprop="url">Python working directory</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2019-09-17 18:40:10 / 修改时间：16:43:59" itemprop="dateCreated datePublished" datetime="2019-09-17T18:40:10+08:00">2019-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li>更改当前路径</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.chdir(<span class="string">&quot;E:/machine learning&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取当前路径</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getcwd()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/02/dataframe-operation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/09/02/dataframe-operation/" class="post-title-link" itemprop="url">数据框操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-02 19:50:22" itemprop="dateCreated datePublished" datetime="2019-09-02T19:50:22+08:00">2019-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-21 14:36:42" itemprop="dateModified" datetime="2024-06-21T14:36:42+08:00">2024-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="1-创建dataframe"><a href="#1-创建dataframe" class="headerlink" title="1. 创建dataframe"></a>1. 创建dataframe</h4><ul>
+<li>法一</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = pd.DataFrame(&#123;<span class="string">&#x27;id&#x27;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">&#x27;string&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>法二（若已有现成的list）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dat = pd.DataFrame([n_clusters_start, score], columns = [<span class="string">&quot;分类数&quot;</span>, <span class="string">&quot;得分&quot;</span>])</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">&quot;分类数&quot;</span>: n_clusters_start, <span class="string">&quot;得分&quot;</span>: score&#125;)</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">&#x27;!&#x27;</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">&#x27;?&#x27;</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">&#x27;EC&#x27;</span>:EC,<span class="string">&#x27;QC&#x27;</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">&quot;freqOf &quot;</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/02/dataframe-operation/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">读取与保存csv和txt文件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-02 19:17:00" itemprop="dateCreated datePublished" datetime="2019-09-02T19:17:00+08:00">2019-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-19 13:04:09" itemprop="dateModified" datetime="2022-02-19T13:04:09+08:00">2022-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="一、csv文件"><a href="#一、csv文件" class="headerlink" title="一、csv文件"></a>一、csv文件</h4><h5 id="1-读取"><a href="#1-读取" class="headerlink" title="1. 读取"></a>1. 读取</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_csv(<span class="string">&quot;Google_Stock_Price_Train.csv&quot;</span>)</span><br><span class="line">train.head()</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/1594120531625.png" alt="1594120531625" style="zoom:80%;"></p>
+<p>若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）</p>
+<p><img src="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/1594120744906.png" alt="1594120744906" style="zoom:80%;"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">&quot;dataset.csv&quot;</span>, header=<span class="literal">None</span>)</span><br><span class="line">data.head()</span><br><span class="line"><span class="comment">#data.columns = [&#x27;date&#x27;,&#x27;open&#x27;,&#x27;high&#x27;,&#x27;low&#x27;,&#x27;close&#x27;,&#x27;volume&#x27;]</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/1594120675413.png" alt="1594120675413" style="zoom:80%;"></p>
+<p>或者用names指定需要的列表头</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;dataset.csv&#x27;</span>, names =  [<span class="string">&#x27;date&#x27;</span>,<span class="string">&#x27;open&#x27;</span>,<span class="string">&#x27;high&#x27;</span>,<span class="string">&#x27;low&#x27;</span>,<span class="string">&#x27;close&#x27;</span>,<span class="string">&#x27;volume&#x27;</span>]) </span><br></pre></td></tr></table></figure>
+<p><strong>另：关于读取csv文件，报错：</strong></p>
+<blockquote>
+<p>参考 <a href="https://www.cnblogs.com/huangchenggener/p/10983812.html">https://www.cnblogs.com/huangchenggener/p/10983812.html</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;utf-8&#x27; codec can&#x27;t decode byte 0xd4 in position 0: invalid continuation byte</span><br></pre></td></tr></table></figure>
+<p>法一：csv文件的保存格式改为 “CSV UTF-8 (逗号分割) (*.csv)”</p>
+<p>法二：pd.read_csv()中加上编码方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(<span class="string">&quot;xxx.csv&quot;</span>, encoding=<span class="string">&#x27;gbk&#x27;</span>)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/27/Markdown%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/27/Markdown%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Markdown语法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-27 15:39:36" itemprop="dateCreated datePublished" datetime="2019-06-27T15:39:36+08:00">2019-06-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-10-13 15:00:34" itemprop="dateModified" datetime="2023-10-13T15:00:34+08:00">2023-10-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>(本文参考<a href="https://www.markdowntutorial.com/">Markdown Tutorial</a>)</p>
+<h4 id="1-加粗与斜体"><a href="#1-加粗与斜体" class="headerlink" title="1. 加粗与斜体"></a>1. 加粗与斜体</h4><ul>
+<li>斜体：在文本两侧加上一个星号或一个下划线，例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_unknown_或*unkown*</span><br></pre></td></tr></table></figure>
+<p>效果如下：<em>unknown</em></p>
+<ul>
+<li>加粗：在文本两侧加上两个星号或两个下划线, 例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__unknown__或**unknown** </span><br></pre></td></tr></table></figure>
+<p>效果如下：<strong>unknown</strong></p>
+<ul>
+<li>注：斜体和加粗可以一起用，例如：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**_of course_**</span><br></pre></td></tr></table></figure>
+<p>效果如下：<strong><em>of course</em></strong></p>
+<h4 id="2-标题-Headers"><a href="#2-标题-Headers" class="headerlink" title="2.标题(Headers)"></a>2.标题(Headers)</h4><p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（# 一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
+<blockquote>
+<h1 id="Header-one"><a href="#Header-one" class="headerlink" title="Header one"></a>Header one</h1><h2 id="Header-two"><a href="#Header-two" class="headerlink" title="Header two"></a>Header two</h2><h3 id="Header-three"><a href="#Header-three" class="headerlink" title="Header three"></a>Header three</h3><h4 id="Header-four"><a href="#Header-four" class="headerlink" title="Header four"></a>Header four</h4><h5 id="Header-five"><a href="#Header-five" class="headerlink" title="Header five"></a>Header five</h5><h6 id="Header-six"><a href="#Header-six" class="headerlink" title="Header six"></a>Header six</h6><p>plain text</p>
+</blockquote>
+<p>注：#号与文本之间有一个空格。</p>
+<h4 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h4><ul>
+<li><p>inline link</p>
+<p>语法如下：</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Visit GitHub!](www.github.com)</span><br></pre></td></tr></table></figure>
+<p><a href="www.github.com">Visit GitHub!</a></p>
+<p>再比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Yo<span class="string">u&#x27;re **really, really** going to see this.](www.dailykitten.com)</span></span><br></pre></td></tr></table></figure>
+<p><a href="www.dailykitten.com">You’re <strong>really, really</strong> going to see this.</a></p>
+<ul>
+<li>reference link</li>
+</ul>
+<p>语法如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Do you want to [see something fun][a fun place]?  </span><br><span class="line"></span><br><span class="line">Well, I have [a website <span class="keyword">for</span> you][another fun place]!</span><br><span class="line"></span><br><span class="line">[a fun place]: www.zombo.com</span><br><span class="line">    </span><br><span class="line">[another fun place]: www.stumbleupon.com</span><br></pre></td></tr></table></figure>
+<p>效果如下：<br>Do you want to <a href="www.zombo.com">see something fun</a>?  </p>
+<p>Well, I have <a href="www.stumbleupon.com">a website for you</a>!</p>
+<p>一般可将链接地址写在Markdown文件的最后。使用refrence的好处是如果有许多链接都是指向一个地方，那么需要更改的时候只需要修改一次就行了。</p>
+<h4 id="4-图片"><a href="#4-图片" class="headerlink" title="4.图片"></a>4.图片</h4><ul>
+<li>inline link</li>
+</ul>
+<p>插入图片和插入链接类似，语法如下： </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![A pretty tiger](https://upload.wikimedia.org/wikipedia/commons/<span class="number">5</span>/<span class="number">56</span>/Tiger<span class="number">.50</span>.jpg)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/27/Markdown%E8%AF%AD%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">Jupyter Notebook中的快捷键</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-27 14:32:07" itemprop="dateCreated datePublished" datetime="2019-06-27T14:32:07+08:00">2019-06-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-17 10:53:29" itemprop="dateModified" datetime="2024-04-17T10:53:29+08:00">2024-04-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Jupyter-Notebook/" itemprop="url" rel="index"><span itemprop="name">Jupyter Notebook</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ul>
+<li><p>shift+enter: 运行代码块</p>
+</li>
+<li><p>shift+tab: show the documentation pop up for the method</p>
+</li>
+<li><p>Esc+m: markdown语句</p>
+</li>
+<li><p>jupyter notebook中reload模块：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/27/Advanced-Python-Types/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/27/Advanced-Python-Types/" class="post-title-link" itemprop="url">Advanced Python Types</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-27 14:23:36" itemprop="dateCreated datePublished" datetime="2019-06-27T14:23:36+08:00">2019-06-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-15 16:29:28" itemprop="dateModified" datetime="2023-12-15T16:29:28+08:00">2023-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-List"><a href="#1-List" class="headerlink" title="1. List"></a>1. List</h3><p>Lists are mutable. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">amazon_cart = [</span><br><span class="line">    <span class="string">&#x27;notebooks&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sunglasses&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;toys&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">amazon_cart[<span class="number">0</span>]=<span class="string">&#x27;laptop&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(amazon_cart)</span><br><span class="line"><span class="comment"># [&#x27;laptop&#x27;, &#x27;sunglasses&#x27;, &#x27;toys&#x27;]</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-1-常见操作"><a href="#1-1-常见操作" class="headerlink" title="1.1 常见操作"></a>1.1 常见操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(x)</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片操作</span></span><br><span class="line">&gt;&gt;&gt;x[:<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&gt;&gt;&gt;x[<span class="number">3</span>:]</span><br><span class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;x[-<span class="number">2</span>:]</span><br><span class="line">[<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># extend</span></span><br><span class="line">&gt;&gt;&gt;x.extend([<span class="number">7</span>,<span class="number">8</span>])</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># append</span></span><br><span class="line">&gt;&gt;&gt;x.append(<span class="number">9</span>)</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;y=[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]</span><br><span class="line">&gt;&gt;&gt;listOfLists=[x,y]</span><br><span class="line">&gt;&gt;&gt;listiOfLists</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/27/Advanced-Python-Types/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/27/basic-python-type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/27/basic-python-type/" class="post-title-link" itemprop="url">Python中的简单语法与常见操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-27 02:35:13" itemprop="dateCreated datePublished" datetime="2019-06-27T02:35:13+08:00">2019-06-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-20 17:22:01" itemprop="dateModified" datetime="2024-06-20T17:22:01+08:00">2024-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong><em><span style="color:blue">缩进是 Python的灵魂</span></em></strong></p>
+<blockquote>
+<p>更多Python基础见我的onenote笔记本”Python学习笔记“<br>另：关于 Python 的教程可参考廖雪峰的网站 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+</blockquote>
+<h3 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h3><p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df[(df[<span class="string">&#x27;id&#x27;</span>]&gt;=<span class="number">1</span>) &amp; (df[<span class="string">&#x27;id&#x27;</span>]&lt;=<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上写法等价于：</span></span><br><span class="line">df.query(<span class="string">&#x27;id&gt;=1 &amp; id&lt;=2&#x27;</span>)</span><br><span class="line"><span class="comment"># (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.query.html)</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-比较操作符"><a href="#2-比较操作符" class="headerlink" title="2. 比较操作符"></a>2. 比较操作符</h3><blockquote>
+<p>>, &lt;, &gt;=, &lt;=, ==, != </p>
+</blockquote>
+<p>pandas进行条件筛选和组合筛选</p>
+<blockquote>
+<p>参考 <a href="https://www.cnblogs.com/qxh-beijing2016/p/15499009.html">https://www.cnblogs.com/qxh-beijing2016/p/15499009.html</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:[<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">500</span>],<span class="string">&#x27;B&#x27;</span>:[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>],<span class="string">&#x27;C&#x27;</span>:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]&#125;)</span><br><span class="line"></span><br><span class="line">        A    B    C</span><br><span class="line"> <span class="number">0</span>    <span class="number">100</span>    a    <span class="number">1</span></span><br><span class="line"> <span class="number">1</span>    <span class="number">200</span>    b    <span class="number">2</span></span><br><span class="line"> <span class="number">2</span>    <span class="number">300</span>    c    <span class="number">3</span></span><br><span class="line"> <span class="number">3</span>    <span class="number">400</span>    d    <span class="number">4</span></span><br><span class="line"> <span class="number">4</span>    <span class="number">500</span>    e    <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>（1）找出df中A列值为100、200、300的所有数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">num_list = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>]</span><br><span class="line">df[df.A.isin(num_list)]     <span class="comment">#筛选出A列值在num列表的数据条</span></span><br><span class="line">       A    B    C</span><br><span class="line"><span class="number">0</span>    <span class="number">100</span>    a    <span class="number">1</span></span><br><span class="line"><span class="number">1</span>    <span class="number">200</span>    b    <span class="number">2</span></span><br><span class="line"><span class="number">2</span>    <span class="number">300</span>    c    <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>（2）找出df中A列值为100且B列值为‘a’的所有数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df[(df.A==<span class="number">100</span>)&amp;(df.B==<span class="string">&#x27;a&#x27;</span>)]</span><br><span class="line">        A    B    C</span><br><span class="line"> <span class="number">0</span>    <span class="number">100</span>    a    <span class="number">1</span></span><br><span class="line"></span><br><span class="line">也可写作：</span><br><span class="line">df.where((df.A==<span class="number">100</span>)&amp;(df.B==<span class="string">&#x27;a&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>（3）找出df中A列值为100或B列值为‘b’的所有数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df[(df.A==<span class="number">100</span>)|(df.B==<span class="string">&#x27;b&#x27;</span>)]</span><br><span class="line">        A    B    C</span><br><span class="line"> <span class="number">0</span>    <span class="number">100</span>    a    <span class="number">1</span></span><br><span class="line"> <span class="number">1</span>    <span class="number">200</span>    b    <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><span style="color:red"><strong>注：多条件筛选的时候，必须加括号’()’</strong></span></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/27/basic-python-type/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/06/26/test-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/26/test-blog/" class="post-title-link" itemprop="url">test blog</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2019-06-26 19:11:48 / 修改时间：21:52:17" itemprop="dateCreated datePublished" datetime="2019-06-26T19:11:48+08:00">2019-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一篇测试文章.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">qypx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left"},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

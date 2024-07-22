@@ -1,37 +1,969 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Hive介绍">
+<meta property="og:url" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="qypx の blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1606383486184.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603599880662.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603599824805.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600131112.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600188322.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603609902727.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610044780.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610161316.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610193337.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610402205.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600496450.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600549196.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603609992170.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610068333.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610449476.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610471246.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610518016.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610616445.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610644871.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603613699566.png">
+<meta property="og:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603614353762.png">
+<meta property="article:published_time" content="2020-01-12T12:26:40.000Z">
+<meta property="article:modified_time" content="2022-10-19T04:19:22.540Z">
+<meta property="article:author" content="qypx">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="Hive">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1606383486184.png">
 
 
-{% block content %}
+<link rel="canonical" href="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/","path":"2020/01/12/Hive介绍/","title":"Hive介绍"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hive介绍 | qypx の blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">qypx の blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">机会是留给有准备的人的.</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFHive%EF%BC%9F"><span class="nav-text">1.什么是Hive？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Hive%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">2.Hive的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Hive-%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">2.1 Hive 的体系结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Hive%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5"><span class="nav-text">3.Hive建表语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%B3%95%E4%B8%80%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%BB%BA%E8%A1%A8%E6%B3%95"><span class="nav-text">3.1 法一：直接建表法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-row-format"><span class="nav-text">3.1.1 row format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-file-format%EF%BC%88HDFS%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9A%84%E6%A0%BC%E5%BC%8F%EF%BC%89"><span class="nav-text">3.1.2 file format（HDFS文件存放的格式）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-2-1-TEXTFILE"><span class="nav-text">3.1.2.1 TEXTFILE</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B1%EF%BC%9A%E4%BB%A5TAB%E4%B8%BA%E5%88%97%E9%97%B4%E5%88%86%E9%9A%94%E7%AC%A6%E7%9A%84%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="nav-text">示例1：以TAB为列间分隔符的文本文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B2%EF%BC%9AJSON%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="nav-text">示例2：JSON格式的数据文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B3%EF%BC%9Acomplex-json%E8%A1%A8%E4%B8%AD%E5%90%AB%E6%9C%89%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%E5%B5%8C%E5%A5%97%E5%92%8C%E7%BB%93%E6%9E%84%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E7%BB%93%E6%9E%84%E4%B8%89%E5%B1%82%E5%B5%8C%E5%A5%97%E3%80%82"><span class="nav-text">示例3：complex_json表中含有结构类型嵌套和结构、数组、结构三层嵌套。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-2-2-SEQUENCEFILE"><span class="nav-text">3.1.2.2  SEQUENCEFILE</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-text">示例</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-2-3-RCFILE"><span class="nav-text">3.1.2.3 RCFILE</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-text">示例</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-2-4-ORCFILE"><span class="nav-text">3.1.2.4 ORCFILE</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-text">示例</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-2-5-%E6%80%BB%E7%BB%93"><span class="nav-text">3.1.2.5 总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-%E4%BE%8B%E5%AD%90%EF%BC%9A%E5%88%9B%E5%BB%BA%E5%86%85%E9%83%A8%E8%A1%A8"><span class="nav-text">3.1.3 例子：创建内部表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="nav-text">1. 创建表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%9F%A5%E7%9C%8B%E8%A1%A8%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="nav-text">2.查看表的描述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E8%A3%85%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="nav-text">3. 装载数据</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#a-%E5%90%91%E9%9D%9E%E5%88%86%E5%8C%BA%E8%A1%A8%E4%B8%AD%E8%A3%85%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="nav-text">a. 向非分区表中装载数据</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#b-%E5%90%91%E5%88%86%E5%8C%BA%E8%A1%A8%E4%B8%AD%E8%A3%85%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="nav-text">b. 向分区表中装载数据</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="nav-text">4. 查看文件位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E5%88%A0%E9%99%A4%E5%86%85%E9%83%A8%E8%A1%A8"><span class="nav-text">5. 删除内部表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-%E4%BE%8B%E5%AD%90%EF%BC%9A%E5%88%9B%E5%BB%BA%E5%A4%96%E9%83%A8%E8%A1%A8"><span class="nav-text">3.1.4 例子：创建外部表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E8%A1%A8-1"><span class="nav-text">1. 创建表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E8%A3%85%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="nav-text">2. 装载数据</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="nav-text">3. 查看文件位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%88%A0%E9%99%A4%E5%A4%96%E9%83%A8%E8%A1%A8"><span class="nav-text">4. 删除外部表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%9F%A5%E8%AF%A2%E5%BB%BA%E8%A1%A8%E6%B3%95%EF%BC%88Create-Table-As-Select-CTAS-%EF%BC%89"><span class="nav-text">3.2 法二：查询建表法（Create Table As Select (CTAS)）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%B3%95%E4%B8%89%EF%BC%9Alike%E5%BB%BA%E8%A1%A8%E6%B3%95"><span class="nav-text">3.3 法三：like建表法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Hive%E4%B8%AD%E8%A1%A8%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-text">4. Hive中表的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%86%85%E9%83%A8%E8%A1%A8%E4%B8%8E%E5%A4%96%E9%83%A8%E8%A1%A8"><span class="nav-text">4.1 内部表与外部表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-1-Feature-comparison"><span class="nav-text">4.1.1 Feature comparison</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-2-%E5%86%85%E9%83%A8%E8%A1%A8%EF%BC%88Managed-Table%EF%BC%89"><span class="nav-text">4.1.2 内部表（Managed Table）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-3-%E5%A4%96%E9%83%A8%E8%A1%A8%EF%BC%88External-Table%EF%BC%89"><span class="nav-text">4.1.3 外部表（External Table）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-4-%E5%86%85%E9%83%A8%E8%A1%A8%E4%B8%8E%E5%A4%96%E9%83%A8%E8%A1%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">4.1.4 内部表与外部表的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%B8%B4%E6%97%B6%E8%A1%A8%EF%BC%88Temporary-Table%EF%BC%89"><span class="nav-text">4.2 临时表（Temporary Table）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%88%86%E5%8C%BA%E8%A1%A8%EF%BC%88Partitioned-Table%EF%BC%89"><span class="nav-text">4.3 分区表（Partitioned Table）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E5%88%86%E6%A1%B6%E8%A1%A8%EF%BC%88Bucked-Tables%EF%BC%89"><span class="nav-text">4.4 分桶表（Bucked Tables）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%90%91Hive%E8%A1%A8%E4%B8%AD%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-text"> 5. 向Hive表中插入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Load"><span class="nav-text">5.1 Load</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B1%EF%BC%9A%E5%B0%86CSV%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5Hive%E8%A1%A8"><span class="nav-text">实例1：将CSV文件导入Hive表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B2%EF%BC%9A%E5%B0%86hive%E8%A1%A8%E5%86%85%E5%AE%B9%E5%AF%BC%E5%87%BA%E4%B8%BAcsv"><span class="nav-text">实例2：将hive表内容导出为csv</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Insert"><span class="nav-text">5.2 Insert</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-INSERT-INTO-OVERWRITE-TABLE-SELECT"><span class="nav-text">5.2.1 INSERT INTO&#x2F;OVERWRITE TABLE SELECT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-INSERT-INTO-%E2%80%A6-VALUES"><span class="nav-text">5.2.2 INSERT INTO … VALUES</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%91%BD%E4%BB%A4"><span class="nav-text">6. 命令</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">qypx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hive介绍 | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hive介绍
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-12 20:26:40" itemprop="dateCreated datePublished" datetime="2020-01-12T20:26:40+08:00">2020-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-10-19 12:19:22" itemprop="dateModified" datetime="2022-10-19T12:19:22+08:00">2022-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p> 参考：<br> <a href="https://blog.csdn.net/PowerBlogger/article/details/83626449">https://blog.csdn.net/PowerBlogger/article/details/83626449</a><br> <a href="https://blog.csdn.net/u010886217/article/details/83796151">https://blog.csdn.net/u010886217/article/details/83796151</a><br> 《Hadoop构建数据仓库实践》</p>
+<p> 更多内容见Hive官方文档<br> <a href="https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation">https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation</a></p>
+</blockquote>
+<h2 id="1-什么是Hive？"><a href="#1-什么是Hive？" class="headerlink" title="1.什么是Hive？"></a>1.什么是Hive？</h2><p>Hive 是 Hadoop 生态圈的数据仓库软件，里面有表的概念，使用类似于 SQL 的语言（HiveQL）读、写、管理分布式存储上的大数据集。它建立在 Hadoop 之上，具有以下功能和特点：</p>
+<ul>
+<li>通过 HiveQL 方便地访问数据，<strong>适合执行 ETL、报表查询、数据分析等数据仓库任务</strong>。</li>
+<li>提供一种机制，给各种各样的数据格式添加结构。</li>
+<li>直接访问 HDFS 的文件，或者访问如 HBase 的其他数据存储。</li>
+<li>可以通过 MapReduce、Spark 或 Tez 等多种计算框架执行查询。</li>
+</ul>
+<p>Hive 被设计成一个可扩展的、高性能的、容错的、与输入数据格式松耦合的系统，<strong>适合于数据仓库中的汇总、分析、批处理查询等任务，而不适合联机事务处理（OLTP）的工作场景</strong>。Hive 包括 HCatalog 和 WebHCat 两个组件。HCatalog 是 Hadoop 的表和存储管理层，允许使用 Pig 和 MapReduce 等数据处理工具的用户更容易读写集群中的数据。WebHCat 提供了一个服务，可以使用 HTTP 接口执行 MapReduce （或 YARN）、Pig、Hive 作业或元数据操作。</p>
+<p>HiveQL 只处理结构化数据，并且不区分大小写（与SQL一样）。</p>
+<p><span style="color:red">Hive 里的数据最终存储在 HDFS 的文件中</span>，常用的数据文件格式有以下4种：<strong>TEXTFILE、SEQUENCEFILE、RCFILE、ORCFILE</strong>。（关于文件格式的更详细内容见 <a href="#jump3.1.2">3.1.2 file format</a>）。在 Hive 中文件格式指的是记录以怎样的编码格式被存储到文件中。不同文件格式的主要区别在于它们的数据编码、压缩率、使用的空间和磁盘I/O。在加载数据的过程中，Hive不会对数据本身进行任何修改，而只是将数据内容复制或者移动到相应的HDFS目录中。</p>
+<p>当用户向传统数据库中增加数据时，系统会检查写入的数据与表结构是否匹配，如果不匹配则拒绝插入数据，这就是所谓的<strong>写时模式</strong>。Hive与此不同，它使用的是<strong>读时模式</strong>，即直到读取时再进行数据校验（加载数据时不进行数据格式的校验，读取数据时如果不合法则显示NULL。这种模式的优点在于加载数据迅速）。在向 Hive 装载数据时，它并不验证数据与表结构是否匹配，但这时它会检查文件格式是否和表定义相匹配。</p>
+<h2 id="2-Hive的原理"><a href="#2-Hive的原理" class="headerlink" title="2.Hive的原理"></a>2.Hive的原理</h2><p><strong>Hive 将用户的 HiveQL 语句进行解析，优化，最终把一个个的HiveQL语句转换为 MapReduce 作业提交到 Hadoop 集群上，Hadoop进行作业的调度及监控，作业完成后将执行结果返回给用户。</strong>所以，<strong>Hive并不进行计算，只是把HiveQL解析为MapperReduce在HDFS集群中运行而已</strong>，所以Hive的效率并不高。</p>
+<h3 id="2-1-Hive-的体系结构"><a href="#2-1-Hive-的体系结构" class="headerlink" title="2.1 Hive 的体系结构"></a>2.1 Hive 的体系结构</h3><p>Hive 的体系结构如下图所示：</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1606383486184.png" alt="1606383486184"></p>
+<p>Hive建立在 Hadoop 的分布式文件系统 HDFS 和 MapReduce 之上。上图显示了 Hadoop1 和 Hadoop2 中的两种 MapReduce 组件。</p>
+<p>在 HDFS 和 MapReduce 之上，图中显示了 Hive 驱动程序和元数据存储。Hive 驱动程序及其编译器负责编译、优化和执行 HiveQL。依赖于具体情况，Hive 驱动程序可能选择在本地执行 Hive 语句或命令，也可能是产生一个 MapReduce 作业。Hive 驱动程序把元数据存储在数据库中。</p>
+<p>默认配置下，Hive 在内建的 Derby 关系数据库系统中存储元数据，这种方式被称为嵌入模式。在这种模式下，Hive 驱动程序、元数据和 Derby 全部运行在同一个 Java 虚拟机中（JVM）。它只支持单一 Hive 会话，所以不能用于多用户的生产环境。Hive 还允许将元数据存储于本地或远程的外部数据库中，这种设置可以更好地支持 Hive 的多会话生产环境。并且，可以配置任何与 JDBC API 兼容的关系数据库系统存储元数据，如 MySQL、Oracle 等。（元数据默认存储在Hive自带的Derby数据库中，但由于Derby不能实现并发访问，所以我们一般使用 MySQL 进行替换）。</p>
+<p>对应用支持的关键组件是 Hive Thrift 服务。任何与 JDBC 兼容的应用，都可以通过绑定的 JDBC 驱动访问 Hive。与 ODBC 兼容的客户端，如 Linux 下典型的 unixODBC 和 isql 应用程序，可以从远程 Linux 客户端访问 Hive。</p>
+<p>架构图的最上面包括一个命令行接口（CLI），可以在 Linux 终端窗口向 Hive 驱动程序直接发出查询或管理命令。还有一个简单的 Web 界面，通过它可以从浏览器访问 Hive 管理表及其数据。</p>
+<h2 id="3-Hive建表语句"><a href="#3-Hive建表语句" class="headerlink" title="3.Hive建表语句"></a><span id="jump3">3.Hive建表语句</span></h2><blockquote>
+<p>参考<br><a href="https://blog.csdn.net/qq_36743482/article/details/78383964">https://blog.csdn.net/qq_36743482/article/details/78383964</a><br><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL</a></p>
+</blockquote>
+<p>Hive建表方式共有三种：</p>
+<ul>
+<li>直接建表法</li>
+<li>查询建表法</li>
+<li>like建表法</li>
+</ul>
+<h3 id="3-1-法一：直接建表法"><a href="#3-1-法一：直接建表法" class="headerlink" title="3.1 法一：直接建表法"></a>3.1 法一：直接建表法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> table_name(col_name data_type);</span><br></pre></td></tr></table></figure>
+<p>完整的syntax:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name    -- (Note: TEMPORARY available in Hive 0.14.0 and later)</span><br><span class="line">  [(col_name data_type [column_constraint_specification] [COMMENT col_comment], ... [constraint_specification])]</span><br><span class="line">  [COMMENT table_comment]</span><br><span class="line">  [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]</span><br><span class="line">  [CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]</span><br><span class="line">  [SKEWED BY (col_name, col_name, ...)                  -- (Note: Available in Hive 0.10.0 and later)]</span><br><span class="line">     ON ((col_value, col_value, ...), (col_value, col_value, ...), ...)</span><br><span class="line">     [STORED AS DIRECTORIES]</span><br><span class="line">  [</span><br><span class="line">   [ROW FORMAT row_format] </span><br><span class="line">   [STORED AS file_format]</span><br><span class="line">     | STORED BY &#x27;storage.handler.class.name&#x27; [WITH SERDEPROPERTIES (...)]  -- (Note: Available in Hive 0.6.0 and later)</span><br><span class="line">  ]</span><br><span class="line">  [LOCATION hdfs_path]</span><br><span class="line">  [TBLPROPERTIES (property_name=property_value, ...)]   -- (Note: Available in Hive 0.6.0 and later)</span><br><span class="line">  [AS select_statement];   -- (Note: Available in Hive 0.5.0 and later; not supported for external tables)</span><br><span class="line"> </span><br><span class="line">CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name</span><br><span class="line">  LIKE existing_table_or_view_name</span><br><span class="line">  [LOCATION hdfs_path];</span><br><span class="line"> </span><br><span class="line">data_type</span><br><span class="line">  : primitive_type</span><br><span class="line">  | array_type</span><br><span class="line">  | map_type</span><br><span class="line">  | struct_type</span><br><span class="line">  | union_type  -- (Note: Available in Hive 0.7.0 and later)</span><br><span class="line"> </span><br><span class="line">primitive_type</span><br><span class="line">  : TINYINT</span><br><span class="line">  | SMALLINT</span><br><span class="line">  | INT</span><br><span class="line">  | BIGINT</span><br><span class="line">  | BOOLEAN</span><br><span class="line">  | FLOAT</span><br><span class="line">  | DOUBLE</span><br><span class="line">  | DOUBLE PRECISION -- (Note: Available in Hive 2.2.0 and later)</span><br><span class="line">  | STRING</span><br><span class="line">  | BINARY      -- (Note: Available in Hive 0.8.0 and later)</span><br><span class="line">  | TIMESTAMP   -- (Note: Available in Hive 0.8.0 and later)</span><br><span class="line">  | DECIMAL     -- (Note: Available in Hive 0.11.0 and later)</span><br><span class="line">  | DECIMAL(precision, scale)  -- (Note: Available in Hive 0.13.0 and later)</span><br><span class="line">  | DATE        -- (Note: Available in Hive 0.12.0 and later)</span><br><span class="line">  | VARCHAR     -- (Note: Available in Hive 0.12.0 and later)</span><br><span class="line">  | CHAR        -- (Note: Available in Hive 0.13.0 and later)</span><br><span class="line"> </span><br><span class="line">array_type</span><br><span class="line">  : ARRAY &lt; data_type &gt;</span><br><span class="line"> </span><br><span class="line">map_type</span><br><span class="line">  : MAP &lt; primitive_type, data_type &gt;</span><br><span class="line"> </span><br><span class="line">struct_type</span><br><span class="line">  : STRUCT &lt; col_name : data_type [COMMENT col_comment], ...&gt;</span><br><span class="line"> </span><br><span class="line">union_type</span><br><span class="line">   : UNIONTYPE &lt; data_type, data_type, ... &gt;  -- (Note: Available in Hive 0.7.0 and later)</span><br><span class="line"> </span><br><span class="line">row_format</span><br><span class="line">  : DELIMITED [FIELDS TERMINATED BY char [ESCAPED BY char]] [COLLECTION ITEMS TERMINATED BY char]</span><br><span class="line">        [MAP KEYS TERMINATED BY char] [LINES TERMINATED BY char]</span><br><span class="line">        [NULL DEFINED AS char]   -- (Note: Available in Hive 0.13 and later)</span><br><span class="line">  | SERDE serde_name [WITH SERDEPROPERTIES (property_name=property_value, property_name=property_value, ...)]</span><br><span class="line"> </span><br><span class="line">file_format:</span><br><span class="line">  : SEQUENCEFILE</span><br><span class="line">  | TEXTFILE    -- (Default, depending on hive.default.fileformat configuration)</span><br><span class="line">  | RCFILE      -- (Note: Available in Hive 0.6.0 and later)</span><br><span class="line">  | ORC         -- (Note: Available in Hive 0.11.0 and later)</span><br><span class="line">  | PARQUET     -- (Note: Available in Hive 0.13.0 and later)</span><br><span class="line">  | AVRO        -- (Note: Available in Hive 0.14.0 and later)</span><br><span class="line">  | JSONFILE    -- (Note: Available in Hive 4.0.0 and later)</span><br><span class="line">  | INPUTFORMAT input_format_classname OUTPUTFORMAT output_format_classname</span><br><span class="line"> </span><br><span class="line">column_constraint_specification:</span><br><span class="line">  : [ PRIMARY KEY|UNIQUE|NOT NULL|DEFAULT [default_value]|CHECK  [check_expression] ENABLE|DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line"> </span><br><span class="line">default_value:</span><br><span class="line">  : [ LITERAL|CURRENT_USER()|CURRENT_DATE()|CURRENT_TIMESTAMP()|NULL ] </span><br><span class="line"> </span><br><span class="line">constraint_specification:</span><br><span class="line">  : [, PRIMARY KEY (col_name, ...) DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line">    [, PRIMARY KEY (col_name, ...) DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line">    [, CONSTRAINT constraint_name FOREIGN KEY (col_name, ...) REFERENCES table_name(col_name, ...) DISABLE NOVALIDATE </span><br><span class="line">    [, CONSTRAINT constraint_name UNIQUE (col_name, ...) DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line">    [, CONSTRAINT constraint_name CHECK [check_expression] ENABLE|DISABLE NOVALIDATE RELY/NORELY ]</span><br></pre></td></tr></table></figure>
+<p>(👆来自官网 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL</a><br>[] 表示可选，| 表示选其一)</p>
+<p>注：</p>
+<ul>
+<li>不使用 EXTERNAL 时，创建的是内部表。</li>
+<li>表和列的注释（COMMENT）是字符串文字(单引号)。</li>
+<li>要为表指定一个数据库，要么在<code>CREATE TABLE</code>语句之前使用<code>USE database_name</code>语句，要么用一个数据库名称限定表名(<code>database_name.table_name</code>)。</li>
+<li>See <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable">Alter Table</a> for more information about table comments, table properties, and SerDe properties.</li>
+<li>See <a href="https://cwiki.apache.org/confluence/display/Hive/Tutorial#Tutorial-TypeSystem">Type System</a> and <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Types">Hive Data Types</a> for details about the primitive and complex data types.</li>
+</ul>
+<p>这里我们针对里面的一些不同于关系型数据库的地方进行说明。</p>
+<h4 id="3-1-1-row-format"><a href="#3-1-1-row-format" class="headerlink" title="3.1.1 row format"></a><span id="jump3.1.1">3.1.1 row format</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ROW FORMAT DELIMITED [FIELDS TERMINATED BY char [ESCAPED BY char]] [COLLECTION ITEMS TERMINATED BY char]</span><br><span class="line">[MAP KEYS TERMINATED BY char] [LINES TERMINATED BY char]</span><br><span class="line">[NULL DEFINED AS char]   -- (Note: Available in Hive 0.13 and later)</span><br><span class="line">| SERDE serde_name [WITH SERDEPROPERTIES (property_name=property_value, property_name=property_value, ...)]</span><br></pre></td></tr></table></figure>
+<p>Hive将HDFS上的文件映射成表结构，通过分隔符来区分列（比如‘,’, ‘;’ or ‘^’等），row format就是用于指定序列化和反序列化的规则。<br>比如对于以下记录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,xiaoming,book-TV-code,beijing:chaoyang-shagnhai:pudong</span><br><span class="line">2,lilei,book-code,nanjing:jiangning-taiwan:taibei</span><br><span class="line">3,lihua,music-book,heilongjiang:haerbin</span><br></pre></td></tr></table></figure>
+<p><strong>逗号</strong>用于分割列，即FIELDS TERMINATED BY ‘,’，分割为如下列 <strong>ID</strong>、<strong>name</strong>、<strong>hobby</strong>（该字段是数组形式，通过 ‘-’ 进行分割，即COLLECTION ITEMS TERMINATED BY ‘-’）、<strong>address</strong>（该字段是键值对形式map，通过 ‘:’ 分割键值，即 MAP KEYS TERMINATED BY ‘:’）；<br>而 LINES TERMINATED BY char 用于区分不同条的数据，默认是换行符；</p>
+<p>写法形如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> xxx(</span><br><span class="line">	...</span><br><span class="line">)</span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED </span><br><span class="line">FILEDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;,&#x27;</span> </span><br><span class="line">COLLECTION ITEMS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;-&#x27;</span> </span><br><span class="line">MAP KEYS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;:&#x27;</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<p>(↑未测试)</p>
+<h4 id="3-1-2-file-format（HDFS文件存放的格式）"><a href="#3-1-2-file-format（HDFS文件存放的格式）" class="headerlink" title="3.1.2 file format（HDFS文件存放的格式）"></a><span id="jump3.1.2">3.1.2 file format（HDFS文件存放的格式）</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">file_format:</span><br><span class="line">  : SEQUENCEFILE</span><br><span class="line">  | TEXTFILE    -- (Default, depending on hive.default.fileformat configuration)</span><br><span class="line">  | RCFILE      -- (Note: Available in Hive 0.6.0 and later)</span><br><span class="line">  | ORC         -- (Note: Available in Hive 0.11.0 and later)</span><br><span class="line">  | PARQUET     -- (Note: Available in Hive 0.13.0 and later)</span><br><span class="line">  | AVRO        -- (Note: Available in Hive 0.14.0 and later)</span><br><span class="line">  | JSONFILE    -- (Note: Available in Hive 4.0.0 and later)</span><br><span class="line">  | INPUTFORMAT input_format_classname OUTPUTFORMAT output_format_classname</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>默认TEXTFILE，即文本格式，可以直接打开。</p>
+<h6 id="3-1-2-1-TEXTFILE"><a href="#3-1-2-1-TEXTFILE" class="headerlink" title="3.1.2.1 TEXTFILE"></a>3.1.2.1 TEXTFILE</h6><p>TEXTFILE就是普通的文本型文件，是 Hadoop 里最常用的输入输出格式，也是 Hive 的默认文件格式。如果表定义为TEXTFILE，则可以向该表中装载以逗号、TAB或空格作为分隔符的数据，也可以导入JSON格式的数据。<br>文本文件中除了可以包含普通的字符串、数字、日期等简单数据类型外，还可以包含复杂的集合数据类型。Hive 支持 <strong>STRUCT</strong>、<strong>MAP</strong> 和 <strong>ARRAY</strong> 三种集合数据类型。</p>
+<h6 id="示例1：以TAB为列间分隔符的文本文件"><a href="#示例1：以TAB为列间分隔符的文本文件" class="headerlink" title="示例1：以TAB为列间分隔符的文本文件"></a><span style="color:blue">示例1：以TAB为列间分隔符的文本文件</span></h6><p>创建一个文本文件/root/data.csv，录入四列两行数据，列之间用TAB符号作为分隔符，文件内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a1	1	b1	c1</span><br><span class="line">a2	2	b2	c2</span><br></pre></td></tr></table></figure>
+<p>执行下面的语句创建表、装载数据、查询表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建立TEXTFILE格式的表</span></span><br><span class="line">use test;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_textfile(</span><br><span class="line">    c1 string, </span><br><span class="line">    c2 <span class="type">int</span>, </span><br><span class="line">    c3 string, </span><br><span class="line">    c4 string</span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format delimited fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span> </span><br><span class="line">stored <span class="keyword">as</span> textfile;</span><br><span class="line"><span class="comment">-- 向表中导入数据</span></span><br><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;root/data.csv&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> t_textfile;</span><br><span class="line"><span class="comment">-- 查询表</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_textfile;</span><br></pre></td></tr></table></figure>
+<p>查询结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from t_textfile;</span><br><span class="line">OK</span><br><span class="line">a1	1	b1	c1</span><br><span class="line">a2	2	b2	c2</span><br><span class="line">Time taken: 0.493 seconds, Fetched: 2 row(s)</span><br></pre></td></tr></table></figure>
+<h6 id="示例2：JSON格式的数据文件"><a href="#示例2：JSON格式的数据文件" class="headerlink" title="示例2：JSON格式的数据文件"></a><span style="color:blue">示例2：JSON格式的数据文件</span></h6><p>建立一个json文件/root/simple.json，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;foo&quot;:&quot;abc&quot;, &quot;bar&quot;:&quot;2009101100000&quot;, &quot;quux&quot;:&#123;&quot;quuxid&quot;:1234, &quot;quuxname&quot;:&quot;sam&quot;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>执行下面的语句创建表、装载数据、查询表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 根据实际目录添加hive-hcatalog-core.jar包</span></span><br><span class="line"><span class="keyword">add</span> jar <span class="operator">/</span>opt<span class="operator">/</span>cloudera<span class="operator">/</span>parcels<span class="operator">/</span>CDH<span class="number">-5.7</span><span class="number">.0</span><span class="number">-1.</span>cdh5<span class="number">.7</span><span class="number">.0</span>.p0<span class="number">.45</span><span class="operator">/</span>lib<span class="operator">/</span>oozie<span class="operator">/</span>libtools<span class="operator">/</span>hive<span class="operator">-</span>hcatalog<span class="operator">-</span>core.jar;</span><br><span class="line"><span class="comment">-- 建立测试表</span></span><br><span class="line">use test;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> my_table(</span><br><span class="line">	foo string,</span><br><span class="line">	bar string,</span><br><span class="line">	quux struct<span class="operator">&lt;</span>quuxid:<span class="type">int</span>, quuxname:string<span class="operator">&gt;</span></span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format serde <span class="string">&#x27;org.apache.hive.hcatalog.data.JsonSerDe&#x27;</span></span><br><span class="line">stored <span class="keyword">as</span> textfile;</span><br><span class="line"><span class="comment">-- 装载数据</span></span><br><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/root/simple.json&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> my_table;</span><br><span class="line"><span class="comment">-- 查询</span></span><br><span class="line"><span class="keyword">select</span> foo, bar, quux.quuxid, quux.quuxname <span class="keyword">from</span> my_table;</span><br></pre></td></tr></table></figure>
+<p>查询结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OK</span><br><span class="line">abc	2009101100000	1234	sam</span><br><span class="line">Time taken: 22.051 seconds, Fetched: 1 row(s)</span><br></pre></td></tr></table></figure>
+<h6 id="示例3：complex-json表中含有结构类型嵌套和结构、数组、结构三层嵌套。"><a href="#示例3：complex-json表中含有结构类型嵌套和结构、数组、结构三层嵌套。" class="headerlink" title="示例3：complex_json表中含有结构类型嵌套和结构、数组、结构三层嵌套。"></a><span style="color:blue">示例3：complex_json表中含有结构类型嵌套和结构、数组、结构三层嵌套。</span></h6><p>建立一个json文件/root/complex.json，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;docid&quot;:&quot;abc&quot;, &quot;user&quot;:</span><br><span class="line">	&#123;&quot;id&quot;:1234, &quot;username&quot;:&quot;sam1234&quot;, &quot;name&quot;:&quot;sam&quot;,	&quot;shippingaddress&quot;:</span><br><span class="line">		&#123;&quot;address1&quot;:&quot;123 main st.&quot;, &quot;address2&quot;:&quot;&quot;, &quot;city&quot;:&quot;durham&quot;, &quot;state&quot;:&quot;nc&quot;&#125;, </span><br><span class="line">	&quot;orders&quot;:[&#123;&quot;itemid&quot;:6789, &quot;orderdate&quot;:&quot;11/11/2012&quot;&#125;,&#123;&quot;itemid&quot;:4352, &quot;orderdate&quot;:&quot;12/12/2012&quot;&#125;]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行下面的语句创建表、装载数据、查询表。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建立测试表</span></span><br><span class="line">use test;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> complex_json(</span><br><span class="line">	docid string,</span><br><span class="line">	<span class="keyword">user</span> struct<span class="operator">&lt;</span>id: <span class="type">int</span>,</span><br><span class="line">				username: string,</span><br><span class="line">				name:	string,</span><br><span class="line">				shippingaddress: strcuct<span class="operator">&lt;</span>address1: string,</span><br><span class="line">										 address2: string,</span><br><span class="line">										 city: string,</span><br><span class="line">										 state: string<span class="operator">&gt;</span>,</span><br><span class="line">				orders: <span class="keyword">array</span><span class="operator">&lt;</span>struct<span class="operator">&lt;</span>itemid:<span class="type">int</span>,</span><br><span class="line">									 oderdatate:string<span class="operator">&gt;&gt;</span></span><br><span class="line">    			<span class="operator">&gt;</span></span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format serde <span class="string">&#x27;org.apache.hive.hcatalog.data.JsonSerDe&#x27;</span></span><br><span class="line">stored <span class="keyword">as</span> textfile;</span><br><span class="line"><span class="comment">-- 装载数据</span></span><br><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/root/complex.json&#x27;</span> overwrite <span class="keyword">into</span> <span class="keyword">table</span> complex_json;</span><br><span class="line"><span class="comment">-- 查询</span></span><br><span class="line"><span class="keyword">select</span> docid, user.id, user.shipping address.city <span class="keyword">as</span> city,</span><br><span class="line">	user.orders[<span class="number">0</span>].itemid <span class="keyword">as</span> order0id,</span><br><span class="line">	user.orders[<span class="number">1</span>].itemid <span class="keyword">as</span> order1id</span><br><span class="line"><span class="keyword">from</span> complex_json;</span><br></pre></td></tr></table></figure>
+<p>查询结果如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OK</span><br><span class="line">abc	1234	durham	6789	4352</span><br><span class="line">Time taken: 18.744 seconds, Fetched: 1 row(s)</span><br></pre></td></tr></table></figure>
+<p>查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> docid, user.id, user.orders.itemid <span class="keyword">from</span> complex_json;</span><br></pre></td></tr></table></figure>
+<p>查询结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OK</span><br><span class="line">abc	1234	[6789,4352]</span><br><span class="line">Time taken: 17.755 seconds, Fetched: 1 row(s)</span><br></pre></td></tr></table></figure>
+<h6 id="3-1-2-2-SEQUENCEFILE"><a href="#3-1-2-2-SEQUENCEFILE" class="headerlink" title="3.1.2.2  SEQUENCEFILE"></a>3.1.2.2  SEQUENCEFILE</h6><p>Hadoop处理少量大文件比大量小文件的性能要好。如果文件小于Hadoop定义的块尺寸（Hadoop 2.x默认是128MB），可以认为是小文件。元数据的增长将转化为NameNode的开销。如果有大量小文件，NameNode会成为性能瓶颈。为了解决这个问题，Hadoop引入了sequence文件，将sequence作为存储小文件的容器。</p>
+<p>Sequence文件是由二进制键值对组成的平面文件。Hive将查询转化成MapReduce作业时，决定一个给定记录的哪些键/值对被使用。Sequence文件是可分割的二进制格式，主要的用途是联合多个小文件。</p>
+<p>SEQUENCEFILE格式的输入输出包是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.apache.hadoop.mapred.SequenceFileInputFormat</span><br><span class="line">org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat</span><br></pre></td></tr></table></figure>
+<h6 id="示例"><a href="#示例" class="headerlink" title="示例"></a><span style="color:blue">示例</span></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建立SEQUENCEFILE格式的表</span></span><br><span class="line">use test;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_sequencefile(</span><br><span class="line">    c1 string, </span><br><span class="line">    c2 <span class="type">int</span>, </span><br><span class="line">    c3 string, </span><br><span class="line">    c4 string</span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format delimited </span><br><span class="line">fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span> </span><br><span class="line">stored <span class="keyword">as</span> sequencefile;</span><br><span class="line"><span class="comment">-- 向表中导入数据</span></span><br><span class="line"><span class="comment">-- 与TEXTFILE有些不同，因为SEQUENCEFILE是二进制格式，所以需要从其他表向SEQUENCEFILE表插入数据</span></span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> t_sequencefile <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_textfile;</span><br><span class="line"><span class="comment">-- 查询表</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_sequencefile;</span><br></pre></td></tr></table></figure>
+<h6 id="3-1-2-3-RCFILE"><a href="#3-1-2-3-RCFILE" class="headerlink" title="3.1.2.3 RCFILE"></a>3.1.2.3 RCFILE</h6><p>RCFILE指的是Record Columnar File，是一种高压缩率的二进制文件格式，被用于在一个时间点操作多行的场景。RCFILEs是由二进制键/值对组成的平面文件。RCFILE以记录的形式存储表中的列，即<strong>列存储方式</strong>。它先分割行做水平分区，然后分割列做垂直分区。RCFILE把一行的元数据作为键，把行数据作为值。这种面向列的存储在执行数据分析时更高效。</p>
+<p>RCFILE格式的输入输出包是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">org.apache.hadoop.hive.ql.io.RCFileInputFormat</span><br><span class="line">org.apache.hadoop.hive.ql.io.RCFileOutputFormat</span><br></pre></td></tr></table></figure>
+<h6 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a><span style="color:blue">示例</span></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建立RCFILE格式的表</span></span><br><span class="line">use test;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_rcfile(</span><br><span class="line">    c1 string, </span><br><span class="line">    c2 <span class="type">int</span>, </span><br><span class="line">    c3 string, </span><br><span class="line">    c4 string)</span><br><span class="line"><span class="type">row</span> format delimited </span><br><span class="line">fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span> </span><br><span class="line">stored <span class="keyword">as</span> rcfile;</span><br><span class="line"><span class="comment">-- 向表中导入数据</span></span><br><span class="line"><span class="comment">-- 不能直接向RCFILE表中导入数据，需要从其他表向RCFILE表插入数据</span></span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> t_rcfile <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_textfile;</span><br><span class="line"><span class="comment">-- 查询表</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_rcfile;</span><br></pre></td></tr></table></figure>
+<h6 id="3-1-2-4-ORCFILE"><a href="#3-1-2-4-ORCFILE" class="headerlink" title="3.1.2.4 ORCFILE"></a>3.1.2.4 ORCFILE</h6><p>ORC指的是Optimized Record Columnar，即相对于其他文件格式，它以更优化的方式存储数据。ORC能将原始数据的大小缩减75%，从而提升了数据处理的速度。ORC比Text、Sequence和RC文件格式有更好的性能，而且ORC是目前Hive中唯一支持事务的文件格式。</p>
+<p>ORCFILE格式的输入输出包是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.apache.hadoop.hive.ql.io.orc</span><br></pre></td></tr></table></figure>
+<h6 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a><span style="color:blue">示例</span></h6><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建立ORCFILE格式的表</span></span><br><span class="line">use test;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t_orcfile(</span><br><span class="line">    c1 string, </span><br><span class="line">    c2 <span class="type">int</span>, </span><br><span class="line">    c3 string, </span><br><span class="line">    c4 string)</span><br><span class="line"><span class="type">row</span> format delimited </span><br><span class="line">fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span> </span><br><span class="line">stored <span class="keyword">as</span> orcfile;</span><br><span class="line"><span class="comment">-- 向表中导入数据</span></span><br><span class="line"><span class="comment">-- 不能直接向ORCFILE表中导入数据，需要从其他表向ORCFILE表插入数据</span></span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> t_orcfile <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_textfile;</span><br><span class="line"><span class="comment">-- 查询表</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_orcfile;</span><br></pre></td></tr></table></figure>
+<h6 id="3-1-2-5-总结"><a href="#3-1-2-5-总结" class="headerlink" title="3.1.2.5 总结"></a>3.1.2.5 总结</h6><p>应该依数据需求选择适当的文件格式，如：</p>
+<ul>
+<li>如果数据有参数化的分隔符，那么可以选择TEXTFILE格式</li>
+<li>如果数据所在文件比块尺寸小，可以选择SEQUENCEFILE格式</li>
+<li>如果想执行数据分析，并高效地存储数据，可以选择RCFILE格式</li>
+<li>如果希望减小数据所需的存储空间并提升性能，可以选择ORCFILE格式</li>
+</ul>
+<h4 id="3-1-3-例子：创建内部表"><a href="#3-1-3-例子：创建内部表" class="headerlink" title="3.1.3 例子：创建内部表"></a>3.1.3 例子：创建内部表</h4><p>如下：根据上述文件内容(见<a href="#jump3.1.1">3.1.1 row format</a>)，创建一个表t1</p>
+<h5 id="1-创建表"><a href="#1-创建表" class="headerlink" title="1. 创建表"></a>1. 创建表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">    id      <span class="type">int</span>,</span><br><span class="line">    name    string,</span><br><span class="line">    hobby   <span class="keyword">array</span><span class="operator">&lt;</span>string<span class="operator">&gt;</span>,</span><br><span class="line">    <span class="keyword">add</span>     map<span class="operator">&lt;</span>String,string<span class="operator">&gt;</span></span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format delimited</span><br><span class="line">fields terminated <span class="keyword">by</span> <span class="string">&#x27;,&#x27;</span></span><br><span class="line">collection items terminated <span class="keyword">by</span> <span class="string">&#x27;-&#x27;</span></span><br><span class="line">map keys terminated <span class="keyword">by</span> <span class="string">&#x27;:&#x27;</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<p> <img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603599880662.png" alt="1603599880662"></p>
+<h5 id="2-查看表的描述"><a href="#2-查看表的描述" class="headerlink" title="2.查看表的描述"></a>2.查看表的描述</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc t1;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603599824805.png" alt="1603599824805"></p>
+<h5 id="3-装载数据"><a href="#3-装载数据" class="headerlink" title="3. 装载数据"></a><span id="jump3.1.3.3">3. 装载数据</span></h5><blockquote>
+<p>参考《Hadoop构建数据仓库实践》</p>
+</blockquote>
+<h6 id="a-向非分区表中装载数据"><a href="#a-向非分区表中装载数据" class="headerlink" title="a. 向非分区表中装载数据"></a>a. 向非分区表中装载数据</h6><p><strong>（1）使用 LOAD</strong></p>
+<p>先准备一个本地文本文件 a.txt，其中只有一行记录 ‘aaa’.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;mkdir test</span><br><span class="line">&gt;cd test</span><br><span class="line">&gt;echo &#x27;aaa&#x27; &gt; a.txt</span><br></pre></td></tr></table></figure>
+<p>将这行记录装载到一个表中，并查看HDFS上生成的数据文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; use test;</span><br><span class="line">hive&gt; drop table if exists t1;</span><br><span class="line">hive&gt; create table t1(name string);</span><br><span class="line">hive&gt; load data local inpath &#x27;/root/test&#x27; into table t1;</span><br><span class="line">hive&gt; select * from t1;</span><br><span class="line">aaa</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t1;</span><br><span class="line">Found 1 items</span><br><span class="line">-rwxrwxrwt	3	root	hive	4	2016-10-20	13:52	/user/hive/warehouse/test.db/t1/a.txt</span><br><span class="line">hive&gt; dfs -cat /user/hive/warehouse/test.db/t1/a.txt;</span><br><span class="line">aaa</span><br></pre></td></tr></table></figure>
+<p>可以看到，hive命令行中除了可以执行HiveQL语句，还可以执行Hadoop的dfs命令。<strong>Load语句实际执行了一个复制文件的操作</strong>。通常我们在load语句中指定的路径是一个目录，而不是单个独立的文件。Hive会将该目录下的所有文件都复制到目标位置。这使得用户将更方便地组织数据到多个文件中，同时可以在不修改Hive脚本的前提下修改文件命名规则。文件会被复制到目标路径下而且文件名保持不变。</p>
+<p>上面的HiveQL语句向t1表中装载了数据’aaa’，并在默认的数据仓库目录下生成了数据文件 /user/hive/warehouse/test.db/t1/a.txt，实际上数据文件是纯文本格式，内容就是 ‘aaa’。</p>
+<p>在本地文件a.txt中添加一行’bbb’。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;bbb&#x27; &gt;&gt; a.txt</span><br></pre></td></tr></table></figure>
+<p>然后再执行下面的HiveQL语句并查看结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; load data local inpath &#x27;/root/test&#x27; into table t1;</span><br><span class="line">hive&gt; select * from t1;</span><br><span class="line">aaa</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t1;</span><br><span class="line">Found 2 items</span><br><span class="line">-rwxrwxrwt	3	root	hive	4	2016-10-20	13:52	/user/hive/warehouse/test.db/t1/a.txt</span><br><span class="line">-rwxrwxrwt	3	root	hive	8	2016-10-20	14:18	/user/hive/warehouse/test.db/t1/a_copy_1.txt</span><br><span class="line">hive&gt; dfs -cat /user/hive/warehouse/test.db/t1/a.txt;</span><br><span class="line">aaa</span><br><span class="line">hive&gt; dfs -cat /user/hive/warehouse/test.db/t1/a_copy_1.txt;</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br></pre></td></tr></table></figure>
+<p>可以看到，现在表中有3条数据，并且新生成了数据文件a_copy_1.txt。原来的a.txt文件中的内容还是’aaa’，新生成的a_copy_1.txt文件中的内容是第二次装载的两行数据。即，每次装载会生成一个新的文件，如果目录中装载的文件已经存在，那么再次装载会生成一个原文件的复制，表中数据对应的是表目录下的所有文件的内容。</p>
+<p><strong>（2）使用 LOAD OVERWRITE</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; drop table if exists t2;</span><br><span class="line">hive&gt; create table t2(name string);</span><br><span class="line">hive&gt; load data local inpath &#x27;/root/test&#x27; overwrite into table t2;</span><br><span class="line">hive&gt; select * from t2;</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t2;</span><br><span class="line">Found 1 items</span><br><span class="line">-rwxrwxrwt	3	root	hive	8	2016-10-20	14:43	/user/hive/warehouse/test.db/t2/a.txt</span><br><span class="line">hive&gt; dfs -cat /user/hive/warehouse/test.db/t2/a.txt;</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br></pre></td></tr></table></figure>
+<p>可以看到，现在t2表中只有两条数据，在表目录下生成了数据文件a.txt。现在编辑本地文件a.txt，使其只有一行’ccc’。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;ccc&#x27; &gt; a.txt</span><br></pre></td></tr></table></figure>
+<p>再执行下面的语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; load data local inpath &#x27;/root/test&#x27; overwrite into table t2;</span><br><span class="line">hive&gt; select * from t2;</span><br><span class="line">ccc</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t2;</span><br><span class="line">Found 1 items</span><br><span class="line">-rwxrwxrwt	3	root	hive	4	2016-10-20	14:50	/user/hive/warehouse/test.db/t2/a.txt</span><br><span class="line">hive&gt; dfs -cat /user/hive/warehouse/test.db/t2/a.txt;</span><br><span class="line">ccc</span><br></pre></td></tr></table></figure>
+<p>可以看到，现在表中只有一条数据’ccc’，数据文件名没变，但其内容重新生成。</p>
+<h6 id="b-向分区表中装载数据"><a href="#b-向分区表中装载数据" class="headerlink" title="b. 向分区表中装载数据"></a>b. 向分区表中装载数据</h6><p><strong>（1）load</strong></p>
+<p>准备本地文本文件a.txt，其中只有一行’aaa’，然后执行下面的语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; create table  t1(name string) partitioned by (country string, state string);</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t1;</span><br><span class="line">hive&gt; load data local inpath &#x27;/root/test&#x27; into table t1 partition (country=&#x27;us&#x27;, state=&#x27;ca&#x27;);</span><br><span class="line">hive&gt; select * from t1;</span><br><span class="line">aaa	us	ca</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t1/country=us/state=ca;</span><br><span class="line">Found 1 items</span><br><span class="line">-rwxrwxrwt	3	root	hive	4	2016-10-20	15:10	/user/hive/warehouse/test.db/t1/country=us/state=ca/a.txt</span><br></pre></td></tr></table></figure>
+<p>可以看到，建立t1表后，装载数据前，表目录下没有任何文件。<strong>load语句创建了分区目录country=us/state=ca，并将本地文件复制到分区目录下</strong>。从查询的角度看，<strong>向t1表中装载了数据’aaa’</strong>。<strong>查询结果显示了三列，除了原始的文本文件中的数据，还包括了两个分区列的值。分区列总是在表的最后显示</strong>。</p>
+<p>load overwrite装载数据与非分区表类似，不再赘述。</p>
+<p><strong>（2）alter table tablename add partition</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; alter table t1 add partition(country=&#x27;us&#x27;, state=&#x27;cb&#x27;) location &#x27;/a&#x27;;</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t1/country=us;</span><br><span class="line">Found 1 items</span><br><span class="line">drwxrwxrwt	-	root	hive	0	2016-10-20	15:40	/user/hive/warehouse/test.db/t1/country=us/state=ca</span><br><span class="line">hive&gt; select * from t1;</span><br><span class="line">aaa	us	ca</span><br><span class="line">hive&gt; dfs -cp /user/hive/warehouse/test.db/t1/country=us/state=ca/a.txt /a;</span><br><span class="line">hive&gt; select * from t1;</span><br><span class="line">aaa	us	ca</span><br><span class="line">aaa	us	cb</span><br><span class="line">hive&gt; dfs -ls /user/hive/warehouse/test.db/t1/country=us;</span><br><span class="line">Found 1 items</span><br><span class="line">drwxrwxrwt	-	root	hive	0	2016-10-20	15:40	/user/hive/warehouse/test.db/t1/country=us/state=ca</span><br><span class="line">hive&gt; dfs -ls /a;</span><br><span class="line">Found 1 items</span><br><span class="line">-rw-r--r--	3	root	supergroup	4	2016-10-20	15:41	/a/a.txt</span><br><span class="line">hive&gt; dfs -rm /user/hive/warehouse/test.db/t1/country=us/state=ca/a.txt;</span><br><span class="line">hive&gt; select * from t1;</span><br><span class="line">aaa	us	cb</span><br></pre></td></tr></table></figure>
+<p>说明：表中原有一条数据’aaa’。添加一个新分区，并指定位置为’/a’。把已经存在的数据文件a.txt复制到目录’/a’里。此时查询已经有属于不同分区的两条数据。删除country=’us’且state=’ca’分区的数据文件。此时查询表只有属于country=’us’且state=’cb’分区的一条数据。整个过程中HDFS中都没有存在过coutry=us/state=cb的目录。</p>
+<p><strong>对Hive表的数据装载特性总结如下：</strong></p>
+<ul>
+<li>load与load overwrite的区别是：<ul>
+<li>load：每次执行会生成新的数据文件，文件中是本次装载的数据，表中数据对应的是表目录下的所有文件的内容。</li>
+<li>load overwrite：若表（或分区）的数据文件不存在则生成，存在则重新生成数据文件内容（覆盖掉以前的）。</li>
+</ul>
+</li>
+<li>分区表比非分区表多了一种alter table … add partition的数据装载方式</li>
+<li>对于分区表（无论内部还是外部），load与load overwrite会自动建立名为分区键值的目录，而alter table … add partition，只要用location指定数据文件所在的目录即可。</li>
+<li>对于外部表，除了在删除表时只删除元数据而保留表数据目录外，其数据装载行为与内部表相同。</li>
+</ul>
+<hr>
+<p>创建一个文件粘贴上述记录，并上载即可，如下图：</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600131112.png" alt="1603600131112"></p>
+<p>然后上载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data local inpath &#x27;/home/hadoop/Desktop/data&#x27; overwrite into table t1;</span><br></pre></td></tr></table></figure>
+<p>查看表内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from t1;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600188322.png" alt="1603600188322"></p>
+<h5 id="4-查看文件位置"><a href="#4-查看文件位置" class="headerlink" title="4. 查看文件位置"></a>4. 查看文件位置</h5><p>t1表在哪儿呢？在我们之前配置的默认路径里（/user/hive/warehouse）</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603609902727.png" alt="1603609902727"></p>
+<p>通过命令行获取位置信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc formatted table_name;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610044780.png" alt="1603610044780"></p>
+<h5 id="5-删除内部表"><a href="#5-删除内部表" class="headerlink" title="5. 删除内部表"></a>5. 删除内部表</h5><p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610161316.png" alt="1603610161316"></p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610193337.png" alt="1603610193337"></p>
+<p>观察HDFS上的文件，发现t1已经不在了</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610402205.png" alt="1603610402205"></p>
+<h4 id="3-1-4-例子：创建外部表"><a href="#3-1-4-例子：创建外部表" class="headerlink" title="3.1.4 例子：创建外部表"></a>3.1.4 例子：创建外部表</h4><h5 id="1-创建表-1"><a href="#1-创建表-1" class="headerlink" title="1. 创建表"></a>1. 创建表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span> t2(</span><br><span class="line">    id      <span class="type">int</span></span><br><span class="line">   ,name    string</span><br><span class="line">   ,hobby   <span class="keyword">array</span><span class="operator">&lt;</span>string<span class="operator">&gt;</span></span><br><span class="line">   ,<span class="keyword">add</span>     map<span class="operator">&lt;</span>String,string<span class="operator">&gt;</span></span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format delimited</span><br><span class="line">fields terminated <span class="keyword">by</span> <span class="string">&#x27;,&#x27;</span></span><br><span class="line">collection items terminated <span class="keyword">by</span> <span class="string">&#x27;-&#x27;</span></span><br><span class="line">map keys terminated <span class="keyword">by</span> <span class="string">&#x27;:&#x27;</span></span><br><span class="line">location <span class="string">&#x27;/user/t2&#x27;</span></span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600496450.png" alt="1603600496450"></p>
+<h5 id="2-装载数据"><a href="#2-装载数据" class="headerlink" title="2. 装载数据"></a>2. 装载数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data local inpath &#x27;/home/hadoop/Desktop/data&#x27; overwrite into table t2;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603600549196.png" alt="1603600549196"></p>
+<h5 id="3-查看文件位置"><a href="#3-查看文件位置" class="headerlink" title="3. 查看文件位置"></a>3. 查看文件位置</h5><p>在/user/目录下，可以看到t2文件</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603609992170.png" alt="1603609992170"></p>
+<p>通过命令行获得位置信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc formatted table_name;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610068333.png" alt="1603610068333"></p>
+<h5 id="4-删除外部表"><a href="#4-删除外部表" class="headerlink" title="4. 删除外部表"></a>4. 删除外部表</h5><p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610449476.png" alt="1603610449476"></p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610471246.png" alt="1603610471246"></p>
+<p>观察HDFS上的文件，t2仍然存在</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610518016.png" alt="1603610518016"></p>
+<p>因而删除外部表仅仅会删除元数据。</p>
+<p>重新创建外部表t2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create external table t2(</span><br><span class="line">    id      int</span><br><span class="line">   ,name    string</span><br><span class="line">   ,hobby   array&lt;string&gt;</span><br><span class="line">   ,add     map&lt;String,string&gt;</span><br><span class="line">)</span><br><span class="line">row format delimited</span><br><span class="line">fields terminated by &#x27;,&#x27;</span><br><span class="line">collection items terminated by &#x27;-&#x27;</span><br><span class="line">map keys terminated by &#x27;:&#x27;</span><br><span class="line">location &#x27;/user/t2&#x27;</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610616445.png" alt="1603610616445"></p>
+<p>不往里面插入数据，我们select * 看看结果</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603610644871.png" alt="1603610644871"></p>
+<p>可见数据仍然在！</p>
+<h3 id="3-2-法二：查询建表法（Create-Table-As-Select-CTAS-）"><a href="#3-2-法二：查询建表法（Create-Table-As-Select-CTAS-）" class="headerlink" title="3.2 法二：查询建表法（Create Table As Select (CTAS)）"></a>3.2 法二：查询建表法（Create Table As Select (CTAS)）</h3><p>通过AS 查询语句完成建表：<strong>将子查询的结果存在新表里，有数据</strong><br>一般用于中间表。</p>
+<p>可以通过一个create-table-as-select（CTAS）语句中的查询结果来创建和填充表。 CTAS创建的表是原子表，这意味着在填充所有查询结果之前，其他用户不会看到该表。因此，其他用户要么看到包含完整查询结果的表，要么根本看不到表。</p>
+<p>CTAS有两部分，SELECT部分可以是HiveQL支持的任何SELECT语句 (<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select">SELECT statement</a>)； CREATE部分从SELECT部分获取schema，并使用其他表属性（例如SerDe和存储格式）创建目标表。( The CREATE part of the CTAS takes the resulting schema from the SELECT part and creates the target table with other table properties such as the SerDe and storage format.)</p>
+<p>CTAS具有以下限制：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/qq_26442553/article/details/79593504">使用create table …as创建表时要注意的问题_涤生手记-CSDN博客</a></p>
+</blockquote>
+<ul>
+<li><p>目标表不能是外部表。</p>
+</li>
+<li><p>目标表不能是列表存储表 (list bucketing table)。</p>
+</li>
+<li><p>hive中用CTAS创建表，所创建的表统一都是非分区表，不管源表是否是分区表。所以对于分区表的创建使用CTAS一定要注意分区功能的丢失。当然创建表以后可以添加分区，成为分区表（从Hive 3.2.0开始，CTAS语句可以为目标表定义分区规范。(can define a partitioning specification for the target table (<a href="https://issues.apache.org/jira/browse/HIVE-20241">HIVE-20241</a>) 示例如下：（关于如何查询hive版本，见 <a href="#jump6">6.命令</a>））</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE partition_ctas_1 PARTITIONED BY (key) AS</span><br><span class="line">SELECT value, key FROM src where key &gt; 200 and key &lt; 300;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CTAS创建表时不能添加注释，这种方式多用于临时表、中间表的创建，不是结果表，且即使源表有注释，使用CTAS创建的表也会丢失源表的字段注释。</p>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE new_key_value_store</span><br><span class="line">   ROW FORMAT SERDE &quot;org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe&quot;</span><br><span class="line">   STORED AS RCFile</span><br><span class="line">   AS</span><br><span class="line">SELECT (key % 1024) new_key, concat(key, value) key_value_pair</span><br><span class="line">FROM key_value_store</span><br><span class="line">SORT BY new_key, key_value_pair;</span><br></pre></td></tr></table></figure>
+<p>上面的CTAS语句使用从SELECT语句结果得到的schema（new_key DOUBLE，key_value_pair STRING）创建目标表new_key_value_store。如果SELECT语句未指定列别名，则列名将自动分配给_col0，_col1和_col2等。此外，新目标表是使用特定的SerDe和存储格式创建的，独立于SELECT语句里的源表。</p>
+<p>Starting with <a href="https://issues.apache.org/jira/browse/HIVE-1180">Hive 0.13.0</a>, the SELECT statement can include one or more common table expressions (CTEs), as shown in the <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select#LanguageManualSelect-SelectSyntax">SELECT syntax</a>. For an example, see <a href="https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression#CommonTableExpression-CTEinViews,CTAS,andInsertStatements">Common Table Expression</a>.<br>（关于CTEs的介绍见 <a href="https://www.cnblogs.com/Neo-ds/p/4804900.html">Common Table Expressions (CTE) - ndong - 博客园 (cnblogs.com)</a>）</p>
+<p>能够<strong>从一个表选择数据到另一个表</strong>是Hive最强大的特性之一。Hive在执行查询时处理数据从源格式到目标格式的转换。</p>
+<p>根据例子我们建一张表：t3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table t3 as</span><br><span class="line">select</span><br><span class="line">    id,</span><br><span class="line">    name</span><br><span class="line">from t2</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<p>会执行MapReduce过程。<br>查看表结构及内容，发现是有数据的，并且由于没有指定外部表和location，该表在默认位置，即是内部表。</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603613699566.png" alt="1603613699566"></p>
+<h3 id="3-3-法三：like建表法"><a href="#3-3-法三：like建表法" class="headerlink" title="3.3 法三：like建表法"></a>3.3 法三：like建表法</h3><p><strong>会创建结构完全相同的表，但是没有数据。</strong><br>常用于中间表.</p>
+<p><strong>(尝试过like建表法可以生成分区表)</strong></p>
+<p>LIKE形式的CREATE TABLE允许您精确地复制现有表定义（而无需复制其数据）。<br>与CTAS相比，以下语句创建了一个新的empty_key_value_store表，它的定义在表名以外的所有细节上与现有key_value_store完全匹配。 新表不包含任何行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE empty_key_value_store</span><br><span class="line">LIKE key_value_store [TBLPROPERTIES (property_name=property_value, ...)];</span><br></pre></td></tr></table></figure>
+<p>在Hive 0.8.0之前，CREATE TABLE LIKE view_name将复制该视图。 在Hive 0.8.0和更高版本中，CREATE TABLE LIKE view_name通过使用view_name schema（字段(fields)和分区列(partition columns)）, 使用SerDe和文件格式的默认值来创建一个表。</p>
+<p>注：上面语句中如果不使用 EXTERNAL 关键字，若源表是外部表的话，生成的新表也将是外部表；若源表是内部表的话，生成的新表也将是内部表。若语句中包含 EXTERNAL 关键字且源表是内部表的话，生成的新表将是外部表。即使在这种场景下，LOCATION 子句同样是可选的。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table t4 like t2;</span><br></pre></td></tr></table></figure>
+<p>可以发现，不会执行MapReduce，且表结构和t2完全一样，但是没有数据。</p>
+<p><img src="/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/1603614353762.png" alt="1603614353762"></p>
+<h2 id="4-Hive中表的类型"><a href="#4-Hive中表的类型" class="headerlink" title="4. Hive中表的类型"></a>4. Hive中表的类型</h2><p>Hive中有5种表：内部表，外部表，临时表，分区表，桶表（分桶表）</p>
+<h3 id="4-1-内部表与外部表"><a href="#4-1-内部表与外部表" class="headerlink" title="4.1 内部表与外部表"></a><span id="jump4.1">4.1 内部表与外部表</span></h3><p>不使用 <code>EXTERNAL</code> 创建的表称为管理表 (也叫做内部表) (managed table)，因为Hive管理它的数据。若要确定一个表是内部表还是外部表，使用 <a href="https://cwiki.apache.org/confluence/display/Hive/Managed+vs.+External+Tables#Managedvs.ExternalTables-DescribeTable/View/Column">DESCRIBE FORMATTED table_name</a> 可以得到表的类型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Table Type: MANAGED_TABLE 或者 EXTERNAL_TABLE</span><br></pre></td></tr></table></figure>
+<p>（注：此命令还会显示许多其他信息，例如表的创建人，创建时间，location等等）</p>
+<p>默认情况下，Hive创建内部表，其中文件、元数据和统计信息由内部Hive进程管理 。 有关内部表与外部表之间差异的详细信息，请参阅 <a href="https://cwiki.apache.org/confluence/display/Hive/Managed+vs.+External+Tables">Managed vs. External Tables</a>。</p>
+<h4 id="4-1-1-Feature-comparison"><a href="#4-1-1-Feature-comparison" class="headerlink" title="4.1.1 Feature comparison"></a>4.1.1 Feature comparison</h4><ul>
+<li>ARCHIVE/UNARCHIVE/TRUNCATE/MERGE/CONCATENATE only work for managed tables</li>
+<li>DROP deletes data for managed tables while it only deletes metadata for external ones</li>
+<li>ACID/Transactional only works for managed tables</li>
+<li><a href="https://issues.apache.org/jira/browse/HIVE-18513">Query Results Caching</a> only works for managed tables</li>
+<li>Only the RELY constraint is allowed on external tables</li>
+<li>Some Materialized View features only work on managed tables</li>
+</ul>
+<h4 id="4-1-2-内部表（Managed-Table）"><a href="#4-1-2-内部表（Managed-Table）" class="headerlink" title="4.1.2 内部表（Managed Table）"></a>4.1.2 内部表（Managed Table）</h4><p>A managed table is stored under the <a href="https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties#ConfigurationProperties-hive.metastore.warehouse.dir">hive.metastore.warehouse.dir</a> path property, by default in a folder path similar to <code>/user/hive/warehouse/databasename.db/tablename/</code>. The default location can be overridden by the <code>location</code> property during table creation. If a managed table or partition is dropped, the data and metadata associated with that table or partition are deleted. If the PURGE option is not specified, the data is moved to a trash folder for a defined duration.</p>
+<p>Use managed tables when Hive should manage the lifecycle of the table, or when generating temporary tables.</p>
+<p>内部表的主要问题是只能用 Hive 访问，不方便和其他系统共享数据。例如，有一份由 Pig 或其他工具创建并且主要由这一工具使用的数据，同时希望使用 Hive 在这份数据上执行一些查询，可是并没有给予 Hive 对数据的所有权，这时就不能使用内部表了。我们可以创建一个外部表指向这份数据，而并不需要对其具有所有权。</p>
+<p>删除内部表会同时删除存储数据和元数据。</p>
+<p><strong>建表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建表方式一</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">    id	<span class="type">INT</span>,</span><br><span class="line">    name STRING,</span><br><span class="line">    age <span class="type">INT</span>,</span><br><span class="line">    gfs <span class="keyword">ARRAY</span><span class="operator">&lt;</span>STRING<span class="operator">&gt;</span>,</span><br><span class="line">    address MAP<span class="operator">&lt;</span>STRING,STRING<span class="operator">&gt;</span>,</span><br><span class="line">    info STRUCT<span class="operator">&lt;</span>country:String,province:String,shi:String<span class="operator">&gt;</span></span><br><span class="line">)</span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED </span><br><span class="line">FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27; &#x27;</span> </span><br><span class="line">COLLECTION ITEMS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;,&#x27;</span></span><br><span class="line">MAP KEYS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;:&#x27;</span> </span><br><span class="line">LINES TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">LOCATION &quot;/test&quot;; <span class="comment">-- 可以设置源数据的位置，若不设置默认就在Hive的工作目录区（关于表的存放位置，可使用 desc formatted tablename 进行查看）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 建表方式二</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl1 <span class="keyword">like</span> gfstbl; <span class="comment">-- 只是创建表结构</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 建表方式三</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> gfstbl2 <span class="keyword">AS</span> <span class="keyword">SELECT</span> id,name,gfs,address <span class="keyword">from</span> gfstbl; </span><br><span class="line"><span class="comment">-- 会创建相应的表结构，并且插入数据，相当于完整的赋值</span></span><br></pre></td></tr></table></figure>
+<p>关于建表的更详细介绍见 <a href="#jump3">3. Hive建表语句</a></p>
+<p><strong>加载数据：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/root/gfs.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> gfstbl;</span><br></pre></td></tr></table></figure>
+<p>更详细介绍见 <a href="#jump5">5. 向Hive表种插入数据</a></p>
+<p><strong>查看表描述信息：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span> [EXTENDED<span class="operator">|</span>FORMATTED] table_name</span><br><span class="line">如 <span class="keyword">DESCRIBE</span> FORMATTED gfstbl;</span><br></pre></td></tr></table></figure>
+<p>DESCRIBE显示列的列表（the list of columns），包括给定表的分区列（partition columns）。 如果指定了EXTENDED关键字，则它将以Thrift序列化形式显示表的所有元数据。 这通常只在调试时有用，而不适用于一般使用。 如果指定了FORMATTED关键字，则它将以表格格式显示元数据。</p>
+<h4 id="4-1-3-外部表（External-Table）"><a href="#4-1-3-外部表（External-Table）" class="headerlink" title="4.1.3 外部表（External Table）"></a>4.1.3 外部表（External Table）</h4><p>An external table describes the metadata/schema on external files. External table files can be accessed and managed by processes outside of Hive. External tables can access data stored in sources such as Azure Storage Volumes (ASV) or remote HDFS locations. If the structure or partitioning of an external table is changed, an <a href="https://cwiki.apache.org/confluence/display/Hive/Managed+vs.+External+Tables#Managedvs.ExternalTables-RecoverPartitions(MSCKREPAIRTABLE">MSCK REPAIR TABLE table_name</a>) statement can be used to refresh metadata information.</p>
+<p>Use external tables when files are already present or in remote locations, and the files should remain even if the table is dropped.</p>
+<p>外部表方便对已有数据的集成。因为表是外部的，所以 Hive 并不认为其完全拥有这个表的数据。在对外部表执行删除操作时，只是删除掉描述表的元数据信息，并不会删除表数据。</p>
+<p>数据存储位置由用户自己指定，<strong>由HDFS管理，删除外部表时仅仅会删除元数据，存储数据不会受到影响。</strong></p>
+<ul>
+<li>适用情形：<br>当一份日志需要多个小组一起分析，分析完了之后创建的表就可以删除了。但是普通的表删除的同时也会把数据删除，这样就会影响到其他小组的分析，而且日志数据也不能随便删除。所以，需要外部表，删除外部表，不会删除对应的HDFS上的数据。</li>
+</ul>
+<p><strong>建表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span> wc_external (</span><br><span class="line">    word1 STRING, </span><br><span class="line">    word2 STRING</span><br><span class="line">) </span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED </span><br><span class="line">FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27; &#x27;</span> </span><br><span class="line">location <span class="string">&#x27;/test/external&#x27;</span>; <span class="comment">-- location可加可不加，不加location默认是在hive的工作目录区</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="4-1-4-内部表与外部表的区别"><a href="#4-1-4-内部表与外部表的区别" class="headerlink" title="4.1.4 内部表与外部表的区别"></a>4.1.4 内部表与外部表的区别</h4><ul>
+<li>内部表数据由Hive自身管理，外部表数据由HDFS管理；</li>
+<li>内部表数据存储的位置是hive.metastore.warehouse.dir（默认：/user/hive/warehouse），外部表数据的存储位置由自己制定；</li>
+<li>对内部表的修改会将修改直接同步给元数据，而对外部表的表结构和分区进行修改，则需要修复（MSCK REPAIR TABLE table_name;）</li>
+<li>创建表时：创建内部表时，会将数据移动到数据仓库指向的路径；若创建外部表，仅记录数据所在的路径， 不对数据的位置做任何改变。</li>
+<li>删除表时：在删除表的时候，内部表的元数据和数据会被一起删除，而外部表只删除元数据，不删除数据（HDFS上的文件不会被删除）。这样外部表相对来说更加安全些，数据组织也更加灵活，方便共享源数据</li>
+</ul>
+<h3 id="4-2-临时表（Temporary-Table）"><a href="#4-2-临时表（Temporary-Table）" class="headerlink" title="4.2 临时表（Temporary Table）"></a>4.2 临时表（Temporary Table）</h3><p>在当前会话期间存在，会话结束后自动销毁。</p>
+<ul>
+<li>适用情形<br>临时分析，在关闭hive客户端后，临时表就会消失。主要用于存储不重要的中间结果集，不重要的表。</li>
+</ul>
+<p>临时表具有以下限制：</p>
+<ul>
+<li>不支持分区列。</li>
+<li>不支持创建索引。</li>
+</ul>
+<p><strong>建表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> TEMPORARY <span class="keyword">table</span> ttabc(</span><br><span class="line">    id <span class="type">Int</span>,</span><br><span class="line">    name String</span><br><span class="line">) </span><br><span class="line"><span class="comment">-- 临时表的声明周期是一次会话，进入hive shell创建一张表，关闭shell后，表丢失，临时表不支持分区</span></span><br></pre></td></tr></table></figure>
+<p><strong>建表并加载数据：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> TEMPORARY <span class="keyword">table</span> dept_tmp(  </span><br><span class="line">    deptno <span class="type">int</span>,  </span><br><span class="line">    dname string,</span><br><span class="line">    loc string</span><br><span class="line">)</span><br><span class="line"><span class="type">row</span> format delimited  </span><br><span class="line">fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">load data <span class="keyword">local</span> inpath <span class="string">&#x27;/opt/datas/dept.txt&#x27;</span> <span class="keyword">into</span> <span class="keyword">table</span> dept_tmp;</span><br></pre></td></tr></table></figure>
+<p><strong>查看location信息：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">desc</span> formatted dept_tmp;</span><br><span class="line">Location:               hdfs:<span class="operator">/</span><span class="operator">/</span><span class="number">172.19</span><span class="number">.199</span><span class="number">.187</span>:<span class="number">8020</span><span class="operator">/</span>tmp<span class="operator">/</span>hive<span class="operator">/</span>hadoop<span class="operator">/</span><span class="number">68174383</span><span class="operator">-</span>f427<span class="number">-4629</span><span class="number">-9707</span><span class="number">-0</span>ab1c9b07726<span class="operator">/</span>_tmp_space.db<span class="operator">/</span>d872efec<span class="number">-1294</span><span class="number">-48</span>b0<span class="number">-9071</span><span class="number">-31</span>cf98d46400    </span><br><span class="line"><span class="keyword">Table</span> Type:             MANAGED_TABLE     </span><br></pre></td></tr></table></figure>
+<h3 id="4-3-分区表（Partitioned-Table）"><a href="#4-3-分区表（Partitioned-Table）" class="headerlink" title="4.3 分区表（Partitioned Table）"></a><span id="jump4.4">4.3 分区表（Partitioned Table）</span></h3><p>可以使用 <code>PARTITIONED BY</code> 子句创建分区表。 一个表可以具有一个或多个分区列，并为分区列中的每个不同值组合创建一个单独的数据目录。 此外，可以使用 <code>CLUSTERED BY</code> 列对表或分区进行存储，并且可以通过 <code>SORT BY</code> 列在该存储区中对数据进行排序（tables or partitions can be bucketed using CLUSTERED BY columns, and data can be sorted within that bucket via SORT BY columns. ）。 这样可以提高某些查询的性能。</p>
+<blockquote>
+<p>更多关于bucket 的内容见 <a href="#jump4.4">4.4 分桶表（Bucket Tables） </a></p>
+</blockquote>
+<p>如果在创建分区表时收到以下错误消息：“ FAILED: Error in semantic analysis: Column repeated in partitioning columns”，则表示您试图将分区列包含在表本身的数据中。 您可能确实定义了该列，但是，您创建的分区将创建一个可查询的伪列，因此您必须将表列重命名为其他名称（用户不应在其上查询！）。</p>
+<p>(You probably really do have the column defined. However, the partition you create makes a pseudocolumn on which you can query, so you must rename your table column to something else (that users should not query on!).)</p>
+<p>例如，假设原始未分区表具有三列：id，date和name。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id int,</span><br><span class="line">date date,</span><br><span class="line">name varchar</span><br></pre></td></tr></table></figure>
+<p>现在您要按日期分区。 您的Hive定义可以使用“ dtDontQuery”作为列名，以便可以将“ date”用于分区（和查询）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> table_name ( </span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">	dtDontQuery string,</span><br><span class="line">	name string</span><br><span class="line">)</span><br><span class="line">partitioned <span class="keyword">by</span> (<span class="type">date</span> string)</span><br></pre></td></tr></table></figure>
+<p>现在，您的用户仍将查询<code>where date =&#39;...&#39;</code>，但第二列dtDontQuery将保留原始值。</p>
+<hr>
+<p>分区表将数据按照某个字段或者关键字分成多个子目录来存储，防止暴力扫描全表。</p>
+<ul>
+<li><p>适用情形</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> logs <span class="keyword">where</span> <span class="type">date</span> <span class="operator">=</span> <span class="string">&#x27;20171209&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>普通表执行流程：对全表的数据进行查询，然后进行过滤操作。</li>
+<li>分区表执行流程：直接加载对应文件路径下的数据。</li>
+</ul>
+<p>适用于大数据量，可以通过分区快速定位需要查询的数据，<strong>分区表的作用主要是提高查询检索的效率 。</strong></p>
+</li>
+</ul>
+<p>分区表的优势体现在可维护性和性能两方面，而且分区表还可以将数据以一种符合业务逻辑的方式进行组织，因此是数据仓库中经常使用的一种技术。内部表和外部表都可以创建相应的分区表，分别称之为内部分区表和外部分区表。</p>
+<p>先看一个内部分区表的例子：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> page_view(</span><br><span class="line">    viewtime <span class="type">int</span>,</span><br><span class="line">	userid <span class="type">bigint</span>,</span><br><span class="line">	page_url string,</span><br><span class="line">	referrer_url string,</span><br><span class="line">	ip string COMMENT <span class="string">&#x27;ip address of the user&#x27;</span></span><br><span class="line">)</span><br><span class="line">COMMENT <span class="string">&#x27;this is the page view table&#x27;</span></span><br><span class="line">PARTITIONED <span class="keyword">BY</span> (dt string, country string)</span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED </span><br><span class="line">FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;\001&#x27;</span></span><br><span class="line">STORED <span class="keyword">AS</span> SEQUENCEFILE;</span><br></pre></td></tr></table></figure>
+<p><code>CREATE TABLE</code> 语句的 <code>PARTITIONED BY</code> 子句用于创建分区表。上面的语句创建一个名为 page_view 的分区表。这是一个常见的页面浏览记录表，包含浏览时间、浏览用户ID、浏览页面的URL、上一个访问的URL和用户的IP地址五个字段。该表以日期和国家作为分区字段，存储为SEQUENCEFILE文件格式。文件中的数据分别使用默认的Ctrl-A和换行符作为列和行的分隔符。</p>
+<p>使用 DESCRIBE FORMATTED 命令会显示出分区键。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span> FORMATTED page_view;</span><br></pre></td></tr></table></figure>
+<p>输出信息中把表字段和分区字段分开显示。</p>
+<p>分区表改变了 Hive 对数据存储的组织方式。如果是一个非分区表，那么只会有一个page_view目录与之对应，而对于分区表，当向表中装载数据后，Hive 将会创建好可以反映分区结构的子目录。</p>
+<p>对数据进行分区，最重要的原因就是为了更快地查询。如果用户的查询包含了 <code>where dt=&#39;...&#39; and country=&#39;...&#39;</code> 这样的条件，查询优化器只需要扫描一个分区目录即可。</p>
+<p><strong>静态分区表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> day_hour_table (</span><br><span class="line">    id <span class="type">int</span>, </span><br><span class="line">    content string</span><br><span class="line">) </span><br><span class="line">partitioned <span class="keyword">by</span> (dt <span class="type">int</span>, <span class="keyword">hour</span> <span class="type">int</span>) </span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED </span><br><span class="line">FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;\t&#x27;</span> ;</span><br></pre></td></tr></table></figure>
+<p><strong>加载数据：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- insert单条插入的方式往分区表中插入数据：</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> day_hour_table <span class="keyword">partition</span>(dt<span class="operator">=</span><span class="number">9</span>,<span class="keyword">hour</span><span class="operator">=</span><span class="number">1</span>) <span class="keyword">values</span>(<span class="number">1</span>,&quot;a2 bc&quot;);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> day_hour_table <span class="keyword">partition</span>(dt<span class="operator">=</span><span class="number">9</span>,<span class="keyword">hour</span><span class="operator">=</span><span class="number">2</span>) <span class="keyword">values</span>(<span class="number">3</span>,&quot;a2 bc&quot;);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> day_hour_table <span class="keyword">partition</span>(dt<span class="operator">=</span><span class="number">8</span>,<span class="keyword">hour</span><span class="operator">=</span><span class="number">1</span>) <span class="keyword">values</span>(<span class="number">3</span>,&quot;a2 bc&quot;);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> day_hour_table <span class="keyword">partition</span>(dt<span class="operator">=</span><span class="number">8</span>,<span class="keyword">hour</span><span class="operator">=</span><span class="number">2</span>) <span class="keyword">values</span>(<span class="number">3</span>,&quot;a2 bc&quot;);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- load批量插入的方式往分区表中插入数据：</span></span><br><span class="line">load data <span class="keyword">local</span> inpath &quot;/root/ceshi&quot; <span class="keyword">into</span> <span class="keyword">table</span> day_table <span class="keyword">partition</span> (dt<span class="operator">=</span><span class="number">10</span>,<span class="keyword">hour</span><span class="operator">=</span><span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>删除Hive分区表中的分区：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> day_table <span class="keyword">DROP</span> <span class="keyword">PARTITION</span> (dt<span class="operator">=</span><span class="number">10</span>,<span class="keyword">hour</span><span class="operator">=</span><span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>创建\添加分区：</strong></p>
+<p>Syntax:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] <span class="keyword">PARTITION</span> partition_spec [LOCATION <span class="string">&#x27;location&#x27;</span>]</span><br><span class="line">[, <span class="keyword">PARTITION</span> partition_spec [LOCATION <span class="string">&#x27;location&#x27;</span>], ...];</span><br><span class="line"></span><br><span class="line">partition_spec:</span><br><span class="line">	  : (partition_column <span class="operator">=</span> partition_col_value, partition_column <span class="operator">=</span> partition_col_value, ...) </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建一个空分区：</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> day_hour_table <span class="keyword">ADD</span> <span class="keyword">PARTITION</span> (dt<span class="operator">=</span><span class="number">10000</span>, <span class="keyword">hour</span><span class="operator">=</span><span class="number">2000</span>);</span><br><span class="line"><span class="comment">-- 然后将数据上传到空分区对应的目录下，分区表中就会显示数据</span></span><br><span class="line">hdfs dfs <span class="operator">-</span>put ........</span><br><span class="line"><span class="comment">-- 或者也可用 insert overwrite</span></span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> day_hour_table <span class="keyword">partition</span>(dt<span class="operator">=</span><span class="number">10000</span>, <span class="keyword">hour</span><span class="operator">=</span><span class="number">2000</span>)</span><br><span class="line"><span class="keyword">select</span> ...</span><br><span class="line"><span class="comment">-- 创建一个空分区并且将空分区指向数据位置：</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> day_hour_table <span class="keyword">ADD</span> <span class="keyword">PARTITION</span> (dt<span class="operator">=</span><span class="number">10000</span>, <span class="keyword">hour</span><span class="operator">=</span><span class="number">2000</span>) location &quot;/test&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>动态分区表：</strong></p>
+<p>动态分区表和静态分区表建表语句相同，插入数据的方式不同</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.exec.dynamic.partition<span class="operator">=</span><span class="literal">true</span>;</span><br><span class="line"><span class="keyword">set</span> hive.exec.dynamic.partition.mode<span class="operator">=</span>nonstrict;</span><br></pre></td></tr></table></figure>
+<p>动态分区可以根据数据本身的特征自动来划分分区，<code>load data …</code> 只是将数据上传到HDFS指定目录，所以我们需要使用from insert的方式插入数据，hive才会根据分区设置自动将数据进行分区。（详细内容见👇）</p>
+<p><strong>动态分区插入（Dynamic Partition Inserts）</strong></p>
+<blockquote>
+<p>参考 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML</a></p>
+</blockquote>
+<p>在动态分区插入中，用户可以提供部分分区规范，这意味着只需在PARTITION子句中指定分区列名列表 ( specifying the list of partition column names)。列值是可选的 (The column values are optional)。如果给定一个分区列值 (partition column value)，我们称其为静态分区，否则为动态分区。每个动态分区列都有一个来自select语句的相应输入列。这意味着动态分区的创建由输入列的值决定。动态分区列必须在SELECT语句的列中最后指定，并且按照它们在PARTITION()子句中出现的顺序指定。</p>
+<blockquote>
+<p>In the dynamic partition inserts, users can give partial partition specifications, which means just specifying the list of partition column names in the PARTITION clause. The column values are optional. If a partition column value is given, we call this a static partition, otherwise it is a dynamic partition. Each dynamic partition column has a corresponding input column from the select statement. This means that the dynamic partition creation is determined by the value of the input column. The dynamic partition columns must be <strong>specified last</strong> among the columns in the SELECT statement and <strong>in the same order</strong> in which they appear in the PARTITION() clause.</p>
+</blockquote>
+<p>As of Hive 3.0.0 (<a href="https://issues.apache.org/jira/browse/HIVE-19083">HIVE-19083</a>) there is no need to specify dynamic partition columns. Hive will automatically generate partition specification if it is not specified.</p>
+<style>
+table th:first-of-type {
+    width: 220px;
+}
+table th:nth-of-type(2) {
+    width: 70px;
+}
+</style>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Configuration property</th>
+<th>Default</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hive.exec.dynamic.partition</code></td>
+<td><code>true</code></td>
+<td>Needs to be set to <code>true</code> to enable dynamic partition inserts</td>
+</tr>
+<tr>
+<td><code>hive.exec.dynamic.partition.mode</code></td>
+<td><code>strict</code></td>
+<td>In <code>strict</code> mode, the user must specify at least one static partition in case the user accidentally overwrites all partitions, in <code>nonstrict</code> mode all partitions are allowed to be dynamic</td>
+</tr>
+<tr>
+<td><code>hive.exec.max.dynamic.partitions.pernode</code></td>
+<td>100</td>
+<td>Maximum number of dynamic partitions allowed to be created in each mapper/reducer node</td>
+</tr>
+<tr>
+<td><code>hive.exec.max.dynamic.partitions</code></td>
+<td>1000</td>
+<td>Maximum number of dynamic partitions allowed to be created in total</td>
+</tr>
+<tr>
+<td><code>hive.exec.max.created.files</code></td>
+<td>100000</td>
+<td>Maximum number of HDFS files created by all mappers/reducers in a MapReduce job</td>
+</tr>
+<tr>
+<td><code>hive.error.on.empty.partition</code></td>
+<td><code>false</code></td>
+<td>Whether to throw an exception if dynamic partition insert generates empty results</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM page_view_stg pvs</span><br><span class="line">INSERT OVERWRITE TABLE page_view PARTITION(dt=&#x27;2008-06-08&#x27;, country)</span><br><span class="line">       SELECT pvs.viewTime, pvs.userid, pvs.page_url, pvs.referrer_url, null, null, pvs.ip, pvs.cnt</span><br></pre></td></tr></table></figure>
+<p>在这里，country 分区将由SELECT子句的最后一列（即pvs.cnt）动态创建。Note that the name is not used. 在 nonstrict 模式下，the <code>dt</code> partition could also be dynamically created.</p>
+<p>关于 INSERT 的语法见 <a href="#jump5.2.1">5.2.1 INSERT INTO/OVERWRITE TABLE SELECT</a>.</p>
+<h3 id="4-4-分桶表（Bucked-Tables）"><a href="#4-4-分桶表（Bucked-Tables）" class="headerlink" title="4.4 分桶表（Bucked Tables）"></a><span id="jump4.4">4.4 分桶表（Bucked Tables）</span></h3><p>将数据按照某个字段和桶的数量，对指定字段进行取模运算，拆分成多个小文件来存储，模相同的存储在同一个小文件中，提高join以及抽样的效率。</p>
+<ul>
+<li>适用情形<br>数据有严重的数据倾斜，分布不均匀，但是相对来说每个桶中的数据量会比较平均。桶与桶之间做join等查询的时候，会有优化。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.enforce.bucketing<span class="operator">=</span><span class="literal">true</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> emp_bu(  </span><br><span class="line">    empno <span class="type">int</span>,  </span><br><span class="line">    ename string,</span><br><span class="line">    job string,  </span><br><span class="line">    mgr <span class="type">int</span>,</span><br><span class="line">    hiredate string,  </span><br><span class="line">    sal <span class="keyword">double</span>,  </span><br><span class="line">    comm <span class="keyword">double</span>,  </span><br><span class="line">    deptno <span class="type">int</span></span><br><span class="line">)</span><br><span class="line">CLUSTERED <span class="keyword">BY</span>(deptno) <span class="keyword">INTO</span> <span class="number">4</span> BUCKETS</span><br><span class="line"><span class="type">row</span> format delimited  </span><br><span class="line">fields terminated <span class="keyword">by</span> <span class="string">&#x27;\t&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> emp_bu_2 <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp;</span><br></pre></td></tr></table></figure>
+<p>分桶表是对列值取哈希值的方式，将不同数据放到不同文件中存储，由列值的哈希值除以桶的个数来决定每条数据划分在哪个桶中。对于hive中每一个表、分区都可以进一步进行分桶。</p>
+<p>For an int, it’s easy, <code>hash_int(i) == i</code>. 例如基于user_id进行分桶时， if user_id were an int, and there were 10 buckets, we would expect all user_id’s that end in 0 to be in bucket 1, all user_id’s that end in a 1 to be in bucket 2, etc. </p>
+<p><strong>建表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> psnbucket( </span><br><span class="line">    id <span class="type">INT</span>, </span><br><span class="line">    name STRING, </span><br><span class="line">    age <span class="type">INT</span></span><br><span class="line">) </span><br><span class="line">CLUSTERED <span class="keyword">BY</span> (age) <span class="keyword">INTO</span> <span class="number">4</span> BUCKETS </span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED </span><br><span class="line">FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;,&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>插入数据：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">table</span> psnbucket <span class="keyword">select</span> id, name, age <span class="keyword">from</span> original;</span><br></pre></td></tr></table></figure>
+<p><strong>分桶表+分区表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> psnbucket_partition( </span><br><span class="line">    id <span class="type">INT</span>, </span><br><span class="line">    name STRING, </span><br><span class="line">    age <span class="type">INT</span></span><br><span class="line">) </span><br><span class="line">PARTITIONED <span class="keyword">BY</span>(height <span class="keyword">DOUBLE</span>) </span><br><span class="line">CLUSTERED <span class="keyword">BY</span> (age) <span class="keyword">INTO</span> <span class="number">4</span> BUCKETS </span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED </span><br><span class="line">FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;,&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>参考 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL+BucketedTables">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL+BucketedTables</a></p>
+</blockquote>
+<p>Bucketed tables are fantastic in that they allow much more efficient <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling">sampling</a> than do non-bucketed tables, and they may later allow for time saving operations such as mapside joins. However, the bucketing specified at table creation is not enforced when the table is written to, and so it is possible for the table’s metadata to advertise properties which are not upheld by the table’s actual layout. This should obviously be avoided. Here’s how to do it right.</p>
+<p>First, <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-Create/Drop/TruncateTable">table creation</a>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> user_info_bucketed(user_id <span class="type">BIGINT</span>, firstname STRING, lastname STRING)</span><br><span class="line">COMMENT <span class="string">&#x27;A bucketed copy of user_info&#x27;</span></span><br><span class="line">PARTITIONED <span class="keyword">BY</span>(ds STRING)</span><br><span class="line">CLUSTERED <span class="keyword">BY</span>(user_id) <span class="keyword">INTO</span> <span class="number">256</span> BUCKETS;</span><br></pre></td></tr></table></figure>
+<p>Note that we specify a column (user_id) to base the bucketing.<br>Then we populate the table</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.enforce.bucketing <span class="operator">=</span> <span class="literal">true</span>;  <span class="comment">-- (<span class="doctag">Note:</span> Not needed in Hive 2.x onward)</span></span><br><span class="line"><span class="keyword">FROM</span> user_id</span><br><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> user_info_bucketed</span><br><span class="line"><span class="keyword">PARTITION</span> (ds<span class="operator">=</span><span class="string">&#x27;2009-02-25&#x27;</span>)</span><br><span class="line"><span class="keyword">SELECT</span> userid, firstname, lastname <span class="keyword">WHERE</span> ds<span class="operator">=</span><span class="string">&#x27;2009-02-25&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Version 0.x and 1.x only</strong><br>The command <code>set hive.enforce.bucketing = true;</code> allows the correct number of reducers and the cluster by column to be automatically selected based on the table. Otherwise, you would need to set the number of reducers to be the same as the number of buckets as in <code>set mapred.reduce.tasks = 256;</code> and have a <code>CLUSTER BY ...</code> clause in the select.</p>
+</blockquote>
+<p>What can go wrong? As long as you use the syntax above and <code>set hive.enforce.bucketing = true</code> (for Hive 0.x and 1.x), the tables should be populated properly. Things can go wrong if the bucketing column type is different during the insert and on read, or if you manually cluster by a value that’s different from the table definition.</p>
+<p><strong>Bucketed Sorted Tables</strong></p>
+<blockquote>
+<p>参考<br><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-TemporaryTables">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-TemporaryTables</a></p>
+</blockquote>
+<p>例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> page_view(viewTime <span class="type">INT</span>, userid <span class="type">BIGINT</span>,</span><br><span class="line">     page_url STRING, referrer_url STRING,</span><br><span class="line">     ip STRING COMMENT <span class="string">&#x27;IP Address of the User&#x27;</span>)</span><br><span class="line"> COMMENT <span class="string">&#x27;This is the page view table&#x27;</span></span><br><span class="line"> PARTITIONED <span class="keyword">BY</span>(dt STRING, country STRING)</span><br><span class="line"> CLUSTERED <span class="keyword">BY</span>(userid) SORTED <span class="keyword">BY</span>(viewTime) <span class="keyword">INTO</span> <span class="number">32</span> BUCKETS</span><br><span class="line"> <span class="type">ROW</span> FORMAT DELIMITED</span><br><span class="line">   FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;\001&#x27;</span></span><br><span class="line">   COLLECTION ITEMS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;\002&#x27;</span></span><br><span class="line">   MAP KEYS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;\003&#x27;</span></span><br><span class="line"> STORED <span class="keyword">AS</span> SEQUENCEFILE;</span><br></pre></td></tr></table></figure>
+<p>In the example above, the page_view table is bucketed (clustered by) userid and within each bucket the data is sorted in increasing order of viewTime. Such an organization allows the user to do efficient sampling on the clustered column - in this case userid. The sorting property allows internal operators to take advantage of the better-known data structure while evaluating queries, also increasing efficiency. MAP KEYS and COLLECTION ITEMS keywords can be used if any of the columns are lists or maps.</p>
+<p>CLUSTERED BY和SORTED BY创建命令不会影响将数据插入表的方式，而只会影响数据的读取方式。 这意味着用户必须注意正确地插入数据，方法是将reducer的数量指定为等于存储桶的数量，并在查询中使用CLUSTER BY和SORT BY命令。</p>
+<h2 id="5-向Hive表中插入数据"><a href="#5-向Hive表中插入数据" class="headerlink" title=" 5. 向Hive表中插入数据"></a><span id="jump5"> 5. 向Hive表中插入数据</span></h2><h3 id="5-1-Load"><a href="#5-1-Load" class="headerlink" title="5.1 Load"></a>5.1 Load</h3><blockquote>
+<p>参考 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-Loadingfilesintotables">LanguageManual DML - Apache Hive - Apache Software Foundation</a></p>
+</blockquote>
+<p>Loading files into tables. 此种方式适合把文件中的数据插入Hive表</p>
+<p>Syntax:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LOAD DATA [<span class="keyword">LOCAL</span>] INPATH <span class="string">&#x27;filepath&#x27;</span> [OVERWRITE] <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename [<span class="keyword">PARTITION</span> (partcol1<span class="operator">=</span>val1, partcol2<span class="operator">=</span>val2 ...)]</span><br><span class="line"> </span><br><span class="line">LOAD DATA [<span class="keyword">LOCAL</span>] INPATH <span class="string">&#x27;filepath&#x27;</span> [OVERWRITE] <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename [<span class="keyword">PARTITION</span> (partcol1<span class="operator">=</span>val1, partcol2<span class="operator">=</span>val2 ...)] [INPUTFORMAT <span class="string">&#x27;inputformat&#x27;</span> SERDE <span class="string">&#x27;serde&#x27;</span>] (<span class="number">3.0</span> <span class="keyword">or</span> later)</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<p>Hive 3.0之前的加载操作是纯复制/移动操作，将数据文件移动到与Hive表相对应的位置</p>
+<ul>
+<li><em>filepath</em> 可以是:<ul>
+<li>相对路径, 如 project/data1</li>
+<li>绝对路径, 如 /user/hive/project/data1</li>
+<li>a full URI with scheme and (optionally) an authority, such as hdfs://namenode:9000/user/hive/project/data1</li>
+<li><strong>如果使用了关键字LOCAL，filepath would be referred from the server where hive beeline is running otherwise it would use the HDFS path.</strong></li>
+</ul>
+</li>
+<li>The target being loaded to can be a table or a partition. If the table is partitioned, then one must specify a specific partition of the table by specifying values for all of the partitioning columns.</li>
+<li><em>filepath</em> 可以指向文件（在这种情况下，Hive会将文件移至表中），也可以是目录（在这种情况下，Hive会将目录中的所有文件移至表中）。 In either case, <em>filepath</em> addresses a set of files.</li>
+<li>如果指定了关键字 LOCAL，则<ul>
+<li>load命令将在本地文件系统中查找文件路径。 如果指定的是相对路径，它将相对于用户的当前工作目录进行解释。 用户也可以为本地文件指定完整的URI - for example: <code>file:///user/hive/project/data1</code></li>
+<li>the load command will try to copy all the files addressed by <em>filepath</em> to the target filesystem. The target file system is inferred by looking at the location attribute of the table. The copied data files will then be moved to the table.</li>
+<li>如果要装载的文件在服务器上，使用LOCAL；如果在HDFS中，不使用LOCAL。</li>
+</ul>
+</li>
+<li>如果未指定关键字 LOCAL，则Hive将使用文件路径的完整URI（如果已指定），或将应用以下规则：<ul>
+<li>If scheme or authority are not specified, Hive will use the scheme and authority from the hadoop configuration variable <code>fs.default.name</code> that specifies the Namenode URI.</li>
+<li>If the path is not absolute, then Hive will interpret it relative to <code>/user/&lt;username&gt;</code></li>
+<li>Hive will <em>move</em> the files addressed by <em>filepath</em> into the table (or partition)</li>
+</ul>
+</li>
+<li>如果使用了 OVERWRITE 关键字，目标表（或分区）中的内容将会被删掉并被替换为filepath指向的文件； 否则，filepath指向的文件将被追加到表中。</li>
+</ul>
+<p>例：将HDFS中的文件导入分区表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOAD DATA INPATH &#x27;/user/kelly/test-ml/20210901predict_result.csv&#x27; OVERWRITE INTO TABLE &#x27;ads_base.xxxx&#x27; partition(dt=20210901)</span><br></pre></td></tr></table></figure>
+<h4 id="实例1：将CSV文件导入Hive表"><a href="#实例1：将CSV文件导入Hive表" class="headerlink" title="实例1：将CSV文件导入Hive表"></a>实例1：将CSV文件导入Hive表</h4><blockquote>
+<p>参考：<a href="https://sparkbyexamples.com/apache-hive/hive-load-csv-file-into-table/">Hive Load CSV File into Table — SparkByExamples</a></p>
+</blockquote>
+<p>（1）首先需创建hive表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> emp.employee (</span><br><span class="line">	id <span class="type">int</span>,</span><br><span class="line">	name string,</span><br><span class="line">	age <span class="type">int</span>,</span><br><span class="line">	gender string </span><br><span class="line">)</span><br><span class="line">COMMENT <span class="string">&#x27;Employee Table&#x27;</span></span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED</span><br><span class="line">FIELDS TERMINATED <span class="keyword">BY</span> <span class="string">&#x27;,&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>注:</strong> 为了将csv文件导入Hive表, 建表时需要使用 <code>ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</code>，并且不能加上<code>stored as ORC</code>，否则 load 时会报错，文件格式不匹配</p>
+<p>（2）使用 <code>rz</code> 命令将电脑本地文件上传至服务器</p>
+<p>注：先关闭本地文件，再 <code>rz</code>，且文件中不要包含header，否则会被一起导入表中</p>
+<p>（3）将服务器上的文件上传至HDFS</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">登录hive</span><br><span class="line">hive&gt;dfs -put 服务器上的文件路径 HDFS中的文件路径</span><br><span class="line">例：</span><br><span class="line">hive&gt;dfs -put /data/test/data.csv /user/kelly/data;</span><br><span class="line">若目标路径不存在，需先新建路径：</span><br><span class="line">hive&gt;dfs -mkdir /user/kelly/data;</span><br><span class="line">↑其中/user/kelly为已存在路径</span><br><span class="line">（若多个层级缺失，加上-p参数，创建所有缺失目录）</span><br><span class="line"></span><br><span class="line">如果想重跑覆盖，加上-f参数：</span><br><span class="line">hive&gt;dfs -put -f xxx xxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>（4）将HDFS中的csv导入Hive表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt;LOAD DATA INPATH &#x27;/user/kelly/data/data.csv&#x27; OVERWRITE INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
+<p>若使用 <code>overwrite</code>，则会删掉目标表里已有的数据，并导入文件中的数据</p>
+<p>使用 <code>select * from emp.employee</code> 查看是否写入成功。</p>
+<p><span style="color:red"><strong>注：</strong>对于LOAD DATA INAPTH：LOAD 后，HDFS中的源数据会被删掉</span></p>
+<p>法二：跳过步骤(3)，直接将服务器（即local filesystem）上的csv导入Hive表</p>
+<p>Use <code>LOCAL</code> optional clause to load CSV file from the local filesystem into the Hive table without uploading to HDFS.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt;LOAD DATA LOCAL INPATH &#x27;/data/test/data.csv&#x27; OVERWRITE INTO TABLE emp.employee;</span><br></pre></td></tr></table></figure>
+<p><span style="color:red"><strong>注：</strong>对于LOAD DATA LOCAL INAPTH：local file system 中的源数据不会被删掉。</span></p>
+<p>另：使用 <code>partition</code></p>
+<p>如果目标表是分区表，使用 <code>partition</code> 将数据导入特定的分区中。并且可使用 <code>overwrite</code> 覆盖该分区（删掉原有的数据并装载现在的数据）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt;LOAD DATA INPATH &#x27;/user/kelly/data/data.csv&#x27; OVERWRITE INTO TABLE emp.employee PARTITION(date=2020);</span><br></pre></td></tr></table></figure>
+<h4 id="实例2：将hive表内容导出为csv"><a href="#实例2：将hive表内容导出为csv" class="headerlink" title="实例2：将hive表内容导出为csv"></a>实例2：将hive表内容导出为csv</h4><p>hive表的内容实际是存在hdfs上的，可以直接导出到服务器本地：</p>
+<p>read_data.sh</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">local_path=<span class="string">&#x27;./docs/predict_data.csv&#x27;</span></span><br><span class="line"></span><br><span class="line">hive -e <span class="string">&quot;insert overwrite local directory &#x27;./docs/predict_data_dir/&#x27;</span></span><br><span class="line"><span class="string">ROW FORMAT DELIMITED FIELDS TERMINATED BY &#x27;\u0000&#x27;</span></span><br><span class="line"><span class="string">select * from xx_db.xx_table</span></span><br><span class="line"><span class="string">where dt=xxx;</span></span><br><span class="line"><span class="string">&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># ↑如果数据量比较大，会被分成几个文件去保存，文件名形如000000_0，000001_0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果需要表头：</span></span><br><span class="line"><span class="comment"># 法一：从hive获取</span></span><br><span class="line"><span class="comment">#hive  -e &#x27;SET hive.cli.print.header=true; SELECT * FROM xx_db.xx_table LIMIT 0&#x27; &gt; ./docs/predict_data.csv </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ↑执行完后，最好检查一下csv的表头是否正确(可能一些日志内容也会被写进去)，最好采用法二</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二：手动把表头存入文件，再从文件读取存入csv</span></span><br><span class="line"><span class="built_in">cat</span> ./docs/final_features.txt | sed <span class="string">&#x27;s/,/\t/g&#x27;</span>&gt; <span class="variable">$local_path</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将刚刚保存的hive表内容写入csv</span></span><br><span class="line"><span class="built_in">cat</span> ./docs/predict_data_dir/* &gt;&gt; <span class="variable">$local_path</span>  <span class="comment">#把000000_0，000001_0这样的文件通过追加的方式，写入最终的csv文件中</span></span><br><span class="line">sed -i <span class="string">&#x27;s/,/-/g&#x27;</span> <span class="variable">$local_path</span>       <span class="comment"># 有字段中含有逗号，将其替换为&#x27;-&#x27;</span></span><br><span class="line">sed -i <span class="string">&#x27;s/[\t]/,/g&#x27;</span> <span class="variable">$local_path</span></span><br><span class="line">sed -i <span class="string">&#x27;s/\x00/,/g&#x27;</span> <span class="variable">$local_path</span></span><br></pre></td></tr></table></figure>
+<p>可指定分隔符为逗号：<code>ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</code>，但若字段中的内容含有逗号，则需使用其他分隔符，例如 <code>&#39;\u0000&#39;</code>。</p>
+<p>更多关于分隔符的内容见  <a href="https://blog.csdn.net/lvtula/article/details/89447929">Hive应用：选取分隔符</a></p>
+<p>注：<code>sed s/,/\t/g</code> 意思是将所有逗号替换为\t，选项 <code>i</code> 使 sed 修改文件</p>
+<h3 id="5-2-Insert"><a href="#5-2-Insert" class="headerlink" title="5.2 Insert"></a>5.2 Insert</h3><h4 id="5-2-1-INSERT-INTO-OVERWRITE-TABLE-SELECT"><a href="#5-2-1-INSERT-INTO-OVERWRITE-TABLE-SELECT" class="headerlink" title="5.2.1 INSERT INTO/OVERWRITE TABLE SELECT"></a><span id="jump5.2.1">5.2.1 INSERT INTO/OVERWRITE TABLE SELECT</span></h4><blockquote>
+<p>参考 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-InsertingdataintoHiveTablesfromqueries">LanguageManual DML - Apache Hive - Apache Software Foundation</a></p>
+</blockquote>
+<p>Inserting data into Hive Tables from queries. 此种方式适合把Hive表里的数据插入另一张Hive表。</p>
+<p>Syntax</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Standard syntax:</span><br><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1<span class="operator">=</span>val1, partcol2<span class="operator">=</span>val2 ...) [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] <span class="keyword">SELECT</span> select_statement1 <span class="keyword">FROM</span> from_statement;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1<span class="operator">=</span>val1, partcol2<span class="operator">=</span>val2 ...)] <span class="keyword">SELECT</span> select_statement1 <span class="keyword">FROM</span> from_statement;</span><br><span class="line"> </span><br><span class="line">Hive extension (multiple inserts):</span><br><span class="line"><span class="keyword">FROM</span> from_statement</span><br><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1<span class="operator">=</span>val1, partcol2<span class="operator">=</span>val2 ...) [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] <span class="keyword">SELECT</span> select_statement1</span><br><span class="line">[<span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename2 [<span class="keyword">PARTITION</span> ... [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] <span class="keyword">SELECT</span> select_statement2]</span><br><span class="line">[<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename2 [<span class="keyword">PARTITION</span> ...] <span class="keyword">SELECT</span> select_statement2] ...;</span><br><span class="line"><span class="keyword">FROM</span> from_statement</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename1 [<span class="keyword">PARTITION</span> (partcol1<span class="operator">=</span>val1, partcol2<span class="operator">=</span>val2 ...)] <span class="keyword">SELECT</span> select_statement1</span><br><span class="line">[<span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename2 [<span class="keyword">PARTITION</span> ...] <span class="keyword">SELECT</span> select_statement2]</span><br><span class="line">[<span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename2 [<span class="keyword">PARTITION</span> ... [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>]] <span class="keyword">SELECT</span> select_statement2] ...;</span><br><span class="line"> </span><br><span class="line">Hive extension (<span class="keyword">dynamic</span> <span class="keyword">partition</span> inserts):</span><br><span class="line"><span class="keyword">INSERT</span> OVERWRITE <span class="keyword">TABLE</span> tablename <span class="keyword">PARTITION</span> (partcol1[<span class="operator">=</span>val1], partcol2[<span class="operator">=</span>val2] ...) <span class="keyword">SELECT</span> select_statement <span class="keyword">FROM</span> from_statement;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename <span class="keyword">PARTITION</span> (partcol1[<span class="operator">=</span>val1], partcol2[<span class="operator">=</span>val2] ...) <span class="keyword">SELECT</span> select_statement <span class="keyword">FROM</span> from_statement;</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<ul>
+<li><code>INSERT OVERWRITE</code> 将<span style="color:red">覆盖表或分区中的任何现有数据</span><ul>
+<li>unless <code>IF NOT EXISTS</code> is provided for a partition (as of Hive <a href="https://issues.apache.org/jira/browse/HIVE-2612">0.9.0</a>).</li>
+<li>As of Hive 2.3.0 (<a href="https://issues.apache.org/jira/browse/HIVE-15880">HIVE-15880</a>), if the table has <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-listTableProperties">TBLPROPERTIES</a> (“auto.purge”=”true”) the previous data of the table is not moved to Trash when INSERT OVERWRITE query is run against the table. This functionality is applicable only for managed tables (see <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-ManagedandExternalTables">managed tables</a>) and is turned off when “auto.purge” property is unset or set to false.</li>
+</ul>
+</li>
+<li><code>INSERT INTO</code> 将<span style="color:red">追加到表或分区，保持现有数据不变</span><ul>
+<li>As of Hive <a href="https://issues.apache.org/jira/browse/HIVE-6406">0.13.0</a>, a table can be made <strong>immutable</strong> by creating it with <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-CreateTable">TBLPROPERTIES (“immutable”=”true”)</a>. The default is “immutable”=”false”.<br>如果表中已经存在任何数据，则不允许在不可变表中执行INSERT INTO行为，但如果不可变表为空，则插入INTO仍然可以工作。 INSERT OVERWRITE 的行为不受“不可变”表属性的影响。<br>不可变表可以防止由于脚本错误地多次运行而将数据加载到表中的意外更新。The first insert into an immutable table succeeds and successive inserts fail, resulting in only one set of data in the table, instead of silently succeeding with multiple copies of the data in the table.</li>
+</ul>
+</li>
+<li>可以对表或分区进行插入。如果表是分区表，则必须通过指定所有分区列的值来指定一个特定的分区. If <a href="https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties#ConfigurationProperties-hive.typecheck.on.insert">hive.typecheck.on.insert</a> is set to true, these values are validated, converted and normalized to conform to their column types (Hive <a href="https://issues.apache.org/jira/browse/HIVE-5297">0.12.0</a> onward). </li>
+<li>可以在同一查询中指定多个插入子句（也称为多表插入）。</li>
+<li>The output of each of the select statements is written to the chosen table (or partition). Currently the OVERWRITE keyword is mandatory and implies that the contents of the chosen table or partition are replaced with the output of corresponding select statement.</li>
+<li>The output format and serialization class is determined by the table’s metadata (as specified via DDL commands on the table).</li>
+<li>As of Hive <a href="https://issues.apache.org/jira/browse/HIVE-9353">1.1.0</a> the TABLE keyword is optional.</li>
+<li>As of Hive <a href="https://issues.apache.org/jira/browse/HIVE-9481">1.2.0</a> each INSERT INTO T can take a column list like INSERT INTO T (z, x, c1).  See Description of <a href="https://issues.apache.org/jira/browse/HIVE-9481">HIVE-9481</a> for examples.</li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul>
+<li>Multi Table Inserts minimize the number of data scans required. Hive can insert data into multiple tables by scanning the input data just once (and applying different query operators to the input data). 多表插入可最大程度地减少所需的数据扫描次数。 Hive可以通过只扫描一次输入数据（并应用不同的查询运算符到输入数据）来将数据插入到多个表中。</li>
+<li>Starting with <a href="https://issues.apache.org/jira/browse/HIVE-1180">Hive 0.13.0</a>, the select statement can include one or more common table expressions (CTEs) as shown in the <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select#LanguageManualSelect-SelectSyntax">SELECT syntax</a>. For an example, see <a href="https://cwiki.apache.org/confluence/display/Hive/Common+Table+Expression#CommonTableExpression-CTEinViews,CTAS,andInsertStatements">Common Table Expression</a>.</li>
+</ul>
+<p>例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> rest <span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> tableA;</span><br><span class="line">		</span><br><span class="line">习惯写法 <span class="keyword">from</span>提前  减少<span class="keyword">SQL</span>代码的冗余</span><br><span class="line"><span class="keyword">from</span> day_hour_table</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> rest </span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) ;</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-2-INSERT-INTO-…-VALUES"><a href="#5-2-2-INSERT-INTO-…-VALUES" class="headerlink" title="5.2.2 INSERT INTO … VALUES"></a>5.2.2 INSERT INTO … VALUES</h4><blockquote>
+<p>参考 <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DML#LanguageManualDML-InsertingvaluesintotablesfromSQL">LanguageManual DML - Apache Hive - Apache Software Foundation</a></p>
+</blockquote>
+<p>Inserting values into tables from SQL. 此种方式适合将具体数值（少量）插入到Hive表。</p>
+<p>Syntax：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Standard Syntax:</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> tablename [<span class="keyword">PARTITION</span> (partcol1[<span class="operator">=</span>val1], partcol2[<span class="operator">=</span>val2] ...)] <span class="keyword">VALUES</span> values_row [, values_row ...]</span><br><span class="line">  </span><br><span class="line"><span class="keyword">Where</span> values_row <span class="keyword">is</span>:</span><br><span class="line">( <span class="keyword">value</span> [, <span class="keyword">value</span> ...] )</span><br><span class="line"><span class="keyword">where</span> a <span class="keyword">value</span> <span class="keyword">is</span> either <span class="keyword">null</span> <span class="keyword">or</span> <span class="keyword">any</span> valid <span class="keyword">SQL</span> literal</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<ul>
+<li>VALUES 子句中列出的每一行都会被插入到表中（插入多行数据可以写到一个insert into语句中）</li>
+<li>表中的每一列都需提供需要插入的值。允许用户只向某些列插入值的标准SQL语法目前还不支持。为了模拟标准SQL，用户不希望赋值的列可以提供null。</li>
+<li>使用 INSERT INTO … VALUES 语句不支持 complex datatypes (array, map, struct, union)</li>
+</ul>
+<p>例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> students (name <span class="type">VARCHAR</span>(<span class="number">64</span>), age <span class="type">INT</span>, gpa <span class="type">DECIMAL</span>(<span class="number">3</span>, <span class="number">2</span>))</span><br><span class="line">  CLUSTERED <span class="keyword">BY</span> (age) <span class="keyword">INTO</span> <span class="number">2</span> BUCKETS STORED <span class="keyword">AS</span> ORC;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> students</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">&#x27;fred flintstone&#x27;</span>, <span class="number">35</span>, <span class="number">1.28</span>), (<span class="string">&#x27;barney rubble&#x27;</span>, <span class="number">32</span>, <span class="number">2.32</span>);</span><br><span class="line">  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> pageviews (userid <span class="type">VARCHAR</span>(<span class="number">64</span>), link STRING, came_from STRING)</span><br><span class="line">  PARTITIONED <span class="keyword">BY</span> (datestamp STRING) CLUSTERED <span class="keyword">BY</span> (userid) <span class="keyword">INTO</span> <span class="number">256</span> BUCKETS STORED <span class="keyword">AS</span> ORC;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> pageviews <span class="keyword">PARTITION</span> (datestamp <span class="operator">=</span> <span class="string">&#x27;2014-09-23&#x27;</span>)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">&#x27;jsmith&#x27;</span>, <span class="string">&#x27;mail.com&#x27;</span>, <span class="string">&#x27;sports.com&#x27;</span>), (<span class="string">&#x27;jdoe&#x27;</span>, <span class="string">&#x27;mail.com&#x27;</span>, <span class="keyword">null</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> pageviews <span class="keyword">PARTITION</span> (datestamp)</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">&#x27;tjohnson&#x27;</span>, <span class="string">&#x27;sports.com&#x27;</span>, <span class="string">&#x27;finance.com&#x27;</span>, <span class="string">&#x27;2014-09-23&#x27;</span>), (<span class="string">&#x27;tlee&#x27;</span>, <span class="string">&#x27;finance.com&#x27;</span>, <span class="keyword">null</span>, <span class="string">&#x27;2014-09-21&#x27;</span>);</span><br><span class="line">  </span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">TABLE</span> pageviews</span><br><span class="line">  <span class="keyword">VALUES</span> (<span class="string">&#x27;tjohnson&#x27;</span>, <span class="string">&#x27;sports.com&#x27;</span>, <span class="string">&#x27;finance.com&#x27;</span>, <span class="string">&#x27;2014-09-23&#x27;</span>), (<span class="string">&#x27;tlee&#x27;</span>, <span class="string">&#x27;finance.com&#x27;</span>, <span class="keyword">null</span>, <span class="string">&#x27;2014-09-21&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="6-命令"><a href="#6-命令" class="headerlink" title="6. 命令"></a><span id="jump6">6. 命令</span></h2><p>这里的命令指非sql语句，例如设置属性或添加资源。它们可以在HiveQL脚本中使用，也可以直接在CLI或Beeline中使用。</p>
+<p>如何查看hive版本：</p>
+<p>在安装了hive的服务器上运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive --version</span><br></pre></td></tr></table></figure>
+<p>Hive shell 中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hive&gt;quit;</span><br><span class="line">退出interactive shell（或使用ctrl + c）</span><br><span class="line"></span><br><span class="line">! &lt;command&gt;</span><br><span class="line">Executes a shell command from the Hive shell.</span><br><span class="line">例如：</span><br><span class="line">hive&gt;!ls;</span><br><span class="line">（查看进入hive shell前所在路径下的文件）</span><br><span class="line"></span><br><span class="line">dfs &lt;dfs command&gt;</span><br><span class="line">Executes a dfs command from the Hive shell.</span><br><span class="line">例如：</span><br><span class="line">hive&gt;dfs -ls /user;</span><br><span class="line">（查看hdfs中/user目录下的文件）</span><br></pre></td></tr></table></figure>
+<p>Linux命令行中：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/weixin_42073408/article/details/120483485">https://blog.csdn.net/weixin_42073408/article/details/120483485</a></p>
+</blockquote>
+<p>不进入 hive shell , 直接在linux界面执行hive命令,可使用 <strong>-e</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$hive -e &#x27;select * from test_table&#x27;</span><br></pre></td></tr></table></figure>
+<p>增加 <code>-S</code> 选项可以开启静默模式，这样可以输出结果中去掉‘OK’,’Time Taken’等行，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$hive -S -e &#x27;select * from test_table&#x27;</span><br></pre></td></tr></table></figure>
+<p>使用 <code>-f</code> 执行文件中的查询语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$hive -f /tem/myquery.hql</span><br></pre></td></tr></table></figure>
+<p>在 hive shell 中可以使用 <code>source</code> 命令执行文件中的查询语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt;source /tem/myquery.hql</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>qypx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://qypx.github.io/2020/01/12/Hive%E4%BB%8B%E7%BB%8D/" title="Hive介绍">http://qypx.github.io/2020/01/12/Hive介绍/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+              <a href="/tags/Hive/" rel="tag"># Hive</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/12/%E7%AC%94%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="笔试知识点">
+                  <i class="fa fa-angle-left"></i> 笔试知识点
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/13/%E8%A7%86%E5%9B%BEView/" rel="next" title="视图View">
+                  视图View <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">qypx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left"},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
