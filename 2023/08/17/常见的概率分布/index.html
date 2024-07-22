@@ -26,20 +26,21 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1.离散型分布1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​  P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p)1.2 二项分布n次独立的伯努利试验。如果事件发生的概率是 $p">
+    <meta name="description" content="1. 离散型分布1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​  P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p)1.2 二项分布n次独立的伯努利试验。如果事件发生的概率是 $">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见的概率分布">
 <meta property="og:url" content="http://qypx.github.io/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="1.离散型分布1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​  P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p)1.2 二项分布n次独立的伯努利试验。如果事件发生的概率是 $p">
+<meta property="og:description" content="1. 离散型分布1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​  P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p)1.2 二项分布n次独立的伯努利试验。如果事件发生的概率是 $">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/1692263791721.png">
 <meta property="og:image" content="http://qypx.github.io/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/1692264048094.png">
 <meta property="og:image" content="http://qypx.github.io/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/1692265134303.png">
 <meta property="og:image" content="http://qypx.github.io/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/1692265857319.png">
 <meta property="og:image" content="http://qypx.github.io/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/1692266232557.png">
+<meta property="og:image" content="http://qypx.github.io/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/302580097.png">
 <meta property="article:published_time" content="2023-08-17T07:21:14.000Z">
-<meta property="article:modified_time" content="2024-07-08T11:06:45.327Z">
+<meta property="article:modified_time" content="2024-07-22T06:50:27.563Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="统计学知识">
 <meta property="article:tag" content="概率分布">
@@ -120,7 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A6%BB%E6%95%A3%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">1.离散型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%B8%A4%E7%82%B9%E5%88%86%E5%B8%83%EF%BC%88%E4%BC%AF%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83-%E8%B4%9D%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83-0-1%E5%88%86%E5%B8%83%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E5%B8%95%E6%96%AF%E5%8D%A1%E5%88%86%E5%B8%83%EF%BC%88%E8%B4%9F%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 帕斯卡分布（负二项分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 超几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 泊松分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-number">2.</span> <span class="nav-text">2.连续型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83-U-a-b"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 均匀分布 $U(a,b)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83-E-lambda"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 指数分布 $E(\lambda)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83-N-mu-sigma-2"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 正态分布 $N(\mu, \sigma^2)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-chi-2-%E5%88%86%E5%B8%83"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 $\chi^2$分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-t%E5%88%86%E5%B8%83"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 t分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-F%E5%88%86%E5%B8%83"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 F分布</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A6%BB%E6%95%A3%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">1. 离散型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%B8%A4%E7%82%B9%E5%88%86%E5%B8%83%EF%BC%88%E4%BC%AF%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83-%E8%B4%9D%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83-0-1%E5%88%86%E5%B8%83%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E5%B8%95%E6%96%AF%E5%8D%A1%E5%88%86%E5%B8%83%EF%BC%88%E8%B4%9F%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 帕斯卡分布（负二项分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 超几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 泊松分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-number">2.</span> <span class="nav-text">2. 连续型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83-U-a-b"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 均匀分布 $U(a,b)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83-E-lambda"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 指数分布 $E(\lambda)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83-N-mu-sigma-2"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 正态分布 $N(\mu, \sigma^2)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-chi-2-%E5%88%86%E5%B8%83"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 $\chi^2$分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-t%E5%88%86%E5%B8%83"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 t分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-F%E5%88%86%E5%B8%83"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 F分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A1%A5%E5%85%85%EF%BC%9A%E5%85%B3%E4%BA%8E%E4%B8%8D%E6%94%BE%E5%9B%9E%E6%8A%BD%E6%A0%B7"><span class="nav-number">3.</span> <span class="nav-text">3. 补充：关于不放回抽样</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -209,7 +210,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-08 19:06:45" itemprop="dateModified" datetime="2024-07-08T19:06:45+08:00">2024-07-08</time>
+      <time title="修改时间：2024-07-22 14:50:27" itemprop="dateModified" datetime="2024-07-22T14:50:27+08:00">2024-07-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -230,7 +231,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="1-离散型分布"><a href="#1-离散型分布" class="headerlink" title="1.离散型分布"></a>1.离散型分布</h3><h4 id="1-1-两点分布（伯努利分布-贝努利分布-0-1分布）"><a href="#1-1-两点分布（伯努利分布-贝努利分布-0-1分布）" class="headerlink" title="1.1 两点分布（伯努利分布/贝努利分布/0-1分布）"></a>1.1 两点分布（伯努利分布/贝努利分布/0-1分布）</h4><p>称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​</p>
+    <div class="post-body" itemprop="articleBody"><h3 id="1-离散型分布"><a href="#1-离散型分布" class="headerlink" title="1. 离散型分布"></a>1. 离散型分布</h3><h4 id="1-1-两点分布（伯努利分布-贝努利分布-0-1分布）"><a href="#1-1-两点分布（伯努利分布-贝努利分布-0-1分布）" class="headerlink" title="1.1 两点分布（伯努利分布/贝努利分布/0-1分布）"></a>1.1 两点分布（伯努利分布/贝努利分布/0-1分布）</h4><p>称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​</p>
 <script type="math/tex; mode=display">
 P(X=k)=p^k(1-p)^{1-k}, \quad k=0,1\\
 X\sim B(1,p)\\
@@ -242,10 +243,9 @@ X\sim B(n,p)\\
 E(X)=np\\
 D(X)=np(1-p)</script><blockquote>
 <p>有  $n$ 件产品，其中  $m$ 件次品 ($m&lt;n$)，从中不放回地任意抽取 $k$ 件产品和有放回地任意抽取 $k$ 件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 $\frac{m}{n}$，抽得次品数的期望值也相同，都为 $k\frac{m}{n}$，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
-<p>关于为什么不放回抽样，每次抽到次品的概率都是 $\frac{m}{n}$，因为不放回抽样，每次抽样，都是与前些次的抽样相关的。<br>第一次抽样，抽中次品的概率为 $\frac{m}{n}$，<br>第二次抽样，抽中次品的概率为 $\frac{m}{n}\times\frac{m-1}{n-1}+\frac{n-m}{n}\times\frac{m}{n-1}=\frac{m}{n}$，<br>第三次抽样，抽中次品的概率为<br>$\frac{m}{n}\times\frac{m-1}{n-1}\times\frac{m-2}{n-2}+\frac{m}{n}\times\frac{n-m}{n-1}\times\frac{m-1}{n-2}+\frac{n-m}{n}\times\frac{m}{n-1}\times\frac{m-1}{n-2}+\frac{n-m}{n}\times\frac{n-m-1}{n-1}\times\frac{m}{n-2}$，<br>经过计算可得仍为 $\frac{m}{n}$</p>
+<p>关于为什么不放回抽样每次抽出次品的概率相同，见<a href="#jump">文末</a>。</p>
 </blockquote>
 <span id="more"></span>
-<!-- more -->
 <h4 id="1-3-几何分布"><a href="#1-3-几何分布" class="headerlink" title="1.3 几何分布"></a>1.3 几何分布</h4><p>在n次伯努利试验中，试验k次才第一次成功的概率。几何分布是帕斯卡分布当 $r=1$ 时的特例</p>
 <script type="math/tex; mode=display">
 P(X=k)=(1-p)^{k-1}p,\quad k=1,2,...\\
@@ -267,7 +267,7 @@ D(X)=n\frac{M}{N}(1-\frac{M}{N})\frac{N-m}{N-1}</script><h4 id="1-6-泊松分布
 P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}, \quad k=0,1,...\\
 E(X)=\lambda\\
 D(X)=\lambda</script><p>特征函数：$\Psi(t)=\exp{\lambda(e^{it}-1)}$</p>
-<h3 id="2-连续型分布"><a href="#2-连续型分布" class="headerlink" title="2.连续型分布"></a>2.连续型分布</h3><h4 id="2-1-均匀分布-U-a-b"><a href="#2-1-均匀分布-U-a-b" class="headerlink" title="2.1 均匀分布 $U(a,b)$"></a>2.1 均匀分布 $U(a,b)$</h4><p>密度函数：</p>
+<h3 id="2-连续型分布"><a href="#2-连续型分布" class="headerlink" title="2. 连续型分布"></a>2. 连续型分布</h3><h4 id="2-1-均匀分布-U-a-b"><a href="#2-1-均匀分布-U-a-b" class="headerlink" title="2.1 均匀分布 $U(a,b)$"></a>2.1 均匀分布 $U(a,b)$</h4><p>密度函数：</p>
 <script type="math/tex; mode=display">
 f(x)=\left\{
 \begin{aligned} 
@@ -338,6 +338,14 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
 <blockquote>
 <p>F分布在回归方程的显著性检验中具有重要作用</p>
 </blockquote>
+<h3 id="3-补充：关于不放回抽样"><a href="#3-补充：关于不放回抽样" class="headerlink" title="3. 补充：关于不放回抽样"></a><span id="jump">3. 补充：关于不放回抽样</span></h3><p>为什么不放回抽样每次抽到次品的概率都是 $\frac{m}{n}$，因为不放回抽样，每次抽样，都是与前些次的抽样相关的，从相关性上，前面的人抽中，与抽不中，对后面都有影响，但是这种影响又相互抵消。</p>
+<p> 例如，有 10 件产品，其中 3 件次品，7件正品，不放回的取，求第3次取得次品的概率。应用全概率公式：</p>
+<p><img src="/2023/08/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/302580097.png" alt="302580097"></p>
+<p> 同理计算可得，第一次取得次品的概率与第二次取得次品的概率都是 $\frac{3}{10}$<br> 这就叫抽签原理</p>
+<blockquote>
+<p>n个签，其中有m个是“上”签，第一个人抽到“上”签的概率是m/n，第k个人抽到“上”签的概率也是m/n<br>  <strong>前提是：每个人都不知道前面人的抽签结果，如果知道的话，就不是这样了</strong><br>  这也就说明了抽签先后顺序是不影响概率的，是公平的</p>
+</blockquote>
+<p>参考：<br><a href="https://blog.csdn.net/IMWTJ123/article/details/79979120">https://blog.csdn.net/IMWTJ123/article/details/79979120</a><br><a href="https://blog.csdn.net/holly_Z_P_F/article/details/107556675">https://blog.csdn.net/holly_Z_P_F/article/details/107556675</a></p>
 
     </div>
 
