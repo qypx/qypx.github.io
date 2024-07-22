@@ -509,6 +509,70 @@ dict2 = &#123;&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;
       </tags>
   </entry>
   <entry>
+    <title>Content-Based Filtering</title>
+    <url>/2020/01/06/Content-Based-Filtering/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
+<h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
+<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
+<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
+<p>How do we assign a similarity score based on release years alone?</p>
+<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
+<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
+<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
+<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
+<h3 id="K-nearest-neighbors"><a href="#K-nearest-neighbors" class="headerlink" title="K-nearest-neighbors"></a>K-nearest-neighbors</h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
+<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>ContentBased里的文件：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
+<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
+<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><blockquote>
+<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
+<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
+</blockquote>
+<h4 id="mise-en-scene"><a href="#mise-en-scene" class="headerlink" title="mise en scene"></a>mise en scene</h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
+<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
+<p>What sort of attributes are we talking about：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
+<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
+<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
+<p>更改代码：</p>
+<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
+<p>再运行ContentRec.py，可得到结果如下：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
+<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
+<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
+<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
+<p>Here’s a reference to the original research paper:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><ul>
+<li>Use genre, release year, and mise en scene data independently.</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
+<ul>
+<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
+<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Computer Vision</title>
     <url>/2020/02/18/Computer-Vision/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>来源于<a href="https://www.analyticsvidhya.com/blog/2020/01/computer-vision-learning-path-2020/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+AnalyticsVidhya+(Analytics+Vidhya">Here’s your Learning Path to Master Computer Vision in 2020</a>)</p>
@@ -1191,70 +1255,6 @@ dict2 = &#123;&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;
       </tags>
   </entry>
   <entry>
-    <title>Content-Based Filtering</title>
-    <url>/2020/01/06/Content-Based-Filtering/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
-<h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
-<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
-<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
-<p>How do we assign a similarity score based on release years alone?</p>
-<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
-<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
-<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
-<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
-<h3 id="K-nearest-neighbors"><a href="#K-nearest-neighbors" class="headerlink" title="K-nearest-neighbors"></a>K-nearest-neighbors</h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
-<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>ContentBased里的文件：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
-<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
-<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><blockquote>
-<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
-<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
-</blockquote>
-<h4 id="mise-en-scene"><a href="#mise-en-scene" class="headerlink" title="mise en scene"></a>mise en scene</h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
-<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
-<p>What sort of attributes are we talking about：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
-<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
-<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
-<p>更改代码：</p>
-<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
-<p>再运行ContentRec.py，可得到结果如下：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
-<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
-<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
-<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
-<p>Here’s a reference to the original research paper:</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
-<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><ul>
-<li>Use genre, release year, and mise en scene data independently.</li>
-</ul>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
-<ul>
-<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
-</ul>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
-<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
-]]></content>
-      <categories>
-        <category>Recommender System</category>
-      </categories>
-      <tags>
-        <tag>Recommender System</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Data Preprocessing（数据预处理）</title>
     <url>/2019/09/21/Data-Preprocessing/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
@@ -1707,6 +1707,32 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
       </tags>
   </entry>
   <entry>
+    <title>Hadoop Course Overview</title>
+    <url>/2020/01/14/Hadoop-Course-Overview/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>课程：</p>
+<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=996228"><img src="https://i.udemycdn.com/course/240x135/996228_af5f_3.jpg" alt="The Ultimate Hands-On Hadoop - Tame your Big Data!"></a><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/"><strong>The Ultimate Hands-On Hadoop - Tame your Big Data!</strong></a></p>
+<p><a href="https://sundog-education.com/hadoop-materials/">Course Materials</a></p>
+<h4 id="What-you’ll-learn"><a href="#What-you’ll-learn" class="headerlink" title="What you’ll learn"></a>What you’ll learn</h4><ul>
+<li>Design distributed systems that manage “big data” using Hadoop and related technologies.</li>
+<li>Use HDFS and MapReduce for storing and analyzing data at scale.</li>
+<li>Use Pig and Spark to create scripts to process data on a Hadoop cluster in more complex ways.</li>
+<li>Analyze relational data using Hive and MySQL</li>
+<li>Analyze non-relational data using HBase, Cassandra, and MongoDB</li>
+<li>Query data interactively with Drill, Phoenix, and Presto</li>
+<li>Choose an appropriate data storage technology for your application</li>
+<li>Understand how Hadoop clusters are managed by YARN, Tez, Mesos, Zookeeper, Zeppelin, Hue, and Oozie.</li>
+<li>Publish data to your Hadoop cluster using Kafka, Sqoop, and Flume</li>
+<li>Consume streaming data using Spark Streaming, Flink, and Storm</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hadoop Introduction</title>
     <url>/2019/12/15/Hadoop-Introduction/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
@@ -1735,32 +1761,6 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
       <tags>
         <tag>知识点</tag>
         <tag>HashSet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hadoop Course Overview</title>
-    <url>/2020/01/14/Hadoop-Course-Overview/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>课程：</p>
-<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=996228"><img src="https://i.udemycdn.com/course/240x135/996228_af5f_3.jpg" alt="The Ultimate Hands-On Hadoop - Tame your Big Data!"></a><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/"><strong>The Ultimate Hands-On Hadoop - Tame your Big Data!</strong></a></p>
-<p><a href="https://sundog-education.com/hadoop-materials/">Course Materials</a></p>
-<h4 id="What-you’ll-learn"><a href="#What-you’ll-learn" class="headerlink" title="What you’ll learn"></a>What you’ll learn</h4><ul>
-<li>Design distributed systems that manage “big data” using Hadoop and related technologies.</li>
-<li>Use HDFS and MapReduce for storing and analyzing data at scale.</li>
-<li>Use Pig and Spark to create scripts to process data on a Hadoop cluster in more complex ways.</li>
-<li>Analyze relational data using Hive and MySQL</li>
-<li>Analyze non-relational data using HBase, Cassandra, and MongoDB</li>
-<li>Query data interactively with Drill, Phoenix, and Presto</li>
-<li>Choose an appropriate data storage technology for your application</li>
-<li>Understand how Hadoop clusters are managed by YARN, Tez, Mesos, Zookeeper, Zeppelin, Hue, and Oozie.</li>
-<li>Publish data to your Hadoop cluster using Kafka, Sqoop, and Flume</li>
-<li>Consume streaming data using Spark Streaming, Flink, and Storm</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hadoop</category>
-      </categories>
-      <tags>
-        <tag>Hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -5472,6 +5472,74 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       </tags>
   </entry>
   <entry>
+    <title>sql语句中的drop, truncate, delete</title>
+    <url>/2020/01/12/sql%E8%AF%AD%E5%8F%A5%E4%B8%AD%E7%9A%84drop-truncate-delete/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>参考：</p>
+<p><a href="https://blog.csdn.net/lovezhaohaimig/article/details/80184994">https://blog.csdn.net/lovezhaohaimig/article/details/80184994</a></p>
+<p><a href="https://www.cnblogs.com/xianyao/p/11613021.html">https://www.cnblogs.com/xianyao/p/11613021.html</a></p>
+<h4 id="1-drop-table-表名称"><a href="#1-drop-table-表名称" class="headerlink" title="1.drop table 表名称"></a>1.drop table 表名称</h4><p><strong>drop (删除表)：删除表内容和表定义，释放空间。</strong></p>
+<p>简单来说就是把整个表去掉，以后要新增数据是不可能的，除非新增一个表。</p>
+<p>把表的结构也删除了，下次要使用的时候要重新创建表的结构再插入数据。</p>
+<p>drop语句将删除表结构被依赖的约束(constrain)，触发器(trigger)，索引(index)；依赖于该表的存储过程/函数将被保留，但其状态会变为：invalid。</p>
+<p><strong>不能回滚</strong></p>
+<h4 id="2-truncate-table-表名称"><a href="#2-truncate-table-表名称" class="headerlink" title="2.truncate table 表名称"></a>2.truncate table 表名称</h4><p><strong>truncate (清空表中的数据)：删除表内容、释放空间但不删除表定义。</strong>与drop不同的是，他只是清空表数据而已，不删除表结构。其列、约束、索引等保持不变。</p>
+<p>truncate table test 后，向test表添加数据，插入的字段的id重新从1开始递增 1、2、3…..（体现了truncate删除是释放空间）</p>
+<p><strong>in MySQL, resets auto_increment PKs</strong></p>
+<p><strong>不能回滚</strong></p>
+<p>注意:truncate 不能删除行数据,要删就要把表清空。</p>
+<h4 id="3-delete-from-表名称-where-列名称-值"><a href="#3-delete-from-表名称-where-列名称-值" class="headerlink" title="3.delete from 表名称 where 列名称 = 值"></a>3.delete from 表名称 where 列名称 = 值</h4><p>delete (删除表中的数据)：删除整表中的行，表结构不会删除。</p>
+<p><strong>删除内容，不删除定义，不释放空间。</strong></p>
+<p>用delete删除数据，然后添加。可以看到添加之后id标识不连续。（说明delete删除不释放空间）</p>
+<p>如果重新插入数据时，对应的id在上次基础之上递增 4、5、6….</p>
+<p>delete语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存,以便进行回滚操作。</p>
+<p><strong>即不带where的delete: 删除表内容，不删除表结构</strong></p>
+<p><strong>可回滚</strong></p>
+<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h4><ul>
+<li><p>执行速度，一般来说: drop&gt; truncate &gt; delete。</p>
+</li>
+<li><p>delete语句是数据库操作语言(dml)，这个操作会放到 rollback segment中，事务提交之后才生效；如果有相应的 trigger，执行的时候将被触发。</p>
+</li>
+<li><p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger。</p>
+</li>
+<li><p>在实际应用中，三者的区别是明确的。</p>
+<ul>
+<li><p>当你不再需要该表时， 用 drop;</p>
+</li>
+<li><p>当你仍要保留该表，但要删除所有记录时， 用 truncate; </p>
+</li>
+<li><p>当你要删除部分记录时（always with a WHERE clause), 用 delete.</p>
+</li>
+</ul>
+</li>
+<li><p>truncate 与delete 比较：</p>
+<ul>
+<li><p>truncate table 在功能上与不带 WHERE 子句的 delete语句相同：二者均删除表中的全部行。</p>
+</li>
+<li><p>truncate 比 delete速度快，且使用的系统和事务日志资源少。</p>
+</li>
+<li><p>truncate 操作后的表比Delete操作后的表要快得多。</p>
+</li>
+<li><p>当表被清空后，表和表的索引将重新设置成初始大小，而delete则不能。</p>
+</li>
+<li>truncate 删除不能恢复，delete 可以恢复数据</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>(<a href="http://www.itpub.net/thread-392126-1-1.html">http://www.itpub.net/thread-392126-1-1.html</a>)</p>
+<p>问：执行truncate table，除了rows会删除，index也会删除，但我执行之后，查看user_indexes，索引仍在，重新加入新资料再做查询，一样可以用到索引，是不是这里所说的删除，是指删除索引的内容，可是一般我们用delete，索引的内容不是也会跟着删除吗? 那么用truncate和delete，索引的删除又有什么不同呢?</p>
+<p>答：你truncate后，你只是删除索引相应的数据，也就是你所说的内容，索引的定义并没有删除，因此在数据字典里面还有相关信息。重新插入数据后，当然还会用到原来定义的索引。你要真正删除一个索引的话，那么得用drop index index_name把索引DROP掉。delete的话，索引的内容跟truncate一样是删除的，只是物理上事实上并没有删除，这个你不要去管，你就知道索引条目也相应删除就是了。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>sql语言</title>
     <url>/2020/01/12/sql%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
@@ -5778,94 +5846,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </tags>
   </entry>
   <entry>
-    <title>sql语句中的drop, truncate, delete</title>
-    <url>/2020/01/12/sql%E8%AF%AD%E5%8F%A5%E4%B8%AD%E7%9A%84drop-truncate-delete/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>参考：</p>
-<p><a href="https://blog.csdn.net/lovezhaohaimig/article/details/80184994">https://blog.csdn.net/lovezhaohaimig/article/details/80184994</a></p>
-<p><a href="https://www.cnblogs.com/xianyao/p/11613021.html">https://www.cnblogs.com/xianyao/p/11613021.html</a></p>
-<h4 id="1-drop-table-表名称"><a href="#1-drop-table-表名称" class="headerlink" title="1.drop table 表名称"></a>1.drop table 表名称</h4><p><strong>drop (删除表)：删除表内容和表定义，释放空间。</strong></p>
-<p>简单来说就是把整个表去掉，以后要新增数据是不可能的，除非新增一个表。</p>
-<p>把表的结构也删除了，下次要使用的时候要重新创建表的结构再插入数据。</p>
-<p>drop语句将删除表结构被依赖的约束(constrain)，触发器(trigger)，索引(index)；依赖于该表的存储过程/函数将被保留，但其状态会变为：invalid。</p>
-<p><strong>不能回滚</strong></p>
-<h4 id="2-truncate-table-表名称"><a href="#2-truncate-table-表名称" class="headerlink" title="2.truncate table 表名称"></a>2.truncate table 表名称</h4><p><strong>truncate (清空表中的数据)：删除表内容、释放空间但不删除表定义。</strong>与drop不同的是，他只是清空表数据而已，不删除表结构。其列、约束、索引等保持不变。</p>
-<p>truncate table test 后，向test表添加数据，插入的字段的id重新从1开始递增 1、2、3…..（体现了truncate删除是释放空间）</p>
-<p><strong>in MySQL, resets auto_increment PKs</strong></p>
-<p><strong>不能回滚</strong></p>
-<p>注意:truncate 不能删除行数据,要删就要把表清空。</p>
-<h4 id="3-delete-from-表名称-where-列名称-值"><a href="#3-delete-from-表名称-where-列名称-值" class="headerlink" title="3.delete from 表名称 where 列名称 = 值"></a>3.delete from 表名称 where 列名称 = 值</h4><p>delete (删除表中的数据)：删除整表中的行，表结构不会删除。</p>
-<p><strong>删除内容，不删除定义，不释放空间。</strong></p>
-<p>用delete删除数据，然后添加。可以看到添加之后id标识不连续。（说明delete删除不释放空间）</p>
-<p>如果重新插入数据时，对应的id在上次基础之上递增 4、5、6….</p>
-<p>delete语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存,以便进行回滚操作。</p>
-<p><strong>即不带where的delete: 删除表内容，不删除表结构</strong></p>
-<p><strong>可回滚</strong></p>
-<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h4><ul>
-<li><p>执行速度，一般来说: drop&gt; truncate &gt; delete。</p>
-</li>
-<li><p>delete语句是数据库操作语言(dml)，这个操作会放到 rollback segment中，事务提交之后才生效；如果有相应的 trigger，执行的时候将被触发。</p>
-</li>
-<li><p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger。</p>
-</li>
-<li><p>在实际应用中，三者的区别是明确的。</p>
-<ul>
-<li><p>当你不再需要该表时， 用 drop;</p>
-</li>
-<li><p>当你仍要保留该表，但要删除所有记录时， 用 truncate; </p>
-</li>
-<li><p>当你要删除部分记录时（always with a WHERE clause), 用 delete.</p>
-</li>
-</ul>
-</li>
-<li><p>truncate 与delete 比较：</p>
-<ul>
-<li><p>truncate table 在功能上与不带 WHERE 子句的 delete语句相同：二者均删除表中的全部行。</p>
-</li>
-<li><p>truncate 比 delete速度快，且使用的系统和事务日志资源少。</p>
-</li>
-<li><p>truncate 操作后的表比Delete操作后的表要快得多。</p>
-</li>
-<li><p>当表被清空后，表和表的索引将重新设置成初始大小，而delete则不能。</p>
-</li>
-<li>truncate 删除不能恢复，delete 可以恢复数据</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>(<a href="http://www.itpub.net/thread-392126-1-1.html">http://www.itpub.net/thread-392126-1-1.html</a>)</p>
-<p>问：执行truncate table，除了rows会删除，index也会删除，但我执行之后，查看user_indexes，索引仍在，重新加入新资料再做查询，一样可以用到索引，是不是这里所说的删除，是指删除索引的内容，可是一般我们用delete，索引的内容不是也会跟着删除吗? 那么用truncate和delete，索引的删除又有什么不同呢?</p>
-<p>答：你truncate后，你只是删除索引相应的数据，也就是你所说的内容，索引的定义并没有删除，因此在数据字典里面还有相关信息。重新插入数据后，当然还会用到原来定义的索引。你要真正删除一个索引的话，那么得用drop index index_name把索引DROP掉。delete的话，索引的内容跟truncate一样是删除的，只是物理上事实上并没有删除，这个你不要去管，你就知道索引条目也相应删除就是了。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>sql</tag>
-        <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>乘积最大子序列</title>
-    <url>/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/maximum-product-subarray/">乘积最大子序列（难度：中等）</a></p>
-<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1"></p>
-<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2"></p>
-<blockquote>
-<p><strong>注意：不能只保存到当前为止的最大值，还需保存到当前为止的最小值，因为若下一个数是负数，那么以前的最小值（若为负数）会变成现在的最大值</strong>.</p>
-</blockquote>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProduct</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">imax</span> <span class="operator">=</span> nums[<span class="number">0</span>], imin = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> imin;</span><br><span class="line">                imin = imax;</span><br><span class="line">                imax = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            imax = Math.max(imax*nums[i], nums[i]);</span><br><span class="line">            imin = Math.min(imin*nums[i], nums[i]);</span><br><span class="line">            ans = Math.max(ans,imax);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>事务与锁</title>
     <url>/2020/01/13/%E4%BA%8B%E5%8A%A1%E4%B8%8E%E9%94%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
@@ -5945,6 +5925,26 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </categories>
       <tags>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乘积最大子序列</title>
+    <url>/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/maximum-product-subarray/">乘积最大子序列（难度：中等）</a></p>
+<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1"></p>
+<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2"></p>
+<blockquote>
+<p><strong>注意：不能只保存到当前为止的最大值，还需保存到当前为止的最小值，因为若下一个数是负数，那么以前的最小值（若为负数）会变成现在的最大值</strong>.</p>
+</blockquote>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProduct</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">imax</span> <span class="operator">=</span> nums[<span class="number">0</span>], imin = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> imin;</span><br><span class="line">                imin = imax;</span><br><span class="line">                imax = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            imax = Math.max(imax*nums[i], nums[i]);</span><br><span class="line">            imin = Math.min(imin*nums[i], nums[i]);</span><br><span class="line">            ans = Math.max(ans,imax);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -6149,49 +6149,11 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </categories>
   </entry>
   <entry>
-    <title>创建单链表的头插法与尾插法</title>
-    <url>/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/qq_41028985/article/details/82859199">原文</a></p>
-<h4 id="头插法创建单链表"><a href="#头插法创建单链表" class="headerlink" title="头插法创建单链表"></a>头插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1577345110132.jpg" alt="图1"></p>
-<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1.jpg" alt="1"></p>
-<h4 id="尾插法创建单链表"><a href="#尾插法创建单链表" class="headerlink" title="尾插法创建单链表"></a>尾插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/2.jpg" alt="2"></p>
-<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/3.jpg" alt="3"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>知识点</tag>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>删除列表中的节点</title>
     <url>/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">删除列表中的节点（难度：简单）</a></p>
 <p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/捕获.JPG" alt="题目"></p>
 <p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/1577280000099.jpg" alt="方法"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>删除排序链表中的重复元素</title>
-    <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/">删除排序链表中的重复元素（难度：简单）</a></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268363569.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268482086.jpg" alt="思路"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268503067.jpg" alt="1577268503067"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268572469.jpg" alt="1577268572469"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268850082.jpg" alt="结果"></p>
-<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268614488.jpg" alt="画解1"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268643223.jpg" alt="画解2"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268718737.jpg" alt="画解3"></p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -7471,6 +7433,44 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       </tags>
   </entry>
   <entry>
+    <title>创建单链表的头插法与尾插法</title>
+    <url>/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/qq_41028985/article/details/82859199">原文</a></p>
+<h4 id="头插法创建单链表"><a href="#头插法创建单链表" class="headerlink" title="头插法创建单链表"></a>头插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1577345110132.jpg" alt="图1"></p>
+<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1.jpg" alt="1"></p>
+<h4 id="尾插法创建单链表"><a href="#尾插法创建单链表" class="headerlink" title="尾插法创建单链表"></a>尾插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/2.jpg" alt="2"></p>
+<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>知识点</tag>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>删除排序链表中的重复元素</title>
+    <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/">删除排序链表中的重复元素（难度：简单）</a></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268363569.jpg" alt="题目"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268482086.jpg" alt="思路"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268503067.jpg" alt="1577268503067"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268572469.jpg" alt="1577268572469"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268850082.jpg" alt="结果"></p>
+<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268614488.jpg" alt="画解1"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268643223.jpg" alt="画解2"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268718737.jpg" alt="画解3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>删除排序链表中的重复元素2</title>
     <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/">删除排序链表中的重复元素2（难度：中等）</a></p>
@@ -8350,6 +8350,33 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       </tags>
   </entry>
   <entry>
+    <title>推荐系统冷启动问题</title>
+    <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
+<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
+<ol>
+<li>利用用户的账号信息。</li>
+<li>利用用户的手机 IMEI 号进行冷启动。</li>
+<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
+</ol>
+<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
+<ol>
+<li>利用物品的内容、分类信息。</li>
+<li>利用专家标注的数据。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>排序算法</title>
     <url>/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png" alt="1578640411160"></p>
@@ -8389,92 +8416,6 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
 ]]></content>
       <tags>
         <tag>知识点</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>推荐系统冷启动问题</title>
-    <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-</blockquote>
-<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
-<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
-<ol>
-<li>利用用户的账号信息。</li>
-<li>利用用户的手机 IMEI 号进行冷启动。</li>
-<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
-</ol>
-<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
-<ol>
-<li>利用物品的内容、分类信息。</li>
-<li>利用专家标注的数据。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Recommender System</category>
-      </categories>
-      <tags>
-        <tag>Recommender System</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>推荐系统总体架构及特征数据</title>
-    <url>/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-</blockquote>
-<p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
-<p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
-<p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
-<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
-<p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
-<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
-<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
-<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
-<span id="more"></span>
-<ol>
-<li><p><strong>数据上报</strong>：数据上报模块的作用是搜集业务数据组成训练样本。一般分为收集、验证、清洗和转换几个步骤。将收集的数据转化为训练所需要的样本格式，保存到离线存储模块。</p>
-<p><a href="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67"><img src="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" alt="img"></a></p>
-</li>
-<li><p><strong>离线训练</strong>：离线训练模块又细分为<strong>离线存储</strong>和<strong>离线计算</strong>。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p>
-</li>
-<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机 APP ，他肯定希望APP 能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据 。</p>
-</li>
-<li><p><strong>实时推荐</strong>：实时推荐模块的功能是对来自业务的新请求进行预测。1.获取用户特征；2.调用推荐模型；3.结果排序。</p>
-<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为<strong>召回</strong>和<strong>排序</strong>两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集 （一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p>
-</li>
-<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B 测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了 离线的指标外，一个新的推荐算法上线之前一般都会经过 A/B 测试来测试新算法的有效性。</p>
-</li>
-</ol>
-<p>下图是与之对应的实际系统中各个组件的流转过程。<strong>需要注意的是生成推荐列表就已经做完了召回和排序的操作，业务层直接调用API就可以得到这个推荐列表。</strong></p>
-<p><img src="https://camo.githubusercontent.com/e00fb75f81bd5377bcfd1de0cdb3891a7790b134/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32352d32372e706e67" alt="img"></p>
-<h3 id="2-2-在线训练"><a href="#2-2-在线训练" class="headerlink" title="2.2 在线训练"></a>2.2 在线训练</h3><p>对于业务来说，我们希望用户对于上个广告的反馈 （喜欢或者不喜欢，有没有点击），可以很快地用于下 一个广告的推荐中。这就要求我们用另一种方法来解决这个问题，这个方法就是在线训练。</p>
-<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景，相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。 一方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
-<p><img src="https://camo.githubusercontent.com/6d0bf23d50bf62aaf218595a74437800ae143d01/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31312d31312d31312e706e67" alt="img"></p>
-<ol>
-<li><strong>样本处理</strong>：和基于离线训练的推荐系统相比，在线训练在数据上报阶段的主要不同体现在样本处理上。对于离线训练来说，上报后的数据先是被存储到一个分布式文件系统，然后等待离线计算任务来对样本进行处理；对于在线训练来说，对样本的去重、过滤和采样等计算都需要实时进行。</li>
-<li><strong>实时特性</strong>：实时特征模块通过实时处理样本数据拼接训练需要的特征构造训练样本，输入流式训练模块用于更新模型。该模块的主要的功能是特征拼接和特征工程。</li>
-<li><strong>流式训练</strong>：流式训练模块的主要作用是使用实时训练样本来更新模型。推荐算法中增量更新部分的计算，通过流式计算的方式来进行更新。在线训练的优势之一，是可以支持模型的稀疏存储。训练方面，在线模型不一定都是从零开始训练，而是可以将离线训练得到的模型参数作为基础，在这个基础上进行增量训练。</li>
-<li><strong>模型存储和加载</strong>：模型一般存储在参数服务器中。模型更新后，将模型文件推送到线上存储，并由线上服务模块动态加载。</li>
-</ol>
-<h2 id="2-特征数据"><a href="#2-特征数据" class="headerlink" title="2. 特征数据"></a>2. 特征数据</h2><p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
-<ol>
-<li><strong>用户行为的种类</strong>：在一个网站中，用户可以对物品产生很多不同种类的行为。用户可以浏览物品、单击物品的链接、收藏物品、给物品打分、购买物品、评论物品、给物品打上不同的标签、和好友分享物品、搜索不同的关键词等。这些行为都会对物品特征的权重产生影响，但不同行为的影响不同，大多时候很难确定什么行为更加重要，一般的标准就是用户付出代价越大的行为权重越高。</li>
-<li><strong>用户行为产生的时间</strong>：一般来说，用户近期的行为比较重要，而用户很久之前的行为相对比较次要。因此，如果用户最近购买过某一个物品，那么这个物品对应的特征将会具有比较高的权重。</li>
-<li><strong>用户行为的次数</strong>：有时用户对一个物品会产生很多次行为。比如用户会听一首歌很多次，看一部电视剧的很多集等。因此用户对同一个物品的同一种行为发生的次数也反映了用户对物品的兴趣，行为次数多的物品对应的特征权重越高。</li>
-<li><strong>物品的热门程度</strong>：如果用户对一个很热门的物品产生了行为，往往不能代表用户的个性，因为用户可能是在跟风，可能对该物品并没有太大兴趣，特别是在用户对一个热门物品产生了偶尔几次不重要的行为（比如浏览行为）时，就更说明用户对这个物品可能没有什么兴趣，可能只是因为这个物品的链接到处都是，很容易点到而已。反之，如果用户对一个不热门的物品产生了行为，就说明了用户的个性需求。因此，推荐引擎在生成用户特征时会加重不热门物品对应的特征的权重。</li>
-<li><strong>数据去燥</strong>：对样本做去噪。对于数据中混杂的刷单等类作弊行为的数据，要将其排除出训练数据,否则它会直接影响模型的效果；样本中的缺失值也要做处理。</li>
-<li><strong>正负样本均衡</strong>：一般我们收集用户的行为数据都是属于正样本，造成了严重的不平衡。所以对于一个用户，从他没有过行为的物品中采样出一些物品作为负样本，但采样时，保证每个用户的正负样本数目相当。</li>
-<li><strong>特征组合</strong>：我们需要考虑特征与特征之间的关系。例如在美团酒店搜索排序中，酒店的销量、价格、用户的消费水平等是强相关的因素，用户的年龄、位置可能是弱相关的因素，用户的ID是完全无关的因素。在确定了哪些因素可能与预测目标相关后，我们需要将此信息表示为数值类型,即为特征抽取的过程。除此之外，用户在App上的浏览、交易等行为记录中包含了大量的信息，特征抽取则主要是从这些信息抽取出相关因素，用数值变量进行表示。常用的统计特征有计数特征,如浏览次数、下单次数等;比率特征，如点击率、转化率等;统计量特征，如价格均值、标准差、分位数、偏度、峰度等。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Recommender System</category>
-      </categories>
-      <tags>
-        <tag>Recommender System</tag>
       </tags>
   </entry>
   <entry>
@@ -8755,6 +8696,65 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       <tags>
         <tag>数据挖掘</tag>
         <tag>R</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐系统总体架构及特征数据</title>
+    <url>/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
+<p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
+<p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
+<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
+<p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
+<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
+<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
+<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
+<span id="more"></span>
+<ol>
+<li><p><strong>数据上报</strong>：数据上报模块的作用是搜集业务数据组成训练样本。一般分为收集、验证、清洗和转换几个步骤。将收集的数据转化为训练所需要的样本格式，保存到离线存储模块。</p>
+<p><a href="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67"><img src="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" alt="img"></a></p>
+</li>
+<li><p><strong>离线训练</strong>：离线训练模块又细分为<strong>离线存储</strong>和<strong>离线计算</strong>。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p>
+</li>
+<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机 APP ，他肯定希望APP 能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据 。</p>
+</li>
+<li><p><strong>实时推荐</strong>：实时推荐模块的功能是对来自业务的新请求进行预测。1.获取用户特征；2.调用推荐模型；3.结果排序。</p>
+<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为<strong>召回</strong>和<strong>排序</strong>两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集 （一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p>
+</li>
+<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B 测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了 离线的指标外，一个新的推荐算法上线之前一般都会经过 A/B 测试来测试新算法的有效性。</p>
+</li>
+</ol>
+<p>下图是与之对应的实际系统中各个组件的流转过程。<strong>需要注意的是生成推荐列表就已经做完了召回和排序的操作，业务层直接调用API就可以得到这个推荐列表。</strong></p>
+<p><img src="https://camo.githubusercontent.com/e00fb75f81bd5377bcfd1de0cdb3891a7790b134/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32352d32372e706e67" alt="img"></p>
+<h3 id="2-2-在线训练"><a href="#2-2-在线训练" class="headerlink" title="2.2 在线训练"></a>2.2 在线训练</h3><p>对于业务来说，我们希望用户对于上个广告的反馈 （喜欢或者不喜欢，有没有点击），可以很快地用于下 一个广告的推荐中。这就要求我们用另一种方法来解决这个问题，这个方法就是在线训练。</p>
+<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景，相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。 一方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
+<p><img src="https://camo.githubusercontent.com/6d0bf23d50bf62aaf218595a74437800ae143d01/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31312d31312d31312e706e67" alt="img"></p>
+<ol>
+<li><strong>样本处理</strong>：和基于离线训练的推荐系统相比，在线训练在数据上报阶段的主要不同体现在样本处理上。对于离线训练来说，上报后的数据先是被存储到一个分布式文件系统，然后等待离线计算任务来对样本进行处理；对于在线训练来说，对样本的去重、过滤和采样等计算都需要实时进行。</li>
+<li><strong>实时特性</strong>：实时特征模块通过实时处理样本数据拼接训练需要的特征构造训练样本，输入流式训练模块用于更新模型。该模块的主要的功能是特征拼接和特征工程。</li>
+<li><strong>流式训练</strong>：流式训练模块的主要作用是使用实时训练样本来更新模型。推荐算法中增量更新部分的计算，通过流式计算的方式来进行更新。在线训练的优势之一，是可以支持模型的稀疏存储。训练方面，在线模型不一定都是从零开始训练，而是可以将离线训练得到的模型参数作为基础，在这个基础上进行增量训练。</li>
+<li><strong>模型存储和加载</strong>：模型一般存储在参数服务器中。模型更新后，将模型文件推送到线上存储，并由线上服务模块动态加载。</li>
+</ol>
+<h2 id="2-特征数据"><a href="#2-特征数据" class="headerlink" title="2. 特征数据"></a>2. 特征数据</h2><p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
+<ol>
+<li><strong>用户行为的种类</strong>：在一个网站中，用户可以对物品产生很多不同种类的行为。用户可以浏览物品、单击物品的链接、收藏物品、给物品打分、购买物品、评论物品、给物品打上不同的标签、和好友分享物品、搜索不同的关键词等。这些行为都会对物品特征的权重产生影响，但不同行为的影响不同，大多时候很难确定什么行为更加重要，一般的标准就是用户付出代价越大的行为权重越高。</li>
+<li><strong>用户行为产生的时间</strong>：一般来说，用户近期的行为比较重要，而用户很久之前的行为相对比较次要。因此，如果用户最近购买过某一个物品，那么这个物品对应的特征将会具有比较高的权重。</li>
+<li><strong>用户行为的次数</strong>：有时用户对一个物品会产生很多次行为。比如用户会听一首歌很多次，看一部电视剧的很多集等。因此用户对同一个物品的同一种行为发生的次数也反映了用户对物品的兴趣，行为次数多的物品对应的特征权重越高。</li>
+<li><strong>物品的热门程度</strong>：如果用户对一个很热门的物品产生了行为，往往不能代表用户的个性，因为用户可能是在跟风，可能对该物品并没有太大兴趣，特别是在用户对一个热门物品产生了偶尔几次不重要的行为（比如浏览行为）时，就更说明用户对这个物品可能没有什么兴趣，可能只是因为这个物品的链接到处都是，很容易点到而已。反之，如果用户对一个不热门的物品产生了行为，就说明了用户的个性需求。因此，推荐引擎在生成用户特征时会加重不热门物品对应的特征的权重。</li>
+<li><strong>数据去燥</strong>：对样本做去噪。对于数据中混杂的刷单等类作弊行为的数据，要将其排除出训练数据,否则它会直接影响模型的效果；样本中的缺失值也要做处理。</li>
+<li><strong>正负样本均衡</strong>：一般我们收集用户的行为数据都是属于正样本，造成了严重的不平衡。所以对于一个用户，从他没有过行为的物品中采样出一些物品作为负样本，但采样时，保证每个用户的正负样本数目相当。</li>
+<li><strong>特征组合</strong>：我们需要考虑特征与特征之间的关系。例如在美团酒店搜索排序中，酒店的销量、价格、用户的消费水平等是强相关的因素，用户的年龄、位置可能是弱相关的因素，用户的ID是完全无关的因素。在确定了哪些因素可能与预测目标相关后，我们需要将此信息表示为数值类型,即为特征抽取的过程。除此之外，用户在App上的浏览、交易等行为记录中包含了大量的信息，特征抽取则主要是从这些信息抽取出相关因素，用数值变量进行表示。常用的统计特征有计数特征,如浏览次数、下单次数等;比率特征，如点击率、转化率等;统计量特征，如价格均值、标准差、分位数、偏度、峰度等。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
       </tags>
   </entry>
   <entry>
@@ -10547,6 +10547,26 @@ loss = \sum_{j=1}^n\sum_{i=1}^m -y_{ji}\log\hat y_{ji}-(1-y_{ji})\log(1-\hat y_{
       </tags>
   </entry>
   <entry>
+    <title>线性表,顺序表与数组</title>
+    <url>/2020/03/05/%E7%BA%BF%E6%80%A7%E8%A1%A8-%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%B8%8E%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
+<ol>
+<li><p>数组就是相同数据类型的元素按一定顺序排列的集合。</p>
+<p>一句话：就是物理上存储在一组联系的地址上。也称为数据结构中的物理结构。</p>
+</li>
+<li><p>线性表中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的。</p>
+<p>一句话：线性表是数据结构中的逻辑结构。可以存储在数组上，也可以存储在链表上。</p>
+</li>
+<li><p>线性表的结点按逻辑次序依次存放在一组地址连续的存储单元里的方法。用顺序存储方法存储的线性表简称为顺序表。</p>
+<p>一句话：用数组来存储的线性表就是顺序表。</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>知识点</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>索引Index</title>
     <url>/2020/01/13/%E7%B4%A2%E5%BC%95Index/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902807233.png" alt="1578902807233"></p>
@@ -11045,26 +11065,6 @@ loss = \sum_{j=1}^n\sum_{i=1}^m -y_{ji}\log\hat y_{ji}-(1-y_{ji})\log(1-\hat y_{
       </categories>
       <tags>
         <tag>数据库</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线性表,顺序表与数组</title>
-    <url>/2020/03/05/%E7%BA%BF%E6%80%A7%E8%A1%A8-%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%B8%8E%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
-<ol>
-<li><p>数组就是相同数据类型的元素按一定顺序排列的集合。</p>
-<p>一句话：就是物理上存储在一组联系的地址上。也称为数据结构中的物理结构。</p>
-</li>
-<li><p>线性表中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的。</p>
-<p>一句话：线性表是数据结构中的逻辑结构。可以存储在数组上，也可以存储在链表上。</p>
-</li>
-<li><p>线性表的结点按逻辑次序依次存放在一组地址连续的存储单元里的方法。用顺序存储方法存储的线性表简称为顺序表。</p>
-<p>一句话：用数组来存储的线性表就是顺序表。</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>知识点</tag>
       </tags>
   </entry>
   <entry>
