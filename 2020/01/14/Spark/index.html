@@ -12,10 +12,10 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -23,8 +23,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="参考 http:&#x2F;&#x2F;dblab.xmu.edu.cn&#x2F;blog&#x2F;985-2&#x2F;  1. Introduction to Spark  There’s a lot of cool features built on top of Spark, like things for machine learning and graph analysis and streaming data. 1.1 Spa">
 <meta property="og:type" content="article">
@@ -112,6 +113,9 @@
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -127,15 +131,46 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </header>
         
@@ -155,12 +190,14 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Introduction-to-Spark"><span class="nav-number">1.</span> <span class="nav-text">1. Introduction to Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Spark-%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Spark 运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1 架构设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-2-%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2 运行流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Spark-%E7%89%B9%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Spark 特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1-Scalable"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 Scalable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2-Fast"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 Fast</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3-Hot"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 Hot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4-Not-that-hard-%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%EF%BC%8CRDD"><span class="nav-number">1.2.4.</span> <span class="nav-text">1.2.4 Not that hard (可使用的语言，RDD)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Components-of-Spark"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Components of Spark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E9%97%A8%E8%AF%BE%E5%B0%86%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%E5%8F%8AScala"><span class="nav-number">1.4.</span> <span class="nav-text">这门课将使用的语言及Scala</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RDD-The-Resilient-Distributed-Dataset"><span class="nav-number">2.</span> <span class="nav-text">2. RDD (The Resilient Distributed Dataset)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-What-is-RDD"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 What is RDD?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-How-do-you-make-RDD"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 How do you make RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Create-RDD"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Create RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-Transform-RDD"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Transform RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-RDD-actions"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 RDD actions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-Lazy-evaluation-%E6%83%B0%E6%80%A7%E8%B0%83%E7%94%A8"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Lazy evaluation 惰性调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-RDD-%E7%89%B9%E6%80%A7"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 RDD 特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-RDD-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 RDD 之间的依赖关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-%E9%98%B6%E6%AE%B5%E7%9A%84%E5%88%92%E5%88%86"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 阶段的划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10-RDD-%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 RDD 运行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-Using-RDD%E2%80%99s-in-Spark"><span class="nav-number">2.11.</span> <span class="nav-text">2.9 Using RDD’s in Spark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Spark-SQL-DataFrames-and-DataSets"><span class="nav-number">3.</span> <span class="nav-text">3. Spark SQL (DataFrames and DataSets)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-DataSets-in-Spark-2"><span class="nav-number">3.1.</span> <span class="nav-text">Using DataSets in Spark 2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Using-MLLib-in-Spark"><span class="nav-number">4.</span> <span class="nav-text">4. Using MLLib in Spark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise"><span class="nav-number">5.</span> <span class="nav-text">Exercise</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Introduction-to-Spark"><span class="nav-text">1. Introduction to Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Spark-%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84"><span class="nav-text">1.1 Spark 运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-1-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-text">1.1.1 架构设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-2-%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-text">1.1.2 运行流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Spark-%E7%89%B9%E7%82%B9"><span class="nav-text">1.2 Spark 特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1-Scalable"><span class="nav-text">1.2.1 Scalable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2-Fast"><span class="nav-text">1.2.2 Fast</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3-Hot"><span class="nav-text">1.2.3 Hot</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4-Not-that-hard-%E5%8F%AF%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%EF%BC%8CRDD"><span class="nav-text">1.2.4 Not that hard (可使用的语言，RDD)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Components-of-Spark"><span class="nav-text">1.3 Components of Spark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E9%97%A8%E8%AF%BE%E5%B0%86%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AF%AD%E8%A8%80%E5%8F%8AScala"><span class="nav-text">这门课将使用的语言及Scala</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RDD-The-Resilient-Distributed-Dataset"><span class="nav-text">2. RDD (The Resilient Distributed Dataset)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-What-is-RDD"><span class="nav-text">2.1 What is RDD?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-How-do-you-make-RDD"><span class="nav-text">2.2 How do you make RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Create-RDD"><span class="nav-text">2.3 Create RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-Transform-RDD"><span class="nav-text">2.4 Transform RDD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-RDD-actions"><span class="nav-text">2.5 RDD actions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-Lazy-evaluation-%E6%83%B0%E6%80%A7%E8%B0%83%E7%94%A8"><span class="nav-text">2.6 Lazy evaluation 惰性调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-RDD-%E7%89%B9%E6%80%A7"><span class="nav-text">2.7 RDD 特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-RDD-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="nav-text">2.8 RDD 之间的依赖关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-%E9%98%B6%E6%AE%B5%E7%9A%84%E5%88%92%E5%88%86"><span class="nav-text">2.9 阶段的划分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-10-RDD-%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-text">2.10 RDD 运行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-Using-RDD%E2%80%99s-in-Spark"><span class="nav-text">2.9 Using RDD’s in Spark</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Spark-SQL-DataFrames-and-DataSets"><span class="nav-text">3. Spark SQL (DataFrames and DataSets)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-DataSets-in-Spark-2"><span class="nav-text">Using DataSets in Spark 2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Using-MLLib-in-Spark"><span class="nav-text">4. Using MLLib in Spark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise"><span class="nav-text">Exercise</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">qypx</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -184,6 +221,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
 
             
         </div>    
@@ -257,6 +299,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -402,6 +451,23 @@
     
 
     <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>qypx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://qypx.github.io/2020/01/14/Spark/" title="Spark">http://qypx.github.io/2020/01/14/Spark/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
           <div class="post-tags">
               <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
               <a href="/tags/Spark/" rel="tag"># Spark</a>
@@ -437,14 +503,32 @@
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
+    &copy; 2019 – 
     <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
-      <i class="fa fa-heart"></i>
+      <i class="fa fa-user"></i>
     </span>
     <span class="author" itemprop="copyrightHolder">qypx</span>
   </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
     </div>
@@ -461,6 +545,7 @@
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -469,18 +554,30 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
 
   
 
-
-
-
-
-
-  
-
-
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
