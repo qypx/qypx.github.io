@@ -1,145 +1,61 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
+  <!-- begin: pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> 
+  <!-- end: pjax：防止跳转页面音乐暂停-->
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="机器学习,">
-
-
-
-
-
-
-
-
-
-
-<meta name="keywords" content="机器学习">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="Precision, Recall, ROC曲线等">
-<meta property="og:url" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/index.html">
+<meta property="og:url" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110616770.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110748865.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1596783235673.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1596778766409.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1602655652264.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/1602655688379.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110047789.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011151956385.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011152920681.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165053284.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165146743.png">
-<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png">
-<meta property="og:updated_time" content="2022-03-01T10:23:51.139Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20210718110616770.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20210718110748865.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1596783235673.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1596778766409.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1602655652264.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1602655688379.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20210718110047789.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011151956385.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011152920681.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011165053284.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011165146743.png">
+<meta property="og:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011165243837.png">
+<meta property="article:published_time" content="2020-08-07T07:08:16.000Z">
+<meta property="article:modified_time" content="2022-03-01T10:23:51.139Z">
+<meta property="article:author" content="qypx">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Precision, Recall, ROC曲线等">
-<meta name="twitter:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110616770.png">
+<meta name="twitter:image" content="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20210718110616770.png">
+
+
+<link rel="canonical" href="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/","path":"2020/08/07/Precision-Recall-ROC曲线等/","title":"Precision, Recall, ROC曲线等"}</script>
 
-
-
-  <link rel="canonical" href="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/">
-
-
-
-
-
-<!-- 网页加载条 -->
-<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-
-  <title>Precision, Recall, ROC曲线等 | qypx の blog</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Precision, Recall, ROC曲线等 | qypx の blog</title>
   
 
 
@@ -149,267 +65,242 @@
 
 
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">qypx の blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-      
-        <p class="site-subtitle">机会是留给有准备的人的.</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">qypx の blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">机会是留给有准备的人的.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
+
+
 
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 </nav>
 
 
 
- </div>
-    </header>
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+    </div>
+  </div>
 
-  <div id="posts" class="posts-expand">
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Precision-Recall"><span class="nav-text">1.Precision, Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-TPR-FPR"><span class="nav-text">2.TPR,FPR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Sensitivity-Specificity"><span class="nav-text">3. Sensitivity, Specificity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-ROC-%E6%9B%B2%E7%BA%BF"><span class="nav-text">4. ROC 曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-KS-%E6%9B%B2%E7%BA%BF"><span class="nav-text">5. KS 曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Lift-%E6%8F%90%E5%8D%87%E5%BA%A6"><span class="nav-text">6. Lift 提升度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-%E4%BB%80%E4%B9%88%E6%98%AF-Lift"><span class="nav-text">6.1 什么是 Lift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%9C%8B-Lift"><span class="nav-text">6.2 为什么要看 Lift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3-Lift-%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97"><span class="nav-text">6.3 Lift 如何计算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4-%E5%85%B3%E4%BA%8E%E6%8F%90%E5%8D%87%E5%BA%A6%E4%B8%8E%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5"><span class="nav-text">6.4  关于提升度与混淆矩阵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E5%9C%A8-Python-%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">7. 在 Python 中的实现</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">qypx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+            <!-- begin: 网易云音乐插件 -->
+            <!-- require APlayer -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+            <!-- require MetingJS -->
+            <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+            <meting-js
+              server="netease"
+              type="playlist"
+              id="12334576862"
+              list-folded="true"
+              order="random"
+              >
+            </meting-js>    
+            <!-- 以前的歌单 id="4870130923" -->
+            <!-- end: 网易云音乐插件 -->
+        </div>    
+      </div>
+    </div>
+
     
+          
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
     </span>
 
-    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Precision, Recall, ROC曲线等 | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Precision, Recall, ROC曲线等
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Precision, Recall, ROC曲线等</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-07T15:08:16+08:00">
-                2020-08-07
-              </time>
-            
+      <time title="创建时间：2020-08-07 15:08:16" itemprop="dateCreated datePublished" datetime="2020-08-07T15:08:16+08:00">2020-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-01 18:23:51" itemprop="dateModified" datetime="2022-03-01T18:23:51+08:00">2022-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
 
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2022-03-01T18:23:51+08:00">
-                2022-03-01
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读量
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-
-          
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
 
         </div>
       </header>
-    
 
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h4 id="1-Precision-Recall"><a href="#1-Precision-Recall" class="headerlink" title="1.Precision, Recall"></a>1.Precision, Recall</h4><p>准确率 <script type="math/tex">Accuracy = \frac{TP+TN}{TP+TN+FP+FN}</script></p>
+    <div class="post-body" itemprop="articleBody"><h4 id="1-Precision-Recall"><a href="#1-Precision-Recall" class="headerlink" title="1.Precision, Recall"></a>1.Precision, Recall</h4><p>准确率 <script type="math/tex">Accuracy = \frac{TP+TN}{TP+TN+FP+FN}</script></p>
 <p>精确率 <script type="math/tex">Precision = \frac{TP}{TP+FP}</script>，预测为positive中，实际为positive的比例，反映分类器的准确性</p>
 <p>召回率 <script type="math/tex">Recall = \frac{TP}{TP+FN}</script>，实际为positive中，预测为positive的比例，反映分类器的完备性</p>
 <p>F值为精确率和召回率的调和平均：</p>
 <script type="math/tex; mode=display">
-F1\_Score=\frac{2*Precision*Recall}{Precision+Recall}</script><p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110616770.png" alt="image-20210718110616770" style="zoom: 60%;"></p>
+F1\_Score=\frac{2*Precision*Recall}{Precision+Recall}</script><p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20210718110616770.png" alt="image-20210718110616770" style="zoom: 60%;"></p>
 <p>什么情况下更注重哪个指标？</p>
 <ul>
 <li><p>注重 <script type="math/tex">Precision = \frac{TP}{TP+FP}</script>，希望 FP 小 -&gt; 判断为正实际为负的情况少 -&gt; 垃圾邮件 (垃圾邮件为1)</p>
@@ -421,16 +312,16 @@ F1\_Score=\frac{2*Precision*Recall}{Precision+Recall}</script><p><img src="/2020
 TPR (True\ Positive\ Rate) = \frac{TP}{TP+FN}</script><p><strong>TPR 等价于 Recall</strong>，正样本中正确分类的比例（所有真实的1中，有多少被模型成功选出）</p>
 <script type="math/tex; mode=display">
 FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错分的比例（所有真实的0中，有多少被模型误判为1）</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110748865.png" alt="image-20210718110748865" style="zoom: 50%;"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20210718110748865.png" alt="image-20210718110748865" style="zoom: 50%;"></p>
 <h4 id="3-Sensitivity-Specificity"><a href="#3-Sensitivity-Specificity" class="headerlink" title="3. Sensitivity, Specificity"></a>3. Sensitivity, Specificity</h4><p>灵敏度 <script type="math/tex">Sensitivity = \frac{TP}{TP+FN}</script>，<strong>等价于 Recall</strong>，正样本中正确分类的比例 (Accuracy with respect to positive cases, also called <script type="math/tex">True\ Positive\ Rate</script>) </p>
 <p>特异度 <script type="math/tex">Specificity = \frac{TN}{TN+FP}</script>，负样本中正确分类的比例 (Accuracy with respect to negative cases)</p>
-<script type="math/tex; mode=display">FPR=1-Specificity</script><p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596783235673.png" alt="1596783235673" style="zoom: 67%;"></p>
+<script type="math/tex; mode=display">FPR=1-Specificity</script><p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1596783235673.png" alt="1596783235673" style="zoom: 67%;"></p>
 <hr>
 <h4 id="4-ROC-曲线"><a href="#4-ROC-曲线" class="headerlink" title="4. ROC 曲线"></a>4. ROC 曲线</h4><p>ROC曲线：ROC曲线是一个画在二维平面上的曲线，横坐标是FPR（负样本中错分的比例）,纵坐标是TPR（TPR等价于recall，正样本中正确分类的比例）。对某个分类器而言，根据其在测试样本上的表现可以得到一个(FPR,TPR)点对，调整分类时使用的阈值，可以得到一个曲线，就是ROC曲线。一般情况下，这个曲线应该处于对角线的上方（对角线代表的是一个随机分类器）。</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1596778766409.png" alt="1596778766409"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1596778766409.png" alt="1596778766409"></p>
 <hr>
 <blockquote>
-<p>参考 <a href="https://www.sohu.com/a/132667664_278472" target="_blank" rel="noopener">【建模基础课】ROC、K-S，教你巧妙使用模型评价指标 (sohu.com)</a></p>
+<p>参考 <a href="https://www.sohu.com/a/132667664_278472">【建模基础课】ROC、K-S，教你巧妙使用模型评价指标 (sohu.com)</a></p>
 </blockquote>
 <p>最理想的模型，当然是TPR尽量高而FPR尽量低啦，然而任何模型在提高正确预测概率的同时，也会难以避免地增加误判率。听起来有点抽象，好在有ROC曲线非常形象地表达了二者之间的关系。</p>
 <p>对于一个二分类模型，输出的最初结果是连续的（概率）；假设已经确定一个阈值，那么最初结果大于阈值时，则输出最终结果为1，小于阈值则输出为0。假如阈值取值为0.6，那么FPR和TPR就可以计算出此时的取值，标记为一个点，记为(FPR1,TPR1)；如果阈值取值为0.5，同理可以计算出另一个点，记为(FPR2,TPR2)。设定不同的阈值，就可以计算不同的点(FPR,TPR)，以FPR为横坐标,TPR为纵坐标，把不同的点连成曲线，就得到了<strong>ROC曲线</strong>。那么问题来了，阈值如何确定？</p>
@@ -459,19 +350,19 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p>对于一个模型多个参数的情况，就可以画出多条ROC曲线，此时哪组参数是最优的呢？我们可以结合<strong>AUC指标</strong>，哪组参数的AUC值越高，说明此组参数下的模型效果越好。另外，在SAS的评分模型输出中，常用来判断收入分配公平程度的gini系数也用来评价模型，此时gini=2*AUC-1.</p>
 <hr>
 <p>ROC曲线的特性：当测试集中的正负样本的分布（比例）变化的时候，ROC曲线能保持不变。类不平衡现象可以使用ROC曲线来评估模型的性能。</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1602655652264.png" alt="1602655652264"></p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/1602655688379.png" alt="1602655688379"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1602655652264.png" alt="1602655652264"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/1602655688379.png" alt="1602655688379"></p>
 <p>AUC (Area Under the ROC Curve) 值：ROC曲线下的面积，取值范围在 0.5 到 1 之间。使用AUC值作为评价标准是因为很多时候ROC曲线并不能清晰的说明哪个分类器的效果更好，而作为一个数值，对应AUC更大的分类器效果更好。</p>
 <h4 id="5-KS-曲线"><a href="#5-KS-曲线" class="headerlink" title="5. KS 曲线"></a>5. KS 曲线</h4><blockquote>
-<p>参考 <a href="https://www.sohu.com/a/132667664_278472" target="_blank" rel="noopener">【建模基础课】ROC、K-S，教你巧妙使用模型评价指标 (sohu.com)</a></p>
+<p>参考 <a href="https://www.sohu.com/a/132667664_278472">【建模基础课】ROC、K-S，教你巧妙使用模型评价指标 (sohu.com)</a></p>
 </blockquote>
 <p>常用的模型评价还有<strong>K-S曲线</strong>，它和ROC曲线的画法异曲同工。以Logistic模型为例，首先把Logistic模型输出的概率从大到小排序，然后取10%的值（也就是概率值）作为阈值，同理把10%*k（k=1,2,3,…,9）处的值作为阀值，计算出不同的FPR和TPR值，以10%*k（k=1,2,3,…,9）为横坐标<strong>（以阈值为横坐标），分别以TPR和FPR的值为纵坐标，就可以画出两个曲线，这就是K-S曲线。</strong></p>
 <p>从K-S曲线就能衍生出<strong>KS值</strong>，<code>KS=max(TPR-FPR)</code>（或者<code>KS=max(|TPR-FPR|)</code>），即是两条曲线之间的最大间隔距离。当(TPR-FPR)最大时，也就是ΔTPR-ΔFPR=0，这和ROC曲线上找最优阈值的条件ΔTPR=ΔFPR是一样的。从这点也可以看出，ROC曲线、K-S曲线、KS值的本质是相同的。</p>
 <p>以某模型的评价为例，在K-S曲线的横坐标0.4时取KS=0.53，可以认为最优的阀值是从小到大排序的40%处的值：</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20210718110047789.png" alt="image-20210718110047789"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20210718110047789.png" alt="image-20210718110047789"></p>
 <p>K-S曲线能直观地找出模型中差异最大的一个分段，比如评分模型就比较适合用KS值进行评估；但同时，KS值只能反映出哪个分段是区分度最大的，不能反映出所有分段的效果。所以，在实际应用中，模型评价一般需要将ROC曲线、K-S曲线、KS值、AUC指标结合起来使用。</p>
 <h4 id="6-Lift-提升度"><a href="#6-Lift-提升度" class="headerlink" title="6. Lift 提升度"></a>6. Lift 提升度</h4><blockquote>
-<p>参考<br><a href="https://www.jianshu.com/p/ff0eb70d31ec" target="_blank" rel="noopener">模型和策略效果衡量常用指标——LIFT提升度 - 简书 (jianshu.com)</a><br><a href="https://cosx.org/2009/02/measure-classification-model-performance-lift-gain/" target="_blank" rel="noopener">分类模型的性能评估——以 SAS Logistic 回归为例 (3): Lift 和 Gain | 统计之都 (cosx.org)</a><br><a href="https://zhuanlan.zhihu.com/P/94323568" target="_blank" rel="noopener">怎么做模型提升度的曲线？ - 知乎 (zhihu.com)</a><br><a href="https://www.listendata.com/2014/08/excel-template-gain-and-lift-charts.html" target="_blank" rel="noopener">Understand Gain and Lift Charts (listendata.com)</a><br><a href="https://www.datasciencecentral.com/profiles/blogs/comparing-model-evaluation-techniques-part-2" target="_blank" rel="noopener">Comparing Model Evaluation Techniques Part 2: Classification and Clustering - Data Science Central</a><br><a href="https://www.datasciencecentral.com/profiles/blogs/7-important-model-evaluation-error-metrics-everyone-should-know" target="_blank" rel="noopener">11 Important Model Evaluation Techniques Everyone Should Know - Data Science Central</a><br><a href="https://www.analyticsvidhya.com/blog/2019/08/11-important-model-evaluation-error-metrics/" target="_blank" rel="noopener">Evaluation Metrics Machine Learning (analyticsvidhya.com)</a></p>
+<p>参考<br><a href="https://www.jianshu.com/p/ff0eb70d31ec">模型和策略效果衡量常用指标——LIFT提升度 - 简书 (jianshu.com)</a><br><a href="https://cosx.org/2009/02/measure-classification-model-performance-lift-gain/">分类模型的性能评估——以 SAS Logistic 回归为例 (3): Lift 和 Gain | 统计之都 (cosx.org)</a><br><a href="https://zhuanlan.zhihu.com/P/94323568">怎么做模型提升度的曲线？ - 知乎 (zhihu.com)</a><br><a href="https://www.listendata.com/2014/08/excel-template-gain-and-lift-charts.html">Understand Gain and Lift Charts (listendata.com)</a><br><a href="https://www.datasciencecentral.com/profiles/blogs/comparing-model-evaluation-techniques-part-2">Comparing Model Evaluation Techniques Part 2: Classification and Clustering - Data Science Central</a><br><a href="https://www.datasciencecentral.com/profiles/blogs/7-important-model-evaluation-error-metrics-everyone-should-know">11 Important Model Evaluation Techniques Everyone Should Know - Data Science Central</a><br><a href="https://www.analyticsvidhya.com/blog/2019/08/11-important-model-evaluation-error-metrics/">Evaluation Metrics Machine Learning (analyticsvidhya.com)</a></p>
 </blockquote>
 <h5 id="6-1-什么是-Lift"><a href="#6-1-什么是-Lift" class="headerlink" title="6.1 什么是 Lift"></a>6.1 什么是 Lift</h5><p>Lift提升度衡量的是，与不利用模型相比，模型的预测能力 “变好” 了多少（how much better one can expect to do with the predictive model comparing without a model. The “lift” is the ratio of results with and without the model; Better models have higher lifts.）。它衡量的是一个模型（或规则）对目标中“响应”的预测能力优于随机选择的倍数，以1为界线，大于1的Lift表示该模型或规则比随机选择捕捉了更多的“响应”，等于1的Lift表示该模型的表现独立于随机选择，小于1则表示该模型或规则比随机选择捕捉了更少的“响应”。维基百科中提升度被解释为“Target response divided by average response”。</p>
 <p>显然，lift(提升指数)越大，模型的运行效果越好。如果这个模型的预测能力跟 baseline model 一样（lift 等于 1），这个模型就没有任何 “提升” 了（套一句金融市场的话，它的业绩没有跑过市场）。</p>
@@ -483,792 +374,198 @@ FPR(False\ Positive\ Rate) = \frac{FP}{FP+TN}</script><p>FPR，负样本中错�
 <p>个人理解：累计提升度可以理解为用百分之多少的人数覆盖了百分之多少的目标人群，如果用很少的人数覆盖了很大一部分的目标人群，则累计提升度会比较大。比较两个模型的效果时，以一个模型划分结果去等人数划分另一个模型，哪个模型覆盖的目标人群更多，则其提升度越大。</p>
 </blockquote>
 <p>下图是一个提升表（Lift Table）的示例：</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011151956385.png" alt="image-20211011151956385"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011151956385.png" alt="image-20211011151956385"></p>
 <p> 以分数段为横轴，以提升度为纵轴，可绘制出累计提升图，示例如下：</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011152920681.png" alt="image-20211011152920681" style="zoom:80%;"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011152920681.png" alt="image-20211011152920681" style="zoom:80%;"></p>
 <p> 有了累计提升图，我们就能直观地去比较不同模型或策略给我们带来的区分能力增益程度。</p>
 <p>对累计提升度的解释：</p>
 <blockquote>
 <p>(假设分为10份) The Cum Lift of 4.03 for top two deciles, means that when selecting 20% of the records based on the model, one can expect 4.03 times the total number of targets (events) found by randomly selecting 20%-of-file without a model.</p>
 </blockquote>
 <p>另一个例子：</p>
-<p>（来自 <a href="http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html" target="_blank" rel="noopener">Lift Charts (uregina.ca)</a>）</p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165053284.png" alt="image-20211011165053284" style="zoom:150%;"></p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165146743.png" alt="image-20211011165146743" style="zoom:150%;"></p>
-<p><img src="/2020/08/07/Precision-Recall-ROC曲线等/image-20211011165243837.png" alt="image-20211011165243837" style="zoom:150%;"></p>
+<p>（来自 <a href="http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html">Lift Charts (uregina.ca)</a>）</p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011165053284.png" alt="image-20211011165053284" style="zoom:150%;"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011165146743.png" alt="image-20211011165146743" style="zoom:150%;"></p>
+<p><img src="/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/image-20211011165243837.png" alt="image-20211011165243837" style="zoom:150%;"></p>
 <h5 id="6-4-关于提升度与混淆矩阵"><a href="#6-4-关于提升度与混淆矩阵" class="headerlink" title="6.4  关于提升度与混淆矩阵"></a>6.4  关于提升度与混淆矩阵</h5><p>While the confusion matrix gives proportions between all negatives and positives, <strong>Gain and lift charts focus on the true positives.</strong> One of their most common uses is in marketing, to decide if a prospective client is worth calling.</p>
 <p><strong>Gain and lift charts work with a sample</strong> (a fraction of the population). In comparison, a confusion matrix uses the whole population to evaluate a model.</p>
 <p>注：Gain 和提升度类似（其实就是Lift的分子部分）</p>
-<h4 id="7-在-Python-中的实现"><a href="#7-在-Python-中的实现" class="headerlink" title="7. 在 Python 中的实现"></a>7. 在 Python 中的实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score, f1_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluation_metric</span><span class="params">(y_true, y_pred, y_pred_prob)</span>:</span></span><br><span class="line">    print(<span class="string">"precision: "</span>, precision_score(y_true, y_pred))</span><br><span class="line">    print(<span class="string">"recall: "</span>, recall_score(y_true, y_pred))</span><br><span class="line">    print(<span class="string">"f1_score: "</span>, f1_score(y_true,  y_pred))</span><br><span class="line">    print(<span class="string">"========="</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"confusion matrix: "</span>)</span><br><span class="line">    cm = confusion_matrix(y_true, y_pred)</span><br><span class="line">    print(cm)</span><br><span class="line">    print(<span class="string">"========="</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"auc: "</span>, roc_auc_score(y_true, y_pred_prob)) <span class="comment"># auc用预测概率进行计算</span></span><br><span class="line">    </span><br><span class="line">    fpr, tpr, thresholds = roc_curve(y_true, y_pred_prob)</span><br><span class="line">    ks = max(tpr-fpr)</span><br><span class="line">    print(<span class="string">"ks: "</span>, ks)</span><br></pre></td></tr></table></figure>
-      
+<h4 id="7-在-Python-中的实现"><a href="#7-在-Python-中的实现" class="headerlink" title="7. 在 Python 中的实现"></a>7. 在 Python 中的实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score, f1_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluation_metric</span>(<span class="params">y_true, y_pred, y_pred_prob</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;precision: &quot;</span>, precision_score(y_true, y_pred))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;recall: &quot;</span>, recall_score(y_true, y_pred))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;f1_score: &quot;</span>, f1_score(y_true,  y_pred))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;=========&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;confusion matrix: &quot;</span>)</span><br><span class="line">    cm = confusion_matrix(y_true, y_pred)</span><br><span class="line">    <span class="built_in">print</span>(cm)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;=========&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;auc: &quot;</span>, roc_auc_score(y_true, y_pred_prob)) <span class="comment"># auc用预测概率进行计算</span></span><br><span class="line">    </span><br><span class="line">    fpr, tpr, thresholds = roc_curve(y_true, y_pred_prob)</span><br><span class="line">    ks = <span class="built_in">max</span>(tpr-fpr)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;ks: &quot;</span>, ks)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </div>
-    
-    
-    
 
     
-
     
-
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
           
-            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-          
-        </div>
-      
 
-      
-      
-      
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>qypx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://qypx.github.io/2020/08/07/Precision-Recall-ROC%E6%9B%B2%E7%BA%BF%E7%AD%89/" title="Precision, Recall, ROC曲线等">http://qypx.github.io/2020/08/07/Precision-Recall-ROC曲线等/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/07/30/推荐系统冷启动问题/" rel="next" title="推荐系统冷启动问题">
-                <i class="fa fa-chevron-left"></i> 推荐系统冷启动问题
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/10/19/熵、条件熵、互信息、相对熵/" rel="prev" title="熵、条件熵、互信息、相对熵">
-                熵、条件熵、互信息、相对熵 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="qypx">
-            
-              <p class="site-author-name" itemprop="name">qypx</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">128</span>
-                  <span class="site-state-item-name">日志</span>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/" rel="prev" title="推荐系统冷启动问题">
+                  <i class="fa fa-angle-left"></i> 推荐系统冷启动问题
                 </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">57</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/qypx" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
             </div>
-          
-
-
-          
-          
-
-          
-          
-
-          
-
-
-          <!-- 新增的内容 -->
-          <!-- require APlayer -->
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-          <!-- require MetingJS -->
-          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
-          </meting-js>
-          <!-- 新增的内容end -->
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Precision-Recall"><span class="nav-text">1.Precision, Recall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-TPR-FPR"><span class="nav-text">2.TPR,FPR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Sensitivity-Specificity"><span class="nav-text">3. Sensitivity, Specificity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-ROC-曲线"><span class="nav-text">4. ROC 曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-KS-曲线"><span class="nav-text">5. KS 曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Lift-提升度"><span class="nav-text">6. Lift 提升度</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-什么是-Lift"><span class="nav-text">6.1 什么是 Lift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2-为什么要看-Lift"><span class="nav-text">6.2 为什么要看 Lift</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3-Lift-如何计算"><span class="nav-text">6.3 Lift 如何计算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4-关于提升度与混淆矩阵"><span class="nav-text">6.4  关于提升度与混淆矩阵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-在-Python-中的实现"><span class="nav-text">7. 在 Python 中的实现</span></a></li></ol></div>
-            
-
+            <div class="post-nav-item">
+                <a href="/2020/10/19/%E7%86%B5%E3%80%81%E6%9D%A1%E4%BB%B6%E7%86%B5%E3%80%81%E4%BA%92%E4%BF%A1%E6%81%AF%E3%80%81%E7%9B%B8%E5%AF%B9%E7%86%B5/" rel="next" title="熵、条件熵、互信息、相对熵">
+                  熵、条件熵、互信息、相对熵 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
           </div>
-        </section>
-      <!--/noindex-->
-      
+    </footer>
+  </article>
+</div>
 
-      
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">qypx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div><!-- begin: canvas-nest动态背景 -->
+<script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+<!-- end: canvas-nest动态背景 -->
+
+<!-- begin: busuanzi -->
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- end: busuanzi -->
 
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">qypx</span>
+  </footer>
 
   
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"qypx/qypx.github.io","repo_id":"MDEwOlJlcG9zaXRvcnkxODg5NTYzNTY=","category":"Announcements","category_id":"DIC_kwDOC0M-xM4ChCGW","mapping":"pathname","strict":0,"reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-strict'           : CONFIG.giscus.strict,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
-  
-
-  
-
-
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left"},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

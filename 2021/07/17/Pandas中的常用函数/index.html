@@ -1,151 +1,66 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
+  <!-- begin: pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> 
+  <!-- end: pjax：防止跳转页面音乐暂停-->
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
 
+<script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/qypx_robot/apple-touch-icon.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/qypx_robot/favicon-32x32.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/qypx_robot/favicon-16x16.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/qypx_robot/safari-pinned-tab.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Python,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="map、apply、applymap Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)  在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map、apply和applymap可以解决绝大部分这样的数据处理需求。 生成100行示例数据： 123456789101112boo">
-<meta name="keywords" content="Python">
+    <meta name="description" content="map、apply、applymap Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)  在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map、apply和applymap可以解决绝大部分这样的数据处理需求。 生成100行示例数据： 123456789101112boo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pandas中的常用函数">
-<meta property="og:url" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/index.html">
+<meta property="og:url" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="map、apply、applymap Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)  在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map、apply和applymap可以解决绝大部分这样的数据处理需求。 生成100行示例数据： 123456789101112boo">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717144622753.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717164238564.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717171243694.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717171536577.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717172153411.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717140057334.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717172959291.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717173208264.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717173342027.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717173509526.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717173652106.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717173734785.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717174228449.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/1700463583029.png">
-<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/1700463682010.png">
-<meta property="og:updated_time" content="2024-04-19T07:53:02.425Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717144622753.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717164238564.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717171243694.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717171536577.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717172153411.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717140057334.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717172959291.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173208264.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173342027.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173509526.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173652106.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173734785.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717174228449.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/1700463583029.png">
+<meta property="og:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/1700463682010.png">
+<meta property="article:published_time" content="2021-07-17T05:53:48.000Z">
+<meta property="article:modified_time" content="2024-04-19T07:53:02.425Z">
+<meta property="article:author" content="qypx">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pandas中的常用函数">
-<meta name="twitter:description" content="map、apply、applymap Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)  在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map、apply和applymap可以解决绝大部分这样的数据处理需求。 生成100行示例数据： 123456789101112boo">
-<meta name="twitter:image" content="http://qypx.github.io/2021/07/17/Pandas中的常用函数/image-20210717144622753.png">
+<meta name="twitter:image" content="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717144622753.png">
+
+
+<link rel="canonical" href="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/","path":"2021/07/17/Pandas中的常用函数/","title":"Pandas中的常用函数"}</script>
 
-
-
-  <link rel="canonical" href="http://qypx.github.io/2021/07/17/Pandas中的常用函数/">
-
-
-
-
-
-<!-- 网页加载条 -->
-<script src="https://neveryu.github.io/js/src/pace.min.js"></script>
-
-  <title>Pandas中的常用函数 | qypx の blog</title>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Pandas中的常用函数 | qypx の blog</title>
   
 
 
@@ -155,292 +70,267 @@
 
 
 
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">qypx の blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-      
-        <p class="site-subtitle">机会是留给有准备的人的.</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">qypx の blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">机会是留给有准备的人的.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
+
+
 
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 </nav>
 
 
 
- </div>
-    </header>
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+    </div>
+  </div>
 
-  <div id="posts" class="posts-expand">
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+      
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#map%E3%80%81apply%E3%80%81applymap"><span class="nav-text">map、apply、applymap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Series%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">Series数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-map%E7%94%A8%E6%B3%95"><span class="nav-text">1. map用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-apply"><span class="nav-text">2. apply</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataFrame%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">DataFrame数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-apply"><span class="nav-text">1. apply</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-applymap"><span class="nav-text">2. applymap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#groupby"><span class="nav-text">groupby</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#agg%E8%81%9A%E5%90%88%E6%93%8D%E4%BD%9C"><span class="nav-text">agg聚合操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#transform%E6%93%8D%E4%BD%9C"><span class="nav-text">transform操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply"><span class="nav-text">apply</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crosstab"><span class="nav-text">crosstab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assign"><span class="nav-text">assign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pivot"><span class="nav-text">pivot</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qypx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">qypx</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">128</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/qypx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;qypx" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+            <!-- begin: 网易云音乐插件 -->
+            <!-- require APlayer -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+            <!-- require MetingJS -->
+            <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+            <meting-js
+              server="netease"
+              type="playlist"
+              id="12334576862"
+              list-folded="true"
+              order="random"
+              >
+            </meting-js>    
+            <!-- 以前的歌单 id="4870130923" -->
+            <!-- end: 网易云音乐插件 -->
+        </div>    
+      </div>
+    </div>
+
     
+          
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
 
   
 
-  
+
+<div class="post-block">
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/07/17/Pandas中的常用函数/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qypx">
-      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qypx">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="qypx の blog">
+      <meta itemprop="description" content="">
     </span>
 
-    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Pandas中的常用函数 | qypx の blog">
+      <meta itemprop="description" content="">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pandas中的常用函数
+        </h1>
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Pandas中的常用函数</h1>
-        
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-17T13:53:48+08:00">
-                2021-07-17
-              </time>
-            
+      <time title="创建时间：2021-07-17 13:53:48" itemprop="dateCreated datePublished" datetime="2021-07-17T13:53:48+08:00">2021-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-19 15:53:02" itemprop="dateModified" datetime="2024-04-19T15:53:02+08:00">2024-04-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
 
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2024-04-19T15:53:02+08:00">
-                2024-04-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i> 阅读量
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-
-          
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
 
         </div>
       </header>
-    
 
     
     
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h4 id="map、apply、applymap"><a href="#map、apply、applymap" class="headerlink" title="map、apply、applymap"></a>map、apply、applymap</h4><blockquote>
-<p><a href="https://zhuanlan.zhihu.com/p/100064394" target="_blank" rel="noopener">Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)</a></p>
+    <div class="post-body" itemprop="articleBody"><h4 id="map、apply、applymap"><a href="#map、apply、applymap" class="headerlink" title="map、apply、applymap"></a>map、apply、applymap</h4><blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/100064394">Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)</a></p>
 </blockquote>
 <p>在日常的数据处理中，经常会对一个<code>DataFrame</code>进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的<code>map</code>、<code>apply</code>和<code>applymap</code>可以解决绝大部分这样的数据处理需求。</p>
 <p>生成100行示例数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">boolean=[<span class="literal">True</span>,<span class="literal">False</span>]</span><br><span class="line">gender=[<span class="string">"男"</span>,<span class="string">"女"</span>]</span><br><span class="line">color=[<span class="string">"white"</span>,<span class="string">"black"</span>,<span class="string">"yellow"</span>]</span><br><span class="line">data=pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">"height"</span>:np.random.randint(<span class="number">150</span>,<span class="number">190</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">"weight"</span>:np.random.randint(<span class="number">40</span>,<span class="number">90</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">"smoker"</span>:[boolean[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="number">2</span>,<span class="number">100</span>)],</span><br><span class="line">    <span class="string">"gender"</span>:[gender[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="number">2</span>,<span class="number">100</span>)],</span><br><span class="line">    <span class="string">"age"</span>:np.random.randint(<span class="number">15</span>,<span class="number">90</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">"color"</span>:[color[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,len(color),<span class="number">100</span>) ]</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717144622753.png" alt="image-20210717144622753"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">boolean=[<span class="literal">True</span>,<span class="literal">False</span>]</span><br><span class="line">gender=[<span class="string">&quot;男&quot;</span>,<span class="string">&quot;女&quot;</span>]</span><br><span class="line">color=[<span class="string">&quot;white&quot;</span>,<span class="string">&quot;black&quot;</span>,<span class="string">&quot;yellow&quot;</span>]</span><br><span class="line">data=pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&quot;height&quot;</span>:np.random.randint(<span class="number">150</span>,<span class="number">190</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">&quot;weight&quot;</span>:np.random.randint(<span class="number">40</span>,<span class="number">90</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">&quot;smoker&quot;</span>:[boolean[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="number">2</span>,<span class="number">100</span>)],</span><br><span class="line">    <span class="string">&quot;gender&quot;</span>:[gender[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="number">2</span>,<span class="number">100</span>)],</span><br><span class="line">    <span class="string">&quot;age&quot;</span>:np.random.randint(<span class="number">15</span>,<span class="number">90</span>,<span class="number">100</span>),</span><br><span class="line">    <span class="string">&quot;color&quot;</span>:[color[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="built_in">len</span>(color),<span class="number">100</span>) ]</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717144622753.png" alt="image-20210717144622753"></p>
 <h5 id="Series数据处理"><a href="#Series数据处理" class="headerlink" title="Series数据处理"></a>Series数据处理</h5><h6 id="1-map用法"><a href="#1-map用法" class="headerlink" title="1. map用法"></a>1. map用法</h6><p>若想把数据集中<code>gender</code>列的男替换为1，女替换为0，可使用 <code>Series.map()</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 法一：使用字典进行映射</span></span><br><span class="line">data[<span class="string">"gender"</span>] = data[<span class="string">"gender"</span>].map(&#123;<span class="string">"男"</span>:<span class="number">1</span>, <span class="string">"女"</span>:<span class="number">0</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二：使用函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gender_map</span><span class="params">(x)</span>:</span></span><br><span class="line">    gender = <span class="number">1</span> <span class="keyword">if</span> x == <span class="string">"男"</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> gender</span><br><span class="line"><span class="comment"># 注意这里传入的是函数名，不带括号</span></span><br><span class="line">data[<span class="string">"gender"</span>] = data[<span class="string">"gender"</span>].map(gender_map)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 法一：使用字典进行映射</span></span><br><span class="line">data[<span class="string">&quot;gender&quot;</span>] = data[<span class="string">&quot;gender&quot;</span>].<span class="built_in">map</span>(&#123;<span class="string">&quot;男&quot;</span>:<span class="number">1</span>, <span class="string">&quot;女&quot;</span>:<span class="number">0</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二：使用函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gender_map</span>(<span class="params">x</span>):</span><br><span class="line">    gender = <span class="number">1</span> <span class="keyword">if</span> x == <span class="string">&quot;男&quot;</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> gender</span><br><span class="line"><span class="comment"># 注意这里传入的是函数名，不带括号</span></span><br><span class="line">data[<span class="string">&quot;gender&quot;</span>] = data[<span class="string">&quot;gender&quot;</span>].<span class="built_in">map</span>(gender_map)</span><br></pre></td></tr></table></figure>
 <p>不论是利用字典还是函数进行映射，<code>map</code>方法都是把对应的数据<strong>逐个当作参数</strong>传入到字典或函数中，得到映射后的值。</p>
 <blockquote>
 <p> 注：若该列中存在map字典中不存在的值，例如，gender 中还存在“未知”，则“未知”会被映射为Nan，此时可选择使用函数进行映射，定义一个else，同时使用函数会更加灵活，例如当满足多个条件时，都映射到某个值</p>
 </blockquote>
-<a id="more"></a>
+<span id="more"></span>
 <h6 id="2-apply"><a href="#2-apply" class="headerlink" title="2. apply"></a>2. apply</h6><p><code>apply</code> 方法的作用原理和 <code>map</code> 方法类似，区别在于 <code>apply</code> 能够传入功能更为复杂的函数</p>
 <p>假设在数据统计的过程中，年龄<code>age</code>列有较大误差，需要对其进行调整（加上或减去一个值），由于这个加上或减去的值未知，故在定义函数时，需要加多一个参数 <code>bias</code>，此时用 <code>map</code> 方法是操作不了的（<strong>传入 <code>map</code> 的函数只能接收一个参数</strong>），<code>apply</code> 方法则可以解决这个问题。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">apply_age</span><span class="params">(x,bias)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x+bias</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以元组的方式传入额外的参数</span></span><br><span class="line">data[<span class="string">"age"</span>] = data[<span class="string">"age"</span>].apply(apply_age,args=(<span class="number">-3</span>,))</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717164238564.png" alt="image-20210717164238564"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">apply_age</span>(<span class="params">x,bias</span>):</span><br><span class="line">    <span class="keyword">return</span> x+bias</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以元组的方式传入额外的参数</span></span><br><span class="line">data[<span class="string">&quot;age&quot;</span>] = data[<span class="string">&quot;age&quot;</span>].apply(apply_age,args=(-<span class="number">3</span>,))</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717164238564.png" alt="image-20210717164238564"></p>
 <p>可以看到age列都减了3，当然，这里只是简单举了个例子，当需要进行复杂处理时，更能体现<code>apply</code>的作用。</p>
 <p>总而言之，对于Series而言，<code>map</code>可以解决绝大多数的数据处理需求，但如果需要使用较为复杂的函数，则需要用到<code>apply</code>方法。</p>
 <h5 id="DataFrame数据处理"><a href="#DataFrame数据处理" class="headerlink" title="DataFrame数据处理"></a>DataFrame数据处理</h5><h6 id="1-apply"><a href="#1-apply" class="headerlink" title="1. apply"></a>1. apply</h6><p>对<code>DataFrame</code>而言，<code>apply</code>是非常重要的数据处理方法，它可以接收各种各样的函数（Python内置的或自定义的），处理方式很灵活。</p>
 <p>在进行具体介绍之前，首先需要了解一下<code>DataFrame</code>中<code>axis</code>的概念（详见我的博客<a href="https://qypx.github.io/2019/09/02/dataframe-operation/">数据框操作</a>）</p>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717171243694.png" alt="image-20210717171243694"></p>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717171243694.png" alt="image-20210717171243694"></p>
 <p>简言之，若想沿着axis=0的方向新增数据，则选择axis=0；若想沿着axis=1的方向新增数据，则选择axis=1。</p>
 <p>假设现在需要对<code>data</code>中的<strong>数值列</strong>分别进行<strong>取对数</strong>和<strong>求和</strong>的操作，这时可以用 <code>apply</code> 进行相应的操作，因为是对列进行操作，所以需要指定<code>axis=0</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 沿着0轴求和</span></span><br><span class="line">data[[<span class="string">"height"</span>,<span class="string">"weight"</span>,<span class="string">"age"</span>]].apply(np.sum, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 沿着0轴取对数</span></span><br><span class="line">data[[<span class="string">"height"</span>,<span class="string">"weight"</span>,<span class="string">"age"</span>]].apply(np.log, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717171536577.png" alt="image-20210717171536577"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 沿着0轴求和</span></span><br><span class="line">data[[<span class="string">&quot;height&quot;</span>,<span class="string">&quot;weight&quot;</span>,<span class="string">&quot;age&quot;</span>]].apply(np.<span class="built_in">sum</span>, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 沿着0轴取对数</span></span><br><span class="line">data[[<span class="string">&quot;height&quot;</span>,<span class="string">&quot;weight&quot;</span>,<span class="string">&quot;age&quot;</span>]].apply(np.log, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717171536577.png" alt="image-20210717171536577"></p>
 <p><strong>当沿着<code>轴0（axis=0）</code>进行操作时，会将各列(<code>columns</code>)默认以<code>Series</code>的形式作为参数</strong>，传入到你指定的操作函数中，操作后合并并返回相应的结果。</p>
 <p>那如果在实际使用中需要按行进行操作（<code>axis=1</code>）, 例如：</p>
 <p>在数据集中，有身高和体重的数据，所以根据这个，我们可以计算每个人的BMI指数（体检时常用的指标，衡量人体肥胖程度和是否健康的重要标准），计算公式是：<code>体重指数BMI=体重/身高的平方（国际单位kg/㎡）</code>，因为需要对每个样本进行操作，这里使用<code>axis=1</code>的<code>apply</code>进行操作，代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BMI</span><span class="params">(series)</span>:</span></span><br><span class="line">    weight = series[<span class="string">"weight"</span>]</span><br><span class="line">    height = series[<span class="string">"height"</span>]/<span class="number">100</span></span><br><span class="line">    BMI = weight/height**<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> BMI</span><br><span class="line"></span><br><span class="line">data[<span class="string">"BMI"</span>] = data.apply(BMI,axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">BMI</span>(<span class="params">series</span>):</span><br><span class="line">    weight = series[<span class="string">&quot;weight&quot;</span>]</span><br><span class="line">    height = series[<span class="string">&quot;height&quot;</span>]/<span class="number">100</span></span><br><span class="line">    BMI = weight/height**<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> BMI</span><br><span class="line"></span><br><span class="line">data[<span class="string">&quot;BMI&quot;</span>] = data.apply(BMI,axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <p><strong>当<code>apply</code>设置了<code>axis=1</code>对行进行操作时，会默认将每一行数据以<code>Series</code>的形式（Series的索引为列名）传入指定函数</strong>，返回相应的结果。</p>
 <p>总结一下对<code>DataFrame</code>的<code>apply</code>操作：</p>
 <blockquote>
@@ -453,839 +343,265 @@
 </blockquote>
 <h6 id="2-applymap"><a href="#2-applymap" class="headerlink" title="2. applymap"></a>2. applymap</h6><p><code>applymap</code>的用法比较简单，会对 DataFrame 中的<strong>每个单元格</strong>执行指定函数的操作</p>
 <p>新生成一个 DataFrame:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"A"</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">"B"</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">"C"</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">"D"</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">"E"</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717172153411.png" alt="image-20210717172153411"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;A&quot;</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">&quot;B&quot;</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">&quot;C&quot;</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">&quot;D&quot;</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">        <span class="string">&quot;E&quot;</span>:np.random.randn(<span class="number">5</span>),</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717172153411.png" alt="image-20210717172153411"></p>
 <p>现在想将<code>DataFrame</code>中所有的值保留两位小数显示，使用<code>applymap</code>可以很快达到你想要的目的，代码和图解如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.applymap(<span class="keyword">lambda</span> x:<span class="string">"%.2f"</span> % x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.applymap(<span class="keyword">lambda</span> x:<span class="string">&quot;%.2f&quot;</span> % x)</span><br></pre></td></tr></table></figure>
 <p><code>applymap</code> 将 DataFrame 中的每个数据作为 x 传入匿名函数</p>
 <hr>
 <h4 id="groupby"><a href="#groupby" class="headerlink" title="groupby"></a>groupby</h4><blockquote>
-<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html" target="_blank" rel="noopener">pandas.DataFrame.groupby — pandas 1.3.0 documentation (pydata.org)</a><br><a href="https://zhuanlan.zhihu.com/p/101284491?utm_source=wechat_session" target="_blank" rel="noopener">Pandas教程 | 超好用的Groupby用法详解 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html">pandas.DataFrame.groupby — pandas 1.3.0 documentation (pydata.org)</a><br><a href="https://zhuanlan.zhihu.com/p/101284491?utm_source=wechat_session">Pandas教程 | 超好用的Groupby用法详解 - 知乎 (zhihu.com)</a></p>
 </blockquote>
 <p>将数据根据某个（多个）字段划分为不同的群体（group）进行分析</p>
 <p>例：</p>
 <p>模拟生成10个样本数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">company=[<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>]</span><br><span class="line"></span><br><span class="line">data=pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">"company"</span>:[company[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,len(company),<span class="number">10</span>)],</span><br><span class="line">    <span class="string">"salary"</span>:np.random.randint(<span class="number">5</span>,<span class="number">50</span>,<span class="number">10</span>),</span><br><span class="line">    <span class="string">"age"</span>:np.random.randint(<span class="number">15</span>,<span class="number">50</span>,<span class="number">10</span>)</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717140057334.png" alt="image-20210717140057334"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group = data.groupby(&quot;company&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">company=[<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>]</span><br><span class="line"></span><br><span class="line">data=pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&quot;company&quot;</span>:[company[x] <span class="keyword">for</span> x <span class="keyword">in</span> np.random.randint(<span class="number">0</span>,<span class="built_in">len</span>(company),<span class="number">10</span>)],</span><br><span class="line">    <span class="string">&quot;salary&quot;</span>:np.random.randint(<span class="number">5</span>,<span class="number">50</span>,<span class="number">10</span>),</span><br><span class="line">    <span class="string">&quot;age&quot;</span>:np.random.randint(<span class="number">15</span>,<span class="number">50</span>,<span class="number">10</span>)</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717140057334.png" alt="image-20210717140057334"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group = data.groupby(&quot;company&quot;)</span><br></pre></td></tr></table></figure>
 <p><code>groupby</code>的过程就是将原有的<code>DataFrame</code>按照<code>groupby</code>的字段（这里是<code>company</code>），划分为若干个<code>子DataFrame</code>，在<code>groupby</code>之后的一系列操作（如<code>agg</code>、<code>apply</code>等），均是基于<code>子DataFrame</code>的操作。</p>
 <h5 id="agg聚合操作"><a href="#agg聚合操作" class="headerlink" title="agg聚合操作"></a>agg聚合操作</h5><p>Pandas中常见的聚合操作：</p>
 <blockquote>
 <p>min, max, sum, mean, median, std, var, count</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; data.groupby(<span class="string">"company"</span>).agg(<span class="string">'mean'</span>)</span><br><span class="line">         salary    age</span><br><span class="line">company</span><br><span class="line">A         <span class="number">21.50</span>  <span class="number">27.50</span></span><br><span class="line">B         <span class="number">13.00</span>  <span class="number">29.00</span></span><br><span class="line">C         <span class="number">29.25</span>  <span class="number">27.25</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; data.groupby(<span class="string">&quot;company&quot;</span>).agg(<span class="string">&#x27;mean&#x27;</span>)</span><br><span class="line">         salary    age</span><br><span class="line">company</span><br><span class="line">A         <span class="number">21.50</span>  <span class="number">27.50</span></span><br><span class="line">B         <span class="number">13.00</span>  <span class="number">29.00</span></span><br><span class="line">C         <span class="number">29.25</span>  <span class="number">27.25</span></span><br></pre></td></tr></table></figure>
 <p>👆 根据公司进行分组，对其余每一列求平均</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; data.groupby(<span class="string">"company"</span>)[<span class="string">"salary"</span>].agg(<span class="string">'mean'</span>)</span><br><span class="line">         salary    age</span><br><span class="line">company</span><br><span class="line">A         <span class="number">21.50</span>  <span class="number">27.50</span></span><br><span class="line">B         <span class="number">13.00</span>  <span class="number">29.00</span></span><br><span class="line">C         <span class="number">29.25</span>  <span class="number">27.25</span></span><br><span class="line"></span><br><span class="line">也可以直接写作：</span><br><span class="line">&gt; data.groupby(<span class="string">"company"</span>)[<span class="string">"salary"</span>].mean()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; data.groupby(<span class="string">&quot;company&quot;</span>)[<span class="string">&quot;salary&quot;</span>].agg(<span class="string">&#x27;mean&#x27;</span>)</span><br><span class="line">         salary    age</span><br><span class="line">company</span><br><span class="line">A         <span class="number">21.50</span>  <span class="number">27.50</span></span><br><span class="line">B         <span class="number">13.00</span>  <span class="number">29.00</span></span><br><span class="line">C         <span class="number">29.25</span>  <span class="number">27.25</span></span><br><span class="line"></span><br><span class="line">也可以直接写作：</span><br><span class="line">&gt; data.groupby(<span class="string">&quot;company&quot;</span>)[<span class="string">&quot;salary&quot;</span>].mean()</span><br></pre></td></tr></table></figure>
 <p>👆 根据公司进行分组，对 salary 列求平均</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; data.groupby(<span class="string">'company'</span>).agg(&#123;<span class="string">'salary'</span>:<span class="string">'median'</span>,<span class="string">'age'</span>:<span class="string">'mean'</span>&#125;)</span><br><span class="line">         salary    age</span><br><span class="line">company</span><br><span class="line">A          <span class="number">21.5</span>  <span class="number">27.50</span></span><br><span class="line">B          <span class="number">10.0</span>  <span class="number">29.00</span></span><br><span class="line">C          <span class="number">30.0</span>  <span class="number">27.25</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; data.groupby(<span class="string">&#x27;company&#x27;</span>).agg(&#123;<span class="string">&#x27;salary&#x27;</span>:<span class="string">&#x27;median&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="string">&#x27;mean&#x27;</span>&#125;)</span><br><span class="line">         salary    age</span><br><span class="line">company</span><br><span class="line">A          <span class="number">21.5</span>  <span class="number">27.50</span></span><br><span class="line">B          <span class="number">10.0</span>  <span class="number">29.00</span></span><br><span class="line">C          <span class="number">30.0</span>  <span class="number">27.25</span></span><br></pre></td></tr></table></figure>
 <p>👆 根据公司进行分组，对 salary 列求中位数，对 age 列求平均</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;data.groupby(<span class="string">'company'</span>).mean(numeric_only=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;data.groupby(<span class="string">&#x27;company&#x27;</span>).mean(numeric_only=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <p>👆 根据公司进行分组，对所有数值型的列进行求平均（</p>
 <h5 id="transform操作"><a href="#transform操作" class="headerlink" title="transform操作"></a>transform操作</h5><p>若在求得不同公司员工的平均薪水后，想在原数据集中新增一列<code>avg_salary</code>，该怎么做呢？</p>
 <p>不用<code>transform</code>的话，实现代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; avg_salary_dict = data.groupby(&apos;company&apos;)[&apos;salary&apos;].mean().to_dict()</span><br><span class="line">&gt; data[&apos;avg_salary&apos;] = data[&apos;company&apos;].map(avg_salary_dict)</span><br><span class="line">&gt; data</span><br><span class="line">  company  salary  age  avg_salary</span><br><span class="line">0       C      43   35       29.25</span><br><span class="line">1       C      17   25       29.25</span><br><span class="line">2       C       8   30       29.25</span><br><span class="line">3       A      20   22       21.50</span><br><span class="line">4       B      10   17       13.00</span><br><span class="line">5       B      21   40       13.00</span><br><span class="line">6       A      23   33       21.50</span><br><span class="line">7       C      49   19       29.25</span><br><span class="line">8       B       8   30       13.00</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; avg_salary_dict = data.groupby(&#x27;company&#x27;)[&#x27;salary&#x27;].mean().to_dict()</span><br><span class="line">&gt; data[&#x27;avg_salary&#x27;] = data[&#x27;company&#x27;].map(avg_salary_dict)</span><br><span class="line">&gt; data</span><br><span class="line">  company  salary  age  avg_salary</span><br><span class="line">0       C      43   35       29.25</span><br><span class="line">1       C      17   25       29.25</span><br><span class="line">2       C       8   30       29.25</span><br><span class="line">3       A      20   22       21.50</span><br><span class="line">4       B      10   17       13.00</span><br><span class="line">5       B      21   40       13.00</span><br><span class="line">6       A      23   33       21.50</span><br><span class="line">7       C      49   19       29.25</span><br><span class="line">8       B       8   30       13.00</span><br></pre></td></tr></table></figure>
 <p>如果使用<code>transform</code>的话，仅需要一行代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; data[&apos;avg_salary&apos;] = data.groupby(&apos;company&apos;)[&apos;salary&apos;].transform(&apos;mean&apos;)</span><br><span class="line">&gt; data</span><br><span class="line">  company  salary  age  avg_salary</span><br><span class="line">0       C      43   35       29.25</span><br><span class="line">1       C      17   25       29.25</span><br><span class="line">2       C       8   30       29.25</span><br><span class="line">3       A      20   22       21.50</span><br><span class="line">4       B      10   17       13.00</span><br><span class="line">5       B      21   40       13.00</span><br><span class="line">6       A      23   33       21.50</span><br><span class="line">7       C      49   19       29.25</span><br><span class="line">8       B       8   30       13.00</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; data[&#x27;avg_salary&#x27;] = data.groupby(&#x27;company&#x27;)[&#x27;salary&#x27;].transform(&#x27;mean&#x27;)</span><br><span class="line">&gt; data</span><br><span class="line">  company  salary  age  avg_salary</span><br><span class="line">0       C      43   35       29.25</span><br><span class="line">1       C      17   25       29.25</span><br><span class="line">2       C       8   30       29.25</span><br><span class="line">3       A      20   22       21.50</span><br><span class="line">4       B      10   17       13.00</span><br><span class="line">5       B      21   40       13.00</span><br><span class="line">6       A      23   33       21.50</span><br><span class="line">7       C      49   19       29.25</span><br><span class="line">8       B       8   30       13.00</span><br></pre></td></tr></table></figure>
 <h5 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h5><p><code>apply</code> 相比 <code>agg</code> 和 <code>transform</code> 而言更加灵活，能够传入任意自定义的函数，实现复杂的数据操作</p>
 <p>假设现在需要获取各个公司年龄最大的员工的数据，可以用以下代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; def get_oldest_staff(x):</span><br><span class="line">...     df = x.sort_values(by = &apos;age&apos;,ascending=True)</span><br><span class="line">...     return df.iloc[-1,:]</span><br><span class="line">&gt; oldest_staff = data.groupby(&apos;company&apos;,as_index=False).apply(get_oldest_staff)</span><br><span class="line">&gt; oldest_staff</span><br><span class="line">  company  salary  age  </span><br><span class="line">0       A      23   33       </span><br><span class="line">1       B      21   40       </span><br><span class="line">2       C      43   35</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; def get_oldest_staff(x):</span><br><span class="line">...     df = x.sort_values(by = &#x27;age&#x27;,ascending=True)</span><br><span class="line">...     return df.iloc[-1,:]</span><br><span class="line">&gt; oldest_staff = data.groupby(&#x27;company&#x27;,as_index=False).apply(get_oldest_staff)</span><br><span class="line">&gt; oldest_staff</span><br><span class="line">  company  salary  age  </span><br><span class="line">0       A      23   33       </span><br><span class="line">1       B      21   40       </span><br><span class="line">2       C      43   35  </span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>最后，关于<code>apply</code>的使用，这里有个小建议，虽然说<code>apply</code>拥有更大的灵活性，但<code>apply</code>的运行效率会比<code>agg</code>和<code>transform</code>更慢。所以，<code>groupby</code>之后能用<code>agg</code>和<code>transform</code>解决的问题还是优先使用这两个方法，实在解决不了了才考虑使用<code>apply</code>进行操作。</p>
 </blockquote>
 <hr>
 <h4 id="crosstab"><a href="#crosstab" class="headerlink" title="crosstab"></a>crosstab</h4><blockquote>
-<p><a href="https://blog.csdn.net/houyanhua1/article/details/87865868?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~default-15.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~default-15.control" target="_blank" rel="noopener">Python pandas，分组 groupby()，分组后的聚合函数，交叉表 crosstab()_houyanhua1的专栏-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/houyanhua1/article/details/87865868?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~default-15.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~default-15.control">Python pandas，分组 groupby()，分组后的聚合函数，交叉表 crosstab()_houyanhua1的专栏-CSDN博客</a></p>
 </blockquote>
 <p>crosstab 交叉表，用于统计分组频率的特殊透视表（列联表）</p>
 <blockquote>
-<p>官方文档：<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.crosstab.html" target="_blank" rel="noopener">pandas.crosstab — pandas 1.3.0 documentation (pydata.org)</a></p>
+<p>官方文档：<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.crosstab.html">pandas.crosstab — pandas 1.3.0 documentation (pydata.org)</a></p>
 </blockquote>
 <p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 模拟用户购买商品的表(数据)</span></span><br><span class="line">my_list = [&#123;<span class="string">"user_id"</span>: <span class="number">11</span>, <span class="string">"goods"</span>: <span class="string">"苹果"</span>&#125;, &#123;<span class="string">"user_id"</span>: <span class="number">11</span>, <span class="string">"goods"</span>: <span class="string">"苹果"</span>&#125;, &#123;<span class="string">"user_id"</span>: <span class="number">11</span>, <span class="string">"goods"</span>: <span class="string">"香蕉"</span>&#125;,</span><br><span class="line">           &#123;<span class="string">"user_id"</span>: <span class="number">22</span>, <span class="string">"goods"</span>: <span class="string">"苹果"</span>&#125;, &#123;<span class="string">"user_id"</span>: <span class="number">22</span>, <span class="string">"goods"</span>: <span class="string">"香蕉"</span>&#125;, &#123;<span class="string">"user_id"</span>: <span class="number">22</span>, <span class="string">"goods"</span>: <span class="string">"香蕉"</span>&#125;,</span><br><span class="line">           &#123;<span class="string">"user_id"</span>: <span class="number">33</span>, <span class="string">"goods"</span>: <span class="string">"梨"</span>&#125;, &#123;<span class="string">"user_id"</span>: <span class="number">33</span>, <span class="string">"goods"</span>: <span class="string">"香蕉"</span>&#125;, &#123;<span class="string">"user_id"</span>: <span class="number">33</span>, <span class="string">"goods"</span>: <span class="string">"苹果"</span>&#125;]</span><br><span class="line">df = pd.DataFrame(my_list)</span><br><span class="line">print(df)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">  goods     user_id</span></span><br><span class="line"><span class="string">0    苹果       11</span></span><br><span class="line"><span class="string">1    苹果       11</span></span><br><span class="line"><span class="string">2    香蕉       11</span></span><br><span class="line"><span class="string">3    苹果       22</span></span><br><span class="line"><span class="string">4    香蕉       22</span></span><br><span class="line"><span class="string">5    香蕉       22</span></span><br><span class="line"><span class="string">6     梨        33</span></span><br><span class="line"><span class="string">7    香蕉       33</span></span><br><span class="line"><span class="string">8    苹果       33</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 交叉表 (特殊的分组工具)</span></span><br><span class="line">cross_tb = pd.crosstab(df[<span class="string">"user_id"</span>], df[<span class="string">"goods"</span>])  <span class="comment"># 交叉表，统计每个用户购买各种商品的数量</span></span><br><span class="line">print(cross_tb)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">goods    梨  苹果  香蕉</span></span><br><span class="line"><span class="string">user_id           </span></span><br><span class="line"><span class="string">11       0    2    1</span></span><br><span class="line"><span class="string">22       0    1    2</span></span><br><span class="line"><span class="string">33       1    1    1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ↑第一个参数会被放在index</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想得到占比：</span></span><br><span class="line">pd.crosstab(df[<span class="string">"user_id"</span>], df[<span class="string">"goods"</span>], normalize=<span class="string">"index"</span>) </span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">goods          梨       苹果      香蕉</span></span><br><span class="line"><span class="string">user_id</span></span><br><span class="line"><span class="string">11       0.000000  0.666667  0.333333</span></span><br><span class="line"><span class="string">22       0.000000  0.333333  0.666667</span></span><br><span class="line"><span class="string">33       0.333333  0.333333  0.333333</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">pd.crosstab(df[<span class="string">"user_id"</span>], df[<span class="string">"goods"</span>], normalize=<span class="string">"columns"</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">goods     梨   苹果   香蕉</span></span><br><span class="line"><span class="string">user_id</span></span><br><span class="line"><span class="string">11       0.0  0.50  0.25</span></span><br><span class="line"><span class="string">22       0.0  0.25  0.50</span></span><br><span class="line"><span class="string">33       1.0  0.25  0.25</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">pd.crosstab(df[<span class="string">"user_id"</span>], df[<span class="string">"goods"</span>], normalize=<span class="string">"all"</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">goods           梨      苹果       香蕉</span></span><br><span class="line"><span class="string">user_id</span></span><br><span class="line"><span class="string">11       0.000000  0.222222  0.111111</span></span><br><span class="line"><span class="string">22       0.000000  0.111111  0.222222</span></span><br><span class="line"><span class="string">33       0.111111  0.111111  0.111111</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 模拟用户购买商品的表(数据)</span></span><br><span class="line">my_list = [&#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">11</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;苹果&quot;</span>&#125;, &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">11</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;苹果&quot;</span>&#125;, &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">11</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;香蕉&quot;</span>&#125;,</span><br><span class="line">           &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">22</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;苹果&quot;</span>&#125;, &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">22</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;香蕉&quot;</span>&#125;, &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">22</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;香蕉&quot;</span>&#125;,</span><br><span class="line">           &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">33</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;梨&quot;</span>&#125;, &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">33</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;香蕉&quot;</span>&#125;, &#123;<span class="string">&quot;user_id&quot;</span>: <span class="number">33</span>, <span class="string">&quot;goods&quot;</span>: <span class="string">&quot;苹果&quot;</span>&#125;]</span><br><span class="line">df = pd.DataFrame(my_list)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  goods     user_id</span></span><br><span class="line"><span class="string">0    苹果       11</span></span><br><span class="line"><span class="string">1    苹果       11</span></span><br><span class="line"><span class="string">2    香蕉       11</span></span><br><span class="line"><span class="string">3    苹果       22</span></span><br><span class="line"><span class="string">4    香蕉       22</span></span><br><span class="line"><span class="string">5    香蕉       22</span></span><br><span class="line"><span class="string">6     梨        33</span></span><br><span class="line"><span class="string">7    香蕉       33</span></span><br><span class="line"><span class="string">8    苹果       33</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 交叉表 (特殊的分组工具)</span></span><br><span class="line">cross_tb = pd.crosstab(df[<span class="string">&quot;user_id&quot;</span>], df[<span class="string">&quot;goods&quot;</span>])  <span class="comment"># 交叉表，统计每个用户购买各种商品的数量</span></span><br><span class="line"><span class="built_in">print</span>(cross_tb)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">goods    梨  苹果  香蕉</span></span><br><span class="line"><span class="string">user_id           </span></span><br><span class="line"><span class="string">11       0    2    1</span></span><br><span class="line"><span class="string">22       0    1    2</span></span><br><span class="line"><span class="string">33       1    1    1</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ↑第一个参数会被放在index</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果想得到占比：</span></span><br><span class="line">pd.crosstab(df[<span class="string">&quot;user_id&quot;</span>], df[<span class="string">&quot;goods&quot;</span>], normalize=<span class="string">&quot;index&quot;</span>) </span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">goods          梨       苹果      香蕉</span></span><br><span class="line"><span class="string">user_id</span></span><br><span class="line"><span class="string">11       0.000000  0.666667  0.333333</span></span><br><span class="line"><span class="string">22       0.000000  0.333333  0.666667</span></span><br><span class="line"><span class="string">33       0.333333  0.333333  0.333333</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">pd.crosstab(df[<span class="string">&quot;user_id&quot;</span>], df[<span class="string">&quot;goods&quot;</span>], normalize=<span class="string">&quot;columns&quot;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">goods     梨   苹果   香蕉</span></span><br><span class="line"><span class="string">user_id</span></span><br><span class="line"><span class="string">11       0.0  0.50  0.25</span></span><br><span class="line"><span class="string">22       0.0  0.25  0.50</span></span><br><span class="line"><span class="string">33       1.0  0.25  0.25</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">pd.crosstab(df[<span class="string">&quot;user_id&quot;</span>], df[<span class="string">&quot;goods&quot;</span>], normalize=<span class="string">&quot;all&quot;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">goods           梨      苹果       香蕉</span></span><br><span class="line"><span class="string">user_id</span></span><br><span class="line"><span class="string">11       0.000000  0.222222  0.111111</span></span><br><span class="line"><span class="string">22       0.000000  0.111111  0.222222</span></span><br><span class="line"><span class="string">33       0.111111  0.111111  0.111111</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>语法：</p>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717172959291.png" alt="image-20210717172959291" style="zoom:150%;"></p>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717172959291.png" alt="image-20210717172959291" style="zoom:150%;"></p>
 <hr>
 <h4 id="assign"><a href="#assign" class="headerlink" title="assign"></a>assign</h4><blockquote>
-<p>官方文档：<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.assign.html" target="_blank" rel="noopener">pandas.DataFrame.assign — pandas 1.3.0 documentation (pydata.org)</a></p>
+<p>官方文档：<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.assign.html">pandas.DataFrame.assign — pandas 1.3.0 documentation (pydata.org)</a></p>
 </blockquote>
 <p>作用：Assign new columns to a DataFrame.</p>
 <p>例：</p>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717173208264.png" alt="image-20210717173208264" style="zoom:150%;"></p>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173208264.png" alt="image-20210717173208264" style="zoom:150%;"></p>
 <p>↑也可以写为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.assign(temp_f=<span class="keyword">lambda</span> x:x[<span class="string">'temp_c'</span>]*<span class="number">9</span>/<span class="number">5</span>+<span class="number">32</span>).assign(temp_k=<span class="keyword">lambda</span> x: (x[<span class="string">'temp_f'</span>]+<span class="number">459.67</span>)*<span class="number">5</span>/<span class="number">9</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.assign(temp_f=<span class="keyword">lambda</span> x:x[<span class="string">&#x27;temp_c&#x27;</span>]*<span class="number">9</span>/<span class="number">5</span>+<span class="number">32</span>).assign(temp_k=<span class="keyword">lambda</span> x: (x[<span class="string">&#x27;temp_f&#x27;</span>]+<span class="number">459.67</span>)*<span class="number">5</span>/<span class="number">9</span>)</span><br></pre></td></tr></table></figure>
 <p>例：利用crosstab与assign进行woe和iv的计算：</p>
 <p>构造数据集：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">"col1"</span>:[<span class="string">"男"</span>,<span class="string">"女"</span>,<span class="string">"女"</span>,<span class="string">"男"</span>,<span class="string">"女"</span>], <span class="string">"y"</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717173342027.png" alt="image-20210717173342027"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&quot;col1&quot;</span>:[<span class="string">&quot;男&quot;</span>,<span class="string">&quot;女&quot;</span>,<span class="string">&quot;女&quot;</span>,<span class="string">&quot;男&quot;</span>,<span class="string">&quot;女&quot;</span>], <span class="string">&quot;y&quot;</span>:[<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173342027.png" alt="image-20210717173342027"></p>
 <p>利用 <code>crosstab</code> 得到频率表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.crosstab(df[<span class="string">"col1"</span>], df[<span class="string">"y"</span>], normalize=<span class="string">'columns'</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717173509526.png" alt="image-20210717173509526"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.crosstab(df[<span class="string">&quot;col1&quot;</span>], df[<span class="string">&quot;y&quot;</span>], normalize=<span class="string">&#x27;columns&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173509526.png" alt="image-20210717173509526"></p>
 <p>在频率表的基础上，加上woe列：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.crosstab(df[<span class="string">"col1"</span>], df[<span class="string">"y"</span>], normalize=<span class="string">'columns'</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>)))</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717173652106.png" alt="image-20210717173652106"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.crosstab(df[<span class="string">&quot;col1&quot;</span>], df[<span class="string">&quot;y&quot;</span>], normalize=<span class="string">&#x27;columns&#x27;</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>)))</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173652106.png" alt="image-20210717173652106"></p>
 <p>利用woe的结果，进一步得到iv：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.crosstab(df[<span class="string">"col1"</span>], df[<span class="string">"y"</span>], normalize=<span class="string">'columns'</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>))).assign(iv=<span class="keyword">lambda</span> dfx: np.sum(dfx[<span class="string">'woe'</span>] * (dfx[<span class="number">1</span>] - dfx[<span class="number">0</span>])))</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717173734785.png" alt="image-20210717173734785"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.crosstab(df[<span class="string">&quot;col1&quot;</span>], df[<span class="string">&quot;y&quot;</span>], normalize=<span class="string">&#x27;columns&#x27;</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>))).assign(iv=<span class="keyword">lambda</span> dfx: np.<span class="built_in">sum</span>(dfx[<span class="string">&#x27;woe&#x27;</span>] * (dfx[<span class="number">1</span>] - dfx[<span class="number">0</span>])))</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717173734785.png" alt="image-20210717173734785"></p>
 <p>↑因为iv值是是对于一个变量而言（关于iv和woe的介绍详见我的博客 <a href="https://qypx.github.io/2021/07/17/WOE%E7%BC%96%E7%A0%81%E4%B8%8EIV%E5%80%BC/">WOE编码与IV值</a>），所以上面的两个iv值是一样的，那么如何从上述结果中提取出iv值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df_woe_iv = pd.crosstab(df[<span class="string">"col1"</span>], df[<span class="string">"y"</span>], normalize=<span class="string">'columns'</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>))).assign(iv=<span class="keyword">lambda</span> dfx: np.sum(dfx[<span class="string">'woe'</span>] * (dfx[<span class="number">1</span>] - dfx[<span class="number">0</span>])))</span><br><span class="line"></span><br><span class="line">a = df_woe_iv[<span class="string">'iv'</span>].reset_index()</span><br><span class="line">print(a.loc[<span class="number">0</span>, <span class="string">'iv'</span>])</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/07/17/Pandas中的常用函数/image-20210717174228449.png" alt="image-20210717174228449"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df_woe_iv = pd.crosstab(df[<span class="string">&quot;col1&quot;</span>], df[<span class="string">&quot;y&quot;</span>], normalize=<span class="string">&#x27;columns&#x27;</span>).assign(woe=<span class="keyword">lambda</span> dfx: np.log(dfx[<span class="number">1</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>) / dfx[<span class="number">0</span>].replace(<span class="number">0</span>, <span class="number">0.0001</span>))).assign(iv=<span class="keyword">lambda</span> dfx: np.<span class="built_in">sum</span>(dfx[<span class="string">&#x27;woe&#x27;</span>] * (dfx[<span class="number">1</span>] - dfx[<span class="number">0</span>])))</span><br><span class="line"></span><br><span class="line">a = df_woe_iv[<span class="string">&#x27;iv&#x27;</span>].reset_index()</span><br><span class="line"><span class="built_in">print</span>(a.loc[<span class="number">0</span>, <span class="string">&#x27;iv&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/image-20210717174228449.png" alt="image-20210717174228449"></p>
 <hr>
 <h4 id="pivot"><a href="#pivot" class="headerlink" title="pivot"></a>pivot</h4><p>原数据：</p>
-<p><img src="/2021/07/17/Pandas中的常用函数/1700463583029.png" alt="1700463583029"></p>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/1700463583029.png" alt="1700463583029"></p>
 <p>想要把数据转换成，每一行是一个 state，每一列是每一年的数据：（把数据打横）</p>
-<p><img src="/2021/07/17/Pandas中的常用函数/1700463682010.png" alt="1700463682010"></p>
+<p><img src="/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/1700463682010.png" alt="1700463682010"></p>
 <p>语法如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.pivot(index=<span class="string">'state'</span>,columns=<span class="string">'year'</span>, values=<span class="string">'cigsale'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.pivot(index=<span class="string">&#x27;state&#x27;</span>,columns=<span class="string">&#x27;year&#x27;</span>, values=<span class="string">&#x27;cigsale&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-      
     </div>
-    
-    
-    
 
     
-
     
-
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-        </div>
-      
 
-      
-      
-      
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>qypx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://qypx.github.io/2021/07/17/Pandas%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="Pandas中的常用函数">http://qypx.github.io/2021/07/17/Pandas中的常用函数/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2021/07/17/Probability-odds与logodds/" rel="next" title="Probability, odds与logodds">
-                <i class="fa fa-chevron-left"></i> Probability, odds与logodds
-              </a>
-            
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/07/17/WOE编码与IV值/" rel="prev" title="WOE编码与IV值">
-                WOE编码与IV值 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
 
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="qypx">
-            
-              <p class="site-author-name" itemprop="name">qypx</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">128</span>
-                  <span class="site-state-item-name">日志</span>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/17/Probability-odds%E4%B8%8Elogodds/" rel="prev" title="Probability, odds与logodds">
+                  <i class="fa fa-angle-left"></i> Probability, odds与logodds
                 </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">57</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/qypx" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
             </div>
-          
-
-
-          
-          
-
-          
-          
-
-          
-
-
-          <!-- 新增的内容 -->
-          <!-- require APlayer -->
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-          <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-          <!-- require MetingJS -->
-          <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-          <meting-js server="netease" type="playlist" id="4870130923" list-folded="true" order="random">
-          </meting-js>
-          <!-- 新增的内容end -->
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#map、apply、applymap"><span class="nav-text">map、apply、applymap</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Series数据处理"><span class="nav-text">Series数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-map用法"><span class="nav-text">1. map用法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-apply"><span class="nav-text">2. apply</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DataFrame数据处理"><span class="nav-text">DataFrame数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-apply"><span class="nav-text">1. apply</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-applymap"><span class="nav-text">2. applymap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#groupby"><span class="nav-text">groupby</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#agg聚合操作"><span class="nav-text">agg聚合操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#transform操作"><span class="nav-text">transform操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#apply"><span class="nav-text">apply</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crosstab"><span class="nav-text">crosstab</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assign"><span class="nav-text">assign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pivot"><span class="nav-text">pivot</span></a></li></ol></div>
-            
-
+            <div class="post-nav-item">
+                <a href="/2021/07/17/WOE%E7%BC%96%E7%A0%81%E4%B8%8EIV%E5%80%BC/" rel="next" title="WOE编码与IV值">
+                  WOE编码与IV值 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
           </div>
-        </section>
-      <!--/noindex-->
-      
+    </footer>
+  </article>
+</div>
 
-      
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2019 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">qypx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div><!-- begin: canvas-nest动态背景 -->
+<script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+<!-- end: canvas-nest动态背景 -->
+
+<!-- begin: busuanzi -->
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- end: busuanzi -->
 
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">qypx</span>
+  </footer>
 
   
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
   </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"qypx/qypx.github.io","repo_id":"MDEwOlJlcG9zaXRvcnkxODg5NTYzNTY=","category":"Announcements","category_id":"DIC_kwDOC0M-xM4ChCGW","mapping":"pathname","strict":0,"reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"zh-CN","crossorigin":"anonymous","input_position":"top","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-strict'           : CONFIG.giscus.strict,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-
-  
-
-  
-
-
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left"},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
