@@ -509,70 +509,6 @@ dict2 = &#123;&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;
       </tags>
   </entry>
   <entry>
-    <title>Content-Based Filtering</title>
-    <url>/2020/01/06/Content-Based-Filtering/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
-<h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
-<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
-<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
-<p>How do we assign a similarity score based on release years alone?</p>
-<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
-<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
-<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
-<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
-<h3 id="K-nearest-neighbors"><a href="#K-nearest-neighbors" class="headerlink" title="K-nearest-neighbors"></a>K-nearest-neighbors</h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
-<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>ContentBased里的文件：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
-<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
-<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><blockquote>
-<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
-<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
-</blockquote>
-<h4 id="mise-en-scene"><a href="#mise-en-scene" class="headerlink" title="mise en scene"></a>mise en scene</h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
-<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
-<p>What sort of attributes are we talking about：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
-<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
-<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
-<p>更改代码：</p>
-<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
-<p>再运行ContentRec.py，可得到结果如下：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
-<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
-<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
-<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
-<p>Here’s a reference to the original research paper:</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
-<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><ul>
-<li>Use genre, release year, and mise en scene data independently.</li>
-</ul>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
-<ul>
-<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
-</ul>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
-<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
-]]></content>
-      <categories>
-        <category>Recommender System</category>
-      </categories>
-      <tags>
-        <tag>Recommender System</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Computer Vision</title>
     <url>/2020/02/18/Computer-Vision/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>来源于<a href="https://www.analyticsvidhya.com/blog/2020/01/computer-vision-learning-path-2020/?utm_source=feedburner&amp;utm_medium=email&amp;utm_campaign=Feed%3A+AnalyticsVidhya+(Analytics+Vidhya">Here’s your Learning Path to Master Computer Vision in 2020</a>)</p>
@@ -1255,6 +1191,70 @@ dict2 = &#123;&#39;alpha&#39;: 300, &#39;b&#39;: 200, &#39;beta&#39;: 120, &#39;
       </tags>
   </entry>
   <entry>
+    <title>Content-Based Filtering</title>
+    <url>/2020/01/06/Content-Based-Filtering/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
+<h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
+<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
+<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
+<p>How do we assign a similarity score based on release years alone?</p>
+<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
+<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
+<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
+<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
+<h3 id="K-nearest-neighbors"><a href="#K-nearest-neighbors" class="headerlink" title="K-nearest-neighbors"></a>K-nearest-neighbors</h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
+<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>ContentBased里的文件：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
+<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
+<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><blockquote>
+<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
+<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
+</blockquote>
+<h4 id="mise-en-scene"><a href="#mise-en-scene" class="headerlink" title="mise en scene"></a>mise en scene</h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
+<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
+<p>What sort of attributes are we talking about：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
+<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
+<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
+<p>更改代码：</p>
+<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
+<p>再运行ContentRec.py，可得到结果如下：</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
+<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
+<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
+<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
+<p>Here’s a reference to the original research paper:</p>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><ul>
+<li>Use genre, release year, and mise en scene data independently.</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
+<ul>
+<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
+</ul>
+<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
+<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Data Preprocessing（数据预处理）</title>
     <url>/2019/09/21/Data-Preprocessing/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
@@ -1761,31 +1761,6 @@ x_{new} = \frac{X_{old}-\mu}{\sigma}</script><p>The resulting values hover aroun
       <tags>
         <tag>知识点</tag>
         <tag>HashSet</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter Notebook中的快捷键</title>
-    <url>/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
-<li><p>shift+enter: 运行代码块</p>
-</li>
-<li><p>shift+tab: show the documentation pop up for the method</p>
-</li>
-<li><p>Esc+m: markdown语句</p>
-</li>
-<li><p>jupyter notebook中reload模块：</p>
-<blockquote>
-<p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Jupyter Notebook</category>
-      </categories>
-      <tags>
-        <tag>Jupyter Notebook</tag>
       </tags>
   </entry>
   <entry>
@@ -2341,6 +2316,31 @@ table th:nth-of-type(2) {
       <tags>
         <tag>Hadoop</tag>
         <tag>Hive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jupyter Notebook中的快捷键</title>
+    <url>/2019/06/27/Jupyter-Notebook%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
+<li><p>shift+enter: 运行代码块</p>
+</li>
+<li><p>shift+tab: show the documentation pop up for the method</p>
+</li>
+<li><p>Esc+m: markdown语句</p>
+</li>
+<li><p>jupyter notebook中reload模块：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Jupyter Notebook</category>
+      </categories>
+      <tags>
+        <tag>Jupyter Notebook</tag>
       </tags>
   </entry>
   <entry>
@@ -4843,104 +4843,6 @@ logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上�
       </tags>
   </entry>
   <entry>
-    <title>Using relational data stores with Hadoop —— Hive &amp; Sqoop</title>
-    <url>/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
-<h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064046135.png" alt="1579064046135"></p>
-<h3 id="What-is-Hive"><a href="#What-is-Hive" class="headerlink" title="What is Hive?"></a>What is Hive?</h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064255091.png" alt="1579064255091"></p>
-<h4 id="Why-Hive"><a href="#Why-Hive" class="headerlink" title="Why Hive"></a>Why Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579082214734.png" alt="1579082214734"></p>
-<h4 id="Why-not-Hive"><a href="#Why-not-Hive" class="headerlink" title="Why not Hive"></a>Why not Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579083363568.png" alt="1579083363568"></p>
-<p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
-<p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
-<span id="more"></span>
-<h4 id="HiveQL"><a href="#HiveQL" class="headerlink" title="HiveQL"></a>HiveQL</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579084456353.png" alt="1579084456353"></p>
-<h3 id="Activity-Use-Hive-to-find-the-most-popular-movie"><a href="#Activity-Use-Hive-to-find-the-most-popular-movie" class="headerlink" title="[Activity] Use Hive to find the most popular movie"></a>[Activity] Use Hive to find the most popular movie</h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview</a></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085359675.png" alt="1579085359675"></p>
-<p>或写成：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT title, COUNT(movieID) AS ratingCount</span><br><span class="line">FROM ratings JOIN names ON ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">ORDER BY ratingCount DESC;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085980578.png" alt="1579085980578"></p>
-<p>We used views in Hive to split up a more complicated query into something more readable and more manageable.</p>
-<p>执行时会花一点时间，remember this isn’t really a relational database, so things like joins are kind of painful when you’re not dealing with normalized data.</p>
-<p>执行后会发现新创建的view出现在了Database里：</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085692727.png" alt="1579085692727"></p>
-<p>Your views are persistent, they’re stored to disk.</p>
-<p>若此时再执行会出错，可写成： <code>CREATE VIEW IF NOT EXISTS topMovieIDs ...</code></p>
-<p>Just to clean up our mess and not leave that around: <code>DROP VIEW topMovieIDs;</code></p>
-<h3 id="How-Hive-works"><a href="#How-Hive-works" class="headerlink" title="How Hive works?"></a>How Hive works?</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579086892876.png" alt="1579086892876"></p>
-<h4 id="Schema-on-read"><a href="#Schema-on-read" class="headerlink" title="Schema on read"></a>Schema on read</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579087836551.png" alt="1579087836551"></p>
-<p>One of the basic concepts pf Hive is something called <em>schema on read</em>, and this is what separates it from a more traditional database. With a real relational database, it uses something called <em>schema on write</em> where you define the schema of your database before you load the data into it, and it’s actually enforced at the time that you write the data to disk. </p>
-<p>Hive flips that on its head. It takes unstructured data and just sort of applies a schema to it as it’s being read instead.</p>
-<p>So, Hive isn’t creating some structured relational database under the hood, that would be very inefficient, it’s just taking the existing data that you have on your cluster and imparting a schema to it when it’s read in.</p>
-<h4 id="Where-is-the-data-内部表与外部表"><a href="#Where-is-the-data-内部表与外部表" class="headerlink" title="Where is the data? (内部表与外部表)"></a>Where is the data? (内部表与外部表)</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579089471741.png" alt="1579089471741"></p>
-<p>对于 managed table, if you do a “DROP TABLE” command from Hive, then that data is gone.</p>
-<p>But sometimes you want to share that data with other systems that are outside of Hive. So that’s where external tables come in. “CREATE EXTERNAL TABLE” with “Location” says, “I’m going to use Hive on this data here, but I’m not going to own it anymore”. So I drop this table, it’s going to drop the metadata, 但是原数据不会被删除。</p>
-<h4 id="Partitioning-分区"><a href="#Partitioning-分区" class="headerlink" title="Partitioning 分区"></a>Partitioning 分区</h4><p>If you do have a massive dataset and your queries tend to be on a specific partition of that data, partitioning in Hive can be a very important optimization. </p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096514448.png" alt="1579096514448"></p>
-<p>We wouldn’t have to scan over the entire customer database, we could just scan over the actual files that are specific to the country that I’m interested in.</p>
-<h4 id="Ways-to-use-Hive"><a href="#Ways-to-use-Hive" class="headerlink" title="Ways to use Hive"></a>Ways to use Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096909189.png" alt="1579096909189"></p>
-<h3 id="Activity-Use-Hive-to-find-the-movie-with-the-highest-average-rating"><a href="#Activity-Use-Hive-to-find-the-movie-with-the-highest-average-rating" class="headerlink" title="[Activity] Use Hive to find the movie with the highest average rating"></a>[Activity] Use Hive to find the movie with the highest average rating</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149719149.png" alt="1579149719149"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579097528758.png" alt="1579097528758"></p>
-<p>或写成：？</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT title, AVG(rating) as avgRating</span><br><span class="line">FROM ratings JOIN names on ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">HAVING COUNT(ratings.movieID)  &gt; 10</span><br><span class="line">ORDER BY avgRating DESC;</span><br></pre></td></tr></table></figure>
-<h2 id="Sqoop"><a href="#Sqoop" class="headerlink" title="Sqoop"></a>Sqoop</h2><h3 id="Integrating-MySQL-with-Hadoop"><a href="#Integrating-MySQL-with-Hadoop" class="headerlink" title="Integrating MySQL with Hadoop"></a>Integrating MySQL with Hadoop</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149997458.png" alt="1579149997458"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150738331.png" alt="1579150738331"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150774304.png" alt="1579150774304"></p>
-<h3 id="Import-Export-data-MySQL-lt-gt-HDFS-Hadoop"><a href="#Import-Export-data-MySQL-lt-gt-HDFS-Hadoop" class="headerlink" title="Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)"></a>Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579151204058.png" alt="1579151204058"></p>
-<p>Export data from your database into Hadoop:</p>
-<ol>
-<li>kick off a bunch of mappers (只有mappers, all we’re doing is moving data and transforming it from one place to another, there’s no real reduce going on here.)</li>
-<li>all these mappers are going to talk to your HDFS cluster on your Hadoop cluster and populate a big old table on HDFS, which is a giant text file (例如逗号分隔的数据), and from there, you can use tools like Hive or Pig on it.</li>
-</ol>
-<p>REMEMBER, the power of HDFS is that file might be distributed across many different hosts, blocks, and also stored redundantly. We’ve done more than just dump our database to a file here - we’ve dumped it into HDFS, which opens up a whole world of possibilities for analyzing it in a robust, scalable and a manner that can be resilient to failure.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156422401.png" alt="1579156422401"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157592193.png" alt="1579157592193"></p>
-<p>与导入HDFS一样，导入Hive同样会kick off a MapReduce job.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154105803.png" alt="1579154105803"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159508995.png" alt="1579159508995"></p>
-<h3 id="Play-with-MySQL-and-Sqoop"><a href="#Play-with-MySQL-and-Sqoop" class="headerlink" title="Play with MySQL and Sqoop"></a>Play with MySQL and Sqoop</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154231118.png" alt="1579154231118"></p>
-<h4 id="Activity-Install-MySQL-and-import-our-movie-data"><a href="#Activity-Install-MySQL-and-import-our-movie-data" class="headerlink" title="[Activity] Install MySQL and import our movie data"></a>[Activity] Install MySQL and import our movie data</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview</a></p>
-<h4 id="Activity-Use-Sqoop-to-import-data-from-MySQL-to-HDFS-Hive"><a href="#Activity-Use-Sqoop-to-import-data-from-MySQL-to-HDFS-Hive" class="headerlink" title="[Activity] Use Sqoop to import data from MySQL to HDFS/Hive"></a>[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview</a></p>
-<p>由 MySQL 导入 HDFS 后：</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156905400.png" alt="1579156905400"></p>
-<p>由 MySQL 导入Hive后：</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157822360.png" alt="1579157822360"></p>
-<blockquote>
-<p>注：These sorts of tools that we’re using with Hadoop are really intended for big datasets, so there’s a lot of overhead for doing what’s actually a pretty simple operation. It doesn’t make sense if you’re using small datasets. 如果数据集很小，在一个host就能装下，没必要用这些工具，用MySQL就足够了。</p>
-</blockquote>
-<h4 id="Activity-Use-Sqoop-tp-export-data-from-Hadoop-to-MySQL"><a href="#Activity-Use-Sqoop-tp-export-data-from-Hadoop-to-MySQL" class="headerlink" title="[Activity] Use Sqoop tp export data from Hadoop to MySQL"></a>[Activity] Use Sqoop tp export data from Hadoop to MySQL</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview</a></p>
-<ol>
-<li>首先需要知道 where the data in Hive actually resides. REMEMBER, Hive is just a schema-on-read sort of deal. The actual data itself if just stored as a plain old text somewhere, and all Hive is doing is imparting structure to it when it’s being read. </li>
-</ol>
-<p>On Hortonworks:</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158771230.png" alt="1579158771230"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158823550.png" alt="1579158823550"></p>
-<p>不是靠逗号分隔的，Hive actually uses low ASCII values, like 1 and 2 and 3, to delimit its data. </p>
-<ol>
-<li>在导入前，MySQL中要先有 target table</li>
-</ol>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159104056.png" alt="1579159104056"></p>
-<p>3.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159601163.png" alt="1579159601163"></p>
-<p>和import一样，export也会kick off a bunch of mappers using MapReduce.</p>
-<blockquote>
-<p>什么时候需要从Hive导入MySQL: From a practical standpoint, if you need to expose your data to a database that’s more well-suited for OLTP. Sometimes you’ll be doing some huge operation using Hive or some other tool on your cluster, but the output of that operation might be small enough to fit on a single database.</p>
-</blockquote>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>We talked about making your Hadoop cluster look like a MySQL database or a SQL database, using Hive.</p>
-<p>And we also talked about using your Hadoop cluster with a real MySQL database as well. Kind of two different directions there.</p>
-<p>Next, let’s talk about <strong>NoSQL</strong>. Sometimes you actually want to expose your data in a way that’s more amenable to <strong>real-time queries</strong>, and there’s a bunch of ways to do that and also ways of integrating Hadoop with systems that are more real-time in nature.</p>
-]]></content>
-      <categories>
-        <category>Hadoop</category>
-      </categories>
-      <tags>
-        <tag>Hadoop</tag>
-        <tag>Hive</tag>
-        <tag>Sqoop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WOE编码与IV值</title>
     <url>/2021/07/17/WOE%E7%BC%96%E7%A0%81%E4%B8%8EIV%E5%80%BC/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -5246,6 +5148,104 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       </tags>
   </entry>
   <entry>
+    <title>Using relational data stores with Hadoop —— Hive &amp; Sqoop</title>
+    <url>/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><!-- toc -->
+<h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064046135.png" alt="1579064046135"></p>
+<h3 id="What-is-Hive"><a href="#What-is-Hive" class="headerlink" title="What is Hive?"></a>What is Hive?</h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064255091.png" alt="1579064255091"></p>
+<h4 id="Why-Hive"><a href="#Why-Hive" class="headerlink" title="Why Hive"></a>Why Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579082214734.png" alt="1579082214734"></p>
+<h4 id="Why-not-Hive"><a href="#Why-not-Hive" class="headerlink" title="Why not Hive"></a>Why not Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579083363568.png" alt="1579083363568"></p>
+<p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
+<p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
+<span id="more"></span>
+<h4 id="HiveQL"><a href="#HiveQL" class="headerlink" title="HiveQL"></a>HiveQL</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579084456353.png" alt="1579084456353"></p>
+<h3 id="Activity-Use-Hive-to-find-the-most-popular-movie"><a href="#Activity-Use-Hive-to-find-the-most-popular-movie" class="headerlink" title="[Activity] Use Hive to find the most popular movie"></a>[Activity] Use Hive to find the most popular movie</h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview</a></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085359675.png" alt="1579085359675"></p>
+<p>或写成：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT title, COUNT(movieID) AS ratingCount</span><br><span class="line">FROM ratings JOIN names ON ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">ORDER BY ratingCount DESC;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085980578.png" alt="1579085980578"></p>
+<p>We used views in Hive to split up a more complicated query into something more readable and more manageable.</p>
+<p>执行时会花一点时间，remember this isn’t really a relational database, so things like joins are kind of painful when you’re not dealing with normalized data.</p>
+<p>执行后会发现新创建的view出现在了Database里：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085692727.png" alt="1579085692727"></p>
+<p>Your views are persistent, they’re stored to disk.</p>
+<p>若此时再执行会出错，可写成： <code>CREATE VIEW IF NOT EXISTS topMovieIDs ...</code></p>
+<p>Just to clean up our mess and not leave that around: <code>DROP VIEW topMovieIDs;</code></p>
+<h3 id="How-Hive-works"><a href="#How-Hive-works" class="headerlink" title="How Hive works?"></a>How Hive works?</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579086892876.png" alt="1579086892876"></p>
+<h4 id="Schema-on-read"><a href="#Schema-on-read" class="headerlink" title="Schema on read"></a>Schema on read</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579087836551.png" alt="1579087836551"></p>
+<p>One of the basic concepts pf Hive is something called <em>schema on read</em>, and this is what separates it from a more traditional database. With a real relational database, it uses something called <em>schema on write</em> where you define the schema of your database before you load the data into it, and it’s actually enforced at the time that you write the data to disk. </p>
+<p>Hive flips that on its head. It takes unstructured data and just sort of applies a schema to it as it’s being read instead.</p>
+<p>So, Hive isn’t creating some structured relational database under the hood, that would be very inefficient, it’s just taking the existing data that you have on your cluster and imparting a schema to it when it’s read in.</p>
+<h4 id="Where-is-the-data-内部表与外部表"><a href="#Where-is-the-data-内部表与外部表" class="headerlink" title="Where is the data? (内部表与外部表)"></a>Where is the data? (内部表与外部表)</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579089471741.png" alt="1579089471741"></p>
+<p>对于 managed table, if you do a “DROP TABLE” command from Hive, then that data is gone.</p>
+<p>But sometimes you want to share that data with other systems that are outside of Hive. So that’s where external tables come in. “CREATE EXTERNAL TABLE” with “Location” says, “I’m going to use Hive on this data here, but I’m not going to own it anymore”. So I drop this table, it’s going to drop the metadata, 但是原数据不会被删除。</p>
+<h4 id="Partitioning-分区"><a href="#Partitioning-分区" class="headerlink" title="Partitioning 分区"></a>Partitioning 分区</h4><p>If you do have a massive dataset and your queries tend to be on a specific partition of that data, partitioning in Hive can be a very important optimization. </p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096514448.png" alt="1579096514448"></p>
+<p>We wouldn’t have to scan over the entire customer database, we could just scan over the actual files that are specific to the country that I’m interested in.</p>
+<h4 id="Ways-to-use-Hive"><a href="#Ways-to-use-Hive" class="headerlink" title="Ways to use Hive"></a>Ways to use Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096909189.png" alt="1579096909189"></p>
+<h3 id="Activity-Use-Hive-to-find-the-movie-with-the-highest-average-rating"><a href="#Activity-Use-Hive-to-find-the-movie-with-the-highest-average-rating" class="headerlink" title="[Activity] Use Hive to find the movie with the highest average rating"></a>[Activity] Use Hive to find the movie with the highest average rating</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149719149.png" alt="1579149719149"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579097528758.png" alt="1579097528758"></p>
+<p>或写成：？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT title, AVG(rating) as avgRating</span><br><span class="line">FROM ratings JOIN names on ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">HAVING COUNT(ratings.movieID)  &gt; 10</span><br><span class="line">ORDER BY avgRating DESC;</span><br></pre></td></tr></table></figure>
+<h2 id="Sqoop"><a href="#Sqoop" class="headerlink" title="Sqoop"></a>Sqoop</h2><h3 id="Integrating-MySQL-with-Hadoop"><a href="#Integrating-MySQL-with-Hadoop" class="headerlink" title="Integrating MySQL with Hadoop"></a>Integrating MySQL with Hadoop</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149997458.png" alt="1579149997458"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150738331.png" alt="1579150738331"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150774304.png" alt="1579150774304"></p>
+<h3 id="Import-Export-data-MySQL-lt-gt-HDFS-Hadoop"><a href="#Import-Export-data-MySQL-lt-gt-HDFS-Hadoop" class="headerlink" title="Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)"></a>Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579151204058.png" alt="1579151204058"></p>
+<p>Export data from your database into Hadoop:</p>
+<ol>
+<li>kick off a bunch of mappers (只有mappers, all we’re doing is moving data and transforming it from one place to another, there’s no real reduce going on here.)</li>
+<li>all these mappers are going to talk to your HDFS cluster on your Hadoop cluster and populate a big old table on HDFS, which is a giant text file (例如逗号分隔的数据), and from there, you can use tools like Hive or Pig on it.</li>
+</ol>
+<p>REMEMBER, the power of HDFS is that file might be distributed across many different hosts, blocks, and also stored redundantly. We’ve done more than just dump our database to a file here - we’ve dumped it into HDFS, which opens up a whole world of possibilities for analyzing it in a robust, scalable and a manner that can be resilient to failure.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156422401.png" alt="1579156422401"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157592193.png" alt="1579157592193"></p>
+<p>与导入HDFS一样，导入Hive同样会kick off a MapReduce job.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154105803.png" alt="1579154105803"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159508995.png" alt="1579159508995"></p>
+<h3 id="Play-with-MySQL-and-Sqoop"><a href="#Play-with-MySQL-and-Sqoop" class="headerlink" title="Play with MySQL and Sqoop"></a>Play with MySQL and Sqoop</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154231118.png" alt="1579154231118"></p>
+<h4 id="Activity-Install-MySQL-and-import-our-movie-data"><a href="#Activity-Install-MySQL-and-import-our-movie-data" class="headerlink" title="[Activity] Install MySQL and import our movie data"></a>[Activity] Install MySQL and import our movie data</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview</a></p>
+<h4 id="Activity-Use-Sqoop-to-import-data-from-MySQL-to-HDFS-Hive"><a href="#Activity-Use-Sqoop-to-import-data-from-MySQL-to-HDFS-Hive" class="headerlink" title="[Activity] Use Sqoop to import data from MySQL to HDFS/Hive"></a>[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview</a></p>
+<p>由 MySQL 导入 HDFS 后：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156905400.png" alt="1579156905400"></p>
+<p>由 MySQL 导入Hive后：</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157822360.png" alt="1579157822360"></p>
+<blockquote>
+<p>注：These sorts of tools that we’re using with Hadoop are really intended for big datasets, so there’s a lot of overhead for doing what’s actually a pretty simple operation. It doesn’t make sense if you’re using small datasets. 如果数据集很小，在一个host就能装下，没必要用这些工具，用MySQL就足够了。</p>
+</blockquote>
+<h4 id="Activity-Use-Sqoop-tp-export-data-from-Hadoop-to-MySQL"><a href="#Activity-Use-Sqoop-tp-export-data-from-Hadoop-to-MySQL" class="headerlink" title="[Activity] Use Sqoop tp export data from Hadoop to MySQL"></a>[Activity] Use Sqoop tp export data from Hadoop to MySQL</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview</a></p>
+<ol>
+<li>首先需要知道 where the data in Hive actually resides. REMEMBER, Hive is just a schema-on-read sort of deal. The actual data itself if just stored as a plain old text somewhere, and all Hive is doing is imparting structure to it when it’s being read. </li>
+</ol>
+<p>On Hortonworks:</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158771230.png" alt="1579158771230"></p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158823550.png" alt="1579158823550"></p>
+<p>不是靠逗号分隔的，Hive actually uses low ASCII values, like 1 and 2 and 3, to delimit its data. </p>
+<ol>
+<li>在导入前，MySQL中要先有 target table</li>
+</ol>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159104056.png" alt="1579159104056"></p>
+<p>3.</p>
+<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159601163.png" alt="1579159601163"></p>
+<p>和import一样，export也会kick off a bunch of mappers using MapReduce.</p>
+<blockquote>
+<p>什么时候需要从Hive导入MySQL: From a practical standpoint, if you need to expose your data to a database that’s more well-suited for OLTP. Sometimes you’ll be doing some huge operation using Hive or some other tool on your cluster, but the output of that operation might be small enough to fit on a single database.</p>
+</blockquote>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>We talked about making your Hadoop cluster look like a MySQL database or a SQL database, using Hive.</p>
+<p>And we also talked about using your Hadoop cluster with a real MySQL database as well. Kind of two different directions there.</p>
+<p>Next, let’s talk about <strong>NoSQL</strong>. Sometimes you actually want to expose your data in a way that’s more amenable to <strong>real-time queries</strong>, and there’s a bunch of ways to do that and also ways of integrating Hadoop with systems that are more real-time in nature.</p>
+]]></content>
+      <categories>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>Hive</tag>
+        <tag>Sqoop</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>conda常用命令</title>
     <url>/2020/11/15/conda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -5327,6 +5327,21 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/07/17/hello-world/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>find the most frequent element in a list</title>
     <url>/2021/07/17/find-the-most-frequent-element-in-a-list/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -5348,21 +5363,6 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       <tags>
         <tag>Python</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/07/17/hello-world/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
-<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>hexo相关问题</title>
@@ -5417,58 +5417,6 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       </categories>
       <tags>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pip命令</title>
-    <url>/2020/02/25/pip%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install package-name</span><br></pre></td></tr></table></figure>
-<p>若安装过程中出现[WinError 5]错误，可尝试使用<code>pip install --user package-name</code></p>
-<p>参考<a href="https://www.lizenghai.com/archives/585.html">https://www.lizenghai.com/archives/585.html</a></p>
-<p>指定源：</p>
-<blockquote>
-<p>参考 <a href="https://blog.csdn.net/dss875914213/article/details/86500146">https://blog.csdn.net/dss875914213/article/details/86500146</a></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install package-name -i https://pypi.tuna.tsinghua.edu.cn/simple </span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">清华：https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line">华中理工大学：http://pypi.hustunique.com/</span><br><span class="line">山东理工大学：http://pypi.sdutlinux.org/ </span><br><span class="line">豆瓣：http://pypi.douban.com/simple/</span><br><span class="line">腾讯云：https://mirrors.cloud.tencent.com/pypi/simple</span><br></pre></td></tr></table></figure>
-<h4 id="查看pip版本"><a href="#查看pip版本" class="headerlink" title="查看pip版本"></a>查看pip版本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;pip -V</span><br><span class="line">pip 20.3.4 from d:\anaconda\anaconda\lib\site-packages\pip (python 3.5)</span><br><span class="line"></span><br><span class="line">↑如果显示使用的python2，可以用pip3来使用python3</span><br></pre></td></tr></table></figure>
-<h4 id="升级pip"><a href="#升级pip" class="headerlink" title="升级pip"></a>升级pip</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install --upgrade pip</span><br></pre></td></tr></table></figure>
-<h4 id="所有已安装的包"><a href="#所有已安装的包" class="headerlink" title="所有已安装的包"></a>所有已安装的包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list</span><br></pre></td></tr></table></figure>
-<h4 id="查看某个已安装包"><a href="#查看某个已安装包" class="headerlink" title="查看某个已安装包"></a>查看某个已安装包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip show package_name</span><br></pre></td></tr></table></figure>
-<h4 id="检查哪些包需要更新"><a href="#检查哪些包需要更新" class="headerlink" title="检查哪些包需要更新"></a>检查哪些包需要更新</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list --outdated</span><br></pre></td></tr></table></figure>
-<h4 id="升级包"><a href="#升级包" class="headerlink" title="升级包"></a>升级包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install --upgrade package_name</span><br></pre></td></tr></table></figure>
-<h4 id="安装某个版本的包"><a href="#安装某个版本的包" class="headerlink" title="安装某个版本的包"></a>安装某个版本的包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install numpy==1.18</span><br></pre></td></tr></table></figure>
-<h4 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall package_name</span><br></pre></td></tr></table></figure>
-<p>使用pip –help命令可以查看pip帮助手册</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python文件编码说明</title>
-    <url>/2021/12/30/python%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%AF%B4%E6%98%8E/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>参考<br><a href="https://www.cnblogs.com/sixbeauty/p/4284427.html">python文件编码说明 coding=utf-8 - 不笑猫 - 博客园 (cnblogs.com)</a><br><a href="https://www.python.org/dev/peps/pep-0263/">PEP 263 — Defining Python Source Code Encodings | Python.org</a></p>
-</blockquote>
-<p>在python 文件开头（一般是第一行或第二行），用来说明你的Python源程序文件用使用的编码。缺省情况下默认使用ascii编码，但如果在其中写中文的话，python解释器一般会报错，但如果加上你所用的文件编码，python就会自动处理不再报错。</p>
-<p>通常写法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: &lt;encoding name&gt; -*-</span><br></pre></td></tr></table></figure>
-<p>或：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># coding=&lt;encoding name&gt;</span><br></pre></td></tr></table></figure>
-<p>More precisely, the first or second line must match the following regular expression:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)</span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -5537,6 +5485,58 @@ IV = \sum_i^n(响应比例-未响应比例)*WOE_i \\
       <tags>
         <tag>sql</tag>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python文件编码说明</title>
+    <url>/2021/12/30/python%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>参考<br><a href="https://www.cnblogs.com/sixbeauty/p/4284427.html">python文件编码说明 coding=utf-8 - 不笑猫 - 博客园 (cnblogs.com)</a><br><a href="https://www.python.org/dev/peps/pep-0263/">PEP 263 — Defining Python Source Code Encodings | Python.org</a></p>
+</blockquote>
+<p>在python 文件开头（一般是第一行或第二行），用来说明你的Python源程序文件用使用的编码。缺省情况下默认使用ascii编码，但如果在其中写中文的话，python解释器一般会报错，但如果加上你所用的文件编码，python就会自动处理不再报错。</p>
+<p>通常写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: &lt;encoding name&gt; -*-</span><br></pre></td></tr></table></figure>
+<p>或：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># coding=&lt;encoding name&gt;</span><br></pre></td></tr></table></figure>
+<p>More precisely, the first or second line must match the following regular expression:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">^[ \t\f]*#.*?coding[:=][ \t]*([-_.a-zA-Z0-9]+)</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pip命令</title>
+    <url>/2020/02/25/pip%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="安装包"><a href="#安装包" class="headerlink" title="安装包"></a>安装包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install package-name</span><br></pre></td></tr></table></figure>
+<p>若安装过程中出现[WinError 5]错误，可尝试使用<code>pip install --user package-name</code></p>
+<p>参考<a href="https://www.lizenghai.com/archives/585.html">https://www.lizenghai.com/archives/585.html</a></p>
+<p>指定源：</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/dss875914213/article/details/86500146">https://blog.csdn.net/dss875914213/article/details/86500146</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install package-name -i https://pypi.tuna.tsinghua.edu.cn/simple </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">清华：https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">阿里云：http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line">华中理工大学：http://pypi.hustunique.com/</span><br><span class="line">山东理工大学：http://pypi.sdutlinux.org/ </span><br><span class="line">豆瓣：http://pypi.douban.com/simple/</span><br><span class="line">腾讯云：https://mirrors.cloud.tencent.com/pypi/simple</span><br></pre></td></tr></table></figure>
+<h4 id="查看pip版本"><a href="#查看pip版本" class="headerlink" title="查看pip版本"></a>查看pip版本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;pip -V</span><br><span class="line">pip 20.3.4 from d:\anaconda\anaconda\lib\site-packages\pip (python 3.5)</span><br><span class="line"></span><br><span class="line">↑如果显示使用的python2，可以用pip3来使用python3</span><br></pre></td></tr></table></figure>
+<h4 id="升级pip"><a href="#升级pip" class="headerlink" title="升级pip"></a>升级pip</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+<h4 id="所有已安装的包"><a href="#所有已安装的包" class="headerlink" title="所有已安装的包"></a>所有已安装的包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list</span><br></pre></td></tr></table></figure>
+<h4 id="查看某个已安装包"><a href="#查看某个已安装包" class="headerlink" title="查看某个已安装包"></a>查看某个已安装包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip show package_name</span><br></pre></td></tr></table></figure>
+<h4 id="检查哪些包需要更新"><a href="#检查哪些包需要更新" class="headerlink" title="检查哪些包需要更新"></a>检查哪些包需要更新</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip list --outdated</span><br></pre></td></tr></table></figure>
+<h4 id="升级包"><a href="#升级包" class="headerlink" title="升级包"></a>升级包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install --upgrade package_name</span><br></pre></td></tr></table></figure>
+<h4 id="安装某个版本的包"><a href="#安装某个版本的包" class="headerlink" title="安装某个版本的包"></a>安装某个版本的包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install numpy==1.18</span><br></pre></td></tr></table></figure>
+<h4 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall package_name</span><br></pre></td></tr></table></figure>
+<p>使用pip –help命令可以查看pip帮助手册</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -5800,6 +5800,21 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </tags>
   </entry>
   <entry>
+    <title>两数相加2</title>
+    <url>/2019/12/26/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A02/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/">两数相加2（难度：中等）</a></p>
+<p><img src="/2019/12/26/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A02/1577344361644.jpg" alt="题目"></p>
+<h4 id="方法：双栈-头插法"><a href="#方法：双栈-头插法" class="headerlink" title="方法：双栈 + 头插法"></a>方法：双栈 + 头插法</h4><p><img src="/2019/12/26/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A02/1577344797002.jpg" alt="code"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>两数之和</title>
     <url>/2020/01/12/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/two-sum/">两数之和（难度：简单）</a></p>
@@ -5831,18 +5846,23 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </tags>
   </entry>
   <entry>
-    <title>两数相加2</title>
-    <url>/2019/12/26/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A02/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/">两数相加2（难度：中等）</a></p>
-<p><img src="/2019/12/26/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A02/1577344361644.jpg" alt="题目"></p>
-<h4 id="方法：双栈-头插法"><a href="#方法：双栈-头插法" class="headerlink" title="方法：双栈 + 头插法"></a>方法：双栈 + 头插法</h4><p><img src="/2019/12/26/%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A02/1577344797002.jpg" alt="code"></p>
+    <title>乘积最大子序列</title>
+    <url>/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/maximum-product-subarray/">乘积最大子序列（难度：中等）</a></p>
+<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1"></p>
+<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2"></p>
+<blockquote>
+<p><strong>注意：不能只保存到当前为止的最大值，还需保存到当前为止的最小值，因为若下一个数是负数，那么以前的最小值（若为负数）会变成现在的最大值</strong>.</p>
+</blockquote>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProduct</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">imax</span> <span class="operator">=</span> nums[<span class="number">0</span>], imin = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> imin;</span><br><span class="line">                imin = imax;</span><br><span class="line">                imax = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            imax = Math.max(imax*nums[i], nums[i]);</span><br><span class="line">            imin = Math.min(imin*nums[i], nums[i]);</span><br><span class="line">            ans = Math.max(ans,imax);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3"></p>
 ]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>链表</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -5928,55 +5948,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </tags>
   </entry>
   <entry>
-    <title>乘积最大子序列</title>
-    <url>/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/maximum-product-subarray/">乘积最大子序列（难度：中等）</a></p>
-<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1"></p>
-<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2"></p>
-<blockquote>
-<p><strong>注意：不能只保存到当前为止的最大值，还需保存到当前为止的最小值，因为若下一个数是负数，那么以前的最小值（若为负数）会变成现在的最大值</strong>.</p>
-</blockquote>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProduct</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">imax</span> <span class="operator">=</span> nums[<span class="number">0</span>], imin = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> imin;</span><br><span class="line">                imin = imax;</span><br><span class="line">                imax = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            imax = Math.max(imax*nums[i], nums[i]);</span><br><span class="line">            imin = Math.min(imin*nums[i], nums[i]);</span><br><span class="line">            ans = Math.max(ans,imax);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/26/%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二叉搜索树中第k小的元素</title>
-    <url>/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/">二叉搜索树中第K小的元素（难度：中等）</a></p>
-<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579620616705.png" alt="1579620616705"></p>
-<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579620662544.png" alt="1579620662544"></p>
-<p>此题与<a href="https://qypx.github.io/2020/01/21/二叉树的中序遍历/">二叉树的中序遍历（难度：中等）</a>类似，只需稍加变化。</p>
-<h4 id="方法一：递归"><a href="#方法一：递归" class="headerlink" title="方法一：递归"></a>方法一：递归</h4><p>通过构造 BST 的中序遍历序列，则第 <code>k-1</code> 个元素就是第 <code>k</code> 小的元素。</p>
-<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/7dc3fe454519e27105c5aaf57d20b26137bd77c56bb0289830bf18116627de12-file_1579413216156.jpg" alt="7dc3fe454519e27105c5aaf57d20b26137bd77c56bb0289830bf18116627de12-file_1579413216156"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">kthSmallest</span><span class="params">(TreeNode root, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; arr = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        inorder(root,arr);</span><br><span class="line">        <span class="keyword">return</span> arr.get(k-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">inorder</span><span class="params">(TreeNode root, List arr)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(root.left!=<span class="literal">null</span>)</span><br><span class="line">                inorder(root.left, arr);</span><br><span class="line">            arr.add(root.val);</span><br><span class="line">            <span class="keyword">if</span>(root.right!=<span class="literal">null</span>)</span><br><span class="line">                inorder(root.right, arr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579620513520.png" alt="1579620513520"></p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(N)，遍历了整个树。</p>
-<p>空间复杂度：O(N)，用了一个数组存储中序序列。</p>
-<h4 id="方法二：迭代"><a href="#方法二：迭代" class="headerlink" title="方法二：迭代"></a>方法二：迭代</h4><p>在栈的帮助下，可以将方法一的递归转换为迭代，这样可以加快速度，因为这样可以不用遍历整个树，可以在找到答案后停止。</p>
-<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/25159a5137867644b75f203ee1917645d2cd454d8f4871e371d7edfa67bef083-file_1579413216176.jpg" alt="25159a5137867644b75f203ee1917645d2cd454d8f4871e371d7edfa67bef083-file_1579413216176"></p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">kthSmallest</span>(<span class="params">self, root: TreeNode, k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">while</span> root:</span><br><span class="line">                stack.append(root)</span><br><span class="line">                root = root.left</span><br><span class="line">            root = stack.pop()</span><br><span class="line">            k -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> k == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> root.val</span><br><span class="line">            root = root.right</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579621550313.png" alt="1579621550313"></p>
-<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(H+k)，其中 H指的是树的高度，由于我们开始遍历之前，要先向下达到叶，当树是一个平衡树时：复杂度为O(logN+k)。当树是一个不平衡树时：复杂度为 O(N+k)，此时所有的节点都在左子树。</p>
-<p>空间复杂度：O(H+k)。当树是一个平衡树时：O(logN+k)。当树是一个非平衡树时：O(N+k)。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>二叉树</tag>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二叉树的中序遍历</title>
     <url>/2020/01/21/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">二叉树的中序遍历（难度：中等）</a></p>
@@ -6044,6 +6015,74 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </tags>
   </entry>
   <entry>
+    <title>二叉搜索树中第k小的元素</title>
+    <url>/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/">二叉搜索树中第K小的元素（难度：中等）</a></p>
+<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579620616705.png" alt="1579620616705"></p>
+<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579620662544.png" alt="1579620662544"></p>
+<p>此题与<a href="https://qypx.github.io/2020/01/21/二叉树的中序遍历/">二叉树的中序遍历（难度：中等）</a>类似，只需稍加变化。</p>
+<h4 id="方法一：递归"><a href="#方法一：递归" class="headerlink" title="方法一：递归"></a>方法一：递归</h4><p>通过构造 BST 的中序遍历序列，则第 <code>k-1</code> 个元素就是第 <code>k</code> 小的元素。</p>
+<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/7dc3fe454519e27105c5aaf57d20b26137bd77c56bb0289830bf18116627de12-file_1579413216156.jpg" alt="7dc3fe454519e27105c5aaf57d20b26137bd77c56bb0289830bf18116627de12-file_1579413216156"></p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">kthSmallest</span><span class="params">(TreeNode root, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; arr = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        inorder(root,arr);</span><br><span class="line">        <span class="keyword">return</span> arr.get(k-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">inorder</span><span class="params">(TreeNode root, List arr)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(root.left!=<span class="literal">null</span>)</span><br><span class="line">                inorder(root.left, arr);</span><br><span class="line">            arr.add(root.val);</span><br><span class="line">            <span class="keyword">if</span>(root.right!=<span class="literal">null</span>)</span><br><span class="line">                inorder(root.right, arr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579620513520.png" alt="1579620513520"></p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(N)，遍历了整个树。</p>
+<p>空间复杂度：O(N)，用了一个数组存储中序序列。</p>
+<h4 id="方法二：迭代"><a href="#方法二：迭代" class="headerlink" title="方法二：迭代"></a>方法二：迭代</h4><p>在栈的帮助下，可以将方法一的递归转换为迭代，这样可以加快速度，因为这样可以不用遍历整个树，可以在找到答案后停止。</p>
+<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/25159a5137867644b75f203ee1917645d2cd454d8f4871e371d7edfa67bef083-file_1579413216176.jpg" alt="25159a5137867644b75f203ee1917645d2cd454d8f4871e371d7edfa67bef083-file_1579413216176"></p>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">kthSmallest</span>(<span class="params">self, root: TreeNode, k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="keyword">while</span> root:</span><br><span class="line">                stack.append(root)</span><br><span class="line">                root = root.left</span><br><span class="line">            root = stack.pop()</span><br><span class="line">            k -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> k == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> root.val</span><br><span class="line">            root = root.right</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/21/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/1579621550313.png" alt="1579621550313"></p>
+<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(H+k)，其中 H指的是树的高度，由于我们开始遍历之前，要先向下达到叶，当树是一个平衡树时：复杂度为O(logN+k)。当树是一个不平衡树时：复杂度为 O(N+k)，此时所有的节点都在左子树。</p>
+<p>空间复杂度：O(H+k)。当树是一个平衡树时：O(logN+k)。当树是一个非平衡树时：O(N+k)。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>二叉树</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于python2与python3使用上的差异</title>
+    <url>/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要对比版本：python27与python36</p>
+<h4 id="1-关于copy"><a href="#1-关于copy" class="headerlink" title="1. 关于copy()"></a>1. 关于copy()</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy() </span><br></pre></td></tr></table></figure>
+<p>python3中没问题，python2中报错：</p>
+<p><img src="/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/image-20220105160555692.png" alt="image-20220105160555692"></p>
+<p>解决方法：改为：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">values2 = <span class="built_in">list</span>(values)</span><br><span class="line"><span class="comment"># 或 values2 = values[:]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-Python2-不支持中文问题"><a href="#2-Python2-不支持中文问题" class="headerlink" title="2. Python2 不支持中文问题"></a>2. Python2 不支持中文问题</h4><p>创建test.py程序如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;你好&quot;)</span><br></pre></td></tr></table></figure>
+<p>python3运行时，输出 你好，python2运行时，输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character &#x27;\xe4&#x27; in file e:/pycharmProject/ml_module/main5.py on line 7, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details</span><br></pre></td></tr></table></figure>
+<p>解决方法：在python文件最开头加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h4 id="3-关于除法"><a href="#3-关于除法" class="headerlink" title="3. 关于除法"></a>3. 关于除法</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(2/3)</span><br><span class="line"></span><br><span class="line">python3中：0.6666666666666666</span><br><span class="line">pyhon2中：0</span><br></pre></td></tr></table></figure>
+<p>python2中的除法等价于python3中的//</p>
+<p>解决方法：</p>
+<p>法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;float(2)/3</span><br><span class="line">0.6666666666666666</span><br><span class="line"></span><br><span class="line">不能直接float()的，例如array等，可.astype(float) </span><br><span class="line">float 应该是等价于 &quot;float64&quot;</span><br><span class="line">int 应该是等价于 &quot;int32&quot;</span><br></pre></td></tr></table></figure>
+<p>法二：更简单的方法：</p>
+<blockquote>
+<p>参考 <a href="https://stackoverflow.com/questions/21316968/division-in-python-2-7-and-3-3">Division in Python 2.7. and 3.3 - Stack Overflow</a></p>
+</blockquote>
+<p>在python文件的最开头加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from __future__ import division</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<p><img src="/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/image-20220105162421744.png" alt="image-20220105162421744"></p>
+<h4 id="4-关于在python3环境中保存，python2环境中读取文件"><a href="#4-关于在python3环境中保存，python2环境中读取文件" class="headerlink" title="4. 关于在python3环境中保存，python2环境中读取文件"></a>4. 关于在python3环境中保存，python2环境中读取文件</h4><p>详见 <a href="https://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">读取与保存csv和txt文件</a></p>
+<h4 id="5-关于python2与python3中可变参数的差异"><a href="#5-关于python2与python3中可变参数的差异" class="headerlink" title="5. 关于python2与python3中可变参数的差异"></a>5. 关于python2与python3中可变参数的差异</h4><p>详见 <a href="https://qypx.github.io/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">关于python2与python3中的可变参数</a></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关于python2与python3中的位置参数，可变参数，默认参数，关键字参数</title>
     <url>/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-函数定义中的-与"><a href="#1-函数定义中的-与" class="headerlink" title="1. 函数定义中的*与**"></a>1. 函数定义中的*与**</h4><blockquote>
@@ -6094,45 +6133,6 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </tags>
   </entry>
   <entry>
-    <title>关于python2与python3使用上的差异</title>
-    <url>/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>主要对比版本：python27与python36</p>
-<h4 id="1-关于copy"><a href="#1-关于copy" class="headerlink" title="1. 关于copy()"></a>1. 关于copy()</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy() </span><br></pre></td></tr></table></figure>
-<p>python3中没问题，python2中报错：</p>
-<p><img src="/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/image-20220105160555692.png" alt="image-20220105160555692"></p>
-<p>解决方法：改为：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">values2 = <span class="built_in">list</span>(values)</span><br><span class="line"><span class="comment"># 或 values2 = values[:]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-Python2-不支持中文问题"><a href="#2-Python2-不支持中文问题" class="headerlink" title="2. Python2 不支持中文问题"></a>2. Python2 不支持中文问题</h4><p>创建test.py程序如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&quot;你好&quot;)</span><br></pre></td></tr></table></figure>
-<p>python3运行时，输出 你好，python2运行时，输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character &#x27;\xe4&#x27; in file e:/pycharmProject/ml_module/main5.py on line 7, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details</span><br></pre></td></tr></table></figure>
-<p>解决方法：在python文件最开头加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h4 id="3-关于除法"><a href="#3-关于除法" class="headerlink" title="3. 关于除法"></a>3. 关于除法</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(2/3)</span><br><span class="line"></span><br><span class="line">python3中：0.6666666666666666</span><br><span class="line">pyhon2中：0</span><br></pre></td></tr></table></figure>
-<p>python2中的除法等价于python3中的//</p>
-<p>解决方法：</p>
-<p>法一：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;float(2)/3</span><br><span class="line">0.6666666666666666</span><br><span class="line"></span><br><span class="line">不能直接float()的，例如array等，可.astype(float) </span><br><span class="line">float 应该是等价于 &quot;float64&quot;</span><br><span class="line">int 应该是等价于 &quot;int32&quot;</span><br></pre></td></tr></table></figure>
-<p>法二：更简单的方法：</p>
-<blockquote>
-<p>参考 <a href="https://stackoverflow.com/questions/21316968/division-in-python-2-7-and-3-3">Division in Python 2.7. and 3.3 - Stack Overflow</a></p>
-</blockquote>
-<p>在python文件的最开头加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from __future__ import division</span><br></pre></td></tr></table></figure>
-<p>例：</p>
-<p><img src="/2022/01/05/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%BD%BF%E7%94%A8%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82/image-20220105162421744.png" alt="image-20220105162421744"></p>
-<h4 id="4-关于在python3环境中保存，python2环境中读取文件"><a href="#4-关于在python3环境中保存，python2环境中读取文件" class="headerlink" title="4. 关于在python3环境中保存，python2环境中读取文件"></a>4. 关于在python3环境中保存，python2环境中读取文件</h4><p>详见 <a href="https://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">读取与保存csv和txt文件</a></p>
-<h4 id="5-关于python2与python3中可变参数的差异"><a href="#5-关于python2与python3中可变参数的差异" class="headerlink" title="5. 关于python2与python3中可变参数的差异"></a>5. 关于python2与python3中可变参数的差异</h4><p>详见 <a href="https://qypx.github.io/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">关于python2与python3中的可变参数</a></p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>关于环境变量path与classpath</title>
     <url>/2021/12/30/%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E4%B8%8Eclasspath/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -6149,6 +6149,23 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       </categories>
   </entry>
   <entry>
+    <title>创建单链表的头插法与尾插法</title>
+    <url>/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/qq_41028985/article/details/82859199">原文</a></p>
+<h4 id="头插法创建单链表"><a href="#头插法创建单链表" class="headerlink" title="头插法创建单链表"></a>头插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1577345110132.jpg" alt="图1"></p>
+<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1.jpg" alt="1"></p>
+<h4 id="尾插法创建单链表"><a href="#尾插法创建单链表" class="headerlink" title="尾插法创建单链表"></a>尾插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/2.jpg" alt="2"></p>
+<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>知识点</tag>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>删除列表中的节点</title>
     <url>/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">删除列表中的节点（难度：简单）</a></p>
@@ -6161,6 +6178,85 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
       <tags>
         <tag>leetcode</tag>
         <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>删除排序链表中的重复元素</title>
+    <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/">删除排序链表中的重复元素（难度：简单）</a></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268363569.jpg" alt="题目"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268482086.jpg" alt="思路"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268503067.jpg" alt="1577268503067"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268572469.jpg" alt="1577268572469"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268850082.jpg" alt="结果"></p>
+<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268614488.jpg" alt="画解1"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268643223.jpg" alt="画解2"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268718737.jpg" alt="画解3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>删除排序链表中的重复元素2</title>
+    <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/">删除排序链表中的重复元素2（难度：中等）</a></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278156148.jpg" alt="题目"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278207894.jpg" alt="1577278207894"></p>
+<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/20191225-210253.jpg" alt="画解"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>(Java)</p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279243671.jpg" alt="code"></p>
+<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279306551.jpg" alt="结果"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>判断子序列</title>
+    <url>/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/is-subsequence/">判断子序列（难度：简单）</a></p>
+<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3"></p>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSubsequence</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> t:</span><br><span class="line">                t = t[t.index(i)+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            </span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1"></p>
+<hr>
+<h4 id="方法二：双指针"><a href="#方法二：双指针" class="headerlink" title="方法二：双指针"></a>方法二：双指针</h4><p>若相等，两个指针都往前移，若不等，快指针往前移。最后比较慢指针与s的长度。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSubsequence</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        p1 = <span class="number">0</span></span><br><span class="line">        p2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> p1 &lt; <span class="built_in">len</span>(s) <span class="keyword">and</span> p2 &lt; <span class="built_in">len</span>(t):</span><br><span class="line">            <span class="keyword">if</span> s[p1] == t[p2]:</span><br><span class="line">                p1 += <span class="number">1</span></span><br><span class="line">            p2 += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> p1 == <span class="built_in">len</span>(s):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            </span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>加一</title>
+    <url>/2020/01/02/%E5%8A%A0%E4%B8%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/plus-one/">加一（难度：简单）</a></p>
+<p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/1.jpg" alt="1"></p>
+<h4 id="方法：数组遍历"><a href="#方法：数组遍历" class="headerlink" title="方法：数组遍历"></a>方法：数组遍历</h4><p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/2.jpg" alt="2"></p>
+<p>时间复杂度：O(n)</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] plusOne(<span class="type">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            digits[i] = (digits[i]+<span class="number">1</span>) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(digits[i] != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        digits = <span class="keyword">new</span> <span class="title class_">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/3.jpg" alt="3"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -7433,102 +7529,6 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       </tags>
   </entry>
   <entry>
-    <title>创建单链表的头插法与尾插法</title>
-    <url>/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/qq_41028985/article/details/82859199">原文</a></p>
-<h4 id="头插法创建单链表"><a href="#头插法创建单链表" class="headerlink" title="头插法创建单链表"></a>头插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1577345110132.jpg" alt="图1"></p>
-<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/1.jpg" alt="1"></p>
-<h4 id="尾插法创建单链表"><a href="#尾插法创建单链表" class="headerlink" title="尾插法创建单链表"></a>尾插法创建单链表</h4><p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/2.jpg" alt="2"></p>
-<p><img src="/2019/12/26/%E5%88%9B%E5%BB%BA%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A4%B4%E6%8F%92%E6%B3%95%E4%B8%8E%E5%B0%BE%E6%8F%92%E6%B3%95/3.jpg" alt="3"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>知识点</tag>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>删除排序链表中的重复元素</title>
-    <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/">删除排序链表中的重复元素（难度：简单）</a></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268363569.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268482086.jpg" alt="思路"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268503067.jpg" alt="1577268503067"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268572469.jpg" alt="1577268572469"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268850082.jpg" alt="结果"></p>
-<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268614488.jpg" alt="画解1"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268643223.jpg" alt="画解2"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268718737.jpg" alt="画解3"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>删除排序链表中的重复元素2</title>
-    <url>/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/">删除排序链表中的重复元素2（难度：中等）</a></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278156148.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278207894.jpg" alt="1577278207894"></p>
-<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/20191225-210253.jpg" alt="画解"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>(Java)</p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279243671.jpg" alt="code"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279306551.jpg" alt="结果"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>判断子序列</title>
-    <url>/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/is-subsequence/">判断子序列（难度：简单）</a></p>
-<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3"></p>
-<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSubsequence</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> t:</span><br><span class="line">                t = t[t.index(i)+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            </span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1"></p>
-<hr>
-<h4 id="方法二：双指针"><a href="#方法二：双指针" class="headerlink" title="方法二：双指针"></a>方法二：双指针</h4><p>若相等，两个指针都往前移，若不等，快指针往前移。最后比较慢指针与s的长度。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSubsequence</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        p1 = <span class="number">0</span></span><br><span class="line">        p2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> p1 &lt; <span class="built_in">len</span>(s) <span class="keyword">and</span> p2 &lt; <span class="built_in">len</span>(t):</span><br><span class="line">            <span class="keyword">if</span> s[p1] == t[p2]:</span><br><span class="line">                p1 += <span class="number">1</span></span><br><span class="line">            p2 += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> p1 == <span class="built_in">len</span>(s):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            </span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>字符串</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>加一</title>
-    <url>/2020/01/02/%E5%8A%A0%E4%B8%80/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/plus-one/">加一（难度：简单）</a></p>
-<p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/1.jpg" alt="1"></p>
-<h4 id="方法：数组遍历"><a href="#方法：数组遍历" class="headerlink" title="方法：数组遍历"></a>方法：数组遍历</h4><p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/2.jpg" alt="2"></p>
-<p>时间复杂度：O(n)</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] plusOne(<span class="type">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            digits[i] = (digits[i]+<span class="number">1</span>) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(digits[i] != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        digits = <span class="keyword">new</span> <span class="title class_">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/3.jpg" alt="3"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>区域和检索 - 数组不可变</title>
     <url>/2019/12/27/%E5%8C%BA%E5%9F%9F%E5%92%8C%E6%A3%80%E7%B4%A2-%E6%95%B0%E7%BB%84%E4%B8%8D%E5%8F%AF%E5%8F%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/range-sum-query-immutable/">区域和检索 - 数组不可变（难度：简单）</a></p>
@@ -7568,6 +7568,23 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       <tags>
         <tag>leetcode</tag>
         <tag>整数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>命令行中使用不同版本的python</title>
+    <url>/2021/10/12/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84python/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>假设安装anaconda时选择的python版本为Python3.8，又新创建了虚拟环境python36（python版本选择的Python3.6），如何在命令行中使用不同版本的python：</p>
+<p>由于环境变量中加入了anaconda的路径，此时直接在命令行中运行python时，默认使用的是anaconda\python.exe所对应的版本（即Python3.8）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;python --version</span><br><span class="line">Python 3.8.5</span><br></pre></td></tr></table></figure>
+<p>如何使用Python3.6：</p>
+<p>首先cd到对应的虚拟环境的python.exe路径下，此时执行python命令时便使用的相应版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;cd d:\anaconda\anaconda\envs\python36</span><br><span class="line">&gt;python --version</span><br><span class="line">Python 3.6.12 :: Anaconda, Inc.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -7617,20 +7634,23 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       </tags>
   </entry>
   <entry>
-    <title>命令行中使用不同版本的python</title>
-    <url>/2021/10/12/%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84python/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>假设安装anaconda时选择的python版本为Python3.8，又新创建了虚拟环境python36（python版本选择的Python3.6），如何在命令行中使用不同版本的python：</p>
-<p>由于环境变量中加入了anaconda的路径，此时直接在命令行中运行python时，默认使用的是anaconda\python.exe所对应的版本（即Python3.8）。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;python --version</span><br><span class="line">Python 3.8.5</span><br></pre></td></tr></table></figure>
-<p>如何使用Python3.6：</p>
-<p>首先cd到对应的虚拟环境的python.exe路径下，此时执行python命令时便使用的相应版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;cd d:\anaconda\anaconda\envs\python36</span><br><span class="line">&gt;python --version</span><br><span class="line">Python 3.6.12 :: Anaconda, Inc.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>回文链表</title>
+    <url>/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/palindrome-linked-list/">回文链表（难度：简单）</a></p>
+<p><img src="/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/1.jpg" alt="1"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用快慢指针找到中点，对链表前半部分进行翻转。</p>
+<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isPalindrome</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">null</span> || head.next==<span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head, fast = head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> head, prepre = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 一遍遍历实现翻转前半部分</span></span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>)&#123;</span><br><span class="line">            pre = slow;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next; <span class="comment">// 若链表长度为偶数，则fast最后会指向null，若为奇数，fast最后会指向最后一个元素</span></span><br><span class="line">            pre.next = prepre;</span><br><span class="line">            prepre = pre;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 循环结束后，若为偶数，slow指向后半部分第一个元素，若为奇数，slow指向中间的那个元素</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(fast != <span class="literal">null</span>)</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(pre!=<span class="literal">null</span> &amp;&amp; slow!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pre.val != slow.val)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            pre = pre.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/2.jpg" alt="2"></p>
+<p><img src="/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/20191229-214756.jpg" alt="20191229-214756"></p>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>leetcode</category>
       </categories>
       <tags>
-        <tag>Python</tag>
+        <tag>leetcode</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -7910,26 +7930,6 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       </tags>
   </entry>
   <entry>
-    <title>回文链表</title>
-    <url>/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/palindrome-linked-list/">回文链表（难度：简单）</a></p>
-<p><img src="/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/1.jpg" alt="1"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用快慢指针找到中点，对链表前半部分进行翻转。</p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)</p>
-<p>空间复杂度：O(1)</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isPalindrome</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">null</span> || head.next==<span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head, fast = head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> head, prepre = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 一遍遍历实现翻转前半部分</span></span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>)&#123;</span><br><span class="line">            pre = slow;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next; <span class="comment">// 若链表长度为偶数，则fast最后会指向null，若为奇数，fast最后会指向最后一个元素</span></span><br><span class="line">            pre.next = prepre;</span><br><span class="line">            prepre = pre;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 循环结束后，若为偶数，slow指向后半部分第一个元素，若为奇数，slow指向中间的那个元素</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(fast != <span class="literal">null</span>)</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(pre!=<span class="literal">null</span> &amp;&amp; slow!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pre.val != slow.val)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            pre = pre.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/2.jpg" alt="2"></p>
-<p><img src="/2019/12/29/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/20191229-214756.jpg" alt="20191229-214756"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>多数元素</title>
     <url>/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/majority-element/">多数元素（难度：简单）</a></p>
@@ -8045,6 +8045,28 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       </tags>
   </entry>
   <entry>
+    <title>寻找峰值</title>
+    <url>/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/find-peak-element/">寻找峰值（难度：中等）</a></p>
+<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/1.jpg" alt="1"></p>
+<h4 id="方法一：线性扫描"><a href="#方法一：线性扫描" class="headerlink" title="方法一：线性扫描"></a>方法一：线性扫描</h4><p>利用连续的两个元素 <code>nums[j]</code> 和 <code>nums[j+1]</code> 不会相等这一事实，我们可以从头开始遍历 <code>nums</code>数组，当遇到<code>nums[i] &gt; nums[i+1]</code> ，即可判断 <code>nums[i]</code>为峰值。</p>
+<p><strong>注意：不需要判断<code>nums[i]&gt;nums[i-1]</code>。这是由于“遍历会到达第i个元素”本身就说明上一个元素（第i- 1个）不满足 <code>nums[i] &gt; nums[i+1]</code>这一条件，也就说明 <code>nums[i-1] &lt; nums[i]</code>。</strong></p>
+<h5 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(n)。  只进行一次遍历。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="方法二：二分法查找"><a href="#方法二：二分法查找" class="headerlink" title="方法二：二分法查找"></a>方法二：二分法查找</h4><h5 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(logn)。  每一步都将搜索空间减半。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往左搜索</span></span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid]&lt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往右搜索</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/2.jpg" alt="2"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>完全平方数</title>
     <url>/2019/12/27/%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/perfect-squares/">完全平方数（难度：中等）</a></p>
@@ -8070,28 +8092,6 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
       <tags>
         <tag>leetcode</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>寻找峰值</title>
-    <url>/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/find-peak-element/">寻找峰值（难度：中等）</a></p>
-<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/1.jpg" alt="1"></p>
-<h4 id="方法一：线性扫描"><a href="#方法一：线性扫描" class="headerlink" title="方法一：线性扫描"></a>方法一：线性扫描</h4><p>利用连续的两个元素 <code>nums[j]</code> 和 <code>nums[j+1]</code> 不会相等这一事实，我们可以从头开始遍历 <code>nums</code>数组，当遇到<code>nums[i] &gt; nums[i+1]</code> ，即可判断 <code>nums[i]</code>为峰值。</p>
-<p><strong>注意：不需要判断<code>nums[i]&gt;nums[i-1]</code>。这是由于“遍历会到达第i个元素”本身就说明上一个元素（第i- 1个）不满足 <code>nums[i] &gt; nums[i+1]</code>这一条件，也就说明 <code>nums[i-1] &lt; nums[i]</code>。</strong></p>
-<h5 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(n)。  只进行一次遍历。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="方法二：二分法查找"><a href="#方法二：二分法查找" class="headerlink" title="方法二：二分法查找"></a>方法二：二分法查找</h4><h5 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(logn)。  每一步都将搜索空间减半。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往左搜索</span></span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid]&lt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往右搜索</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/2.jpg" alt="2"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -8301,25 +8301,6 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       </tags>
   </entry>
   <entry>
-    <title>打家劫舍2</title>
-    <url>/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/house-robber-ii/">打家劫舍2（难度：中等）</a></p>
-<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/题目.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><strong>此题是 <a href>198. 打家劫舍</a> 的拓展版：</strong> 唯一的区别是此题中的房间是<strong>环状排列</strong>的（即首尾相接），而 198 题中的房间是<strong>单排排列</strong>的。</p>
-<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/1.jpg" alt="1"></p>
-<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/2.jpg" alt="2"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/3.jpg" alt="3"></p>
-<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/4.jpg" alt="4"></p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>打家劫舍3</title>
     <url>/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D3/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/house-robber-iii/">打家劫舍3（难度：中等）</a></p>
@@ -8350,30 +8331,22 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       </tags>
   </entry>
   <entry>
-    <title>推荐系统冷启动问题</title>
-    <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-</blockquote>
-<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
-<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
-<ol>
-<li>利用用户的账号信息。</li>
-<li>利用用户的手机 IMEI 号进行冷启动。</li>
-<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
-</ol>
-<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
-<ol>
-<li>利用物品的内容、分类信息。</li>
-<li>利用专家标注的数据。</li>
-</ol>
+    <title>打家劫舍2</title>
+    <url>/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://leetcode-cn.com/problems/house-robber-ii/">打家劫舍2（难度：中等）</a></p>
+<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/题目.jpg" alt="题目"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><strong>此题是 <a href>198. 打家劫舍</a> 的拓展版：</strong> 唯一的区别是此题中的房间是<strong>环状排列</strong>的（即首尾相接），而 198 题中的房间是<strong>单排排列</strong>的。</p>
+<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/1.jpg" alt="1"></p>
+<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/2.jpg" alt="2"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/3.jpg" alt="3"></p>
+<p><img src="/2019/12/26/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D2/4.jpg" alt="4"></p>
 ]]></content>
       <categories>
-        <category>Recommender System</category>
+        <category>leetcode</category>
       </categories>
       <tags>
-        <tag>Recommender System</tag>
+        <tag>leetcode</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -8416,6 +8389,92 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
 ]]></content>
       <tags>
         <tag>知识点</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐系统冷启动问题</title>
+    <url>/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
+<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
+<ol>
+<li>利用用户的账号信息。</li>
+<li>利用用户的手机 IMEI 号进行冷启动。</li>
+<li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
+</ol>
+<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
+<ol>
+<li>利用物品的内容、分类信息。</li>
+<li>利用专家标注的数据。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐系统总体架构及特征数据</title>
+    <url>/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>来源于</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+</blockquote>
+<p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
+<p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
+<p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
+<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
+<p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
+<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
+<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
+<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
+<span id="more"></span>
+<ol>
+<li><p><strong>数据上报</strong>：数据上报模块的作用是搜集业务数据组成训练样本。一般分为收集、验证、清洗和转换几个步骤。将收集的数据转化为训练所需要的样本格式，保存到离线存储模块。</p>
+<p><a href="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67"><img src="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" alt="img"></a></p>
+</li>
+<li><p><strong>离线训练</strong>：离线训练模块又细分为<strong>离线存储</strong>和<strong>离线计算</strong>。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p>
+</li>
+<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机 APP ，他肯定希望APP 能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据 。</p>
+</li>
+<li><p><strong>实时推荐</strong>：实时推荐模块的功能是对来自业务的新请求进行预测。1.获取用户特征；2.调用推荐模型；3.结果排序。</p>
+<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为<strong>召回</strong>和<strong>排序</strong>两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集 （一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p>
+</li>
+<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B 测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了 离线的指标外，一个新的推荐算法上线之前一般都会经过 A/B 测试来测试新算法的有效性。</p>
+</li>
+</ol>
+<p>下图是与之对应的实际系统中各个组件的流转过程。<strong>需要注意的是生成推荐列表就已经做完了召回和排序的操作，业务层直接调用API就可以得到这个推荐列表。</strong></p>
+<p><img src="https://camo.githubusercontent.com/e00fb75f81bd5377bcfd1de0cdb3891a7790b134/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32352d32372e706e67" alt="img"></p>
+<h3 id="2-2-在线训练"><a href="#2-2-在线训练" class="headerlink" title="2.2 在线训练"></a>2.2 在线训练</h3><p>对于业务来说，我们希望用户对于上个广告的反馈 （喜欢或者不喜欢，有没有点击），可以很快地用于下 一个广告的推荐中。这就要求我们用另一种方法来解决这个问题，这个方法就是在线训练。</p>
+<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景，相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。 一方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
+<p><img src="https://camo.githubusercontent.com/6d0bf23d50bf62aaf218595a74437800ae143d01/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31312d31312d31312e706e67" alt="img"></p>
+<ol>
+<li><strong>样本处理</strong>：和基于离线训练的推荐系统相比，在线训练在数据上报阶段的主要不同体现在样本处理上。对于离线训练来说，上报后的数据先是被存储到一个分布式文件系统，然后等待离线计算任务来对样本进行处理；对于在线训练来说，对样本的去重、过滤和采样等计算都需要实时进行。</li>
+<li><strong>实时特性</strong>：实时特征模块通过实时处理样本数据拼接训练需要的特征构造训练样本，输入流式训练模块用于更新模型。该模块的主要的功能是特征拼接和特征工程。</li>
+<li><strong>流式训练</strong>：流式训练模块的主要作用是使用实时训练样本来更新模型。推荐算法中增量更新部分的计算，通过流式计算的方式来进行更新。在线训练的优势之一，是可以支持模型的稀疏存储。训练方面，在线模型不一定都是从零开始训练，而是可以将离线训练得到的模型参数作为基础，在这个基础上进行增量训练。</li>
+<li><strong>模型存储和加载</strong>：模型一般存储在参数服务器中。模型更新后，将模型文件推送到线上存储，并由线上服务模块动态加载。</li>
+</ol>
+<h2 id="2-特征数据"><a href="#2-特征数据" class="headerlink" title="2. 特征数据"></a>2. 特征数据</h2><p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
+<ol>
+<li><strong>用户行为的种类</strong>：在一个网站中，用户可以对物品产生很多不同种类的行为。用户可以浏览物品、单击物品的链接、收藏物品、给物品打分、购买物品、评论物品、给物品打上不同的标签、和好友分享物品、搜索不同的关键词等。这些行为都会对物品特征的权重产生影响，但不同行为的影响不同，大多时候很难确定什么行为更加重要，一般的标准就是用户付出代价越大的行为权重越高。</li>
+<li><strong>用户行为产生的时间</strong>：一般来说，用户近期的行为比较重要，而用户很久之前的行为相对比较次要。因此，如果用户最近购买过某一个物品，那么这个物品对应的特征将会具有比较高的权重。</li>
+<li><strong>用户行为的次数</strong>：有时用户对一个物品会产生很多次行为。比如用户会听一首歌很多次，看一部电视剧的很多集等。因此用户对同一个物品的同一种行为发生的次数也反映了用户对物品的兴趣，行为次数多的物品对应的特征权重越高。</li>
+<li><strong>物品的热门程度</strong>：如果用户对一个很热门的物品产生了行为，往往不能代表用户的个性，因为用户可能是在跟风，可能对该物品并没有太大兴趣，特别是在用户对一个热门物品产生了偶尔几次不重要的行为（比如浏览行为）时，就更说明用户对这个物品可能没有什么兴趣，可能只是因为这个物品的链接到处都是，很容易点到而已。反之，如果用户对一个不热门的物品产生了行为，就说明了用户的个性需求。因此，推荐引擎在生成用户特征时会加重不热门物品对应的特征的权重。</li>
+<li><strong>数据去燥</strong>：对样本做去噪。对于数据中混杂的刷单等类作弊行为的数据，要将其排除出训练数据,否则它会直接影响模型的效果；样本中的缺失值也要做处理。</li>
+<li><strong>正负样本均衡</strong>：一般我们收集用户的行为数据都是属于正样本，造成了严重的不平衡。所以对于一个用户，从他没有过行为的物品中采样出一些物品作为负样本，但采样时，保证每个用户的正负样本数目相当。</li>
+<li><strong>特征组合</strong>：我们需要考虑特征与特征之间的关系。例如在美团酒店搜索排序中，酒店的销量、价格、用户的消费水平等是强相关的因素，用户的年龄、位置可能是弱相关的因素，用户的ID是完全无关的因素。在确定了哪些因素可能与预测目标相关后，我们需要将此信息表示为数值类型,即为特征抽取的过程。除此之外，用户在App上的浏览、交易等行为记录中包含了大量的信息，特征抽取则主要是从这些信息抽取出相关因素，用数值变量进行表示。常用的统计特征有计数特征,如浏览次数、下单次数等;比率特征，如点击率、转化率等;统计量特征，如价格均值、标准差、分位数、偏度、峰度等。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Recommender System</category>
+      </categories>
+      <tags>
+        <tag>Recommender System</tag>
       </tags>
   </entry>
   <entry>
@@ -8696,65 +8755,6 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       <tags>
         <tag>数据挖掘</tag>
         <tag>R</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>推荐系统总体架构及特征数据</title>
-    <url>/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
-<p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-</blockquote>
-<p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
-<p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
-<p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
-<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
-<p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
-<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
-<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
-<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
-<span id="more"></span>
-<ol>
-<li><p><strong>数据上报</strong>：数据上报模块的作用是搜集业务数据组成训练样本。一般分为收集、验证、清洗和转换几个步骤。将收集的数据转化为训练所需要的样本格式，保存到离线存储模块。</p>
-<p><a href="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67"><img src="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" alt="img"></a></p>
-</li>
-<li><p><strong>离线训练</strong>：离线训练模块又细分为<strong>离线存储</strong>和<strong>离线计算</strong>。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p>
-</li>
-<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机 APP ，他肯定希望APP 能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据 。</p>
-</li>
-<li><p><strong>实时推荐</strong>：实时推荐模块的功能是对来自业务的新请求进行预测。1.获取用户特征；2.调用推荐模型；3.结果排序。</p>
-<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为<strong>召回</strong>和<strong>排序</strong>两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集 （一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p>
-</li>
-<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B 测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了 离线的指标外，一个新的推荐算法上线之前一般都会经过 A/B 测试来测试新算法的有效性。</p>
-</li>
-</ol>
-<p>下图是与之对应的实际系统中各个组件的流转过程。<strong>需要注意的是生成推荐列表就已经做完了召回和排序的操作，业务层直接调用API就可以得到这个推荐列表。</strong></p>
-<p><img src="https://camo.githubusercontent.com/e00fb75f81bd5377bcfd1de0cdb3891a7790b134/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32352d32372e706e67" alt="img"></p>
-<h3 id="2-2-在线训练"><a href="#2-2-在线训练" class="headerlink" title="2.2 在线训练"></a>2.2 在线训练</h3><p>对于业务来说，我们希望用户对于上个广告的反馈 （喜欢或者不喜欢，有没有点击），可以很快地用于下 一个广告的推荐中。这就要求我们用另一种方法来解决这个问题，这个方法就是在线训练。</p>
-<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景，相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。 一方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
-<p><img src="https://camo.githubusercontent.com/6d0bf23d50bf62aaf218595a74437800ae143d01/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31312d31312d31312e706e67" alt="img"></p>
-<ol>
-<li><strong>样本处理</strong>：和基于离线训练的推荐系统相比，在线训练在数据上报阶段的主要不同体现在样本处理上。对于离线训练来说，上报后的数据先是被存储到一个分布式文件系统，然后等待离线计算任务来对样本进行处理；对于在线训练来说，对样本的去重、过滤和采样等计算都需要实时进行。</li>
-<li><strong>实时特性</strong>：实时特征模块通过实时处理样本数据拼接训练需要的特征构造训练样本，输入流式训练模块用于更新模型。该模块的主要的功能是特征拼接和特征工程。</li>
-<li><strong>流式训练</strong>：流式训练模块的主要作用是使用实时训练样本来更新模型。推荐算法中增量更新部分的计算，通过流式计算的方式来进行更新。在线训练的优势之一，是可以支持模型的稀疏存储。训练方面，在线模型不一定都是从零开始训练，而是可以将离线训练得到的模型参数作为基础，在这个基础上进行增量训练。</li>
-<li><strong>模型存储和加载</strong>：模型一般存储在参数服务器中。模型更新后，将模型文件推送到线上存储，并由线上服务模块动态加载。</li>
-</ol>
-<h2 id="2-特征数据"><a href="#2-特征数据" class="headerlink" title="2. 特征数据"></a>2. 特征数据</h2><p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
-<ol>
-<li><strong>用户行为的种类</strong>：在一个网站中，用户可以对物品产生很多不同种类的行为。用户可以浏览物品、单击物品的链接、收藏物品、给物品打分、购买物品、评论物品、给物品打上不同的标签、和好友分享物品、搜索不同的关键词等。这些行为都会对物品特征的权重产生影响，但不同行为的影响不同，大多时候很难确定什么行为更加重要，一般的标准就是用户付出代价越大的行为权重越高。</li>
-<li><strong>用户行为产生的时间</strong>：一般来说，用户近期的行为比较重要，而用户很久之前的行为相对比较次要。因此，如果用户最近购买过某一个物品，那么这个物品对应的特征将会具有比较高的权重。</li>
-<li><strong>用户行为的次数</strong>：有时用户对一个物品会产生很多次行为。比如用户会听一首歌很多次，看一部电视剧的很多集等。因此用户对同一个物品的同一种行为发生的次数也反映了用户对物品的兴趣，行为次数多的物品对应的特征权重越高。</li>
-<li><strong>物品的热门程度</strong>：如果用户对一个很热门的物品产生了行为，往往不能代表用户的个性，因为用户可能是在跟风，可能对该物品并没有太大兴趣，特别是在用户对一个热门物品产生了偶尔几次不重要的行为（比如浏览行为）时，就更说明用户对这个物品可能没有什么兴趣，可能只是因为这个物品的链接到处都是，很容易点到而已。反之，如果用户对一个不热门的物品产生了行为，就说明了用户的个性需求。因此，推荐引擎在生成用户特征时会加重不热门物品对应的特征的权重。</li>
-<li><strong>数据去燥</strong>：对样本做去噪。对于数据中混杂的刷单等类作弊行为的数据，要将其排除出训练数据,否则它会直接影响模型的效果；样本中的缺失值也要做处理。</li>
-<li><strong>正负样本均衡</strong>：一般我们收集用户的行为数据都是属于正样本，造成了严重的不平衡。所以对于一个用户，从他没有过行为的物品中采样出一些物品作为负样本，但采样时，保证每个用户的正负样本数目相当。</li>
-<li><strong>特征组合</strong>：我们需要考虑特征与特征之间的关系。例如在美团酒店搜索排序中，酒店的销量、价格、用户的消费水平等是强相关的因素，用户的年龄、位置可能是弱相关的因素，用户的ID是完全无关的因素。在确定了哪些因素可能与预测目标相关后，我们需要将此信息表示为数值类型,即为特征抽取的过程。除此之外，用户在App上的浏览、交易等行为记录中包含了大量的信息，特征抽取则主要是从这些信息抽取出相关因素，用数值变量进行表示。常用的统计特征有计数特征,如浏览次数、下单次数等;比率特征，如点击率、转化率等;统计量特征，如价格均值、标准差、分位数、偏度、峰度等。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Recommender System</category>
-      </categories>
-      <tags>
-        <tag>Recommender System</tag>
       </tags>
   </entry>
   <entry>
@@ -9133,6 +9133,27 @@ F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记
       </tags>
   </entry>
   <entry>
+    <title>深度学习相关资料</title>
+    <url>/2020/07/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>吴恩达深度学习coursera课程笔记：</p>
+<p><a href="https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng">https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/152362317">22张深度学习精炼图笔记总结</a></p>
+<p>内容包含深度学习基础、卷积网络和循环网络等。</p>
+<hr>
+<p>ML-NLP</p>
+<p><a href="https://github.com/NLP-LOVE/ML-NLP">https://github.com/NLP-LOVE/ML-NLP</a></p>
+<p>包含机器学习，深度学习，NLP等内容及代码实现。</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>CNN</tag>
+        <tag>深度学习</tag>
+        <tag>RNN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>浅谈P、NP、NP-Complete和NP-Hard问题</title>
     <url>/2023/09/13/%E6%B5%85%E8%B0%88P%E3%80%81NP%E3%80%81NP-Complete%E5%92%8CNP-Hard%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>来自：<a href="https://zhuanlan.zhihu.com/p/433308577">浅谈P、NP、NP-Complate和NP-Hard问题</a></p>
@@ -9189,27 +9210,6 @@ P \subseteq NP</script><h3 id="NP-Complete-NPC-问题"><a href="#NP-Complete-NPC
 ]]></content>
       <tags>
         <tag>NP问题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>深度学习相关资料</title>
-    <url>/2020/07/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>吴恩达深度学习coursera课程笔记：</p>
-<p><a href="https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng">https://www.slideshare.net/TessFerrandez/notes-from-coursera-deep-learning-courses-by-andrew-ng</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/152362317">22张深度学习精炼图笔记总结</a></p>
-<p>内容包含深度学习基础、卷积网络和循环网络等。</p>
-<hr>
-<p>ML-NLP</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP">https://github.com/NLP-LOVE/ML-NLP</a></p>
-<p>包含机器学习，深度学习，NLP等内容及代码实现。</p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-      </categories>
-      <tags>
-        <tag>CNN</tag>
-        <tag>深度学习</tag>
-        <tag>RNN</tag>
       </tags>
   </entry>
   <entry>
@@ -10547,26 +10547,6 @@ loss = \sum_{j=1}^n\sum_{i=1}^m -y_{ji}\log\hat y_{ji}-(1-y_{ji})\log(1-\hat y_{
       </tags>
   </entry>
   <entry>
-    <title>线性表,顺序表与数组</title>
-    <url>/2020/03/05/%E7%BA%BF%E6%80%A7%E8%A1%A8-%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%B8%8E%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
-<ol>
-<li><p>数组就是相同数据类型的元素按一定顺序排列的集合。</p>
-<p>一句话：就是物理上存储在一组联系的地址上。也称为数据结构中的物理结构。</p>
-</li>
-<li><p>线性表中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的。</p>
-<p>一句话：线性表是数据结构中的逻辑结构。可以存储在数组上，也可以存储在链表上。</p>
-</li>
-<li><p>线性表的结点按逻辑次序依次存放在一组地址连续的存储单元里的方法。用顺序存储方法存储的线性表简称为顺序表。</p>
-<p>一句话：用数组来存储的线性表就是顺序表。</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>知识点</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>索引Index</title>
     <url>/2020/01/13/%E7%B4%A2%E5%BC%95Index/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/2020/01/13/%E7%B4%A2%E5%BC%95Index/1578902807233.png" alt="1578902807233"></p>
@@ -11065,6 +11045,26 @@ loss = \sum_{j=1}^n\sum_{i=1}^m -y_{ji}\log\hat y_{ji}-(1-y_{ji})\log(1-\hat y_{
       </categories>
       <tags>
         <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线性表,顺序表与数组</title>
+    <url>/2020/03/05/%E7%BA%BF%E6%80%A7%E8%A1%A8-%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%B8%8E%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/foreverhuylee/article/details/37813053?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task</a></p>
+<ol>
+<li><p>数组就是相同数据类型的元素按一定顺序排列的集合。</p>
+<p>一句话：就是物理上存储在一组联系的地址上。也称为数据结构中的物理结构。</p>
+</li>
+<li><p>线性表中数据元素之间的关系是一对一的关系，即除了第一个和最后一个数据元素之外，其它数据元素都是首尾相接的。</p>
+<p>一句话：线性表是数据结构中的逻辑结构。可以存储在数组上，也可以存储在链表上。</p>
+</li>
+<li><p>线性表的结点按逻辑次序依次存放在一组地址连续的存储单元里的方法。用顺序存储方法存储的线性表简称为顺序表。</p>
+<p>一句话：用数组来存储的线性表就是顺序表。</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>知识点</tag>
       </tags>
   </entry>
   <entry>
