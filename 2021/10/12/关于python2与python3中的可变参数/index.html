@@ -31,7 +31,7 @@
 <meta property="og:description" content="参考： https:&#x2F;&#x2F;blog.csdn.net&#x2F;Alian_W&#x2F;article&#x2F;details&#x2F;105131376https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;98f7e34845b5  1. 位置参数 (Positional)位置参数顾名思义就是与位置有关的参数，在调用函数的时候需要根据传入参数的位置来一一对应参数。并且，位置参数是不可缺省的，即不传入完整的参数是会报错的。位置参数是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-12T09:42:18.000Z">
-<meta property="article:modified_time" content="2024-07-26T08:01:16.894Z">
+<meta property="article:modified_time" content="2024-07-26T08:09:26.213Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0-Positional"><span class="nav-text">1. 位置参数 (Positional)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0-Default"><span class="nav-text">2. 默认参数 (Default)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="nav-text">3. 可变参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0-Keyword"><span class="nav-text">4. 关键字参数 (Keyword)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Python2-%E4%B8%8E-Python3-%E4%B8%AD%E5%8F%82%E6%95%B0%E5%AE%9A%E4%B9%89%E9%A1%BA%E5%BA%8F%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-text">5. Python2 与 Python3 中参数定义顺序的差异</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E4%B8%AD%E7%9A%84-%E4%B8%8E"><span class="nav-text">5.1 函数定义中的*与**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E4%B8%AD%E7%9A%84-%E4%B8%8E"><span class="nav-text">5.2 函数调用中的*与**</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0-Positional"><span class="nav-text">1. 位置参数 (Positional)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0-Default"><span class="nav-text">2. 默认参数 (Default)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="nav-text">3. 可变参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0-Keyword"><span class="nav-text">4. 关键字参数 (Keyword)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Python2-%E4%B8%8E-Python3-%E4%B8%AD%E5%8F%82%E6%95%B0%E5%AE%9A%E4%B9%89%E9%A1%BA%E5%BA%8F%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-text">5. Python2 与 Python3 中参数定义顺序的差异</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E4%B8%AD%E7%9A%84-%E4%B8%8E"><span class="nav-text">5.1 函数定义中的*与**</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E4%B8%AD%E7%9A%84-%E4%B8%8E"><span class="nav-text">5.2 函数调用中的*与**</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E9%A2%98%E5%A4%96%E8%AF%9D%EF%BC%9Aparameter%E5%92%8Cargument%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">6. 题外话：parameter和argument的区别</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -256,7 +256,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-26 16:01:16" itemprop="dateModified" datetime="2024-07-26T16:01:16+08:00">2024-07-26</time>
+      <time title="修改时间：2024-07-26 16:09:26" itemprop="dateModified" datetime="2024-07-26T16:09:26+08:00">2024-07-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -383,6 +383,17 @@
 <p>从这个例子能学到什么呢？</p>
 <p>首先默认参数也是可以放在<code>*args</code>后面，因为编译器可以识别出后面的关键字参数已经不是<code>*args</code>的内容了，接下来遇上了默认参数，一一赋值给关键字参数，剩下的再给<code>**kwargs</code>就可以了。</p>
 <p>其次，<code>**kwargs</code>是可以接收多个字典并且封装成一个大字典的，他的过程就是将所有关键字参数、字典都拆解然后再重新封装成字典的过程，最终在<code>fun3</code>中接收到的就是一个大字典。</p>
+<h4 id="6-题外话：parameter和argument的区别"><a href="#6-题外话：parameter和argument的区别" class="headerlink" title="6. 题外话：parameter和argument的区别"></a>6. 题外话：parameter和argument的区别</h4><blockquote>
+<p>参考 <a href="https://blog.csdn.net/it1988888/article/details/8871895">https://blog.csdn.net/it1988888/article/details/8871895</a></p>
+</blockquote>
+<ol>
+<li>parameter是指函数定义中参数，而argument指的是函数调用时的实际参数。</li>
+<li>简略描述为：parameter=形参(formal parameter)， argument=实参(actual parameter)。</li>
+<li>在不很严格的情况下，二者可以混用，一般用argument，而parameter则比较少用。</li>
+</ol>
+<blockquote>
+<p>A parameter is an intrinsic property of the procedure, included in its definition. By contrast, the arguments are the values actually supplied to the procedure when it is called. Unlike the parameters, which form an unchanging part of the procedure’s definition, the arguments can, and often do, vary from call to call. </p>
+</blockquote>
 
     </div>
 

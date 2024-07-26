@@ -6157,6 +6157,17 @@ Expected\ value = (row\ sum * column\ sum) / table\ sum.</script><p>For example,
 <p>从这个例子能学到什么呢？</p>
 <p>首先默认参数也是可以放在<code>*args</code>后面，因为编译器可以识别出后面的关键字参数已经不是<code>*args</code>的内容了，接下来遇上了默认参数，一一赋值给关键字参数，剩下的再给<code>**kwargs</code>就可以了。</p>
 <p>其次，<code>**kwargs</code>是可以接收多个字典并且封装成一个大字典的，他的过程就是将所有关键字参数、字典都拆解然后再重新封装成字典的过程，最终在<code>fun3</code>中接收到的就是一个大字典。</p>
+<h4 id="6-题外话：parameter和argument的区别"><a href="#6-题外话：parameter和argument的区别" class="headerlink" title="6. 题外话：parameter和argument的区别"></a>6. 题外话：parameter和argument的区别</h4><blockquote>
+<p>参考 <a href="https://blog.csdn.net/it1988888/article/details/8871895">https://blog.csdn.net/it1988888/article/details/8871895</a></p>
+</blockquote>
+<ol>
+<li>parameter是指函数定义中参数，而argument指的是函数调用时的实际参数。</li>
+<li>简略描述为：parameter=形参(formal parameter)， argument=实参(actual parameter)。</li>
+<li>在不很严格的情况下，二者可以混用，一般用argument，而parameter则比较少用。</li>
+</ol>
+<blockquote>
+<p>A parameter is an intrinsic property of the procedure, included in its definition. By contrast, the arguments are the values actually supplied to the procedure when it is called. Unlike the parameters, which form an unchanging part of the procedure’s definition, the arguments can, and often do, vary from call to call. </p>
+</blockquote>
 ]]></content>
       <categories>
         <category>Python</category>
