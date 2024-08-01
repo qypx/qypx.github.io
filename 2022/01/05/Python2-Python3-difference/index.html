@@ -23,27 +23,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考环境变量——关于PATH与CLASSPATH的区别（作用）path与classpath区别  1. PathPATH是系统用来指定可执行文件的完整路径。 当在cmd中执行命令时，如果执行的可执行文件不在当前目录下，那么系统就会依次搜索PATH中设置的路径。例如，若在PATH中设置了python的安装目录（D:\python\python-3.6.3），那么就可以在任意路径下使用python">
+    <meta name="description" content="主要对比版本：python27与python36 1. 关于copy()12values &#x3D; [1,2,3]values2 &#x3D; values.copy()  python3中没问题，python2中报错：  解决方法：改为： 12values2 &#x3D; list(values)# 或 values2 &#x3D; values[:] 2. Python2 不支持中文问题创建test.py程序如下： 1print">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于环境变量path与classpath">
-<meta property="og:url" content="http://qypx.github.io/2021/12/30/%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E4%B8%8Eclasspath/index.html">
+<meta property="og:title" content="关于python2与python3使用上的差异">
+<meta property="og:url" content="http://qypx.github.io/2022/01/05/Python2-Python3-difference/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="参考环境变量——关于PATH与CLASSPATH的区别（作用）path与classpath区别  1. PathPATH是系统用来指定可执行文件的完整路径。 当在cmd中执行命令时，如果执行的可执行文件不在当前目录下，那么系统就会依次搜索PATH中设置的路径。例如，若在PATH中设置了python的安装目录（D:\python\python-3.6.3），那么就可以在任意路径下使用python">
+<meta property="og:description" content="主要对比版本：python27与python36 1. 关于copy()12values &#x3D; [1,2,3]values2 &#x3D; values.copy()  python3中没问题，python2中报错：  解决方法：改为： 12values2 &#x3D; list(values)# 或 values2 &#x3D; values[:] 2. Python2 不支持中文问题创建test.py程序如下： 1print">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-30T07:53:28.000Z">
-<meta property="article:modified_time" content="2022-01-01T13:09:02.012Z">
+<meta property="og:image" content="http://qypx.github.io/2022/01/05/Python2-Python3-difference/image-20220105160555692.png">
+<meta property="og:image" content="http://qypx.github.io/2022/01/05/Python2-Python3-difference/image-20220105162421744.png">
+<meta property="article:published_time" content="2022-01-05T07:35:12.000Z">
+<meta property="article:modified_time" content="2024-08-01T03:04:07.772Z">
 <meta property="article:author" content="qypx">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qypx.github.io/2022/01/05/Python2-Python3-difference/image-20220105160555692.png">
 
 
-<link rel="canonical" href="http://qypx.github.io/2021/12/30/%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E4%B8%8Eclasspath/">
+<link rel="canonical" href="http://qypx.github.io/2022/01/05/Python2-Python3-difference/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2021/12/30/%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E4%B8%8Eclasspath/","path":"2021/12/30/关于环境变量path与classpath/","title":"关于环境变量path与classpath"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2022/01/05/Python2-Python3-difference/","path":"2022/01/05/Python2-Python3-difference/","title":"关于python2与python3使用上的差异"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>关于环境变量path与classpath | qypx の blog</title>
+<title>关于python2与python3使用上的差异 | qypx の blog</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -146,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Path"><span class="nav-text">1. Path</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-classpath"><span class="nav-text">2. classpath</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%94%A8%E6%88%B7%E5%8F%98%E9%87%8F%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F"><span class="nav-text">3. 用户变量与系统变量</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%B3%E4%BA%8Ecopy"><span class="nav-text">1. 关于copy()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Python2-%E4%B8%8D%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98"><span class="nav-text">2. Python2 不支持中文问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8E%E9%99%A4%E6%B3%95"><span class="nav-text">3. 关于除法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%85%B3%E4%BA%8E%E5%9C%A8python3%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BF%9D%E5%AD%98%EF%BC%8Cpython2%E7%8E%AF%E5%A2%83%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-text">4. 关于在python3环境中保存，python2环境中读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-text">5. 关于python2与python3中可变参数的差异</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -222,7 +226,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2021/12/30/%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E4%B8%8Eclasspath/">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2022/01/05/Python2-Python3-difference/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -235,12 +239,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="关于环境变量path与classpath | qypx の blog">
+      <meta itemprop="name" content="关于python2与python3使用上的差异 | qypx の blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          关于环境变量path与classpath
+          关于python2与python3使用上的差异
         </h1>
 
         <div class="post-meta-container">
@@ -251,14 +255,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-12-30 15:53:28" itemprop="dateCreated datePublished" datetime="2021-12-30T15:53:28+08:00">2021-12-30</time>
+      <time title="创建时间：2022-01-05 15:35:12" itemprop="dateCreated datePublished" datetime="2022-01-05T15:35:12+08:00">2022-01-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-01 21:09:02" itemprop="dateModified" datetime="2022-01-01T21:09:02+08:00">2022-01-01</time>
+      <time title="修改时间：2024-08-01 11:04:07" itemprop="dateModified" datetime="2024-08-01T11:04:07+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -266,7 +270,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">软件环境配置</span></a>
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
         </span>
     </span>
 
@@ -286,14 +290,34 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><blockquote>
-<p>参考<br><a href="https://blog.csdn.net/handsome_boy_wsq/article/details/82178724">环境变量——关于PATH与CLASSPATH的区别（作用）</a><br><a href="https://blog.csdn.net/mydreamongo/article/details/8155408">path与classpath区别</a></p>
+    <div class="post-body" itemprop="articleBody"><p>主要对比版本：python27与python36</p>
+<h4 id="1-关于copy"><a href="#1-关于copy" class="headerlink" title="1. 关于copy()"></a>1. 关于copy()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy() </span><br></pre></td></tr></table></figure>
+<p>python3中没问题，python2中报错：</p>
+<p><img src="/2022/01/05/Python2-Python3-difference/image-20220105160555692.png" alt="image-20220105160555692"></p>
+<p>解决方法：改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values2 = <span class="built_in">list</span>(values)</span><br><span class="line"><span class="comment"># 或 values2 = values[:]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-Python2-不支持中文问题"><a href="#2-Python2-不支持中文问题" class="headerlink" title="2. Python2 不支持中文问题"></a>2. Python2 不支持中文问题</h4><p>创建test.py程序如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;你好&quot;)</span><br></pre></td></tr></table></figure>
+<p>python3运行时，输出 你好，python2运行时，输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character &#x27;\xe4&#x27; in file e:/pycharmProject/ml_module/main5.py on line 7, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details</span><br></pre></td></tr></table></figure>
+<p>解决方法：在python文件最开头加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h4 id="3-关于除法"><a href="#3-关于除法" class="headerlink" title="3. 关于除法"></a>3. 关于除法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(2/3)</span><br><span class="line"></span><br><span class="line">python3中：0.6666666666666666</span><br><span class="line">pyhon2中：0</span><br></pre></td></tr></table></figure>
+<p>python2中的除法等价于python3中的//</p>
+<p>解决方法：</p>
+<p>法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;float(2)/3</span><br><span class="line">0.6666666666666666</span><br><span class="line"></span><br><span class="line">不能直接float()的，例如array等，可.astype(float) </span><br><span class="line">float 应该是等价于 &quot;float64&quot;</span><br><span class="line">int 应该是等价于 &quot;int32&quot;</span><br></pre></td></tr></table></figure>
+<p>法二：更简单的方法：</p>
+<blockquote>
+<p>参考 <a href="https://stackoverflow.com/questions/21316968/division-in-python-2-7-and-3-3">Division in Python 2.7. and 3.3 - Stack Overflow</a></p>
 </blockquote>
-<h4 id="1-Path"><a href="#1-Path" class="headerlink" title="1. Path"></a>1. Path</h4><p>PATH是系统用来指定可执行文件的完整路径。</p>
-<p>当在cmd中执行命令时，如果执行的可执行文件不在当前目录下，那么系统就会依次搜索PATH中设置的路径。例如，若在PATH中设置了python的安装目录（D:\python\python-3.6.3），那么就可以在任意路径下使用python xxx.py执行python程序，而不必在CMD中切换到python的安装目录下运行该命令。</p>
-<h4 id="2-classpath"><a href="#2-classpath" class="headerlink" title="2. classpath"></a>2. classpath</h4><p>CLASSPATH是指定程序中所使用的类文件所在的位置。classpath是java专用的查找类的路径。一般只在配置java环境时会用到。</p>
-<h4 id="3-用户变量与系统变量"><a href="#3-用户变量与系统变量" class="headerlink" title="3. 用户变量与系统变量"></a>3. 用户变量与系统变量</h4><p>用户变量只对当前用户有效；系统变量对所有用户有效。对于当前用户而言，设置用户变量与系统变量的效果大致相同，只是系统变量的路径排在用户变量的路径之前。</p>
-<p>小结：一般安装软件时环境变量的配置，编辑系统变量下的path内容即可。</p>
+<p>在python文件的最开头加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import division</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<p><img src="/2022/01/05/Python2-Python3-difference/image-20220105162421744.png" alt="image-20220105162421744"></p>
+<h4 id="4-关于在python3环境中保存，python2环境中读取文件"><a href="#4-关于在python3环境中保存，python2环境中读取文件" class="headerlink" title="4. 关于在python3环境中保存，python2环境中读取文件"></a>4. 关于在python3环境中保存，python2环境中读取文件</h4><p>详见 <a href="https://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">读取与保存csv和txt文件</a></p>
+<h4 id="5-关于python2与python3中可变参数的差异"><a href="#5-关于python2与python3中可变参数的差异" class="headerlink" title="5. 关于python2与python3中可变参数的差异"></a>5. 关于python2与python3中可变参数的差异</h4><p>详见 <a href="https://qypx.github.io/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">关于python2与python3中的可变参数</a></p>
 
     </div>
 
@@ -311,7 +335,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://qypx.github.io/2021/12/30/%E5%85%B3%E4%BA%8E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8Fpath%E4%B8%8Eclasspath/" title="关于环境变量path与classpath">http://qypx.github.io/2021/12/30/关于环境变量path与classpath/</a>
+      <a href="http://qypx.github.io/2022/01/05/Python2-Python3-difference/" title="关于python2与python3使用上的差异">http://qypx.github.io/2022/01/05/Python2-Python3-difference/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -319,18 +343,21 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/" rel="prev" title="关于python2与python3中的位置参数，可变参数，默认参数，关键字参数">
-                  <i class="fa fa-angle-left"></i> 关于python2与python3中的位置参数，可变参数，默认参数，关键字参数
+                <a href="/2022/01/02/Python-variable-scope/" rel="prev" title="Python变量作用域（全局变量和局部变量）">
+                  <i class="fa fa-angle-left"></i> Python变量作用域（全局变量和局部变量）
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/12/30/python-encoding/" rel="next" title="python文件编码说明">
-                  python文件编码说明 <i class="fa fa-angle-right"></i>
+                <a href="/2022/05/17/Python-run-linux-command/" rel="next" title="Python中运行linux命令">
+                  Python中运行linux命令 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

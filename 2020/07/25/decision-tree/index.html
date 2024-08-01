@@ -25,116 +25,116 @@
 
     <meta property="og:type" content="article">
 <meta property="og:title" content="决策树">
-<meta property="og:url" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/index.html">
+<meta property="og:url" content="http://qypx.github.io/2020/07/25/decision-tree/index.html">
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602345214652.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388750606.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388794784.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388824685.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650023450.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605848197047.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602343114032.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602343198091.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602342904256.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605848257068.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605860334434.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602344727944.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602344969446.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605847883769.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605857635104.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602392020465.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602392050284.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605845780129.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422558525.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422851775.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422915383.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422970229.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423017458.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602387260925.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388389187.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650752017.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650778439.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602424688613.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602424717026.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602424810650.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650963697.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595651148743.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423716567.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423679709.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423808005.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649034648.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649090585.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649112772.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649135709.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595652338160.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601797615594.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595652444294.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601797938878.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595652870653.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595653661803.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595653718100.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601196695960.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601799086192.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663386859.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663456133.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663508910.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663617670.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601800623694.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667123278.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667175530.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601189631302.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601190228458.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601190289236.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601190443051.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1606036242199.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1606040985704.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601191484592.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669502617.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669541744.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667573239.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667719081.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667791401.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667837751.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667861205.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667888425.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667950419.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667972342.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667995025.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668020156.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595822346216.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668057942.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668137245.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668154967.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595823332714.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668243451.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668320876.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668340241.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668403168.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668446774.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668537184.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668680481.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595830272543.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601268650680.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601268679265.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595837055748.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669193083.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1603251940059.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669223727.png">
-<meta property="og:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669343135.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602345214652.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602388750606.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602388794784.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602388824685.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595650023450.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1605848197047.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602343114032.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602343198091.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602342904256.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1605848257068.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1605860334434.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602344727944.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602344969446.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1605847883769.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1605857635104.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602392020465.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602392050284.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1605845780129.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602422558525.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602422851775.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602422915383.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602422970229.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602423017458.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602387260925.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602388389187.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595650752017.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595650778439.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602424688613.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602424717026.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602424810650.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595650963697.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595651148743.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602423716567.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602423679709.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602423808005.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595649034648.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595649090585.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595649112772.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595649135709.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595652338160.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601797615594.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595652444294.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601797938878.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595652870653.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595653661803.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595653718100.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601196695960.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601799086192.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595663386859.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595663456133.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595663508910.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595663617670.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601800623694.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667123278.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667175530.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601189631302.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601190228458.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601190289236.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601190443051.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1606036242199.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1606040985704.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601191484592.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595669502617.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595669541744.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667573239.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667719081.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667791401.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667837751.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667861205.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667888425.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667950419.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667972342.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595667995025.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668020156.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595822346216.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668057942.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668137245.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668154967.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595823332714.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668243451.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668320876.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668340241.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668403168.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668446774.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668537184.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595668680481.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595830272543.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601268650680.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1601268679265.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595837055748.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595669193083.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1603251940059.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595669223727.png">
+<meta property="og:image" content="http://qypx.github.io/2020/07/25/decision-tree/1595669343135.png">
 <meta property="article:published_time" content="2020-07-25T05:48:42.000Z">
-<meta property="article:modified_time" content="2024-06-24T07:10:44.490Z">
+<meta property="article:modified_time" content="2024-08-01T03:21:57.056Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602345214652.png">
+<meta name="twitter:image" content="http://qypx.github.io/2020/07/25/decision-tree/1602345214652.png">
 
 
-<link rel="canonical" href="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/">
+<link rel="canonical" href="http://qypx.github.io/2020/07/25/decision-tree/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/","path":"2020/07/25/决策树/","title":"决策树"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/07/25/decision-tree/","path":"2020/07/25/decision-tree/","title":"决策树"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>决策树 | qypx の blog</title>
@@ -316,7 +316,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/07/25/decision-tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -352,7 +352,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-24 15:10:44" itemprop="dateModified" datetime="2024-06-24T15:10:44+08:00">2024-06-24</time>
+      <time title="修改时间：2024-08-01 11:21:57" itemprop="dateModified" datetime="2024-08-01T11:21:57+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -380,8 +380,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>（关于决策树与集成学习也可参考我的OneNote笔记 -&gt; preparation）</p>
-<h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="#jump_entropy">熵</a><br><a href="#jump_conditional_entropy">条件熵</a><br><a href="#jump_IG">信息增益的定义</a><br><a href="#jump_MI">互信息</a><br><a href="#jump_IGR">信息增益率</a><br><a href="#jump_Gini">基尼指数</a></p>
+    <div class="post-body" itemprop="articleBody"><h2 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h2><p><a href="#jump_entropy">熵</a><br><a href="#jump_conditional_entropy">条件熵</a><br><a href="#jump_IG">信息增益的定义</a><br><a href="#jump_MI">互信息</a><br><a href="#jump_IGR">信息增益率</a><br><a href="#jump_Gini">基尼指数</a></p>
 <p><a href="#jump_C4.5advantage">C4.5对于ID3所做的改进</a><br><a href="#jump_CARTadvantage">CART对于CR.4所做的改进</a></p>
 <p><a href="#jump_algo1.1">算法1.1 (信息增益的算法)</a><br><a href="#jump_algo1.2">算法1.2 (ID3算法)</a><br><a href="#jump_algo2.1">算法2.1 (C4.5的生成算法)</a><br><a href="#jump_algo3.1">算法3.1 (CART生成算法)</a><br><a href="#jump_algo3.2">算法3.2 (CART剪枝算法)</a><br><a href="#jump_algo3.3">算法3.3 (最小二乘回归树生成算法)</a><br><a href="#jump_GBDT">GBDT算法步骤</a></p>
 <p><a href="#jump3.1.2.1">XGBoost并行化</a><br><a href="#jump3.1.4">XGBoost与GBDT的比较</a></p>
@@ -433,7 +432,7 @@ H(p)=-\sum_{i=1}^n p_i\log p_i</script><p><span style="color:red">熵越大，�
 P(X=1)=p, \ P(X=0)=1-p, \quad 0\leq p\leq 1</script><p>熵为</p>
 <script type="math/tex; mode=display">
 H(p)=-p\log_2p-(1-p)\log_2(1-p)</script><p>这时，熵 $H(p)$ 随概率 $p$ 变化的曲线如下图所示（单位为比特）</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602345214652.png" alt="1602345214652"></p>
+<p><img src="/2020/07/25/decision-tree/1602345214652.png" alt="1602345214652"></p>
 <p>当 $p=0$ 或 $p=1$ 时 $H(p)=0$，随机变量完全没有不确定性。当 $p=0.5$ 时，$H(p)=1$，熵取值最大，随机变量不确定性最大。</p>
 <hr>
 <p>设有随机变量 $(X,Y)$，其联合概率分布为</p>
@@ -476,9 +475,9 @@ g(D,A)=H(D)-H(D|A)</script><h5 id="1-2-2-ID3算法"><a href="#1-2-2-ID3算法" c
 <p>输入：训练数据集 $D$，特征集 $A$，阈值 $\varepsilon$<br>输出：决策树 $T$.</p>
 <p>（1）若 $D$ 中所有实例属于同一类 $C_k$，则 $T$ 为单结点树，并将类 $C_k$ 作为该结点的类标记，返回 $T$<br>（2）若 $A=\varnothing$，则 $T$ 为单结点树，并将 $D$  中实例数最大的类 $C_k$ 作为该结点的类标记，返回 $T$<br>（3）否则，按算法1.1计算 $A$ 中各特征对 $D$ 的信息增益，选择信息增益最大的特征 $A_g$<br>（4）若 $A_g$ 的信息增益小于阈值 $\varepsilon$，则置  $ T$ 为单结点树，并将 $D$ 中实例数最大的类 $C_k$ 作为该结点的类标记，返回 $T$<br>（5）否则，对 $A_g$ 的每一可能值 $a_i$，依 $A_g=a_i$ 将 $D$ 分割为若干非空子集 $D_i$，将 $D_i$ 中实例数最大的类作为标记，构建子结点，由结点及其子结点构成树 $T$，返回 $T$<br>（6）对第 $i$ 个子结点，以 $D_i$ 为训练集，以 $A-{A_g}$ 为特征集递归地调用步(1) ~ 步(5)，得到子树 $T_i$，返回 $T_i$.</p>
 <p>例：对表5.1的训练数据集，利用ID3算法建立决策树</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388750606.png" alt="1602388750606"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388794784.png" alt="1602388794784"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388824685.png" alt="1602388824685"></p>
+<p><img src="/2020/07/25/decision-tree/1602388750606.png" alt="1602388750606"></p>
+<p><img src="/2020/07/25/decision-tree/1602388794784.png" alt="1602388794784"></p>
+<p><img src="/2020/07/25/decision-tree/1602388824685.png" alt="1602388824685"></p>
 <h4 id="1-3-缺点"><a href="#1-3-缺点" class="headerlink" title="1.3 缺点"></a>1.3 缺点</h4><ul>
 <li>ID3 没有剪枝策略，该算法生成的树容易过拟合；</li>
 <li>信息增益准则对可取值数目较多的特征有所偏好，类似“编号”的特征其信息增益接近于 1（但实际上这并不是一个好的特征选择）；</li>
@@ -503,7 +502,7 @@ g(D,A)=H(D)-H(D|A)</script><h5 id="1-2-2-ID3算法"><a href="#1-2-2-ID3算法" c
 </ul>
 </li>
 </ul>
-<h4 id="2-2-划分标准"><a href="#2-2-划分标准" class="headerlink" title="2.2 划分标准"></a>2.2 划分标准</h4><h5 id="2-2-1-信息增益率"><a href="#2-2-1-信息增益率" class="headerlink" title="2.2.1 信息增益率"></a><span id="jump_IGR">2.2.1 信息增益率</span></h5><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650023450.png" alt="1595650023450"></p>
+<h4 id="2-2-划分标准"><a href="#2-2-划分标准" class="headerlink" title="2.2 划分标准"></a>2.2 划分标准</h4><h5 id="2-2-1-信息增益率"><a href="#2-2-1-信息增益率" class="headerlink" title="2.2.1 信息增益率"></a><span id="jump_IGR">2.2.1 信息增益率</span></h5><p><img src="/2020/07/25/decision-tree/1595650023450.png" alt="1595650023450"></p>
 <p>👆(intrinsic value)</p>
 <p>$H_A(D)$表示训练数据集 $D$ 关于特征 $A$ 的值的熵，$n$ 是特征 $A$ 取值的个数。特征 $A$ 的可能取值数目越大（即n越大），则 $H_A(D)$ 的值通常会越大。</p>
 <p>这里需要注意，信息增益率对可取值较少的特征有所偏好（分母越小，整体越大），因此 C4.5 并不是直接用增益率最大的特征进行划分，而是使用一个<em>启发式方法</em>：先从候选划分特征中找到信息增益高于平均值的特征，再从中选择增益率最高的。</p>
@@ -524,18 +523,18 @@ g(D,A)=H(D)-H(D|A)</script><h5 id="1-2-2-ID3算法"><a href="#1-2-2-ID3算法" c
 <li>节点划分前准确率比划分后准确率高。</li>
 </ul>
 <p>预剪枝不仅可以降低过拟合的风险而且还可以减少训练时间，但另一方面它是基于“贪心”策略，会带来欠拟合风险。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605848197047.png" alt="1605848197047"></p>
+<p><img src="/2020/07/25/decision-tree/1605848197047.png" alt="1605848197047"></p>
 <p>(👆 <a href="https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf">https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf</a>)</p>
 <hr>
 <blockquote>
 <p>以下内容来自西瓜书</p>
 </blockquote>
 <p>例子：</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602343114032.png" alt="1602343114032"></p>
+<p><img src="/2020/07/25/decision-tree/1602343114032.png" alt="1602343114032"></p>
 <p>假定采用信息增益准则进行划分属性选择，则从表4.2的训练集将会生成一棵如图4.5所示的决策树。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602343198091.png" alt="1602343198091"></p>
+<p><img src="/2020/07/25/decision-tree/1602343198091.png" alt="1602343198091"></p>
 <p>基于信息增益准则，我们会选取属性“脐部”来对训练集进行划分，并产生3个分支，如图4.6所示。然而，是否应该进行这个划分呢？预剪枝要对划分前后的泛化性能进行评估。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602342904256.png" alt="1602342904256"></p>
+<p><img src="/2020/07/25/decision-tree/1602342904256.png" alt="1602342904256"></p>
 <p>在划分之前，所有样例集中在根结点。若不进行划分，该结点将被标记为叶结点，其类别标记为训练样例数最多的类别，假设我们将这个叶结点标记为“好瓜”（当样例最多的类不唯一时，可任选其中一类）.  用表4.2的验证集对这个单结点决策树进行评估，编号为{4,5,8}的样例被分类正确，另外4个样例分类错误，于是验证集的<strong>精度</strong>为 $\frac{3}{7}\times 100\%=42.9\%$.</p>
 <p>在用属性“脐部”划分之后，图4.6中的结点②、③、④分别包含编号为 {1,2,3,14}, {6,7,15,17}, {10,16}的训练样例，因此这3个结点分别被标记为叶结点“好瓜”，“好瓜”，“坏瓜”。此时，验证集中编号为 {4,5,8,11,12}的样例被分类正确，验证集精度为 $\frac{5}{7}\times 100\%=71.4\% &gt; 42.9\%$. 于是，用“脐部”进行划分得以确定。</p>
 <p>然后，决策树算法对结点②进行划分，基于信息增益准则将挑选出属性“色泽”。然而，在使用“色泽”划分后，编号为 {5} 的验证集样本分类结果会由正确转为错误，（其余样本分类结果不变）使得验证集精度下降为 57.1%. 于是，预剪枝策略将禁止结点②被划分。</p>
@@ -544,7 +543,7 @@ g(D,A)=H(D)-H(D|A)</script><h5 id="1-2-2-ID3算法"><a href="#1-2-2-ID3算法" c
 <p>于是，基于预剪枝策略从表4.2数据所生成的决策树如图4.6所示，其验证集精度为71.4%.</p>
 <p>对比图4.6和图4.5可以看出，预剪枝使得决策树的很多分支都没有“展开”，这不仅降低了过拟合的风险，还显著减少了决策树的训练时间开销和测试时间开销。但另一方面，有些分支的当前划分虽不能提升泛化性能，甚至可能导致泛化性能暂时下降，但在其基础上进行的后续划分却有可能导致性能显著提高；预剪枝基于“贪心”本质禁止这些分支展开，给预剪枝决策树带来了欠拟合的风险。</p>
 <h5 id="2-3-2-后剪枝"><a href="#2-3-2-后剪枝" class="headerlink" title="2.3.2 后剪枝"></a>2.3.2 后剪枝</h5><p>后剪枝是人们普遍关注的决策树剪枝策略，与预剪枝恰好相反，后剪枝的执行步骤是先构造完成完整的决策树，再通过某些条件遍历树进行剪枝，其主要思路是通过删除节点的分支并用叶节点替换，剪去完全成长的树的子树，这个节点所标识的类别通过大多数原则（majority class criterion）确定（既将一些子树删除而用叶子节点代替，这个叶节点所表示的类别用这棵子树中的大多数训练样本所属类别来进行标识）。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605848257068.png" alt="1605848257068"></p>
+<p><img src="/2020/07/25/decision-tree/1605848257068.png" alt="1605848257068"></p>
 <p>(👆 <a href="https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf">https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf</a>)</p>
 <p>目前主要应用的后剪枝方法有四种：</p>
 <ul>
@@ -554,7 +553,7 @@ g(D,A)=H(D)-H(D|A)</script><h5 id="1-2-2-ID3算法"><a href="#1-2-2-ID3算法" c
 <li>基于错误的剪枝（Error-Based Pruning，EBP），也叫错误率降低剪枝（Reduced Error Pruning, REP）</li>
 </ul>
 <p>(👆 来自 <a href="https://zhuanlan.zhihu.com/p/165647069">https://zhuanlan.zhihu.com/p/165647069</a>)</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605860334434.png" alt="1605860334434"></p>
+<p><img src="/2020/07/25/decision-tree/1605860334434.png" alt="1605860334434"></p>
 <blockquote>
 <p>C4.5 采用的悲观错误剪枝，CART采用的代价复杂度剪枝</p>
 </blockquote>
@@ -566,14 +565,14 @@ g(D,A)=H(D)-H(D|A)</script><h5 id="1-2-2-ID3算法"><a href="#1-2-2-ID3算法" c
 <p>以下内容来自西瓜书</p>
 </blockquote>
 <p>基于表4.2的数据得到如图4.5的决策树。易知，该决策树的验证集精度为 42.9%.<br>如下展示的后剪枝为基于错误的后剪枝(EBP)？</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602344727944.png" alt="1602344727944"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602344969446.png" alt="1602344969446"></p>
+<p><img src="/2020/07/25/decision-tree/1602344727944.png" alt="1602344727944"></p>
+<p><img src="/2020/07/25/decision-tree/1602344969446.png" alt="1602344969446"></p>
 <h6 id="2-3-2-2-悲观错误剪枝"><a href="#2-3-2-2-悲观错误剪枝" class="headerlink" title="2.3.2.2 悲观错误剪枝"></a>2.3.2.2 悲观错误剪枝</h6><blockquote>
 <p>参考<br><a href="https://www.cnblogs.com/zhangchaoyang/articles/2842490.html">https://www.cnblogs.com/zhangchaoyang/articles/2842490.html</a><br><a href="https://blog.csdn.net/weixin_41647586/article/details/89052754">https://blog.csdn.net/weixin_41647586/article/details/89052754</a><br><a href="https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf">https://www.ismll.uni-hildesheim.de/lehre//////ml-08w/skript/decision_trees2.pdf</a></p>
 </blockquote>
 <p>基于错误的剪枝方法很直接，但是需要一个额外的测试数据集，能不能不要这个额外的数据集呢？为了解决这个问题，于是就提出了悲观剪枝。该方法和基于错误的剪枝思路是一致的，不同之处在于如何估计泛化误差。</p>
 <p>把一颗子树（具有多个叶子节点）的分类用一个叶子节点来替代的话，在训练集上的误判率肯定是上升的（这是显然的，同样的样本子集，如果用子树分类可以分成多个类，而用单颗叶子节点来分的话只能分成一个类，多个类肯定要准确一些），但是在新数据上不一定。于是我们需要对子树的误判数加上一个经验性的惩罚因子。对于一颗叶子节点，假设它覆盖了N个样本，其中有E个错误，那么该叶子节点的错误率为（E+0.5）/N。这个0.5就是惩罚因子。那么一颗子树，它有L个叶子节点，那么该子树的误判率估计为 $\frac{\sum<em>{i=1}^L E_i+0.5*L}{\sum</em>{i=1}^L N_i}$。剪枝后内部节点变成了叶子节点，其误判个数 J 也需要加上一个惩罚因子，变成 J+0.5。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605847883769.png" alt="1605847883769"></p>
+<p><img src="/2020/07/25/decision-tree/1605847883769.png" alt="1605847883769"></p>
 <blockquote>
 <p>一句话概括，基于错误的剪枝利用额外的测试集去估计泛化误差，悲观剪枝直接利用训练集估计泛化误差</p>
 </blockquote>
@@ -590,7 +589,7 @@ E(subtree\_err\_count)+std(subtree\_err\_count)<E(leaf\_err\_count)</script><p>�
 <p>反之就是不分裂，即剪枝的条件：</p>
 <script type="math/tex; mode=display">
 E(subtree\_err\_count)+std(subtree\_err\_count)>E(leaf\_err\_count)</script><p><span style="color:red">（此处公式存疑，看到许多不同的说法）</span></p>
-<p>例：<br><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605857635104.png" alt="1605857635104"></p>
+<p>例：<br><img src="/2020/07/25/decision-tree/1605857635104.png" alt="1605857635104"></p>
 <p>T4这棵子树的误差率：（即分裂后的误差率）</p>
 <script type="math/tex; mode=display">
 \frac{(2+3)+0.5∗3}{16}=0.40625</script><p>子树误差率的标准差：</p>
@@ -617,9 +616,9 @@ T_a=\{\frac{a^i+a^{i+1}}{2}|1\leq i \leq n-1 \}.</script><p>即把区间 $[a^i,a
 Gain(D,a)=\max_{t∈T_a} Gain(D,a,t)=\max_{t∈T_a} Ent(D) - 
 \sum_{\lambda∈\{-,+\}} \frac{|D_t^\lambda|}{|D|}Ent(D_t^\lambda)</script><p>其中 $Gain(D,a,t)$ 是样本集 $D$ 基于划分点 $t$ 二分后的信息增益。于是，我们就可选择使 $Gain(D,a,t)$ 最大化的划分点。</p>
 <p>例：</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602392020465.png" alt="1602392020465"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602392050284.png" alt="1602392050284"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1605845780129.png" alt="1605845780129"></p>
+<p><img src="/2020/07/25/decision-tree/1602392020465.png" alt="1602392020465"></p>
+<p><img src="/2020/07/25/decision-tree/1602392050284.png" alt="1602392050284"></p>
+<p><img src="/2020/07/25/decision-tree/1605845780129.png" alt="1605845780129"></p>
 <p>(👆 来自 <a href="https://www.cnblogs.com/zhangchaoyang/articles/2842490.html">https://www.cnblogs.com/zhangchaoyang/articles/2842490.html</a>)</p>
 <h4 id="2-5-缺失值处理"><a href="#2-5-缺失值处理" class="headerlink" title="2.5 缺失值处理"></a><span id="jump2.5">2.5 缺失值处理</span></h4><blockquote>
 <p>以下内容来自西瓜书</p>
@@ -634,12 +633,12 @@ Gain(D,a)=\max_{t∈T_a} Gain(D,a,t)=\max_{t∈T_a} Ent(D) -
 \tilde p_k &= \frac{\sum_{x\in \tilde D_k} w_x}{\sum_{x\in \tilde D} w_x} \quad (1\leq k \leq K),\\
 \tilde r_v &=\frac{\sum_{x\in \tilde D^v} w_x}{\sum_{x\in \tilde D} w_x} \quad (1\leq v \leq V).
 \end{align*}</script><p>直观地看，对属性 $a$，$\rho$ 表示无缺失值样本所占的比例，$\tilde p<em>k$表示无缺失值样本中第 $k$ 类所占的比例，$\tilde r_v$ 则表示无缺失值样本中在属性 $a$ 上取值 $a^v$ 的样本所占的比例。显然 $\sum</em>{k=1}^K\tilde p<em>k=1, \sum</em>{v=1}^V\tilde r_v=1.$ </p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422558525.png" alt="1602422558525"></p>
+<p><img src="/2020/07/25/decision-tree/1602422558525.png" alt="1602422558525"></p>
 <p>C4.5算法使用了上述解决方案。下面以表4.4的数据集为例来生成一棵决策树。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422851775.png" alt="1602422851775"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422915383.png" alt="1602422915383"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602422970229.png" alt="1602422970229"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423017458.png" alt="1602423017458"></p>
+<p><img src="/2020/07/25/decision-tree/1602422851775.png" alt="1602422851775"></p>
+<p><img src="/2020/07/25/decision-tree/1602422915383.png" alt="1602422915383"></p>
+<p><img src="/2020/07/25/decision-tree/1602422970229.png" alt="1602422970229"></p>
+<p><img src="/2020/07/25/decision-tree/1602423017458.png" alt="1602423017458"></p>
 <h4 id="2-6-缺点"><a href="#2-6-缺点" class="headerlink" title="2.6 缺点"></a>2.6 缺点</h4><ul>
 <li>剪枝策略可以再优化；</li>
 <li>C4.5 用的是多叉树，用二叉树效率更高；</li>
@@ -686,12 +685,12 @@ Gini(D)=1-\sum_{k=1}^K (\frac{|C_k|}{|D|})^2</script><p>这里， $C_k$ 是 $D$ 
 D_1=\{(x,y)∈D|A(x)=a\},\quad D_2=D-D_1</script><p>则在特征 $A$ 的条件下，集合 $D$ 的基尼指数定义为</p>
 <script type="math/tex; mode=display">
 Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)</script><p>基尼指数 $Gini(D)$ 表示集合 $D$ 的不确定性（不纯度），基尼指数 $Gini(D,A)$ 表示经 $A=a$ 分割后集合 $D$ 的不确定性。<span style="color:red">基尼指数越大，样本集合的不确定性也就越大，这一点与熵相似。</span></p>
-<p> <img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602387260925.png" alt="1602387260925"></p>
+<p> <img src="/2020/07/25/decision-tree/1602387260925.png" alt="1602387260925"></p>
 <h5 id="3-2-2-CART算法"><a href="#3-2-2-CART算法" class="headerlink" title="3.2.2 CART算法"></a>3.2.2 CART算法</h5><p><strong><span id="jump_algo3.1" style="color:blue"> 算法3.1（CART生成算法）</span></strong></p>
 <p>输入：训练数据集 $D$，停止计算的条件<br>输出：CART决策树</p>
 <p>根据训练数据集，从根结点开始，递归地对每个结点进行以下操作，构建二叉决策树<br>（1）设结点的训练数据集为 $D$，计算现有特征对该数据集的基尼指数。此时，对每一个特征 $A$，对其可能取值的每个值 $a$，根据样本点对 $A=a$ 的测试为”是“或”否“将 $D$ 分割成 $D_1$ 和 $D_2$ 两部分，计算 $A=a$ 时的基尼指数<br>（2）在所有可能的特征 $A$ 以及它们所有可能的切分点 $a$ 中，选择基尼指数最小的特征及其对应的切分点作为最优特征与最优切分点。依最优特征与最优切分点，从现结点生成两个子结点，将训练数据集依特征分配到两个子结点中去<br>（3）对两个子结点递归地调用(1), (2)，直至满足停止条件<br>（4）生成CART决策树<br>算法停止计算的条件是结点中的样本个数小于预定阈值，或样本的基尼指数小于预定阈值（样本基本属于同一类），或者没有更多特征。</p>
 <p>例：根据表5.1所给训练数据集，应用CART算法生成决策树。（表5.1见<a href="#jump1.2.2">1.2.2 ID3算法</a>）</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602388389187.png" alt="1602388389187"></p>
+<p><img src="/2020/07/25/decision-tree/1602388389187.png" alt="1602388389187"></p>
 <hr>
 <p>基尼指数偏向于特征值较多的特征，类似信息增益。基尼指数可以用来度量任何不均匀分布，是介于0~1之间的数，0是完全相等，1是完全不相等。</p>
 <h4 id="3-3-缺失值处理"><a href="#3-3-缺失值处理" class="headerlink" title="3.3 缺失值处理"></a>3.3 缺失值处理</h4><p>上文说到，模型对于缺失值的处理会分为两个子问题：</p>
@@ -700,18 +699,18 @@ Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)</script><p>基�
 <p>对于问题 2，CART 算法的机制是为树的每个节点都找到代理分裂器，无论在训练数据上得到的树是否有缺失值都会这样做。在代理分裂器中，特征的分值必须超过默认规则的性能才有资格作为代理（即代理就是代替缺失值特征作为划分特征的特征），当 CART 树中遇到缺失值时，这个实例划分到左边还是右边是决定于其排名最高的代理，如果这个代理的值也缺失了，那么就使用排名第二的代理，以此类推，如果所有代理值都缺失，那么默认规则就是把样本划分到较大的那个子节点。代理分裂器可以确保无缺失训练数据上得到的树可以用来处理包含确实值的新数据。</p>
 <h4 id="3-4-剪枝策略"><a href="#3-4-剪枝策略" class="headerlink" title="3.4 剪枝策略"></a>3.4 剪枝策略</h4><p>采用一种“基于代价复杂度的剪枝”方法进行后剪枝，这种方法会生成一系列树，每个树都是通过将前面的树的某个或某些子树替换成一个叶节点而得到的，这一系列树中的最后一棵树仅含一个用来预测类别的叶节点。然后用一种成本复杂度的度量准则来判断哪棵子树应该被一个预测类别值的叶节点所代替。这种方法需要使用一个单独的测试数据集来评估所有的树，根据它们在测试数据集熵的分类性能选出最佳的树。</p>
 <p>我们来看具体看一下代价复杂度剪枝算法：</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650752017.png" alt="1595650752017"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650778439.png" alt="1595650778439"></p>
+<p><img src="/2020/07/25/decision-tree/1595650752017.png" alt="1595650752017"></p>
+<p><img src="/2020/07/25/decision-tree/1595650778439.png" alt="1595650778439"></p>
 <hr>
 <blockquote>
 <p>以下内容来自《统计学习方法》</p>
 </blockquote>
 <p>CART 剪枝算法从”完全生长“的决策树的底端剪去一些子树，使决策树变小（模型变简单）。CART 剪枝算法由两步组成：<span style="color:blue">首先从生成算法产生的决策树 $T_0$ 底端开始不断剪枝，直到 $T_0$ 的根结点，形成一个子树序列 ${ T_0,T_1, …,T_n}$；然后通过交叉验证法在独立的验证数据集上对字数序列进行测试，从中选择最优子树。</span></p>
 <p>1.剪枝，形成一个子树序列</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602424688613.png" alt="1602424688613"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602424717026.png" alt="1602424717026"></p>
+<p><img src="/2020/07/25/decision-tree/1602424688613.png" alt="1602424688613"></p>
+<p><img src="/2020/07/25/decision-tree/1602424717026.png" alt="1602424717026"></p>
 <p>2.在剪枝得到的字数序列 $ T<em>0,T_1, …,T_n$ 中通过交叉验证选取最优子树 $T</em>\alpha$</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602424810650.png" alt="1602424810650"></p>
+<p><img src="/2020/07/25/decision-tree/1602424810650.png" alt="1602424810650"></p>
 <p><strong><span id="jump_algo3.2" style="color:blue">算法3.2 （CART剪枝算法）</span></strong></p>
 <p>输入：CART 算法生成的决策树 $T<em>0$<br>输出：最优决策树 $T</em>\alpha$</p>
 <p>（1）设 $k=0，T=T_0$<br>（2）设 $\alpha=+\infty$<br>（3）自下而上地对各内部结点 $t$ 计算 $C(T_t)，|T_t|$以及</p>
@@ -720,21 +719,21 @@ g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}\\
 \alpha=min(\alpha,g(t))</script><p>这里，$T<em>t$ 表示以 $t$ 为根结点的子树，$C(T_t)$ 是对训练数据的预测误差，$|T_t|$ 是 $T_t$ 的叶结点个数。<br>（4）对 $g(t)=\alpha$ 的内部结点 $t$ 进行剪枝，并对叶结点 $t$ 以多数表决法决定其类，得到树 $T$<br>（5）设 $k=k+1，\alpha_k=\alpha，T_k=T$.<br>（6）如果 $T_k$ 不是由根结点及两个叶结点构成的树，则回到不再(3)；否则令 $T_k=T_n$<br>（7）采用交叉验证法在子树序列 $ T_0,T_1, …,T_n$ 中选取最优子树 $T</em>\alpha$.</p>
 <h4 id="3-5-类别不平衡"><a href="#3-5-类别不平衡" class="headerlink" title="3.5 类别不平衡"></a>3.5 类别不平衡</h4><p>CART 的一大优势在于：无论训练数据集有多失衡，它都可以将其自动消除不需要建模人员采取其他操作。</p>
 <p>CART 使用了一种先验机制，其作用相当于对类别进行加权。这种先验机制嵌入于 CART 算法判断分裂优劣的运算里，在 CART 默认的分类模式中，总是要计算每个节点关于根节点的类别频率的比值，这就相当于对数据自动重加权，对类别进行均衡。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595650963697.png" alt="1595650963697"></p>
+<p><img src="/2020/07/25/decision-tree/1595650963697.png" alt="1595650963697"></p>
 <p>通过这种计算方式就无需管理数据真实的类别分布。假设有 K 个目标类别，就可以确保根节点中每个类别的概率都是 1/K。这种默认的模式被称为“先验相等”。</p>
 <p>先验设置和加权不同之处在于先验不影响每个节点中的各类别样本的数量或者份额。先验影响的是每个节点的类别赋值和树生长过程中分裂的选择。</p>
 <h4 id="3-6-回归树"><a href="#3-6-回归树" class="headerlink" title="3.6 回归树"></a><span id="jump3.6">3.6 回归树</span></h4><p>CART(Classification and Regression Tree，分类回归树)，从名字就可以看出其不仅可以用于分类，也可以应用于回归。其回归树的建立算法上与分类树部分相似，这里简单介绍下不同之处。</p>
 <h5 id="3-6-1-连续值处理"><a href="#3-6-1-连续值处理" class="headerlink" title="3.6.1 连续值处理"></a>3.6.1 连续值处理</h5><p>对于连续值的处理，CART 分类树采用基尼系数的大小来度量特征的各个划分点。在回归模型中，我们使用常见的和方差度量方式，对于任意划分特征 $A$，对应的任意划分点 $s$ 两边划分成的数据集$D_1$和 $D_2$，求出使$D_1$和$D_2$ 各自集合的均方差最小，同时$D_1$和$D_2$ 的均方差之和最小所对应的特征和特征值划分点。表达式为：</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595651148743.png" alt="1595651148743"></p>
+<p><img src="/2020/07/25/decision-tree/1595651148743.png" alt="1595651148743"></p>
 <p>其中，$c_1$表示 $D_1$ 的输出值，$c_2$表示 $D_2$ 的输出值。$D_1$上的最优值输出值 $\hat c_1$ 是 $D_1$ 数据集的样本输出均值，即 $\hat c_1 = ave(y_i|x_i\in D_1)$，同理，$\hat c_2 = ave(y_i|x_i\in D_2)$.</p>
 <h5 id="3-6-2-预测方式"><a href="#3-6-2-预测方式" class="headerlink" title="3.6.2 预测方式"></a>3.6.2 预测方式</h5><p>对于决策树建立后做预测的方式，上面讲到了 CART 分类树采用叶子节点里概率最大的类别作为当前节点的预测类别。而回归树输出不是类别，它采用的是用最终叶子的均值或者中位数来预测输出结果。</p>
 <h5 id="3-6-3-回归树的生成"><a href="#3-6-3-回归树的生成" class="headerlink" title="3.6.3 回归树的生成"></a>3.6.3 回归树的生成</h5><blockquote>
 <p>以下内容来自《统计学习方法》</p>
 </blockquote>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423716567.png" alt="1602423716567"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423679709.png" alt="1602423679709"></p>
+<p><img src="/2020/07/25/decision-tree/1602423716567.png" alt="1602423716567"></p>
+<p><img src="/2020/07/25/decision-tree/1602423679709.png" alt="1602423679709"></p>
 <p><strong><span id="jump_algo3.3" style="color:blue">算法3.3 （最小二乘回归树生成算法）</span></strong></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1602423808005.png" alt="1602423808005"></p>
+<p><img src="/2020/07/25/decision-tree/1602423808005.png" alt="1602423808005"></p>
 <h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h3><p>最后通过总结的方式对比下 ID3、C4.5 和 CART 三者之间的差异。</p>
 <ul>
 <li><strong>划分标准的差异</strong>：ID3 使用信息增益，偏向特征值多的特征，C4.5 使用信息增益率克服信息增益的缺点，偏向于可取值较少的特征，CART 使用基尼指数克服 C4.5 需要求 log 的巨大计算量，偏向于特征值较多的特征。</li>
@@ -744,10 +743,10 @@ g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}\\
 <li><strong>剪枝策略的差异</strong>：ID3 没有剪枝策略，C4.5 是通过悲观剪枝策略来修正树的准确性（后剪枝），而 CART 是通过代价复杂度剪枝（后剪枝）。</li>
 </ul>
 <hr>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649034648.png" alt="1595649034648"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649090585.png" alt="1595649090585"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649112772.png" alt="1595649112772"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595649135709.png" alt="1595649135709"></p>
+<p><img src="/2020/07/25/decision-tree/1595649034648.png" alt="1595649034648"></p>
+<p><img src="/2020/07/25/decision-tree/1595649090585.png" alt="1595649090585"></p>
+<p><img src="/2020/07/25/decision-tree/1595649112772.png" alt="1595649112772"></p>
+<p><img src="/2020/07/25/decision-tree/1595649135709.png" alt="1595649135709"></p>
 <p>信息增益，信息增益率 -&gt; 选最大<br>基尼系数 -&gt; 选最小</p>
 <hr>
 <h2 id="篇二：Random-Forest-Adaboost-GBDT算法"><a href="#篇二：Random-Forest-Adaboost-GBDT算法" class="headerlink" title="篇二：Random Forest, Adaboost, GBDT算法"></a>篇二：Random Forest, Adaboost, GBDT算法</h2><blockquote>
@@ -767,12 +766,12 @@ g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}\\
 </ul>
 </blockquote>
 <h4 id="1-1-Bagging"><a href="#1-1-Bagging" class="headerlink" title="1.1 Bagging"></a>1.1 Bagging</h4><p>Bagging 全称叫 Bootstrap aggregating，每个基学习器都会对训练集进行<strong>有放回抽样</strong>得到子训练集，比较著名的采样法为 0.632 自助法。每个基学习器基于不同子训练集进行训练，并综合所有基学习器的预测值得到最终的预测结果。Bagging 常用的综合方法是投票法，票数最多的类别为预测类别。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595652338160.png" alt="1595652338160"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601797615594.png" alt="1601797615594"></p>
+<p><img src="/2020/07/25/decision-tree/1595652338160.png" alt="1595652338160"></p>
+<p><img src="/2020/07/25/decision-tree/1601797615594.png" alt="1601797615594"></p>
 <p>每个基础分类器（可以是树形结构、神经网络等等任何分类模型）的特点是<strong>低偏差、高方差</strong>，框架通过(加权)投票方式降低方差，使得整体趋于<strong>低偏差、低方差</strong>。</p>
 <h4 id="1-2-Boosting"><a href="#1-2-Boosting" class="headerlink" title="1.2 Boosting"></a>1.2 Boosting</h4><p>Boosting 训练过程为阶梯状，<strong>基模型的训练是有顺序的，每个基模型都会在前一个基模型学习的基础上进行学习</strong>，最终综合所有基模型的预测值产生最终的预测结果，用的比较多的综合方式为加权法。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595652444294.png" alt="1595652444294"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601797938878.png" alt="1601797938878"></p>
+<p><img src="/2020/07/25/decision-tree/1595652444294.png" alt="1595652444294"></p>
+<p><img src="/2020/07/25/decision-tree/1601797938878.png" alt="1601797938878"></p>
 <p>Boosting 通过迭代方式训练若干基础分类器，每个分类器依据上一轮分类器产生的残差做权重调整，每轮的分类器需要够“简单”（弱分类器），具有<strong>高偏差、低方差</strong>的特点，框架再辅以(加权)投票方式降低偏差，使得整体趋于<strong>低偏差、低方差</strong>。</p>
 <h4 id="1-3-Stacking"><a href="#1-3-Stacking" class="headerlink" title="1.3 Stacking"></a>1.3 Stacking</h4><p>Stacking 是先用全部数据训练好基模型，然后每个基模型都对每个训练样本进行预测，其预测值将作为训练样本的特征值，最终会得到新的训练样本，然后基于新的训练样本进行训练得到模型，然后得到最终预测结果。</p>
 <blockquote>
@@ -786,7 +785,7 @@ g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}\\
 <h3 id="2-偏差与方差"><a href="#2-偏差与方差" class="headerlink" title="2.偏差与方差"></a>2.偏差与方差</h3><p>如何从偏差和方差的角度来理解集成学习。</p>
 <h4 id="2-1-集成学习的偏差与方差"><a href="#2-1-集成学习的偏差与方差" class="headerlink" title="2.1 集成学习的偏差与方差"></a>2.1 集成学习的偏差与方差</h4><p><strong>偏差（Bias）描述的是预测值和真实值之差；方差（Variance）描述的是预测值作为随机变量的离散程度（不同样本下模型效果的离散程度）。</strong></p>
 <p>放一张很经典的图：</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595652870653.png" alt="1595652870653"></p>
+<p><img src="/2020/07/25/decision-tree/1595652870653.png" alt="1595652870653"></p>
 <blockquote>
 <p>We can create a graphical visualization of bias and variance using a bulls-eye diagram. Imagine that the center of the target is a model that perfectly predicts the correct values. As we move away from the bulls-eye, our predictions get worse and worse. Imagine we can repeat our entire model building process to get a number of separate hits on the target. Each hit represents an individual realization of our model, given the chance variability in the training data we gather. Sometimes we will get a good distribution of training data so we predict very well and we are close to the bulls-eye, while sometimes our training data might be full of outliers or non-standard values resulting in poorer predictions. These different realizations result in a scatter of hits on the target. </p>
 <p>(来自 <a href="http://scott.fortmann-roe.com/docs/BiasVariance.html">http://scott.fortmann-roe.com/docs/BiasVariance.html</a>)</p>
@@ -797,8 +796,8 @@ g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}\\
 <li><strong>方差</strong>：描述样本上训练出来的模型在测试集上的表现，要想方差表现的好，需要简化模型，减少模型的复杂度，但这样容易欠拟合，欠拟合对应上图 High Bias，点偏离中心。低方差对应就是点都打的很集中，但不一定是靶心附近，手很稳，但不一定瞄的准。</li>
 </ul>
 <p>我们常说集成学习中的基模型是弱模型，通常来说弱模型是偏差高（在训练集上准确度低）方差小（防止过拟合能力强）的模型。但是，并不是所有集成学习框架中的基模型都是弱模型。<strong><span style="color:red">Bagging 和 Stacking 中的基模型为强模型（偏差低方差高），Boosting 中的基模型为弱模型</span></strong>。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595653661803.png" alt="1595653661803"></p>
-<h4 id="2-2-Bagging-的偏差与方差"><a href="#2-2-Bagging-的偏差与方差" class="headerlink" title="2.2 Bagging 的偏差与方差"></a>2.2 Bagging 的偏差与方差</h4><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595653718100.png" alt="1595653718100"></p>
+<p><img src="/2020/07/25/decision-tree/1595653661803.png" alt="1595653661803"></p>
+<h4 id="2-2-Bagging-的偏差与方差"><a href="#2-2-Bagging-的偏差与方差" class="headerlink" title="2.2 Bagging 的偏差与方差"></a>2.2 Bagging 的偏差与方差</h4><p><img src="/2020/07/25/decision-tree/1595653718100.png" alt="1595653718100"></p>
 <p>（👆 应为方差公式第二项的改变对整体方差的作用很小？）</p>
 <p>在此我们知道了为什么 Bagging 中的基模型一定要为强模型，如果 Bagging 使用弱模型则会导致整体模型的偏差提高，而准确度降低。</p>
 <p>Random Forest 是经典的基于 Bagging 框架的模型，并在此基础上通过引入特征采样和样本采样来降低基模型间的相关性，从而在方差公式中，第一项显著减少，第二项稍微增加，整体方差仍是减少。</p>
@@ -861,15 +860,15 @@ Var(F)=m^2r^2\sigma^2\rho+mr^2\sigma^2(1-\rho)=m^2r^2\sigma^2</script><p>通过�
 <li>将所有弱分类组合成强分类器，各个弱分类器的训练过程结束后，加大分类误差率小的弱分类器的权重，降低分类误差率大的弱分类器的权重。</li>
 </ol>
 <h4 id="4-2-细节"><a href="#4-2-细节" class="headerlink" title="4.2 细节"></a>4.2 细节</h4><h5 id="4-2-1-算法过程"><a href="#4-2-1-算法过程" class="headerlink" title="4.2.1 算法过程"></a>4.2.1 算法过程</h5><p>来自 <a href="https://blog.csdn.net/weixin_38629654/article/details/80516045">https://blog.csdn.net/weixin_38629654/article/details/80516045</a></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601196695960.png" alt="1601196695960"></p>
+<p><img src="/2020/07/25/decision-tree/1601196695960.png" alt="1601196695960"></p>
 <p>最后总结一下Adaboost算法，理解它的关键就在于了解权值分布$D<em>t$是如何影响误差率$e_t$、权值$\alpha_t$以及更新权值分布$D</em>{t+1}$。具体的例子，可见 <a href="https://blog.csdn.net/guyuealian/article/details/70995333">https://blog.csdn.net/guyuealian/article/details/70995333</a></p>
 <p>AdaBoost 通过训练多个弱分类器来组合得到一个强分类器，每次迭代会生成一棵<strong>高偏差、低方差</strong>的弱分类器，每一轮的训练会更关注上一轮被分类器分错的样本，为其加大权重。</p>
 <p>训练过程：</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601799086192.png" alt="1601799086192"></p>
-<h5 id="4-2-2-损失函数"><a href="#4-2-2-损失函数" class="headerlink" title="4.2.2 损失函数"></a>4.2.2 损失函数</h5><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663386859.png" alt="1595663386859"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663456133.png" alt="1595663456133"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663508910.png" alt="1595663508910"></p>
-<h5 id="4-2-3-正则化"><a href="#4-2-3-正则化" class="headerlink" title="4.2.3 正则化"></a>4.2.3 正则化</h5><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595663617670.png" alt="1595663617670"></p>
+<p><img src="/2020/07/25/decision-tree/1601799086192.png" alt="1601799086192"></p>
+<h5 id="4-2-2-损失函数"><a href="#4-2-2-损失函数" class="headerlink" title="4.2.2 损失函数"></a>4.2.2 损失函数</h5><p><img src="/2020/07/25/decision-tree/1595663386859.png" alt="1595663386859"></p>
+<p><img src="/2020/07/25/decision-tree/1595663456133.png" alt="1595663456133"></p>
+<p><img src="/2020/07/25/decision-tree/1595663508910.png" alt="1595663508910"></p>
+<h5 id="4-2-3-正则化"><a href="#4-2-3-正则化" class="headerlink" title="4.2.3 正则化"></a>4.2.3 正则化</h5><p><img src="/2020/07/25/decision-tree/1595663617670.png" alt="1595663617670"></p>
 <h4 id="4-3-优缺点"><a href="#4-3-优缺点" class="headerlink" title="4.3 优缺点"></a>4.3 优缺点</h4><p><strong>优点</strong></p>
 <ol>
 <li>分类精度高；</li>
@@ -894,7 +893,7 @@ Var(F)=m^2r^2\sigma^2\rho+mr^2\sigma^2(1-\rho)=m^2r^2\sigma^2</script><p>通过�
 <p>GBDT（Gradient Boosting Decision Tree）是一种迭代的决策树算法，该算法由多棵决策树组成，从名字中我们可以看出来它是属于 Boosting 策略。GBDT 是被公认的泛化能力较强的算法。</p>
 <p>GBDT 是通过采用加法模型（即基函数的线性组合），以及不断减小训练过程产生的残差来达到将数据分类或者回归的算法。</p>
 <p>不同于Adaboost加大误分样本权重的策略，GBDT每次迭代加的是上一轮梯度更新值。其训练过程如下:</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601800623694.png" alt="1601800623694"></p>
+<p><img src="/2020/07/25/decision-tree/1601800623694.png" alt="1601800623694"></p>
 <h4 id="5-1-思想"><a href="#5-1-思想" class="headerlink" title="5.1 思想"></a>5.1 思想</h4><p>GBDT 通过多轮迭代，每轮迭代产生一个弱分类器，每个分类器在上一轮分类器的<strong>残差</strong>基础上进行训练。对弱分类器的要求一般是足够简单，并且是低方差和高偏差的。因此训练的过程是通过降低偏差来不断提高最终分类器的精度。</p>
 <p>弱分类器一般会选择为CART TREE（也就是分类回归树）。由于上述高偏差和简单的要求，每个分类回归树的深度不会很深。最终的总分类器是将每轮训练得到的弱分类器加权求和得到的（也就是加法模型）。</p>
 <p>模型最终可以描述为：</p>
@@ -942,24 +941,24 @@ g_i=-\frac{\partial L}{\partial F}|_{F=F_{i-1}}</script><p>即对损失函数L�
 </blockquote>
 <p>那么Gradient 从何体现？其实很简单，其残差其实是最小均方损失函数关于预测值的反向梯度。</p>
 <script type="math/tex; mode=display">
-F_i(x) = F_{i-1}(x) + (-\frac{\partial(\frac{1}{2}(y-F_{i-1}(x))^2)}{\partial F(x)} )</script><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667123278.png" alt="1595667123278"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667175530.png" alt="1595667175530"></p>
+F_i(x) = F_{i-1}(x) + (-\frac{\partial(\frac{1}{2}(y-F_{i-1}(x))^2)}{\partial F(x)} )</script><p><img src="/2020/07/25/decision-tree/1595667123278.png" alt="1595667123278"></p>
+<p><img src="/2020/07/25/decision-tree/1595667175530.png" alt="1595667175530"></p>
 <p>GBDT 的 Boosting 不同于 Adaboost 的 Boosting，GBDT 的每一步残差计算其实变相地增大了被分错样本的权重，而对于分对样本的权重趋于 0，这样后面的树就能专注于那些被分错的样本。</p>
 <hr>
 <blockquote>
 <p>参考 <a href="https://blog.csdn.net/sb19931201/article/details/52506157">https://blog.csdn.net/sb19931201/article/details/52506157</a></p>
 </blockquote>
 <p><span id="jump_GBDT">GBDT算法步骤：</span></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601189631302.png" alt="1601189631302"></p>
+<p><img src="/2020/07/25/decision-tree/1601189631302.png" alt="1601189631302"></p>
 <p>算法第 1 步初始化 ，估计使损失函数极小化的常数值，它是只有一个根结点的树。第 2 (a) 步计算损失函数的负梯度在当前模型的值，将它作为残差的估计。对于平方损失函数，它就是通常所说的残差；对于一般损失函数，它就是残差的近似值。第 2 (b) 步估计回归树叶结点区域，以拟合残差的近似值。第 2(c) 步利用线性搜索估计叶结点区域的值，使损失函数极小化。第 2(d) 步更新回归树，第 3 步得到输出的最终模型。</p>
 <hr>
 <blockquote>
 <p>维基百科 <a href="https://en.wikipedia.org/wiki/Gradient_boosting">https://en.wikipedia.org/wiki/Gradient_boosting</a></p>
 </blockquote>
 <p>In pseudocode, the generic gradient boosting method is:</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601190228458.png" alt="1601190228458"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601190289236.png" alt="1601190289236"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601190443051.png" alt="1601190443051"></p>
+<p><img src="/2020/07/25/decision-tree/1601190228458.png" alt="1601190228458"></p>
+<p><img src="/2020/07/25/decision-tree/1601190289236.png" alt="1601190289236"></p>
+<p><img src="/2020/07/25/decision-tree/1601190443051.png" alt="1601190443051"></p>
 <h5 id="5-1-5-避免过拟合-缩减（Shrinkage）"><a href="#5-1-5-避免过拟合-缩减（Shrinkage）" class="headerlink" title="5.1.5 避免过拟合 - 缩减（Shrinkage）"></a>5.1.5 避免过拟合 - 缩减（Shrinkage）</h5><p>Shrinkage 的思想认为，每走一小步逐渐逼近结果的效果要比每次迈一大步很快逼近结果的方式更容易避免过拟合。即它并不是完全信任每一棵残差树。</p>
 <p>更新规则：</p>
 <script type="math/tex; mode=display">
@@ -982,7 +981,7 @@ Loss(F(x_i),y_i)=|F(x_i)-y_i|</script><script type="math/tex; mode=display">
 </blockquote>
 <p> 其实说 GBDT 能够构建特征并非很准确，GBDT 本身是不能产生特征的，但是我们可以利用 GBDT 去产生特征的组合。在CTR预估中，工业界一般会采用<a href="http://www.cnblogs.com/ModifyRong/p/7739955.html#3825035">逻辑回归</a>去进行处理，<strong>逻辑回归本身是适合处理线性可分的数据，如果我们想让逻辑回归处理非线性的数据，其中一种方式便是组合不同特征，增强逻辑回归对非线性分布的拟合能力</strong>。</p>
 <p>长久以来，我们都是通过人工的先验知识或者实验来获得有效的组合特征，但是很多时候，使用人工经验知识来组合特征过于耗费人力，造成了机器学习当中一个很奇特的现象：有多少人工就有多少智能。关键是这样通过人工去组合特征并不一定能够提升模型的效果。所以我们的从业者或者学界一直都有一个趋势便是通过算法自动、高效的寻找到有效的特征组合。Facebook 在2014年 发表的一篇论文便是这种尝试下的产物，利<strong>用 GBDT 去产生有效的特征组合，以便用于逻辑回归的训练，提升模型最终的效果</strong>。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1606036242199.png" alt="1606036242199"></p>
+<p><img src="/2020/07/25/decision-tree/1606036242199.png" alt="1606036242199"></p>
 <p>如上图所示，我们使用 GBDT 生成了两棵树，两棵树一共有五个叶子节点。我们将样本 X 输入到两棵树当中去，样本 X 落在了第一棵树的第二个叶子节点，第二棵树的第一个叶子节点，于是我们便可以依次构建一个五维的特征向量，每一个维度代表一个叶子节点，样本落在这个叶子节点上面的话那么值为1，没有落在该叶子节点的话，那么值为 0。于是对于该样本，我们可以得到一个向量 [0,1,0,1,0] 作为该样本的组合特征，和原来的特征一起输入到逻辑回归当中进行训练。实验证明这样会得到比较显著的效果提升。</p>
 <p>（具体例子见原网页）</p>
 <h5 id="5-1-8-GBDT-如何用于分类"><a href="#5-1-8-GBDT-如何用于分类" class="headerlink" title="5.1.8 GBDT 如何用于分类"></a>5.1.8 GBDT 如何用于分类</h5><blockquote>
@@ -990,7 +989,7 @@ Loss(F(x_i),y_i)=|F(x_i)-y_i|</script><script type="math/tex; mode=display">
 </blockquote>
 <p> 首先明确一点，GBDT 无论用于分类还是回归一直都是使用的CART 回归树。这里面的核心是因为 GBDT 每轮的训练是在上一轮训练的残差基础之上进行训练的。这里的残差就是当前模型的负梯度值 。这个要求每轮迭代的时候，弱分类器的输出的结果相减是有意义的。残差相减是有意义的。如果选用的弱分类器是分类树，类别相减是没有意义的。</p>
 <p>具体到分类这个任务上面来，假设样本 $X$ 总共有 $K$ 类。来了一个样本 $x$，我们需要使用 GBDT 来判断 $x$ 属于哪一类。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1606040985704.png" alt="1606040985704"></p>
+<p><img src="/2020/07/25/decision-tree/1606040985704.png" alt="1606040985704"></p>
 <p>第一步，我们在训练的时候，是针对样本 $X$ 每个可能的类都训练一个分类回归树。举例说明，目前样本有三类（ K = 3）。样本 $x$ 属于 第二类，那么针对该样本 $x$ 的分类结果，我们可以用一个三维向量 [0,1,0] 来表示。</p>
 <p>针对样本有三类的情况，我们实质上是在每轮训练时，同时训练三棵树。第一棵树针对样本 $x$ 的第一类，输入为 $(x,0)$。第二棵树输入针对样本 $x$ 的第二类，输入为 $(x,1)$。第三棵树针对样本 $x$ 的第三类，输入为 $(x, 0)$。</p>
 <p>在这里每棵树的训练过程，其实就是之前提到过的 CART TREE 的生成过程。参照之前的生成树的程序可以解出三棵树，以及三棵树对 $x$ 类别的预测值 $f_1(x),f_2(x),f_3(x)$。在此类训练中，我们仿照多分类的逻辑回归 ，使用 softmax 来产生概率，则属于类别 1 的概率 </p>
@@ -1011,7 +1010,7 @@ p_c=\frac{exp(f_c(x_1))}{∑_{k=1}^3exp(f_k(x_1))}</script><p>(GBDT 多分类举
 <li><p>Gradient Boosting：每一次的计算是为了减少上一次的残差(residual)，而为了消除残差，我们可以在残差减少的梯度(Gradient)方向上建立一个新的模型。所以说，在Gradient Boost中，每个新的模型的建立是为了使得之前模型的残差往梯度方向减少（当然也可以变向理解成每个新建的模型都给予上一模型的误差更多的关注），与传统Boost对正确、错误的样本进行直接加权还是有区别的。</p>
 </li>
 <li><p>Size of trees(J)：模型叶结点的数量J需要根据现有数据调整，它控制着模型变量之间的相互作用，一般情况下都选择J的大小在4到8之间，J=2一般不能满足需要，J&gt;10的情况也不太可能需要。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601191484592.png" alt="1601191484592"></p>
+<p><img src="/2020/07/25/decision-tree/1601191484592.png" alt="1601191484592"></p>
 </li>
 </ol>
 <h4 id="5-2-优缺点"><a href="#5-2-优缺点" class="headerlink" title="5.2 优缺点"></a>5.2 优缺点</h4><p><strong>优点</strong></p>
@@ -1024,8 +1023,8 @@ p_c=\frac{exp(f_c(x_1))}{∑_{k=1}^3exp(f_k(x_1))}</script><p>(GBDT 多分类举
 <li>对异常点敏感。</li>
 </ol>
 <p>另：</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669502617.png" alt="1595669502617"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669541744.png" alt="1595669541744"></p>
+<p><img src="/2020/07/25/decision-tree/1595669502617.png" alt="1595669502617"></p>
+<p><img src="/2020/07/25/decision-tree/1595669541744.png" alt="1595669541744"></p>
 <h4 id="5-3-与-Adaboost-的对比"><a href="#5-3-与-Adaboost-的对比" class="headerlink" title="5.3 与 Adaboost 的对比"></a>5.3 与 Adaboost 的对比</h4><p>相同：</p>
 <ol>
 <li>都是 Boosting 家族成员，使用弱分类器；</li>
@@ -1070,7 +1069,7 @@ p_c=\frac{exp(f_c(x_1))}{∑_{k=1}^3exp(f_k(x_1))}</script><p>(GBDT 多分类举
 </li>
 </ul>
 <hr>
-<h2 id="篇三：XGBoost"><a href="#篇三：XGBoost" class="headerlink" title="篇三：XGBoost"></a>篇三：XGBoost</h2><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667573239.png" alt="1595667573239"></p>
+<h2 id="篇三：XGBoost"><a href="#篇三：XGBoost" class="headerlink" title="篇三：XGBoost"></a>篇三：XGBoost</h2><p><img src="/2020/07/25/decision-tree/1595667573239.png" alt="1595667573239"></p>
 <blockquote>
 <p>本部分内容参考公众号Datawhale<br><a href="https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ">https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ</a></p>
 <p>以及文章：<br><a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a></p>
@@ -1078,17 +1077,17 @@ p_c=\frac{exp(f_c(x_1))}{∑_{k=1}^3exp(f_k(x_1))}</script><p>(GBDT 多分类举
 </blockquote>
 <p>（注：以下内容只包含XGBoost部分，LightGBM部分可见原文链接）</p>
 <h3 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h3><p>XGBoost 是大规模并行 boosting tree 的工具，它是目前最快最好的开源 boosting tree 工具包，比常见的工具包快 10 倍以上。Xgboost 和 GBDT 两者都是 boosting 方法，除了工程实现、解决问题上的一些差异外，最大的不同就是目标函数的定义。</p>
-<h4 id="1-1-数学原理"><a href="#1-1-数学原理" class="headerlink" title="1.1 数学原理"></a>1.1 数学原理</h4><h5 id="1-1-1-目标函数"><a href="#1-1-1-目标函数" class="headerlink" title="1.1.1 目标函数"></a>1.1.1 目标函数</h5><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667719081.png" alt="1595667719081"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667791401.png" alt="1595667791401"></p>
+<h4 id="1-1-数学原理"><a href="#1-1-数学原理" class="headerlink" title="1.1 数学原理"></a>1.1 数学原理</h4><h5 id="1-1-1-目标函数"><a href="#1-1-1-目标函数" class="headerlink" title="1.1.1 目标函数"></a>1.1.1 目标函数</h5><p><img src="/2020/07/25/decision-tree/1595667719081.png" alt="1595667719081"></p>
+<p><img src="/2020/07/25/decision-tree/1595667791401.png" alt="1595667791401"></p>
 <p>👆 <span style="color:blue">以基模型为回归树为例，我们的目标其实就是训练一群回归树，使这群树的预测值尽量接近真实值，并且有尽可能强大的泛化能力。前一项表示的是预测误差，后一项表示的是树的复杂度函数，$f_t$表示第t棵树，一共有k棵树。</span></p>
 <p>我们要做的就是使<strong>预测误差尽量小，叶子节点数尽量少，预测值尽量不极端</strong>（什么叫预测值尽量不极端?举个栗子，一个人的真实年龄是4岁，有两个模型，第一个模型的第一棵回归树预测值是3岁，第二棵回归树预测值是1岁，第二个模型的第一棵回归树预测值是2岁，第二棵预测值也是2岁，那我们更倾向于选择第二个模型，因为第一个模型学习的太多，有过拟合的风险）</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667837751.png" alt="1595667837751"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667861205.png" alt="1595667861205"></p>
+<p><img src="/2020/07/25/decision-tree/1595667837751.png" alt="1595667837751"></p>
+<p><img src="/2020/07/25/decision-tree/1595667861205.png" alt="1595667861205"></p>
 <blockquote>
 <script type="math/tex; mode=display">
 g_i=\frac{\partial\ l(y_i,\hat{y_i}^{t-1})}{\partial\,\hat{y_i}^{t-1}}</script><script type="math/tex; mode=display">
 h_i=\frac{\partial^2 l(y_i,\hat{y_i}^{t-1})}{\partial (\hat{y_i}^{t-1})^2}</script></blockquote>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667888425.png" alt="1595667888425"></p>
+<p><img src="/2020/07/25/decision-tree/1595667888425.png" alt="1595667888425"></p>
 <p>又因为有 </p>
 <script type="math/tex; mode=display">
 \sum_{i=1}^{t} \Omega(f_i)=\Omega(f_t)+\sum_{i=1}^{t-1}\Omega(f_i)</script><p>并且$\sum_{i=1}^{t-1}\Omega(f_i)$在前t-1棵树已知下为常数，所以目标函数可写为：</p>
@@ -1096,7 +1095,7 @@ h_i=\frac{\partial^2 l(y_i,\hat{y_i}^{t-1})}{\partial (\hat{y_i}^{t-1})^2}</scri
 Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</script><p><span style="color:red">（最优化目标函数，就相当于求解$f_{t}$）</span></p>
 <h5 id="1-1-2-基于决策树的目标函数"><a href="#1-1-2-基于决策树的目标函数" class="headerlink" title="1.1.2 基于决策树的目标函数"></a>1.1.2 基于决策树的目标函数</h5><p>我们知道 <span style="color:red">Xgboost 的基模型不仅支持决策树，还支持线性模型</span>，这里我们主要介绍基于决策树的目标函数。</p>
 <p>下面讨论基于决策树时，$\Omega(f_t)$ 的表达式。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667950419.png" alt="1595667950419"></p>
+<p><img src="/2020/07/25/decision-tree/1595667950419.png" alt="1595667950419"></p>
 <p>(注：这里的节点权重$w_{j}$指的就是该叶子节点的预测值)</p>
 <hr>
 <p>另一种描述：</p>
@@ -1109,17 +1108,17 @@ Obj^{(t)}≈\sum_{i=1}^{n}[g_if_t(x_i)+\frac{1}{2}h_if_t^2(x_i)]+\Omega(f_t)</sc
 <script type="math/tex; mode=display">
 \Omega(f_t)=\gamma T+\frac{1}{2}\lambda\sum_{j=1}^Tw_j^2</script><p>其中$T$为叶子结点数，$w_j$为叶子结点$j$的输出，$\gamma$为系数。</p>
 <hr>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667972342.png" alt="1595667972342"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595667995025.png" alt="1595667995025"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668020156.png" alt="1595668020156"></p>
+<p><img src="/2020/07/25/decision-tree/1595667972342.png" alt="1595667972342"></p>
+<p><img src="/2020/07/25/decision-tree/1595667995025.png" alt="1595667995025"></p>
+<p><img src="/2020/07/25/decision-tree/1595668020156.png" alt="1595668020156"></p>
 <hr>
 <p>另一种描述：</p>
 <blockquote>
 <p>参考 <a href="https://mp.weixin.qq.com/s/AAKPSIHk1iUqCeUibrORqQ">我的XGBoost学习经历及动手实践</a></p>
 </blockquote>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595822346216.png" alt="1595822346216"></p>
+<p><img src="/2020/07/25/decision-tree/1595822346216.png" alt="1595822346216"></p>
 <hr>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668057942.png" alt="1595668057942"></p>
+<p><img src="/2020/07/25/decision-tree/1595668057942.png" alt="1595668057942"></p>
 <h5 id="1-1-3-最优切分点划分算法"><a href="#1-1-3-最优切分点划分算法" class="headerlink" title="1.1.3 最优切分点划分算法"></a>1.1.3 最优切分点划分算法</h5><p>我们刚刚的假设前提是已知前t-1棵树，现在我们讨论怎么生成树。根据决策树的生成策略，在每次分裂节点的时候我们需要考虑能使得损失函数减小最快的节点，将分裂前损失函数减去分裂后损失函数称之为Gain：</p>
 <p>对于某个节点，有</p>
 <script type="math/tex; mode=display">
@@ -1137,9 +1136,9 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <li>回到第 1 步，递归执行到满足特定条件为止</li>
 </ol>
 <p>那么如何计算每个特征的分裂收益呢？</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668137245.png" alt="1595668137245"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668154967.png" alt="1595668154967"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595823332714.png" alt="1595823332714"></p>
+<p><img src="/2020/07/25/decision-tree/1595668137245.png" alt="1595668137245"></p>
+<p><img src="/2020/07/25/decision-tree/1595668154967.png" alt="1595668154967"></p>
+<p><img src="/2020/07/25/decision-tree/1595823332714.png" alt="1595823332714"></p>
 <h6 id="2）近似算法-Approximate-Algorithm"><a href="#2）近似算法-Approximate-Algorithm" class="headerlink" title="2）近似算法 (Approximate Algorithm)"></a>2）近似算法 (Approximate Algorithm)</h6><p>贪婪算法可以得到最优解，但当数据量太大时则无法读入内存进行计算，近似算法主要针对贪婪算法这一缺点给出了近似最优解。</p>
 <p>对于每个特征，只考察分位点可以减少计算复杂度。</p>
 <p>该算法会首先根据特征分布的分位数提出候选划分点，然后将连续型特征映射到由这些候选点划分的桶中，然后聚合统计信息找到所有区间的最佳分裂点。</p>
@@ -1157,12 +1156,12 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 </ul>
 <p>直观上来看，Local 策略需要更多的计算步骤，而 Global 策略因为节点没有划分所以需要更多的候选点。</p>
 <p>下图给出不同种分裂策略的 AUC 变换曲线，横坐标为迭代次数，纵坐标为测试集 AUC，eps 为近似算法的精度，其倒数为桶的数量。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668243451.png" alt="1595668243451"></p>
+<p><img src="/2020/07/25/decision-tree/1595668243451.png" alt="1595668243451"></p>
 <p>我们可以看到 Global 策略在候选点数多时（eps 小）可以和 Local 策略在候选点少时（eps 大）具有相似的精度。此外我们还发现，在 eps 取值合理的情况下，分位数策略可以获得与贪婪算法相同的精度。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668320876.png" alt="1595668320876"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668340241.png" alt="1595668340241"></p>
-<h5 id="1-1-4-加权分位数缩略图（weighted-quantile-sketch）"><a href="#1-1-4-加权分位数缩略图（weighted-quantile-sketch）" class="headerlink" title="1.1.4 加权分位数缩略图（weighted quantile sketch）"></a>1.1.4 加权分位数缩略图（weighted quantile sketch）</h5><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668403168.png" alt="1595668403168"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668446774.png" alt="1595668446774"></p>
+<p><img src="/2020/07/25/decision-tree/1595668320876.png" alt="1595668320876"></p>
+<p><img src="/2020/07/25/decision-tree/1595668340241.png" alt="1595668340241"></p>
+<h5 id="1-1-4-加权分位数缩略图（weighted-quantile-sketch）"><a href="#1-1-4-加权分位数缩略图（weighted-quantile-sketch）" class="headerlink" title="1.1.4 加权分位数缩略图（weighted quantile sketch）"></a>1.1.4 加权分位数缩略图（weighted quantile sketch）</h5><p><img src="/2020/07/25/decision-tree/1595668403168.png" alt="1595668403168"></p>
+<p><img src="/2020/07/25/decision-tree/1595668446774.png" alt="1595668446774"></p>
 <h5 id="1-1-5-稀疏感知算法（缺失值处理）"><a href="#1-1-5-稀疏感知算法（缺失值处理）" class="headerlink" title="1.1.5 稀疏感知算法（缺失值处理）"></a>1.1.5 稀疏感知算法（缺失值处理）</h5><p>实际应用中，稀疏数据无法避免，产生稀疏数据的原因：（1）数据缺失；（2）统计上的0；（3）特征表示中的one-hot形式。</p>
 <p>在决策树的第一篇文章中我们介绍 CART 树在应对数据缺失时的分裂策略，XGBoost 也给出了其解决方案。</p>
 <p>XGBoost 在构建树的节点过程中只考虑非缺失值的数据遍历，而为每个节点增加了一个缺省方向，当样本相应的特征值缺失时，可以被归类到缺省方向上，最优的缺省方向可以从数据中学到。至于如何学到缺省值的分支，其实很简单，分别枚举特征缺省的样本归为左右分支后的增益，选择增益最大的枚举项即为最优缺省方向。</p>
@@ -1171,7 +1170,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>算法思想：分别假设缺失属于左节点和右节点，而且只在不缺失的样本上迭代，分别计算样本属于左子树和右子树的增益，选择增益最大的方向作为缺失数据的默认方向。</p>
 </blockquote>
 <p>在构建树的过程中需要枚举特征缺失的样本，乍一看该算法的计算量增加了一倍，但其实该算法在构建树的过程中只考虑了特征未缺失的样本遍历，而特征值缺失的样本无需遍历只需直接分配到左右节点，故算法所需遍历的样本量减少，下图可以看到稀疏感知算法比 basic 算法速度块了超过 50 倍。</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668537184.png" alt="1595668537184"></p>
+<p><img src="/2020/07/25/decision-tree/1595668537184.png" alt="1595668537184"></p>
 <h5 id="1-1-6-避免过拟合-正则化、shrinkage与采样技术"><a href="#1-1-6-避免过拟合-正则化、shrinkage与采样技术" class="headerlink" title="1.1.6 避免过拟合(正则化、shrinkage与采样技术)"></a>1.1.6 避免过拟合(正则化、shrinkage与采样技术)</h5><h6 id="1-正则化"><a href="#1-正则化" class="headerlink" title="1) 正则化"></a>1) 正则化</h6><p>一说起过拟合，我们的第一反应就是正则化。XGBoost也是这样做的。</p>
 <p>我们在loss_function里看到了正则化项（树的复杂度函数），正则化的目的就是防止过拟合。我们再看看这个函数:</p>
 <p><img src="data:image/png;base64,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PHVhC+A0KTXytAT0Of/88++66y79U0899dVXX501a9Y555wzYMAAzFdfffWZZ545YsSIW2+9FcN55533s5/9rE+fPscff/yTTz7JeSZOnNivX7/nn3/+7rvvPvLIIxcvXixRTZkyhW9wEswvv/yytRg7Y8aMvn37msvjUUcdtfHGG1922WX//u//ftBBBz322GMTJky4+eabSwqVLROd+kfYKyEhYX2F+CKCQPacUB2q2ketEJleGxShfNSoUThvuummnF8ntzAEsQLxSmp5//33CZEV7rzzzqeeegol3mrnzp178sknxyOBksEPf/jDq666yuyXXHLJddddpxTu1auXx+eee+7QQw9V8aDMmzdv2rRp+ieccMJ9991nLLGvvfZa165dH3/88ZkzZz777LPxv+/LTBdffLEh2H77299SA3HkyJFaFNNZrz48/PDDv/71r2OUhBREKkXniSeeGDZsWPTXHFLNlJCwnkPJFVf+7DmhOoR9xN94FBxRBHqFSzxqPcoNOtJA/EhGfJcJSgPqABuxySabqHfHjRvXqVOnyZMnK8Kyd8vDdC1btvzWt751xBFHmPShhx7Sp1vz5s1VMAYefPDBrVq1UhaTufvuu1Pm3/7t3zp37kznDh06NGvW7N57791zzz3btWu38847eyRkr732UmAZIrcde+yxKEpqtZfppLEf//jH0hiix3322Uf5pZYyIwmEDxo06Oijjz7mmGOkN7WaoryUPepcAq4CUmZKSEhIyCBYZ70yxH0BWitkQ/ypXJ3Zs2f/6Ec/Ev1FbYkh464ZpXtB+adW+m+88cbzzz8vr+SfnlWE+HhUrFBGYnj66adbt27dtm1bOfJrX/uaVzfffHOXLl10aKJmkqiuvfbaI488ctNNN33hhRdOPPHE008/Xalk+PHHH/+3v/2NQEuYNWvWGWecga44+3//7/8NGDCgf//+FOjRo8d//Md/HHLIIR6xEUvgYYcdJo2RL4/Ceeedd8stt/z+97/v2LHjTjvthCdKLp01hJSZEhISEjIsXrw4L5tApAaVDaJCwVsJ5pJLLtlmm20uv/xyBU3Tpk2XLFmSca/o6w8kCOgvvviifCas77LLLlIUej5jnr2kBKlImeLV17/+9SuvvNIQmrRp02bBggVyg8KIKJRdd92VnO9///tbbbXVjTfeKIf169fvmmuukS9/85vfqLEUQFIUsUTtuOOOu+22m6Qo2Vx44YWWQMLHH3/8u9/97r777rvjjjviAz21l75JLXy//fZDUWMpFuW8Rx555LXXXiPKq1B1DSFlpoSEhIRStSTUfulLX4rsIu5vuOGG+oK4vlgsiMtDDzzwwLnnnosBs2whlG+++eZe4ZROIlhrAyW5y+AtHjJvvfXWvfbay9iDDjroL3/5S158eCvcy15TpkwZOHCgmkZZNnTo0LPOOuvnP/95/HzrtttuI0E5RSsdo+TFZs2ayViDBg2aOHHiSy+9RDjKX//61z//+c8k0FktZSxm6UonPlE0V+DLX/5yzG4VikKdSZMmnXLKKbKdGuvwww9XbHmlUJPq6LzFFlsQssa/UxMWTEhISPiMQ/qJPCHyxmP8JEmn/P4TRYmy6YMPPkA85phjdN5///141b17dy26sTniVQBzyLngggvmz58vM0kq+ojgEfG0004jAf2FF154/PHHpZmZM2e+8sorWpR33nnne9/73ptvvomfJqZ+4oknvI2KR5IzkHwaPvXUU94a5REzmUAB5RGoe6wrJoWScp98gk7Uq6++6hWthg0bFn1QhF199dUkYDPF73//+1/+8pf6XpWHrhGkmikhISGhBAFRIXLHHXfoC9li8UYbbYSijhGF33333R49eqiQUO6///7bb78dm/pDBsI5ZsyYv/3tb1HHVAvliMpDPlAPtWrVylzKjvbt20s/yhSPckOUTUqcHXfcce+9995+++233XZb9VDr1q2bN28eX0nQJ0ceopXySKk3e/bsPfbYo1OnTt6qt9RYd955J4att97aKuQzWhH74IMPHn/88dLVk08+efnllx999NGjR48m85xzzunateuBBx4oA0lalqxc69Onj4kIfOaZZyzwhBNOIGTy5Ml47rnnnn333deKqEGHWF29I/tYMyEhIeEzDsFQbtC5+OKLf/rTn4rIgq/gLijryz3HHXdcPEpUIngwyCgGAoq3xY+5QlpAlJce+vfvL9ZH/fHb3/5WK2EQ65WSRaUyYsQIwiWbc889V4Fi4NChQ6UTyaxLly69evVSIRklx8gu7dq1UyHRh8A5c+bssMMOZpctzKtDvbFjx8qg3/zmN0899VR55fnnn9d59tlnTfHVr36V8uTLYVLgzjvvHI9AfmhOVHE56jA8Ut2WW24ZzOTIuPG2fpFqpoSEhM86xGLQEc3hvPPO+8EPfhDReYNlf2dBOA4GnPElPcRo5RVsck+IMnDevHnCun4OxPj8TUUybty4u+66q23btkqip59+WvQnpEWLFgogbKQZu9NOO6nMxo8fv+eee26zzTYYpIHrr7/eFAsXLsRmlEQYf7joRz/6kRlffPHFo4466ogjjvj2t7994oknGiLrHH744aeffjqFJbbTTjvNQIXa3LlzJT+p9KqrrjrssMP+8Y9/xFpAkiN25MiRRx55pMe+ffueffbZltatWzez0+HMM8/EjGI5aygtQcpMCQkJCSUIxNER63/4wx8K4voLFizQeiUcf/DBB1GUQBC1wRaIpGK4hFGsNsDwadOmbbbZZoqVKLxQpIFdd931zTffRJHbtDiJxSZvkSMBeIwP+jbddNMhQ4b8+Mc/PuOMM7z1GFPIIuR07tx5xx13lOruvPNOKe26666jySabbLLHHnuY6+2335YOzznnnFdffVUhpf5TJ82fP1/ms8B99tlHawpypCuQJk1EH7P36dPHK0JOOumk5s2bU0mhZqUUKK9sjSB9mpeQkPBZR4TBPBiKyFENnHvuuUqKhx9+eObMmQqOAw44QKEgIovgxcRTjKLyjeGCOx7RPKOWv+z33e9+96CDDvrP//xPYR1FnnvnnXdOPvnk7t27f+9731OakHP55ZdHepAAgg1kGkRFj3ypiNliiy0kIXS5Z9asWSgjRozYbrvt5A/pTUsBY2lCZnyh/JlnnpkwYYIsqISaPn26gkzu7N27t7xF5ltvvWWUSRFDbY8KuM0339wspKFEm398J9VRIzdUvSNlpoSEhM86KjKTuKw6EbjbtWsnUgvx8pC3CpFTTz1VPhCji5Gz2BesL7300gsuuEC/SI9YT5RQHtWSt5IButpIVRRpjHBJ5ZFHHrnkkks8YjPj888/v9dee+25556DBg1SIUlamI0y9uijj46MhfjSSy9dfPHFJOhLn+edd94vf/lLOc/Yd999V5rBD6+//jqGwYMHL1myxCytW7eWI1944YXbbrvNkgn505/+ZGo8Sjflkb65DMdGOFWl5++UQX9v1wRSZkpISEhYLosUIZRnvfIPeATlbbfdVtT2GDWNvo4ILuWI9c2bN1dYyD1exc+oihKiX9NcBhJl1Pjx46UBtVSUPjKiKqdZs2YTJ04866yzMu4ybrzx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" alt="Q(f) = TT + —Allw112 "></p>
@@ -1192,7 +1191,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <li>缺失特征值将不进行排序；</li>
 <li>每个特征会存储指向样本梯度统计值的索引，方便计算一阶导和二阶导数值；</li>
 </ul>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595668680481.png" alt="1595668680481"></p>
+<p><img src="/2020/07/25/decision-tree/1595668680481.png" alt="1595668680481"></p>
 <p>这种块结构存储的特征之间相互独立，方便计算机进行并行计算。在对节点进行分裂时需要选择增益最大的特征作为分裂，这时各个特征的增益计算可以同时进行，这也是 Xgboost 能够实现分布式或者多线程计算的原因。</p>
 <h5 id="1-2-2-缓存访问优化算法"><a href="#1-2-2-缓存访问优化算法" class="headerlink" title="1.2.2 缓存访问优化算法"></a>1.2.2 缓存访问优化算法</h5><p>块结构的设计可以减少节点分裂时的计算量，但特征值通过索引访问样本梯度统计值的设计会导致访问操作的内存空间不连续，这样会造成缓存命中率低，从而影响到算法的效率。</p>
 <p>为了解决缓存命中率低的问题，XGBoost 提出了缓存访问优化算法：为每个线程分配一个连续的缓存区，将需要的梯度信息存放在缓冲区中，这样就是实现了非连续空间到连续空间的转换，提高了算法效率。</p>
@@ -1485,13 +1484,13 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <h4 id="6-实战案例"><a href="#6-实战案例" class="headerlink" title="6. 实战案例"></a>6. 实战案例</h4><h5 id="1-分类案例"><a href="#1-分类案例" class="headerlink" title="1). 分类案例"></a>1). 分类案例</h5><p>a. Iris数据集</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> plot_importance</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score   <span class="comment"># 准确率</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载样本数据集</span></span><br><span class="line">iris = load_iris()</span><br><span class="line">X,y = iris.data,iris.target</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">1234565</span>) <span class="comment"># 数据集分割</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 算法参数</span></span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;booster&#x27;</span>: <span class="string">&#x27;gbtree&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;objective&#x27;</span>: <span class="string">&#x27;multi:softmax&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;num_class&#x27;</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&#x27;max_depth&#x27;</span>: <span class="number">6</span>,</span><br><span class="line">    <span class="string">&#x27;lambda&#x27;</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="string">&#x27;subsample&#x27;</span>: <span class="number">0.7</span>,</span><br><span class="line">    <span class="string">&#x27;colsample_bytree&#x27;</span>: <span class="number">0.75</span>,</span><br><span class="line">    <span class="string">&#x27;min_child_weight&#x27;</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">&#x27;silent&#x27;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="string">&#x27;eta&#x27;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&#x27;seed&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;nthread&#x27;</span>: <span class="number">4</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plst = params.items()</span><br><span class="line"></span><br><span class="line">dtrain = xgb.DMatrix(X_train, y_train) <span class="comment"># 生成数据集格式</span></span><br><span class="line">num_rounds = <span class="number">500</span></span><br><span class="line">model = xgb.train(plst, dtrain, num_rounds) <span class="comment"># xgboost模型训练</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对测试集进行预测</span></span><br><span class="line">dtest = xgb.DMatrix(X_test)</span><br><span class="line">y_pred = model.predict(dtest)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算准确率</span></span><br><span class="line">accuracy = accuracy_score(y_test,y_pred)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;accuarcy: %.2f%%&quot;</span> % (accuracy*<span class="number">100.0</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示重要特征</span></span><br><span class="line">plot_importance(model)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accuarcy: 96.67%</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595830272543.png" alt="1595830272543"></p>
+<p><img src="/2020/07/25/decision-tree/1595830272543.png" alt="1595830272543"></p>
 <p>b. Titanic数据集</p>
 <p>来自  <a href="https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A">https://mp.weixin.qq.com/s/qongHAx-X2SWrUxjk8tg0A</a></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601268650680.png" alt="1601268650680"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1601268679265.png" alt="1601268679265"></p>
+<p><img src="/2020/07/25/decision-tree/1601268650680.png" alt="1601268650680"></p>
+<p><img src="/2020/07/25/decision-tree/1601268679265.png" alt="1601268679265"></p>
 <h5 id="2-回归案例"><a href="#2-回归案例" class="headerlink" title="2). 回归案例"></a>2). 回归案例</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> plot_importance</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_boston</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据集</span></span><br><span class="line">boston = load_boston()</span><br><span class="line">X,y = boston.data,boston.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># XGBoost训练过程</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;booster&#x27;</span>: <span class="string">&#x27;gbtree&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;objective&#x27;</span>: <span class="string">&#x27;reg:squarederror&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;gamma&#x27;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&#x27;max_depth&#x27;</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="string">&#x27;lambda&#x27;</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">&#x27;subsample&#x27;</span>: <span class="number">0.7</span>,</span><br><span class="line">    <span class="string">&#x27;colsample_bytree&#x27;</span>: <span class="number">0.7</span>,</span><br><span class="line">    <span class="string">&#x27;min_child_weight&#x27;</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="string">&#x27;silent&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;eta&#x27;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&#x27;seed&#x27;</span>: <span class="number">1000</span>,</span><br><span class="line">    <span class="string">&#x27;nthread&#x27;</span>: <span class="number">4</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dtrain = xgb.DMatrix(X_train, y_train)</span><br><span class="line">num_rounds = <span class="number">300</span></span><br><span class="line">plst = params.items()</span><br><span class="line">model = xgb.train(plst, dtrain, num_rounds)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对测试集进行预测</span></span><br><span class="line">dtest = xgb.DMatrix(X_test)</span><br><span class="line">ans = model.predict(dtest)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示重要特征</span></span><br><span class="line">plot_importance(model)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595837055748.png" alt="1595837055748"></p>
+<p><img src="/2020/07/25/decision-tree/1595837055748.png" alt="1595837055748"></p>
 <h5 id="3-XGBoost调参（结合sklearn网格搜索）"><a href="#3-XGBoost调参（结合sklearn网格搜索）" class="headerlink" title="3). XGBoost调参（结合sklearn网格搜索）"></a><strong>3). XGBoost调参</strong>（结合sklearn网格搜索）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"></span><br><span class="line">iris = load_iris()</span><br><span class="line">X,y = iris.data,iris.target</span><br><span class="line">col = iris.target_names</span><br><span class="line">train_x, valid_x, train_y, valid_y = train_test_split(X, y, test_size=<span class="number">0.3</span>, random_state=<span class="number">1</span>)   <span class="comment"># 分训练集和验证集</span></span><br><span class="line"></span><br><span class="line">parameters = &#123;</span><br><span class="line">              <span class="string">&#x27;max_depth&#x27;</span>: [<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>],</span><br><span class="line">              <span class="string">&#x27;learning_rate&#x27;</span>: [<span class="number">0.01</span>, <span class="number">0.02</span>, <span class="number">0.05</span>, <span class="number">0.1</span>, <span class="number">0.15</span>],</span><br><span class="line">              <span class="string">&#x27;n_estimators&#x27;</span>: [<span class="number">500</span>, <span class="number">1000</span>, <span class="number">2000</span>, <span class="number">3000</span>, <span class="number">5000</span>],</span><br><span class="line">              <span class="string">&#x27;min_child_weight&#x27;</span>: [<span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>],</span><br><span class="line">              <span class="string">&#x27;max_delta_step&#x27;</span>: [<span class="number">0</span>, <span class="number">0.2</span>, <span class="number">0.6</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">              <span class="string">&#x27;subsample&#x27;</span>: [<span class="number">0.6</span>, <span class="number">0.7</span>, <span class="number">0.8</span>, <span class="number">0.85</span>, <span class="number">0.95</span>],</span><br><span class="line">              <span class="string">&#x27;colsample_bytree&#x27;</span>: [<span class="number">0.5</span>, <span class="number">0.6</span>, <span class="number">0.7</span>, <span class="number">0.8</span>, <span class="number">0.9</span>],</span><br><span class="line">              <span class="string">&#x27;reg_alpha&#x27;</span>: [<span class="number">0</span>, <span class="number">0.25</span>, <span class="number">0.5</span>, <span class="number">0.75</span>, <span class="number">1</span>],</span><br><span class="line">              <span class="string">&#x27;reg_lambda&#x27;</span>: [<span class="number">0.2</span>, <span class="number">0.4</span>, <span class="number">0.6</span>, <span class="number">0.8</span>, <span class="number">1</span>],</span><br><span class="line">              <span class="string">&#x27;scale_pos_weight&#x27;</span>: [<span class="number">0.2</span>, <span class="number">0.4</span>, <span class="number">0.6</span>, <span class="number">0.8</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">xlf = xgb.XGBClassifier(max_depth=<span class="number">10</span>,</span><br><span class="line">            learning_rate=<span class="number">0.01</span>,</span><br><span class="line">            n_estimators=<span class="number">2000</span>,</span><br><span class="line">            silent=<span class="literal">True</span>,</span><br><span class="line">            objective=<span class="string">&#x27;multi:softmax&#x27;</span>,</span><br><span class="line">            num_class=<span class="number">3</span> ,</span><br><span class="line">            nthread=-<span class="number">1</span>,</span><br><span class="line">            gamma=<span class="number">0</span>,</span><br><span class="line">            min_child_weight=<span class="number">1</span>,</span><br><span class="line">            max_delta_step=<span class="number">0</span>,</span><br><span class="line">            subsample=<span class="number">0.85</span>,</span><br><span class="line">            colsample_bytree=<span class="number">0.7</span>,</span><br><span class="line">            colsample_bylevel=<span class="number">1</span>,</span><br><span class="line">            reg_alpha=<span class="number">0</span>,</span><br><span class="line">            reg_lambda=<span class="number">1</span>,</span><br><span class="line">            scale_pos_weight=<span class="number">1</span>,</span><br><span class="line">            seed=<span class="number">0</span>,</span><br><span class="line">            missing=<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">gs = GridSearchCV(xlf, param_grid=parameters, scoring=<span class="string">&#x27;accuracy&#x27;</span>, cv=<span class="number">3</span>)</span><br><span class="line">gs.fit(train_x, train_y)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Best score: %0.3f&quot;</span> % gs.best_score_)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Best parameters set: %s&quot;</span> % gs.best_params_ )</span><br></pre></td></tr></table></figure>
 <h2 id="决策树算法十问及经典面试问题"><a href="#决策树算法十问及经典面试问题" class="headerlink" title="决策树算法十问及经典面试问题"></a>决策树算法十问及经典面试问题</h2><blockquote>
 <p> 参考 <a href="https://mp.weixin.qq.com/s/vkbZweJ5oRo4IPt-3kg64g">https://mp.weixin.qq.com/s/vkbZweJ5oRo4IPt-3kg64g</a> </p>
@@ -1500,9 +1499,9 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <h3 id="简介和算法"><a href="#简介和算法" class="headerlink" title="简介和算法"></a>简介和算法</h3><blockquote>
 <p>决策树是机器学习最常用的算法之一，它将算法组织成一颗树的形式。其实这就是将平时所说的if-then语句构建成了树的形式。这个决策树主要包括三个部分：内部节点、叶节点和边。内部节点是划分的属性，边代表划分的条件，叶节点表示类别。构建决策树就是一个递归的选择内部节点，计算划分条件的边，最后到达叶子节点的过程。</p>
 </blockquote>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669193083.png" alt="1595669193083"></p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1603251940059.png" alt="1603251940059"></p>
-<h3 id="核心公式"><a href="#核心公式" class="headerlink" title="核心公式"></a>核心公式</h3><p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669223727.png" alt="1595669223727"></p>
+<p><img src="/2020/07/25/decision-tree/1595669193083.png" alt="1595669193083"></p>
+<p><img src="/2020/07/25/decision-tree/1603251940059.png" alt="1603251940059"></p>
+<h3 id="核心公式"><a href="#核心公式" class="headerlink" title="核心公式"></a>核心公式</h3><p><img src="/2020/07/25/decision-tree/1595669223727.png" alt="1595669223727"></p>
 <div class="table-container">
 <table>
 <thead>
@@ -1541,7 +1540,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
 <p>决策树可以表示成给定条件下类的条件概率分布. 决策树中的每一条路径都对应是划分的一个条件概率分布. 每一个叶子节点都是通过多个条件之后的划分空间，在叶子节点中计算每个类的条件概率，必然会倾向于某一个类，即这个类的概率最大.</p>
 </blockquote>
 <p>2.ID3和C4.5算法可以处理实数特征吗？如果可以应该怎么处理？如果不可以请给出理由？</p>
-<p><img src="/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/1595669343135.png" alt="1595669343135"></p>
+<p><img src="/2020/07/25/decision-tree/1595669343135.png" alt="1595669343135"></p>
 <p>3.既然信息增益可以计算，为什么C4.5还使用信息增益比？</p>
 <blockquote>
 <p>在使用信息增益的时候，模型偏向于选择取值较多的特征。（可能会导致出现很多分支，将数据划分更细，模型复杂度高，出现过拟合的机率更大。）</p>
@@ -1655,7 +1654,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://qypx.github.io/2020/07/25/%E5%86%B3%E7%AD%96%E6%A0%91/" title="决策树">http://qypx.github.io/2020/07/25/决策树/</a>
+      <a href="http://qypx.github.io/2020/07/25/decision-tree/" title="决策树">http://qypx.github.io/2020/07/25/decision-tree/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -1676,7 +1675,7 @@ G_L=\sum_{i\in I_L} g_i, \quad G_R = \sum_{i\in I_R}g_i, \quad H_L = \sum_{i\in 
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/07/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99/" rel="next" title="深度学习相关资料">
+                <a href="/2020/07/28/deep-learning-reference/" rel="next" title="深度学习相关资料">
                   深度学习相关资料 <i class="fa fa-angle-right"></i>
                 </a>
             </div>

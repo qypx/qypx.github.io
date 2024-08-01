@@ -405,7 +405,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2019/09/02/Python-read-and-save-csv-txt-file/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -423,7 +423,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">读取与保存csv和txt文件</a>
+          <a href="/2019/09/02/Python-read-and-save-csv-txt-file/" class="post-title-link" itemprop="url">Python读取与保存csv和txt文件</a>
         </h2>
 
         <div class="post-meta-container">
@@ -441,7 +441,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-19 13:04:09" itemprop="dateModified" datetime="2022-02-19T13:04:09+08:00">2022-02-19</time>
+      <time title="修改时间：2024-08-01 11:02:27" itemprop="dateModified" datetime="2024-08-01T11:02:27+08:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -464,11 +464,11 @@
     
     <div class="post-body" itemprop="articleBody">
           <h4 id="一、csv文件"><a href="#一、csv文件" class="headerlink" title="一、csv文件"></a>一、csv文件</h4><h5 id="1-读取"><a href="#1-读取" class="headerlink" title="1. 读取"></a>1. 读取</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_csv(<span class="string">&quot;Google_Stock_Price_Train.csv&quot;</span>)</span><br><span class="line">train.head()</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/1594120531625.png" alt="1594120531625" style="zoom:80%;"></p>
+<p><img src="/2019/09/02/Python-read-and-save-csv-txt-file/1594120531625.png" alt="1594120531625" style="zoom:80%;"></p>
 <p>若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）</p>
-<p><img src="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/1594120744906.png" alt="1594120744906" style="zoom:80%;"></p>
+<p><img src="/2019/09/02/Python-read-and-save-csv-txt-file/1594120744906.png" alt="1594120744906" style="zoom:80%;"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">&quot;dataset.csv&quot;</span>, header=<span class="literal">None</span>)</span><br><span class="line">data.head()</span><br><span class="line"><span class="comment">#data.columns = [&#x27;date&#x27;,&#x27;open&#x27;,&#x27;high&#x27;,&#x27;low&#x27;,&#x27;close&#x27;,&#x27;volume&#x27;]</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/1594120675413.png" alt="1594120675413" style="zoom:80%;"></p>
+<p><img src="/2019/09/02/Python-read-and-save-csv-txt-file/1594120675413.png" alt="1594120675413" style="zoom:80%;"></p>
 <p>或者用names指定需要的列表头</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;dataset.csv&#x27;</span>, names =  [<span class="string">&#x27;date&#x27;</span>,<span class="string">&#x27;open&#x27;</span>,<span class="string">&#x27;high&#x27;</span>,<span class="string">&#x27;low&#x27;</span>,<span class="string">&#x27;close&#x27;</span>,<span class="string">&#x27;volume&#x27;</span>]) </span><br></pre></td></tr></table></figure>
 <p><strong>另：关于读取csv文件，报错：</strong></p>
@@ -481,7 +481,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(<span class="string">&quot;xxx.csv&quot;</span>, encoding=<span class="string">&#x27;gbk&#x27;</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/#more" rel="contents">
+              <a class="btn" href="/2019/09/02/Python-read-and-save-csv-txt-file/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
