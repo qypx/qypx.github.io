@@ -252,7 +252,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-31 18:29:52" itemprop="dateModified" datetime="2024-07-31T18:29:52+08:00">2024-07-31</time>
+      <time title="修改时间：2024-08-05 14:44:03" itemprop="dateModified" datetime="2024-08-05T14:44:03+08:00">2024-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -274,7 +274,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1603626851226&amp;di=4d4d1fd7872b3d817c41994e9bd5f456&amp;imgtype=0&amp;src=http%3A%2F%2Fpic4.zhimg.com%2Fv2-ccd34699e88d261fc9871c9f84f1df6a_1200x500.jpg" alt="图片"></p>
+          <blockquote>
+<p> 参考：<br> <a href="https://blog.csdn.net/PowerBlogger/article/details/83626449">https://blog.csdn.net/PowerBlogger/article/details/83626449</a><br> <a href="https://blog.csdn.net/u010886217/article/details/83796151">https://blog.csdn.net/u010886217/article/details/83796151</a><br> 《Hadoop构建数据仓库实践》</p>
+<p> 更多内容见Hive官方文档<br> <a href="https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation">https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation</a></p>
+</blockquote>
+<h2 id="1-什么是Hive？"><a href="#1-什么是Hive？" class="headerlink" title="1. 什么是Hive？"></a>1. 什么是Hive？</h2><p>Hive 是 Hadoop 生态圈的<strong>数据仓库软件</strong>，里面有表的概念，使用类似于 SQL 的语言（HiveQL）读、写、管理分布式存储上的大数据集。它建立在 Hadoop 之上，具有以下功能和特点：</p>
+<ul>
+<li>通过 HiveQL 方便地访问数据，<strong>适合执行 ETL、报表查询、数据分析等数据仓库任务</strong>。</li>
+<li>提供一种机制，给各种各样的数据格式添加结构。</li>
+<li>直接访问 HDFS 的文件，或者访问如 HBase 等其他数据存储。</li>
+<li>可以通过 MapReduce、Spark 或 Tez 等多种计算框架执行查询。</li>
+</ul>
+<p>Hive 被设计成一个可扩展的、高性能的、容错的、与输入数据格式松耦合的系统，<strong>适合于数据仓库中的汇总、分析、批处理查询等任务，而不适合联机事务处理（OLTP）的工作场景</strong>。Hive 包括 HCatalog 和 WebHCat 两个组件。HCatalog 是 Hadoop 的表和存储管理层，允许使用 Pig 和 MapReduce 等数据处理工具的用户更容易读写集群中的数据。WebHCat 提供了一个服务，可以使用 HTTP 接口执行 MapReduce （或 YARN）、Pig、Hive 作业或元数据操作。</p>
+<p>HiveQL 只处理结构化数据，并且不区分大小写（与SQL一样）。</p>
+<p><span style="color:red">Hive 里的数据最终存储在 HDFS 的文件中</span>，常用的数据文件格式有以下4种：<strong>TEXTFILE、SEQUENCEFILE、RCFILE、ORCFILE</strong>。（关于文件格式的更详细内容见 <a href="#jump3.1.2">3.1.2 file format</a>）。在 Hive 中文件格式指的是记录以怎样的编码格式被存储到文件中。不同文件格式的主要区别在于它们的数据编码、压缩率、使用的空间和磁盘I/O。在加载数据的过程中，Hive不会对数据本身进行任何修改，而只是将数据内容复制或者移动到相应的HDFS目录中。</p>
+<p>当用户向传统数据库中增加数据时，系统会检查写入的数据与表结构是否匹配，如果不匹配则拒绝插入数据，这就是所谓的<strong>写时模式</strong>。Hive与此不同，它使用的是<strong>读时模式</strong>，即直到读取时再进行数据校验（加载数据时不进行数据格式的校验，读取数据时如果不合法则显示NULL。这种模式的优点在于加载数据迅速）。在向 Hive 装载数据时，它并不验证数据与表结构是否匹配，但这时它会检查文件格式是否和表定义相匹配。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/01/12/Hive-introduction/#more" rel="contents">
