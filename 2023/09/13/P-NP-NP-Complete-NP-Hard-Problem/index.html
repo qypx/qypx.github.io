@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="来自：浅谈P、NP、NP-Complate和NP-Hard问题 多项式级时间复杂度与非多项式级时间度时间复杂度时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。 也就是说，对于某一个程序，其处理某一个特定数据的效率不能衡量该程序的好坏，而应该看当这个数据的规模变大到数百倍后，程序运行时间是否还是一样，或者也跟着慢了数百倍，或者">
+    <meta name="description" content="来自：浅谈P、NP、NP-Complate和NP-Hard问题 多项式级时间复杂度与非多项式级时间度 时间复杂度 时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。 也就是说，对于某一个程序，其处理某一个特定数据的效率不能衡量该程序的好坏，而应该看当这个数据的规模变大到数百倍后，程序运行时间是否还是一样，或者也跟着慢了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈P、NP、NP-Complete和NP-Hard问题">
 <meta property="og:url" content="http://qypx.github.io/2023/09/13/P-NP-NP-Complete-NP-Hard-Problem/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="来自：浅谈P、NP、NP-Complate和NP-Hard问题 多项式级时间复杂度与非多项式级时间度时间复杂度时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。 也就是说，对于某一个程序，其处理某一个特定数据的效率不能衡量该程序的好坏，而应该看当这个数据的规模变大到数百倍后，程序运行时间是否还是一样，或者也跟着慢了数百倍，或者">
+<meta property="og:description" content="来自：浅谈P、NP、NP-Complate和NP-Hard问题 多项式级时间复杂度与非多项式级时间度 时间复杂度 时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。 也就是说，对于某一个程序，其处理某一个特定数据的效率不能衡量该程序的好坏，而应该看当这个数据的规模变大到数百倍后，程序运行时间是否还是一样，或者也跟着慢了">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2023/09/13/P-NP-NP-Complete-NP-Hard-Problem/1694747131453.png">
 <meta property="og:image" content="http://qypx.github.io/2023/09/13/P-NP-NP-Complete-NP-Hard-Problem/1694747477690.png">
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E9%9D%9E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E5%BA%A6"><span class="nav-text">多项式级时间复杂度与非多项式级时间度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">多项式级时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E6%97%B6%E9%97%B4%E5%BA%A6"><span class="nav-text">非多项式级时间时间度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P%E9%97%AE%E9%A2%98%E4%B8%8ENP%E9%97%AE%E9%A2%98"><span class="nav-text">P问题与NP问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P%E9%97%AE%E9%A2%98"><span class="nav-text">P问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NP%E9%97%AE%E9%A2%98"><span class="nav-text">NP问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P%E9%97%AE%E9%A2%98%E4%B8%8ENP%E9%97%AE%E9%A2%98%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">P问题与NP问题的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NP-Complete-NPC-%E9%97%AE%E9%A2%98"><span class="nav-text">NP-Complete(NPC)问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NP-Hard%E9%97%AE%E9%A2%98"><span class="nav-text">NP-Hard问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NPC%E4%B8%8ENP-Hard%E7%9A%84%E5%85%B8%E5%9E%8B%E7%A4%BA%E4%BE%8B-%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98"><span class="nav-text">NPC与NP-Hard的典型示例-旅行推销员问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P-NP"><span class="nav-text">P&#x3D;NP?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#P-%E9%97%AE%E9%A2%98%E4%B8%8E-NP-%E9%97%AE%E9%A2%98"><span class="nav-text">P 问题与 NP 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%A7%84%E7%BA%A6"><span class="nav-text">多项式规约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P-NP-%EF%BC%9F"><span class="nav-text">P &#x3D; NP ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-text">问题的意义</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E9%9D%9E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E5%BA%A6"><span class="nav-text">多项式级时间复杂度与非多项式级时间度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">多项式级时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E6%97%B6%E9%97%B4%E6%97%B6%E9%97%B4%E5%BA%A6"><span class="nav-text">非多项式级时间时间度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p%E9%97%AE%E9%A2%98%E4%B8%8Enp%E9%97%AE%E9%A2%98"><span class="nav-text">P问题与NP问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#p%E9%97%AE%E9%A2%98"><span class="nav-text">P问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#np%E9%97%AE%E9%A2%98"><span class="nav-text">NP问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p%E9%97%AE%E9%A2%98%E4%B8%8Enp%E9%97%AE%E9%A2%98%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">P问题与NP问题的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#np-completenpc%E9%97%AE%E9%A2%98"><span class="nav-text">NP-Complete(NPC)问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#np-hard%E9%97%AE%E9%A2%98"><span class="nav-text">NP-Hard问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npc%E4%B8%8Enp-hard%E7%9A%84%E5%85%B8%E5%9E%8B%E7%A4%BA%E4%BE%8B-%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98"><span class="nav-text">NPC与NP-Hard的典型示例-旅行推销员问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pnp"><span class="nav-text">P&#x3D;NP?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#p-%E9%97%AE%E9%A2%98%E4%B8%8E-np-%E9%97%AE%E9%A2%98"><span class="nav-text">P 问题与 NP 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%A7%84%E7%BA%A6"><span class="nav-text">多项式规约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p-np"><span class="nav-text">P &#x3D; NP ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E6%84%8F%E4%B9%89"><span class="nav-text">问题的意义</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -282,24 +282,40 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>来自：<a href="https://zhuanlan.zhihu.com/p/433308577">浅谈P、NP、NP-Complate和NP-Hard问题</a></p>
-<h2 id="多项式级时间复杂度与非多项式级时间度"><a href="#多项式级时间复杂度与非多项式级时间度" class="headerlink" title="多项式级时间复杂度与非多项式级时间度"></a>多项式级时间复杂度与非多项式级时间度</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。</p>
+<h2 id="多项式级时间复杂度与非多项式级时间度">多项式级时间复杂度与非多项式级时间度</h2>
+<h3 id="时间复杂度">时间复杂度</h3>
+<p>时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。</p>
 <p>也就是说，对于某一个程序，其处理某一个特定数据的效率不能衡量该程序的好坏，而应该看当这个数据的规模变大到数百倍后，程序运行时间是否还是一样，或者也跟着慢了数百倍，或者变慢了数万倍。</p>
-<p>不管数据有多大，程序处理所花的时间始终是那么多的，我们就说这个程序很好，具 $O(1)$ 的时间复杂度，也称常数级复杂度；</p>
-<p>数据规模变得有多大，花的时间也跟着变得有多长，比如找n个数中的最大值这个程序的时间复杂度就是$O(n)$，为线性级复杂度，</p>
-<p>而像冒泡排序、插入排序等，数据扩大2倍，时间变慢4倍的，时间复杂度是$O(n^2)$，为平方级复杂度。</p>
-<p>还有一些穷举类的算法，所需时间长度成几何阶数上涨，这就是$O(a^n)$的指数级复杂度，甚至$O(n!)$的阶乘级复杂度。</p>
-<h3 id="多项式级时间复杂度"><a href="#多项式级时间复杂度" class="headerlink" title="多项式级时间复杂度"></a>多项式级时间复杂度</h3><p>像$O(1), O(ln(n)), O(n^a)$等，我们把它叫做多项式级时间复杂度，因为它的规模n出现在底数的位置；</p>
-<h3 id="非多项式级时间时间度"><a href="#非多项式级时间时间度" class="headerlink" title="非多项式级时间时间度"></a>非多项式级时间时间度</h3><p>另一种像是 $O(a^n)$ 和 $O(n!)$ 等，是非多项式级的时间复杂度，其复杂度计算机往往不能承受。</p>
+<p>不管数据有多大，程序处理所花的时间始终是那么多的，我们就说这个程序很好，具
+<span class="math inline">\(O(1)\)</span>
+的时间复杂度，也称常数级复杂度；</p>
+<p>数据规模变得有多大，花的时间也跟着变得有多长，比如找n个数中的最大值这个程序的时间复杂度就是<span class="math inline">\(O(n)\)</span>，为线性级复杂度，</p>
+<p>而像冒泡排序、插入排序等，数据扩大2倍，时间变慢4倍的，时间复杂度是<span class="math inline">\(O(n^2)\)</span>，为平方级复杂度。</p>
+<p>还有一些穷举类的算法，所需时间长度成几何阶数上涨，这就是<span class="math inline">\(O(a^n)\)</span>的指数级复杂度，甚至<span class="math inline">\(O(n!)\)</span>的阶乘级复杂度。</p>
+<h3 id="多项式级时间复杂度">多项式级时间复杂度</h3>
+<p>像<span class="math inline">\(O(1), O(ln(n)),
+O(n^a)\)</span>等，我们把它叫做多项式级时间复杂度，因为它的规模n出现在底数的位置；</p>
+<h3 id="非多项式级时间时间度">非多项式级时间时间度</h3>
+<p>另一种像是 <span class="math inline">\(O(a^n)\)</span> 和 <span class="math inline">\(O(n!)\)</span>
+等，是非多项式级的时间复杂度，其复杂度计算机往往不能承受。</p>
 <p>当我们在解决一个问题时，我们选择的算法通常都需要是多项式级的复杂度，非多项式级的复杂度需要的时间太多，往往会超时。</p>
 <span id="more"></span>
-<h2 id="P问题与NP问题"><a href="#P问题与NP问题" class="headerlink" title="P问题与NP问题"></a>P问题与NP问题</h2><h3 id="P问题"><a href="#P问题" class="headerlink" title="P问题"></a>P问题</h3><p><strong>能在多项式时间内解决的问题。</strong></p>
+<h2 id="p问题与np问题">P问题与NP问题</h2>
+<h3 id="p问题">P问题</h3>
+<p><strong>能在多项式时间内解决的问题。</strong></p>
 <p>例如，计算1-1000的连续整数之和：这个问题就比较简单，无论是编程还是使用高斯求和公式都可以在有限可接受的时间内完成，这种算是P类问题。</p>
-<h3 id="NP问题"><a href="#NP问题" class="headerlink" title="NP问题"></a>NP问题</h3><p><strong>指一个复杂问题不能确定是否在多项式时间内找到答案，但是可以在多项式时间内验证答案是否正确。</strong> 即能在多项式时间内验证得出一个正确解的问题。</p>
+<h3 id="np问题">NP问题</h3>
+<p><strong>指一个复杂问题不能确定是否在多项式时间内找到答案，但是可以在多项式时间内验证答案是否正确。</strong>
+即能在多项式时间内验证得出一个正确解的问题。</p>
 <p>例如，计算地球上所有原子个数之和：这个问题就很困难甚至无解，但是现在有个答案是300个，显然是错的，所以很容易验证但不容易求解，这种算NP类问题。</p>
-<h3 id="P问题与NP问题的关系"><a href="#P问题与NP问题的关系" class="headerlink" title="P问题与NP问题的关系"></a>P问题与NP问题的关系</h3><p>如果一个问题是P问题，那么毫无疑问我们可以在多项式时间内验证它。</p>
-<p>P类问题是可以在多项式时间内解决并验证的一类问题，NP类问题是可以多项式时间验证但是不确定能否在多项式时间内解决的一类问题。</p>
-<script type="math/tex; mode=display">
-P \subseteq NP</script><h3 id="NP-Complete-NPC-问题"><a href="#NP-Complete-NPC-问题" class="headerlink" title="NP-Complete(NPC)问题"></a>NP-Complete(NPC)问题</h3><p>这个问题需要满足两个条件:</p>
+<h3 id="p问题与np问题的关系">P问题与NP问题的关系</h3>
+<p>如果一个问题是P问题，那么毫无疑问我们可以在多项式时间内验证它。</p>
+<p>P类问题是可以在多项式时间内解决并验证的一类问题，NP类问题是可以多项式时间验证但是不确定能否在多项式时间内解决的一类问题。
+<span class="math display">\[
+P \subseteq NP
+\]</span></p>
+<h3 id="np-completenpc问题">NP-Complete(NPC)问题</h3>
+<p>这个问题需要满足两个条件:</p>
 <ul>
 <li>它是一个NP问题</li>
 <li>其他所有属于NP的问题都可以规约成它</li>
@@ -307,31 +323,79 @@ P \subseteq NP</script><h3 id="NP-Complete-NPC-问题"><a href="#NP-Complete-NPC
 <p>换句话说，只要解决了这个问题，那么所有的NP问题都解决了。</p>
 <p><strong>可归约</strong>：就是将一个问题转化为另一个问题，使的用第二个问题的解来解第一个问题第一个问题。这种思想类似于数学证明中，如果一个证明很难从原命题切入，此时根据原命题与其逆否命题是等价的，将原命题转换成逆否命题求解，将得到及其简便的解法或者是结题的切入点。例如，假设要在一个城市中认路，如果有一张地图，就将认路问题归约得到地图问题。</p>
 <p>同时约化还具有一个重要性质：约化具有传递性。也就是说如果问题A可约化为问题B，问题B可约化为问题C，那么问题A一定可约化为问题C。</p>
-<h3 id="NP-Hard问题"><a href="#NP-Hard问题" class="headerlink" title="NP-Hard问题"></a>NP-Hard问题</h3><p>它满足NPC问题定义的第二条但不一定要满足第一条。 即所有的NP问题都能约化到它，但是他不一定是一个NP问题。</p>
+<h3 id="np-hard问题">NP-Hard问题</h3>
+<p>它满足NPC问题定义的第二条但不一定要满足第一条。
+即所有的NP问题都能约化到它，但是他不一定是一个NP问题。</p>
 <p>NP-Hard问题同样难以找到多项式的算法，但它不列入我们的研究范围，因为它不一定是NP问题。即使NPC问题发现了多项式级的算法，NP-Hard问题有可能仍然无法得到多项式级的算法。</p>
 <p>事实上，由于NP-Hard放宽了限定条件，它将有可能比所有的NPC问题的时间复杂度更高从而更难以解决。</p>
-<h3 id="NPC与NP-Hard的典型示例-旅行推销员问题"><a href="#NPC与NP-Hard的典型示例-旅行推销员问题" class="headerlink" title="NPC与NP-Hard的典型示例-旅行推销员问题"></a>NPC与NP-Hard的典型示例-旅行推销员问题</h3><p><strong>旅行推销员问题（Traveling Salesman Problem, TSP）</strong> 是一个商品推销员要去若干个城市推销商品，该推销员从一个城市出发，需要经过所有城市后，回到出发地。</p>
+<h3 id="npc与np-hard的典型示例-旅行推销员问题">NPC与NP-Hard的典型示例-旅行推销员问题</h3>
+<p><strong>旅行推销员问题（Traveling Salesman Problem, TSP）</strong>
+是一个商品推销员要去若干个城市推销商品，该推销员从一个城市出发，需要经过所有城市后，回到出发地。</p>
 <p>旅行商问题有两个版本：</p>
-<ol>
-<li>在一个图里，除了起始点以外不重复地遍历所有节点构成一条闭合回路，问这条回路的最短路径是多少？（应如何选择行进路线，以使总的行程最短）—-<strong>这个是最优解问题</strong></li>
-<li>在一个图里，除了起始点以外不重复地遍历所有节点构成一条闭合回路，问路径长度小于等于某个值的这样的回路是否存在？（应如何选择行进路线，以使总的行程小于等于某个值）—-<strong>这个是判定性问题</strong></li>
+<ol type="1">
+<li>在一个图里，除了起始点以外不重复地遍历所有节点构成一条闭合回路，问这条回路的最短路径是多少？（应如何选择行进路线，以使总的行程最短）---<strong>这个是最优解问题</strong></li>
+<li>在一个图里，除了起始点以外不重复地遍历所有节点构成一条闭合回路，问路径长度小于等于某个值的这样的回路是否存在？（应如何选择行进路线，以使总的行程小于等于某个值）---<strong>这个是判定性问题</strong></li>
 </ol>
 <p>对于问题1，是无法令确定型图灵机在多项式时间内验证答案的，所以问题1不是NP问题，因此也不是NPC问题，但是Hamilton回路问题可以约化为TSP问题，而Hamilton回路问题是NP问题，因此是NP-Hard问题。</p>
 <p>对于问题2，可以令确定型图灵机在多项式时间内验证答案，所以问题2是NP问题，同时Hamilton回路问题可以约化为TSP问题，而Hamilton回路问题是NP问题，因此问题2是NP-Hard问题，同时它也是NPC问题。</p>
-<h2 id="P-NP"><a href="#P-NP" class="headerlink" title="P=NP?"></a>P=NP?</h2><blockquote>
-<p>来自 <a href="https://zhuanlan.zhihu.com/p/141884913">https://zhuanlan.zhihu.com/p/141884913</a></p>
+<h2 id="pnp">P=NP?</h2>
+<blockquote>
+<p>来自 https://zhuanlan.zhihu.com/p/141884913</p>
 </blockquote>
-<p><strong>P 是否等于 NP</strong>。早在 2000 年 5 月的时候，<strong>Clay Institute</strong> 将这个问题列为了<strong>数学里的七大千禧问题之一</strong>，如果有人能证明出 P = NP 或 P ≠ NP，就会获得该机构整整 100 万美元的奖金。并且一旦证明出 P = NP 将会改变现有人类所有的知识体系，下面我们就来看看这个问题到底在讲什么吧。</p>
-<p><img src="/2023/09/13/P-NP-NP-Complete-NP-Hard-Problem/1694747131453.png" alt="1694747131453"></p>
-<h3 id="P-问题与-NP-问题"><a href="#P-问题与-NP-问题" class="headerlink" title="P 问题与 NP 问题"></a>P 问题与 NP 问题</h3><p>首先我们要知道什么是 P 问题和 NP 问题，所谓的 <strong>P 问题就是能够在多项式的时间复杂度内解决的问题</strong>，这里的 P 指的是<strong>多项式时间</strong>（<strong>polynomial time</strong>）的意思。比如<strong>排序问题，二分查找，图的遍历，最小生成树</strong>等。</p>
-<p>对于那些不能在多项式的时间复杂度内解决的问题，比如说<strong>背包问题</strong>，<strong>分配问题</strong>等等，我们会认为这个问题很难，<strong>可能需要在指数或阶乘的时间复杂度内解决</strong>，但是如果我们<strong>能够在多项式的时间复杂度内验证一个答案是否正确，我们就把这类问题称为 NP 问题</strong>，其中 NP 表示<strong>不确定的多项式时间</strong>（<strong>non-deterministic polynomial time</strong>）。简单来说就是<strong>解决 NP 问题很难，但验证它却很容易</strong>。打个比方，数独是一个解决起来比较难的问题，但是如果我们<strong>往格子里随机填一些数字，然后验证它是否满足数独的规则就会比较容易。</strong>因此，这类问题也是科学家们最关心的问题。</p>
-<h3 id="多项式规约"><a href="#多项式规约" class="headerlink" title="多项式规约"></a>多项式规约</h3><p>既然 NP 问题都是比较难的问题，那么<strong>是否存在一个 NP 问题，使得所有 NP 问题可以通过多项式规约</strong>（<strong>polynomially reducible</strong>）<strong>得到它</strong>？这里的多项式规约指的是<strong>问题 A 的所有实例都能够在多项式的时间复杂度内转化为问题 B 的所有实例。规约后，如果问题依然是一个 NP 问题，我们就把它称作 NP-complete 问题；相反如果不是一个 NP 问题，我们称它为 NP-hard 问题。</strong></p>
-<p>举个例子，一元一次方程和一元二次方程的问题都是 NP 问题，因为我们可以选取一个 $x$ 值，然后代入验证是否满足方程。我们发现，一元一次方程的问题可以规约成一元二次方程的问题，规约的过程很简单，只需要将 $x$ 二次项系数改为0即可。而且一元二次方程有求根公式，所以对于一元一次方程而言，我们也可以代入到求根公式中得到方程的解。因此，我们可以说只要能解决一元二次方程，便可以解决一元一次方程，因为后者可以规约到前者。</p>
-<h3 id="P-NP-？"><a href="#P-NP-？" class="headerlink" title="P = NP ？"></a>P = NP ？</h3><p>那么问题来了，规约过后的 NP 问题能否在多项式的复杂度内解决呢？换句话说，<strong>P 问题和 NP 问题是否等价。如果 P = NP 就意味着任何能够在多项式的复杂度验证的问题也能够在多项式的复杂度解决它，</strong>反之则不成立。下图表示了 P, NP, NP-complete 和 NP-hard 之间的关系。</p>
-<p><img src="/2023/09/13/P-NP-NP-Complete-NP-Hard-Problem/1694747477690.png" alt="1694747477690"></p>
-<h3 id="问题的意义"><a href="#问题的意义" class="headerlink" title="问题的意义"></a>问题的意义</h3><p>那就要小伙伴要说了，这个问题太深奥了，跟我们这种普通人没有关系呀。正是这个超级难的问题，还没有人证明出来，才保证了我们普通人的正常生活，因为<strong>很多关于密码学的问题都是基于 P ≠ NP 来的，正是基于这种假设才使我们的各种加密算法暂时不能被轻易的破解。</strong>所以，一旦证明出 P = NP，那将可能会导致一些颠覆性的变化。</p>
-<p>首先来说说它的好处，因为 NP 问题大多数都是不能够在多项式的复杂度内解决的，所以一旦 P = NP，我们就可以将任何一个 NP 问题转化为一个 P 问题。因此，一些现在看起来很难的问题都能够轻松的解决它，比如围棋有了终极解，生物领域中可以轻松破解遗传密码来任意操纵基因序列，很多数学猜想能够用计算机来演算推导<strong>，</strong>大量难题被解决等等，这些都是一些好的方面。</p>
-<p>但是也会带来很多负面的影响，P 如果等于 NP 会导致所有加密算法彻底失效<strong>，</strong>你的银行卡，手机密码，社交账号变得不再安全，黑客能够轻松进入你的电脑，比特币，区块链这些近年来很火的概念将会成为无人问津的领域，这样的例子还有很多很多。</p>
+<p><strong>P 是否等于 NP</strong>。早在 2000 年 5 月的时候，<strong>Clay
+Institute</strong>
+将这个问题列为了<strong>数学里的七大千禧问题之一</strong>，如果有人能证明出
+P = NP 或 P ≠ NP，就会获得该机构整整 100 万美元的奖金。并且一旦证明出 P
+= NP
+将会改变现有人类所有的知识体系，下面我们就来看看这个问题到底在讲什么吧。</p>
+<figure>
+<img src="/2023/09/13/P-NP-NP-Complete-NP-Hard-Problem/1694747131453.png" alt="1694747131453">
+<figcaption aria-hidden="true">1694747131453</figcaption>
+</figure>
+<h3 id="p-问题与-np-问题">P 问题与 NP 问题</h3>
+<p>首先我们要知道什么是 P 问题和 NP 问题，所谓的 <strong>P
+问题就是能够在多项式的时间复杂度内解决的问题</strong>，这里的 P
+指的是<strong>多项式时间</strong>（<strong>polynomial
+time</strong>）的意思。比如<strong>排序问题，二分查找，图的遍历，最小生成树</strong>等。</p>
+<p>对于那些不能在多项式的时间复杂度内解决的问题，比如说<strong>背包问题</strong>，<strong>分配问题</strong>等等，我们会认为这个问题很难，<strong>可能需要在指数或阶乘的时间复杂度内解决</strong>，但是如果我们<strong>能够在多项式的时间复杂度内验证一个答案是否正确，我们就把这类问题称为
+NP 问题</strong>，其中 NP
+表示<strong>不确定的多项式时间</strong>（<strong>non-deterministic
+polynomial time</strong>）。简单来说就是<strong>解决 NP
+问题很难，但验证它却很容易</strong>。打个比方，数独是一个解决起来比较难的问题，但是如果我们<strong>往格子里随机填一些数字，然后验证它是否满足数独的规则就会比较容易。</strong>因此，这类问题也是科学家们最关心的问题。</p>
+<h3 id="多项式规约">多项式规约</h3>
+<p>既然 NP 问题都是比较难的问题，那么<strong>是否存在一个 NP
+问题，使得所有 NP 问题可以通过多项式规约</strong>（<strong>polynomially
+reducible</strong>）<strong>得到它</strong>？这里的多项式规约指的是<strong>问题
+A 的所有实例都能够在多项式的时间复杂度内转化为问题 B
+的所有实例。规约后，如果问题依然是一个 NP 问题，我们就把它称作
+NP-complete 问题；相反如果不是一个 NP 问题，我们称它为 NP-hard
+问题。</strong></p>
+<p>举个例子，一元一次方程和一元二次方程的问题都是 NP
+问题，因为我们可以选取一个 <span class="math inline">\(x\)</span>
+值，然后代入验证是否满足方程。我们发现，一元一次方程的问题可以规约成一元二次方程的问题，规约的过程很简单，只需要将
+<span class="math inline">\(x\)</span>
+二次项系数改为0即可。而且一元二次方程有求根公式，所以对于一元一次方程而言，我们也可以代入到求根公式中得到方程的解。因此，我们可以说只要能解决一元二次方程，便可以解决一元一次方程，因为后者可以规约到前者。</p>
+<h3 id="p-np">P = NP ？</h3>
+<p>那么问题来了，规约过后的 NP
+问题能否在多项式的复杂度内解决呢？换句话说，<strong>P 问题和 NP
+问题是否等价。如果 P = NP
+就意味着任何能够在多项式的复杂度验证的问题也能够在多项式的复杂度解决它，</strong>反之则不成立。下图表示了
+P, NP, NP-complete 和 NP-hard 之间的关系。</p>
+<figure>
+<img src="/2023/09/13/P-NP-NP-Complete-NP-Hard-Problem/1694747477690.png" alt="1694747477690">
+<figcaption aria-hidden="true">1694747477690</figcaption>
+</figure>
+<h3 id="问题的意义">问题的意义</h3>
+<p>那就要小伙伴要说了，这个问题太深奥了，跟我们这种普通人没有关系呀。正是这个超级难的问题，还没有人证明出来，才保证了我们普通人的正常生活，因为<strong>很多关于密码学的问题都是基于
+P ≠ NP
+来的，正是基于这种假设才使我们的各种加密算法暂时不能被轻易的破解。</strong>所以，一旦证明出
+P = NP，那将可能会导致一些颠覆性的变化。</p>
+<p>首先来说说它的好处，因为 NP
+问题大多数都是不能够在多项式的复杂度内解决的，所以一旦 P =
+NP，我们就可以将任何一个 NP 问题转化为一个 P
+问题。因此，一些现在看起来很难的问题都能够轻松的解决它，比如围棋有了终极解，生物领域中可以轻松破解遗传密码来任意操纵基因序列，很多数学猜想能够用计算机来演算推导<strong>，</strong>大量难题被解决等等，这些都是一些好的方面。</p>
+<p>但是也会带来很多负面的影响，P 如果等于 NP
+会导致所有加密算法彻底失效<strong>，</strong>你的银行卡，手机密码，社交账号变得不再安全，黑客能够轻松进入你的电脑，比特币，区块链这些近年来很火的概念将会成为无人问津的领域，这样的例子还有很多很多。</p>
 
     </div>
 

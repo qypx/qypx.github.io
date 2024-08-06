@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1. MapReduce fundamental concepts   1.1 Mapper    Mapper: Extract and organize what we care about. 1.2 Shuffle and Sort  1.3 Reducer    2. How MapReduce distributes processing   3. MapReduce: a real e">
+    <meta name="description" content="1. MapReduce fundamental concepts   1    20200103-142610    1578032937052  1.1 Mapper   1578033123727    20200103-143446    1578033212508    1578033238182  Mapper: Extra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MapReduce">
 <meta property="og:url" content="http://qypx.github.io/2020/01/03/MapReduce/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="1. MapReduce fundamental concepts   1.1 Mapper    Mapper: Extract and organize what we care about. 1.2 Shuffle and Sort  1.3 Reducer    2. How MapReduce distributes processing   3. MapReduce: a real e">
+<meta property="og:description" content="1. MapReduce fundamental concepts   1    20200103-142610    1578032937052  1.1 Mapper   1578033123727    20200103-143446    1578033212508    1578033238182  Mapper: Extra">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/03/MapReduce/1578032618932.jpg">
 <meta property="og:image" content="http://qypx.github.io/2020/01/03/MapReduce/20200103-142610.jpg">
@@ -178,7 +178,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-MapReduce-fundamental-concepts"><span class="nav-text">1. MapReduce fundamental concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-Mapper"><span class="nav-text">1.1 Mapper</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Shuffle-and-Sort"><span class="nav-text">1.2 Shuffle and Sort</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-Reducer"><span class="nav-text">1.3 Reducer</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-How-MapReduce-distributes-processing"><span class="nav-text">2. How MapReduce distributes processing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-MapReduce-a-real-example"><span class="nav-text">3. MapReduce: a real example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Runing-MapReduce-with-MRJOB"><span class="nav-text">4. Runing MapReduce with MRJOB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Challenge-Exercise"><span class="nav-text">5. Challenge Exercise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Check-your-results"><span class="nav-text">6. Check your results</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#mapreduce-fundamental-concepts"><span class="nav-text">1. MapReduce fundamental
+concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mapper"><span class="nav-text">1.1 Mapper</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#shuffle-and-sort"><span class="nav-text">1.2 Shuffle and Sort</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#reducer"><span class="nav-text">1.3 Reducer</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-mapreduce-distributes-processing"><span class="nav-text">2. How MapReduce
+distributes processing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mapreduce-a-real-example"><span class="nav-text">3. MapReduce: a real example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#runing-mapreduce-with-mrjob"><span class="nav-text">4. Runing MapReduce with MRJOB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#challenge-exercise"><span class="nav-text">5. Challenge Exercise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#check-your-results"><span class="nav-text">6. Check your results</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -312,50 +314,156 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="1-MapReduce-fundamental-concepts"><a href="#1-MapReduce-fundamental-concepts" class="headerlink" title="1. MapReduce fundamental concepts"></a>1. MapReduce fundamental concepts</h4><p><img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-142610.jpg" alt="20200103-142610"></p>
-<p><img src="/2020/01/03/MapReduce/1578032937052.jpg" alt="1578032937052"></p>
-<h5 id="1-1-Mapper"><a href="#1-1-Mapper" class="headerlink" title="1.1 Mapper"></a>1.1 Mapper</h5><p><img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-143446.jpg" alt="20200103-143446"></p>
-<p><img src="/2020/01/03/MapReduce/1578033212508.jpg" alt="1578033212508"></p>
-<p><img src="/2020/01/03/MapReduce/1578033238182.jpg" alt="1578033238182"></p>
+    <div class="post-body" itemprop="articleBody"><h4 id="mapreduce-fundamental-concepts">1. MapReduce fundamental
+concepts</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-142610.jpg" alt="20200103-142610">
+<figcaption aria-hidden="true">20200103-142610</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578032937052.jpg" alt="1578032937052">
+<figcaption aria-hidden="true">1578032937052</figcaption>
+</figure>
+<h5 id="mapper">1.1 Mapper</h5>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727">
+<figcaption aria-hidden="true">1578033123727</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-143446.jpg" alt="20200103-143446">
+<figcaption aria-hidden="true">20200103-143446</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033212508.jpg" alt="1578033212508">
+<figcaption aria-hidden="true">1578033212508</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033238182.jpg" alt="1578033238182">
+<figcaption aria-hidden="true">1578033238182</figcaption>
+</figure>
 <p>Mapper: Extract and organize what we care about.</p>
-<h5 id="1-2-Shuffle-and-Sort"><a href="#1-2-Shuffle-and-Sort" class="headerlink" title="1.2 Shuffle and Sort"></a>1.2 Shuffle and Sort</h5><p><img src="/2020/01/03/MapReduce/1578033463232.jpg" alt="1578033463232"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-144645.jpg" alt="20200103-144645"></p>
-<h5 id="1-3-Reducer"><a href="#1-3-Reducer" class="headerlink" title="1.3 Reducer"></a>1.3 Reducer</h5><p><img src="/2020/01/03/MapReduce/1578034121206.jpg" alt="1578034121206"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-144953.jpg" alt="20200103-144953"></p>
-<p><img src="/2020/01/03/MapReduce/1578034303323.jpg" alt="1578034303323"></p>
+<h5 id="shuffle-and-sort">1.2 Shuffle and Sort</h5>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033463232.jpg" alt="1578033463232">
+<figcaption aria-hidden="true">1578033463232</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-144645.jpg" alt="20200103-144645">
+<figcaption aria-hidden="true">20200103-144645</figcaption>
+</figure>
+<h5 id="reducer">1.3 Reducer</h5>
+<figure>
+<img src="/2020/01/03/MapReduce/1578034121206.jpg" alt="1578034121206">
+<figcaption aria-hidden="true">1578034121206</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-144953.jpg" alt="20200103-144953">
+<figcaption aria-hidden="true">20200103-144953</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578034303323.jpg" alt="1578034303323">
+<figcaption aria-hidden="true">1578034303323</figcaption>
+</figure>
 <hr>
-<h4 id="2-How-MapReduce-distributes-processing"><a href="#2-How-MapReduce-distributes-processing" class="headerlink" title="2. How MapReduce distributes processing"></a>2. How MapReduce distributes processing</h4><p><img src="/2020/01/03/MapReduce/1578034389919.jpg" alt="1578034389919"></p>
-<p><img src="/2020/01/03/MapReduce/0002.jpg" alt="0002"></p>
+<h4 id="how-mapreduce-distributes-processing">2. How MapReduce
+distributes processing</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578034389919.jpg" alt="1578034389919">
+<figcaption aria-hidden="true">1578034389919</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/0002.jpg" alt="0002">
+<figcaption aria-hidden="true">0002</figcaption>
+</figure>
 <hr>
-<h4 id="3-MapReduce-a-real-example"><a href="#3-MapReduce-a-real-example" class="headerlink" title="3. MapReduce: a real example"></a>3. MapReduce: a real example</h4><p><img src="/2020/01/03/MapReduce/1578035985411.jpg" alt="1578035985411"></p>
-<p><img src="/2020/01/03/MapReduce/1578036687341.jpg" alt="1578036687341"></p>
-<p>Sometimes, it’s not easy to try to force a problem into this way of thinking, and that’s a big reason why other frameworks like Spark or Hive, or other ways of processing SQL style queries have become a little bit more popular that just writing raw MapReduce code.</p>
-<p>But, still, if you can easily express something in terms of mapping and reducing, this can sometimes be the most efficient way of doing it.</p>
-<p><img src="/2020/01/03/MapReduce/1578037510439.jpg" alt="1578037510439"></p>
-<p>Then, the results all get passed into the MapReduce framework which does shuffle and sort for us. And then, we just have to write the Reducer.</p>
-<p><img src="/2020/01/03/MapReduce/1578038403968.jpg" alt="1578038403968"></p>
-<p>Here’s a complete Python MapReduce script.</p>
-<p><img src="/2020/01/03/MapReduce/1578039179773.jpg" alt="1578039179773"></p>
-<p>This is an entire MRJOB script in Python that would use MapReduce streaming to actually execute across a cluster.</p>
+<h4 id="mapreduce-a-real-example">3. MapReduce: a real example</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578035985411.jpg" alt="1578035985411">
+<figcaption aria-hidden="true">1578035985411</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578036687341.jpg" alt="1578036687341">
+<figcaption aria-hidden="true">1578036687341</figcaption>
+</figure>
+<p>Sometimes, it's not easy to try to force a problem into this way of
+thinking, and that's a big reason why other frameworks like Spark or
+Hive, or other ways of processing SQL style queries have become a little
+bit more popular that just writing raw MapReduce code.</p>
+<p>But, still, if you can easily express something in terms of mapping
+and reducing, this can sometimes be the most efficient way of doing
+it.</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578037510439.jpg" alt="1578037510439">
+<figcaption aria-hidden="true">1578037510439</figcaption>
+</figure>
+<p>Then, the results all get passed into the MapReduce framework which
+does shuffle and sort for us. And then, we just have to write the
+Reducer.</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578038403968.jpg" alt="1578038403968">
+<figcaption aria-hidden="true">1578038403968</figcaption>
+</figure>
+<p>Here's a complete Python MapReduce script.</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578039179773.jpg" alt="1578039179773">
+<figcaption aria-hidden="true">1578039179773</figcaption>
+</figure>
+<p>This is an entire MRJOB script in Python that would use MapReduce
+streaming to actually execute across a cluster.</p>
 <hr>
-<h4 id="4-Runing-MapReduce-with-MRJOB"><a href="#4-Runing-MapReduce-with-MRJOB" class="headerlink" title="4. Runing MapReduce with MRJOB"></a>4. Runing MapReduce with MRJOB</h4><p>首先需要安装一些东西</p>
+<h4 id="runing-mapreduce-with-mrjob">4. Runing MapReduce with MRJOB</h4>
+<p>首先需要安装一些东西</p>
 <p>Run our MapReduce job in our Hadoop installation.</p>
-<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview</a></p>
-<p><img src="/2020/01/03/MapReduce/1578041252394.jpg" alt="1578041252394"></p>
-<p><img src="/2020/01/03/MapReduce/1578041273664.jpg" alt="1578041273664"></p>
-<p><img src="/2020/01/03/MapReduce/1578041300494.jpg" alt="1578041300494"></p>
+<p>https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578041252394.jpg" alt="1578041252394">
+<figcaption aria-hidden="true">1578041252394</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578041273664.jpg" alt="1578041273664">
+<figcaption aria-hidden="true">1578041273664</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578041300494.jpg" alt="1578041300494">
+<figcaption aria-hidden="true">1578041300494</figcaption>
+</figure>
 <hr>
-<h4 id="5-Challenge-Exercise"><a href="#5-Challenge-Exercise" class="headerlink" title="5. Challenge Exercise"></a>5. Challenge Exercise</h4><p><img src="/2020/01/03/MapReduce/1578043490000.jpg" alt="1578043490000"></p>
-<p><img src="/2020/01/03/MapReduce/1578043550225.jpg" alt="1578043550225"></p>
-<p><img src="/2020/01/03/MapReduce/1578043582794.jpg" alt="1578043582794"></p>
-<p><img src="/2020/01/03/MapReduce/1578043608450.jpg" alt="1578043608450"></p>
-<p><img src="/2020/01/03/MapReduce/1578043786325.jpg" alt="1578043786325"></p>
+<h4 id="challenge-exercise">5. Challenge Exercise</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043490000.jpg" alt="1578043490000">
+<figcaption aria-hidden="true">1578043490000</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043550225.jpg" alt="1578043550225">
+<figcaption aria-hidden="true">1578043550225</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043582794.jpg" alt="1578043582794">
+<figcaption aria-hidden="true">1578043582794</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043608450.jpg" alt="1578043608450">
+<figcaption aria-hidden="true">1578043608450</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043786325.jpg" alt="1578043786325">
+<figcaption aria-hidden="true">1578043786325</figcaption>
+</figure>
 <hr>
-<h4 id="6-Check-your-results"><a href="#6-Check-your-results" class="headerlink" title="6. Check your results"></a>6. Check your results</h4><p><img src="/2020/01/03/MapReduce/1578044582388.jpg" alt="1578044582388"></p>
+<h4 id="check-your-results">6. Check your results</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578044582388.jpg" alt="1578044582388">
+<figcaption aria-hidden="true">1578044582388</figcaption>
+</figure>
 <p>结果：</p>
-<p><img src="/2020/01/03/MapReduce/1578044858078.jpg" alt="1578044858078"></p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578044858078.jpg" alt="1578044858078">
+<figcaption aria-hidden="true">1578044858078</figcaption>
+</figure>
 <p>movieId 50 是最popular的电影。</p>
 
     </div>

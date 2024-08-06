@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="HIVEWe can actually make your Hadoop cluster look like a relational database through a technology called Hive. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.  What i">
+    <meta name="description" content="HIVE We can actually make your Hadoop cluster look like a relational database through a technology called Hive. And there&#39;s also ways of integrating a new Hadoop cluster with a MySQL database.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using relational data stores with Hadoop —— Hive &amp; Sqoop">
 <meta property="og:url" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="HIVEWe can actually make your Hadoop cluster look like a relational database through a technology called Hive. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.  What i">
+<meta property="og:description" content="HIVE We can actually make your Hadoop cluster look like a relational database through a technology called Hive. And there&#39;s also ways of integrating a new Hadoop cluster with a MySQL database.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064046135.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064255091.png">
@@ -180,7 +180,15 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HIVE"><span class="nav-text">HIVE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Hive"><span class="nav-text">What is Hive?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-Hive"><span class="nav-text">Why Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-not-Hive"><span class="nav-text">Why not Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HiveQL"><span class="nav-text">HiveQL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-Use-Hive-to-find-the-most-popular-movie"><span class="nav-text">[Activity] Use Hive to find the most popular movie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-Hive-works"><span class="nav-text">How Hive works?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Schema-on-read"><span class="nav-text">Schema on read</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Where-is-the-data-%E5%86%85%E9%83%A8%E8%A1%A8%E4%B8%8E%E5%A4%96%E9%83%A8%E8%A1%A8"><span class="nav-text">Where is the data? (内部表与外部表)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Partitioning-%E5%88%86%E5%8C%BA"><span class="nav-text">Partitioning 分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ways-to-use-Hive"><span class="nav-text">Ways to use Hive</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Activity-Use-Hive-to-find-the-movie-with-the-highest-average-rating"><span class="nav-text">[Activity] Use Hive to find the movie with the highest average rating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sqoop"><span class="nav-text">Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Integrating-MySQL-with-Hadoop"><span class="nav-text">Integrating MySQL with Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-Export-data-MySQL-lt-gt-HDFS-Hadoop"><span class="nav-text">Import&#x2F;Export data (MySQL &lt;-&gt; HDFS&#x2F;Hadoop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Play-with-MySQL-and-Sqoop"><span class="nav-text">Play with MySQL and Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Install-MySQL-and-import-our-movie-data"><span class="nav-text">[Activity] Install MySQL and import our movie data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Use-Sqoop-to-import-data-from-MySQL-to-HDFS-Hive"><span class="nav-text">[Activity] Use Sqoop to import data from MySQL to HDFS&#x2F;Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Use-Sqoop-tp-export-data-from-Hadoop-to-MySQL"><span class="nav-text">[Activity] Use Sqoop tp export data from Hadoop to MySQL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text">结语</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hive"><span class="nav-text">HIVE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-hive"><span class="nav-text">What is Hive?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#why-hive"><span class="nav-text">Why Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why-not-hive"><span class="nav-text">Why not Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hiveql"><span class="nav-text">HiveQL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#activity-use-hive-to-find-the-most-popular-movie"><span class="nav-text">[Activity] Use
+Hive to find the most popular movie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-hive-works"><span class="nav-text">How Hive works?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#schema-on-read"><span class="nav-text">Schema on read</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#where-is-the-data-%E5%86%85%E9%83%A8%E8%A1%A8%E4%B8%8E%E5%A4%96%E9%83%A8%E8%A1%A8"><span class="nav-text">Where is the data?
+(内部表与外部表)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#partitioning-%E5%88%86%E5%8C%BA"><span class="nav-text">Partitioning 分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ways-to-use-hive"><span class="nav-text">Ways to use Hive</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#activity-use-hive-to-find-the-movie-with-the-highest-average-rating"><span class="nav-text">[Activity]
+Use Hive to find the movie with the highest average rating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqoop"><span class="nav-text">Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#integrating-mysql-with-hadoop"><span class="nav-text">Integrating MySQL with
+Hadoop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#importexport-data-mysql---hdfshadoop"><span class="nav-text">Import&#x2F;Export data (MySQL
+&lt;-&gt; HDFS&#x2F;Hadoop)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#play-with-mysql-and-sqoop"><span class="nav-text">Play with MySQL and Sqoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#activity-install-mysql-and-import-our-movie-data"><span class="nav-text">[Activity]
+Install MySQL and import our movie data</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#activity-use-sqoop-to-import-data-from-mysql-to-hdfshive"><span class="nav-text">[Activity]
+Use Sqoop to import data from MySQL to HDFS&#x2F;Hive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#activity-use-sqoop-tp-export-data-from-hadoop-to-mysql"><span class="nav-text">[Activity]
+Use Sqoop tp export data from Hadoop to MySQL</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-text">结语</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -321,90 +329,268 @@
     
     
     <div class="post-body" itemprop="articleBody"><!-- toc -->
-<h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>We can actually make your Hadoop cluster look like a relational database through a technology called <strong>Hive</strong>. And there’s also ways of integrating a new Hadoop cluster with a MySQL database.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064046135.png" alt="1579064046135"></p>
-<h3 id="What-is-Hive"><a href="#What-is-Hive" class="headerlink" title="What is Hive?"></a>What is Hive?</h3><p>It lets you write standard SQL queries that look just like you’d be using them on MySQL, but actually execute them on data that’s stored across your entire cluster, maybe on an HDFS cluster as well.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064255091.png" alt="1579064255091"></p>
-<h4 id="Why-Hive"><a href="#Why-Hive" class="headerlink" title="Why Hive"></a>Why Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579082214734.png" alt="1579082214734"></p>
-<h4 id="Why-not-Hive"><a href="#Why-not-Hive" class="headerlink" title="Why not Hive"></a>Why not Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579083363568.png" alt="1579083363568"></p>
-<p>It’s not really meant for being hit with tons of queries all at once, from a website or something like that. That’s where you use something like HBase instead.</p>
-<p>Hive is a bunch of smoke and mirrors to make it look like a database, so you can issue SQL queries on it, but it isn’t really.</p>
+<h2 id="hive">HIVE</h2>
+<p>We can actually make your Hadoop cluster look like a relational
+database through a technology called <strong>Hive</strong>. And there's
+also ways of integrating a new Hadoop cluster with a MySQL database.</p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064046135.png" alt="1579064046135">
+<figcaption aria-hidden="true">1579064046135</figcaption>
+</figure>
+<h3 id="what-is-hive">What is Hive?</h3>
+<p>It lets you write standard SQL queries that look just like you'd be
+using them on MySQL, but actually execute them on data that's stored
+across your entire cluster, maybe on an HDFS cluster as well.</p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579064255091.png" alt="1579064255091">
+<figcaption aria-hidden="true">1579064255091</figcaption>
+</figure>
+<h4 id="why-hive">Why Hive</h4>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579082214734.png" alt="1579082214734">
+<figcaption aria-hidden="true">1579082214734</figcaption>
+</figure>
+<h4 id="why-not-hive">Why not Hive</h4>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579083363568.png" alt="1579083363568">
+<figcaption aria-hidden="true">1579083363568</figcaption>
+</figure>
+<p>It's not really meant for being hit with tons of queries all at once,
+from a website or something like that. That's where you use something
+like HBase instead.</p>
+<p>Hive is a bunch of smoke and mirrors to make it look like a database,
+so you can issue SQL queries on it, but it isn't really.</p>
 <span id="more"></span>
-<h4 id="HiveQL"><a href="#HiveQL" class="headerlink" title="HiveQL"></a>HiveQL</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579084456353.png" alt="1579084456353"></p>
-<h3 id="Activity-Use-Hive-to-find-the-most-popular-movie"><a href="#Activity-Use-Hive-to-find-the-most-popular-movie" class="headerlink" title="[Activity] Use Hive to find the most popular movie"></a>[Activity] Use Hive to find the most popular movie</h3><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview</a></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085359675.png" alt="1579085359675"></p>
+<h4 id="hiveql">HiveQL</h4>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579084456353.png" alt="1579084456353">
+<figcaption aria-hidden="true">1579084456353</figcaption>
+</figure>
+<h3 id="activity-use-hive-to-find-the-most-popular-movie">[Activity] Use
+Hive to find the most popular movie</h3>
+<p>https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963170#overview</p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085359675.png" alt="1579085359675">
+<figcaption aria-hidden="true">1579085359675</figcaption>
+</figure>
 <p>或写成：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT title, COUNT(movieID) AS ratingCount</span><br><span class="line">FROM ratings JOIN names ON ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">ORDER BY ratingCount DESC;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085980578.png" alt="1579085980578"></p>
-<p>We used views in Hive to split up a more complicated query into something more readable and more manageable.</p>
-<p>执行时会花一点时间，remember this isn’t really a relational database, so things like joins are kind of painful when you’re not dealing with normalized data.</p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085980578.png" alt="1579085980578">
+<figcaption aria-hidden="true">1579085980578</figcaption>
+</figure>
+<p>We used views in Hive to split up a more complicated query into
+something more readable and more manageable.</p>
+<p>执行时会花一点时间，remember this isn't really a relational database,
+so things like joins are kind of painful when you're not dealing with
+normalized data.</p>
 <p>执行后会发现新创建的view出现在了Database里：</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085692727.png" alt="1579085692727"></p>
-<p>Your views are persistent, they’re stored to disk.</p>
-<p>若此时再执行会出错，可写成： <code>CREATE VIEW IF NOT EXISTS topMovieIDs ...</code></p>
-<p>Just to clean up our mess and not leave that around: <code>DROP VIEW topMovieIDs;</code></p>
-<h3 id="How-Hive-works"><a href="#How-Hive-works" class="headerlink" title="How Hive works?"></a>How Hive works?</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579086892876.png" alt="1579086892876"></p>
-<h4 id="Schema-on-read"><a href="#Schema-on-read" class="headerlink" title="Schema on read"></a>Schema on read</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579087836551.png" alt="1579087836551"></p>
-<p>One of the basic concepts pf Hive is something called <em>schema on read</em>, and this is what separates it from a more traditional database. With a real relational database, it uses something called <em>schema on write</em> where you define the schema of your database before you load the data into it, and it’s actually enforced at the time that you write the data to disk. </p>
-<p>Hive flips that on its head. It takes unstructured data and just sort of applies a schema to it as it’s being read instead.</p>
-<p>So, Hive isn’t creating some structured relational database under the hood, that would be very inefficient, it’s just taking the existing data that you have on your cluster and imparting a schema to it when it’s read in.</p>
-<h4 id="Where-is-the-data-内部表与外部表"><a href="#Where-is-the-data-内部表与外部表" class="headerlink" title="Where is the data? (内部表与外部表)"></a>Where is the data? (内部表与外部表)</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579089471741.png" alt="1579089471741"></p>
-<p>对于 managed table, if you do a “DROP TABLE” command from Hive, then that data is gone.</p>
-<p>But sometimes you want to share that data with other systems that are outside of Hive. So that’s where external tables come in. “CREATE EXTERNAL TABLE” with “Location” says, “I’m going to use Hive on this data here, but I’m not going to own it anymore”. So I drop this table, it’s going to drop the metadata, 但是原数据不会被删除。</p>
-<h4 id="Partitioning-分区"><a href="#Partitioning-分区" class="headerlink" title="Partitioning 分区"></a>Partitioning 分区</h4><p>If you do have a massive dataset and your queries tend to be on a specific partition of that data, partitioning in Hive can be a very important optimization. </p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096514448.png" alt="1579096514448"></p>
-<p>We wouldn’t have to scan over the entire customer database, we could just scan over the actual files that are specific to the country that I’m interested in.</p>
-<h4 id="Ways-to-use-Hive"><a href="#Ways-to-use-Hive" class="headerlink" title="Ways to use Hive"></a>Ways to use Hive</h4><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096909189.png" alt="1579096909189"></p>
-<h3 id="Activity-Use-Hive-to-find-the-movie-with-the-highest-average-rating"><a href="#Activity-Use-Hive-to-find-the-movie-with-the-highest-average-rating" class="headerlink" title="[Activity] Use Hive to find the movie with the highest average rating"></a>[Activity] Use Hive to find the movie with the highest average rating</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149719149.png" alt="1579149719149"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579097528758.png" alt="1579097528758"></p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579085692727.png" alt="1579085692727">
+<figcaption aria-hidden="true">1579085692727</figcaption>
+</figure>
+<p>Your views are persistent, they're stored to disk.</p>
+<p>若此时再执行会出错，可写成：
+<code>CREATE VIEW IF NOT EXISTS topMovieIDs ...</code></p>
+<p>Just to clean up our mess and not leave that around:
+<code>DROP VIEW topMovieIDs;</code></p>
+<h3 id="how-hive-works">How Hive works?</h3>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579086892876.png" alt="1579086892876">
+<figcaption aria-hidden="true">1579086892876</figcaption>
+</figure>
+<h4 id="schema-on-read">Schema on read</h4>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579087836551.png" alt="1579087836551">
+<figcaption aria-hidden="true">1579087836551</figcaption>
+</figure>
+<p>One of the basic concepts pf Hive is something called <em>schema on
+read</em>, and this is what separates it from a more traditional
+database. With a real relational database, it uses something called
+<em>schema on write</em> where you define the schema of your database
+before you load the data into it, and it's actually enforced at the time
+that you write the data to disk.</p>
+<p>Hive flips that on its head. It takes unstructured data and just sort
+of applies a schema to it as it's being read instead.</p>
+<p>So, Hive isn't creating some structured relational database under the
+hood, that would be very inefficient, it's just taking the existing data
+that you have on your cluster and imparting a schema to it when it's
+read in.</p>
+<h4 id="where-is-the-data-内部表与外部表">Where is the data?
+(内部表与外部表)</h4>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579089471741.png" alt="1579089471741">
+<figcaption aria-hidden="true">1579089471741</figcaption>
+</figure>
+<p>对于 managed table, if you do a "DROP TABLE" command from Hive, then
+that data is gone.</p>
+<p>But sometimes you want to share that data with other systems that are
+outside of Hive. So that's where external tables come in. "CREATE
+EXTERNAL TABLE" with "Location" says, "I'm going to use Hive on this
+data here, but I'm not going to own it anymore". So I drop this table,
+it's going to drop the metadata, 但是原数据不会被删除。</p>
+<h4 id="partitioning-分区">Partitioning 分区</h4>
+<p>If you do have a massive dataset and your queries tend to be on a
+specific partition of that data, partitioning in Hive can be a very
+important optimization.</p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096514448.png" alt="1579096514448">
+<figcaption aria-hidden="true">1579096514448</figcaption>
+</figure>
+<p>We wouldn't have to scan over the entire customer database, we could
+just scan over the actual files that are specific to the country that
+I'm interested in.</p>
+<h4 id="ways-to-use-hive">Ways to use Hive</h4>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579096909189.png" alt="1579096909189">
+<figcaption aria-hidden="true">1579096909189</figcaption>
+</figure>
+<h3 id="activity-use-hive-to-find-the-movie-with-the-highest-average-rating">[Activity]
+Use Hive to find the movie with the highest average rating</h3>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149719149.png" alt="1579149719149">
+<figcaption aria-hidden="true">1579149719149</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579097528758.png" alt="1579097528758">
+<figcaption aria-hidden="true">1579097528758</figcaption>
+</figure>
 <p>或写成：？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT title, AVG(rating) as avgRating</span><br><span class="line">FROM ratings JOIN names on ratings.movieID = names.movieID</span><br><span class="line">GROUP BY ratings.movieID</span><br><span class="line">HAVING COUNT(ratings.movieID)  &gt; 10</span><br><span class="line">ORDER BY avgRating DESC;</span><br></pre></td></tr></table></figure>
-<h2 id="Sqoop"><a href="#Sqoop" class="headerlink" title="Sqoop"></a>Sqoop</h2><h3 id="Integrating-MySQL-with-Hadoop"><a href="#Integrating-MySQL-with-Hadoop" class="headerlink" title="Integrating MySQL with Hadoop"></a>Integrating MySQL with Hadoop</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149997458.png" alt="1579149997458"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150738331.png" alt="1579150738331"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150774304.png" alt="1579150774304"></p>
-<h3 id="Import-Export-data-MySQL-lt-gt-HDFS-Hadoop"><a href="#Import-Export-data-MySQL-lt-gt-HDFS-Hadoop" class="headerlink" title="Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)"></a>Import/Export data (MySQL &lt;-&gt; HDFS/Hadoop)</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579151204058.png" alt="1579151204058"></p>
+<h2 id="sqoop">Sqoop</h2>
+<h3 id="integrating-mysql-with-hadoop">Integrating MySQL with
+Hadoop</h3>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579149997458.png" alt="1579149997458">
+<figcaption aria-hidden="true">1579149997458</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150738331.png" alt="1579150738331">
+<figcaption aria-hidden="true">1579150738331</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579150774304.png" alt="1579150774304">
+<figcaption aria-hidden="true">1579150774304</figcaption>
+</figure>
+<h3 id="importexport-data-mysql---hdfshadoop">Import/Export data (MySQL
+&lt;-&gt; HDFS/Hadoop)</h3>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579151204058.png" alt="1579151204058">
+<figcaption aria-hidden="true">1579151204058</figcaption>
+</figure>
 <p>Export data from your database into Hadoop:</p>
-<ol>
-<li>kick off a bunch of mappers (只有mappers, all we’re doing is moving data and transforming it from one place to another, there’s no real reduce going on here.)</li>
-<li>all these mappers are going to talk to your HDFS cluster on your Hadoop cluster and populate a big old table on HDFS, which is a giant text file (例如逗号分隔的数据), and from there, you can use tools like Hive or Pig on it.</li>
+<ol type="1">
+<li>kick off a bunch of mappers (只有mappers, all we're doing is moving
+data and transforming it from one place to another, there's no real
+reduce going on here.)</li>
+<li>all these mappers are going to talk to your HDFS cluster on your
+Hadoop cluster and populate a big old table on HDFS, which is a giant
+text file (例如逗号分隔的数据), and from there, you can use tools like
+Hive or Pig on it.</li>
 </ol>
-<p>REMEMBER, the power of HDFS is that file might be distributed across many different hosts, blocks, and also stored redundantly. We’ve done more than just dump our database to a file here - we’ve dumped it into HDFS, which opens up a whole world of possibilities for analyzing it in a robust, scalable and a manner that can be resilient to failure.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156422401.png" alt="1579156422401"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157592193.png" alt="1579157592193"></p>
+<p>REMEMBER, the power of HDFS is that file might be distributed across
+many different hosts, blocks, and also stored redundantly. We've done
+more than just dump our database to a file here - we've dumped it into
+HDFS, which opens up a whole world of possibilities for analyzing it in
+a robust, scalable and a manner that can be resilient to failure.</p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156422401.png" alt="1579156422401">
+<figcaption aria-hidden="true">1579156422401</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157592193.png" alt="1579157592193">
+<figcaption aria-hidden="true">1579157592193</figcaption>
+</figure>
 <p>与导入HDFS一样，导入Hive同样会kick off a MapReduce job.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154105803.png" alt="1579154105803"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159508995.png" alt="1579159508995"></p>
-<h3 id="Play-with-MySQL-and-Sqoop"><a href="#Play-with-MySQL-and-Sqoop" class="headerlink" title="Play with MySQL and Sqoop"></a>Play with MySQL and Sqoop</h3><p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154231118.png" alt="1579154231118"></p>
-<h4 id="Activity-Install-MySQL-and-import-our-movie-data"><a href="#Activity-Install-MySQL-and-import-our-movie-data" class="headerlink" title="[Activity] Install MySQL and import our movie data"></a>[Activity] Install MySQL and import our movie data</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview</a></p>
-<h4 id="Activity-Use-Sqoop-to-import-data-from-MySQL-to-HDFS-Hive"><a href="#Activity-Use-Sqoop-to-import-data-from-MySQL-to-HDFS-Hive" class="headerlink" title="[Activity] Use Sqoop to import data from MySQL to HDFS/Hive"></a>[Activity] Use Sqoop to import data from MySQL to HDFS/Hive</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview</a></p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154105803.png" alt="1579154105803">
+<figcaption aria-hidden="true">1579154105803</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159508995.png" alt="1579159508995">
+<figcaption aria-hidden="true">1579159508995</figcaption>
+</figure>
+<h3 id="play-with-mysql-and-sqoop">Play with MySQL and Sqoop</h3>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579154231118.png" alt="1579154231118">
+<figcaption aria-hidden="true">1579154231118</figcaption>
+</figure>
+<h4 id="activity-install-mysql-and-import-our-movie-data">[Activity]
+Install MySQL and import our movie data</h4>
+<p>https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963236#overview</p>
+<h4 id="activity-use-sqoop-to-import-data-from-mysql-to-hdfshive">[Activity]
+Use Sqoop to import data from MySQL to HDFS/Hive</h4>
+<p>https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963266#overview</p>
 <p>由 MySQL 导入 HDFS 后：</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156905400.png" alt="1579156905400"></p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579156905400.png" alt="1579156905400">
+<figcaption aria-hidden="true">1579156905400</figcaption>
+</figure>
 <p>由 MySQL 导入Hive后：</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157822360.png" alt="1579157822360"></p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579157822360.png" alt="1579157822360">
+<figcaption aria-hidden="true">1579157822360</figcaption>
+</figure>
 <blockquote>
-<p>注：These sorts of tools that we’re using with Hadoop are really intended for big datasets, so there’s a lot of overhead for doing what’s actually a pretty simple operation. It doesn’t make sense if you’re using small datasets. 如果数据集很小，在一个host就能装下，没必要用这些工具，用MySQL就足够了。</p>
+<p>注：These sorts of tools that we're using with Hadoop are really
+intended for big datasets, so there's a lot of overhead for doing what's
+actually a pretty simple operation. It doesn't make sense if you're
+using small datasets.
+如果数据集很小，在一个host就能装下，没必要用这些工具，用MySQL就足够了。</p>
 </blockquote>
-<h4 id="Activity-Use-Sqoop-tp-export-data-from-Hadoop-to-MySQL"><a href="#Activity-Use-Sqoop-tp-export-data-from-Hadoop-to-MySQL" class="headerlink" title="[Activity] Use Sqoop tp export data from Hadoop to MySQL"></a>[Activity] Use Sqoop tp export data from Hadoop to MySQL</h4><p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview</a></p>
-<ol>
-<li>首先需要知道 where the data in Hive actually resides. REMEMBER, Hive is just a schema-on-read sort of deal. The actual data itself if just stored as a plain old text somewhere, and all Hive is doing is imparting structure to it when it’s being read. </li>
+<h4 id="activity-use-sqoop-tp-export-data-from-hadoop-to-mysql">[Activity]
+Use Sqoop tp export data from Hadoop to MySQL</h4>
+<p>https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963272#overview</p>
+<ol type="1">
+<li>首先需要知道 where the data in Hive actually resides. REMEMBER, Hive
+is just a schema-on-read sort of deal. The actual data itself if just
+stored as a plain old text somewhere, and all Hive is doing is imparting
+structure to it when it's being read.</li>
 </ol>
 <p>On Hortonworks:</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158771230.png" alt="1579158771230"></p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158823550.png" alt="1579158823550"></p>
-<p>不是靠逗号分隔的，Hive actually uses low ASCII values, like 1 and 2 and 3, to delimit its data. </p>
-<ol>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158771230.png" alt="1579158771230">
+<figcaption aria-hidden="true">1579158771230</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579158823550.png" alt="1579158823550">
+<figcaption aria-hidden="true">1579158823550</figcaption>
+</figure>
+<p>不是靠逗号分隔的，Hive actually uses low ASCII values, like 1 and 2
+and 3, to delimit its data.</p>
+<ol start="2" type="1">
 <li>在导入前，MySQL中要先有 target table</li>
 </ol>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159104056.png" alt="1579159104056"></p>
-<p>3.</p>
-<p><img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159601163.png" alt="1579159601163"></p>
-<p>和import一样，export也会kick off a bunch of mappers using MapReduce.</p>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159104056.png" alt="1579159104056">
+<figcaption aria-hidden="true">1579159104056</figcaption>
+</figure>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<figure>
+<img src="/2020/01/15/Using-relational-data-stores-with-Hadoop-%E2%80%94%E2%80%94-Hive/1579159601163.png" alt="1579159601163">
+<figcaption aria-hidden="true">1579159601163</figcaption>
+</figure>
+<p>和import一样，export也会kick off a bunch of mappers using
+MapReduce.</p>
 <blockquote>
-<p>什么时候需要从Hive导入MySQL: From a practical standpoint, if you need to expose your data to a database that’s more well-suited for OLTP. Sometimes you’ll be doing some huge operation using Hive or some other tool on your cluster, but the output of that operation might be small enough to fit on a single database.</p>
+<p>什么时候需要从Hive导入MySQL: From a practical standpoint, if you need
+to expose your data to a database that's more well-suited for OLTP.
+Sometimes you'll be doing some huge operation using Hive or some other
+tool on your cluster, but the output of that operation might be small
+enough to fit on a single database.</p>
 </blockquote>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>We talked about making your Hadoop cluster look like a MySQL database or a SQL database, using Hive.</p>
-<p>And we also talked about using your Hadoop cluster with a real MySQL database as well. Kind of two different directions there.</p>
-<p>Next, let’s talk about <strong>NoSQL</strong>. Sometimes you actually want to expose your data in a way that’s more amenable to <strong>real-time queries</strong>, and there’s a bunch of ways to do that and also ways of integrating Hadoop with systems that are more real-time in nature.</p>
+<h2 id="结语">结语</h2>
+<p>We talked about making your Hadoop cluster look like a MySQL database
+or a SQL database, using Hive.</p>
+<p>And we also talked about using your Hadoop cluster with a real MySQL
+database as well. Kind of two different directions there.</p>
+<p>Next, let's talk about <strong>NoSQL</strong>. Sometimes you actually
+want to expose your data in a way that's more amenable to
+<strong>real-time queries</strong>, and there's a bunch of ways to do
+that and also ways of integrating Hadoop with systems that are more
+real-time in nature.</p>
 
     </div>
 

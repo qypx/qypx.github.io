@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="主要对比版本：python27与python36 1. 关于copy()12values &#x3D; [1,2,3]values2 &#x3D; values.copy()  python3中没问题，python2中报错：  解决方法：改为： 12values2 &#x3D; list(values)# 或 values2 &#x3D; values[:] 2. Python2 不支持中文问题创建test.py程序如下： 1print">
+    <meta name="description" content="主要对比版本：python27与python36 1. 关于copy() 12values &#x3D; [1,2,3]values2 &#x3D; values.copy()  python3中没问题，python2中报错：   image-20220105160555692  解决方法：改为： 12values2 &#x3D; list(values)# 或 values2 &#x3D; values[:] 2.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于python2与python3使用上的差异">
 <meta property="og:url" content="http://qypx.github.io/2022/01/05/Python2-Python3-difference/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="主要对比版本：python27与python36 1. 关于copy()12values &#x3D; [1,2,3]values2 &#x3D; values.copy()  python3中没问题，python2中报错：  解决方法：改为： 12values2 &#x3D; list(values)# 或 values2 &#x3D; values[:] 2. Python2 不支持中文问题创建test.py程序如下： 1print">
+<meta property="og:description" content="主要对比版本：python27与python36 1. 关于copy() 12values &#x3D; [1,2,3]values2 &#x3D; values.copy()  python3中没问题，python2中报错：   image-20220105160555692  解决方法：改为： 12values2 &#x3D; list(values)# 或 values2 &#x3D; values[:] 2.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2022/01/05/Python2-Python3-difference/image-20220105160555692.png">
 <meta property="og:image" content="http://qypx.github.io/2022/01/05/Python2-Python3-difference/image-20220105162421744.png">
@@ -150,7 +150,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%B3%E4%BA%8Ecopy"><span class="nav-text">1. 关于copy()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Python2-%E4%B8%8D%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98"><span class="nav-text">2. Python2 不支持中文问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%85%B3%E4%BA%8E%E9%99%A4%E6%B3%95"><span class="nav-text">3. 关于除法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%85%B3%E4%BA%8E%E5%9C%A8python3%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BF%9D%E5%AD%98%EF%BC%8Cpython2%E7%8E%AF%E5%A2%83%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-text">4. 关于在python3环境中保存，python2环境中读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-text">5. 关于python2与python3中可变参数的差异</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ecopy"><span class="nav-text">1. 关于copy()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python2-%E4%B8%8D%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98"><span class="nav-text">2. Python2 不支持中文问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%99%A4%E6%B3%95"><span class="nav-text">3. 关于除法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%9C%A8python3%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BF%9D%E5%AD%98python2%E7%8E%AF%E5%A2%83%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="nav-text">4.
+关于在python3环境中保存，python2环境中读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-text">5.
+关于python2与python3中可变参数的差异</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -291,33 +293,47 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>主要对比版本：python27与python36</p>
-<h4 id="1-关于copy"><a href="#1-关于copy" class="headerlink" title="1. 关于copy()"></a>1. 关于copy()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy() </span><br></pre></td></tr></table></figure>
+<h4 id="关于copy">1. 关于copy()</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy() </span><br></pre></td></tr></table></figure>
 <p>python3中没问题，python2中报错：</p>
-<p><img src="/2022/01/05/Python2-Python3-difference/image-20220105160555692.png" alt="image-20220105160555692"></p>
+<figure>
+<img src="/2022/01/05/Python2-Python3-difference/image-20220105160555692.png" alt="image-20220105160555692">
+<figcaption aria-hidden="true">image-20220105160555692</figcaption>
+</figure>
 <p>解决方法：改为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values2 = <span class="built_in">list</span>(values)</span><br><span class="line"><span class="comment"># 或 values2 = values[:]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-Python2-不支持中文问题"><a href="#2-Python2-不支持中文问题" class="headerlink" title="2. Python2 不支持中文问题"></a>2. Python2 不支持中文问题</h4><p>创建test.py程序如下：</p>
+<h4 id="python2-不支持中文问题">2. Python2 不支持中文问题</h4>
+<p>创建test.py程序如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;你好&quot;)</span><br></pre></td></tr></table></figure>
 <p>python3运行时，输出 你好，python2运行时，输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character &#x27;\xe4&#x27; in file e:/pycharmProject/ml_module/main5.py on line 7, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details</span><br></pre></td></tr></table></figure>
 <p>解决方法：在python文件最开头加上：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h4 id="3-关于除法"><a href="#3-关于除法" class="headerlink" title="3. 关于除法"></a>3. 关于除法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(2/3)</span><br><span class="line"></span><br><span class="line">python3中：0.6666666666666666</span><br><span class="line">pyhon2中：0</span><br></pre></td></tr></table></figure>
+<h4 id="关于除法">3. 关于除法</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(2/3)</span><br><span class="line"></span><br><span class="line">python3中：0.6666666666666666</span><br><span class="line">pyhon2中：0</span><br></pre></td></tr></table></figure>
 <p>python2中的除法等价于python3中的//</p>
 <p>解决方法：</p>
 <p>法一：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;float(2)/3</span><br><span class="line">0.6666666666666666</span><br><span class="line"></span><br><span class="line">不能直接float()的，例如array等，可.astype(float) </span><br><span class="line">float 应该是等价于 &quot;float64&quot;</span><br><span class="line">int 应该是等价于 &quot;int32&quot;</span><br></pre></td></tr></table></figure>
 <p>法二：更简单的方法：</p>
 <blockquote>
-<p>参考 <a href="https://stackoverflow.com/questions/21316968/division-in-python-2-7-and-3-3">Division in Python 2.7. and 3.3 - Stack Overflow</a></p>
+<p>参考 <a href="https://stackoverflow.com/questions/21316968/division-in-python-2-7-and-3-3">Division
+in Python 2.7. and 3.3 - Stack Overflow</a></p>
 </blockquote>
 <p>在python文件的最开头加上：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from __future__ import division</span><br></pre></td></tr></table></figure>
 <p>例：</p>
-<p><img src="/2022/01/05/Python2-Python3-difference/image-20220105162421744.png" alt="image-20220105162421744"></p>
-<h4 id="4-关于在python3环境中保存，python2环境中读取文件"><a href="#4-关于在python3环境中保存，python2环境中读取文件" class="headerlink" title="4. 关于在python3环境中保存，python2环境中读取文件"></a>4. 关于在python3环境中保存，python2环境中读取文件</h4><p>详见 <a href="https://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">读取与保存csv和txt文件</a></p>
-<h4 id="5-关于python2与python3中可变参数的差异"><a href="#5-关于python2与python3中可变参数的差异" class="headerlink" title="5. 关于python2与python3中可变参数的差异"></a>5. 关于python2与python3中可变参数的差异</h4><p>详见 <a href="https://qypx.github.io/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">关于python2与python3中的可变参数</a></p>
+<figure>
+<img src="/2022/01/05/Python2-Python3-difference/image-20220105162421744.png" alt="image-20220105162421744">
+<figcaption aria-hidden="true">image-20220105162421744</figcaption>
+</figure>
+<h4 id="关于在python3环境中保存python2环境中读取文件">4.
+关于在python3环境中保存，python2环境中读取文件</h4>
+<p>详见 <a href="https://qypx.github.io/2019/09/02/%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98csv%E5%92%8Ctxt%E6%96%87%E4%BB%B6/">读取与保存csv和txt文件</a></p>
+<h4 id="关于python2与python3中可变参数的差异">5.
+关于python2与python3中可变参数的差异</h4>
+<p>详见 <a href="https://qypx.github.io/2021/10/12/%E5%85%B3%E4%BA%8Epython2%E4%B8%8Epython3%E4%B8%AD%E7%9A%84%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/">关于python2与python3中的可变参数</a></p>
 
     </div>
 

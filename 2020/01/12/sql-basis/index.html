@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE) sql language:">
+    <meta name="description" content="DDL与DML DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE) sql language:   1578825616684">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql语言">
 <meta property="og:url" content="http://qypx.github.io/2020/01/12/sql-basis/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="DDL与DMLDDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE) sql language:">
+<meta property="og:description" content="DDL与DML DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME) DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE) sql language:   1578825616684">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql-basis/1578825616684.png">
 <meta property="og:image" content="http://qypx.github.io/2020/01/12/sql-basis/1578900159995.png">
@@ -171,7 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DDL%E4%B8%8EDML"><span class="nav-text">DDL与DML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#INSERT"><span class="nav-text">INSERT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DELETE"><span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UPDATE"><span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CREATE"><span class="nav-text">CREATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DROP"><span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ALTER"><span class="nav-text">ALTER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RENAME"><span class="nav-text">RENAME</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E9%A1%BA%E5%BA%8F%E4%B8%8E%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-text">语法顺序与执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aggregate-Functions"><span class="nav-text">Aggregate Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="nav-text">找最大值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E4%B8%80%EF%BC%9A%E5%93%AA%E4%B8%80%E4%B8%AA%E7%89%A9%E5%93%81%E6%9C%89%E6%9C%80%E9%AB%98%E7%9A%84cost"><span class="nav-text">例一：哪一个物品有最高的cost?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E4%BA%8C%EF%BC%9A%E6%89%BE%E5%87%BA%E6%9C%89%E6%9C%80%E5%A4%9A%E7%A9%BA%E6%88%BF%E9%97%B4%E7%9A%84%E6%A5%BC%E5%B1%82"><span class="nav-text">例二：找出有最多空房间的楼层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E4%B8%89%EF%BC%9A%E6%89%BE%E5%87%BA%E7%AC%AC%E4%BA%8C%E9%AB%98%E7%9A%84%E8%96%AA%E6%B0%B4"><span class="nav-text">例三：找出第二高的薪水</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%9B%9B%EF%BC%9A%E6%89%BE%E5%87%BA%E6%AF%8F%E9%97%A8%E8%AF%BE%E5%88%86%E6%95%B0%E9%83%BD%E5%A4%A7%E4%BA%8E75%E7%9A%84%E5%AD%A6%E7%94%9F%E4%B8%AD%EF%BC%8C%E5%88%86%E6%95%B0%E6%9C%80%E9%AB%98%E7%9A%84%E9%82%A3%E6%9D%A1%E8%AE%B0%E5%BD%95"><span class="nav-text">例四：找出每门课分数都大于75的学生中，分数最高的那条记录</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ddl%E4%B8%8Edml"><span class="nav-text">DDL与DML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#insert"><span class="nav-text">INSERT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete"><span class="nav-text">DELETE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#update"><span class="nav-text">UPDATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create"><span class="nav-text">CREATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drop"><span class="nav-text">DROP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#alter"><span class="nav-text">ALTER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rename"><span class="nav-text">RENAME</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E9%A1%BA%E5%BA%8F%E4%B8%8E%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-text">语法顺序与执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#aggregate-functions"><span class="nav-text">Aggregate Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-text">操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%BE%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="nav-text">找最大值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E4%B8%80%E5%93%AA%E4%B8%80%E4%B8%AA%E7%89%A9%E5%93%81%E6%9C%89%E6%9C%80%E9%AB%98%E7%9A%84cost"><span class="nav-text">例一：哪一个物品有最高的cost?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E4%BA%8C%E6%89%BE%E5%87%BA%E6%9C%89%E6%9C%80%E5%A4%9A%E7%A9%BA%E6%88%BF%E9%97%B4%E7%9A%84%E6%A5%BC%E5%B1%82"><span class="nav-text">例二：找出有最多空房间的楼层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E4%B8%89%E6%89%BE%E5%87%BA%E7%AC%AC%E4%BA%8C%E9%AB%98%E7%9A%84%E8%96%AA%E6%B0%B4"><span class="nav-text">例三：找出第二高的薪水</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%9B%9B%E6%89%BE%E5%87%BA%E6%AF%8F%E9%97%A8%E8%AF%BE%E5%88%86%E6%95%B0%E9%83%BD%E5%A4%A7%E4%BA%8E75%E7%9A%84%E5%AD%A6%E7%94%9F%E4%B8%AD%E5%88%86%E6%95%B0%E6%9C%80%E9%AB%98%E7%9A%84%E9%82%A3%E6%9D%A1%E8%AE%B0%E5%BD%95"><span class="nav-text">例四：找出每门课分数都大于75的学生中，分数最高的那条记录</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -311,62 +311,151 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
-<p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
-<p>sql language: </p>
-<p><img src="/2020/01/12/sql-basis/1578825616684.png" alt="1578825616684"></p>
+    <div class="post-body" itemprop="articleBody"><h3 id="ddl与dml">DDL与DML</h3>
+<p>DDL: maintaining structure of database. (CREATE, DROP, ALTER,
+RENAME)</p>
+<p>DML: maintaining contents of database. (SELECT, INSERT, DELETE,
+UPDATE)</p>
+<p>sql language:</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1578825616684.png" alt="1578825616684">
+<figcaption aria-hidden="true">1578825616684</figcaption>
+</figure>
 <span id="more"></span>
-<h4 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h4><p><img src="/2020/01/12/sql-basis/1578900159995.png" alt="1578900159995"></p>
+<h4 id="insert">INSERT</h4>
+<figure>
+<img src="/2020/01/12/sql-basis/1578900159995.png" alt="1578900159995">
+<figcaption aria-hidden="true">1578900159995</figcaption>
+</figure>
 <blockquote>
 <p>注：字符为单引号</p>
 </blockquote>
-<p><code>INSERT INTO tablename &#123;column1,column2,…&#125;values(exp1,exp2,…);</code>  //插入</p>
-<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><p><img src="/2020/01/12/sql-basis/1578900315795.png" alt="1578900315795"></p>
-<h4 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h4><p><img src="/2020/01/12/sql-basis/1578900364614.png" alt="1578900364614"></p>
-<h4 id="CREATE"><a href="#CREATE" class="headerlink" title="CREATE"></a>CREATE</h4><p><img src="/2020/01/12/sql-basis/1578899962419.png" alt="1578899962419"></p>
+<p><code>INSERT INTO tablename &#123;column1,column2,…&#125;values(exp1,exp2,…);</code>
+//插入</p>
+<h4 id="delete">DELETE</h4>
+<figure>
+<img src="/2020/01/12/sql-basis/1578900315795.png" alt="1578900315795">
+<figcaption aria-hidden="true">1578900315795</figcaption>
+</figure>
+<h4 id="update">UPDATE</h4>
+<figure>
+<img src="/2020/01/12/sql-basis/1578900364614.png" alt="1578900364614">
+<figcaption aria-hidden="true">1578900364614</figcaption>
+</figure>
+<h4 id="create">CREATE</h4>
+<figure>
+<img src="/2020/01/12/sql-basis/1578899962419.png" alt="1578899962419">
+<figcaption aria-hidden="true">1578899962419</figcaption>
+</figure>
 <p><strong>CREATE的时候，先CREATE没有外键的表，最后CREATE有外键的表</strong></p>
 <p>假设我们有一个主键列为ID的表，表中有字段k，并且在k上有索引。这个表的建表语句是：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line">    id <span class="type">int</span> <span class="keyword">primary</span> key,</span><br><span class="line">    k <span class="type">int</span> <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">    name <span class="type">varchar</span>(<span class="number">16</span>),</span><br><span class="line">    index (k)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB;</span><br></pre></td></tr></table></figure>
-<h4 id="DROP"><a href="#DROP" class="headerlink" title="DROP"></a>DROP</h4><p><img src="/2020/01/12/sql-basis/1578900950689.png" alt="1578900950689"></p>
+<h4 id="drop">DROP</h4>
+<figure>
+<img src="/2020/01/12/sql-basis/1578900950689.png" alt="1578900950689">
+<figcaption aria-hidden="true">1578900950689</figcaption>
+</figure>
 <p><strong>DROP的时候，先DROP有外键的表，最后DROP没有外键的表</strong></p>
-<h4 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h4><p>例如增加一列</p>
-<p><img src="/2020/01/12/sql-basis/1578901179360.png" alt="1578901179360"></p>
-<h4 id="RENAME"><a href="#RENAME" class="headerlink" title="RENAME"></a>RENAME</h4><p><img src="/2020/01/12/sql-basis/1578901685944.png" alt="1578901685944"></p>
-<h3 id="语法顺序与执行顺序"><a href="#语法顺序与执行顺序" class="headerlink" title="语法顺序与执行顺序"></a>语法顺序与执行顺序</h3><p><img src="/2020/01/12/sql-basis/1578825674160.png" alt="1578825674160"></p>
-<p><img src="/2020/01/12/sql-basis/1578825736061.png" alt="1578825736061"></p>
+<h4 id="alter">ALTER</h4>
+<p>例如增加一列</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1578901179360.png" alt="1578901179360">
+<figcaption aria-hidden="true">1578901179360</figcaption>
+</figure>
+<h4 id="rename">RENAME</h4>
+<figure>
+<img src="/2020/01/12/sql-basis/1578901685944.png" alt="1578901685944">
+<figcaption aria-hidden="true">1578901685944</figcaption>
+</figure>
+<h3 id="语法顺序与执行顺序">语法顺序与执行顺序</h3>
+<figure>
+<img src="/2020/01/12/sql-basis/1578825674160.png" alt="1578825674160">
+<figcaption aria-hidden="true">1578825674160</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/12/sql-basis/1578825736061.png" alt="1578825736061">
+<figcaption aria-hidden="true">1578825736061</figcaption>
+</figure>
 <p>相当于就是 SELECT [DISTINCT] 的顺序换了一下。</p>
-<h3 id="Aggregate-Functions"><a href="#Aggregate-Functions" class="headerlink" title="Aggregate Functions"></a>Aggregate Functions</h3><p><img src="/2020/01/12/sql-basis/1596791792580.png" alt="1596791792580"></p>
-<h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><p><img src="/2020/01/12/sql-basis/1596791382343.png" alt="1596791382343"></p>
-<h3 id="找最大值"><a href="#找最大值" class="headerlink" title="找最大值"></a>找最大值</h3><h4 id="例一：哪一个物品有最高的cost"><a href="#例一：哪一个物品有最高的cost" class="headerlink" title="例一：哪一个物品有最高的cost?"></a>例一：哪一个物品有最高的cost?</h4><p><img src="/2020/01/12/sql-basis/1596791476146.png" alt="1596791476146"></p>
-<p>If two different items have highest price, 第一个query会把两个都返回，第二个query只会返回一个</p>
-<h4 id="例二：找出有最多空房间的楼层"><a href="#例二：找出有最多空房间的楼层" class="headerlink" title="例二：找出有最多空房间的楼层"></a>例二：找出有最多空房间的楼层</h4><p><a href="http://sqlfiddle.com/#!9/492887/22">http://sqlfiddle.com/#!9/492887/22</a></p>
-<p><img src="/2020/01/12/sql-basis/1597394612354.png" alt="1597394612354"></p>
+<h3 id="aggregate-functions">Aggregate Functions</h3>
+<figure>
+<img src="/2020/01/12/sql-basis/1596791792580.png" alt="1596791792580">
+<figcaption aria-hidden="true">1596791792580</figcaption>
+</figure>
+<h3 id="操作符">操作符</h3>
+<figure>
+<img src="/2020/01/12/sql-basis/1596791382343.png" alt="1596791382343">
+<figcaption aria-hidden="true">1596791382343</figcaption>
+</figure>
+<h3 id="找最大值">找最大值</h3>
+<h4 id="例一哪一个物品有最高的cost">例一：哪一个物品有最高的cost?</h4>
+<figure>
+<img src="/2020/01/12/sql-basis/1596791476146.png" alt="1596791476146">
+<figcaption aria-hidden="true">1596791476146</figcaption>
+</figure>
+<p>If two different items have highest price,
+第一个query会把两个都返回，第二个query只会返回一个</p>
+<h4 id="例二找出有最多空房间的楼层">例二：找出有最多空房间的楼层</h4>
+<p>http://sqlfiddle.com/#!9/492887/22</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1597394612354.png" alt="1597394612354">
+<figcaption aria-hidden="true">1597394612354</figcaption>
+</figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">  blockfloor <span class="keyword">as</span> &quot;Floor&quot;,</span><br><span class="line">  <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">AS</span>  &quot;No of available rooms&quot;</span><br><span class="line"><span class="keyword">FROM</span> room</span><br><span class="line"><span class="keyword">WHERE</span> unavailable<span class="operator">=</span><span class="string">&#x27;0&#x27;</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> blockfloor</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">=</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="built_in">max</span>(zz) <span class="keyword">AS</span> highest_total</span><br><span class="line">   <span class="keyword">FROM</span></span><br><span class="line">     ( <span class="keyword">SELECT</span> blockfloor ,</span><br><span class="line">              <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">AS</span> zz</span><br><span class="line">      <span class="keyword">FROM</span> room</span><br><span class="line">      <span class="keyword">WHERE</span> unavailable<span class="operator">=</span><span class="string">&#x27;0&#x27;</span></span><br><span class="line">      <span class="keyword">GROUP</span> <span class="keyword">BY</span> blockfloor ) <span class="keyword">AS</span> t );</span><br></pre></td></tr></table></figure>
 <p>注：以下写法错误：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> BlockFloor, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> &quot;maximum number of rooms available&quot;</span><br><span class="line"><span class="keyword">FROM</span> Room</span><br><span class="line"><span class="keyword">WHERE</span> Unavailable<span class="operator">=</span><span class="number">0</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> BlockFloor</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">=</span> </span><br><span class="line">	(<span class="keyword">SELECT</span> <span class="built_in">MAX</span>(<span class="built_in">COUNT</span>(<span class="operator">*</span>))</span><br><span class="line">	<span class="keyword">FROM</span> Room</span><br><span class="line">	<span class="keyword">WHERE</span> Unavailable <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">	<span class="keyword">GROUP</span> <span class="keyword">BY</span> BlockFloor);</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/12/sql-basis/1597394696134.png" alt="1597394696134"></p>
-<h4 id="例三：找出第二高的薪水"><a href="#例三：找出第二高的薪水" class="headerlink" title="例三：找出第二高的薪水"></a>例三：找出第二高的薪水</h4><p><a href="https://leetcode.com/problems/second-highest-salary/">https://leetcode.com/problems/second-highest-salary/</a></p>
-<p><img src="/2020/01/12/sql-basis/1599193947629.png" alt="1599193947629"></p>
-<p>如何避免有多个最大值的情况：使用DISTINCT：Sort the distinct salary in descend order，再用LIMIT和OFFSET</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1597394696134.png" alt="1597394696134">
+<figcaption aria-hidden="true">1597394696134</figcaption>
+</figure>
+<h4 id="例三找出第二高的薪水">例三：找出第二高的薪水</h4>
+<p>https://leetcode.com/problems/second-highest-salary/</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1599193947629.png" alt="1599193947629">
+<figcaption aria-hidden="true">1599193947629</figcaption>
+</figure>
+<p>如何避免有多个最大值的情况：使用DISTINCT：Sort the distinct salary in
+descend order，再用LIMIT和OFFSET</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 法一：Using sub-query and LIMIT clause</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Salary</span><br><span class="line">     <span class="keyword">FROM</span> Employee</span><br><span class="line">     <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span></span><br><span class="line">     LIMIT <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">1</span>) <span class="keyword">AS</span> SecondHighestSalary;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 法二：Using IFNULL and LIMIT clause: </span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    IFNULL(</span><br><span class="line">      (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> Salary</span><br><span class="line">       <span class="keyword">FROM</span> Employee</span><br><span class="line">       <span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span></span><br><span class="line">       LIMIT <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">1</span>),</span><br><span class="line">    <span class="keyword">NULL</span>) <span class="keyword">AS</span> SecondHighestSalary;</span><br></pre></td></tr></table></figure>
 <p>注：如果直接写：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span></span><br><span class="line">    Salary <span class="keyword">AS</span> SecondHighestSalary</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    Employee</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Salary <span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>this solution will be judged as ‘Wrong Answer’ if there is no such second highest salary since there might be only one record in this table.</p>
-<p><img src="/2020/01/12/sql-basis/1599194162675.png" alt="1599194162675"></p>
-<h4 id="例四：找出每门课分数都大于75的学生中，分数最高的那条记录"><a href="#例四：找出每门课分数都大于75的学生中，分数最高的那条记录" class="headerlink" title="例四：找出每门课分数都大于75的学生中，分数最高的那条记录"></a>例四：找出每门课分数都大于75的学生中，分数最高的那条记录</h4><p><a href="http://sqlfiddle.com/#!9/ee6ee5/1">http://sqlfiddle.com/#!9/ee6ee5/1</a></p>
-<p><img src="/2020/01/12/sql-basis/1600917047680.png" alt="1600917047680"></p>
+<p>this solution will be judged as 'Wrong Answer' if there is no such
+second highest salary since there might be only one record in this
+table.</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1599194162675.png" alt="1599194162675">
+<figcaption aria-hidden="true">1599194162675</figcaption>
+</figure>
+<h4 id="例四找出每门课分数都大于75的学生中分数最高的那条记录">例四：找出每门课分数都大于75的学生中，分数最高的那条记录</h4>
+<p>http://sqlfiddle.com/#!9/ee6ee5/1</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1600917047680.png" alt="1600917047680">
+<figcaption aria-hidden="true">1600917047680</figcaption>
+</figure>
 <p>输出：</p>
-<p><img src="/2020/01/12/sql-basis/1600917082998.png" alt="1600917082998"></p>
+<figure>
+<img src="/2020/01/12/sql-basis/1600917082998.png" alt="1600917082998">
+<figcaption aria-hidden="true">1600917082998</figcaption>
+</figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">WHERE</span> score <span class="operator">=</span> </span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="built_in">max</span>(max_score)</span><br><span class="line">  <span class="keyword">FROM</span> </span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">max</span>(Score) <span class="keyword">AS</span> max_score</span><br><span class="line">    <span class="keyword">FROM</span> table1</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> name</span><br><span class="line">    <span class="keyword">HAVING</span> <span class="built_in">min</span>(score)<span class="operator">&gt;</span><span class="number">75</span>) p);</span><br></pre></td></tr></table></figure>
 <p>(👆不确定是否是正确答案)</p>
 <p>注：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">max</span>(Score)</span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> name</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">min</span>(score)<span class="operator">&gt;</span><span class="number">75</span></span><br></pre></td></tr></table></figure>
 <p>输出的结果是满足条件的每个学生各自的最高分数：</p>
-<p><img src="/2020/01/12/sql-basis/1600917356859.png" alt="1600917356859"></p>
+<figure>
+<img src="/2020/01/12/sql-basis/1600917356859.png" alt="1600917356859">
+<figcaption aria-hidden="true">1600917356859</figcaption>
+</figure>
 <p>所以以下写法错误：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">WHERE</span> score <span class="keyword">in</span> #这里更不能用等于</span><br><span class="line">    (<span class="keyword">SELECT</span> <span class="built_in">max</span>(Score)</span><br><span class="line">    <span class="keyword">FROM</span> table1</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> name</span><br><span class="line">    <span class="keyword">HAVING</span> <span class="built_in">min</span>(score)<span class="operator">&gt;</span><span class="number">75</span>);</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/12/sql-basis/1600917489922.png" alt="1600917489922"></p>
-<p><img src="/2020/01/12/sql-basis/1600917511295.png" alt="1600917511295"></p>
+<figure>
+<img src="/2020/01/12/sql-basis/1600917489922.png" alt="1600917489922">
+<figcaption aria-hidden="true">1600917489922</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/12/sql-basis/1600917511295.png" alt="1600917511295">
+<figcaption aria-hidden="true">1600917511295</figcaption>
+</figure>
 
     </div>
 

@@ -274,52 +274,124 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867"></p>
-<h3 id="1-Our-Recommender-Engine-Architecture"><a href="#1-Our-Recommender-Engine-Architecture" class="headerlink" title="1. Our Recommender Engine Architecture"></a>1. Our Recommender Engine Architecture</h3><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375"></p>
-<p>Object oriented design allows us to have base classes, for example, AlgoBase, that contain functions and variables that can be shared by other classes that inherit from that base class. 例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
-<p>Custom指的是any custom algorithm we might develop (自己写的recommender system), and make them part of the supriselib framework.</p>
-<h4 id="Create-a-custom-algorithm"><a href="#Create-a-custom-algorithm" class="headerlink" title="Create a custom algorithm"></a>Create a custom algorithm</h4><p>So, how do you write your own recommender algorithm that’s compatible with surpiselib?</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207092161.png" alt="1578207092161"></p>
-<p>All you have to do is create a new class that inherits form AlgoBase, and as far as supriselib is concerned, your algorithm has one job: to predict ratings.</p>
+          <p>What we need now is a framework to let us easily experiment with new
+recommender system algorithms, evaluate them, and compare them against
+each other.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867">
+<figcaption aria-hidden="true">1578205315867</figcaption>
+</figure>
+<h3 id="our-recommender-engine-architecture">1. Our Recommender Engine
+Architecture</h3>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375">
+<figcaption aria-hidden="true">1578205676375</figcaption>
+</figure>
+<p>Object oriented design allows us to have base classes, for example,
+AlgoBase, that contain functions and variables that can be shared by
+other classes that inherit from that base class.
+例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
+<p>Custom指的是any custom algorithm we might develop
+(自己写的recommender system), and make them part of the supriselib
+framework.</p>
+<h4 id="create-a-custom-algorithm">Create a custom algorithm</h4>
+<p>So, how do you write your own recommender algorithm that's compatible
+with surpiselib?</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578207092161.png" alt="1578207092161">
+<figcaption aria-hidden="true">1578207092161</figcaption>
+</figure>
+<p>All you have to do is create a new class that inherits form AlgoBase,
+and as far as supriselib is concerned, your algorithm has one job: to
+predict ratings.</p>
 <blockquote>
-<p>As we mentioned, supriselib is built around the architecture of predicting the ratings of every movie for every user, and giving back the top predictions as your recommendations. </p>
+<p>As we mentioned, supriselib is built around the architecture of
+predicting the ratings of every movie for every user, and giving back
+the top predictions as your recommendations.</p>
 </blockquote>
 <p>Your class have to implement an estimate function.</p>
-<p>When estimate is called by supriselib framework, it’s asking you to predict a rating for the user and item passed in. </p>
+<p>When estimate is called by supriselib framework, it's asking you to
+predict a rating for the user and item passed in.</p>
 <blockquote>
-<p>注：这里的user id和item id是inner id. Must be mapped back to the raw user and item ids in your source data.</p>
+<p>注：这里的user id和item id是inner id. Must be mapped back to the raw
+user and item ids in your source data.</p>
 </blockquote>
 <ul>
-<li>Now, we want to do more than just predict ratings. 我们想要很简单的将之前在<code>RecommenderMetrics</code>中实现的不同的evaluation metrics应用到algorithms we work with. </li>
+<li>Now, we want to do more than just predict ratings.
+我们想要很简单的将之前在<code>RecommenderMetrics</code>中实现的不同的evaluation
+metrics应用到algorithms we work with.</li>
 </ul>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207683880.png" alt="1578207683880"></p>
-<p>为了做到这一点，我们将创建一个新的class叫做<code>EvaluatedAlgoritm</code>，里面创建了一个新的函数叫做<code>Evaluate</code>，that runs all the metrics in RecommenderMetrics on that algorithm. So this class makes it easy to measure accuracy, coverage, diversity and everything else on a given algorithm.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578207683880.png" alt="1578207683880">
+<figcaption aria-hidden="true">1578207683880</figcaption>
+</figure>
+<p>为了做到这一点，我们将创建一个新的class叫做<code>EvaluatedAlgoritm</code>，里面创建了一个新的函数叫做<code>Evaluate</code>，that
+runs all the metrics in RecommenderMetrics on that algorithm. So this
+class makes it easy to measure accuracy, coverage, diversity and
+everything else on a given algorithm.</p>
 <ul>
-<li><p>不同的评估方法，要求对数据集的不同分割方式，于是我们创建了另一个新的class: <code>EvaluationData</code>来做到这一点。</p>
-</li>
-<li><p>如何连接这一切？</p>
-</li>
+<li><p>不同的评估方法，要求对数据集的不同分割方式，于是我们创建了另一个新的class:
+<code>EvaluationData</code>来做到这一点。</p></li>
+<li><p>如何连接这一切？</p></li>
 </ul>
-<p>We create an <code>EvaluationData</code> instance with our data set, create an <code>EvaluatedAlgorithm</code> for each algorithm we want to evaluate, and call <code>Evaluate</code> on each algorithm using the same <code>EvaluationData</code>. Under the hood, <code>EvaluatedAlgorithm</code> will use all the functions we defined in <code>RecommenderMetrics</code> to measure accuracy, hit rate, diversity, novelty, and coverage.</p>
+<p>We create an <code>EvaluationData</code> instance with our data set,
+create an <code>EvaluatedAlgorithm</code> for each algorithm we want to
+evaluate, and call <code>Evaluate</code> on each algorithm using the
+same <code>EvaluationData</code>. Under the hood,
+<code>EvaluatedAlgorithm</code> will use all the functions we defined in
+<code>RecommenderMetrics</code> to measure accuracy, hit rate,
+diversity, novelty, and coverage.</p>
 <ul>
-<li>Since what we generally want to do is 比较不同推荐系统, we can make life even easier by writing a class that takes care of all the comparison for us. 于是我们创建了新的class：<code>Evaluator</code>.</li>
+<li>Since what we generally want to do is 比较不同推荐系统, we can make
+life even easier by writing a class that takes care of all the
+comparison for us. 于是我们创建了新的class：<code>Evaluator</code>.</li>
 </ul>
-<p>Ideally, we want to just submit algorithms we want to evaluate against each other into this class, and let it do everything from there.</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208719473.png" alt="1578208719473"></p>
-<p>The beauty of this is that you don’t even have to use the <code>EvalutedAlgorithm</code> or <code>EvaluatedData</code> classed at all, when you want to start playing around with new algorithms and testing them against each other. All you need to do is use this <code>Evaluator</code> class, which has a really simple interface.</p>
+<p>Ideally, we want to just submit algorithms we want to evaluate
+against each other into this class, and let it do everything from
+there.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578208719473.png" alt="1578208719473">
+<figcaption aria-hidden="true">1578208719473</figcaption>
+</figure>
+<p>The beauty of this is that you don't even have to use the
+<code>EvalutedAlgorithm</code> or <code>EvaluatedData</code> classed at
+all, when you want to start playing around with new algorithms and
+testing them against each other. All you need to do is use this
+<code>Evaluator</code> class, which has a really simple interface.</p>
 <p>将上述framework写好后，如下这是我们比较SVD算法与random算法所需要的所有代码：</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208901255.png" alt="1578208901255"></p>
-<h3 id="2-Code-Walkthrough"><a href="#2-Code-Walkthrough" class="headerlink" title="2. Code Walkthrough"></a>2. Code Walkthrough</h3><p>Framework文件夹里：</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578209106245.png" alt="1578209106245"></p>
-<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578283638478.png" alt="1578283638478"></p>
-<p>我们比较的是SVD和随机推荐。SVD is one of the best algorithms available right now, so it shouldn’t be surprise that SVD beats random recommendation in accuracy and hit rate no matter how we measure it.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578208901255.png" alt="1578208901255">
+<figcaption aria-hidden="true">1578208901255</figcaption>
+</figure>
+<h3 id="code-walkthrough">2. Code Walkthrough</h3>
+<p>Framework文件夹里：</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578209106245.png" alt="1578209106245">
+<figcaption aria-hidden="true">1578209106245</figcaption>
+</figure>
+<h4 id="结果分析">结果分析</h4>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578283638478.png" alt="1578283638478">
+<figcaption aria-hidden="true">1578283638478</figcaption>
+</figure>
+<p>我们比较的是SVD和随机推荐。SVD is one of the best algorithms
+available right now, so it shouldn't be surprise that SVD beats random
+recommendation in accuracy and hit rate no matter how we measure it.</p>
 <ul>
 <li>RMSE和MAE: lower is better.</li>
 <li>Hit rate,包括cHR, ARHR: higher is better.</li>
-<li>Coverage, diversity, novelty: need to apply some common sense to, as it’s not a clear higher-is-better sort of thing. There are trade-offs involved with these metrics.</li>
+<li>Coverage, diversity, novelty: need to apply some common sense to, as
+it's not a clear higher-is-better sort of thing. There are trade-offs
+involved with these metrics.</li>
 </ul>
-<p>就Coverage而言，SVD的要低一些: that’s just because we are enforcing a quality threshold on the top-N recommendations we’re making with SVD, while our random recommender isn’t actually making totally random recommendations, it’s predicting movie ratings using what’s called a normal distribution centered around the average rating value, which ends up meaning all of the rating predictions it makes fall above our rating threshold, giving us 100% coverage. Having 100% coverage at the expense of having bad recommendations isn’t a trade-off worth making.</p>
+<p>就Coverage而言，SVD的要低一些: that's just because we are enforcing a
+quality threshold on the top-N recommendations we're making with SVD,
+while our random recommender isn't actually making totally random
+recommendations, it's predicting movie ratings using what's called a
+normal distribution centered around the average rating value, which ends
+up meaning all of the rating predictions it makes fall above our rating
+threshold, giving us 100% coverage. Having 100% coverage at the expense
+of having bad recommendations isn't a trade-off worth making.</p>
 <p>就Diversity和Novelty而言，SVD的都要低一些，这是我们所预期会出现的。</p>
 
       
@@ -405,128 +477,420 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-The-methodology-for-testing-recommender-systems-offline"><a href="#1-The-methodology-for-testing-recommender-systems-offline" class="headerlink" title="1. The methodology for testing recommender systems offline."></a>1. The methodology for testing recommender systems offline.</h3><h4 id="1-1-train-test-split"><a href="#1-1-train-test-split" class="headerlink" title="1.1 train/test split"></a>1.1 train/test split</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748"></p>
-<p>You measure your recommender system’s ability to predict how people rated things in the past.</p>
-<p>If you do this over enough people, you can end up with a meaningful number that tells you <strong>how good your recommender system is at recommending things, or more specifically, recommending things people already watched and rated.</strong> That’s really all you can do, if you can’t test things out in an online system.</p>
-<h4 id="1-2-k-fold-cross-validation"><a href="#1-2-k-fold-cross-validation" class="headerlink" title="1.2 k-fold cross-validation"></a>1.2 k-fold cross-validation</h4><p>If you really want to get fancy, it’s possible to improve on a single train/test split by using  a technique called k-fold cross validation.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578116897885.jpg" alt="1578116897885"></p>
-<p>Instead of a single training set, we create many randomly assigned training sets. Each individual training set, or fold, is used to train your recommender system independently, and then we measure the accuracy of the resulting systems against your test set. So we end up with a score of how accurate each fold ends up predicting user ratings, and we can average them together.</p>
-<p>This obviously takes a lot more computing power to do, but the advantage is that you don’t end up over-fitting to a single training set.</p>
+          <h3 id="the-methodology-for-testing-recommender-systems-offline.">1. The
+methodology for testing recommender systems offline.</h3>
+<h4 id="traintest-split">1.1 train/test split</h4>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578116193748.jpg" alt="1578116193748">
+<figcaption aria-hidden="true">1578116193748</figcaption>
+</figure>
+<p>You measure your recommender system's ability to predict how people
+rated things in the past.</p>
+<p>If you do this over enough people, you can end up with a meaningful
+number that tells you <strong>how good your recommender system is at
+recommending things, or more specifically, recommending things people
+already watched and rated.</strong> That's really all you can do, if you
+can't test things out in an online system.</p>
+<h4 id="k-fold-cross-validation">1.2 k-fold cross-validation</h4>
+<p>If you really want to get fancy, it's possible to improve on a single
+train/test split by using a technique called k-fold cross
+validation.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578116897885.jpg" alt="1578116897885">
+<figcaption aria-hidden="true">1578116897885</figcaption>
+</figure>
+<p>Instead of a single training set, we create many randomly assigned
+training sets. Each individual training set, or fold, is used to train
+your recommender system independently, and then we measure the accuracy
+of the resulting systems against your test set. So we end up with a
+score of how accurate each fold ends up predicting user ratings, and we
+can average them together.</p>
+<p>This obviously takes a lot more computing power to do, but the
+advantage is that you don't end up over-fitting to a single training
+set.</p>
 <blockquote>
-<p>注：By using train/test, all we can do is test our ability to predict how people rated movies they already saw. That’s not the point of a recommender system.  We want to recommend new things to people that they haven’t seen, but find interesting. However, that’s fundamentally impossible to test offline.</p>
+<p>注：By using train/test, all we can do is test our ability to predict
+how people rated movies they already saw. That's not the point of a
+recommender system. We want to recommend new things to people that they
+haven't seen, but find interesting. However, that's fundamentally
+impossible to test offline.</p>
 </blockquote>
-<p>We haven’t talked about how to actually come up with an accuracy metric when testing our recommender systems, so let’s cover a couple of different ways to do it.</p>
-<h3 id="2-Accuracy-Metrics-RMSE-MAE"><a href="#2-Accuracy-Metrics-RMSE-MAE" class="headerlink" title="2. Accuracy Metrics (RMSE, MAE)"></a>2. Accuracy Metrics (RMSE, MAE)</h3><h4 id="2-1-MAE"><a href="#2-1-MAE" class="headerlink" title="2.1 MAE"></a>2.1 MAE</h4><p>We want to minimize MAE.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578117806539.JPG" alt="1578117806539"></p>
-<h4 id="2-2-RMSE"><a href="#2-2-RMSE" class="headerlink" title="2.2 RMSE"></a>2.2 RMSE</h4><p>We want to minimize RMSE.</p>
-<p>This is a more popular metric for a few reasons, but one is that <strong>it penalizes you more when your rating prediction is way off, and penalizes you less when your are reasonably close.</strong></p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578117900853.jpg" alt="1578117900853"></p>
+<p>We haven't talked about how to actually come up with an accuracy
+metric when testing our recommender systems, so let's cover a couple of
+different ways to do it.</p>
+<h3 id="accuracy-metrics-rmse-mae">2. Accuracy Metrics (RMSE, MAE)</h3>
+<h4 id="mae">2.1 MAE</h4>
+<p>We want to minimize MAE.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578117806539.JPG" alt="1578117806539">
+<figcaption aria-hidden="true">1578117806539</figcaption>
+</figure>
+<h4 id="rmse">2.2 RMSE</h4>
+<p>We want to minimize RMSE.</p>
+<p>This is a more popular metric for a few reasons, but one is that
+<strong>it penalizes you more when your rating prediction is way off,
+and penalizes you less when your are reasonably close.</strong></p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578117900853.jpg" alt="1578117900853">
+<figcaption aria-hidden="true">1578117900853</figcaption>
+</figure>
 <blockquote>
-<p>注：就推荐系统而言，RMSE just doesn’t matter much in the real world. 人们并不关心你的系统对他们已经看过的电影的评分预测是否准确。What does matter is which movie you put in front of users in a top-N recommender list, and how those users react to those movies when they see them recommended.</p>
+<p>注：就推荐系统而言，RMSE just doesn't matter much in the real world.
+人们并不关心你的系统对他们已经看过的电影的评分预测是否准确。What does
+matter is which movie you put in front of users in a top-N recommender
+list, and how those users react to those movies when they see them
+recommended.</p>
 </blockquote>
-<h3 id="3-Top-N-Hit-Rate-Many-Ways"><a href="#3-Top-N-Hit-Rate-Many-Ways" class="headerlink" title="3. Top-N Hit Rate - Many Ways"></a>3. Top-N Hit Rate - Many Ways</h3><p>Different ways to measure the effectivenss of top-n recommenders offline:</p>
-<h4 id="3-1-Hit-Rate"><a href="#3-1-Hit-Rate" class="headerlink" title="3.1 Hit Rate"></a>3.1 Hit Rate</h4><p>You generate top-n recommendations for all of the users in your test set. <strong>If one of the recommendations in a user’s top-n recommendations is something  they actually rated, you consider that a hit.</strong> You actually managed to show the user something that they found interesting enough to watch on their own already, so we consider that a success. </p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578119273699.jpg" alt="1578119273699"></p>
+<h3 id="top-n-hit-rate---many-ways">3. Top-N Hit Rate - Many Ways</h3>
+<p>Different ways to measure the effectivenss of top-n recommenders
+offline:</p>
+<h4 id="hit-rate">3.1 Hit Rate</h4>
+<p>You generate top-n recommendations for all of the users in your test
+set. <strong>If one of the recommendations in a user's top-n
+recommendations is something they actually rated, you consider that a
+hit.</strong> You actually managed to show the user something that they
+found interesting enough to watch on their own already, so we consider
+that a success.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578119273699.jpg" alt="1578119273699">
+<figcaption aria-hidden="true">1578119273699</figcaption>
+</figure>
 <p>How to measure hit rate? Use leave-one-out cross validation.</p>
-<h4 id="3-2-leave-one-out-cross-validation"><a href="#3-2-leave-one-out-cross-validation" class="headerlink" title="3.2 leave-one-out cross validation"></a>3.2 leave-one-out cross validation</h4><p>What we do is compute the top-n recommendations for each user in our training data, and intentionally remove one of those items from that user’s training data. We then test our recommender system’s ability to recommend that item that was left out in the top-n results it creates for that user in the testing phase.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578120352619.jpg" alt="1578120352619"></p>
-<p>The trouble is that it’s a lot harder to get one specific movie right while testing than to just get one of the n recommendations. So “hit rate” with “leave-one-out” tends to be very small and difficult to measure, unless you have a very large data set to work with. But it’s a much more <strong>user focused metric</strong> when you know your recommender system will be producing top-n lists in the real world, which most of them do. </p>
-<h4 id="3-3-ARHR"><a href="#3-3-ARHR" class="headerlink" title="3.3 ARHR"></a>3.3 ARHR</h4><p>This metric is just like “hit rate”, but it accounts for where in the top-n list you hits appear. Instead of summing up the number of hits, we sum up the reciprocal ranking of each hit.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578122155631.jpg" alt="1578122155631"></p>
-<p>You end up getting more credit for successfully recommending an item in the top slot than in the bottom slot. Again, this is a more <strong>user focused metric</strong>, since users tend to focus on the beginning of lists. </p>
-<h4 id="3-4-cHR"><a href="#3-4-cHR" class="headerlink" title="3.4 cHR"></a>3.4 cHR</h4><p>Throw away hits if our predicted rating is below some threshold.</p>
-<p>The idea is that we shouldn’t get credit for recommending items to a user that we think they won’t actually enjoy. </p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578122704818.jpg" alt="1578122704818"></p>
-<p>In this example, if we had a cutoff of three stars, we throw away the hits for the second and fourth items in these test results and our hit rate metric wouldn’t count them at all. </p>
-<h4 id="3-5-rHR"><a href="#3-5-rHR" class="headerlink" title="3.5 rHR"></a>3.5 rHR</h4><p>Another way to look at hit rate is to break it down by predicted rating score.</p>
-<p>It can be a good way to get an idea of the distribution of how good your algorithm thinks recommended movies are that actually get a hit.  Ideally, you want to recommend movies that they actually like, and breaking down the distribution gives you some sense of how well you’re doing in more detail.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578123016707.jpg" alt="1578123016707"></p>
+<h4 id="leave-one-out-cross-validation">3.2 leave-one-out cross
+validation</h4>
+<p>What we do is compute the top-n recommendations for each user in our
+training data, and intentionally remove one of those items from that
+user's training data. We then test our recommender system's ability to
+recommend that item that was left out in the top-n results it creates
+for that user in the testing phase.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578120352619.jpg" alt="1578120352619">
+<figcaption aria-hidden="true">1578120352619</figcaption>
+</figure>
+<p>The trouble is that it's a lot harder to get one specific movie right
+while testing than to just get one of the n recommendations. So "hit
+rate" with "leave-one-out" tends to be very small and difficult to
+measure, unless you have a very large data set to work with. But it's a
+much more <strong>user focused metric</strong> when you know your
+recommender system will be producing top-n lists in the real world,
+which most of them do.</p>
+<h4 id="arhr">3.3 ARHR</h4>
+<p>This metric is just like "hit rate", but it accounts for where in the
+top-n list you hits appear. Instead of summing up the number of hits, we
+sum up the reciprocal ranking of each hit.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578122155631.jpg" alt="1578122155631">
+<figcaption aria-hidden="true">1578122155631</figcaption>
+</figure>
+<p>You end up getting more credit for successfully recommending an item
+in the top slot than in the bottom slot. Again, this is a more
+<strong>user focused metric</strong>, since users tend to focus on the
+beginning of lists.</p>
+<h4 id="chr">3.4 cHR</h4>
+<p>Throw away hits if our predicted rating is below some threshold.</p>
+<p>The idea is that we shouldn't get credit for recommending items to a
+user that we think they won't actually enjoy.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578122704818.jpg" alt="1578122704818">
+<figcaption aria-hidden="true">1578122704818</figcaption>
+</figure>
+<p>In this example, if we had a cutoff of three stars, we throw away the
+hits for the second and fourth items in these test results and our hit
+rate metric wouldn't count them at all.</p>
+<h4 id="rhr">3.5 rHR</h4>
+<p>Another way to look at hit rate is to break it down by predicted
+rating score.</p>
+<p>It can be a good way to get an idea of the distribution of how good
+your algorithm thinks recommended movies are that actually get a hit.
+Ideally, you want to recommend movies that they actually like, and
+breaking down the distribution gives you some sense of how well you're
+doing in more detail.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578123016707.jpg" alt="1578123016707">
+<figcaption aria-hidden="true">1578123016707</figcaption>
+</figure>
 <p>对每一个rating type (1,2,3,4,5), print out its hit rate.</p>
-<h3 id="4-Coverage-Diversity-and-Novelty"><a href="#4-Coverage-Diversity-and-Novelty" class="headerlink" title="4. Coverage, Diversity and Novelty"></a>4. Coverage, Diversity and Novelty</h3><p>Accuracy isn’t the only thing that matters.</p>
-<h4 id="4-1-Coverage-覆盖度"><a href="#4-1-Coverage-覆盖度" class="headerlink" title="4.1 Coverage 覆盖度"></a>4.1 Coverage 覆盖度</h4><p>The percentage of possible recommendations that your system is able to provide. </p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150"></p>
-<p>It’s worth noting that coverage can be at odds with accuracy. If you enforce a higher quality threshold on the recommendations you make, then you might improve your accuracy at the expense of coverage. Finding the balance of where exactly you’re better off recommending nothing at all can be delicate. </p>
-<p>Coverage can also be important to watch, because it gives you a sense of how quickly new items in your catalog will start to appear in your recommendations. When a new book come out on Amazon, it won’t appear in recommendations until at least a few people buy it, therefore establishing patterns with the purchase of other items. Until those patterns exist, that new book will reduce Amazon’s coverage metric.</p>
-<h4 id="4-2-Diversity-多样性"><a href="#4-2-Diversity-多样性" class="headerlink" title="4.2 Diversity 多样性"></a>4.2 Diversity 多样性</h4><p>You can think of this as measure of how broad a variety of items your recommender system is putting in front of people. An example of low diversity would be a recommender system that just recommends the next books in a series that you’ve started reading, but doesn’t recommend book from different authors, or movies related to what you’ve read.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578124451718.jpg" alt="1578124451718"></p>
-<p>Diversity, at least in the context of recommender systems, isn’t always a good thing. You can achieve very high diversity by just recommending completely random items. Unusually high diversity scores mean that you just have bad recommendations more often than not. You always need to look at diversity alongside metrics that measure the quality of the recommendations as well. </p>
-<h4 id="4-3-Novelty-新颖性"><a href="#4-3-Novelty-新颖性" class="headerlink" title="4.3 Novelty 新颖性"></a>4.3 Novelty 新颖性</h4><p>Similarly, novelty sounds like a good thing, but often it isn’t. Novelty is a measure of how popular the items are that you are recommending. And again, just recommending random stuff would yield very high novelty scores, since the vast majority of items are not top sellers. </p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578124908363.jpg" alt="1578124908363"></p>
-<p>Although novelty is measurable, what to do with it is in many ways subjective. There’s a concept of user trust in a recommender system. People want to see at least a few familiar items in their recommendations that make them say, “Yeah, that’s a good recommendation for me. The system seems good”. If you only recommend things people never heard of, they may conclude that your system doesn’t really know them. Also, popular items are usually popular for a reason. They’re enjoyable by a large segment of the population, so you would expect them to be good recommendations for a large segment of the population who hasn’t read or watched them yet. If you’re not recommending some popular items, you should probably question whether your recommender system is really working as it should.</p>
-<p><strong>You need to strike a balance between familiar, popular items and what we call serendipitous discovery of new items that user has never heard of before. (balance between novelty and trust)</strong>. The familiar items establish trust with the user, and the new ones allow the user to discover entirely new things that they might love. </p>
-<p>Novelty is important, because the whole point of recommender systems is to surface items in what we call “the long tail”.</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578125635846.jpg" alt="1578125635846"></p>
-<p>Imagine this is a plot of the sales of every item in you catalog, sorted by sales. Y 轴代表sales (popularity)，X轴代表products. Most of sales来自于一小部分items，但是”long tail” makes up a large amount of sales as well. 黄色部分的item代表了人们各自感兴趣的东西. Recommender systems can help people discover those items in the long tail that are relevant to their own unique niche interests. If you can do that successfully, then the recommendations your system makes can help new authors get discovered, can help people explore their own passions, and make money for whoever you’re building the system for as well. Everybody wins.</p>
-<h3 id="5-Churn-Responsiveness-and-A-B-Tests"><a href="#5-Churn-Responsiveness-and-A-B-Tests" class="headerlink" title="5. Churn, Responsiveness, and A/B Tests"></a>5. Churn, Responsiveness, and A/B Tests</h3><h4 id="5-1-Churn"><a href="#5-1-Churn" class="headerlink" title="5.1 Churn"></a>5.1 Churn</h4><p>Another thing we can measure is Churn. </p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578127764650.jpg" alt="1578127764650"></p>
-<p>Churn can measure how sensitive your recommender system is to new user behavior. 如果用户rate了一部新电影，会使得他的推荐内容发生很大的变化吗？If so, your churn score will be high. Maybe just showing the same recommendations too many times is a bad idea itself. 如果一个用户总是看到相同的推荐，但是不点击进去，在某个时候你应该停止推荐它而给用户推荐其他的东西。Sometimes, a little bit of randomization in your top-n recommendations can keep them looking fresh, and expose your users to more items.</p>
-<p>But, just like diversity and novelty, high churn is not in itself a good thing. You could maximize your churn metric by just recommending items completely at random, 但显然这不是好的推荐。</p>
-<p><strong>All these metrics need to be looked at together, and you need to understand the trade-offs between them. </strong></p>
-<h4 id="5-2-Responsiveness"><a href="#5-2-Responsiveness" class="headerlink" title="5.2 Responsiveness"></a>5.2 Responsiveness</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578128338650.jpg" alt="1578128338650"></p>
-<p>If you rate  a new movie, does it affect your recommendations immediately or next day after some nightly job runs? More responsiveness would always seem to be a good thing, but in the world of business, you have to decide how responsive your recommender really needs to be, since recommender systems that have instantaneous responsiveness are complex, difficult to maintain, and expensive to build. You need to strike your own balance between responsiveness and simplicity.</p>
+<h3 id="coverage-diversity-and-novelty">4. Coverage, Diversity and
+Novelty</h3>
+<p>Accuracy isn't the only thing that matters.</p>
+<h4 id="coverage-覆盖度">4.1 Coverage 覆盖度</h4>
+<p>The percentage of possible recommendations that your system is able
+to provide.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578123495150.jpg" alt="1578123495150">
+<figcaption aria-hidden="true">1578123495150</figcaption>
+</figure>
+<p>It's worth noting that coverage can be at odds with accuracy. If you
+enforce a higher quality threshold on the recommendations you make, then
+you might improve your accuracy at the expense of coverage. Finding the
+balance of where exactly you're better off recommending nothing at all
+can be delicate.</p>
+<p>Coverage can also be important to watch, because it gives you a sense
+of how quickly new items in your catalog will start to appear in your
+recommendations. When a new book come out on Amazon, it won't appear in
+recommendations until at least a few people buy it, therefore
+establishing patterns with the purchase of other items. Until those
+patterns exist, that new book will reduce Amazon's coverage metric.</p>
+<h4 id="diversity-多样性">4.2 Diversity 多样性</h4>
+<p>You can think of this as measure of how broad a variety of items your
+recommender system is putting in front of people. An example of low
+diversity would be a recommender system that just recommends the next
+books in a series that you've started reading, but doesn't recommend
+book from different authors, or movies related to what you've read.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578124451718.jpg" alt="1578124451718">
+<figcaption aria-hidden="true">1578124451718</figcaption>
+</figure>
+<p>Diversity, at least in the context of recommender systems, isn't
+always a good thing. You can achieve very high diversity by just
+recommending completely random items. Unusually high diversity scores
+mean that you just have bad recommendations more often than not. You
+always need to look at diversity alongside metrics that measure the
+quality of the recommendations as well.</p>
+<h4 id="novelty-新颖性">4.3 Novelty 新颖性</h4>
+<p>Similarly, novelty sounds like a good thing, but often it isn't.
+Novelty is a measure of how popular the items are that you are
+recommending. And again, just recommending random stuff would yield very
+high novelty scores, since the vast majority of items are not top
+sellers.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578124908363.jpg" alt="1578124908363">
+<figcaption aria-hidden="true">1578124908363</figcaption>
+</figure>
+<p>Although novelty is measurable, what to do with it is in many ways
+subjective. There's a concept of user trust in a recommender system.
+People want to see at least a few familiar items in their
+recommendations that make them say, "Yeah, that's a good recommendation
+for me. The system seems good". If you only recommend things people
+never heard of, they may conclude that your system doesn't really know
+them. Also, popular items are usually popular for a reason. They're
+enjoyable by a large segment of the population, so you would expect them
+to be good recommendations for a large segment of the population who
+hasn't read or watched them yet. If you're not recommending some popular
+items, you should probably question whether your recommender system is
+really working as it should.</p>
+<p><strong>You need to strike a balance between familiar, popular items
+and what we call serendipitous discovery of new items that user has
+never heard of before. (balance between novelty and trust)</strong>. The
+familiar items establish trust with the user, and the new ones allow the
+user to discover entirely new things that they might love.</p>
+<p>Novelty is important, because the whole point of recommender systems
+is to surface items in what we call "the long tail".</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578125635846.jpg" alt="1578125635846">
+<figcaption aria-hidden="true">1578125635846</figcaption>
+</figure>
+<p>Imagine this is a plot of the sales of every item in you catalog,
+sorted by sales. Y 轴代表sales (popularity)，X轴代表products. Most of
+sales来自于一小部分items，但是"long tail" makes up a large amount of
+sales as well. 黄色部分的item代表了人们各自感兴趣的东西. Recommender
+systems can help people discover those items in the long tail that are
+relevant to their own unique niche interests. If you can do that
+successfully, then the recommendations your system makes can help new
+authors get discovered, can help people explore their own passions, and
+make money for whoever you're building the system for as well. Everybody
+wins.</p>
+<h3 id="churn-responsiveness-and-ab-tests">5. Churn, Responsiveness, and
+A/B Tests</h3>
+<h4 id="churn">5.1 Churn</h4>
+<p>Another thing we can measure is Churn.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578127764650.jpg" alt="1578127764650">
+<figcaption aria-hidden="true">1578127764650</figcaption>
+</figure>
+<p>Churn can measure how sensitive your recommender system is to new
+user behavior.
+如果用户rate了一部新电影，会使得他的推荐内容发生很大的变化吗？If so,
+your churn score will be high. Maybe just showing the same
+recommendations too many times is a bad idea itself.
+如果一个用户总是看到相同的推荐，但是不点击进去，在某个时候你应该停止推荐它而给用户推荐其他的东西。Sometimes,
+a little bit of randomization in your top-n recommendations can keep
+them looking fresh, and expose your users to more items.</p>
+<p>But, just like diversity and novelty, high churn is not in itself a
+good thing. You could maximize your churn metric by just recommending
+items completely at random, 但显然这不是好的推荐。</p>
+<p><strong>All these metrics need to be looked at together, and you need
+to understand the trade-offs between them. </strong></p>
+<h4 id="responsiveness">5.2 Responsiveness</h4>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578128338650.jpg" alt="1578128338650">
+<figcaption aria-hidden="true">1578128338650</figcaption>
+</figure>
+<p>If you rate a new movie, does it affect your recommendations
+immediately or next day after some nightly job runs? More responsiveness
+would always seem to be a good thing, but in the world of business, you
+have to decide how responsive your recommender really needs to be, since
+recommender systems that have instantaneous responsiveness are complex,
+difficult to maintain, and expensive to build. You need to strike your
+own balance between responsiveness and simplicity.</p>
 <blockquote>
-<p> ? What’s important</p>
-<p>前面讲了许多evaluate推荐系统的方法：MAE, RMSE, Hit rate in various forms, coverage, diversity, novelty, churn, and responsiveness.</p>
+<p>? What's important</p>
+<p>前面讲了许多evaluate推荐系统的方法：MAE, RMSE, Hit rate in various
+forms, coverage, diversity, novelty, churn, and responsiveness.</p>
 <p>So how do you know what to focus on? It depends.</p>
-<p>It may even depend on cultural factors. Some cultures may want more diversity and novelty, while other cultures may want to stick to things that are familiar with them. </p>
-<p>It also depends on what you’re trying to achieve as a business. And usually,  a business is just trying to make money, which leads to one more way to evaluate recommender systems that is arguably the most important of all: online A/B tests!</p>
+<p>It may even depend on cultural factors. Some cultures may want more
+diversity and novelty, while other cultures may want to stick to things
+that are familiar with them.</p>
+<p>It also depends on what you're trying to achieve as a business. And
+usually, a business is just trying to make money, which leads to one
+more way to evaluate recommender systems that is arguably the most
+important of all: online A/B tests!</p>
 </blockquote>
-<h4 id="5-3-Online-A-B-Tests"><a href="#5-3-Online-A-B-Tests" class="headerlink" title="5.3 Online A/B Tests"></a>5.3 Online A/B Tests</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578129032852.jpg" alt="1578129032852"></p>
+<h4 id="online-ab-tests">5.3 Online A/B Tests</h4>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578129032852.jpg" alt="1578129032852">
+<figcaption aria-hidden="true">1578129032852</figcaption>
+</figure>
 <hr>
 <blockquote>
 <p>参考：</p>
-<p> <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
 </blockquote>
-<p>AB测试是一种很常用的在线评测算法的实验方法。它通过一定的规则将用户随机分成几组，并对不同组的用户采用不同的算法，然后通过统计不同组用户的各种不同的评测指标比较不同算法，比如可以统计不同组用户的点击率，通过点击率比较不同算法的性能。对AB测试感兴趣的读者可以浏览一下网站<a href="http://www.abtests.com/">http://www.abtests.com/</a> ，该网站给出了很多通过实际AB测试提高网站用户满意度的例子，从中我们可以学习到如何进行合理的AB测试。</p>
+<p>AB测试是一种很常用的在线评测算法的实验方法。它通过一定的规则将用户随机分成几组，并对不同组的用户采用不同的算法，然后通过统计不同组用户的各种不同的评测指标比较不同算法，比如可以统计不同组用户的点击率，通过点击率比较不同算法的性能。对AB测试感兴趣的读者可以浏览一下网站http://www.abtests.com/
+，该网站给出了很多通过实际AB测试提高网站用户满意度的例子，从中我们可以学习到如何进行合理的AB测试。</p>
 <hr>
-<p>Doing online A/B tests to tune your recommender system using your real customers, and measuring how they react to your recommendations. You can put recommendations from different algorithms in front of different sets of users, and measure if they actually buy, watch, or otherwise indicate interest in the recommendations you’ve presented. </p>
-<p>By always testing changes to your recommender system using controlled, online experiments, you can see if they actually cause people to discover and purchase more new things than they would have otherwise.</p>
-<p>None of the metrics we’ve discussed matter more than how real customers react to the recommendations you produce in the real world. You can have the most accurate rating predictions in the world, but if customers can’t find new items to buy or watch from your system, it will be worthless from a practical standpoint. </p>
-<p>Online tests can help you to avoid introducing complexity that adds no value, and remember, complex systems are difficult to maintain.</p>
-<p>SO REMEMBER, offline metrics such as accuracy, diversity, and novelty can all be indicators you can look at while developing recommender systems offline, but you should never declare victory until you’ve measured a real impact on real users from your work. <strong>User behavior is the ultimate test of your work.</strong></p>
-<p><strong>Accurately predicted ratings don’t necessarily make for good video recommendations. At the end of the day, the results of online A/B tests are the only evaluation that matters for your recommender system.</strong></p>
+<p>Doing online A/B tests to tune your recommender system using your
+real customers, and measuring how they react to your recommendations.
+You can put recommendations from different algorithms in front of
+different sets of users, and measure if they actually buy, watch, or
+otherwise indicate interest in the recommendations you've presented.</p>
+<p>By always testing changes to your recommender system using
+controlled, online experiments, you can see if they actually cause
+people to discover and purchase more new things than they would have
+otherwise.</p>
+<p>None of the metrics we've discussed matter more than how real
+customers react to the recommendations you produce in the real world.
+You can have the most accurate rating predictions in the world, but if
+customers can't find new items to buy or watch from your system, it will
+be worthless from a practical standpoint.</p>
+<p>Online tests can help you to avoid introducing complexity that adds
+no value, and remember, complex systems are difficult to maintain.</p>
+<p>SO REMEMBER, offline metrics such as accuracy, diversity, and novelty
+can all be indicators you can look at while developing recommender
+systems offline, but you should never declare victory until you've
+measured a real impact on real users from your work. <strong>User
+behavior is the ultimate test of your work.</strong></p>
+<p><strong>Accurately predicted ratings don't necessarily make for good
+video recommendations. At the end of the day, the results of online A/B
+tests are the only evaluation that matters for your recommender
+system.</strong></p>
 <hr>
-<p> A/B 测试，常见的指标有点击率、用户停留时间、 广告收入等，需要注意分析统计显著性。同时，需要注意短期的指标和长期的指标相结合， 一些短期指标的提升有时候反而会导致长期指标下降 比如 ，经常推荐美女或者搞笑类的内容会带来短期的点击率提高，但是可能会引起长期的用户粘性下降。设计者需要从自己的产品角度出发，根据产品的需要制定评估指标，这样才能更好地指导推荐系统的优化方向。常见的评价指标如下：</p>
-<p><img src="https://camo.githubusercontent.com/fcefce67e348ce386471df934a041b367eb9b529/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31342d34332d35312e706e67" alt="img"></p>
+<p>A/B 测试，常见的指标有点击率、用户停留时间、
+广告收入等，需要注意分析统计显著性。同时，需要注意短期的指标和长期的指标相结合，
+一些短期指标的提升有时候反而会导致长期指标下降 比如
+，经常推荐美女或者搞笑类的内容会带来短期的点击率提高，但是可能会引起长期的用户粘性下降。设计者需要从自己的产品角度出发，根据产品的需要制定评估指标，这样才能更好地指导推荐系统的优化方向。常见的评价指标如下：</p>
+<figure>
+<img src="https://camo.githubusercontent.com/fcefce67e348ce386471df934a041b367eb9b529/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31342d34332d35312e706e67" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <hr>
-<p>Another thing you can do is just straight up ask your users, if they think specific recommendations are good. </p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg" alt="1578129889414"></p>
-<p>In practice though, it’s a tough thing to do. Users will probably be confused over whether you’re asking them to rate the item or rate the recommendation, so you won’t really know how to interpret this data. It also requires extra work form your customers with no clear payoff for them, so you’re unlikely to get enough ratings on your recommendations to be useful. </p>
-<p>It’s best to just stick with online A/B tests, and measure how your customers vote with their wallets on the quality of your recommendations.</p>
-<h3 id="Quiz"><a href="#Quiz" class="headerlink" title="Quiz"></a>Quiz</h3><p><img src="/2020/01/04/Evaluate-Recommender-System/1578196100106.jpg" alt="1578196100106"></p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196212178.jpg" alt="1578196212178"></p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196333798.jpg" alt="1578196333798"></p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578196377981.jpg" alt="1578196377981"></p>
-<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>使用Python中的library: Suprise. <a href="supriselib.com">SupriseLib’s documentation online</a></p>
-<p>Suprise is built around measuring the accuracy of recommender systems. Although this is the wrong thing to focus on, it’s really the best we can do without access to a real, large-scale website of our own.</p>
+<p>Another thing you can do is just straight up ask your users, if they
+think specific recommendations are good.</p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578129889414.jpg" alt="1578129889414">
+<figcaption aria-hidden="true">1578129889414</figcaption>
+</figure>
+<p>In practice though, it's a tough thing to do. Users will probably be
+confused over whether you're asking them to rate the item or rate the
+recommendation, so you won't really know how to interpret this data. It
+also requires extra work form your customers with no clear payoff for
+them, so you're unlikely to get enough ratings on your recommendations
+to be useful.</p>
+<p>It's best to just stick with online A/B tests, and measure how your
+customers vote with their wallets on the quality of your
+recommendations.</p>
+<h3 id="quiz">Quiz</h3>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578196100106.jpg" alt="1578196100106">
+<figcaption aria-hidden="true">1578196100106</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578196212178.jpg" alt="1578196212178">
+<figcaption aria-hidden="true">1578196212178</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578196333798.jpg" alt="1578196333798">
+<figcaption aria-hidden="true">1578196333798</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578196377981.jpg" alt="1578196377981">
+<figcaption aria-hidden="true">1578196377981</figcaption>
+</figure>
+<h3 id="code-walkthrough">Code Walkthrough</h3>
+<p>使用Python中的library: Suprise. <a href="supriselib.com">SupriseLib's
+documentation online</a></p>
+<p>Suprise is built around measuring the accuracy of recommender
+systems. Although this is the wrong thing to focus on, it's really the
+best we can do without access to a real, large-scale website of our
+own.</p>
 <p>Evaluating文件夹里的：</p>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201480503.jpg" alt="1578201480503"></p>
-<p>RecommenderMetrics中实现了前面讲到的用来evaluate recommender system的各种metrics.</p>
-<p>TestMetrics中调用了RecommenderMetrics中的方法来实现一个real recommender system并evaluate it.</p>
-<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="/2020/01/04/Evaluate-Recommender-System/1578201799750.jpg" alt="1578201799750"></p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578201480503.jpg" alt="1578201480503">
+<figcaption aria-hidden="true">1578201480503</figcaption>
+</figure>
+<p>RecommenderMetrics中实现了前面讲到的用来evaluate recommender
+system的各种metrics.</p>
+<p>TestMetrics中调用了RecommenderMetrics中的方法来实现一个real
+recommender system并evaluate it.</p>
+<h4 id="结果分析">结果分析</h4>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578201799750.jpg" alt="1578201799750">
+<figcaption aria-hidden="true">1578201799750</figcaption>
+</figure>
 <ul>
 <li><p>RMSE大概0.9，MAE大概0.7。</p>
-<p>On average, our guess of rating for a given movie for a given user, was off by about 0.7 stars. RMSE is higher, meaning that we got penalized for being way off more often than we’d like.</p>
-<p>Remember, error metrics are bad.  你想要RMSE与MAE越低越好，if accuracy is your goal.</p>
-</li>
+<p>On average, our guess of rating for a given movie for a given user,
+was off by about 0.7 stars. RMSE is higher, meaning that we got
+penalized for being way off more often than we'd like.</p>
+<p>Remember, error metrics are bad. 你想要RMSE与MAE越低越好，if accuracy
+is your goal.</p></li>
 </ul>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578201882902.jpg" alt="1578201882902"></p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578201882902.jpg" alt="1578201882902">
+<figcaption aria-hidden="true">1578201882902</figcaption>
+</figure>
 <ul>
-<li>Hit Rate大概 3%，which actually isn’t that bad, considering that only one movie was left out from each user’s rating to test with. 这个数值本身很难解释是好是坏，除非有其他的推荐系统可供比较。</li>
-<li>If we break it down by rating value, you can see that our hit rate did better at higher rating predictions, which make sense and it’s what we want to see. Hit Rate在评分越高的类型中表现得更好（例如，在评分为5的电影中，Hit Rate为 6%）。</li>
-<li>Cumulative Hit Rate with a 4.0 threshold isn’t much lower than the raw hit rate, meaning that we’re doing a good job of recommending items we think are good recommendations.</li>
-<li>ARHR is 0.01. It takes the ranking of the hits into account. Again, it has no real value until we have other recommender systems to compare it against.</li>
+<li>Hit Rate大概 3%，which actually isn't that bad, considering that
+only one movie was left out from each user's rating to test with.
+这个数值本身很难解释是好是坏，除非有其他的推荐系统可供比较。</li>
+<li>If we break it down by rating value, you can see that our hit rate
+did better at higher rating predictions, which make sense and it's what
+we want to see. Hit
+Rate在评分越高的类型中表现得更好（例如，在评分为5的电影中，Hit Rate为
+6%）。</li>
+<li>Cumulative Hit Rate with a 4.0 threshold isn't much lower than the
+raw hit rate, meaning that we're doing a good job of recommending items
+we think are good recommendations.</li>
+<li>ARHR is 0.01. It takes the ranking of the hits into account. Again,
+it has no real value until we have other recommender systems to compare
+it against.</li>
 </ul>
-<p><img src="/2020/01/04/Evaluate-Recommender-System/1578203470922.jpg" alt="1578203470922"></p>
+<figure>
+<img src="/2020/01/04/Evaluate-Recommender-System/1578203470922.jpg" alt="1578203470922">
+<figcaption aria-hidden="true">1578203470922</figcaption>
+</figure>
 <ul>
-<li><p>We look at user coverage for which we have at least one 4-star rating prediction, ant it’s pretty high. That’s good.</p>
-</li>
-<li><p>Diversity is really high at 0.96, and novelty seems pretty high, with an average popularity rank of 491. Remember there are only a few thousand movies in our data set to begin with. </p>
-<p>This tells us that our algorithm is going pretty deep into the long tail to get its recommendations and that could be a problem in the real world. Novelty比较高（平均受欢迎程度排名比较靠后），说明推荐的都是比较小众的电影（long tail）.</p>
-</li>
+<li><p>We look at user coverage for which we have at least one 4-star
+rating prediction, ant it's pretty high. That's good.</p></li>
+<li><p>Diversity is really high at 0.96, and novelty seems pretty high,
+with an average popularity rank of 491. Remember there are only a few
+thousand movies in our data set to begin with.</p>
+<p>This tells us that our algorithm is going pretty deep into the long
+tail to get its recommendations and that could be a problem in the real
+world.
+Novelty比较高（平均受欢迎程度排名比较靠后），说明推荐的都是比较小众的电影（long
+tail）.</p></li>
 </ul>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>So even though our accuracy metrics look okay here, diversity and novelty is telling us that we’re recommending a lot of really obscure stuff. And that could be an issue when trying to establish user trust in the system. People generally want to see a few things that at least look familiar. So I would expect this particular algorithm wouldn’t do that well in an online A/B test, but you can never really know until  you actually try it. </p>
-<p>Anyhow, we now have working code now for evaluating real recommender systems!</p>
+<h4 id="总结">总结</h4>
+<p>So even though our accuracy metrics look okay here, diversity and
+novelty is telling us that we're recommending a lot of really obscure
+stuff. And that could be an issue when trying to establish user trust in
+the system. People generally want to see a few things that at least look
+familiar. So I would expect this particular algorithm wouldn't do that
+well in an online A/B test, but you can never really know until you
+actually try it.</p>
+<p>Anyhow, we now have working code now for evaluating real recommender
+systems!</p>
 
       
     </div>
@@ -611,8 +975,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578052647526.jpg" alt="1578052647526"></p>
-<p><img src="/2020/01/03/Top-N-Recommender-Architecture/1578471196924.png" alt="1578471196924"></p>
+          <figure>
+<img src="/2020/01/03/Top-N-Recommender-Architecture/1578052647526.jpg" alt="1578052647526">
+<figcaption aria-hidden="true">1578052647526</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/Top-N-Recommender-Architecture/1578471196924.png" alt="1578471196924">
+<figcaption aria-hidden="true">1578471196924</figcaption>
+</figure>
 
       
     </div>
@@ -698,9 +1068,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>课程：</p>
-<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=1726410"><img src="https://i.udemycdn.com/course/240x135/1726410_7b86.jpg" alt="Building Recommender Systems with Machine Learning and AI"></a><a href="https://www.udemy.com/course/building-recommender-systems-with-machine-learning-and-ai/learn/"><strong>Building Recommender Systems with Machine Learning and AI</strong> </a></p>
-<p><a href="https://sundog-education.com/RecSys/">Course Materials</a></p>
-<p><img src="/2020/01/03/RecSys-Course-Overview/1578048175249.jpg" alt="1578048175249"></p>
+<p><a href="https://www.udemy.com/course-dashboard-redirect/?course_id=1726410"><img src="https://i.udemycdn.com/course/240x135/1726410_7b86.jpg" alt="Building Recommender Systems with Machine Learning and AI"></a><a href="https://www.udemy.com/course/building-recommender-systems-with-machine-learning-and-ai/learn/"><strong>Building
+Recommender Systems with Machine Learning and AI</strong></a></p>
+<p><a href="https://sundog-education.com/RecSys/">Course
+Materials</a></p>
+<figure>
+<img src="/2020/01/03/RecSys-Course-Overview/1578048175249.jpg" alt="1578048175249">
+<figcaption aria-hidden="true">1578048175249</figcaption>
+</figure>
 
       
     </div>
@@ -779,50 +1154,156 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-MapReduce-fundamental-concepts"><a href="#1-MapReduce-fundamental-concepts" class="headerlink" title="1. MapReduce fundamental concepts"></a>1. MapReduce fundamental concepts</h4><p><img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-142610.jpg" alt="20200103-142610"></p>
-<p><img src="/2020/01/03/MapReduce/1578032937052.jpg" alt="1578032937052"></p>
-<h5 id="1-1-Mapper"><a href="#1-1-Mapper" class="headerlink" title="1.1 Mapper"></a>1.1 Mapper</h5><p><img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-143446.jpg" alt="20200103-143446"></p>
-<p><img src="/2020/01/03/MapReduce/1578033212508.jpg" alt="1578033212508"></p>
-<p><img src="/2020/01/03/MapReduce/1578033238182.jpg" alt="1578033238182"></p>
+          <h4 id="mapreduce-fundamental-concepts">1. MapReduce fundamental
+concepts</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578032618932.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-142610.jpg" alt="20200103-142610">
+<figcaption aria-hidden="true">20200103-142610</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578032937052.jpg" alt="1578032937052">
+<figcaption aria-hidden="true">1578032937052</figcaption>
+</figure>
+<h5 id="mapper">1.1 Mapper</h5>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033123727.jpg" alt="1578033123727">
+<figcaption aria-hidden="true">1578033123727</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-143446.jpg" alt="20200103-143446">
+<figcaption aria-hidden="true">20200103-143446</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033212508.jpg" alt="1578033212508">
+<figcaption aria-hidden="true">1578033212508</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033238182.jpg" alt="1578033238182">
+<figcaption aria-hidden="true">1578033238182</figcaption>
+</figure>
 <p>Mapper: Extract and organize what we care about.</p>
-<h5 id="1-2-Shuffle-and-Sort"><a href="#1-2-Shuffle-and-Sort" class="headerlink" title="1.2 Shuffle and Sort"></a>1.2 Shuffle and Sort</h5><p><img src="/2020/01/03/MapReduce/1578033463232.jpg" alt="1578033463232"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-144645.jpg" alt="20200103-144645"></p>
-<h5 id="1-3-Reducer"><a href="#1-3-Reducer" class="headerlink" title="1.3 Reducer"></a>1.3 Reducer</h5><p><img src="/2020/01/03/MapReduce/1578034121206.jpg" alt="1578034121206"></p>
-<p><img src="/2020/01/03/MapReduce/20200103-144953.jpg" alt="20200103-144953"></p>
-<p><img src="/2020/01/03/MapReduce/1578034303323.jpg" alt="1578034303323"></p>
+<h5 id="shuffle-and-sort">1.2 Shuffle and Sort</h5>
+<figure>
+<img src="/2020/01/03/MapReduce/1578033463232.jpg" alt="1578033463232">
+<figcaption aria-hidden="true">1578033463232</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-144645.jpg" alt="20200103-144645">
+<figcaption aria-hidden="true">20200103-144645</figcaption>
+</figure>
+<h5 id="reducer">1.3 Reducer</h5>
+<figure>
+<img src="/2020/01/03/MapReduce/1578034121206.jpg" alt="1578034121206">
+<figcaption aria-hidden="true">1578034121206</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/20200103-144953.jpg" alt="20200103-144953">
+<figcaption aria-hidden="true">20200103-144953</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578034303323.jpg" alt="1578034303323">
+<figcaption aria-hidden="true">1578034303323</figcaption>
+</figure>
 <hr>
-<h4 id="2-How-MapReduce-distributes-processing"><a href="#2-How-MapReduce-distributes-processing" class="headerlink" title="2. How MapReduce distributes processing"></a>2. How MapReduce distributes processing</h4><p><img src="/2020/01/03/MapReduce/1578034389919.jpg" alt="1578034389919"></p>
-<p><img src="/2020/01/03/MapReduce/0002.jpg" alt="0002"></p>
+<h4 id="how-mapreduce-distributes-processing">2. How MapReduce
+distributes processing</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578034389919.jpg" alt="1578034389919">
+<figcaption aria-hidden="true">1578034389919</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/0002.jpg" alt="0002">
+<figcaption aria-hidden="true">0002</figcaption>
+</figure>
 <hr>
-<h4 id="3-MapReduce-a-real-example"><a href="#3-MapReduce-a-real-example" class="headerlink" title="3. MapReduce: a real example"></a>3. MapReduce: a real example</h4><p><img src="/2020/01/03/MapReduce/1578035985411.jpg" alt="1578035985411"></p>
-<p><img src="/2020/01/03/MapReduce/1578036687341.jpg" alt="1578036687341"></p>
-<p>Sometimes, it’s not easy to try to force a problem into this way of thinking, and that’s a big reason why other frameworks like Spark or Hive, or other ways of processing SQL style queries have become a little bit more popular that just writing raw MapReduce code.</p>
-<p>But, still, if you can easily express something in terms of mapping and reducing, this can sometimes be the most efficient way of doing it.</p>
-<p><img src="/2020/01/03/MapReduce/1578037510439.jpg" alt="1578037510439"></p>
-<p>Then, the results all get passed into the MapReduce framework which does shuffle and sort for us. And then, we just have to write the Reducer.</p>
-<p><img src="/2020/01/03/MapReduce/1578038403968.jpg" alt="1578038403968"></p>
-<p>Here’s a complete Python MapReduce script.</p>
-<p><img src="/2020/01/03/MapReduce/1578039179773.jpg" alt="1578039179773"></p>
-<p>This is an entire MRJOB script in Python that would use MapReduce streaming to actually execute across a cluster.</p>
+<h4 id="mapreduce-a-real-example">3. MapReduce: a real example</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578035985411.jpg" alt="1578035985411">
+<figcaption aria-hidden="true">1578035985411</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578036687341.jpg" alt="1578036687341">
+<figcaption aria-hidden="true">1578036687341</figcaption>
+</figure>
+<p>Sometimes, it's not easy to try to force a problem into this way of
+thinking, and that's a big reason why other frameworks like Spark or
+Hive, or other ways of processing SQL style queries have become a little
+bit more popular that just writing raw MapReduce code.</p>
+<p>But, still, if you can easily express something in terms of mapping
+and reducing, this can sometimes be the most efficient way of doing
+it.</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578037510439.jpg" alt="1578037510439">
+<figcaption aria-hidden="true">1578037510439</figcaption>
+</figure>
+<p>Then, the results all get passed into the MapReduce framework which
+does shuffle and sort for us. And then, we just have to write the
+Reducer.</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578038403968.jpg" alt="1578038403968">
+<figcaption aria-hidden="true">1578038403968</figcaption>
+</figure>
+<p>Here's a complete Python MapReduce script.</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578039179773.jpg" alt="1578039179773">
+<figcaption aria-hidden="true">1578039179773</figcaption>
+</figure>
+<p>This is an entire MRJOB script in Python that would use MapReduce
+streaming to actually execute across a cluster.</p>
 <hr>
-<h4 id="4-Runing-MapReduce-with-MRJOB"><a href="#4-Runing-MapReduce-with-MRJOB" class="headerlink" title="4. Runing MapReduce with MRJOB"></a>4. Runing MapReduce with MRJOB</h4><p>首先需要安装一些东西</p>
+<h4 id="runing-mapreduce-with-mrjob">4. Runing MapReduce with MRJOB</h4>
+<p>首先需要安装一些东西</p>
 <p>Run our MapReduce job in our Hadoop installation.</p>
-<p><a href="https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview">https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview</a></p>
-<p><img src="/2020/01/03/MapReduce/1578041252394.jpg" alt="1578041252394"></p>
-<p><img src="/2020/01/03/MapReduce/1578041273664.jpg" alt="1578041273664"></p>
-<p><img src="/2020/01/03/MapReduce/1578041300494.jpg" alt="1578041300494"></p>
+<p>https://www.udemy.com/course/the-ultimate-hands-on-hadoop-tame-your-big-data/learn/lecture/5963054#overview</p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578041252394.jpg" alt="1578041252394">
+<figcaption aria-hidden="true">1578041252394</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578041273664.jpg" alt="1578041273664">
+<figcaption aria-hidden="true">1578041273664</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578041300494.jpg" alt="1578041300494">
+<figcaption aria-hidden="true">1578041300494</figcaption>
+</figure>
 <hr>
-<h4 id="5-Challenge-Exercise"><a href="#5-Challenge-Exercise" class="headerlink" title="5. Challenge Exercise"></a>5. Challenge Exercise</h4><p><img src="/2020/01/03/MapReduce/1578043490000.jpg" alt="1578043490000"></p>
-<p><img src="/2020/01/03/MapReduce/1578043550225.jpg" alt="1578043550225"></p>
-<p><img src="/2020/01/03/MapReduce/1578043582794.jpg" alt="1578043582794"></p>
-<p><img src="/2020/01/03/MapReduce/1578043608450.jpg" alt="1578043608450"></p>
-<p><img src="/2020/01/03/MapReduce/1578043786325.jpg" alt="1578043786325"></p>
+<h4 id="challenge-exercise">5. Challenge Exercise</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043490000.jpg" alt="1578043490000">
+<figcaption aria-hidden="true">1578043490000</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043550225.jpg" alt="1578043550225">
+<figcaption aria-hidden="true">1578043550225</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043582794.jpg" alt="1578043582794">
+<figcaption aria-hidden="true">1578043582794</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043608450.jpg" alt="1578043608450">
+<figcaption aria-hidden="true">1578043608450</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/03/MapReduce/1578043786325.jpg" alt="1578043786325">
+<figcaption aria-hidden="true">1578043786325</figcaption>
+</figure>
 <hr>
-<h4 id="6-Check-your-results"><a href="#6-Check-your-results" class="headerlink" title="6. Check your results"></a>6. Check your results</h4><p><img src="/2020/01/03/MapReduce/1578044582388.jpg" alt="1578044582388"></p>
+<h4 id="check-your-results">6. Check your results</h4>
+<figure>
+<img src="/2020/01/03/MapReduce/1578044582388.jpg" alt="1578044582388">
+<figcaption aria-hidden="true">1578044582388</figcaption>
+</figure>
 <p>结果：</p>
-<p><img src="/2020/01/03/MapReduce/1578044858078.jpg" alt="1578044858078"></p>
+<figure>
+<img src="/2020/01/03/MapReduce/1578044858078.jpg" alt="1578044858078">
+<figcaption aria-hidden="true">1578044858078</figcaption>
+</figure>
 <p>movieId 50 是最popular的电影。</p>
 
       
@@ -903,25 +1384,50 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/valid-anagram/">有效的字母异位词（难度：简单）</a></p>
-<p><img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/1.jpg" alt="1"></p>
-<h4 id="方法一：哈希表"><a href="#方法一：哈希表" class="headerlink" title="方法一：哈希表"></a>方法一：哈希表</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ul>
+<figure>
+<img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法一哈希表">方法一：哈希表</h4>
+<h5 id="思路">思路</h5>
+<ul>
 <li>首先判断两个字符串长度是否相等，不相等则直接返回 false。</li>
 <li>若相等，则初始化 26 个字母哈希表，遍历字符串 s 和 t</li>
-<li><strong>s 负责在对应位置增加，t 负责在对应位置减少，如果哈希表的值都为 0，则二者是字母异位词</strong></li>
+<li><strong>s 负责在对应位置增加，t
+负责在对应位置减少，如果哈希表的值都为
+0，则二者是字母异位词</strong></li>
 </ul>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。<br>空间复杂度：O(1)。尽管我们使用了额外的空间，但是空间的复杂性是 O(1)，因为无论 N 有多大，表的大小都保持不变。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p>Java</p>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(n)。
+空间复杂度：O(1)。尽管我们使用了额外的空间，但是空间的复杂性是
+O(1)，因为无论 N 有多大，表的大小都保持不变。</p>
+<h5 id="代码">代码</h5>
+<p>Java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isAnagram</span><span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() != t.length())</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] alpha = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            alpha[s.charAt(i) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">            alpha[t.charAt(i) - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i : alpha)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i!=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/4.jpg" alt="4"></p>
+<figure>
+<img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/4.jpg" alt="4">
+<figcaption aria-hidden="true">4</figcaption>
+</figure>
 <hr>
-<h4 id="方法二：排序"><a href="#方法二：排序" class="headerlink" title="方法二：排序"></a>方法二：排序</h4><h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn)。</p>
-<p>空间复杂度：O(1)，空间取决于排序实现，如果使用 <code>heapsort</code>，通常需要 O(1)辅助空间。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sorted</span>(s) == <span class="built_in">sorted</span>(t)</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/3.jpg" alt="3"></p>
+<h4 id="方法二排序">方法二：排序</h4>
+<h5 id="复杂度-1">复杂度</h5>
+<p>时间复杂度：O(nlogn)。</p>
+<p>空间复杂度：O(1)，空间取决于排序实现，如果使用
+<code>heapsort</code>，通常需要 O(1)辅助空间。</p>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sorted</span>(s) == <span class="built_in">sorted</span>(t)</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 <hr>
-<h4 id="方法三：利用Python中的set"><a href="#方法三：利用Python中的set" class="headerlink" title="方法三：利用Python中的set()"></a>方法三：利用Python中的set()</h4><p>Python</p>
+<h4 id="方法三利用python中的set">方法三：利用Python中的set()</h4>
+<p>Python</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s) != <span class="built_in">len</span>(t):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        set1 = <span class="built_in">set</span>(s)</span><br><span class="line">        set2 = <span class="built_in">set</span>(t)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set1:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> set2:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set2:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> set1:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> set1:</span><br><span class="line">            <span class="keyword">if</span> s.count(i) != t.count(i):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/2.jpg" alt="2"></p>
+<figure>
+<img src="/2020/01/02/%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
       
     </div>
@@ -1001,11 +1507,22 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/plus-one/">加一（难度：简单）</a></p>
-<p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/1.jpg" alt="1"></p>
-<h4 id="方法：数组遍历"><a href="#方法：数组遍历" class="headerlink" title="方法：数组遍历"></a>方法：数组遍历</h4><p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/2.jpg" alt="2"></p>
+<figure>
+<img src="/2020/01/02/%E5%8A%A0%E4%B8%80/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法数组遍历">方法：数组遍历</h4>
+<figure>
+<img src="/2020/01/02/%E5%8A%A0%E4%B8%80/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 <p>时间复杂度：O(n)</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] plusOne(<span class="type">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            digits[i] = (digits[i]+<span class="number">1</span>) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(digits[i] != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        digits = <span class="keyword">new</span> <span class="title class_">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E5%8A%A0%E4%B8%80/3.jpg" alt="3"></p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] plusOne(<span class="type">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            digits[i] = (digits[i]+<span class="number">1</span>) % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(digits[i] != <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        digits = <span class="keyword">new</span> <span class="title class_">int</span>[digits.length+<span class="number">1</span>];</span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2020/01/02/%E5%8A%A0%E4%B8%80/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 
       
     </div>
@@ -1085,12 +1602,29 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/">电话号码的字母组合（难度：中等）</a></p>
-<p><img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/1.jpg" alt="1"></p>
-<h4 id="方法：回溯"><a href="#方法：回溯" class="headerlink" title="方法：回溯"></a>方法：回溯</h4><p><img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/2.jpg" alt="2"></p>
-<p><img src="https://pic.leetcode-cn.com/0ac574ab37f620221e702f57d6c4ffd0ba246abe41c43f9fc9637ab8f3365377-image.png" alt="img"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">letterCombinations</span>(<span class="params">self, digits: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        phone = &#123;<span class="string">&#x27;2&#x27;</span>:[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;3&#x27;</span>:[<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;f&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;4&#x27;</span>:[<span class="string">&#x27;g&#x27;</span>,<span class="string">&#x27;h&#x27;</span>,<span class="string">&#x27;i&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;5&#x27;</span>:[<span class="string">&#x27;j&#x27;</span>,<span class="string">&#x27;k&#x27;</span>,<span class="string">&#x27;l&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;6&#x27;</span>:[<span class="string">&#x27;m&#x27;</span>,<span class="string">&#x27;n&#x27;</span>,<span class="string">&#x27;o&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;7&#x27;</span>:[<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;q&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;s&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;8&#x27;</span>:[<span class="string">&#x27;t&#x27;</span>,<span class="string">&#x27;u&#x27;</span>,<span class="string">&#x27;v&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;9&#x27;</span>:[<span class="string">&#x27;w&#x27;</span>,<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>,<span class="string">&#x27;z&#x27;</span>]&#125;</span><br><span class="line"></span><br><span class="line">        output = []</span><br><span class="line">        <span class="keyword">if</span> digits:</span><br><span class="line">            <span class="variable language_">self</span>.backtrack(<span class="string">&quot;&quot;</span>, digits, phone, output)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtrack</span>(<span class="params">self, combination, digit, phone, output</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(digit)==<span class="number">0</span>:</span><br><span class="line">            output.append(combination)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> letter <span class="keyword">in</span> phone[digit[<span class="number">0</span>]]:</span><br><span class="line">            <span class="variable language_">self</span>.backtrack(combination+letter,digit[<span class="number">1</span>:], phone, output)</span><br><span class="line">        </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/4.jpg" alt="4"></p>
-<p><img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/3.jpg" alt="3"></p>
+<figure>
+<img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法回溯">方法：回溯</h4>
+<figure>
+<img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
+<figure>
+<img src="https://pic.leetcode-cn.com/0ac574ab37f620221e702f57d6c4ffd0ba246abe41c43f9fc9637ab8f3365377-image.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h5 id="代码">代码</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">letterCombinations</span>(<span class="params">self, digits: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        phone = &#123;<span class="string">&#x27;2&#x27;</span>:[<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;3&#x27;</span>:[<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;f&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;4&#x27;</span>:[<span class="string">&#x27;g&#x27;</span>,<span class="string">&#x27;h&#x27;</span>,<span class="string">&#x27;i&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;5&#x27;</span>:[<span class="string">&#x27;j&#x27;</span>,<span class="string">&#x27;k&#x27;</span>,<span class="string">&#x27;l&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;6&#x27;</span>:[<span class="string">&#x27;m&#x27;</span>,<span class="string">&#x27;n&#x27;</span>,<span class="string">&#x27;o&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;7&#x27;</span>:[<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;q&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;s&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;8&#x27;</span>:[<span class="string">&#x27;t&#x27;</span>,<span class="string">&#x27;u&#x27;</span>,<span class="string">&#x27;v&#x27;</span>],</span><br><span class="line">                <span class="string">&#x27;9&#x27;</span>:[<span class="string">&#x27;w&#x27;</span>,<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;y&#x27;</span>,<span class="string">&#x27;z&#x27;</span>]&#125;</span><br><span class="line"></span><br><span class="line">        output = []</span><br><span class="line">        <span class="keyword">if</span> digits:</span><br><span class="line">            <span class="variable language_">self</span>.backtrack(<span class="string">&quot;&quot;</span>, digits, phone, output)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtrack</span>(<span class="params">self, combination, digit, phone, output</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(digit)==<span class="number">0</span>:</span><br><span class="line">            output.append(combination)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> letter <span class="keyword">in</span> phone[digit[<span class="number">0</span>]]:</span><br><span class="line">            <span class="variable language_">self</span>.backtrack(combination+letter,digit[<span class="number">1</span>:], phone, output)</span><br><span class="line">        </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/4.jpg" alt="4">
+<figcaption aria-hidden="true">4</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/02/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 
       
     </div>
@@ -1170,17 +1704,29 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/container-with-most-water/">盛最多水的容器（难度：中等）</a></p>
-<p><img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/1.jpg" alt="1"></p>
-<h4 id="方法：双指针"><a href="#方法：双指针" class="headerlink" title="方法：双指针"></a>方法：双指针</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。</p>
-<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
+<figure>
+<img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法双指针">方法：双指针</h4>
+<h5 id="思路">思路</h5>
+<p>两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。</p>
+<h5 id="算法">算法</h5>
+<ul>
 <li><strong>在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾</strong>。</li>
-<li>使用变量 max_area来持续存储到目前为止所获得的最大面积。 </li>
-<li>在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area，<strong>并将指向较短线段的指针向较长线段那端移动一步</strong>。</li>
+<li>使用变量 max_area来持续存储到目前为止所获得的最大面积。</li>
+<li>在每一步中，我们会找出指针所指向的两条线段形成的区域，更新
+max_area，<strong>并将指向较短线段的指针向较长线段那端移动一步</strong>。</li>
 </ul>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，一次扫描。</p>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(n)，一次扫描。</p>
 <p>空间复杂度：O(1)，使用恒定的空间。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxArea</span><span class="params">(<span class="type">int</span>[] height)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max_area</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            max_area = Math.max(max_area, Math.min(height[left],height[right]) * (right-left));</span><br><span class="line">            <span class="keyword">if</span>(height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/2.jpg" alt="2"></p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxArea</span><span class="params">(<span class="type">int</span>[] height)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max_area</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            max_area = Math.max(max_area, Math.min(height[left],height[right]) * (right-left));</span><br><span class="line">            <span class="keyword">if</span>(height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
       
     </div>
@@ -1266,24 +1812,48 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/regular-expression-matching/">正则表达式匹配（难度：困难）</a></p>
-<p><img src="/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/1.jpg" alt="1"></p>
+<figure>
+<img src="/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <p>转自：</p>
 <blockquote>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/">https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/</a><br>来源：力扣（LeetCode）</p>
+<p>作者：labuladong
+链接：https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/
+来源：力扣（LeetCode）</p>
 </blockquote>
-<h4 id="一、处理点号「-」通配符"><a href="#一、处理点号「-」通配符" class="headerlink" title="一、处理点号「.」通配符"></a>一、处理点号「.」通配符</h4><p>点号可以匹配任意一个字符，其实是最简单的：</p>
+<h4 id="一处理点号.通配符">一、处理点号「.」通配符</h4>
+<p>点号可以匹配任意一个字符，其实是最简单的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">text, pattern</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> pattern: <span class="keyword">return</span> <span class="keyword">not</span> text</span><br><span class="line">    first_match = <span class="built_in">bool</span>(text) <span class="keyword">and</span> pattern[<span class="number">0</span>] <span class="keyword">in</span> &#123;text[<span class="number">0</span>], <span class="string">&#x27;.&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
-<h4 id="二、处理「-」通配符"><a href="#二、处理「-」通配符" class="headerlink" title="二、处理「*」通配符"></a>二、处理「*」通配符</h4><p>星号通配符可以让前一个字符重复任意次数，包括零次。那到底是重复几次呢？这需要计算机暴力穷举来算，假设重复 N 次吧。写递归的技巧是管好当下，之后的事抛给递归。具体到这里，不管 N 是多少，当前的选择只有两个：匹配 0 次、匹配 1 次。所以可以这样处理：</p>
+<h4 id="二处理通配符">二、处理「*」通配符</h4>
+<p>星号通配符可以让前一个字符重复任意次数，包括零次。那到底是重复几次呢？这需要计算机暴力穷举来算，假设重复
+N 次吧。写递归的技巧是管好当下，之后的事抛给递归。具体到这里，不管 N
+是多少，当前的选择只有两个：匹配 0 次、匹配 1 次。所以可以这样处理：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">text, pattern</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> pattern: <span class="keyword">return</span> <span class="keyword">not</span> text</span><br><span class="line">    first_match = <span class="built_in">bool</span>(text) <span class="keyword">and</span> pattern[<span class="number">0</span>] <span class="keyword">in</span> &#123;text[<span class="number">0</span>], <span class="string">&#x27;.&#x27;</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(pattern) &gt;= <span class="number">2</span> <span class="keyword">and</span> pattern[<span class="number">1</span>] == <span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">        <span class="comment"># 发现 &#x27;*&#x27; 通配符</span></span><br><span class="line">        <span class="keyword">return</span> isMatch(text, pattern[<span class="number">2</span>:]) <span class="keyword">or</span> \</span><br><span class="line">                first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern)</span><br><span class="line">    	<span class="comment"># 解释：如果发现有字符和 &#x27;*&#x27; 结合，</span></span><br><span class="line">        	<span class="comment"># 或者匹配该字符 0 次，然后跳过该字符和 &#x27;*&#x27;</span></span><br><span class="line">        	<span class="comment"># 或者当 pattern[0] 和 text[0] 匹配后，移动 text</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> first_match <span class="keyword">and</span> isMatch(text[<span class="number">1</span>:], pattern[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
-<p>可以看到，我们是通过保留 pattern 中的「*」，同时向后推移 text，来实现「*」将字符重复匹配多次的功能。</p>
-<h4 id="三、动态规划"><a href="#三、动态规划" class="headerlink" title="三、动态规划"></a>三、动态规划</h4><h5 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">self, s: <span class="built_in">str</span>, p: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> p:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">not</span> s</span><br><span class="line">        </span><br><span class="line">        first = s <span class="keyword">and</span> p[<span class="number">0</span>] <span class="keyword">in</span> &#123;s[<span class="number">0</span>],<span class="string">&#x27;.&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(p) &gt;= <span class="number">2</span> <span class="keyword">and</span> p[<span class="number">1</span>]==<span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">self</span>.isMatch(s,p[<span class="number">2</span>:]) <span class="keyword">or</span> (first <span class="keyword">and</span> <span class="variable language_">self</span>.isMatch(s[<span class="number">1</span>:],p))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> first <span class="keyword">and</span> <span class="variable language_">self</span>.isMatch(s[<span class="number">1</span>:],p[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/2.jpg" alt="2"></p>
-<h5 id="优化解法"><a href="#优化解法" class="headerlink" title="优化解法"></a>优化解法</h5><p>使用两个变量 <code>i</code>, <code>j</code> 记录当前匹配到的位置，从而避免使用子字符串切片，并且将 <code>i</code>, <code>j</code> 存入memo，避免重复计算。</p>
+<p>可以看到，我们是通过保留 pattern 中的「*」，同时向后推移
+text，来实现「*」将字符重复匹配多次的功能。</p>
+<h4 id="三动态规划">三、动态规划</h4>
+<h5 id="暴力解法">暴力解法</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">self, s: <span class="built_in">str</span>, p: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> p:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">not</span> s</span><br><span class="line">        </span><br><span class="line">        first = s <span class="keyword">and</span> p[<span class="number">0</span>] <span class="keyword">in</span> &#123;s[<span class="number">0</span>],<span class="string">&#x27;.&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(p) &gt;= <span class="number">2</span> <span class="keyword">and</span> p[<span class="number">1</span>]==<span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">self</span>.isMatch(s,p[<span class="number">2</span>:]) <span class="keyword">or</span> (first <span class="keyword">and</span> <span class="variable language_">self</span>.isMatch(s[<span class="number">1</span>:],p))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> first <span class="keyword">and</span> <span class="variable language_">self</span>.isMatch(s[<span class="number">1</span>:],p[<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
+<h5 id="优化解法">优化解法</h5>
+<p>使用两个变量 <code>i</code>, <code>j</code>
+记录当前匹配到的位置，从而避免使用子字符串切片，并且将 <code>i</code>,
+<code>j</code> 存入memo，避免重复计算。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">self, s: <span class="built_in">str</span>, p: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        memo = &#123;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dp</span>(<span class="params">i,j</span>):</span><br><span class="line">            <span class="keyword">if</span> (i,j) <span class="keyword">in</span> memo:</span><br><span class="line">                <span class="keyword">return</span> memo[(i,j)]</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> j==<span class="built_in">len</span>(p):</span><br><span class="line">                <span class="keyword">return</span> i==<span class="built_in">len</span>(s)</span><br><span class="line">            </span><br><span class="line">            first = i &lt; <span class="built_in">len</span>(s) <span class="keyword">and</span> p[j] <span class="keyword">in</span> &#123;s[i],<span class="string">&#x27;.&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(p) &gt;= j+<span class="number">2</span> <span class="keyword">and</span> p[j+<span class="number">1</span>]==<span class="string">&#x27;*&#x27;</span>:</span><br><span class="line">                <span class="keyword">return</span> dp(i,j+<span class="number">2</span>) <span class="keyword">or</span> (first <span class="keyword">and</span> dp(i+<span class="number">1</span>,j))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> first <span class="keyword">and</span> dp(i+<span class="number">1</span>,j+<span class="number">1</span>)</span><br><span class="line">            </span><br><span class="line">            memo[(i,j)] = ans</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dp(<span class="number">0</span>,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/3.jpg" alt="3"></p>
+<figure>
+<img src="/2020/01/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 <p><strong>复杂度</strong></p>
-<p>时间复杂度：用 T 和 P 分别表示匹配串和模式串的长度。对于 i=0, … , T 和 j=0, … , P 每一个 dp(i, j) 只会被计算一次，所以后面每次调用都是 O(1)的时间。因此，总时间复杂度为 O(TP) 。</p>
-<p>空间复杂度：我们用到的空间仅有 O(TP)个 boolean 类型的缓存变量。所以，空间复杂度为 O(TP) 。</p>
+<p>时间复杂度：用 T 和 P 分别表示匹配串和模式串的长度。对于 i=0, ... , T
+和 j=0, ... , P 每一个 dp(i, j) 只会被计算一次，所以后面每次调用都是
+O(1)的时间。因此，总时间复杂度为 O(TP) 。</p>
+<p>空间复杂度：我们用到的空间仅有 O(TP)个 boolean
+类型的缓存变量。所以，空间复杂度为 O(TP) 。</p>
 
       
     </div>

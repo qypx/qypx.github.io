@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.  1. Our Recommender Engine Architecture Object o">
+    <meta name="description" content="What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.   1578205315867  1. Our Recommender Engin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Recommender Engine Framework">
 <meta property="og:url" content="http://qypx.github.io/2020/01/05/A-Recommender-Engine-Framework/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.  1. Our Recommender Engine Architecture Object o">
+<meta property="og:description" content="What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.   1578205315867  1. Our Recommender Engin">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg">
 <meta property="og:image" content="http://qypx.github.io/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png">
@@ -156,7 +156,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Our-Recommender-Engine-Architecture"><span class="nav-text">1. Our Recommender Engine Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-a-custom-algorithm"><span class="nav-text">Create a custom algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Code-Walkthrough"><span class="nav-text">2. Code Walkthrough</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-text">结果分析</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#our-recommender-engine-architecture"><span class="nav-text">1. Our Recommender Engine
+Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#create-a-custom-algorithm"><span class="nav-text">Create a custom algorithm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code-walkthrough"><span class="nav-text">2. Code Walkthrough</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="nav-text">结果分析</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -296,52 +297,124 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>What we need now is a framework to let us easily experiment with new recommender system algorithms, evaluate them, and compare them against each other.</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867"></p>
-<h3 id="1-Our-Recommender-Engine-Architecture"><a href="#1-Our-Recommender-Engine-Architecture" class="headerlink" title="1. Our Recommender Engine Architecture"></a>1. Our Recommender Engine Architecture</h3><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375"></p>
-<p>Object oriented design allows us to have base classes, for example, AlgoBase, that contain functions and variables that can be shared by other classes that inherit from that base class. 例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
-<p>Custom指的是any custom algorithm we might develop (自己写的recommender system), and make them part of the supriselib framework.</p>
-<h4 id="Create-a-custom-algorithm"><a href="#Create-a-custom-algorithm" class="headerlink" title="Create a custom algorithm"></a>Create a custom algorithm</h4><p>So, how do you write your own recommender algorithm that’s compatible with surpiselib?</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207092161.png" alt="1578207092161"></p>
-<p>All you have to do is create a new class that inherits form AlgoBase, and as far as supriselib is concerned, your algorithm has one job: to predict ratings.</p>
+    <div class="post-body" itemprop="articleBody"><p>What we need now is a framework to let us easily experiment with new
+recommender system algorithms, evaluate them, and compare them against
+each other.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578205315867.jpg" alt="1578205315867">
+<figcaption aria-hidden="true">1578205315867</figcaption>
+</figure>
+<h3 id="our-recommender-engine-architecture">1. Our Recommender Engine
+Architecture</h3>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578205676375.png" alt="1578205676375">
+<figcaption aria-hidden="true">1578205676375</figcaption>
+</figure>
+<p>Object oriented design allows us to have base classes, for example,
+AlgoBase, that contain functions and variables that can be shared by
+other classes that inherit from that base class.
+例如AlgoBase中实现了fit和test方法，则无论我们实际上使用的是什么算法，我们都可以调用fit和test方法。</p>
+<p>Custom指的是any custom algorithm we might develop
+(自己写的recommender system), and make them part of the supriselib
+framework.</p>
+<h4 id="create-a-custom-algorithm">Create a custom algorithm</h4>
+<p>So, how do you write your own recommender algorithm that's compatible
+with surpiselib?</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578207092161.png" alt="1578207092161">
+<figcaption aria-hidden="true">1578207092161</figcaption>
+</figure>
+<p>All you have to do is create a new class that inherits form AlgoBase,
+and as far as supriselib is concerned, your algorithm has one job: to
+predict ratings.</p>
 <blockquote>
-<p>As we mentioned, supriselib is built around the architecture of predicting the ratings of every movie for every user, and giving back the top predictions as your recommendations. </p>
+<p>As we mentioned, supriselib is built around the architecture of
+predicting the ratings of every movie for every user, and giving back
+the top predictions as your recommendations.</p>
 </blockquote>
 <p>Your class have to implement an estimate function.</p>
-<p>When estimate is called by supriselib framework, it’s asking you to predict a rating for the user and item passed in. </p>
+<p>When estimate is called by supriselib framework, it's asking you to
+predict a rating for the user and item passed in.</p>
 <blockquote>
-<p>注：这里的user id和item id是inner id. Must be mapped back to the raw user and item ids in your source data.</p>
+<p>注：这里的user id和item id是inner id. Must be mapped back to the raw
+user and item ids in your source data.</p>
 </blockquote>
 <ul>
-<li>Now, we want to do more than just predict ratings. 我们想要很简单的将之前在<code>RecommenderMetrics</code>中实现的不同的evaluation metrics应用到algorithms we work with. </li>
+<li>Now, we want to do more than just predict ratings.
+我们想要很简单的将之前在<code>RecommenderMetrics</code>中实现的不同的evaluation
+metrics应用到algorithms we work with.</li>
 </ul>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578207683880.png" alt="1578207683880"></p>
-<p>为了做到这一点，我们将创建一个新的class叫做<code>EvaluatedAlgoritm</code>，里面创建了一个新的函数叫做<code>Evaluate</code>，that runs all the metrics in RecommenderMetrics on that algorithm. So this class makes it easy to measure accuracy, coverage, diversity and everything else on a given algorithm.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578207683880.png" alt="1578207683880">
+<figcaption aria-hidden="true">1578207683880</figcaption>
+</figure>
+<p>为了做到这一点，我们将创建一个新的class叫做<code>EvaluatedAlgoritm</code>，里面创建了一个新的函数叫做<code>Evaluate</code>，that
+runs all the metrics in RecommenderMetrics on that algorithm. So this
+class makes it easy to measure accuracy, coverage, diversity and
+everything else on a given algorithm.</p>
 <ul>
-<li><p>不同的评估方法，要求对数据集的不同分割方式，于是我们创建了另一个新的class: <code>EvaluationData</code>来做到这一点。</p>
-</li>
-<li><p>如何连接这一切？</p>
-</li>
+<li><p>不同的评估方法，要求对数据集的不同分割方式，于是我们创建了另一个新的class:
+<code>EvaluationData</code>来做到这一点。</p></li>
+<li><p>如何连接这一切？</p></li>
 </ul>
-<p>We create an <code>EvaluationData</code> instance with our data set, create an <code>EvaluatedAlgorithm</code> for each algorithm we want to evaluate, and call <code>Evaluate</code> on each algorithm using the same <code>EvaluationData</code>. Under the hood, <code>EvaluatedAlgorithm</code> will use all the functions we defined in <code>RecommenderMetrics</code> to measure accuracy, hit rate, diversity, novelty, and coverage.</p>
+<p>We create an <code>EvaluationData</code> instance with our data set,
+create an <code>EvaluatedAlgorithm</code> for each algorithm we want to
+evaluate, and call <code>Evaluate</code> on each algorithm using the
+same <code>EvaluationData</code>. Under the hood,
+<code>EvaluatedAlgorithm</code> will use all the functions we defined in
+<code>RecommenderMetrics</code> to measure accuracy, hit rate,
+diversity, novelty, and coverage.</p>
 <ul>
-<li>Since what we generally want to do is 比较不同推荐系统, we can make life even easier by writing a class that takes care of all the comparison for us. 于是我们创建了新的class：<code>Evaluator</code>.</li>
+<li>Since what we generally want to do is 比较不同推荐系统, we can make
+life even easier by writing a class that takes care of all the
+comparison for us. 于是我们创建了新的class：<code>Evaluator</code>.</li>
 </ul>
-<p>Ideally, we want to just submit algorithms we want to evaluate against each other into this class, and let it do everything from there.</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208719473.png" alt="1578208719473"></p>
-<p>The beauty of this is that you don’t even have to use the <code>EvalutedAlgorithm</code> or <code>EvaluatedData</code> classed at all, when you want to start playing around with new algorithms and testing them against each other. All you need to do is use this <code>Evaluator</code> class, which has a really simple interface.</p>
+<p>Ideally, we want to just submit algorithms we want to evaluate
+against each other into this class, and let it do everything from
+there.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578208719473.png" alt="1578208719473">
+<figcaption aria-hidden="true">1578208719473</figcaption>
+</figure>
+<p>The beauty of this is that you don't even have to use the
+<code>EvalutedAlgorithm</code> or <code>EvaluatedData</code> classed at
+all, when you want to start playing around with new algorithms and
+testing them against each other. All you need to do is use this
+<code>Evaluator</code> class, which has a really simple interface.</p>
 <p>将上述framework写好后，如下这是我们比较SVD算法与random算法所需要的所有代码：</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578208901255.png" alt="1578208901255"></p>
-<h3 id="2-Code-Walkthrough"><a href="#2-Code-Walkthrough" class="headerlink" title="2. Code Walkthrough"></a>2. Code Walkthrough</h3><p>Framework文件夹里：</p>
-<p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578209106245.png" alt="1578209106245"></p>
-<h4 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h4><p><img src="/2020/01/05/A-Recommender-Engine-Framework/1578283638478.png" alt="1578283638478"></p>
-<p>我们比较的是SVD和随机推荐。SVD is one of the best algorithms available right now, so it shouldn’t be surprise that SVD beats random recommendation in accuracy and hit rate no matter how we measure it.</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578208901255.png" alt="1578208901255">
+<figcaption aria-hidden="true">1578208901255</figcaption>
+</figure>
+<h3 id="code-walkthrough">2. Code Walkthrough</h3>
+<p>Framework文件夹里：</p>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578209106245.png" alt="1578209106245">
+<figcaption aria-hidden="true">1578209106245</figcaption>
+</figure>
+<h4 id="结果分析">结果分析</h4>
+<figure>
+<img src="/2020/01/05/A-Recommender-Engine-Framework/1578283638478.png" alt="1578283638478">
+<figcaption aria-hidden="true">1578283638478</figcaption>
+</figure>
+<p>我们比较的是SVD和随机推荐。SVD is one of the best algorithms
+available right now, so it shouldn't be surprise that SVD beats random
+recommendation in accuracy and hit rate no matter how we measure it.</p>
 <ul>
 <li>RMSE和MAE: lower is better.</li>
 <li>Hit rate,包括cHR, ARHR: higher is better.</li>
-<li>Coverage, diversity, novelty: need to apply some common sense to, as it’s not a clear higher-is-better sort of thing. There are trade-offs involved with these metrics.</li>
+<li>Coverage, diversity, novelty: need to apply some common sense to, as
+it's not a clear higher-is-better sort of thing. There are trade-offs
+involved with these metrics.</li>
 </ul>
-<p>就Coverage而言，SVD的要低一些: that’s just because we are enforcing a quality threshold on the top-N recommendations we’re making with SVD, while our random recommender isn’t actually making totally random recommendations, it’s predicting movie ratings using what’s called a normal distribution centered around the average rating value, which ends up meaning all of the rating predictions it makes fall above our rating threshold, giving us 100% coverage. Having 100% coverage at the expense of having bad recommendations isn’t a trade-off worth making.</p>
+<p>就Coverage而言，SVD的要低一些: that's just because we are enforcing a
+quality threshold on the top-N recommendations we're making with SVD,
+while our random recommender isn't actually making totally random
+recommendations, it's predicting movie ratings using what's called a
+normal distribution centered around the average rating value, which ends
+up meaning all of the rating predictions it makes fall above our rating
+threshold, giving us 100% coverage. Having 100% coverage at the expense
+of having bad recommendations isn't a trade-off worth making.</p>
 <p>就Diversity和Novelty而言，SVD的都要低一些，这是我们所预期会出现的。</p>
 
     </div>

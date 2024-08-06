@@ -23,10 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="图片">
+<meta property="og:type" content="article">
 <meta property="og:title" content="数据仓库简介">
 <meta property="og:url" content="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="图片">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/1603782098335.png">
 <meta property="article:published_time" content="2020-10-27T04:11:13.000Z">
@@ -148,7 +150,10 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%AF%BC%E8%88%AA"><span class="nav-text">快速导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93"><span class="nav-text">1. 什么是数据仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">1.1 数据仓库的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5"><span class="nav-text">1.2 数据仓库里的数据从哪里来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%8C%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-text">1.3 建立数据仓库的原因，数据仓库的好处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F"><span class="nav-text">2. 操作型系统与分析型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F"><span class="nav-text">2.1 操作型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">2.1.1 操作型系统的数据库操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.1.2 操作型系统的数据库设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F"><span class="nav-text">2.2 分析型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">2.2.1 分析型系统的数据库操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.2.2 分析型系统的数据库设计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="nav-text">3. 数据仓库架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="nav-text">3.1 基本架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%EF%BC%88ODS%EF%BC%89"><span class="nav-text">3.2 操作数据存储（ODS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%8A%BD%E5%8F%96-%E8%BD%AC%E6%8D%A2-%E8%A3%85%E8%BD%BD%EF%BC%88ETL%EF%BC%89"><span class="nav-text">4. 抽取-转换-装载（ETL）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E6%95%B0%E6%8D%AE%E6%8A%BD%E5%8F%96"><span class="nav-text">4.1 数据抽取</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-1-%E9%80%BB%E8%BE%91%E6%8A%BD%E5%8F%96"><span class="nav-text">4.1.1 逻辑抽取</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%85%A8%E9%87%8F%E6%8A%BD%E5%8F%96"><span class="nav-text">（1）全量抽取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E5%A2%9E%E9%87%8F%E6%8A%BD%E5%8F%96"><span class="nav-text">（2）增量抽取</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-2-%E7%89%A9%E7%90%86%E6%8A%BD%E5%8F%96"><span class="nav-text">4.1.2 物理抽取</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E8%81%94%E6%9C%BA%E6%8A%BD%E5%8F%96"><span class="nav-text">（1）联机抽取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E8%84%B1%E6%9C%BA%E6%8A%BD%E5%8F%96"><span class="nav-text">（2）脱机抽取</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-3-%E5%8F%98%E5%8C%96%E6%95%B0%E6%8D%AE%E6%8D%95%E8%8E%B7"><span class="nav-text">4.1.3 变化数据捕获</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2"><span class="nav-text">4.2 数据转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E6%95%B0%E6%8D%AE%E8%A3%85%E8%BD%BD"><span class="nav-text">4.3 数据装载</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%AF%BC%E8%88%AA"><span class="nav-text">快速导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93"><span class="nav-text">1. 什么是数据仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-text">1.1 数据仓库的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E9%87%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5"><span class="nav-text">1.2 数据仓库里的数据从哪里来</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-text">1.3
+建立数据仓库的原因，数据仓库的好处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F"><span class="nav-text">2. 操作型系统与分析型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F"><span class="nav-text">2.1 操作型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">2.1.1 操作型系统的数据库操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.1.2 操作型系统的数据库设计</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F"><span class="nav-text">2.2 分析型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">2.2.1 分析型系统的数据库操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%9E%8B%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-text">2.2.2 分析型系统的数据库设计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%9E%B6%E6%9E%84"><span class="nav-text">3. 数据仓库架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="nav-text">3.1 基本架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8ods"><span class="nav-text">3.2
+操作数据存储（ODS）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E5%8F%96-%E8%BD%AC%E6%8D%A2-%E8%A3%85%E8%BD%BDetl"><span class="nav-text">4.
+抽取-转换-装载（ETL）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E5%8F%96"><span class="nav-text">4.1 数据抽取</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E6%8A%BD%E5%8F%96"><span class="nav-text">4.1.1 逻辑抽取</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%A8%E9%87%8F%E6%8A%BD%E5%8F%96"><span class="nav-text">（1）全量抽取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E6%8A%BD%E5%8F%96"><span class="nav-text">（2）增量抽取</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E6%8A%BD%E5%8F%96"><span class="nav-text">4.1.2 物理抽取</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%81%94%E6%9C%BA%E6%8A%BD%E5%8F%96"><span class="nav-text">（1）联机抽取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%84%B1%E6%9C%BA%E6%8A%BD%E5%8F%96"><span class="nav-text">（2）脱机抽取</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%98%E5%8C%96%E6%95%B0%E6%8D%AE%E6%8D%95%E8%8E%B7"><span class="nav-text">4.1.3 变化数据捕获</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BD%AC%E6%8D%A2"><span class="nav-text">4.2 数据转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A3%85%E8%BD%BD"><span class="nav-text">4.3 数据装载</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -291,8 +296,11 @@
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p>参考《Hadoop构建数据仓库实践》</p>
 </blockquote>
-<h3 id="快速导航"><a href="#快速导航" class="headerlink" title="快速导航"></a>快速导航</h3><p><a href="#jump_zhutiyu">主题域</a><br><a href="#jump_RDS">RDS</a><br><a href="#jump_TDS">TDS</a><br><a href="#jump_ODS">ODS</a></p>
-<h3 id="1-什么是数据仓库"><a href="#1-什么是数据仓库" class="headerlink" title="1. 什么是数据仓库"></a>1. 什么是数据仓库</h3><h4 id="1-1-数据仓库的定义"><a href="#1-1-数据仓库的定义" class="headerlink" title="1.1 数据仓库的定义"></a>1.1 数据仓库的定义</h4><p>数据仓库之父Bill Inmon将数据仓库描述 为一个<strong><span style="color:red">面向主题的、集成的、随时间变化的、非易失的</span></strong>数据集合，用于支持管理者的决策过程。</p>
+<h3 id="快速导航">快速导航</h3>
+<p><a href="#jump_zhutiyu">主题域</a> <a href="#jump_RDS">RDS</a> <a href="#jump_TDS">TDS</a> <a href="#jump_ODS">ODS</a></p>
+<h3 id="什么是数据仓库">1. 什么是数据仓库</h3>
+<h4 id="数据仓库的定义">1.1 数据仓库的定义</h4>
+<p>数据仓库之父Bill Inmon将数据仓库描述 为一个<strong><span style="color:red">面向主题的、集成的、随时间变化的、非易失的</span></strong>数据集合，用于支持管理者的决策过程。</p>
 <ul>
 <li>面向主题</li>
 </ul>
@@ -310,21 +318,25 @@
 </ul>
 <p>一旦进入到数据仓库中，数据就不应该再有改变。在数据仓库环境中，一般不进行数据更新。数据仓库中的数据基本是静态的。数据仓库的目的就是根据曾经发生的事件进行分析，如果数据是可修改的，将使历史分析变得没有意义。</p>
 <p>除了以上四个特性以外，数据仓库还有一个重要的概念是<strong>粒度</strong>。数据仓库中的粒度是指数据的细节或汇总程度，细节程度越高，粒度级别越低。例如，单个事务是低粒度级别，而全部一个月事务的汇总就是高粒度级别。粒度级别越低，数据量越大，查询的细节程度越高，查询范围越广泛。</p>
-<h4 id="1-2-数据仓库里的数据从哪里来"><a href="#1-2-数据仓库里的数据从哪里来" class="headerlink" title="1.2 数据仓库里的数据从哪里来"></a>1.2 数据仓库里的数据从哪里来</h4><p><strong>通常数据仓库的数据来自各个业务应用系统。</strong></p>
+<h4 id="数据仓库里的数据从哪里来">1.2 数据仓库里的数据从哪里来</h4>
+<p><strong>通常数据仓库的数据来自各个业务应用系统。</strong></p>
 <ul>
 <li>Oracle、MySQL、SQL Server等关系数据库里的结构化数据；</li>
 <li>文本、CSV等平面文件或Word、Excel文档中的非结构化数据；</li>
 <li>HTML、XML等自描述的半结构化数据。</li>
 </ul>
-<p>这些业务数据经过一系列的数据抽取、转换、清洗，最终以一种统一的格式装载进数据仓库。数据仓库里的数据作为分析用的数据源，提供给后面的即席(ad hoc)查询、分析系统、数据集市、报表系统、数据挖掘系统等。</p>
-<h4 id="1-3-建立数据仓库的原因，数据仓库的好处"><a href="#1-3-建立数据仓库的原因，数据仓库的好处" class="headerlink" title="1.3 建立数据仓库的原因，数据仓库的好处"></a>1.3 建立数据仓库的原因，数据仓库的好处</h4><p>为什么不直接操作业务系统中的数据用于分析，而要使用数据仓库呢？很多因素导致直接访问业务系统无法进行全局数据分析的工作：</p>
+<p>这些业务数据经过一系列的数据抽取、转换、清洗，最终以一种统一的格式装载进数据仓库。数据仓库里的数据作为分析用的数据源，提供给后面的即席(ad
+hoc)查询、分析系统、数据集市、报表系统、数据挖掘系统等。</p>
+<h4 id="建立数据仓库的原因数据仓库的好处">1.3
+建立数据仓库的原因，数据仓库的好处</h4>
+<p>为什么不直接操作业务系统中的数据用于分析，而要使用数据仓库呢？很多因素导致直接访问业务系统无法进行全局数据分析的工作：</p>
 <ul>
 <li>某些业务数据由于安全或其他因素不能直接访问。</li>
 <li>业务系统的版本变更很频繁，每次变更都需要重写分析系统并重新测试。</li>
 <li>很难建立和维护汇总数据来源于多个业务系统版本的报表。</li>
 <li>业务系统的数据格式，如日期、数字的格式不统一。</li>
 <li>业务系统的表结构为事务处理性能而优化，有时并不适合查询与分析。</li>
-<li>…</li>
+<li>...</li>
 </ul>
 <p>使用数据仓库的好处：</p>
 <ul>
@@ -334,11 +346,15 @@
 <li>通过提供一致的编码和描述，减少或修正坏数据问题，提高数据质量。</li>
 <li>重构数据，使数据对业务用户更有意义。</li>
 <li>向复杂分析查询交付优秀的查询性能，同时不影响操作型系统。</li>
-<li>…</li>
+<li>...</li>
 </ul>
-<h3 id="2-操作型系统与分析型系统"><a href="#2-操作型系统与分析型系统" class="headerlink" title="2. 操作型系统与分析型系统"></a>2. 操作型系统与分析型系统</h3><h4 id="2-1-操作型系统"><a href="#2-1-操作型系统" class="headerlink" title="2.1 操作型系统"></a>2.1 操作型系统</h4><p>操作型系统是一类专门用于管理面向事务的应用的信息系统。事务在这里指计算机或数据库的术语。</p>
-<h5 id="2-1-1-操作型系统的数据库操作"><a href="#2-1-1-操作型系统的数据库操作" class="headerlink" title="2.1.1 操作型系统的数据库操作"></a>2.1.1 操作型系统的数据库操作</h5><p>常用操作：<strong>增、改、查</strong>。通常是插入与更新密集型的，同时会对数据库进行大量并发查询，而删除操作相对较少。</p>
-<h5 id="2-1-2-操作型系统的数据库设计"><a href="#2-1-2-操作型系统的数据库设计" class="headerlink" title="2.1.2 操作型系统的数据库设计"></a>2.1.2 操作型系统的数据库设计</h5><p>操作型系统的特征是大量短的事务，并强调快速处理查询。每秒事务数是操作型系统的一个有效度量指标。</p>
+<h3 id="操作型系统与分析型系统">2. 操作型系统与分析型系统</h3>
+<h4 id="操作型系统">2.1 操作型系统</h4>
+<p>操作型系统是一类专门用于管理面向事务的应用的信息系统。事务在这里指计算机或数据库的术语。</p>
+<h5 id="操作型系统的数据库操作">2.1.1 操作型系统的数据库操作</h5>
+<p>常用操作：<strong>增、改、查</strong>。通常是插入与更新密集型的，同时会对数据库进行大量并发查询，而删除操作相对较少。</p>
+<h5 id="操作型系统的数据库设计">2.1.2 操作型系统的数据库设计</h5>
+<p>操作型系统的特征是大量短的事务，并强调快速处理查询。每秒事务数是操作型系统的一个有效度量指标。</p>
 <p>在数据库<strong>逻辑设计</strong>上，操作型系统的应用数据库大都使用规范化设计方法，通常要满足第三范式。这是因为规范化设计能最大限度地数据冗余，提供更快更高效的方式执行数据库写操作。</p>
 <p>在数据库<strong>物理设计</strong>上，以Oracle数据库为例，简要说明在设计操作型系统数据库时应考虑的问题：</p>
 <ul>
@@ -350,9 +366,12 @@
 <li>避免过度使用索引。大量的数据修改会给索引维护带来压力，从而对整个系统的性能产生负面影响。</li>
 </ul>
 <p>以上所讲的操作型系统都是以数据据系统为核心，而数据库系统为了保持ACID特性，本质上是单一集中式系统。在当今这个信息爆炸的时代，集中式数据库往往已无法支撑业务的需要。分布式事务、去中心化、CAP与最终一致性等一些列新的理论和技术为解决系统扩展问题应运而生。这里不做展开。</p>
-<h4 id="2-2-分析型系统"><a href="#2-2-分析型系统" class="headerlink" title="2.2 分析型系统"></a>2.2 分析型系统</h4><p>分析型系统是一种快速回答多维分析查询的实现方式。</p>
-<h5 id="2-2-1-分析型系统的数据库操作"><a href="#2-2-1-分析型系统的数据库操作" class="headerlink" title="2.2.1 分析型系统的数据库操作"></a>2.2.1 分析型系统的数据库操作</h5><p>在数据库层面，分析型系统操作被定义为少量的事务，复杂的查询，处理归档和历史数据。这些数据很少被修改，从数据库抽取数据是最多的操作。分析型数据库基本上都是<strong>读操作</strong>。</p>
-<h5 id="2-2-2-分析型系统的数据库设计"><a href="#2-2-2-分析型系统的数据库设计" class="headerlink" title="2.2.2 分析型系统的数据库设计"></a>2.2.2 分析型系统的数据库设计</h5><p>分析型系统的特征是相对少量的事务，但查询通常非常复杂且会包含聚合计算。吞吐量是一个有效的性能度量指标。</p>
+<h4 id="分析型系统">2.2 分析型系统</h4>
+<p>分析型系统是一种快速回答多维分析查询的实现方式。</p>
+<h5 id="分析型系统的数据库操作">2.2.1 分析型系统的数据库操作</h5>
+<p>在数据库层面，分析型系统操作被定义为少量的事务，复杂的查询，处理归档和历史数据。这些数据很少被修改，从数据库抽取数据是最多的操作。分析型数据库基本上都是<strong>读操作</strong>。</p>
+<h5 id="分析型系统的数据库设计">2.2.2 分析型系统的数据库设计</h5>
+<p>分析型系统的特征是相对少量的事务，但查询通常非常复杂且会包含聚合计算。吞吐量是一个有效的性能度量指标。</p>
 <p>在数据库<strong>逻辑设计</strong>上，分析型数据库使用多维数据模型，通常是设计成<span style="color:blue">星型模式</span>或<span style="color:blue">雪花模式</span>。</p>
 <p>在数据库物理设计上，依然以Oracle数据库为例，简要说明在设计分析型系统数据库时应该考虑的一些问题。</p>
 <ul>
@@ -364,43 +383,93 @@
 <blockquote>
 <p>分析型系统更加注重数据分析和报表，而操作型系统的目标时一个伴有大量数据改变的事务优化系统。</p>
 </blockquote>
-<h3 id="3-数据仓库架构"><a href="#3-数据仓库架构" class="headerlink" title="3. 数据仓库架构"></a>3. 数据仓库架构</h3><h4 id="3-1-基本架构"><a href="#3-1-基本架构" class="headerlink" title="3.1 基本架构"></a>3.1 基本架构</h4><p><img src="/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/1603782098335.png" alt="1603782098335"></p>
+<h3 id="数据仓库架构">3. 数据仓库架构</h3>
+<h4 id="基本架构">3.1 基本架构</h4>
+<figure>
+<img src="/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/1603782098335.png" alt="1603782098335">
+<figcaption aria-hidden="true">1603782098335</figcaption>
+</figure>
 <p>整个数据仓库环境包括操作型系统和数据仓库系统两大部分。操作型系统的数据由各种形式的业务数据组成（数据可能是结构化、半结构化、非结构化的）。<span style="color:red">这些数据经过抽取、转换和装载（ETL）过程进入数据仓库系统。</span></p>
 <p>这里把ETL过程分成了抽取和转换装载两个部分。<strong>抽取</strong>过程负责从操作型系统获取数据，该过程一般不做数据聚合和汇总，但是会按照主题进行集成，物理上是将操作型系统的数据全量或增量复制到数据仓库系统的RDS中。</p>
 <blockquote>
-<p>抽取过程指的是把数据从操作型数据源抽取到RDS的过程，这个过程可能会有一些数据集成的操作，但不会做数据转换、清洗、格式化等工作。<br>Hadoop生态圈中的主要数据源抽取工具是 <strong>Sqoop</strong> 和 <strong>Flume</strong>。Sqoop被设计成支持在关系数据库和 Hadoop 之间传输数据，而 Flume 被设计成基于流的数据捕获，主要是从日志文件中获取数据。使用这两个工具可以完成数据仓库的抽取。<br>如果数据源是普通的文本和CSV文件，抽取过程将更加简单，只需用操作系统的<code>scp</code>或<code>ftp</code>命令将文件拉取到Hadoop集群的任一节点，然后使用HDFS的<code>put</code>命令将已在本地的文件上传到HDFS，或者使用Hive的<code>load data</code>将文件装载进表里就可以了。</p>
+<p>抽取过程指的是把数据从操作型数据源抽取到RDS的过程，这个过程可能会有一些数据集成的操作，但不会做数据转换、清洗、格式化等工作。
+Hadoop生态圈中的主要数据源抽取工具是 <strong>Sqoop</strong> 和
+<strong>Flume</strong>。Sqoop被设计成支持在关系数据库和 Hadoop
+之间传输数据，而 Flume
+被设计成基于流的数据捕获，主要是从日志文件中获取数据。使用这两个工具可以完成数据仓库的抽取。
+如果数据源是普通的文本和CSV文件，抽取过程将更加简单，只需用操作系统的<code>scp</code>或<code>ftp</code>命令将文件拉取到Hadoop集群的任一节点，然后使用HDFS的<code>put</code>命令将已在本地的文件上传到HDFS，或者使用Hive的<code>load data</code>将文件装载进表里就可以了。</p>
 </blockquote>
 <p><strong>转换装载</strong>过程将数据进行清洗、过滤、汇总、统一格式化等一系列转换操作后，使数据转换为适合查询的格式，然后装载进数据仓库系统的TDS中。</p>
 <blockquote>
-<p>转换与装载过程是将数据从RDS迁移到TDS的过程，期间会对数据进行一系列的转换和处理。经过了数据抽取步骤，此时数据已经在Hive表中了，因此<strong>Hive</strong>可以用于转换和装载。<br>Hive实际上是在MapReduce之上封装了一层SQL解释器，这样可以用类SQL语言书写复杂的MapReduce作业。Hive不但提供了丰富的数据查询功能和分析函数，还可以在某些限制下进行数据的更新，因此支持SCD1(渐变维的一种处理类型)。</p>
+<p>转换与装载过程是将数据从RDS迁移到TDS的过程，期间会对数据进行一系列的转换和处理。经过了数据抽取步骤，此时数据已经在Hive表中了，因此<strong>Hive</strong>可以用于转换和装载。
+Hive实际上是在MapReduce之上封装了一层SQL解释器，这样可以用类SQL语言书写复杂的MapReduce作业。Hive不但提供了丰富的数据查询功能和分析函数，还可以在某些限制下进行数据的更新，因此支持SCD1(渐变维的一种处理类型)。</p>
 </blockquote>
-<p>（关于ETL的更详细内容见 <a href="#jump4">4. 抽取-转换-装载（ETL）</a>）</p>
-<p><strong><span id="jump_RDS">RDS</span></strong> (RAW DATA STORES) 是原始数据存储的意思。将原始数据保存到数据仓库是个不错的想法。ETL过程的bug或系统中的其他错误是不可避免的，保留原始数据使得追踪并修改这些错误成为可能。有时数据仓库的用户会有查询细节数据的需求，这些细节数据的粒度与操作型系统的相同。有了RDS，这种需求很容易实现，用户可以查询RDS里的数据而不必影响业务系统的正常运行。这里的RDS实际上是起到了操作型数据存储（<a href="#jump_ODS">ODS</a>）的作用。</p>
+<p>（关于ETL的更详细内容见 <a href="#jump4">4.
+抽取-转换-装载（ETL）</a>）</p>
+<p><strong><span id="jump_RDS">RDS</span></strong> (RAW DATA STORES)
+是原始数据存储的意思。将原始数据保存到数据仓库是个不错的想法。ETL过程的bug或系统中的其他错误是不可避免的，保留原始数据使得追踪并修改这些错误成为可能。有时数据仓库的用户会有查询细节数据的需求，这些细节数据的粒度与操作型系统的相同。有了RDS，这种需求很容易实现，用户可以查询RDS里的数据而不必影响业务系统的正常运行。这里的RDS实际上是起到了操作型数据存储（<a href="#jump_ODS">ODS</a>）的作用。</p>
 <blockquote>
-<p>RDS 是原始数据存储，其数据是从操作型系统抽取而来。它有两个作用，一是充当操作型系统和数据仓库之间的过渡区，二是作为细节数据查询的数据源。</p>
+<p>RDS
+是原始数据存储，其数据是从操作型系统抽取而来。它有两个作用，一是充当操作型系统和数据仓库之间的过渡区，二是作为细节数据查询的数据源。</p>
 </blockquote>
-<p><strong><span id="jump_TDS">TDS</span></strong> (TRANSFORMED DATA STORES) 意为转换后的数据存储。这是真正的数据仓库中的数据。大量的用户会在经过转换的数据集上处理他们的日常查询。这些数据将被以保证最重要的和最频繁的查询能够快速执行的方式构建。</p>
+<p><strong><span id="jump_TDS">TDS</span></strong> (TRANSFORMED DATA
+STORES)
+意为转换后的数据存储。这是真正的数据仓库中的数据。大量的用户会在经过转换的数据集上处理他们的日常查询。这些数据将被以保证最重要的和最频繁的查询能够快速执行的方式构建。</p>
 <blockquote>
-<p>TDS 是转换后的数据存储，也就是数据仓库，用于后续的多维分析或即席查询。</p>
+<p>TDS
+是转换后的数据存储，也就是数据仓库，用于后续的多维分析或即席查询。</p>
 </blockquote>
 <p><strong>自动化调度</strong>组件的作用是自动定期重复执行ETL过程。</p>
 <blockquote>
-<p>ETL过程自动化是数据仓库成功的重要衡量标准，也是系统易用性的关键。<br>Hadoop生态圈中的主要管理工具是 <strong>Falcon</strong>。Falcon把自己看作是数据治理工具，能让用户建立定义好的ETL流水线。还有一个叫做 <strong>Oozie</strong> 的工具，它是一个Hadoop的工作流程调度系统，可以使用它将ETL过程封装进工作流自动执行。</p>
+<p>ETL过程自动化是数据仓库成功的重要衡量标准，也是系统易用性的关键。
+Hadoop生态圈中的主要管理工具是
+<strong>Falcon</strong>。Falcon把自己看作是数据治理工具，能让用户建立定义好的ETL流水线。还有一个叫做
+<strong>Oozie</strong>
+的工具，它是一个Hadoop的工作流程调度系统，可以使用它将ETL过程封装进工作流自动执行。</p>
 </blockquote>
 <p><strong>数据目录</strong>有时也被称为元数据存储，它存储的是数据仓库的元数据，可以提供一份数据仓库中数据的清单，主要是描述数据属性的信息，用来支持如指示存储位置、历史数据、资源查找、文件记录等功能。用户通过它应该可以快速解决这些问题：什么类型的数据被存储在哪里，数据集的构建有何区别，数据最后的访问或更新时间等。</p>
 <blockquote>
-<p>Hadoop 生态圈中主要的数据目录工具是 <strong>HCatalog</strong>。HCatalog 是 Hadoop 上的一个表和存储管理层。使用不同的数据处理工具（如 Pig、MapReduce）的用户，通过 HCatalog 可以更加容易地读写集群中的数据。HCatalog 引入”表“的抽象，把文件看作数据集。它展现给用户的是一个 HDFS 上数据的关系视图，这样用户不必关心数据存放在哪里或者数据格式是什么等问题，就可以轻松知道系统中有哪些表，表中都包含什么。<br>HCatalog 默认支持多种文件格式的读写，如 RCFile、SequenceFile、ORC files、text files、CSV、JSON等。</p>
+<p>Hadoop 生态圈中主要的数据目录工具是
+<strong>HCatalog</strong>。HCatalog 是 Hadoop
+上的一个表和存储管理层。使用不同的数据处理工具（如
+Pig、MapReduce）的用户，通过 HCatalog
+可以更加容易地读写集群中的数据。HCatalog
+引入”表“的抽象，把文件看作数据集。它展现给用户的是一个 HDFS
+上数据的关系视图，这样用户不必关心数据存放在哪里或者数据格式是什么等问题，就可以轻松知道系统中有哪些表，表中都包含什么。
+HCatalog 默认支持多种文件格式的读写，如 RCFile、SequenceFile、ORC
+files、text files、CSV、JSON等。</p>
 </blockquote>
 <p><strong>查询引擎</strong>组件负责实际执行用户查询。</p>
 <blockquote>
-<p>由于最终用户经常需要进行交互式的即席查询，并随时动态改变和组合他们的查询条件，因此要求查询引擎具有很高的查询性能和较短的响应时间。<br>Hadoop生态圈中的主要SQL查询引擎有基于 MapReduce 的 <strong>Hive</strong>、基于 RDD 的 <strong>SparkSQL</strong> 和 Cloudera 公司的 <strong>Impala</strong>。<br>Hive可以在四种主流计算框架的三种，分别是 Tez、MapReduce 和 Spark（还有一种是Storm）上执行类SQL查询。<br>SparkSQL是Hadoop中另一个著名的SQL引擎，它实际上是一个Scala程序语言的子集。正如SparkSQL这个名字所暗示的，它以 Spark 作为底层的计算框架。<br>Impala 是 Cloudera 公司的查询系统，它提供 SQL 语言，最大的特点是速度快，主要用于 OLAP。</p>
+<p>由于最终用户经常需要进行交互式的即席查询，并随时动态改变和组合他们的查询条件，因此要求查询引擎具有很高的查询性能和较短的响应时间。
+Hadoop生态圈中的主要SQL查询引擎有基于 MapReduce 的
+<strong>Hive</strong>、基于 RDD 的 <strong>SparkSQL</strong> 和 Cloudera
+公司的 <strong>Impala</strong>。
+Hive可以在四种主流计算框架的三种，分别是 Tez、MapReduce 和
+Spark（还有一种是Storm）上执行类SQL查询。
+SparkSQL是Hadoop中另一个著名的SQL引擎，它实际上是一个Scala程序语言的子集。正如SparkSQL这个名字所暗示的，它以
+Spark 作为底层的计算框架。 Impala 是 Cloudera 公司的查询系统，它提供 SQL
+语言，最大的特点是速度快，主要用于 OLAP。</p>
 </blockquote>
 <p><strong>用户界面</strong>指的是最终用户所使用的接口程序。可能是一个GUI软件，如BI套件中的客户端软件，也可能是一个浏览器。</p>
 <blockquote>
-<p>数据分析的结果最终要以业务语言和形象化的方式展现给用户。数据仓库的最终用户界面通常是一个BI仪表盘或类似的一个数据可视化工具提供的浏览器页面。<br>Hadoop 生态圈中比较知名的数据可视化工具是 <strong>Hue</strong> 和 <strong>Zeppelin</strong>。<br>Hue 是一个开源的 Hadoop UI 系统，最早是由 Cloudera Desktop 演化而来，它是基于 Python Web 框架 Django 实现的。通过使用 Hue 我们可以在浏览器端的 Web 控制台上与 Hadoop 集群进行交互来分析处理数据，还可以用图形化的方式定义工作流。Hue 默认支持的数据源有 Hive 和 Impala。<br>Zeppelin 提供了 Web 版的 notebook，用于做数据分析和可视化。Zeppelin 默认只支持 SparkSQL。</p>
+<p>数据分析的结果最终要以业务语言和形象化的方式展现给用户。数据仓库的最终用户界面通常是一个BI仪表盘或类似的一个数据可视化工具提供的浏览器页面。
+Hadoop 生态圈中比较知名的数据可视化工具是 <strong>Hue</strong> 和
+<strong>Zeppelin</strong>。 Hue 是一个开源的 Hadoop UI 系统，最早是由
+Cloudera Desktop 演化而来，它是基于 Python Web 框架 Django
+实现的。通过使用 Hue 我们可以在浏览器端的 Web 控制台上与 Hadoop
+集群进行交互来分析处理数据，还可以用图形化的方式定义工作流。Hue
+默认支持的数据源有 Hive 和 Impala。 Zeppelin 提供了 Web 版的
+notebook，用于做数据分析和可视化。Zeppelin 默认只支持 SparkSQL。</p>
 </blockquote>
-<p><span style="color:blue">可以看到，普通数据仓库的8个组成部分都有相对应的 Hadoop 组件作为支撑。Hadoop 生态圈中众多更具提供的功能，完全可以满足创建传统数据仓库的需要。使用 Hadoop 建立数据仓库不仅是必要，而且是充分的。</span></p>
-<h4 id="3-2-操作数据存储（ODS）"><a href="#3-2-操作数据存储（ODS）" class="headerlink" title="3.2 操作数据存储（ODS）"></a><span id="jump_ODS">3.2 操作数据存储（ODS）</span></h4><p>操作数据存储又称为ODS (Operational Data Sore)，定义：一个<strong><span style="color:red">面向主题的、集成的、可变的、当前的</span></strong>细节数据集合，用于支持企业对于即时性的、操作性的、集成的全体信息的需求。ODS在某些方面具有类似于数据仓库的特点，在另一些方面又显著不同。</p>
+<p><span style="color:blue">可以看到，普通数据仓库的8个组成部分都有相对应的
+Hadoop 组件作为支撑。Hadoop
+生态圈中众多更具提供的功能，完全可以满足创建传统数据仓库的需要。使用
+Hadoop 建立数据仓库不仅是必要，而且是充分的。</span></p>
+<h4 id="操作数据存储ods"><span id="jump_ODS">3.2
+操作数据存储（ODS）</span></h4>
+<p>操作数据存储又称为ODS (Operational Data
+Sore)，定义：一个<strong><span style="color:red">面向主题的、集成的、可变的、当前的</span></strong>细节数据集合，用于支持企业对于即时性的、操作性的、集成的全体信息的需求。ODS在某些方面具有类似于数据仓库的特点，在另一些方面又显著不同。</p>
 <ul>
 <li>像数据仓库一样，是面向主题的</li>
 <li>像数据仓库一样，其数据是完全集成的</li>
@@ -415,28 +484,39 @@
 <li>转移部分业务系统细节查询的功能。某些原来由业务系统产生的报表、细节数据的查询能够在ODS中进行，从而降低业务系统的查询压力。</li>
 <li>完成数据仓库中不能完成的一些功能。用户有时会要求数据仓库查询最低粒度级别的细节数据，而数据仓库中存储的一般是聚合或汇总过的数据，并不存储每笔交易产生的细节数据，这时就需要转移到ODS来完成，而且ODS的数据模型是按照面向主题的方式组织的，可以方便地支持多维分析。</li>
 </ul>
-<h3 id="4-抽取-转换-装载（ETL）"><a href="#4-抽取-转换-装载（ETL）" class="headerlink" title="4. 抽取-转换-装载（ETL）"></a><span id="jump4">4. 抽取-转换-装载（ETL）</span></h3><p>ETL（Extract、Transform、Load）是建立数据仓库最重要的处理过程。</p>
+<h3 id="抽取-转换-装载etl"><span id="jump4">4.
+抽取-转换-装载（ETL）</span></h3>
+<p>ETL（Extract、Transform、Load）是建立数据仓库最重要的处理过程。</p>
 <ul>
 <li>抽取：从操作型数据源获取数据。</li>
 <li>转换：转换数据，使之转变为适用于查询和分析的形式和结构。</li>
 <li>装载：将转换后的数据导入道最终的目标数据仓库。</li>
 </ul>
 <p>建立一个数据仓库就是要把来自于多个异构的源系统的数据集成在一起，放置于一个集中的位置用于数据分析。ETL系统的工作就是把异构的数据转换成同构的。</p>
-<h4 id="4-1-数据抽取"><a href="#4-1-数据抽取" class="headerlink" title="4.1 数据抽取"></a>4.1 数据抽取</h4><p>设计和建立数据抽取过程，在ETL处理乃至整个数据仓库处理过程中，一般是较为耗时的任务。需要决定抽取哪些数据。通常数据都不是只抽取一次，而是需要以一定的时间间隔反复抽取。对抽取方法的选择高度依赖于源系统和目标数据仓库环境的业务需要。一般情况下，不可能因为需要提升数据抽取的性能，而在源系统中添加额外的逻辑，也不能增加这些源系统的工作负载。</p>
-<h5 id="4-1-1-逻辑抽取"><a href="#4-1-1-逻辑抽取" class="headerlink" title="4.1.1 逻辑抽取"></a>4.1.1 逻辑抽取</h5><p>两种逻辑抽取类型：<span style="color:red">全量抽取</span>和<span style="color:red">增量抽取</span>。</p>
-<h6 id="（1）全量抽取"><a href="#（1）全量抽取" class="headerlink" title="（1）全量抽取"></a>（1）全量抽取</h6><p>源系统的数据全部被抽取。因为这种抽取类型影响源系统上当前所有有效的数据，所以不需要跟踪自上次成功抽取以来的数据变化。源系统只需要原样提供现有的数据而不需要为附加的逻辑信息（比如时间戳等）。一个全表导出的数据文件或者一个查询源表所有数据的SQL语句，都是全量抽取的例子。</p>
-<h6 id="（2）增量抽取"><a href="#（2）增量抽取" class="headerlink" title="（2）增量抽取"></a>（2）增量抽取</h6><p>只抽取某个事件发生的特定时间点之后的数据。通过该事件发生的时间顺序能够反映数据的历史变化，它可能是最后一次成功抽取，也可能是一个复杂的业务事件，如最后一次财务结算等。必须能够标识出特定时间点之后所有的数据变化。这些发生变化的数据可以由源系统自身来提供，例如能够反映数据最后发生变化的时间戳列，或者是一个原始事务处理之外的，只用于跟踪数据变化的变更日志表。大多数情况下，使用后者意味着需要在源系统上增加抽取逻辑。</p>
+<h4 id="数据抽取">4.1 数据抽取</h4>
+<p>设计和建立数据抽取过程，在ETL处理乃至整个数据仓库处理过程中，一般是较为耗时的任务。需要决定抽取哪些数据。通常数据都不是只抽取一次，而是需要以一定的时间间隔反复抽取。对抽取方法的选择高度依赖于源系统和目标数据仓库环境的业务需要。一般情况下，不可能因为需要提升数据抽取的性能，而在源系统中添加额外的逻辑，也不能增加这些源系统的工作负载。</p>
+<h5 id="逻辑抽取">4.1.1 逻辑抽取</h5>
+<p>两种逻辑抽取类型：<span style="color:red">全量抽取</span>和<span style="color:red">增量抽取</span>。</p>
+<h6 id="全量抽取">（1）全量抽取</h6>
+<p>源系统的数据全部被抽取。因为这种抽取类型影响源系统上当前所有有效的数据，所以不需要跟踪自上次成功抽取以来的数据变化。源系统只需要原样提供现有的数据而不需要为附加的逻辑信息（比如时间戳等）。一个全表导出的数据文件或者一个查询源表所有数据的SQL语句，都是全量抽取的例子。</p>
+<h6 id="增量抽取">（2）增量抽取</h6>
+<p>只抽取某个事件发生的特定时间点之后的数据。通过该事件发生的时间顺序能够反映数据的历史变化，它可能是最后一次成功抽取，也可能是一个复杂的业务事件，如最后一次财务结算等。必须能够标识出特定时间点之后所有的数据变化。这些发生变化的数据可以由源系统自身来提供，例如能够反映数据最后发生变化的时间戳列，或者是一个原始事务处理之外的，只用于跟踪数据变化的变更日志表。大多数情况下，使用后者意味着需要在源系统上增加抽取逻辑。</p>
 <p>在许多数据仓库中，抽取过程不含任何变化数据捕获技术。取而代之的是，把源系统中的整个表抽取到数据仓厍过渡区，然后用这个表的数据和上次从源系统抽取得到的表数据作比对，从而找出发生变化的数据。虽然这种方法不会对源系统造成很大的影响，但显然需要考虑给数据仓库处理增加的负担，尤其是当数据量很大的时候。</p>
-<h5 id="4-1-2-物理抽取"><a href="#4-1-2-物理抽取" class="headerlink" title="4.1.2 物理抽取"></a>4.1.2 物理抽取</h5><p>依赖于选择的逻辑抽取方法和能够对源系统所做的操作和所受的限制，存在两种物理数据抽取机制：直接从源系统联机抽取或者间接从一个脱机结构抽取数据。这个脱机结构有可能已经存在，也可能需要由抽取程序生成。</p>
-<h6 id="（1）联机抽取"><a href="#（1）联机抽取" class="headerlink" title="（1）联机抽取"></a>（1）联机抽取</h6><p>数据直接从源系统抽取。抽取进程或者直连源系统数据库，访问它们的数据表，或者连接到一个存储快照日志或变更记录表的中间层系统。注意这个中间层系统并不需要必须和源系统物理分离。</p>
-<h6 id="（2）脱机抽取"><a href="#（2）脱机抽取" class="headerlink" title="（2）脱机抽取"></a>（2）脱机抽取</h6><p>数据不从源系统直接抽取，而是从一个源系统以外的过渡区抽取。过渡区可能己经存在（例如数据库备份文件、关系数据库系统的重做日志、归档日志等），或者抽取程序自己建立。</p>
-<h5 id="4-1-3-变化数据捕获"><a href="#4-1-3-变化数据捕获" class="headerlink" title="4.1.3 变化数据捕获"></a>4.1.3 变化数据捕获</h5><p>抽取处理需要重点考虑增量抽取，也被称为变化数据捕获，简称CDC。假设一个数据仓库系统，在每天夜里的业务低峰时间从操作型源系统抽取数据，那么增量抽取只需要过去24小时内发生变化的数据。变化数据捕获也是建立准实时数据仓库的关键技术。</p>
+<h5 id="物理抽取">4.1.2 物理抽取</h5>
+<p>依赖于选择的逻辑抽取方法和能够对源系统所做的操作和所受的限制，存在两种物理数据抽取机制：直接从源系统联机抽取或者间接从一个脱机结构抽取数据。这个脱机结构有可能已经存在，也可能需要由抽取程序生成。</p>
+<h6 id="联机抽取">（1）联机抽取</h6>
+<p>数据直接从源系统抽取。抽取进程或者直连源系统数据库，访问它们的数据表，或者连接到一个存储快照日志或变更记录表的中间层系统。注意这个中间层系统并不需要必须和源系统物理分离。</p>
+<h6 id="脱机抽取">（2）脱机抽取</h6>
+<p>数据不从源系统直接抽取，而是从一个源系统以外的过渡区抽取。过渡区可能己经存在（例如数据库备份文件、关系数据库系统的重做日志、归档日志等），或者抽取程序自己建立。</p>
+<h5 id="变化数据捕获">4.1.3 变化数据捕获</h5>
+<p>抽取处理需要重点考虑增量抽取，也被称为变化数据捕获，简称CDC。假设一个数据仓库系统，在每天夜里的业务低峰时间从操作型源系统抽取数据，那么增量抽取只需要过去24小时内发生变化的数据。变化数据捕获也是建立准实时数据仓库的关键技术。</p>
 <p>常用的变化数据捕获方法有<strong>时间戳、快照、触发器和日志</strong>四种。时间戳方法需要源系统有相应的数据列表示最后的数据变化。快照方法可以使用数据库系统自带的机制实现，如Oracle的物化视图技术，也可以自己实现相关逻辑，但会比较复杂。触发器是关系数据库系统具有的特性，源表上建立的触发器会在对该表执行insert、update、delete等语句时被触发，触发器中的逻辑用于捕获数据的变化。日志可以使用应用日志或系统日志，这种方式对源系统不具有侵入性，但需要额外的日志解析工作。</p>
-<h4 id="4-2-数据转换"><a href="#4-2-数据转换" class="headerlink" title="4.2 数据转换"></a>4.2 数据转换</h4><p>转换操作：如统一数据类型、处理拼写错误、消除数据歧义、解析为标准格式等。数据转换一个最重要的功能是清洗数据，只有”合规“的数据才能进入目标数据仓库。</p>
+<h4 id="数据转换">4.2 数据转换</h4>
+<p>转换操作：如统一数据类型、处理拼写错误、消除数据歧义、解析为标准格式等。数据转换一个最重要的功能是清洗数据，只有”合规“的数据才能进入目标数据仓库。</p>
 <ul>
 <li>只装载特定的数据列。例如，某列为空的数据不装载。</li>
-<li>统一数据编码。例如，性别字段，有些系统使用的是1和0，有些是’M，和’F’，有些是’男’，和’女’，统一成’M’和’F’</li>
-<li>自由值编码。例如，将’Male’改成’M’</li>
+<li>统一数据编码。例如，性别字段，有些系统使用的是1和0，有些是'M，和'F'，有些是'男'，和'女'，统一成'M'和'F'</li>
+<li>自由值编码。例如，将'Male'改成'M'</li>
 <li>预计算。例如，产品单价*购买数量=金额。</li>
 <li>基于某些规则重新排序以提高查询性能。</li>
 <li>合并多个数据源的数据并去重。</li>
@@ -447,7 +527,8 @@
 <li>预连接。例如，查询多个关联表的数据。</li>
 <li>数据验证。针对验证的结果采取不同的处理，通过验证的数据交给装载步骤，验证失败的数据或直接丢弄，或记录下来做进一步检查。</li>
 </ul>
-<h4 id="4-3-数据装载"><a href="#4-3-数据装载" class="headerlink" title="4.3 数据装载"></a>4.3 数据装载</h4><p>把转换后的数据装载进目标数据仓库。需要考虑的两个问题：</p>
+<h4 id="数据装载">4.3 数据装载</h4>
+<p>把转换后的数据装载进目标数据仓库。需要考虑的两个问题：</p>
 <ul>
 <li>数据装载的效率问题</li>
 <li>一旦装载过程中途失败了，如何再次重复执行装载过程</li>
@@ -457,7 +538,8 @@
 <li>首先保证足够的系统资源。数据仓厍存储的都是海量数据，所以要配置高性能的服务器，并且要独占资源，不要与别的系统共用。</li>
 <li>在进行数据装载时，要禁用数据库约束（唯一性、非空性，检查约束等）和索引，当装载过程完全结束后，再启用这些约束，重建索引，这种方法会很大的提高装载速度。在数据仓库环境中，一般不使用数据库来保证数据的参考完整性，即不使用数据库的外键约束，它应该由ETL工具或程序来维护。</li>
 </ul>
-<p>数据装载过程可能由于多种原因而失败，比如装载过程中某些源表和目标表的结构不一致而导致失败，而这时己经有部分表装载成功了。在数据量很大的情况下，如何能在重新执行装致过程时只装载失败的部分是一个不小的挑战。对于这种情况，实现可重复装载的关键是要<strong>记录下失败点，并在装载程序中处理相关的逻辑</strong>。还有一种情况，就是<strong>装载成功，数据又发生了改变</strong>（比如有些滞后的数据在ETL执行完才进入系统，就会带来数据的更新或新增），这时需要重新再执行一遍装载过程，己经正确装载的数据可以被覆盖，但相同数据不能重复新增。简单的实现方式是<strong>先删除再插入</strong>，或者用replace into、merge into等类似功能的操作。</p>
+<p>数据装载过程可能由于多种原因而失败，比如装载过程中某些源表和目标表的结构不一致而导致失败，而这时己经有部分表装载成功了。在数据量很大的情况下，如何能在重新执行装致过程时只装载失败的部分是一个不小的挑战。对于这种情况，实现可重复装载的关键是要<strong>记录下失败点，并在装载程序中处理相关的逻辑</strong>。还有一种情况，就是<strong>装载成功，数据又发生了改变</strong>（比如有些滞后的数据在ETL执行完才进入系统，就会带来数据的更新或新增），这时需要重新再执行一遍装载过程，己经正确装载的数据可以被覆盖，但相同数据不能重复新增。简单的实现方式是<strong>先删除再插入</strong>，或者用replace
+into、merge into等类似功能的操作。</p>
 <p>装载到数据仓库里的数据，经过汇总、聚合等处理后交付给多维立方体或数据可视化、仪表盘等报表工其、Bl工具做进一步的数据分析。</p>
     </div>
 

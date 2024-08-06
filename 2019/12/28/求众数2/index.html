@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="求众数2（难度：中等）  方法一：在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n&#x2F;3的。 1234class Solution:    def majorityElement(self, nums: List[int]) -&gt; List[int]:        set1 &#x3D; set(nums)        return [s for s in">
+    <meta name="description" content="求众数2（难度：中等）   1  方法一： 在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n&#x2F;3的。 1234class Solution:    def majorityElement(self, nums: List[int]) -&gt; List[int]:        set1 &#x3D; set(nums)        return">
 <meta property="og:type" content="article">
 <meta property="og:title" content="求众数2">
 <meta property="og:url" content="http://qypx.github.io/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="求众数2（难度：中等）  方法一：在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n&#x2F;3的。 1234class Solution:    def majorityElement(self, nums: List[int]) -&gt; List[int]:        set1 &#x3D; set(nums)        return [s for s in">
+<meta property="og:description" content="求众数2（难度：中等）   1  方法一： 在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n&#x2F;3的。 1234class Solution:    def majorityElement(self, nums: List[int]) -&gt; List[int]:        set1 &#x3D; set(nums)        return">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/1.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/2.jpg">
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9ABoyer-Moore-%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95"><span class="nav-text">方法二：Boyer-Moore 投票算法</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8Cboyer-moore-%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95"><span class="nav-text">方法二：Boyer-Moore 投票算法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -287,33 +287,41 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a href="https://leetcode-cn.com/problems/majority-element-ii/">求众数2（难度：中等）</a></p>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/1.jpg" alt="1"></p>
-<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/3的。</p>
+<figure>
+<img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法一">方法一：</h4>
+<p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/3的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        set1 = <span class="built_in">set</span>(nums)</span><br><span class="line">        <span class="keyword">return</span> [s <span class="keyword">for</span> s <span class="keyword">in</span> set1 <span class="keyword">if</span> nums.count(s) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/2.jpg" alt="2"></p>
+<figure>
+<img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 <p>然而时间复杂度不为O(n)。</p>
 <hr>
-<h4 id="方法二：Boyer-Moore-投票算法"><a href="#方法二：Boyer-Moore-投票算法" class="headerlink" title="方法二：Boyer-Moore 投票算法"></a>方法二：Boyer-Moore 投票算法</h4><p>超过n/3的数最多只能有两个。先选出两个候选人A,B（都令为nums[0]）。 遍历数组：</p>
-<ol>
-<li>若当前元素等于A，则A的票数++;</li>
-<li><p>若当前元素等于B，则B的票数++；</p>
-</li>
+<h4 id="方法二boyer-moore-投票算法">方法二：Boyer-Moore 投票算法</h4>
+<p>超过n/3的数最多只能有两个。先选出两个候选人A,B（都令为nums[0]）。
+遍历数组：</p>
+<ol type="1">
+<li><p>若当前元素等于A，则A的票数++;</p></li>
+<li><p>若当前元素等于B，则B的票数++；</p></li>
 <li><p>若当前元素与A，B都不相等，那么检查此时A或B的票数是否减为0：</p>
 <ul>
-<li><p>若为0，则当前元素成为新的候选人；</p>
-</li>
-<li><p>若A、B票数均不为0，则A、B两个候选人的票数均减一；</p>
-</li>
-</ul>
-</li>
+<li><p>若为0，则当前元素成为新的候选人；</p></li>
+<li><p>若A、B票数均不为0，则A、B两个候选人的票数均减一；</p></li>
+</ul></li>
 </ol>
 <p>遍历结束后选出了两个候选人，但是这两个候选人是否满足&gt;n//3，还需要再遍历一遍数组，找出两个候选人的具体票数。</p>
 <p><strong>复杂度</strong></p>
 <p>时间复杂度：O(n)</p>
 <p>空间复杂度：O(1)</p>
-<p><strong>代码</strong> </p>
+<p><strong>代码</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(nums)==<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        count1 = <span class="number">0</span></span><br><span class="line">        count2 = <span class="number">0</span></span><br><span class="line">        candidate1 = nums[<span class="number">0</span>]</span><br><span class="line">        candidate2 = nums[<span class="number">0</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num == candidate1:</span><br><span class="line">                count1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> num == candidate2:</span><br><span class="line">                count2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> count1 == <span class="number">0</span>:</span><br><span class="line">                    candidate1 = num</span><br><span class="line">                    count1 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> count2 == <span class="number">0</span>:</span><br><span class="line">                    candidate2 = num</span><br><span class="line">                    count2 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    count1 -= <span class="number">1</span>;</span><br><span class="line">                    count2 -= <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">set</span>([num <span class="keyword">for</span> num <span class="keyword">in</span> [candidate1, candidate2] <span class="keyword">if</span> nums.count(num) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]) <span class="comment">#加set的原因是避免返回两个相同的数</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/3.jpg" alt="3"></p>
+<figure>
+<img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 
     </div>
 

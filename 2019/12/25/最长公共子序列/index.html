@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="最长公共子序列（难度：中等）  方法：动态规划  代码  复杂度数据复杂度：O(mn) 空间复杂度：O(mn)  最长公共子串最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： 子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续。例如X &#x3D; {a, Q, 1, 1}; Y &#x3D; {a">
+    <meta name="description" content="最长公共子序列（难度：中等）   题目  方法：动态规划   图1    图2  代码   code    图3  复杂度 数据复杂度：O(mn) 空间复杂度：O(mn)  最长公共子串 最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： 子串要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最长公共子序列">
 <meta property="og:url" content="http://qypx.github.io/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="最长公共子序列（难度：中等）  方法：动态规划  代码  复杂度数据复杂度：O(mn) 空间复杂度：O(mn)  最长公共子串最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： 子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续。例如X &#x3D; {a, Q, 1, 1}; Y &#x3D; {a">
+<meta property="og:description" content="最长公共子序列（难度：中等）   题目  方法：动态规划   图1    图2  代码   code    图3  复杂度 数据复杂度：O(mn) 空间复杂度：O(mn)  最长公共子串 最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： 子串要">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/question.JPG">
 <meta property="og:image" content="http://qypx.github.io/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1.JPG">
@@ -155,7 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">方法：动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2"><span class="nav-text">最长公共子串</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">方法：动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2"><span class="nav-text">最长公共子串</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -296,21 +296,49 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a href="https://leetcode-cn.com/problems/longest-common-subsequence/">最长公共子序列（难度：中等）</a></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/question.JPG" alt="题目"></p>
-<h3 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h3><p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1.JPG" alt="图1"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/2.JPG" alt="图2"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/code.JPG" alt="code"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/3.JPG" alt="图3"></p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>数据复杂度：O(mn)</p>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/question.JPG" alt="题目">
+<figcaption aria-hidden="true">题目</figcaption>
+</figure>
+<h3 id="方法动态规划">方法：动态规划</h3>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1.JPG" alt="图1">
+<figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/2.JPG" alt="图2">
+<figcaption aria-hidden="true">图2</figcaption>
+</figure>
+<h5 id="代码">代码</h5>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/code.JPG" alt="code">
+<figcaption aria-hidden="true">code</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/3.JPG" alt="图3">
+<figcaption aria-hidden="true">图3</figcaption>
+</figure>
+<h5 id="复杂度">复杂度</h5>
+<p>数据复杂度：O(mn)</p>
 <p>空间复杂度：O(mn)</p>
 <hr>
-<h4 id="最长公共子串"><a href="#最长公共子串" class="headerlink" title="最长公共子串"></a>最长公共子串</h4><p>最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： <strong>子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续</strong>。例如X = {a, Q, 1, 1}; Y = {a, 1, 1, d, f}那么，{a, 1, 1}是X和Y的最长公共子序列，但不是它们的最长公共字串。</p>
+<h4 id="最长公共子串">最长公共子串</h4>
+<p>最长公共子串（Longest Common Substring）与最长公共子序列（Longest
+Common Subsequence）的区别：
+<strong>子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续</strong>。例如X
+= {a, Q, 1, 1}; Y = {a, 1, 1, d, f}那么，{a, 1,
+1}是X和Y的最长公共子序列，但不是它们的最长公共字串。</p>
 <p><strong>描述：</strong></p>
-<p>计算两个字符串的最大公共子串（Longest Common Substring）的长度，字符不区分大小写。</p>
+<p>计算两个字符串的最大公共子串（Longest Common
+Substring）的长度，字符不区分大小写。</p>
 <p><strong>方法</strong></p>
 <p>求子串的方法和求子序列方法类似：</p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1578644196190.png" alt="1578644196190"></p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestCommonSubsequence</span><span class="params">(String text1, String text2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> text1.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> text2.length();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> dp[][] = <span class="keyword">new</span> <span class="title class_">int</span>[n1+<span class="number">1</span>][n2+<span class="number">1</span>]; <span class="comment">//多增加一行一列</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">longest</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(text1.charAt(i-<span class="number">1</span>) == text2.charAt(j-<span class="number">1</span>))</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                    longest = Math.max(longest,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1578644196190.png" alt="1578644196190">
+<figcaption aria-hidden="true">1578644196190</figcaption>
+</figure>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestCommonSubsequence</span><span class="params">(String text1, String text2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> text1.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> text2.length();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> dp[][] = <span class="keyword">new</span> <span class="title class_">int</span>[n1+<span class="number">1</span>][n2+<span class="number">1</span>]; <span class="comment">//多增加一行一列</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">longest</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(text1.charAt(i-<span class="number">1</span>) == text2.charAt(j-<span class="number">1</span>))</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                    longest = Math.max(longest,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 

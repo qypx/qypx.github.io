@@ -275,20 +275,39 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p> 参考：<br> <a href="https://blog.csdn.net/PowerBlogger/article/details/83626449">https://blog.csdn.net/PowerBlogger/article/details/83626449</a><br> <a href="https://blog.csdn.net/u010886217/article/details/83796151">https://blog.csdn.net/u010886217/article/details/83796151</a><br> 《Hadoop构建数据仓库实践》</p>
-<p> 更多内容见Hive官方文档<br> <a href="https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation">https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation</a></p>
+<p>参考： https://blog.csdn.net/PowerBlogger/article/details/83626449
+https://blog.csdn.net/u010886217/article/details/83796151
+《Hadoop构建数据仓库实践》</p>
+<p>更多内容见Hive官方文档
+https://cwiki.apache.org/confluence/display/Hive/Home#Home-UserDocumentation</p>
 </blockquote>
-<h2 id="1-什么是Hive？"><a href="#1-什么是Hive？" class="headerlink" title="1. 什么是Hive？"></a>1. 什么是Hive？</h2><p>Hive 是 Hadoop 生态圈的<strong>数据仓库软件</strong>，里面有表的概念，使用类似于 SQL 的语言（HiveQL）读、写、管理分布式存储上的大数据集。它建立在 Hadoop 之上，具有以下功能和特点：</p>
+<h2 id="什么是hive">1. 什么是Hive？</h2>
+<p>Hive 是 Hadoop
+生态圈的<strong>数据仓库软件</strong>，里面有表的概念，使用类似于 SQL
+的语言（HiveQL）读、写、管理分布式存储上的大数据集。它建立在 Hadoop
+之上，具有以下功能和特点：</p>
 <ul>
-<li>通过 HiveQL 方便地访问数据，<strong>适合执行 ETL、报表查询、数据分析等数据仓库任务</strong>。</li>
+<li>通过 HiveQL 方便地访问数据，<strong>适合执行
+ETL、报表查询、数据分析等数据仓库任务</strong>。</li>
 <li>提供一种机制，给各种各样的数据格式添加结构。</li>
 <li>直接访问 HDFS 的文件，或者访问如 HBase 等其他数据存储。</li>
 <li>可以通过 MapReduce、Spark 或 Tez 等多种计算框架执行查询。</li>
 </ul>
-<p>Hive 被设计成一个可扩展的、高性能的、容错的、与输入数据格式松耦合的系统，<strong>适合于数据仓库中的汇总、分析、批处理查询等任务，而不适合联机事务处理（OLTP）的工作场景</strong>。Hive 包括 HCatalog 和 WebHCat 两个组件。HCatalog 是 Hadoop 的表和存储管理层，允许使用 Pig 和 MapReduce 等数据处理工具的用户更容易读写集群中的数据。WebHCat 提供了一个服务，可以使用 HTTP 接口执行 MapReduce （或 YARN）、Pig、Hive 作业或元数据操作。</p>
+<p>Hive
+被设计成一个可扩展的、高性能的、容错的、与输入数据格式松耦合的系统，<strong>适合于数据仓库中的汇总、分析、批处理查询等任务，而不适合联机事务处理（OLTP）的工作场景</strong>。Hive
+包括 HCatalog 和 WebHCat 两个组件。HCatalog 是 Hadoop
+的表和存储管理层，允许使用 Pig 和 MapReduce
+等数据处理工具的用户更容易读写集群中的数据。WebHCat
+提供了一个服务，可以使用 HTTP 接口执行 MapReduce （或 YARN）、Pig、Hive
+作业或元数据操作。</p>
 <p>HiveQL 只处理结构化数据，并且不区分大小写（与SQL一样）。</p>
-<p><span style="color:red">Hive 里的数据最终存储在 HDFS 的文件中</span>，常用的数据文件格式有以下4种：<strong>TEXTFILE、SEQUENCEFILE、RCFILE、ORCFILE</strong>。（关于文件格式的更详细内容见 <a href="#jump3.1.2">3.1.2 file format</a>）。在 Hive 中文件格式指的是记录以怎样的编码格式被存储到文件中。不同文件格式的主要区别在于它们的数据编码、压缩率、使用的空间和磁盘I/O。在加载数据的过程中，Hive不会对数据本身进行任何修改，而只是将数据内容复制或者移动到相应的HDFS目录中。</p>
-<p>当用户向传统数据库中增加数据时，系统会检查写入的数据与表结构是否匹配，如果不匹配则拒绝插入数据，这就是所谓的<strong>写时模式</strong>。Hive与此不同，它使用的是<strong>读时模式</strong>，即直到读取时再进行数据校验（加载数据时不进行数据格式的校验，读取数据时如果不合法则显示NULL。这种模式的优点在于加载数据迅速）。在向 Hive 装载数据时，它并不验证数据与表结构是否匹配，但这时它会检查文件格式是否和表定义相匹配。</p>
+<p><span style="color:red">Hive 里的数据最终存储在 HDFS
+的文件中</span>，常用的数据文件格式有以下4种：<strong>TEXTFILE、SEQUENCEFILE、RCFILE、ORCFILE</strong>。（关于文件格式的更详细内容见
+<a href="#jump3.1.2">3.1.2 file format</a>）。在 Hive
+中文件格式指的是记录以怎样的编码格式被存储到文件中。不同文件格式的主要区别在于它们的数据编码、压缩率、使用的空间和磁盘I/O。在加载数据的过程中，Hive不会对数据本身进行任何修改，而只是将数据内容复制或者移动到相应的HDFS目录中。</p>
+<p>当用户向传统数据库中增加数据时，系统会检查写入的数据与表结构是否匹配，如果不匹配则拒绝插入数据，这就是所谓的<strong>写时模式</strong>。Hive与此不同，它使用的是<strong>读时模式</strong>，即直到读取时再进行数据校验（加载数据时不进行数据格式的校验，读取数据时如果不合法则显示NULL。这种模式的优点在于加载数据迅速）。在向
+Hive
+装载数据时，它并不验证数据与表结构是否匹配，但这时它会检查文件格式是否和表定义相匹配。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/01/12/Hive-introduction/#more" rel="contents">
@@ -380,7 +399,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="https://img.sanhao.com/community_news/24544/2018040318514556.jpg" alt="img"></p>
+          <figure>
+<img src="https://img.sanhao.com/community_news/24544/2018040318514556.jpg" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/01/12/%E7%AC%94%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/#more" rel="contents">
@@ -472,10 +494,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="DDL与DML"><a href="#DDL与DML" class="headerlink" title="DDL与DML"></a>DDL与DML</h3><p>DDL: maintaining structure of database. (CREATE, DROP, ALTER, RENAME)</p>
-<p>DML: maintaining contents of database. (SELECT, INSERT, DELETE, UPDATE)</p>
-<p>sql language: </p>
-<p><img src="/2020/01/12/sql-basis/1578825616684.png" alt="1578825616684"></p>
+          <h3 id="ddl与dml">DDL与DML</h3>
+<p>DDL: maintaining structure of database. (CREATE, DROP, ALTER,
+RENAME)</p>
+<p>DML: maintaining contents of database. (SELECT, INSERT, DELETE,
+UPDATE)</p>
+<p>sql language:</p>
+<figure>
+<img src="/2020/01/12/sql-basis/1578825616684.png" alt="1578825616684">
+<figcaption aria-hidden="true">1578825616684</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/01/12/sql-basis/#more" rel="contents">
@@ -568,60 +596,65 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>参考：</p>
-<p><a href="https://blog.csdn.net/lovezhaohaimig/article/details/80184994">https://blog.csdn.net/lovezhaohaimig/article/details/80184994</a></p>
-<p><a href="https://www.cnblogs.com/xianyao/p/11613021.html">https://www.cnblogs.com/xianyao/p/11613021.html</a></p>
-<h4 id="1-drop-table-表名称"><a href="#1-drop-table-表名称" class="headerlink" title="1.drop table 表名称"></a>1.drop table 表名称</h4><p><strong>drop (删除表)：删除表内容和表定义，释放空间。</strong></p>
+<p>https://blog.csdn.net/lovezhaohaimig/article/details/80184994</p>
+<p>https://www.cnblogs.com/xianyao/p/11613021.html</p>
+<h4 id="drop-table-表名称">1.drop table 表名称</h4>
+<p><strong>drop (删除表)：删除表内容和表定义，释放空间。</strong></p>
 <p>简单来说就是把整个表去掉，以后要新增数据是不可能的，除非新增一个表。</p>
 <p>把表的结构也删除了，下次要使用的时候要重新创建表的结构再插入数据。</p>
 <p>drop语句将删除表结构被依赖的约束(constrain)，触发器(trigger)，索引(index)；依赖于该表的存储过程/函数将被保留，但其状态会变为：invalid。</p>
 <p><strong>不能回滚</strong></p>
-<h4 id="2-truncate-table-表名称"><a href="#2-truncate-table-表名称" class="headerlink" title="2.truncate table 表名称"></a>2.truncate table 表名称</h4><p><strong>truncate (清空表中的数据)：删除表内容、释放空间但不删除表定义。</strong>与drop不同的是，他只是清空表数据而已，不删除表结构。其列、约束、索引等保持不变。</p>
-<p>truncate table test 后，向test表添加数据，插入的字段的id重新从1开始递增 1、2、3…..（体现了truncate删除是释放空间）</p>
+<h4 id="truncate-table-表名称">2.truncate table 表名称</h4>
+<p><strong>truncate
+(清空表中的数据)：删除表内容、释放空间但不删除表定义。</strong>与drop不同的是，他只是清空表数据而已，不删除表结构。其列、约束、索引等保持不变。</p>
+<p>truncate table test
+后，向test表添加数据，插入的字段的id重新从1开始递增
+1、2、3.....（体现了truncate删除是释放空间）</p>
 <p><strong>in MySQL, resets auto_increment PKs</strong></p>
 <p><strong>不能回滚</strong></p>
 <p>注意:truncate 不能删除行数据,要删就要把表清空。</p>
-<h4 id="3-delete-from-表名称-where-列名称-值"><a href="#3-delete-from-表名称-where-列名称-值" class="headerlink" title="3.delete from 表名称 where 列名称 = 值"></a>3.delete from 表名称 where 列名称 = 值</h4><p>delete (删除表中的数据)：删除整表中的行，表结构不会删除。</p>
+<h4 id="delete-from-表名称-where-列名称-值">3.delete from 表名称 where
+列名称 = 值</h4>
+<p>delete (删除表中的数据)：删除整表中的行，表结构不会删除。</p>
 <p><strong>删除内容，不删除定义，不释放空间。</strong></p>
 <p>用delete删除数据，然后添加。可以看到添加之后id标识不连续。（说明delete删除不释放空间）</p>
-<p>如果重新插入数据时，对应的id在上次基础之上递增 4、5、6….</p>
+<p>如果重新插入数据时，对应的id在上次基础之上递增 4、5、6....</p>
 <p>delete语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存,以便进行回滚操作。</p>
 <p><strong>即不带where的delete: 删除表内容，不删除表结构</strong></p>
 <p><strong>可回滚</strong></p>
-<h4 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h4><ul>
-<li><p>执行速度，一般来说: drop&gt; truncate &gt; delete。</p>
-</li>
-<li><p>delete语句是数据库操作语言(dml)，这个操作会放到 rollback segment中，事务提交之后才生效；如果有相应的 trigger，执行的时候将被触发。</p>
-</li>
-<li><p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到 rollback segment 中，不能回滚，操作不触发 trigger。</p>
-</li>
+<h4 id="总结">4.总结</h4>
+<ul>
+<li><p>执行速度，一般来说: drop&gt; truncate &gt; delete。</p></li>
+<li><p>delete语句是数据库操作语言(dml)，这个操作会放到 rollback
+segment中，事务提交之后才生效；如果有相应的
+trigger，执行的时候将被触发。</p></li>
+<li><p>truncate、drop 是数据库定义语言(ddl)，操作立即生效，原数据不放到
+rollback segment 中，不能回滚，操作不触发 trigger。</p></li>
 <li><p>在实际应用中，三者的区别是明确的。</p>
 <ul>
-<li><p>当你不再需要该表时， 用 drop;</p>
-</li>
-<li><p>当你仍要保留该表，但要删除所有记录时， 用 truncate; </p>
-</li>
-<li><p>当你要删除部分记录时（always with a WHERE clause), 用 delete.</p>
-</li>
-</ul>
-</li>
+<li><p>当你不再需要该表时， 用 drop;</p></li>
+<li><p>当你仍要保留该表，但要删除所有记录时， 用 truncate;</p></li>
+<li><p>当你要删除部分记录时（always with a WHERE clause), 用
+delete.</p></li>
+</ul></li>
 <li><p>truncate 与delete 比较：</p>
 <ul>
-<li><p>truncate table 在功能上与不带 WHERE 子句的 delete语句相同：二者均删除表中的全部行。</p>
-</li>
-<li><p>truncate 比 delete速度快，且使用的系统和事务日志资源少。</p>
-</li>
-<li><p>truncate 操作后的表比Delete操作后的表要快得多。</p>
-</li>
-<li><p>当表被清空后，表和表的索引将重新设置成初始大小，而delete则不能。</p>
-</li>
-<li>truncate 删除不能恢复，delete 可以恢复数据</li>
-</ul>
-</li>
+<li><p>truncate table 在功能上与不带 WHERE 子句的
+delete语句相同：二者均删除表中的全部行。</p></li>
+<li><p>truncate 比 delete速度快，且使用的系统和事务日志资源少。</p></li>
+<li><p>truncate 操作后的表比Delete操作后的表要快得多。</p></li>
+<li><p>当表被清空后，表和表的索引将重新设置成初始大小，而delete则不能。</p></li>
+<li><p>truncate 删除不能恢复，delete 可以恢复数据</p></li>
+</ul></li>
 </ul>
 <blockquote>
-<p>(<a href="http://www.itpub.net/thread-392126-1-1.html">http://www.itpub.net/thread-392126-1-1.html</a>)</p>
-<p>问：执行truncate table，除了rows会删除，index也会删除，但我执行之后，查看user_indexes，索引仍在，重新加入新资料再做查询，一样可以用到索引，是不是这里所说的删除，是指删除索引的内容，可是一般我们用delete，索引的内容不是也会跟着删除吗? 那么用truncate和delete，索引的删除又有什么不同呢?</p>
-<p>答：你truncate后，你只是删除索引相应的数据，也就是你所说的内容，索引的定义并没有删除，因此在数据字典里面还有相关信息。重新插入数据后，当然还会用到原来定义的索引。你要真正删除一个索引的话，那么得用drop index index_name把索引DROP掉。delete的话，索引的内容跟truncate一样是删除的，只是物理上事实上并没有删除，这个你不要去管，你就知道索引条目也相应删除就是了。</p>
+<p>(http://www.itpub.net/thread-392126-1-1.html)</p>
+<p>问：执行truncate
+table，除了rows会删除，index也会删除，但我执行之后，查看user_indexes，索引仍在，重新加入新资料再做查询，一样可以用到索引，是不是这里所说的删除，是指删除索引的内容，可是一般我们用delete，索引的内容不是也会跟着删除吗?
+那么用truncate和delete，索引的删除又有什么不同呢?</p>
+<p>答：你truncate后，你只是删除索引相应的数据，也就是你所说的内容，索引的定义并没有删除，因此在数据字典里面还有相关信息。重新插入数据后，当然还会用到原来定义的索引。你要真正删除一个索引的话，那么得用drop
+index
+index_name把索引DROP掉。delete的话，索引的内容跟truncate一样是删除的，只是物理上事实上并没有删除，这个你不要去管，你就知道索引条目也相应删除就是了。</p>
 </blockquote>
 
       
@@ -702,22 +735,40 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/two-sum/">两数之和（难度：简单）</a></p>
-<p><img src="/2020/01/12/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/1578808347100.png" alt="1578808347100"></p>
-<h4 id="方法一：暴力法"><a href="#方法一：暴力法" class="headerlink" title="方法一：暴力法"></a>方法一：暴力法</h4><p>遍历每个元素 x，并查找是否存在一个值与 target - x相等的目标元素。\</p>
+<figure>
+<img src="/2020/01/12/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/1578808347100.png" alt="1578808347100">
+<figcaption aria-hidden="true">1578808347100</figcaption>
+</figure>
+<h4 id="方法一暴力法">方法一：暴力法</h4>
+<p>遍历每个元素 x，并查找是否存在一个值与 target -
+x相等的目标元素。<br>
+</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] == target - nums[i]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123; i, j &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;No two sum solution&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n^2)</p>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(n^2)</p>
 <p>空间复杂度：O(1)</p>
 <hr>
-<h4 id="方法二：两遍哈希表"><a href="#方法二：两遍哈希表" class="headerlink" title="方法二：两遍哈希表"></a>方法二：两遍哈希表</h4><p>为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。</p>
-<p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)降低到 O(1)。<strong>哈希表正是为此目的而构建的，它支持以 近似恒定的时间进行快速查找</strong>。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)。</p>
-<p><strong>使用两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target - nums[i]）是否存在于表中。</strong>注意，该目标元素不能是 nums[i]本身！</p>
+<h4 id="方法二两遍哈希表">方法二：两遍哈希表</h4>
+<p>为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。</p>
+<p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)降低到
+O(1)。<strong>哈希表正是为此目的而构建的，它支持以
+近似恒定的时间进行快速查找</strong>。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到
+O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为
+O(1)。</p>
+<p><strong>使用两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target
+- nums[i]）是否存在于表中。</strong>注意，该目标元素不能是
+nums[i]本身！</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            map.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">complement</span> <span class="operator">=</span> target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(complement) &amp;&amp; map.get(complement) != i) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123; i, map.get(complement) &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;No two sum solution&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，遍历两次，由于哈希表将查找时间缩短到 O(1) ，所以时间复杂度为 O(n)。</p>
+<h5 id="复杂度-1">复杂度</h5>
+<p>时间复杂度：O(n)，遍历两次，由于哈希表将查找时间缩短到 O(1)
+，所以时间复杂度为 O(n)。</p>
 <p>空间复杂度：O(n)，所需的额外空间取决于哈希表中存储的元素数量。</p>
 <hr>
-<h4 id="方法三：一遍哈希表"><a href="#方法三：一遍哈希表" class="headerlink" title="方法三：一遍哈希表"></a>方法三：一遍哈希表</h4><p>在进行迭代并将元素插入到表中的同时，回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
+<h4 id="方法三一遍哈希表">方法三：一遍哈希表</h4>
+<p>在进行迭代并将元素插入到表中的同时，回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(target - nums[i]))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;map.get(target - nums[i]), i&#125;;</span><br><span class="line">            map.put(nums[i],i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，只遍历一次。</p>
+<h5 id="复杂度-2">复杂度</h5>
+<p>时间复杂度：O(n)，只遍历一次。</p>
 <p>空间复杂度：O(n)。</p>
 
       
@@ -798,11 +849,20 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/">最长连续递增序列（难度：简单）</a></p>
-<p><img src="/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/1578807734778.png" alt="1578807734778"></p>
-<p><img src="/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/1578807775519.png" alt="1578807775519"></p>
+<figure>
+<img src="/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/1578807734778.png" alt="1578807734778">
+<figcaption aria-hidden="true">1578807734778</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/1578807775519.png" alt="1578807775519">
+<figcaption aria-hidden="true">1578807775519</figcaption>
+</figure>
 <p><strong>代码</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findLengthOfLCIS</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length&lt;=<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i-<span class="number">1</span>])&#123;</span><br><span class="line">                count++;</span><br><span class="line">                max = Math.max(max,count);</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                count=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/1578807884555.png" alt="1578807884555"></p>
+<figure>
+<img src="/2020/01/12/%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97/1578807884555.png" alt="1578807884555">
+<figcaption aria-hidden="true">1578807884555</figcaption>
+</figure>
 
       
     </div>
@@ -878,40 +938,72 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png" alt="1578640411160"></p>
-<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
-<p><span style="color:red">* 基选归堆不变（运行时间不发生变化，与初始状态无关）</span></p>
+          <figure>
+<img src="/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png" alt="1578640411160">
+<figcaption aria-hidden="true">1578640411160</figcaption>
+</figure>
+<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai
+= Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
+<p><span style="color:red">*
+基选归堆不变（运行时间不发生变化，与初始状态无关）</span></p>
 <p><span style="color:red">* 快选希堆不稳（是不稳定的排序） </span></p>
-<p><u>快 速 排 序 ：</u> </p>
-<p>思 想 ： </p>
-<p>1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为 基 准 （ 通 常 选 第 一 个 元 素 ， 但 最 的 选 择 方 法 是 从 待 排 序 元 素 中 随 机 选 取 一 个 作 为 基 准 ） ， 称 为 基 准 元 素 ； </p>
-<p>2 ． 将 待 排 序 的 元 素 进 行 分 区 ， 比 基 准 元 素 大 的 元 素 放 在 它 的 右 边 ， 比 其 小 的 放 在 它 的 左 边 ； </p>
-<p>3 ． 对 左 右 两 个 分 区 重 复 以 上 步 骤 直 到 所 有 元 素 都 是 有 序 的 </p>
-<p> <u>冒 泡 排 序 ：</u> </p>
-<p>1 ． 比 较 相 邻 的 元 素 。 如 果 第 一 个 比 第 二 个 大 ， 就 交 换 他 们 两 个 </p>
-<p>2 ． 对 每 一 对 相 邻 元 素 作 同 样 的 工 作 ， 从 开 始 第 一 对 到 结 尾 的 最 后 一 对 。 在 这 一 点 ， 最 后 的 元 素 应 该 会 是 最 大 的 数 。 </p>
-<p>3 ． 针 对 所 有 的 元 素 重 复 以 上 的 步 骤 ， 除 了 最 后 一 个 </p>
-<p>4 ． 持 续 每 次 对 越 来 越 少 的 元 素 重 复 上 面 的 步 骤 ， 直 到 没 有 任 何 一 对 数 字 需 要 比 较 。 </p>
-<p><u>归 并 排 序 ：</u> </p>
-<p>第 一 步 ： 申 请 空 间 ， 使 其 大 小 为 两 个 已 经 排 序 序 列 之 和 ， 该 空 间 用 来 存 放 合 并 后 的 序 列 </p>
-<p>第 二 步 ： 设 定 两 个 指 针 ， 最 初 位 置 分 别 为 两 个 已 经 排 序 序 列 的 起 始 位 置 </p>
-<p>第 三 步 ： 比 较 两 个 指 针 所 指 向 的 元 素 ， 选 择 相 对 小 的 元 素 放 入 到 合 并 空 </p>
-<p>间 ， 并 移 动 指 针 到 下 一 位 置 </p>
-<p>重 复 步 骤 3 直 到 某 一 指 针 超 出 序 列 尾 </p>
-<p>将 另 一 序 列 剩 下 的 所 有 元 素 直 接 复 制 到 合 并 序 列 尾 </p>
-<p><u>插 入 排 序 ：</u> </p>
-<p>1 ． 从 有 序 数 列 和 无 序 数 列 { a2 ， a3 ,  …, an} 开 始 进 行 排 序 </p>
-<p>2 ． 处 理 第 i 个 元 素 时 { i ： 2 ， 3 ，… , n } , 数 列 { a1 ， a2 ，…， ai-1} 是 已 有 序 的 ， 而 数 列 {ai,ai+1, …， an } 是 无 序 的 。 用 ai 与 ai-1, a i-2, …， a1 进 行 比 较 ， 找 出 合 适 的 位 置 将 ai 插 入 ； </p>
-<p>3 ． 重 复 第 二 步 ， 共 进 行 n - i 次 插 入 处 理 ， 数 列 全 部 有 序 。 </p>
+<p><u>快 速 排 序 ：</u></p>
+<p>思 想 ：</p>
+<p>1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为 基 准 （ 通 常 选
+第 一 个 元 素 ， 但 最 的 选 择 方 法 是 从 待 排 序 元 素 中 随 机 选
+取 一 个 作 为 基 准 ） ， 称 为 基 准 元 素 ；</p>
+<p>2 ． 将 待 排 序 的 元 素 进 行 分 区 ， 比 基 准 元 素 大 的 元 素
+放 在 它 的 右 边 ， 比 其 小 的 放 在 它 的 左 边 ；</p>
+<p>3 ． 对 左 右 两 个 分 区 重 复 以 上 步 骤 直 到 所 有 元 素 都 是
+有 序 的</p>
+<p><u>冒 泡 排 序 ：</u></p>
+<p>1 ． 比 较 相 邻 的 元 素 。 如 果 第 一 个 比 第 二 个 大 ， 就 交
+换 他 们 两 个</p>
+<p>2 ． 对 每 一 对 相 邻 元 素 作 同 样 的 工 作 ， 从 开 始 第 一 对
+到 结 尾 的 最 后 一 对 。 在 这 一 点 ， 最 后 的 元 素 应 该 会 是 最
+大 的 数 。</p>
+<p>3 ． 针 对 所 有 的 元 素 重 复 以 上 的 步 骤 ， 除 了 最 后 一
+个</p>
+<p>4 ． 持 续 每 次 对 越 来 越 少 的 元 素 重 复 上 面 的 步 骤 ， 直
+到 没 有 任 何 一 对 数 字 需 要 比 较 。</p>
+<p><u>归 并 排 序 ：</u></p>
+<p>第 一 步 ： 申 请 空 间 ， 使 其 大 小 为 两 个 已 经 排 序 序 列 之
+和 ， 该 空 间 用 来 存 放 合 并 后 的 序 列</p>
+<p>第 二 步 ： 设 定 两 个 指 针 ， 最 初 位 置 分 别 为 两 个 已 经 排
+序 序 列 的 起 始 位 置</p>
+<p>第 三 步 ： 比 较 两 个 指 针 所 指 向 的 元 素 ， 选 择 相 对 小 的
+元 素 放 入 到 合 并 空</p>
+<p>间 ， 并 移 动 指 针 到 下 一 位 置</p>
+<p>重 复 步 骤 3 直 到 某 一 指 针 超 出 序 列 尾</p>
+<p>将 另 一 序 列 剩 下 的 所 有 元 素 直 接 复 制 到 合 并 序 列 尾</p>
+<p><u>插 入 排 序 ：</u></p>
+<p>1 ． 从 有 序 数 列 和 无 序 数 列 { a2 ， a3 , …, an} 开 始 进 行 排
+序</p>
+<p>2 ． 处 理 第 i 个 元 素 时 { i ： 2 ， 3 ，... , n } , 数 列 { a1 ，
+a2 ，…， ai-1} 是 已 有 序 的 ， 而 数 列 {ai,ai+1, …， an } 是 无 序 的
+。 用 ai 与 ai-1, a i-2, …， a1 进 行 比 较 ， 找 出 合 适 的 位 置 将
+ai 插 入 ；</p>
+<p>3 ． 重 复 第 二 步 ， 共 进 行 n - i 次 插 入 处 理 ， 数 列 全 部
+有 序 。</p>
 <p><u>选 择 排 序 (Selection sort)：</u></p>
-<p>是 一 种 简 单 直 观 的 排 序 算 法 。 它 的 工 作 原 理 是 每 一 次 从 待 排 序 的 数 据 元 素 中 选 出 最 小 （ 或 最 大 ） 的 一 个元 素 ， 存 放 在 序 列 的 起 始 位 置 ， 直 到 全 部 待 排 序 的 数 据 元 素 排 完 ，所 以 每 一 趟 选 择 的 元 素 都 会 放 在 他 的 最 终 位 置 </p>
-<p>第 i 趟排序，找到L[i…n]中最小的元素与L[i]交换位置，这样保证每一趟排序确定一个元素的最终位置</p>
+<p>是 一 种 简 单 直 观 的 排 序 算 法 。 它 的 工 作 原 理 是 每 一 次
+从 待 排 序 的 数 据 元 素 中 选 出 最 小 （ 或 最 大 ） 的 一 个元 素
+， 存 放 在 序 列 的 起 始 位 置 ， 直 到 全 部 待 排 序 的 数 据 元 素
+排 完 ，所 以 每 一 趟 选 择 的 元 素 都 会 放 在 他 的 最 终 位 置</p>
+<p>第 i
+趟排序，找到L[i...n]中最小的元素与L[i]交换位置，这样保证每一趟排序确定一个元素的最终位置</p>
 <p><u>堆 排 序 ：</u></p>
-<p>如 果 要 求 升 序 则 建 立 大 根 堆 ， 降 序 则 建 立 小 根 堆 ， 堆 顶 元 素 为 最 大 或 者 最 小 的 元 素 ， 将 这 个 元 素 与 最 后 一 个 位 置 的 元 素 交 换 ， 再 将 剩 余 元 素 还 原 成 大 小 跟 堆 ， 每 一 趙 都 会 选 出 一 个 未 排 序 中 的 最 大 或 者 最 小 放 大 他 的 最 终 位 置 </p>
-<p><u>希 尔 排 序 (shell’s sort)：</u> </p>
-<p>希尔排序(Shell’s Sort)是<a href="https://baike.baidu.com/item/插入排序/7214992">插入排序</a>的一种，又称“缩小增量排序”（Diminishing Increment Sort），是直接插入<a href="https://baike.baidu.com/item/排序算法/5399605">排序算法</a>的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
+<p>如 果 要 求 升 序 则 建 立 大 根 堆 ， 降 序 则 建 立 小 根 堆 ， 堆
+顶 元 素 为 最 大 或 者 最 小 的 元 素 ， 将 这 个 元 素 与 最 后 一 个
+位 置 的 元 素 交 换 ， 再 将 剩 余 元 素 还 原 成 大 小 跟 堆 ， 每 一
+趙 都 会 选 出 一 个 未 排 序 中 的 最 大 或 者 最 小 放 大 他 的 最 终
+位 置</p>
+<p><u>希 尔 排 序 (shell's sort)：</u></p>
+<p>希尔排序(Shell's Sort)是<a href="https://baike.baidu.com/item/插入排序/7214992">插入排序</a>的一种，又称“缩小增量排序”（Diminishing
+Increment Sort），是直接插入<a href="https://baike.baidu.com/item/排序算法/5399605">排序算法</a>的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
 <p>希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，<a href="https://baike.baidu.com/item/算法/209025">算法</a>便终止。</p>
-<p>由 于 是 按 照 增 量 排 序 ， 步 长 不 同 可 能 元 素 不 一 定 到 他 最 终 位 置 </p>
+<p>由 于 是 按 照 增 量 排 序 ， 步 长 不 同 可 能 元 素 不 一 定 到 他
+最 终 位 置</p>
 
       
     </div>
@@ -996,11 +1088,34 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Collaborative Filtering has been criticized as having limited scalability, since computing similarity matrices on very large sets of items or users can take a lot of computing horsepower. I don’t really buy this, however. Technologies such as Apache Spark allow you to distribute the construction of this matrix across a cluster if you need to. <strong>A legitimate problem with collaborative filtering is that it’s sensitive to noisy data and sparse data. You’ll only get really good results if you have a large data set to work with that’s nice and clean. </strong></p>
-<p>接下来介绍一些<strong>Model-based methods</strong>. Instead of 寻找相似的物品或相似的用户, we apply data science and machine learning techniques to extract predictions from our ratings data.</p>
-<p><img src="/2020/01/09/Matrix-Factorization-Methods/1578547347570.png" alt="1578547347570"></p>
-<p>There are a wide variety of techniques that fall under the category of matrix factorization. They managed to find broader features of users and items on their own, like action movies or romantic. They are described by matrices. The general idea is to describe users and movies as combinations of different amounts of each feature. For example, Bob is defined as being 80% an action fan and 20% a comedy fan. We’d then know to match him up with movies that are blend about 80% action and 20% comedy. </p>
-<p><img src="/2020/01/09/Matrix-Factorization-Methods/1578559424817.png" alt="1578559424817"></p>
+          <p>Collaborative Filtering has been criticized as having limited
+scalability, since computing similarity matrices on very large sets of
+items or users can take a lot of computing horsepower. I don't really
+buy this, however. Technologies such as Apache Spark allow you to
+distribute the construction of this matrix across a cluster if you need
+to. <strong>A legitimate problem with collaborative filtering is that
+it's sensitive to noisy data and sparse data. You'll only get really
+good results if you have a large data set to work with that's nice and
+clean. </strong></p>
+<p>接下来介绍一些<strong>Model-based methods</strong>. Instead of
+寻找相似的物品或相似的用户, we apply data science and machine learning
+techniques to extract predictions from our ratings data.</p>
+<figure>
+<img src="/2020/01/09/Matrix-Factorization-Methods/1578547347570.png" alt="1578547347570">
+<figcaption aria-hidden="true">1578547347570</figcaption>
+</figure>
+<p>There are a wide variety of techniques that fall under the category
+of matrix factorization. They managed to find broader features of users
+and items on their own, like action movies or romantic. They are
+described by matrices. The general idea is to describe users and movies
+as combinations of different amounts of each feature. For example, Bob
+is defined as being 80% an action fan and 20% a comedy fan. We'd then
+know to match him up with movies that are blend about 80% action and 20%
+comedy.</p>
+<figure>
+<img src="/2020/01/09/Matrix-Factorization-Methods/1578559424817.png" alt="1578559424817">
+<figcaption aria-hidden="true">1578559424817</figcaption>
+</figure>
 
       
     </div>
@@ -1085,183 +1200,581 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>This is the idea of leveraging the behavior of others to inform what you might enjoy. At a very high level, it means finding other people like you and recommending stuff they liked. Or it might mean finding other things similar to the thing that you like. </p>
-<p>That’s why we call it collaborative filtering. It’s recommending stuff based on other people’s collaborative behavior. </p>
-<p>The heart of neighborhood-based collaborative filtering is the ability to find people similar to you, or items similar to items you’ve liked.</p>
-<h3 id="1-Measuring-Similarity-and-Sparsity"><a href="#1-Measuring-Similarity-and-Sparsity" class="headerlink" title="1. Measuring Similarity, and Sparsity"></a>1. Measuring Similarity, and Sparsity</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372454415.png" alt="1578372454415"></p>
-<p>这里的余弦相似度和前面content-based中的余弦相似度的区别在于：Our dimensions would be things like his: Did this user like this thing? Or was this thing liked by this user? So every user or every thing might constitute its own dimension, and the dimensions are based on user behavior instead of content attributes.</p>
-<p>The big challenge in measuring these similarities based on behavior data is the <strong>sparsity</strong> of the data we’re working with. This means that it’s tough for collaborative filtering to work well unless you have a lot of user behavior data to work with. You can’t compute a meaningful cosine similarity between two people when they have nothing in common, or between two items when they have no people in common. </p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578373973291.png" alt="1578373973291"></p>
-<p>This is why collaborative filtering works well for big companies like Amazon and Netflix. They have millions of users and so they have enough data to generate meaningful relations in spite of the data sparsity. </p>
-<p>Sparsity also introduces some computational challenges. You don’t want to waste time storing and processing all of that missing data, so under the hood we end up using structures like <strong>sparse arrays</strong> that avoid storing all that empty spaces in this matrix. </p>
-<h3 id="2-Similarity-Metrics"><a href="#2-Similarity-Metrics" class="headerlink" title="2. Similarity Metrics"></a>2. Similarity Metrics</h3><h4 id="Adjusted-Cosine"><a href="#Adjusted-Cosine" class="headerlink" title="Adjusted Cosine"></a>Adjusted Cosine</h4><p>It’s applicable mostly to measuring the similarity between users based on their ratings. It’s based on the idea that different people might have different baselines. What Bob considers a three star movie, maybe different from what Alice considers a three star movie. </p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578374644148.png" alt="1578374644148"></p>
-<p>Adjusted cosine attempts to normalize these differences. Instead of measuring similarities between people based on their raw rating values, we instead measure similarities based on the difference between a user’s rating for an item and their average rating for all items. </p>
-<p>Now this sounds good on paper, but in practice, data sparsity can really mess you up here. You can only get a meaningful average, or a baseline of an individual’s ratings if they have rated a lot of stuff for you to take the average of in the first place. 若有许多用户只评价了一部电影，then that data will be totally wasted with the adjusted cosine metric. 不管他们评了多少分，the difference between it and that user’s mean will be zero at that point. </p>
-<p>So, adjusted cosine might be worth experimenting with, but only if you know that most of your users have rated a lot of stuff implicitly or explicitly. And if you have that much data to begin with, these differences between individuals will start to work themselves out anyway. So, you’re not likely to see as much of a difference as you might expect when using adjusted cosine. </p>
-<h4 id="item-based-pearson-similarity"><a href="#item-based-pearson-similarity" class="headerlink" title="(item-based) pearson similarity"></a>(item-based) pearson similarity</h4><p>与adjusted cosine的区别在于, we look at the difference between rating and the average from all users for that given item.  </p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376440604.png" alt="1578376440604"></p>
-<p>You can think of pearson similarity as measuring the similarity between people by how much they diverge from the average person’s behavior. 例如，假设大多数人都喜欢Star Wars, people who hate Star Wars are going to get a very strong similarity score from pearson similarity, because they share opinions that are not mainstream.</p>
-<p>Note that the only difference between this and adjusted cosine is whether we’re talking about users or items. 这门课使用的suprise library, refers to adjusted cosine as user-based pearson similarity, because it’s basically the same thing.</p>
-<h4 id="spearman-rank-correlation"><a href="#spearman-rank-correlation" class="headerlink" title="spearman rank correlation"></a>spearman rank correlation</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376851254.png" alt="1578376851254"></p>
+          <p>This is the idea of leveraging the behavior of others to inform what
+you might enjoy. At a very high level, it means finding other people
+like you and recommending stuff they liked. Or it might mean finding
+other things similar to the thing that you like.</p>
+<p>That's why we call it collaborative filtering. It's recommending
+stuff based on other people's collaborative behavior.</p>
+<p>The heart of neighborhood-based collaborative filtering is the
+ability to find people similar to you, or items similar to items you've
+liked.</p>
+<h3 id="measuring-similarity-and-sparsity">1. Measuring Similarity, and
+Sparsity</h3>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372382962.png" alt="1578372382962">
+<figcaption aria-hidden="true">1578372382962</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578372454415.png" alt="1578372454415">
+<figcaption aria-hidden="true">1578372454415</figcaption>
+</figure>
+<p>这里的余弦相似度和前面content-based中的余弦相似度的区别在于：Our
+dimensions would be things like his: Did this user like this thing? Or
+was this thing liked by this user? So every user or every thing might
+constitute its own dimension, and the dimensions are based on user
+behavior instead of content attributes.</p>
+<p>The big challenge in measuring these similarities based on behavior
+data is the <strong>sparsity</strong> of the data we're working with.
+This means that it's tough for collaborative filtering to work well
+unless you have a lot of user behavior data to work with. You can't
+compute a meaningful cosine similarity between two people when they have
+nothing in common, or between two items when they have no people in
+common.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578373973291.png" alt="1578373973291">
+<figcaption aria-hidden="true">1578373973291</figcaption>
+</figure>
+<p>This is why collaborative filtering works well for big companies like
+Amazon and Netflix. They have millions of users and so they have enough
+data to generate meaningful relations in spite of the data sparsity.</p>
+<p>Sparsity also introduces some computational challenges. You don't
+want to waste time storing and processing all of that missing data, so
+under the hood we end up using structures like <strong>sparse
+arrays</strong> that avoid storing all that empty spaces in this
+matrix.</p>
+<h3 id="similarity-metrics">2. Similarity Metrics</h3>
+<h4 id="adjusted-cosine">Adjusted Cosine</h4>
+<p>It's applicable mostly to measuring the similarity between users
+based on their ratings. It's based on the idea that different people
+might have different baselines. What Bob considers a three star movie,
+maybe different from what Alice considers a three star movie.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578374644148.png" alt="1578374644148">
+<figcaption aria-hidden="true">1578374644148</figcaption>
+</figure>
+<p>Adjusted cosine attempts to normalize these differences. Instead of
+measuring similarities between people based on their raw rating values,
+we instead measure similarities based on the difference between a user's
+rating for an item and their average rating for all items.</p>
+<p>Now this sounds good on paper, but in practice, data sparsity can
+really mess you up here. You can only get a meaningful average, or a
+baseline of an individual's ratings if they have rated a lot of stuff
+for you to take the average of in the first place.
+若有许多用户只评价了一部电影，then that data will be totally wasted with
+the adjusted cosine metric. 不管他们评了多少分，the difference between
+it and that user's mean will be zero at that point.</p>
+<p>So, adjusted cosine might be worth experimenting with, but only if
+you know that most of your users have rated a lot of stuff implicitly or
+explicitly. And if you have that much data to begin with, these
+differences between individuals will start to work themselves out
+anyway. So, you're not likely to see as much of a difference as you
+might expect when using adjusted cosine.</p>
+<h4 id="item-based-pearson-similarity">(item-based) pearson
+similarity</h4>
+<p>与adjusted cosine的区别在于, we look at the difference between rating
+and the average from all users for that given item.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376440604.png" alt="1578376440604">
+<figcaption aria-hidden="true">1578376440604</figcaption>
+</figure>
+<p>You can think of pearson similarity as measuring the similarity
+between people by how much they diverge from the average person's
+behavior. 例如，假设大多数人都喜欢Star Wars, people who hate Star Wars
+are going to get a very strong similarity score from pearson similarity,
+because they share opinions that are not mainstream.</p>
+<p>Note that the only difference between this and adjusted cosine is
+whether we're talking about users or items. 这门课使用的suprise library,
+refers to adjusted cosine as user-based pearson similarity, because it's
+basically the same thing.</p>
+<h4 id="spearman-rank-correlation">spearman rank correlation</h4>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578376851254.png" alt="1578376851254">
+<figcaption aria-hidden="true">1578376851254</figcaption>
+</figure>
 <ul>
-<li>Instead of using an average rating value for a movie, 我们使用 its rank amongst all movies based on their average rating. </li>
-<li>Instead of individual ratings for a movie, we’d rank that movie amongst all that individual’s ratings. </li>
+<li>Instead of using an average rating value for a movie, 我们使用 its
+rank amongst all movies based on their average rating.</li>
+<li>Instead of individual ratings for a movie, we'd rank that movie
+amongst all that individual's ratings.</li>
 </ul>
-<p>Spearman的主要优势在于 it can deal with ordinal data effectively. 例如，if you had a rating scale, where the difference in meaning between different rating values were not the same. I’ve never seen this actually used in real world applications, but you may encounter it in the academic literature.</p>
-<h4 id="mean-squared-difference"><a href="#mean-squared-difference" class="headerlink" title="mean squared difference"></a>mean squared difference</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578377776225.png" alt="1578377776225"></p>
-<p>另一方面，我们可以将它应用到item上：x和y指两个不同的item, and then we’d be looking at the differences in ratings from the people these items have in common (所有评价过这两个item的人对这两个item评分的差异).</p>
-<p>There are two ways of doing collaborative filtering, item based and user based, and it’s important to remember that most of these similarity metrics can apply to either approach. </p>
-<p>MSD 要比余弦相似度更好理解， 但 in practice, 你通常会发现cosine works better.</p>
-<h4 id="jaccard-similarity"><a href="#jaccard-similarity" class="headerlink" title="jaccard similarity"></a>jaccard similarity</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385168727.png" alt="1578385168727"></p>
-<p>jaccard similarity 没有使用实际的rating vlaue. If you are dealing with implicit ratings, for example, just the fact that somebody watched something, in this case, Jaccard can be a reasonable choice that’s very fast to compute. </p>
-<h4 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385386398.png" alt="1578385386398"></p>
+<p>Spearman的主要优势在于 it can deal with ordinal data effectively.
+例如，if you had a rating scale, where the difference in meaning between
+different rating values were not the same. I've never seen this actually
+used in real world applications, but you may encounter it in the
+academic literature.</p>
+<h4 id="mean-squared-difference">mean squared difference</h4>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578377776225.png" alt="1578377776225">
+<figcaption aria-hidden="true">1578377776225</figcaption>
+</figure>
+<p>另一方面，我们可以将它应用到item上：x和y指两个不同的item, and then
+we'd be looking at the differences in ratings from the people these
+items have in common
+(所有评价过这两个item的人对这两个item评分的差异).</p>
+<p>There are two ways of doing collaborative filtering, item based and
+user based, and it's important to remember that most of these similarity
+metrics can apply to either approach.</p>
+<p>MSD 要比余弦相似度更好理解， 但 in practice, 你通常会发现cosine works
+better.</p>
+<h4 id="jaccard-similarity">jaccard similarity</h4>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385168727.png" alt="1578385168727">
+<figcaption aria-hidden="true">1578385168727</figcaption>
+</figure>
+<p>jaccard similarity 没有使用实际的rating vlaue. If you are dealing
+with implicit ratings, for example, just the fact that somebody watched
+something, in this case, Jaccard can be a reasonable choice that's very
+fast to compute.</p>
+<h4 id="recap">Recap</h4>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578385386398.png" alt="1578385386398">
+<figcaption aria-hidden="true">1578385386398</figcaption>
+</figure>
 <ul>
-<li>Cosine similarity is almost always a reasonable thing to start with.</li>
-<li>Adjust cosine and Pearson are two different terms for basically the same thing. It’s mean centered cosine similarities. The idea is to deal with unusual rating behavior that deviates from the mean, but in practice, it can sometimes do more harm than good.</li>
-<li>Spearman ranking correlation is the same idea as Pearson, using ranking instead of raw ratings, and it’s not something you are likely to be using in practice.</li>
-<li>MSD is mean squared difference, which is just an easier similarity metric to warp your head around than cosine similarity, but in practice, it usually doesn’t perform better.</li>
-<li>Jaccard similarity is just looking at how many items two users have in common, or how many users two items have in common, divided by how many items or users they have between both of them. It’s really simple and well suited to implicit ratings, like binary actions, like purchasing or view something. But you can also apply cosine similarities to implicit ratings too.</li>
-<li>So, and the end of the day, cosine similarity remains my default go to similarity metric. </li>
+<li>Cosine similarity is almost always a reasonable thing to start
+with.</li>
+<li>Adjust cosine and Pearson are two different terms for basically the
+same thing. It's mean centered cosine similarities. The idea is to deal
+with unusual rating behavior that deviates from the mean, but in
+practice, it can sometimes do more harm than good.</li>
+<li>Spearman ranking correlation is the same idea as Pearson, using
+ranking instead of raw ratings, and it's not something you are likely to
+be using in practice.</li>
+<li>MSD is mean squared difference, which is just an easier similarity
+metric to warp your head around than cosine similarity, but in practice,
+it usually doesn't perform better.</li>
+<li>Jaccard similarity is just looking at how many items two users have
+in common, or how many users two items have in common, divided by how
+many items or users they have between both of them. It's really simple
+and well suited to implicit ratings, like binary actions, like
+purchasing or view something. But you can also apply cosine similarities
+to implicit ratings too.</li>
+<li>So, and the end of the day, cosine similarity remains my default go
+to similarity metric.</li>
 </ul>
-<h3 id="3-协同过滤"><a href="#3-协同过滤" class="headerlink" title="3. 协同过滤"></a>3. 协同过滤</h3><h4 id="3-1-User-based-Collaborative-Filtering-基于用户的协同过滤-UserCF"><a href="#3-1-User-based-Collaborative-Filtering-基于用户的协同过滤-UserCF" class="headerlink" title="3.1 User-based Collaborative Filtering 基于用户的协同过滤(UserCF)"></a>3.1 User-based Collaborative Filtering 基于用户的协同过滤(UserCF)</h4><p>与基于物品的协同过滤类似的，不同的是，基于物品的协同过滤的原理是用户 U 购买了 A 物品，推荐给用户 U 和 A 相似的物品 B、C、D。而基于用户的协同过滤，是先计算用户 U 与其他的用户的相似度，然后取和 U 最相似的几个用户，把他们购买过的物品推荐给用户U。</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386125836.png" alt="1578386125836"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386158223.png" alt="1578386158223"></p>
+<h3 id="协同过滤">3. 协同过滤</h3>
+<h4 id="user-based-collaborative-filtering-基于用户的协同过滤usercf">3.1
+User-based Collaborative Filtering 基于用户的协同过滤(UserCF)</h4>
+<p>与基于物品的协同过滤类似的，不同的是，基于物品的协同过滤的原理是用户
+U 购买了 A 物品，推荐给用户 U 和 A 相似的物品
+B、C、D。而基于用户的协同过滤，是先计算用户 U
+与其他的用户的相似度，然后取和 U
+最相似的几个用户，把他们购买过的物品推荐给用户U。</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386125836.png" alt="1578386125836">
+<figcaption aria-hidden="true">1578386125836</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578386158223.png" alt="1578386158223">
+<figcaption aria-hidden="true">1578386158223</figcaption>
+</figure>
 <hr>
-<h5 id="3-1-1-计算用户之间的相似度"><a href="#3-1-1-计算用户之间的相似度" class="headerlink" title="3.1.1 计算用户之间的相似度"></a>3.1.1 计算用户之间的相似度</h5><p>参考 <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<h5 id="计算用户之间的相似度">3.1.1 计算用户之间的相似度</h5>
+<p>参考
+https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
 <p>为了计算用户相似度，我们首先要把用户购买过物品的索引数据转化成物品被用户购买过的索引数据，即物品的倒排索引：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012706765.png" alt="1596012706765"></p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012706765.png" alt="1596012706765">
+<figcaption aria-hidden="true">1596012706765</figcaption>
+</figure>
 <p>建立好物品的倒排索引后，就可以根据相似度公式计算用户之间的相似度：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012763141.png" alt="1596012763141"></p>
-<p>其中 $N(a)$ 表示用户 $a$ 购买物品的数量，$N(b)$ 表示用户 $b$ 购买物品的数量，$N(a)∩N(b)$ 表示用户 $a$ 和 $b$ 购买相同物品的数量。有了用户的相似数据，针对用户 U 挑选 k 个最相似的用户，把他们购买过的物品中，U 未购买过的物品推荐给用户 U 即可。</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012763141.png" alt="1596012763141">
+<figcaption aria-hidden="true">1596012763141</figcaption>
+</figure>
+<p>其中 <span class="math inline">\(N(a)\)</span> 表示用户 <span class="math inline">\(a\)</span> 购买物品的数量，<span class="math inline">\(N(b)\)</span> 表示用户 <span class="math inline">\(b\)</span> 购买物品的数量，<span class="math inline">\(N(a)∩N(b)\)</span> 表示用户 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span>
+购买相同物品的数量。有了用户的相似数据，针对用户 U 挑选 k
+个最相似的用户，把他们购买过的物品中，U 未购买过的物品推荐给用户 U
+即可。</p>
 <hr>
-<h5 id="3-1-2-举例"><a href="#3-1-2-举例" class="headerlink" title="3.1.2 举例"></a>3.1.2 举例</h5><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455133171.png" alt="1578455133171"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455288882.png" alt="1578455288882"></p>
+<h5 id="举例">3.1.2 举例</h5>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455133171.png" alt="1578455133171">
+<figcaption aria-hidden="true">1578455133171</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578455288882.png" alt="1578455288882">
+<figcaption aria-hidden="true">1578455288882</figcaption>
+</figure>
 <ul>
 <li>每个人和自己的余弦相似度是1</li>
 <li>Bob 和 Ted的余弦相似度是0，因为他们没有评价过相同的电影</li>
 <li>矩阵的上三角部分和下三角部分是对称的</li>
-<li>对于 Bob 和 Ann, 虽然他们评价过不同的电影，当我们考虑相似度时，我们只看他们共同评价过的电影。在这个例子中，他们共同评价过的电影只有一部，并且评分都为5，所以他们的相似度得分为1 (100%)。</li>
+<li>对于 Bob 和 Ann,
+虽然他们评价过不同的电影，当我们考虑相似度时，我们只看他们共同评价过的电影。在这个例子中，他们共同评价过的电影只有一部，并且评分都为5，所以他们的相似度得分为1
+(100%)。</li>
 </ul>
 <blockquote>
-<p>注：两个用户的相似度为100%并不一定代表他们喜欢相同的东西，也可以代表他们都讨厌相同的东西（例如，若 Bob 和 Ann 都给Star Wars打1分，他们仍然是100% similar）。事实上，the math behind cosine similarity works out such that <strong>if you only have one movie in common, you end up with 100% similarity no matter what. </strong>Even if Bob loved Star Wars and Ann hated it, in a sparse data situation, they both end up 100% similar. Sparse data is a huge problem with collaborative filtering, and it can lead to weird results. And sometimes, you need to enforce a minimum threshold on how many movies users have in common before you consider them at all.</p>
+<p>注：两个用户的相似度为100%并不一定代表他们喜欢相同的东西，也可以代表他们都讨厌相同的东西（例如，若
+Bob 和 Ann 都给Star Wars打1分，他们仍然是100% similar）。事实上，the
+math behind cosine similarity works out such that <strong>if you only
+have one movie in common, you end up with 100% similarity no matter
+what. </strong>Even if Bob loved Star Wars and Ann hated it, in a sparse
+data situation, they both end up 100% similar. Sparse data is a huge
+problem with collaborative filtering, and it can lead to weird results.
+And sometimes, you need to enforce a minimum threshold on how many
+movies users have in common before you consider them at all.</p>
 </blockquote>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578456962753.png" alt="1578456962753"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457107702.png" alt="1578457107702"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457502291.png" alt="1578457502291"></p>
-<p>除了normalizing, 还可以例如将评分为1、2的转换成negative score, 方法不唯一，没有标准的方法，可通过试验看 what works best for the data you have.</p>
-<p>应该adding in the score for a given movie if we encounter it more than once.</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457620591.png" alt="1578457620591"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457759908.png" alt="1578457759908"></p>
-<h5 id="3-1-3-Recap"><a href="#3-1-3-Recap" class="headerlink" title="3.1.3 Recap"></a>3.1.3 Recap</h5><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457999015.png" alt="1578457999015"></p>
-<h5 id="3-1-4-User-based-Collaborative-Filtering-Hands-On"><a href="#3-1-4-User-based-Collaborative-Filtering-Hands-On" class="headerlink" title="3.1.4 User-based Collaborative Filtering, Hands-On"></a>3.1.4 User-based Collaborative Filtering, Hands-On</h5><p>code walkthrough</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578456962753.png" alt="1578456962753">
+<figcaption aria-hidden="true">1578456962753</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457107702.png" alt="1578457107702">
+<figcaption aria-hidden="true">1578457107702</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457502291.png" alt="1578457502291">
+<figcaption aria-hidden="true">1578457502291</figcaption>
+</figure>
+<p>除了normalizing, 还可以例如将评分为1、2的转换成negative score,
+方法不唯一，没有标准的方法，可通过试验看 what works best for the data
+you have.</p>
+<p>应该adding in the score for a given movie if we encounter it more
+than once.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457620591.png" alt="1578457620591">
+<figcaption aria-hidden="true">1578457620591</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457759908.png" alt="1578457759908">
+<figcaption aria-hidden="true">1578457759908</figcaption>
+</figure>
+<h5 id="recap-1">3.1.3 Recap</h5>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578457999015.png" alt="1578457999015">
+<figcaption aria-hidden="true">1578457999015</figcaption>
+</figure>
+<h5 id="user-based-collaborative-filtering-hands-on">3.1.4 User-based
+Collaborative Filtering, Hands-On</h5>
+<p>code walkthrough</p>
 <p>CollaborativeFiltering文件夹里的：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113">
+<figcaption aria-hidden="true">1578458631113</figcaption>
+</figure>
 <p>运行SimpleUserCF.py</p>
-<h4 id="3-2-Item-based-Collaborative-Filtering-基于物品的协同过滤-ItemCF"><a href="#3-2-Item-based-Collaborative-Filtering-基于物品的协同过滤-ItemCF" class="headerlink" title="3.2 Item-based Collaborative Filtering 基于物品的协同过滤(ItemCF)"></a>3.2 Item-based Collaborative Filtering 基于物品的协同过滤(ItemCF)</h4><p>Look at the things you liked, and recommend stuff that’s similar to those things. </p>
+<h4 id="item-based-collaborative-filtering-基于物品的协同过滤itemcf">3.2
+Item-based Collaborative Filtering 基于物品的协同过滤(ItemCF)</h4>
+<p>Look at the things you liked, and recommend stuff that's similar to
+those things.</p>
 <p>核心思想：给用户推荐那些和他们之前喜欢的物品相似的物品。</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458842316.png" alt="1578458842316"></p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458842316.png" alt="1578458842316">
+<figcaption aria-hidden="true">1578458842316</figcaption>
+</figure>
 <p>一些原因为什么使用物品之间的相似度可能比使用用户之间的相似度更好：</p>
 <ul>
-<li>Items tend to be of a more permanent nature than people. An individual’s test may change very quickly over the span of their lives. Your math book will always be similar to other math books. As such, you can get away with computing an item similarity matrix less often than user similarities, because it won’t change very quickly.</li>
-<li>You usually have far fewer items to deal with than people. There are way more people than there are things to recommend to them in most cases. 即物品相似度矩阵会比用户相似度矩阵会小很多，这样不仅 make it simpler to store that matrix, it makes faster to compute as well. And when you’re dealing with massive systems like Amazon and Netflix, computational efficiency is very important. Not only does it require fewer resources, it means you can regenerate your similarities between items more often, making your system more responsive when new items are introduced.</li>
-<li>使用 item similarities also makes for a better experience for new users. 一个新用户只要表现出了对某个物品的兴趣，你可以推荐与那个物品相似的物品给该用户，而使用基于用户的协同过滤，you wouldn’t have any recommendations for a new user at all until they make it into the next build of your user similarity matrix.</li>
+<li>Items tend to be of a more permanent nature than people. An
+individual's test may change very quickly over the span of their lives.
+Your math book will always be similar to other math books. As such, you
+can get away with computing an item similarity matrix less often than
+user similarities, because it won't change very quickly.</li>
+<li>You usually have far fewer items to deal with than people. There are
+way more people than there are things to recommend to them in most
+cases. 即物品相似度矩阵会比用户相似度矩阵会小很多，这样不仅 make it
+simpler to store that matrix, it makes faster to compute as well. And
+when you're dealing with massive systems like Amazon and Netflix,
+computational efficiency is very important. Not only does it require
+fewer resources, it means you can regenerate your similarities between
+items more often, making your system more responsive when new items are
+introduced.</li>
+<li>使用 item similarities also makes for a better experience for new
+users.
+一个新用户只要表现出了对某个物品的兴趣，你可以推荐与那个物品相似的物品给该用户，而使用基于用户的协同过滤，you
+wouldn't have any recommendations for a new user at all until they make
+it into the next build of your user similarity matrix.</li>
 </ul>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463648320.png" alt="1578463648320"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463881122.png" alt="1578463881122"></p>
-<p>在这个例子中，所有的相似度都为0或1，是因为数据量比较小。In the real world, you’d see more interesting and meaningful numbers here.</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578464579773.png" alt="1578464579773"></p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463648320.png" alt="1578463648320">
+<figcaption aria-hidden="true">1578463648320</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578463881122.png" alt="1578463881122">
+<figcaption aria-hidden="true">1578463881122</figcaption>
+</figure>
+<p>在这个例子中，所有的相似度都为0或1，是因为数据量比较小。In the real
+world, you'd see more interesting and meaningful numbers here.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578464579773.png" alt="1578464579773">
+<figcaption aria-hidden="true">1578464579773</figcaption>
+</figure>
 <hr>
-<h5 id="3-2-1-计算物品相似度的方法"><a href="#3-2-1-计算物品相似度的方法" class="headerlink" title="3.2.1 计算物品相似度的方法"></a>3.2.1 计算物品相似度的方法</h5><p>参考 <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-<p>基于物品的协同过滤算法首先计算物品之间的相似度， 计算相似度的方法有以下几种：</p>
+<h5 id="计算物品相似度的方法">3.2.1 计算物品相似度的方法</h5>
+<p>参考
+https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
+<p>基于物品的协同过滤算法首先计算物品之间的相似度，
+计算相似度的方法有以下几种：</p>
 <p><strong>1. 基于共同喜欢物品的用户列表计算</strong></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596011528508.png" alt="1596011528508"></p>
-<p>在此，分母中 $N(i)$ 是购买物品 $i$ 的用户数，$N(j)$ 是购买物品 $j$ 的用户数，而分子 $N(i)∩N(j)$是同时购买物品 $i$ 和物品 $j$ 的用户数。可见上述的公式的核心是计算同时购买这件商品的人数比例 。当同时购买这两个物品的人数越多，他们的相似度也就越高。另外值得注意的是，在分母中我们用了物品总购买人数做惩罚，也就是说某个物品可能很热门，导致它经常会被和其他物品一起购买，所以除以它的总购买人数，来降低它和其他物品的相似分数。</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596011528508.png" alt="1596011528508">
+<figcaption aria-hidden="true">1596011528508</figcaption>
+</figure>
+<p>在此，分母中 <span class="math inline">\(N(i)\)</span> 是购买物品
+<span class="math inline">\(i\)</span> 的用户数，<span class="math inline">\(N(j)\)</span> 是购买物品 <span class="math inline">\(j\)</span> 的用户数，而分子 <span class="math inline">\(N(i)∩N(j)\)</span>是同时购买物品 <span class="math inline">\(i\)</span> 和物品 <span class="math inline">\(j\)</span>
+的用户数。可见上述的公式的核心是计算同时购买这件商品的人数比例
+。当同时购买这两个物品的人数越多，他们的相似度也就越高。另外值得注意的是，在分母中我们用了物品总购买人数做惩罚，也就是说某个物品可能很热门，导致它经常会被和其他物品一起购买，所以除以它的总购买人数，来降低它和其他物品的相似分数。</p>
 <p><strong>2. 基于余弦的相似度计算</strong></p>
-<p>上面的方法计算物品相似度是直接计算同时购买这两个物品的人数。但是也可能存在用户购买了但不喜欢的情况，所以如果数据集包含了具体的<strong>评分数据</strong>，我们可以进一步把用户评分引入到相似度计算中 。</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596011935928.png" alt="1596011935928"></p>
-<p>其中 $n_{ki}$ 是用户 $k$ 对物品 $i$ 的评分，如果没有评分则为 0。</p>
+<p>上面的方法计算物品相似度是直接计算同时购买这两个物品的人数。但是也可能存在用户购买了但不喜欢的情况，所以如果数据集包含了具体的<strong>评分数据</strong>，我们可以进一步把用户评分引入到相似度计算中
+。</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596011935928.png" alt="1596011935928">
+<figcaption aria-hidden="true">1596011935928</figcaption>
+</figure>
+<p>其中 <span class="math inline">\(n_{ki}\)</span> 是用户 <span class="math inline">\(k\)</span> 对物品 <span class="math inline">\(i\)</span> 的评分，如果没有评分则为 0。</p>
 <p><strong>3. 热门物品的惩罚</strong></p>
 <p>对于热门物品的问题，可以用如下公式解决：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012034088.png" alt="1596012034088"></p>
-<p>当 $\alpha ∈ (0，0.5)$时，$N(i)$ 越小，惩罚得越厉害，从而会使热门物品相关性分数下降。</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1596012034088.png" alt="1596012034088">
+<figcaption aria-hidden="true">1596012034088</figcaption>
+</figure>
+<p>当 <span class="math inline">\(\alpha ∈ (0，0.5)\)</span>时，<span class="math inline">\(N(i)\)</span>
+越小，惩罚得越厉害，从而会使热门物品相关性分数下降。</p>
 <hr>
-<h5 id="3-2-2-Item-based-Collaborative-Filtering-Hands-On"><a href="#3-2-2-Item-based-Collaborative-Filtering-Hands-On" class="headerlink" title="3.2.2 Item-based Collaborative Filtering, Hands-On"></a>3.2.2 Item-based Collaborative Filtering, Hands-On</h5><p>code walkthrough</p>
+<h5 id="item-based-collaborative-filtering-hands-on">3.2.2 Item-based
+Collaborative Filtering, Hands-On</h5>
+<p>code walkthrough</p>
 <p>CollaborativeFiltering文件夹里的：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113">
+<figcaption aria-hidden="true">1578458631113</figcaption>
+</figure>
 <p>运行SimpleItemCF.py</p>
-<p>Item-based collaborative filtering is what Amazon used with outstanding success.</p>
-<p>You need to test it out on several real people if possible, and then move to a large scale A/B test to see if this algorithm really is better or worse than whatever you might have today.</p>
+<p>Item-based collaborative filtering is what Amazon used with
+outstanding success.</p>
+<p>You need to test it out on several real people if possible, and then
+move to a large scale A/B test to see if this algorithm really is better
+or worse than whatever you might have today.</p>
 <hr>
-<h4 id="3-3-矩阵分解"><a href="#3-3-矩阵分解" class="headerlink" title="3.3 矩阵分解"></a>3.3 矩阵分解</h4><p>参考 <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
-<p>上述计算会得到一个相似度矩阵，而这个矩阵的大小和维度都是很大的，需要进行降维处理，用到的是SVD的降维方法，具体可以参考：<a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine Learning/8. ML特征工程和优化方法#25-降维方法">降维方法</a></p>
+<h4 id="矩阵分解">3.3 矩阵分解</h4>
+<p>参考
+https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
+<p>上述计算会得到一个相似度矩阵，而这个矩阵的大小和维度都是很大的，需要进行降维处理，用到的是SVD的降维方法，具体可以参考：<a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Machine%20Learning/8.%20ML特征工程和优化方法#25-降维方法">降维方法</a></p>
 <p><strong>基于稀疏自编码的矩阵分解</strong></p>
 <p>矩阵分解技术在推荐领域的应用比较成熟，但是通过上一节的介绍，我们不难发现矩阵分解本质上只通过一次分解来对原矩阵进行逼近，特征挖掘的层次不够深入。另外矩阵分解也没有运用到物品本身的内容特征，例如书本的类别分类、音乐的流派分类等。随着神经网络技术的兴起，笔者发现通过多层感知机，可以得到更加深度的特征表示，并且可以对内容分类特征加以应用。首先，我们介绍一下稀疏自编码神经网络的设计思路。</p>
-<ol>
+<ol type="1">
 <li><p><strong>基础的自编码结构</strong></p>
 <p>最简单的自编码结构如下图，构造个三层的神经网络，我们让输出层等于输入层，且中间层的维度远低于输入层和输出层，这样就得到了第一层的特征压缩。</p>
-<p><img src="https://camo.githubusercontent.com/c056188f3498f28ff6bfe618b81642ba7711a797/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31332d32342d34382e706e67" alt="img"></p>
-<p>简单来说自编码神经网络尝试学习<strong>中间层约等于输入层</strong>的函数。换句话说，它尝试逼近一个恒等函数。如果网络的输入数据是完全随机的，比如每一个输入都是一个跟其他特征完全无关的独立同分布高斯随机变 ，那么这一压缩表示将会非常难于学习。但是如果输入数据中隐含着 些特定的结构，比如某些输入特征是彼此相关的，那么这一算法就可以发现输入数据中的这些相关性。</p>
-</li>
+<figure>
+<img src="https://camo.githubusercontent.com/c056188f3498f28ff6bfe618b81642ba7711a797/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31332d32342d34382e706e67" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>简单来说自编码神经网络尝试学习<strong>中间层约等于输入层</strong>的函数。换句话说，它尝试逼近一个恒等函数。如果网络的输入数据是完全随机的，比如每一个输入都是一个跟其他特征完全无关的独立同分布高斯随机变
+，那么这一压缩表示将会非常难于学习。但是如果输入数据中隐含着
+些特定的结构，比如某些输入特征是彼此相关的，那么这一算法就可以发现输入数据中的这些相关性。</p></li>
 <li><p><strong>多层结构</strong></p>
 <p>基于以上的单层隐藏层的网络结构，我们可以扩展至多层网络结构，学习到更高层次的抽象特征。</p>
-<p><img src="https://camo.githubusercontent.com/77fdc47c74a72f3b3c1b57ab29ec08452697eb42/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31332d33362d35312e6a7067" alt="img"></p>
-</li>
+<figure>
+<img src="https://camo.githubusercontent.com/77fdc47c74a72f3b3c1b57ab29ec08452697eb42/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31332d33362d35312e6a7067" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure></li>
 </ol>
 <hr>
-<h3 id="4-Exercise"><a href="#4-Exercise" class="headerlink" title="4. Exercise"></a>4. Exercise</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468263883.png" alt="1578468263883"></p>
-<p>我们之前是选取的top-n，例如item-based: 选择用户评价前10的电影，再找similar items；user-based: 选择与用户相似度排前10的用户，再…</p>
-<p>Maybe it would be better if instead of taking the top k sources for recommendation candidates, we just use any source above some given quality threshold. 例如，用户评价4星以上的电影 should generate item-based recommendation candidates, no matter how many or how few of them there may be.</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468513742.png" alt="1578468513742"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468541742.png" alt="1578468541742"></p>
-<p>可以发现一个小的改变可以使得结果很不一样。Often, you don’t just want to test different recommendation algorithms, you want to test different variations and parameters on those algorithms. In this case, I not only want to test the idea of using a threshold instead of a top k approach, I’d also want to test many different threshold values to find the best one. In the real world, you’ll find that your biggest problem is just not having enough time to run all of the different experiments you want to run to make your recommendations  better. </p>
-<h3 id="5-Evaluating-Collaborative-Filtering-Systems-Offline"><a href="#5-Evaluating-Collaborative-Filtering-Systems-Offline" class="headerlink" title="5. Evaluating Collaborative Filtering Systems Offline"></a>5. Evaluating Collaborative Filtering Systems Offline</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469111053.png" alt="1578469111053"></p>
-<p>Now, although <strong>we can’t measure accuracy with user based or item based collaborative filtering, because they don’t make rating predictions</strong>, we can still measure hit rate, because it is still a top-N recommender.</p>
-<h4 id="code-walkthrough"><a href="#code-walkthrough" class="headerlink" title="code walkthrough"></a>code walkthrough</h4><p>CollaborativeFiltering文件夹里的：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
-<p>运行EvaluateUserCF.py</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469413099.png" alt="1578469413099"></p>
-<p>That was surprisingly fast. One really nice property of collaborative filtering is how quickly it can generate recommendations for any given individual, once we’ve built up the similarity matrix.</p>
-<p>结果5.5% is pretty good.</p>
-<h4 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h4><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469688733.png" alt="1578469688733"></p>
-<p>与EvaluateUserCF.py相比需要改变的地方：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578470341309.png" alt="1578470341309"></p>
-<p>item-based的hit rate只有0.5%，相比user-based的5.5%，要差一点。</p>
-<p>Item-based should be a superior approach, and that’s been proven in industry. 这里item-based要差一点应该是数据的原因。而且这只是offline evaluation. If we were to test both algorithms on real-world people using real-world data in an A/B test, the results could end up being very different.</p>
-<h3 id="6-KNN-Recommenders"><a href="#6-KNN-Recommenders" class="headerlink" title="6. KNN Recommenders"></a>6. KNN Recommenders</h3><p>The concept of collaborative filtering has been applied to recommender systems that do make rating predictions, and these are generally referred to in the literature as KNN recommenders.</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578471356190.png" alt="1578471356190"></p>
-<p>In this sort of system, we generate recommendation candidates by predicting the ratings of everything a user hasn’t already rated, and selecting the top k items with the highest predicted ratings. This obviously isn’t a terribly efficient approach, but since we’re predicting rating values, we can measure the offline accuracy of the system using train/test or cross-validation, which is useful in the research world.</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578478326957.png" alt="1578478326957"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479201990.png" alt="1578479201990"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479315924.png" alt="1578479315924"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479574982.png" alt="1578479574982"></p>
-<h4 id="Running-User-and-Item-based-KNN-on-MovieLens"><a href="#Running-User-and-Item-based-KNN-on-MovieLens" class="headerlink" title="Running User and Item-based KNN on MovieLens"></a>Running User and Item-based KNN on MovieLens</h4><p>code walkthrough</p>
+<h3 id="exercise">4. Exercise</h3>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468263883.png" alt="1578468263883">
+<figcaption aria-hidden="true">1578468263883</figcaption>
+</figure>
+<p>我们之前是选取的top-n，例如item-based:
+选择用户评价前10的电影，再找similar items；user-based:
+选择与用户相似度排前10的用户，再...</p>
+<p>Maybe it would be better if instead of taking the top k sources for
+recommendation candidates, we just use any source above some given
+quality threshold. 例如，用户评价4星以上的电影 should generate
+item-based recommendation candidates, no matter how many or how few of
+them there may be.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468513742.png" alt="1578468513742">
+<figcaption aria-hidden="true">1578468513742</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578468541742.png" alt="1578468541742">
+<figcaption aria-hidden="true">1578468541742</figcaption>
+</figure>
+<p>可以发现一个小的改变可以使得结果很不一样。Often, you don't just want
+to test different recommendation algorithms, you want to test different
+variations and parameters on those algorithms. In this case, I not only
+want to test the idea of using a threshold instead of a top k approach,
+I'd also want to test many different threshold values to find the best
+one. In the real world, you'll find that your biggest problem is just
+not having enough time to run all of the different experiments you want
+to run to make your recommendations better.</p>
+<h3 id="evaluating-collaborative-filtering-systems-offline">5.
+Evaluating Collaborative Filtering Systems Offline</h3>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469111053.png" alt="1578469111053">
+<figcaption aria-hidden="true">1578469111053</figcaption>
+</figure>
+<p>Now, although <strong>we can't measure accuracy with user based or
+item based collaborative filtering, because they don't make rating
+predictions</strong>, we can still measure hit rate, because it is still
+a top-N recommender.</p>
+<h4 id="code-walkthrough">code walkthrough</h4>
 <p>CollaborativeFiltering文件夹里的：</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113"></p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113">
+<figcaption aria-hidden="true">1578458631113</figcaption>
+</figure>
+<p>运行EvaluateUserCF.py</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469413099.png" alt="1578469413099">
+<figcaption aria-hidden="true">1578469413099</figcaption>
+</figure>
+<p>That was surprisingly fast. One really nice property of collaborative
+filtering is how quickly it can generate recommendations for any given
+individual, once we've built up the similarity matrix.</p>
+<p>结果5.5% is pretty good.</p>
+<h4 id="exercise-1">Exercise</h4>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578469688733.png" alt="1578469688733">
+<figcaption aria-hidden="true">1578469688733</figcaption>
+</figure>
+<p>与EvaluateUserCF.py相比需要改变的地方：</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578470341309.png" alt="1578470341309">
+<figcaption aria-hidden="true">1578470341309</figcaption>
+</figure>
+<p>item-based的hit rate只有0.5%，相比user-based的5.5%，要差一点。</p>
+<p>Item-based should be a superior approach, and that's been proven in
+industry. 这里item-based要差一点应该是数据的原因。而且这只是offline
+evaluation. If we were to test both algorithms on real-world people
+using real-world data in an A/B test, the results could end up being
+very different.</p>
+<h3 id="knn-recommenders">6. KNN Recommenders</h3>
+<p>The concept of collaborative filtering has been applied to
+recommender systems that do make rating predictions, and these are
+generally referred to in the literature as KNN recommenders.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578471356190.png" alt="1578471356190">
+<figcaption aria-hidden="true">1578471356190</figcaption>
+</figure>
+<p>In this sort of system, we generate recommendation candidates by
+predicting the ratings of everything a user hasn't already rated, and
+selecting the top k items with the highest predicted ratings. This
+obviously isn't a terribly efficient approach, but since we're
+predicting rating values, we can measure the offline accuracy of the
+system using train/test or cross-validation, which is useful in the
+research world.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578478326957.png" alt="1578478326957">
+<figcaption aria-hidden="true">1578478326957</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479201990.png" alt="1578479201990">
+<figcaption aria-hidden="true">1578479201990</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479315924.png" alt="1578479315924">
+<figcaption aria-hidden="true">1578479315924</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479574982.png" alt="1578479574982">
+<figcaption aria-hidden="true">1578479574982</figcaption>
+</figure>
+<h4 id="running-user-and-item-based-knn-on-movielens">Running User and
+Item-based KNN on MovieLens</h4>
+<p>code walkthrough</p>
+<p>CollaborativeFiltering文件夹里的：</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578458631113.png" alt="1578458631113">
+<figcaption aria-hidden="true">1578458631113</figcaption>
+</figure>
 <p>运行KNNBakeOff.py</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479972763.png" alt="1578479972763"></p>
-<p>如果只看accuracy, KNN recommendation看上去是一个好方法，但是如果看 top-n recommendations, item-based和user-based推荐的都是些没听说过的电影 (obscure)，反而 random recommendation looks a lot better from a subjective standpoint.</p>
-<p>So, on the surface, it looks like we may have made a system that’s pretty good at predicting ratings of movies people have already seen, but might not be very good at producing top-n recommendations.</p>
-<h4 id="Exercise-1"><a href="#Exercise-1" class="headerlink" title="Exercise"></a>Exercise</h4><p>Experiment with different KNN parameters.</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480409983.png" alt="1578480409983"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480533805.png" alt="1578480533805"></p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578479972763.png" alt="1578479972763">
+<figcaption aria-hidden="true">1578479972763</figcaption>
+</figure>
+<p>如果只看accuracy, KNN recommendation看上去是一个好方法，但是如果看
+top-n recommendations, item-based和user-based推荐的都是些没听说过的电影
+(obscure)，反而 random recommendation looks a lot better from a
+subjective standpoint.</p>
+<p>So, on the surface, it looks like we may have made a system that's
+pretty good at predicting ratings of movies people have already seen,
+but might not be very good at producing top-n recommendations.</p>
+<h4 id="exercise-2">Exercise</h4>
+<p>Experiment with different KNN parameters.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480409983.png" alt="1578480409983">
+<figcaption aria-hidden="true">1578480409983</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480533805.png" alt="1578480533805">
+<figcaption aria-hidden="true">1578480533805</figcaption>
+</figure>
 <p>虽然msd比cosine的RMSE要低一点，但它们推荐的内容是一样的</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480727372.png" alt="1578480727372"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480843642.png" alt="1578480843642"></p>
-<p>Well, it’s actually pretty well known that KNN doesn’t work well in practice. Unfortunately, some people conclude that collaborative filtering in general is some naive approach that should be replaced with completely different techniques. But as we’ve seen, collaborative filtering isn’t the problem, it’s forcing collaborative filtering to make rating predictions — that’s the problem. We had some pretty exciting results when we just focused on making top-N recommendations, and completely forgot about optimizing for rating accuracy, and it turns out that’s what at the heart of the problem. <strong>使用user-based CF和item-based CF,   top-N 推荐结果都是不错的。</strong></p>
-<p>Ratings are not continuous in nature, and KNN treats them as though they are continuous values that can be predicted on a continuous scale. If you really want to go with KNN, it would be more appropriate to treat it as a rating classification problem than as a rating prediction problem. KNN is also very sensitive to sparse data.</p>
-<p>The most fundamental thing is that accuracy isn’t everything. The main reason KNN produces underwhelming results is because it’s trying to solve the wrong problem. <strong>KNN recommender之所以推荐结果不好，是因为它解决的是rating prediction的问题，而不是推荐问题</strong>。</p>
-<h3 id="7-Bleeding-Edge-Alert"><a href="#7-Bleeding-Edge-Alert" class="headerlink" title="7. Bleeding Edge Alert"></a>7. Bleeding Edge Alert</h3><p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491659157.png" alt="1578491659157"></p>
-<p>The idea behind it is that users are modeled as vectors moving from one item to another in a multidimensional space. And you can predict sequences of events, like which movie a user is likely to watch next, by modeling these vectors.</p>
-<p>The reason this paper is exciting is because it outperformed all of the best existing methods for recommending sequences of events in all but one case in one data set.</p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491938065.png" alt="1578491938065"></p>
-<p><img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578492119528.png" alt="1578492119528"></p>
-<p>Basic idea: You position individual items, like movies, in a transition space, where neighborhoods within this   space represent similarity between items. So items close together in this space are similar to each other. The dimensions corresponds to complex transition relationships between items. Since this technique depends on arranging items together into local, similar neighborhoods, I still classify it as a neighborhood -based method. </p>
-<p>In this space, we can learn the vectors associated with individual users. Maybe a user who watches a Tom Cruise movie, is likely to move along to the next Tom Cruise movie, for example, and that transition would be represented by a vector in this space. We can then predict the next movie a user is like to watch by extrapolating along the vector we’ve associated with that user.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480727372.png" alt="1578480727372">
+<figcaption aria-hidden="true">1578480727372</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578480843642.png" alt="1578480843642">
+<figcaption aria-hidden="true">1578480843642</figcaption>
+</figure>
+<p>Well, it's actually pretty well known that KNN doesn't work well in
+practice. Unfortunately, some people conclude that collaborative
+filtering in general is some naive approach that should be replaced with
+completely different techniques. But as we've seen, collaborative
+filtering isn't the problem, it's forcing collaborative filtering to
+make rating predictions -- that's the problem. We had some pretty
+exciting results when we just focused on making top-N recommendations,
+and completely forgot about optimizing for rating accuracy, and it turns
+out that's what at the heart of the problem. <strong>使用user-based
+CF和item-based CF, top-N 推荐结果都是不错的。</strong></p>
+<p>Ratings are not continuous in nature, and KNN treats them as though
+they are continuous values that can be predicted on a continuous scale.
+If you really want to go with KNN, it would be more appropriate to treat
+it as a rating classification problem than as a rating prediction
+problem. KNN is also very sensitive to sparse data.</p>
+<p>The most fundamental thing is that accuracy isn't everything. The
+main reason KNN produces underwhelming results is because it's trying to
+solve the wrong problem. <strong>KNN
+recommender之所以推荐结果不好，是因为它解决的是rating
+prediction的问题，而不是推荐问题</strong>。</p>
+<h3 id="bleeding-edge-alert">7. Bleeding Edge Alert</h3>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491595381.png" alt="1578491595381">
+<figcaption aria-hidden="true">1578491595381</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491659157.png" alt="1578491659157">
+<figcaption aria-hidden="true">1578491659157</figcaption>
+</figure>
+<p>The idea behind it is that users are modeled as vectors moving from
+one item to another in a multidimensional space. And you can predict
+sequences of events, like which movie a user is likely to watch next, by
+modeling these vectors.</p>
+<p>The reason this paper is exciting is because it outperformed all of
+the best existing methods for recommending sequences of events in all
+but one case in one data set.</p>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578491938065.png" alt="1578491938065">
+<figcaption aria-hidden="true">1578491938065</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/07/Neighborhood-Based-Collaborative-Filtering/1578492119528.png" alt="1578492119528">
+<figcaption aria-hidden="true">1578492119528</figcaption>
+</figure>
+<p>Basic idea: You position individual items, like movies, in a
+transition space, where neighborhoods within this space represent
+similarity between items. So items close together in this space are
+similar to each other. The dimensions corresponds to complex transition
+relationships between items. Since this technique depends on arranging
+items together into local, similar neighborhoods, I still classify it as
+a neighborhood -based method.</p>
+<p>In this space, we can learn the vectors associated with individual
+users. Maybe a user who watches a Tom Cruise movie, is likely to move
+along to the next Tom Cruise movie, for example, and that transition
+would be represented by a vector in this space. We can then predict the
+next movie a user is like to watch by extrapolating along the vector
+we've associated with that user.</p>
 <p>The paper provide the code in C++.</p>
-<p>It’s all very advanced stuff, but it seems to work. So if you find yourself in the situation where you need to predict a sequence of events, like which movies or videos a person is likely to watch next given theirs past history, you might wanna do a search for translation-based recommendations and how it’s coming along in the real world.</p>
+<p>It's all very advanced stuff, but it seems to work. So if you find
+yourself in the situation where you need to predict a sequence of
+events, like which movies or videos a person is likely to watch next
+given theirs past history, you might wanna do a search for
+translation-based recommendations and how it's coming along in the real
+world.</p>
 
       
     </div>
@@ -1340,59 +1853,169 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Recommending items just based on the attributes of those items, instead of trying to use aggregate user behavior data.</p>
-<h3 id="Cosine-Similarity"><a href="#Cosine-Similarity" class="headerlink" title="Cosine Similarity"></a>Cosine Similarity</h3><p><img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324"></p>
-<p>为简单起见，假设电影只有两种类型：adventure和comedy. 一部电影若属于某种类型则为1，若不属于则为0.</p>
-<p>角度 θ 一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero means not at all similar, and one means totally the same thing. 而 θ 的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ 为0度，余弦值为1.  </p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079"></p>
+          <p>Recommending items just based on the attributes of those items,
+instead of trying to use aggregate user behavior data.</p>
+<h3 id="cosine-similarity">Cosine Similarity</h3>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578288453177.png" alt="1578288453177">
+<figcaption aria-hidden="true">1578288453177</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578288708324.png" alt="1578288708324">
+<figcaption aria-hidden="true">1578288708324</figcaption>
+</figure>
+<p>为简单起见，假设电影只有两种类型：adventure和comedy.
+一部电影若属于某种类型则为1，若不属于则为0.</p>
+<p>角度 θ
+一定程度上刻画了它们之间的相似度。我们想要将相似度刻画成[0,1]范围内的数，zero
+means not at all similar, and one means totally the same thing. 而 θ
+的余弦值正好可以达到这个目的：θ 为90度，余弦值为0；θ
+为0度，余弦值为1.</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578289233556.png" alt="1578289233556">
+<figcaption aria-hidden="true">1578289233556</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578289272295.png" alt="1578289272295">
+<figcaption aria-hidden="true">1578289272295</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578289294315.png" alt="1578289294315">
+<figcaption aria-hidden="true">1578289294315</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578289387292.png" alt="1578289387292">
+<figcaption aria-hidden="true">1578289387292</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578289605079.png" alt="1578289605079">
+<figcaption aria-hidden="true">1578289605079</figcaption>
+</figure>
 <p>How do we assign a similarity score based on release years alone?</p>
-<p>This is where some of the art of recommender systems comes in. You have to think about the nature of the data you have and what makes sense.</p>
-<p>How far apart would two movies have to be for their release date alone to signify they are substantially different? A decade seems like a reasonable starting point. </p>
-<p>Now we need to come up with some sort of mathematical function that smoothly scales that into the range zero to one. -&gt; 可选择指数衰减函数。</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846"></p>
-<p>The choice of this function is completely arbitrary, but it seems like a reasonable starting point. In the real world, you’d test many variations of this function to see what really produces the best recommendations with real people. </p>
-<h3 id="K-nearest-neighbors"><a href="#K-nearest-neighbors" class="headerlink" title="K-nearest-neighbors"></a>K-nearest-neighbors</h3><p>So how do we turn these similarities between movies based on their attributes into actual rating predictions?</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577"></p>
-<h3 id="Code-Walkthrough"><a href="#Code-Walkthrough" class="headerlink" title="Code Walkthrough"></a>Code Walkthrough</h3><p>ContentBased里的文件：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515"></p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921"></p>
-<p>从结果可以看到，Content-based algorithm比random recommendations 表现得要好。</p>
-<h3 id="Bleeding-Edge-Alert"><a href="#Bleeding-Edge-Alert" class="headerlink" title="Bleeding Edge Alert"></a>Bleeding Edge Alert</h3><blockquote>
-<p>注：We often refer to the current state of the art as leading edge, but technology that’s still so new that it’s unproven in the real world can be risky to work with, and so we call that bleeding edge. </p>
-<p>This is where we highlight some new research that looks interesting and promising, but hasn’t really made it into mainstream yet with recommender systems. </p>
+<p>This is where some of the art of recommender systems comes in. You
+have to think about the nature of the data you have and what makes
+sense.</p>
+<p>How far apart would two movies have to be for their release date
+alone to signify they are substantially different? A decade seems like a
+reasonable starting point.</p>
+<p>Now we need to come up with some sort of mathematical function that
+smoothly scales that into the range zero to one. -&gt;
+可选择指数衰减函数。</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578291075846.png" alt="1578291075846">
+<figcaption aria-hidden="true">1578291075846</figcaption>
+</figure>
+<p>The choice of this function is completely arbitrary, but it seems
+like a reasonable starting point. In the real world, you'd test many
+variations of this function to see what really produces the best
+recommendations with real people.</p>
+<h3 id="k-nearest-neighbors">K-nearest-neighbors</h3>
+<p>So how do we turn these similarities between movies based on their
+attributes into actual rating predictions?</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578292209772.png" alt="1578292209772">
+<figcaption aria-hidden="true">1578292209772</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578293123577.png" alt="1578293123577">
+<figcaption aria-hidden="true">1578293123577</figcaption>
+</figure>
+<h3 id="code-walkthrough">Code Walkthrough</h3>
+<p>ContentBased里的文件：</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578309826515.png" alt="1578309826515">
+<figcaption aria-hidden="true">1578309826515</figcaption>
+</figure>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578310985921.png" alt="1578310985921">
+<figcaption aria-hidden="true">1578310985921</figcaption>
+</figure>
+<p>从结果可以看到，Content-based algorithm比random recommendations
+表现得要好。</p>
+<h3 id="bleeding-edge-alert">Bleeding Edge Alert</h3>
+<blockquote>
+<p>注：We often refer to the current state of the art as leading edge,
+but technology that's still so new that it's unproven in the real world
+can be risky to work with, and so we call that bleeding edge.</p>
+<p>This is where we highlight some new research that looks interesting
+and promising, but hasn't really made it into mainstream yet with
+recommender systems.</p>
 </blockquote>
-<h4 id="mise-en-scene"><a href="#mise-en-scene" class="headerlink" title="mise en scene"></a>mise en scene</h4><p>Some recent research and content based filtering has surrounded the use of mise en scene data. Technically, mise en scene refers to the placement of objects in a scene, but the researchers are using this term a bit more loosely to refer to the properties of the scenes in a movie or movie trailer. </p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376"></p>
-<p>The idea is to extract properties from the film itself that can be quantified and analyzed, and see if we can come up with better movie recommendations by examining the content of the movie itself scene by scene.</p>
+<h4 id="mise-en-scene">mise en scene</h4>
+<p>Some recent research and content based filtering has surrounded the
+use of mise en scene data. Technically, mise en scene refers to the
+placement of objects in a scene, but the researchers are using this term
+a bit more loosely to refer to the properties of the scenes in a movie
+or movie trailer.</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578311747376.png" alt="1578311747376">
+<figcaption aria-hidden="true">1578311747376</figcaption>
+</figure>
+<p>The idea is to extract properties from the film itself that can be
+quantified and analyzed, and see if we can come up with better movie
+recommendations by examining the content of the movie itself scene by
+scene.</p>
 <p>What sort of attributes are we talking about：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667"></p>
-<p>In principle, this should give us a feel as to the pacing and mood of the film, just based on the film itself.</p>
-<p>Q：这样的数据和原来使用的 human generated genre classification 相比，是否更加有效？</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578311877667.png" alt="1578311877667">
+<figcaption aria-hidden="true">1578311877667</figcaption>
+</figure>
+<p>In principle, this should give us a feel as to the pacing and mood of
+the film, just based on the film itself.</p>
+<p>Q：这样的数据和原来使用的 human generated genre classification
+相比，是否更加有效？</p>
 <p>更改代码：</p>
-<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上 <code>* mesSimilarity</code>:</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234"></p>
+<p>去掉ContentKNNAlgorithm.py中第45行的注释，再在第46行上加上
+<code>* mesSimilarity</code>:</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578312959234.png" alt="1578312959234">
+<figcaption aria-hidden="true">1578312959234</figcaption>
+</figure>
 <p>再运行ContentRec.py，可得到结果如下：</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934"></p>
-<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be an artifact of how we chose to compute mise en scene similarity scores. 另一方面，Accuracy isn’t really what we’re concerned with.</p>
-<p>Again, sometimes developing recommendation systems is more an art than a science. You can’t really predict how real people will react to new recommendations they haven’t seen before. Personally, I’d be tempted to test this in an A/B test to see how it performs. </p>
-<p>If you look at the research literature associated with mise en scene recommendations however, they note that it doesn’t do any favors to accuracy, but it does increase diversity. But again, increased diversity isn’t always a good thing when it comes to recommendations. It may just mean that you’re recommending random stuff that has no correlation to the user’s actually interest. Still, it was interesting to experiment with it, and it would be even more interesting to experiment with it using real people</p>
-<p>Here’s a reference to the original research paper:</p>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050"></p>
-<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><ul>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578314301934.png" alt="1578314301934">
+<figcaption aria-hidden="true">1578314301934</figcaption>
+</figure>
+<p>从结果上看，RMSE actually got a lot worse. 一方面，This could just be
+an artifact of how we chose to compute mise en scene similarity scores.
+另一方面，Accuracy isn't really what we're concerned with.</p>
+<p>Again, sometimes developing recommendation systems is more an art
+than a science. You can't really predict how real people will react to
+new recommendations they haven't seen before. Personally, I'd be tempted
+to test this in an A/B test to see how it performs.</p>
+<p>If you look at the research literature associated with mise en scene
+recommendations however, they note that it doesn't do any favors to
+accuracy, but it does increase diversity. But again, increased diversity
+isn't always a good thing when it comes to recommendations. It may just
+mean that you're recommending random stuff that has no correlation to
+the user's actually interest. Still, it was interesting to experiment
+with it, and it would be even more interesting to experiment with it
+using real people</p>
+<p>Here's a reference to the original research paper:</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578313486050.png" alt="1578313486050">
+<figcaption aria-hidden="true">1578313486050</figcaption>
+</figure>
+<h3 id="exercise">Exercise</h3>
+<ul>
 <li>Use genre, release year, and mise en scene data independently.</li>
 </ul>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671"></p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578314783671.png" alt="1578314783671">
+<figcaption aria-hidden="true">1578314783671</figcaption>
+</figure>
 <ul>
-<li>See if you improve the release year based recommendations by sorting the k nearest neighbors within a given year by popularity. (sort the year-based recommendations by popularity as a secondary sort)</li>
+<li>See if you improve the release year based recommendations by sorting
+the k nearest neighbors within a given year by popularity. (sort the
+year-based recommendations by popularity as a secondary sort)</li>
 </ul>
-<p><img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933"></p>
-<p>Now by using popularity data, technically we’re no longer limiting our recommendations to content attributes. Popularity is behavior-based data.</p>
+<figure>
+<img src="/2020/01/06/Content-Based-Filtering/1578315361933.png" alt="1578315361933">
+<figcaption aria-hidden="true">1578315361933</figcaption>
+</figure>
+<p>Now by using popularity data, technically we're no longer limiting
+our recommendations to content attributes. Popularity is behavior-based
+data.</p>
 
       
     </div>

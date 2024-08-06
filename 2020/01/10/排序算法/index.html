@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai &#x3D; Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。 * 基选归堆不变（运行时间不发生变化，与初始状态无关） * 快选希堆不稳（是不稳定的排序）  快 速 排 序 ：  思 想 ：  1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为">
+    <meta name="description" content="1578640411160  排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai &#x3D; Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。 * 基选归堆不变（运行时间不发生变化，与初始状态无关） * 快选希堆不稳（是不稳定的排序）  快 速 排 序 ： 思 想 ： 1 ． 在 待 排">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法">
 <meta property="og:url" content="http://qypx.github.io/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai &#x3D; Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。 * 基选归堆不变（运行时间不发生变化，与初始状态无关） * 快选希堆不稳（是不稳定的排序）  快 速 排 序 ：  思 想 ：  1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为">
+<meta property="og:description" content="1578640411160  排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai &#x3D; Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。 * 基选归堆不变（运行时间不发生变化，与初始状态无关） * 快选希堆不稳（是不稳定的排序）  快 速 排 序 ： 思 想 ： 1 ． 在 待 排">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png">
 <meta property="article:published_time" content="2020-01-10T07:12:00.000Z">
@@ -279,40 +279,72 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><img src="/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png" alt="1578640411160"></p>
-<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai = Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
-<p><span style="color:red">* 基选归堆不变（运行时间不发生变化，与初始状态无关）</span></p>
+    <div class="post-body" itemprop="articleBody"><figure>
+<img src="/2020/01/10/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1578640411160.png" alt="1578640411160">
+<figcaption aria-hidden="true">1578640411160</figcaption>
+</figure>
+<p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。在简单形式化一下，如果Ai
+= Aj，Ai原来在位置前，排序后Ai还是要在Aj位置前。</p>
+<p><span style="color:red">*
+基选归堆不变（运行时间不发生变化，与初始状态无关）</span></p>
 <p><span style="color:red">* 快选希堆不稳（是不稳定的排序） </span></p>
-<p><u>快 速 排 序 ：</u> </p>
-<p>思 想 ： </p>
-<p>1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为 基 准 （ 通 常 选 第 一 个 元 素 ， 但 最 的 选 择 方 法 是 从 待 排 序 元 素 中 随 机 选 取 一 个 作 为 基 准 ） ， 称 为 基 准 元 素 ； </p>
-<p>2 ． 将 待 排 序 的 元 素 进 行 分 区 ， 比 基 准 元 素 大 的 元 素 放 在 它 的 右 边 ， 比 其 小 的 放 在 它 的 左 边 ； </p>
-<p>3 ． 对 左 右 两 个 分 区 重 复 以 上 步 骤 直 到 所 有 元 素 都 是 有 序 的 </p>
-<p> <u>冒 泡 排 序 ：</u> </p>
-<p>1 ． 比 较 相 邻 的 元 素 。 如 果 第 一 个 比 第 二 个 大 ， 就 交 换 他 们 两 个 </p>
-<p>2 ． 对 每 一 对 相 邻 元 素 作 同 样 的 工 作 ， 从 开 始 第 一 对 到 结 尾 的 最 后 一 对 。 在 这 一 点 ， 最 后 的 元 素 应 该 会 是 最 大 的 数 。 </p>
-<p>3 ． 针 对 所 有 的 元 素 重 复 以 上 的 步 骤 ， 除 了 最 后 一 个 </p>
-<p>4 ． 持 续 每 次 对 越 来 越 少 的 元 素 重 复 上 面 的 步 骤 ， 直 到 没 有 任 何 一 对 数 字 需 要 比 较 。 </p>
-<p><u>归 并 排 序 ：</u> </p>
-<p>第 一 步 ： 申 请 空 间 ， 使 其 大 小 为 两 个 已 经 排 序 序 列 之 和 ， 该 空 间 用 来 存 放 合 并 后 的 序 列 </p>
-<p>第 二 步 ： 设 定 两 个 指 针 ， 最 初 位 置 分 别 为 两 个 已 经 排 序 序 列 的 起 始 位 置 </p>
-<p>第 三 步 ： 比 较 两 个 指 针 所 指 向 的 元 素 ， 选 择 相 对 小 的 元 素 放 入 到 合 并 空 </p>
-<p>间 ， 并 移 动 指 针 到 下 一 位 置 </p>
-<p>重 复 步 骤 3 直 到 某 一 指 针 超 出 序 列 尾 </p>
-<p>将 另 一 序 列 剩 下 的 所 有 元 素 直 接 复 制 到 合 并 序 列 尾 </p>
-<p><u>插 入 排 序 ：</u> </p>
-<p>1 ． 从 有 序 数 列 和 无 序 数 列 { a2 ， a3 ,  …, an} 开 始 进 行 排 序 </p>
-<p>2 ． 处 理 第 i 个 元 素 时 { i ： 2 ， 3 ，… , n } , 数 列 { a1 ， a2 ，…， ai-1} 是 已 有 序 的 ， 而 数 列 {ai,ai+1, …， an } 是 无 序 的 。 用 ai 与 ai-1, a i-2, …， a1 进 行 比 较 ， 找 出 合 适 的 位 置 将 ai 插 入 ； </p>
-<p>3 ． 重 复 第 二 步 ， 共 进 行 n - i 次 插 入 处 理 ， 数 列 全 部 有 序 。 </p>
+<p><u>快 速 排 序 ：</u></p>
+<p>思 想 ：</p>
+<p>1 ． 在 待 排 序 的 元 素 任 取 一 个 元 素 作 为 基 准 （ 通 常 选
+第 一 个 元 素 ， 但 最 的 选 择 方 法 是 从 待 排 序 元 素 中 随 机 选
+取 一 个 作 为 基 准 ） ， 称 为 基 准 元 素 ；</p>
+<p>2 ． 将 待 排 序 的 元 素 进 行 分 区 ， 比 基 准 元 素 大 的 元 素
+放 在 它 的 右 边 ， 比 其 小 的 放 在 它 的 左 边 ；</p>
+<p>3 ． 对 左 右 两 个 分 区 重 复 以 上 步 骤 直 到 所 有 元 素 都 是
+有 序 的</p>
+<p><u>冒 泡 排 序 ：</u></p>
+<p>1 ． 比 较 相 邻 的 元 素 。 如 果 第 一 个 比 第 二 个 大 ， 就 交
+换 他 们 两 个</p>
+<p>2 ． 对 每 一 对 相 邻 元 素 作 同 样 的 工 作 ， 从 开 始 第 一 对
+到 结 尾 的 最 后 一 对 。 在 这 一 点 ， 最 后 的 元 素 应 该 会 是 最
+大 的 数 。</p>
+<p>3 ． 针 对 所 有 的 元 素 重 复 以 上 的 步 骤 ， 除 了 最 后 一
+个</p>
+<p>4 ． 持 续 每 次 对 越 来 越 少 的 元 素 重 复 上 面 的 步 骤 ， 直
+到 没 有 任 何 一 对 数 字 需 要 比 较 。</p>
+<p><u>归 并 排 序 ：</u></p>
+<p>第 一 步 ： 申 请 空 间 ， 使 其 大 小 为 两 个 已 经 排 序 序 列 之
+和 ， 该 空 间 用 来 存 放 合 并 后 的 序 列</p>
+<p>第 二 步 ： 设 定 两 个 指 针 ， 最 初 位 置 分 别 为 两 个 已 经 排
+序 序 列 的 起 始 位 置</p>
+<p>第 三 步 ： 比 较 两 个 指 针 所 指 向 的 元 素 ， 选 择 相 对 小 的
+元 素 放 入 到 合 并 空</p>
+<p>间 ， 并 移 动 指 针 到 下 一 位 置</p>
+<p>重 复 步 骤 3 直 到 某 一 指 针 超 出 序 列 尾</p>
+<p>将 另 一 序 列 剩 下 的 所 有 元 素 直 接 复 制 到 合 并 序 列 尾</p>
+<p><u>插 入 排 序 ：</u></p>
+<p>1 ． 从 有 序 数 列 和 无 序 数 列 { a2 ， a3 , …, an} 开 始 进 行 排
+序</p>
+<p>2 ． 处 理 第 i 个 元 素 时 { i ： 2 ， 3 ，... , n } , 数 列 { a1 ，
+a2 ，…， ai-1} 是 已 有 序 的 ， 而 数 列 {ai,ai+1, …， an } 是 无 序 的
+。 用 ai 与 ai-1, a i-2, …， a1 进 行 比 较 ， 找 出 合 适 的 位 置 将
+ai 插 入 ；</p>
+<p>3 ． 重 复 第 二 步 ， 共 进 行 n - i 次 插 入 处 理 ， 数 列 全 部
+有 序 。</p>
 <p><u>选 择 排 序 (Selection sort)：</u></p>
-<p>是 一 种 简 单 直 观 的 排 序 算 法 。 它 的 工 作 原 理 是 每 一 次 从 待 排 序 的 数 据 元 素 中 选 出 最 小 （ 或 最 大 ） 的 一 个元 素 ， 存 放 在 序 列 的 起 始 位 置 ， 直 到 全 部 待 排 序 的 数 据 元 素 排 完 ，所 以 每 一 趟 选 择 的 元 素 都 会 放 在 他 的 最 终 位 置 </p>
-<p>第 i 趟排序，找到L[i…n]中最小的元素与L[i]交换位置，这样保证每一趟排序确定一个元素的最终位置</p>
+<p>是 一 种 简 单 直 观 的 排 序 算 法 。 它 的 工 作 原 理 是 每 一 次
+从 待 排 序 的 数 据 元 素 中 选 出 最 小 （ 或 最 大 ） 的 一 个元 素
+， 存 放 在 序 列 的 起 始 位 置 ， 直 到 全 部 待 排 序 的 数 据 元 素
+排 完 ，所 以 每 一 趟 选 择 的 元 素 都 会 放 在 他 的 最 终 位 置</p>
+<p>第 i
+趟排序，找到L[i...n]中最小的元素与L[i]交换位置，这样保证每一趟排序确定一个元素的最终位置</p>
 <p><u>堆 排 序 ：</u></p>
-<p>如 果 要 求 升 序 则 建 立 大 根 堆 ， 降 序 则 建 立 小 根 堆 ， 堆 顶 元 素 为 最 大 或 者 最 小 的 元 素 ， 将 这 个 元 素 与 最 后 一 个 位 置 的 元 素 交 换 ， 再 将 剩 余 元 素 还 原 成 大 小 跟 堆 ， 每 一 趙 都 会 选 出 一 个 未 排 序 中 的 最 大 或 者 最 小 放 大 他 的 最 终 位 置 </p>
-<p><u>希 尔 排 序 (shell’s sort)：</u> </p>
-<p>希尔排序(Shell’s Sort)是<a href="https://baike.baidu.com/item/插入排序/7214992">插入排序</a>的一种，又称“缩小增量排序”（Diminishing Increment Sort），是直接插入<a href="https://baike.baidu.com/item/排序算法/5399605">排序算法</a>的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
+<p>如 果 要 求 升 序 则 建 立 大 根 堆 ， 降 序 则 建 立 小 根 堆 ， 堆
+顶 元 素 为 最 大 或 者 最 小 的 元 素 ， 将 这 个 元 素 与 最 后 一 个
+位 置 的 元 素 交 换 ， 再 将 剩 余 元 素 还 原 成 大 小 跟 堆 ， 每 一
+趙 都 会 选 出 一 个 未 排 序 中 的 最 大 或 者 最 小 放 大 他 的 最 终
+位 置</p>
+<p><u>希 尔 排 序 (shell's sort)：</u></p>
+<p>希尔排序(Shell's Sort)是<a href="https://baike.baidu.com/item/插入排序/7214992">插入排序</a>的一种，又称“缩小增量排序”（Diminishing
+Increment Sort），是直接插入<a href="https://baike.baidu.com/item/排序算法/5399605">排序算法</a>的一种更高效的改进版本。希尔排序是非稳定排序算法。</p>
 <p>希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，<a href="https://baike.baidu.com/item/算法/209025">算法</a>便终止。</p>
-<p>由 于 是 按 照 增 量 排 序 ， 步 长 不 同 可 能 元 素 不 一 定 到 他 最 终 位 置 </p>
+<p>由 于 是 按 照 增 量 排 序 ， 步 长 不 同 可 能 元 素 不 一 定 到 他
+最 终 位 置</p>
 
     </div>
 

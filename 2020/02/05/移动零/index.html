@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="移动零（难度：简答）  问题的两个要求是：  将所有 0 移动到数组末尾。 所有非零元素必须保持其原始顺序。  这里很好地认识到这两个需求是相互排斥的，也就是说，你可以解决单独的子问题，然后将它们组合在一起以得到最终的解决方案。 方法： 一个指针i从前到后遍历数组，每当遇到非0数时，令 nums[cur] &#x3D; nums[i]; cur++;，cur是另一个指针（从0开始），记录当前位置。 当i遍历">
+    <meta name="description" content="移动零（难度：简答）   1580888243775  问题的两个要求是：  将所有 0 移动到数组末尾。 所有非零元素必须保持其原始顺序。  这里很好地认识到这两个需求是相互排斥的，也就是说，你可以解决单独的子问题，然后将它们组合在一起以得到最终的解决方案。 方法：  一个指针i从前到后遍历数组，每当遇到非0数时，令 nums[cur] &#x3D; nums[i]; cur+">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动零">
 <meta property="og:url" content="http://qypx.github.io/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="移动零（难度：简答）  问题的两个要求是：  将所有 0 移动到数组末尾。 所有非零元素必须保持其原始顺序。  这里很好地认识到这两个需求是相互排斥的，也就是说，你可以解决单独的子问题，然后将它们组合在一起以得到最终的解决方案。 方法： 一个指针i从前到后遍历数组，每当遇到非0数时，令 nums[cur] &#x3D; nums[i]; cur++;，cur是另一个指针（从0开始），记录当前位置。 当i遍历">
+<meta property="og:description" content="移动零（难度：简答）   1580888243775  问题的两个要求是：  将所有 0 移动到数组末尾。 所有非零元素必须保持其原始顺序。  这里很好地认识到这两个需求是相互排斥的，也就是说，你可以解决单独的子问题，然后将它们组合在一起以得到最终的解决方案。 方法：  一个指针i从前到后遍历数组，每当遇到非0数时，令 nums[cur] &#x3D; nums[i]; cur+">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/1580888243775.png">
 <meta property="og:image" content="http://qypx.github.io/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/1580890229187.png">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-text">方法：</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-text">方法：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -286,19 +286,27 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a href="https://leetcode-cn.com/problems/move-zeroes/">移动零（难度：简答）</a></p>
-<p><img src="/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/1580888243775.png" alt="1580888243775"></p>
+<figure>
+<img src="/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/1580888243775.png" alt="1580888243775">
+<figcaption aria-hidden="true">1580888243775</figcaption>
+</figure>
 <p>问题的两个要求是：</p>
 <ul>
 <li>将所有 0 移动到数组末尾。</li>
 <li>所有非零元素必须保持其原始顺序。</li>
 </ul>
 <p>这里很好地认识到这两个需求是相互排斥的，也就是说，你可以解决单独的子问题，然后将它们组合在一起以得到最终的解决方案。</p>
-<h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><ul>
-<li>一个指针<code>i</code>从前到后遍历数组，每当遇到非0数时，令 <code>nums[cur] = nums[i]; cur++;</code>，<code>cur</code>是另一个指针（从0开始），记录当前位置。</li>
+<h4 id="方法">方法：</h4>
+<ul>
+<li>一个指针<code>i</code>从前到后遍历数组，每当遇到非0数时，令
+<code>nums[cur] = nums[i]; cur++;</code>，<code>cur</code>是另一个指针（从0开始），记录当前位置。</li>
 <li>当<code>i</code>遍历完后，此时<code>cur</code>指向的位置到数组的末尾全赋为0即可。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">moveZeroes</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">                nums[cur] = nums[i];</span><br><span class="line">                cur++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(cur &lt; nums.length)&#123;</span><br><span class="line">            nums[cur] = <span class="number">0</span>;</span><br><span class="line">            cur++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/1580890229187.png" alt="1580890229187"></p>
+<figure>
+<img src="/2020/02/05/%E7%A7%BB%E5%8A%A8%E9%9B%B6/1580890229187.png" alt="1580890229187">
+<figcaption aria-hidden="true">1580890229187</figcaption>
+</figure>
 <p><strong>复杂度</strong></p>
 <ul>
 <li>时间复杂度：O(n)。</li>

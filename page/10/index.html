@@ -269,12 +269,25 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/contains-duplicate-ii/">存在重复元素2（难度：简单）</a></p>
-<p><img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1.jpg" alt="1"></p>
-<h4 id="方法：哈希表"><a href="#方法：哈希表" class="headerlink" title="方法：哈希表"></a>方法：哈希表</h4><p>维护一个哈希表，里面始终最多包含 k 个元素，当出现重复值时则说明在 k 距离内存在重复元素。<br>每次遍历一个元素则将其加入哈希表中，如果哈希表的大小大于 k，则移除最前面的数字。</p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。我们会做 n 次 搜索，删除，插入操作，每次操作都耗费常数时间。</p>
+<figure>
+<img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法哈希表">方法：哈希表</h4>
+<p>维护一个哈希表，里面始终最多包含 k 个元素，当出现重复值时则说明在 k
+距离内存在重复元素。
+每次遍历一个元素则将其加入哈希表中，如果哈希表的大小大于
+k，则移除最前面的数字。</p>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(n)。我们会做 n 次
+搜索，删除，插入操作，每次操作都耗费常数时间。</p>
 <p>空间复杂度：O(min(n,k))。开辟的额外空间取决于散列表中存储的元素的个数，也就是滑动窗口的大小。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">containsNearbyDuplicate</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(res.contains(nums[i]))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 因为res的大小维持为k</span></span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(res.size()&gt;k)</span><br><span class="line">                res.remove(nums[i-k]);   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/2.jpg" alt="2"></p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">containsNearbyDuplicate</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(res.contains(nums[i]))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 因为res的大小维持为k</span></span><br><span class="line">            res.add(nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(res.size()&gt;k)</span><br><span class="line">                res.remove(nums[i-k]);   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
       
     </div>
@@ -354,22 +367,46 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/contains-duplicate/">存在重复元素（难度：简单）</a></p>
-<p><img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1.jpg" alt="1"></p>
-<h4 id="方法一：哈希表"><a href="#方法一：哈希表" class="headerlink" title="方法一：哈希表"></a>方法一：哈希表</h4><h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度 : O(n)。search() 和 insert() 各自使用 n 次，每个操作耗费常数时间。</p>
+<figure>
+<img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法一哈希表">方法一：哈希表</h4>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度 : O(n)。search() 和 insert() 各自使用 n
+次，每个操作耗费常数时间。</p>
 <p>空间复杂度 : O(n)。哈希表占用的空间与元素数量是线性关系。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">containsDuplicate</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(res.contains(num))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            res.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/3.jpg" alt="3"></p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">containsDuplicate</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(res.contains(num))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            res.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 <p>另一种思路：利用Python中的set()，判断所得结果长度与原数组长度的关系</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">containsDuplicate</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        set1 = <span class="built_in">set</span>(nums)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(set1) == <span class="built_in">len</span>(nums):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/2.jpg" alt="2"></p>
+<figure>
+<img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 <hr>
-<h4 id="方法二：-排序"><a href="#方法二：-排序" class="headerlink" title="方法二： 排序"></a>方法二： 排序</h4><p>如果存在重复元素，排序后它们应该相邻。</p>
-<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度 : O<em>(</em>nlogn)。</p>
-<p>空间复杂度 : O(1)。这取决于具体的排序算法实现，通常而言，使用 <code>堆排序</code> 的话，是 O(1)。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">containsDuplicate</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/4.jpg" alt="4"></p>
+<h4 id="方法二-排序">方法二： 排序</h4>
+<p>如果存在重复元素，排序后它们应该相邻。</p>
+<h5 id="复杂度-1">复杂度</h5>
+<p>时间复杂度 : O<em>(</em>nlogn)。</p>
+<p>空间复杂度 : O(1)。这取决于具体的排序算法实现，通常而言，使用
+<code>堆排序</code> 的话，是 O(1)。</p>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">containsDuplicate</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/29/%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/4.jpg" alt="4">
+<figcaption aria-hidden="true">4</figcaption>
+</figure>
 <blockquote>
-<p>注：对于一些特定的 n不太大的测试样例，方法一的运行速度可能会比方法二更慢。这是因为哈希表在维护其属性时有一些开销。要注意，程序的实际运行表现和 Big-O 符号表示可能有所不同。Big-O 只是告诉我们在 <strong>充分</strong>大的输入下，算法的相对快慢。因此，在 n不够大的情况下， O(n)的算法也可以比 O(nlogn)的更慢。</p>
+<p>注：对于一些特定的
+n不太大的测试样例，方法一的运行速度可能会比方法二更慢。这是因为哈希表在维护其属性时有一些开销。要注意，程序的实际运行表现和
+Big-O 符号表示可能有所不同。Big-O 只是告诉我们在
+<strong>充分</strong>大的输入下，算法的相对快慢。因此，在
+n不够大的情况下， O(n)的算法也可以比 O(nlogn)的更慢。</p>
 </blockquote>
 
       
@@ -450,22 +487,41 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">数组中的第K个最大元素（难度：中等）</a></p>
-<p><img src="/2019/12/29/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/3.jpg" alt="3"></p>
-<h4 id="方法一：排序"><a href="#方法一：排序" class="headerlink" title="方法一：排序"></a>方法一：排序</h4><p>先对数组进行排序，再返回倒数第 k 个元素。</p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn)</p>
+<figure>
+<img src="/2019/12/29/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
+<h4 id="方法一排序">方法一：排序</h4>
+<p>先对数组进行排序，再返回倒数第 k 个元素。</p>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(nlogn)</p>
 <p>空间复杂度：O(1)</p>
 <p>这个时间复杂度并不令人满意</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findKthLargest</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">return</span> nums[-k]</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/29/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/1.jpg" alt="1"></p>
+<h5 id="代码">代码</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findKthLargest</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">return</span> nums[-k]</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/29/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <hr>
-<h4 id="方法二：最小堆"><a href="#方法二：最小堆" class="headerlink" title="方法二：最小堆"></a>方法二：最小堆</h4><p>建一个只能存K个数字的小顶堆，超过K时候，每加进来一个，堆顶就要弹出一个。数组遍历完，最终堆顶的元素就是第K大的（堆里其他元素都比它还要大）。</p>
-<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogk). 向大小为 k 的堆中添加元素的时间复杂度为O(logk)，我们将重复该操作 n 次，故总时间复杂度为O(nlogk)。</p>
+<h4 id="方法二最小堆">方法二：最小堆</h4>
+<p>建一个只能存K个数字的小顶堆，超过K时候，每加进来一个，堆顶就要弹出一个。数组遍历完，最终堆顶的元素就是第K大的（堆里其他元素都比它还要大）。</p>
+<h5 id="复杂度-1">复杂度</h5>
+<p>时间复杂度：O(nlogk). 向大小为 k
+的堆中添加元素的时间复杂度为O(logk)，我们将重复该操作 n
+次，故总时间复杂度为O(nlogk)。</p>
 <p>空间复杂度：O(k).</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findKthLargest</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> num : nums)&#123;</span><br><span class="line">            minHeap.add(num);</span><br><span class="line">            <span class="keyword">if</span>(minHeap.size()&gt;k)</span><br><span class="line">                minHeap.poll();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> minHeap.poll();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/29/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/2.jpg" alt="2"></p>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findKthLargest</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        PriorityQueue&lt;Integer&gt; minHeap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> num : nums)&#123;</span><br><span class="line">            minHeap.add(num);</span><br><span class="line">            <span class="keyword">if</span>(minHeap.size()&gt;k)</span><br><span class="line">                minHeap.poll();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> minHeap.poll();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/29/%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 <hr>
-<h4 id="方法三：快速选择"><a href="#方法三：快速选择" class="headerlink" title="方法三：快速选择"></a>方法三：快速选择</h4><p>详见<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode/">这里</a>.</p>
-<h5 id="复杂度-2"><a href="#复杂度-2" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度 : 平均情况O<em>(</em>N)，最坏情况 O(N^2)。</p>
+<h4 id="方法三快速选择">方法三：快速选择</h4>
+<p>详见<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode/">这里</a>.</p>
+<h5 id="复杂度-2">复杂度</h5>
+<p>时间复杂度 : 平均情况O<em>(</em>N)，最坏情况 O(N^2)。</p>
 <p>空间复杂度 : O(1)。</p>
 
       
@@ -546,7 +602,10 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/remove-linked-list-elements/">移除链表元素（难度：简单）</a></p>
-<p><img src="/2019/12/29/%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/1.jpg" alt="1"></p>
+<figure>
+<img src="/2019/12/29/%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeElements</span><span class="params">(ListNode head, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line"></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(cur.next != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur.next.val == val)&#123;</span><br><span class="line">                cur.next = cur.next.next;</span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注：添加虚拟头节点解决头节点是要被删除的情况</p>
 
@@ -628,18 +687,34 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/happy-number/">快乐数（难度：简单）</a></p>
-<p><img src="/2019/12/28/%E5%BF%AB%E4%B9%90%E6%95%B0/2.jpg" alt="2"></p>
-<h4 id="方法一：使用“快慢指针”思想找出循环"><a href="#方法一：使用“快慢指针”思想找出循环" class="headerlink" title="方法一：使用“快慢指针”思想找出循环"></a>方法一：使用“快慢指针”思想找出循环</h4><p>“快指针”每次走两步，“慢指针”每次走一步，当二者相等时，即为一个循环周期。此时，判断是不是因为1引起的循环，是的话就是快乐数，否则不是快乐数。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isHappy</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> n;</span><br><span class="line">        <span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> n;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            slow = helper(slow);</span><br><span class="line">            fast = helper(fast);</span><br><span class="line">            fast = helper(fast);</span><br><span class="line">        &#125; <span class="keyword">while</span>(slow != fast);</span><br><span class="line">        <span class="keyword">return</span> slow == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">helper</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">re</span> <span class="operator">=</span> n%<span class="number">10</span>;</span><br><span class="line">            sum += re*re;</span><br><span class="line">            n = n/<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%BF%AB%E4%B9%90%E6%95%B0/1.jpg" alt="1"></p>
+<figure>
+<img src="/2019/12/28/%E5%BF%AB%E4%B9%90%E6%95%B0/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
+<h4 id="方法一使用快慢指针思想找出循环">方法一：使用“快慢指针”思想找出循环</h4>
+<p>“快指针”每次走两步，“慢指针”每次走一步，当二者相等时，即为一个循环周期。此时，判断是不是因为1引起的循环，是的话就是快乐数，否则不是快乐数。</p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isHappy</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> n;</span><br><span class="line">        <span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> n;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            slow = helper(slow);</span><br><span class="line">            fast = helper(fast);</span><br><span class="line">            fast = helper(fast);</span><br><span class="line">        &#125; <span class="keyword">while</span>(slow != fast);</span><br><span class="line">        <span class="keyword">return</span> slow == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">helper</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">re</span> <span class="operator">=</span> n%<span class="number">10</span>;</span><br><span class="line">            sum += re*re;</span><br><span class="line">            n = n/<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/28/%E5%BF%AB%E4%B9%90%E6%95%B0/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <hr>
-<h4 id="方法二：递归"><a href="#方法二：递归" class="headerlink" title="方法二：递归"></a>方法二：递归</h4><ul>
-<li>不是快乐数的数称为不快乐数(unhappy number)，所有不快乐数的数位平方和计算，最后都会进入 4 → 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4 的循环中</li>
-<li>已知规律： [1 ~ 4] 中只有 1 是快乐数，[5 ~ ∞] 的数字要么回归到 1 要么回归到 4 或 3</li>
+<h4 id="方法二递归">方法二：递归</h4>
+<ul>
+<li>不是快乐数的数称为不快乐数(unhappy
+number)，所有不快乐数的数位平方和计算，最后都会进入 4 → 16 → 37 → 58 →
+89 → 145 → 42 → 20 → 4 的循环中</li>
+<li>已知规律： [1 ~ 4] 中只有 1 是快乐数，[5 ~ ∞] 的数字要么回归到 1
+要么回归到 4 或 3</li>
 <li>因此仅需在 n &gt; 4 时调用递归</li>
 </ul>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isHappy</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.isHappy(<span class="built_in">sum</span>(<span class="built_in">int</span>(i) ** <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">str</span>(n))) <span class="keyword">if</span> n &gt; <span class="number">4</span> <span class="keyword">else</span> n == <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%BF%AB%E4%B9%90%E6%95%B0/3.jpg" alt="3"></p>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isHappy</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.isHappy(<span class="built_in">sum</span>(<span class="built_in">int</span>(i) ** <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">str</span>(n))) <span class="keyword">if</span> n &gt; <span class="number">4</span> <span class="keyword">else</span> n == <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/28/%E5%BF%AB%E4%B9%90%E6%95%B0/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 
       
     </div>
@@ -719,33 +794,41 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/majority-element-ii/">求众数2（难度：中等）</a></p>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/1.jpg" alt="1"></p>
-<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/3的。</p>
+<figure>
+<img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法一">方法一：</h4>
+<p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/3的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        set1 = <span class="built_in">set</span>(nums)</span><br><span class="line">        <span class="keyword">return</span> [s <span class="keyword">for</span> s <span class="keyword">in</span> set1 <span class="keyword">if</span> nums.count(s) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/2.jpg" alt="2"></p>
+<figure>
+<img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 <p>然而时间复杂度不为O(n)。</p>
 <hr>
-<h4 id="方法二：Boyer-Moore-投票算法"><a href="#方法二：Boyer-Moore-投票算法" class="headerlink" title="方法二：Boyer-Moore 投票算法"></a>方法二：Boyer-Moore 投票算法</h4><p>超过n/3的数最多只能有两个。先选出两个候选人A,B（都令为nums[0]）。 遍历数组：</p>
-<ol>
-<li>若当前元素等于A，则A的票数++;</li>
-<li><p>若当前元素等于B，则B的票数++；</p>
-</li>
+<h4 id="方法二boyer-moore-投票算法">方法二：Boyer-Moore 投票算法</h4>
+<p>超过n/3的数最多只能有两个。先选出两个候选人A,B（都令为nums[0]）。
+遍历数组：</p>
+<ol type="1">
+<li><p>若当前元素等于A，则A的票数++;</p></li>
+<li><p>若当前元素等于B，则B的票数++；</p></li>
 <li><p>若当前元素与A，B都不相等，那么检查此时A或B的票数是否减为0：</p>
 <ul>
-<li><p>若为0，则当前元素成为新的候选人；</p>
-</li>
-<li><p>若A、B票数均不为0，则A、B两个候选人的票数均减一；</p>
-</li>
-</ul>
-</li>
+<li><p>若为0，则当前元素成为新的候选人；</p></li>
+<li><p>若A、B票数均不为0，则A、B两个候选人的票数均减一；</p></li>
+</ul></li>
 </ol>
 <p>遍历结束后选出了两个候选人，但是这两个候选人是否满足&gt;n//3，还需要再遍历一遍数组，找出两个候选人的具体票数。</p>
 <p><strong>复杂度</strong></p>
 <p>时间复杂度：O(n)</p>
 <p>空间复杂度：O(1)</p>
-<p><strong>代码</strong> </p>
+<p><strong>代码</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">len</span>(nums)==<span class="number">0</span>):</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        count1 = <span class="number">0</span></span><br><span class="line">        count2 = <span class="number">0</span></span><br><span class="line">        candidate1 = nums[<span class="number">0</span>]</span><br><span class="line">        candidate2 = nums[<span class="number">0</span>]</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num == candidate1:</span><br><span class="line">                count1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> num == candidate2:</span><br><span class="line">                count2 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> count1 == <span class="number">0</span>:</span><br><span class="line">                    candidate1 = num</span><br><span class="line">                    count1 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> count2 == <span class="number">0</span>:</span><br><span class="line">                    candidate2 = num</span><br><span class="line">                    count2 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    count1 -= <span class="number">1</span>;</span><br><span class="line">                    count2 -= <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">set</span>([num <span class="keyword">for</span> num <span class="keyword">in</span> [candidate1, candidate2] <span class="keyword">if</span> nums.count(num) &gt; <span class="built_in">len</span>(nums)//<span class="number">3</span>]) <span class="comment">#加set的原因是避免返回两个相同的数</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/3.jpg" alt="3"></p>
+<figure>
+<img src="/2019/12/28/%E6%B1%82%E4%BC%97%E6%95%B02/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 
       
     </div>
@@ -825,23 +908,44 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/majority-element/">多数元素（难度：简单）</a></p>
-<p><img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/1.jpg" alt="1"></p>
+<figure>
+<img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <p><strong>注意：这样的元素只存在一个，因为出现次数大于n/2，若存在两个，则数组长度会超过n。</strong></p>
-<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/2的。</p>
+<h4 id="方法一">方法一：</h4>
+<p>在Python中，先用set()找出所有出现的元素，再使用count()判断出现次数大于n/2的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        set1 = <span class="built_in">set</span>(nums)</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> set1:</span><br><span class="line">            <span class="keyword">if</span> nums.count(s) &gt; <span class="built_in">len</span>(nums)//<span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/2.jpg" alt="2"></p>
+<figure>
+<img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 <hr>
-<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>先排序，再返回位于n/2位置的元素。</p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn)。用 Python 和 Java 将数组排序开销都为 O(nlogn)，它占据了运行的主要时间。</p>
-<p>空间复杂度：O(1)或O(n)。就地排序或使用线性空间将 <code>nums</code> 数组拷贝，然后再排序。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="built_in">len</span>(nums)//<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/3.jpg" alt="3"></p>
+<h4 id="方法二">方法二：</h4>
+<p>先排序，再返回位于n/2位置的元素。</p>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(nlogn)。用 Python 和 Java 将数组排序开销都为
+O(nlogn)，它占据了运行的主要时间。</p>
+<p>空间复杂度：O(1)或O(n)。就地排序或使用线性空间将 <code>nums</code>
+数组拷贝，然后再排序。</p>
+<h5 id="代码">代码</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="built_in">len</span>(nums)//<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 <hr>
-<h4 id="方法三：Boyer-Moore-投票算法"><a href="#方法三：Boyer-Moore-投票算法" class="headerlink" title="方法三：Boyer-Moore 投票算法"></a>方法三：Boyer-Moore 投票算法</h4><p>从第一个数开始count=1，遇到相同的就加1，遇到不同的就减1，减到0就重新换个数开始计数，最后总能找到最多的那个。</p>
-<h5 id="复杂度-1"><a href="#复杂度-1" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)。严格执行了 n 次循环。</p>
+<h4 id="方法三boyer-moore-投票算法">方法三：Boyer-Moore 投票算法</h4>
+<p>从第一个数开始count=1，遇到相同的就加1，遇到不同的就减1，减到0就重新换个数开始计数，最后总能找到最多的那个。</p>
+<h5 id="复杂度-1">复杂度</h5>
+<p>时间复杂度：O(n)。严格执行了 n 次循环。</p>
 <p>空间复杂度：O(1)。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        candidate = nums[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">                candidate = num</span><br><span class="line">            <span class="keyword">if</span> num==candidate:</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                count -= <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> candidate</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/4.jpg" alt="4"></p>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        candidate = nums[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">                candidate = num</span><br><span class="line">            <span class="keyword">if</span> num==candidate:</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                count -= <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> candidate</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/28/%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/4.jpg" alt="4">
+<figcaption aria-hidden="true">4</figcaption>
+</figure>
 
       
     </div>
@@ -921,15 +1025,34 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/find-peak-element/">寻找峰值（难度：中等）</a></p>
-<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/1.jpg" alt="1"></p>
-<h4 id="方法一：线性扫描"><a href="#方法一：线性扫描" class="headerlink" title="方法一：线性扫描"></a>方法一：线性扫描</h4><p>利用连续的两个元素 <code>nums[j]</code> 和 <code>nums[j+1]</code> 不会相等这一事实，我们可以从头开始遍历 <code>nums</code>数组，当遇到<code>nums[i] &gt; nums[i+1]</code> ，即可判断 <code>nums[i]</code>为峰值。</p>
-<p><strong>注意：不需要判断<code>nums[i]&gt;nums[i-1]</code>。这是由于“遍历会到达第i个元素”本身就说明上一个元素（第i- 1个）不满足 <code>nums[i] &gt; nums[i+1]</code>这一条件，也就说明 <code>nums[i-1] &lt; nums[i]</code>。</strong></p>
-<h5 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(n)。  只进行一次遍历。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法一线性扫描">方法一：线性扫描</h4>
+<p>利用连续的两个元素 <code>nums[j]</code> 和 <code>nums[j+1]</code>
+不会相等这一事实，我们可以从头开始遍历
+<code>nums</code>数组，当遇到<code>nums[i] &gt; nums[i+1]</code>
+，即可判断 <code>nums[i]</code>为峰值。</p>
+<p><strong>注意：不需要判断<code>nums[i]&gt;nums[i-1]</code>。这是由于“遍历会到达第i个元素”本身就说明上一个元素（第i-
+1个）不满足 <code>nums[i] &gt; nums[i+1]</code>这一条件，也就说明
+<code>nums[i-1] &lt; nums[i]</code>。</strong></p>
+<h5 id="复杂度分析">复杂度分析</h5>
+<p>时间复杂度 : O(n)。 只进行一次遍历。 空间复杂度 : O(1)。
+只使用了常数空间。</p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; nums[i+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h4 id="方法二：二分法查找"><a href="#方法二：二分法查找" class="headerlink" title="方法二：二分法查找"></a>方法二：二分法查找</h4><h5 id="复杂度分析-1"><a href="#复杂度分析-1" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><p>时间复杂度 : O(logn)。  每一步都将搜索空间减半。<br>空间复杂度 : O(1)。 只使用了常数空间。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往左搜索</span></span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid]&lt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往右搜索</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/2.jpg" alt="2"></p>
+<h4 id="方法二二分法查找">方法二：二分法查找</h4>
+<h5 id="复杂度分析-1">复杂度分析</h5>
+<p>时间复杂度 : O(logn)。 每一步都将搜索空间减半。 空间复杂度 : O(1)。
+只使用了常数空间。</p>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findPeakElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往左搜索</span></span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid]&lt;nums[mid+<span class="number">1</span>]) <span class="comment">// 往右搜索</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/28/%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
       
     </div>
@@ -1009,16 +1132,30 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/">最长重复子数组（难度：中等）</a></p>
-<p><img src="/2019/12/28/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/1.jpg" alt="1"></p>
-<h4 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h4><blockquote>
-<p>作者：LeetCode<br>链接：<a href="https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/">https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/</a><br>来源：力扣（LeetCode）</p>
+<figure>
+<img src="/2019/12/28/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法动态规划">方法：动态规划</h4>
+<blockquote>
+<p>作者：LeetCode
+链接：https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode/
+来源：力扣（LeetCode）</p>
 </blockquote>
-<p>设 <code>dp[i][j]</code>为 <code>A[i:]</code> 和 <code>B[j:]</code> 的最长公共前缀，那么答案为所有 <code>dp[i][j]</code> 中的最大值 <code>max(dp[i][j])</code>。若 <code>A[i] == B[j]</code>，状态转移方程为 <code>dp[i][j] = dp[i + 1][j + 1] + 1</code>，否则为 <code>dp[i][j] = 0</code>。</p>
+<p>设 <code>dp[i][j]</code>为 <code>A[i:]</code> 和 <code>B[j:]</code>
+的最长公共前缀，那么答案为所有 <code>dp[i][j]</code> 中的最大值
+<code>max(dp[i][j])</code>。若 <code>A[i] == B[j]</code>，状态转移方程为
+<code>dp[i][j] = dp[i + 1][j + 1] + 1</code>，否则为
+<code>dp[i][j] = 0</code>。</p>
 <p><strong>复杂度分析</strong></p>
-<p>时间复杂度：O(M*N)，其中 M和 N是数组 A 和 B 的长度。<br>空间复杂度：O(M*N)，即为数组 <code>dp</code> 使用的空间。</p>
+<p>时间复杂度：O(M*N)，其中 M和 N是数组 A 和 B 的长度。
+空间复杂度：O(M*N)，即为数组 <code>dp</code> 使用的空间。</p>
 <p><strong>代码</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findLength</span><span class="params">(<span class="type">int</span>[] A, <span class="type">int</span>[] B)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[A.length+<span class="number">1</span>][B.length+<span class="number">1</span>]; <span class="comment">// 长度加1是为了后面的dp[i+1][j+1]</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> A.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> B.length-<span class="number">1</span>; j&gt;=<span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">if</span>(A[i] == B[j])</span><br><span class="line">                    dp[i][j] = dp[i+<span class="number">1</span>][j+<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                res = Math.max(res,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/28/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/2.jpg" alt="2"></p>
+<figure>
+<img src="/2019/12/28/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
       
     </div>
@@ -1098,15 +1235,26 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/max-consecutive-ones/">最大连续1的个数（难度：简单）</a></p>
-<p><img src="/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/1.jpg" alt="1"></p>
-<h4 id="方法一：一次遍历"><a href="#方法一：一次遍历" class="headerlink" title="方法一：一次遍历"></a>方法一：一次遍历</h4><p><img src="/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/2.jpg" alt="2"></p>
+<figure>
+<img src="/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法一一次遍历">方法一：一次遍历</h4>
+<figure>
+<img src="/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 <p><strong>复杂度分析</strong></p>
 <ul>
 <li>时间复杂度：O(N)。N是数组的长度。</li>
-<li>空间复杂度：O(1)，仅仅使用了 <code>count</code> 和 <code>maxCount</code>。</li>
+<li>空间复杂度：O(1)，仅仅使用了 <code>count</code> 和
+<code>maxCount</code>。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findMaxConsecutiveOnes</span>(<span class="params">self, nums</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        maxcount = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> num == <span class="number">0</span>:</span><br><span class="line">                maxcount = <span class="built_in">max</span>(maxcount, count)</span><br><span class="line">                count = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(maxcount,count)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/3.jpg" alt="3"></p>
+<figure>
+<img src="/2019/12/27/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
 
       
     </div>

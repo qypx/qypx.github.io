@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="判断子序列（难度：简单）  方法一利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串 123456789class Solution:    def isSubsequence(self, s: str, t: str) -&gt; bool:        for i in s:            if i in t:                t &#x3D;">
+    <meta name="description" content="判断子序列（难度：简单）   3  方法一 利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串 123456789class Solution:    def isSubsequence(self, s: str, t: str) -&gt; bool:        for i in s:            if i in t:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="判断子序列">
 <meta property="og:url" content="http://qypx.github.io/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="判断子序列（难度：简单）  方法一利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串 123456789class Solution:    def isSubsequence(self, s: str, t: str) -&gt; bool:        for i in s:            if i in t:                t &#x3D;">
+<meta property="og:description" content="判断子序列（难度：简单）   3  方法一 利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串 123456789class Solution:    def isSubsequence(self, s: str, t: str) -&gt; bool:        for i in s:            if i in t:">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg">
 <meta property="og:image" content="http://qypx.github.io/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg">
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">方法二：双指针</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">方法二：双指针</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -287,14 +287,25 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a href="https://leetcode-cn.com/problems/is-subsequence/">判断子序列（难度：简单）</a></p>
-<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3"></p>
-<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串</p>
+<figure>
+<img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/3.jpg" alt="3">
+<figcaption aria-hidden="true">3</figcaption>
+</figure>
+<h4 id="方法一">方法一</h4>
+<p>利用Python切片，对s中的每个字符，若在t中，下一步比较index+1开始的字符串</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSubsequence</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> t:</span><br><span class="line">                t = t[t.index(i)+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            </span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1"></p>
+<figure>
+<img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <hr>
-<h4 id="方法二：双指针"><a href="#方法二：双指针" class="headerlink" title="方法二：双指针"></a>方法二：双指针</h4><p>若相等，两个指针都往前移，若不等，快指针往前移。最后比较慢指针与s的长度。</p>
+<h4 id="方法二双指针">方法二：双指针</h4>
+<p>若相等，两个指针都往前移，若不等，快指针往前移。最后比较慢指针与s的长度。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSubsequence</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        p1 = <span class="number">0</span></span><br><span class="line">        p2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> p1 &lt; <span class="built_in">len</span>(s) <span class="keyword">and</span> p2 &lt; <span class="built_in">len</span>(t):</span><br><span class="line">            <span class="keyword">if</span> s[p1] == t[p2]:</span><br><span class="line">                p1 += <span class="number">1</span></span><br><span class="line">            p2 += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> p1 == <span class="built_in">len</span>(s):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            </span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2"></p>
+<figure>
+<img src="/2020/01/01/%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
     </div>
 

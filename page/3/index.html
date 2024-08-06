@@ -274,23 +274,35 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="0-在线使用-Linux-Shell"><a href="#0-在线使用-Linux-Shell" class="headerlink" title="0. 在线使用 Linux Shell"></a>0. 在线使用 Linux Shell</h3><blockquote>
-<p>参考 <a href="https://www.sohu.com/a/343421845_298038">https://www.sohu.com/a/343421845_298038</a></p>
+          <h3 id="在线使用-linux-shell">0. 在线使用 Linux Shell</h3>
+<blockquote>
+<p>参考 https://www.sohu.com/a/343421845_298038</p>
 </blockquote>
 <p>JS/UIX - Terminal</p>
-<p>地址：<a href="https://www.masswerk.at/jsuix/index.html">https://www.masswerk.at/jsuix/index.html</a></p>
-<p>进入后，点击open terminal即可。它提供简单的终端环境，没有自带gcc等编译套件，不过练习基本命令和shell脚本还是可以的。</p>
-<h3 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1. 常用命令"></a>1. 常用命令</h3><h4 id="1-1-ls-命令-显示指定工作目录下的内容"><a href="#1-1-ls-命令-显示指定工作目录下的内容" class="headerlink" title="1.1 ls 命令 - 显示指定工作目录下的内容"></a>1.1 ls 命令 - 显示指定工作目录下的内容</h4><blockquote>
-<p>详见 <a href="https://www.runoob.com/linux/linux-comm-ls.html">https://www.runoob.com/linux/linux-comm-ls.html</a></p>
+<p>地址：https://www.masswerk.at/jsuix/index.html</p>
+<p>进入后，点击open
+terminal即可。它提供简单的终端环境，没有自带gcc等编译套件，不过练习基本命令和shell脚本还是可以的。</p>
+<h3 id="常用命令">1. 常用命令</h3>
+<h4 id="ls-命令---显示指定工作目录下的内容">1.1 ls 命令 -
+显示指定工作目录下的内容</h4>
+<blockquote>
+<p>详见 https://www.runoob.com/linux/linux-comm-ls.html</p>
 </blockquote>
 <p>显示指定工作目录下的内容（列出目前工作目录所含之文件及子目录)</p>
 <p>语法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ls [-alrtAFR] [name...]</span><br><span class="line"> </span><br><span class="line">参数：</span><br><span class="line">-a： 显示所有文件及目录 (.开头的隐藏文件也会列出)</span><br><span class="line">-l： 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</span><br><span class="line"></span><br><span class="line">ls -l  可写作 ll</span><br><span class="line"></span><br><span class="line">常用写法：</span><br><span class="line">ll</span><br><span class="line">ls -al</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/21/Linux-common-command/1613903492422.png" alt="1613903492422"></p>
+<figure>
+<img src="/2021/02/21/Linux-common-command/1613903492422.png" alt="1613903492422">
+<figcaption aria-hidden="true">1613903492422</figcaption>
+</figure>
 <p>结合 <code>grep</code> 使用：</p>
 <p>查看文件 log.txt 是否存在于当前目录下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="built_in">ls</span> | grep log.txt</span><br><span class="line">log.txt</span><br><span class="line">&gt;<span class="built_in">ls</span> -al | grep log.txt</span><br><span class="line">-rw-rw-r--.  1 mozhiyan mozhiyan    0 4月  15 17:26 log.txt</span><br></pre></td></tr></table></figure>
-<h4 id="1-2-查看文件内容：cat"><a href="#1-2-查看文件内容：cat" class="headerlink" title="1.2 查看文件内容：cat"></a>1.2 查看文件内容：cat</h4><p><img src="/2021/02/21/Linux-common-command/1613903531146.png" alt="1613903531146"></p>
+<h4 id="查看文件内容cat">1.2 查看文件内容：cat</h4>
+<figure>
+<img src="/2021/02/21/Linux-common-command/1613903531146.png" alt="1613903531146">
+<figcaption aria-hidden="true">1613903531146</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/02/21/Linux-common-command/#more" rel="contents">
@@ -383,21 +395,29 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考：<br><a href="https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html">https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html</a><br><a href="https://www.w3school.com.cn/sql/sql_join_left.asp">https://www.w3school.com.cn/sql/sql_join_left.asp</a><br><a href="https://www.w3school.com.cn/sql/sql_join.asp">https://www.w3school.com.cn/sql/sql_join.asp</a><br><a href="https://www.cnblogs.com/yelp/p/3761443.html">https://www.cnblogs.com/yelp/p/3761443.html</a><br><a href="https://blog.csdn.net/qq_41973536/article/details/81081024">https://blog.csdn.net/qq_41973536/article/details/81081024</a></p>
+<p>参考： https://www.cnblogs.com/reaptomorrow-flydream/p/8145610.html
+https://www.w3school.com.cn/sql/sql_join_left.asp
+https://www.w3school.com.cn/sql/sql_join.asp
+https://www.cnblogs.com/yelp/p/3761443.html
+https://blog.csdn.net/qq_41973536/article/details/81081024</p>
 </blockquote>
 <p>最常见的 JOIN 类型：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、INNER JOIN（等价于 JOIN）</span><br><span class="line">2、LEFT JOIN（等价于LEFT OUTER JOIN）</span><br><span class="line">3、RIGHT JOIN（等价于RIGHT OUTER JOIN）</span><br><span class="line">4、SQL FULL JOIN（等价于FULL OUTER JOIN）</span><br></pre></td></tr></table></figure>
 <p>其中第一种是内连接，后三种是外连接。</p>
 <ul>
-<li>JOIN: 内连接，又叫等值连接，只返回两个表中连接字段相等的行。（如果表中有至少一个匹配，则返回行）</li>
-<li>LEFT JOIN: 左连接，返回左表中所有的记录以及右表中连接字段相等的记录。（即使右表中没有匹配，也从左表返回所有的行）</li>
-<li>RIGHT JOIN: 右连接，返回右表中所有的记录以及左表中连接字段相等的记录。（即使左表中没有匹配，也从右表返回所有的行）</li>
-<li>FULL JOIN: 外连接，返回两个表中的行：left join + right join。（只要其中一个表中存在匹配，就返回行）</li>
-<li>cross join: 结果是笛卡尔积，就是第一个表的行数乘以第二个表的行数。</li>
+<li>JOIN:
+内连接，又叫等值连接，只返回两个表中连接字段相等的行。（如果表中有至少一个匹配，则返回行）</li>
+<li>LEFT JOIN:
+左连接，返回左表中所有的记录以及右表中连接字段相等的记录。（即使右表中没有匹配，也从左表返回所有的行）</li>
+<li>RIGHT JOIN:
+右连接，返回右表中所有的记录以及左表中连接字段相等的记录。（即使左表中没有匹配，也从右表返回所有的行）</li>
+<li>FULL JOIN: 外连接，返回两个表中的行：left join + right
+join。（只要其中一个表中存在匹配，就返回行）</li>
+<li>cross join:
+结果是笛卡尔积，就是第一个表的行数乘以第二个表的行数。</li>
 </ul>
 <p>假设我们有两张表，Table A是左边的表，Table B是右边的表。</p>
 <p>Table A:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -424,9 +444,7 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>Table B:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -453,15 +471,17 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="1-INNER-JOIN"><a href="#1-INNER-JOIN" class="headerlink" title="1. INNER JOIN"></a>1. INNER JOIN</h3><p>内连接只连接匹配的行。</p>
+<h3 id="inner-join">1. INNER JOIN</h3>
+<p>内连接只连接匹配的行。</p>
 <p>语法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> column_name(s)</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">table</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">table</span> <span class="number">2</span></span><br><span class="line"><span class="keyword">ON</span></span><br><span class="line"><span class="keyword">table</span> <span class="number">1.</span>column_name<span class="operator">=</span><span class="keyword">table</span> <span class="number">2.</span>column_name</span><br></pre></td></tr></table></figure>
-<p><img src="/2021/02/14/SQL-join/1624780519991.png" alt="1624780519991"></p>
+<figure>
+<img src="/2021/02/14/SQL-join/1624780519991.png" alt="1624780519991">
+<figcaption aria-hidden="true">1624780519991</figcaption>
+</figure>
 <p>INNER JOIN产生的结果集，是1和2的交集。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, name, address </span><br><span class="line"><span class="keyword">from</span> tableA <span class="keyword">join</span> tableB</span><br><span class="line"><span class="keyword">on</span> tableA.id <span class="operator">=</span> tableB.id</span><br></pre></td></tr></table></figure>
 <p>执行以上SQL输出结果如下：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -483,7 +503,6 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>等价于</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tableA.id, name, address</span><br><span class="line"><span class="keyword">from</span> tableA, tableB</span><br><span class="line"><span class="keyword">where</span> tableA.id <span class="operator">=</span> tableB.id</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -578,11 +597,16 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考 <a href="https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html">https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html</a></p>
+<p>参考
+https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html</p>
 </blockquote>
-<h3 id="1-直接赋值"><a href="#1-直接赋值" class="headerlink" title="1. 直接赋值"></a>1. 直接赋值</h3><p>直接赋值： <code>b = a</code> , a 和 b 都指向同一个对象，则<span style="color:red">若改变a或b，另一个变量的值会跟着改变。</span></p>
+<h3 id="直接赋值">1. 直接赋值</h3>
+<p>直接赋值： <code>b = a</code> , a 和 b 都指向同一个对象，则<span style="color:red">若改变a或b，另一个变量的值会跟着改变。</span></p>
 <p><strong>直接赋值：其实就是对象的引用（别名）。</strong></p>
-<p><img src="/2020/11/15/Python-copy/1605435974588.png" alt="1605435974588"></p>
+<figure>
+<img src="/2020/11/15/Python-copy/1605435974588.png" alt="1605435974588">
+<figcaption aria-hidden="true">1605435974588</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/15/Python-copy/#more" rel="contents">
@@ -675,20 +699,29 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考 <a href="https://blog.csdn.net/Destiny_zz/article/details/88634513">https://blog.csdn.net/Destiny_zz/article/details/88634513</a></p>
+<p>参考 https://blog.csdn.net/Destiny_zz/article/details/88634513</p>
 </blockquote>
-<p><code>conda -V</code> 检查是否安装以及当前conda的版本<br><code>conda list</code> 查看安装了哪些包<br><code>conda update conda</code> 检查更新当前conda</p>
-<p>下载新版本的Anaconda: <a href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a></p>
-<h3 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h3><h4 id="1-创建python虚拟环境"><a href="#1-创建python虚拟环境" class="headerlink" title="1. 创建python虚拟环境"></a>1. 创建python虚拟环境</h4><p><code>conda create -n your_env_name python=X.X (2.7、3.6等)</code> 创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可在Anaconda安装目录envs文件夹下找到。</p>
-<p>如果报错：Conda创建环境失败：CondaHTTPError: HTTP 000 CONNECTION FAILED</p>
-<p>（参考：<a href="https://blog.csdn.net/sinat_38079265/article/details/121163019）">https://blog.csdn.net/sinat_38079265/article/details/121163019）</a></p>
+<p><code>conda -V</code> 检查是否安装以及当前conda的版本
+<code>conda list</code> 查看安装了哪些包 <code>conda update conda</code>
+检查更新当前conda</p>
+<p>下载新版本的Anaconda: https://repo.anaconda.com/archive/</p>
+<h3 id="虚拟环境">虚拟环境</h3>
+<h4 id="创建python虚拟环境">1. 创建python虚拟环境</h4>
+<p><code>conda create -n your_env_name python=X.X (2.7、3.6等)</code>
+创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可在Anaconda安装目录envs文件夹下找到。</p>
+<p>如果报错：Conda创建环境失败：CondaHTTPError: HTTP 000 CONNECTION
+FAILED</p>
+<p>（参考：https://blog.csdn.net/sinat_38079265/article/details/121163019）</p>
 <p>错误原因：默认镜像源访问速度过慢，会导致超时从而导致更新和下载失败。</p>
 <p>解决方法为：<strong>更换conda镜像源为国内镜像源。</strong></p>
 <p>以清华镜像源为例，依次执行以下四步命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/</span><br><span class="line">conda config --set show_channel_urls yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>后续步骤见上面链接</p>
-<h4 id="2-激活或切换不同的虚拟环境"><a href="#2-激活或切换不同的虚拟环境" class="headerlink" title="2. 激活或切换不同的虚拟环境"></a>2. 激活或切换不同的虚拟环境</h4><p><code>python --version</code> 检查当前 python 版本</p>
-<p>切换虚拟环境：<br>Linux: <code>source activate your_env_name(虚拟环境名称)</code><br>Windows: <code>activate your_env_name(虚拟环境名称)</code></p>
+<h4 id="激活或切换不同的虚拟环境">2. 激活或切换不同的虚拟环境</h4>
+<p><code>python --version</code> 检查当前 python 版本</p>
+<p>切换虚拟环境： Linux:
+<code>source activate your_env_name(虚拟环境名称)</code> Windows:
+<code>activate your_env_name(虚拟环境名称)</code></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/15/conda-command/#more" rel="contents">
@@ -781,22 +814,29 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考:<br><a href="https://note.nkmk.me/en/python-reverse-reversed/">https://note.nkmk.me/en/python-reverse-reversed/</a><br><a href="https://note.nkmk.me/en/python-list-sort-sorted/">https://note.nkmk.me/en/python-list-sort-sorted/</a></p>
+<p>参考: https://note.nkmk.me/en/python-reverse-reversed/
+https://note.nkmk.me/en/python-list-sort-sorted/</p>
 </blockquote>
-<h3 id="1-Reverse"><a href="#1-Reverse" class="headerlink" title="1. Reverse"></a>1. Reverse</h3><p><span style="color:red">对于list, 可以使用 .reverse(), reversed(), 和切片[::-1]</span><br><span style="color:red">对于字符串和元组（都不可变），可以使用reversed()和切片[::-1]</span></p>
-<p>↑ .reverse() 是列表的方法，是in-place的，会改变原列表，所以String和Tuple不能使用（切片操作实际是一种copy，会生成一个新的列表而不会改变原列表）</p>
-<h4 id="1-1-list"><a href="#1-1-list" class="headerlink" title="1.1 list"></a>1.1 list</h4><ul>
-<li>List type method <code>reverse()</code> reverses the original list.</li>
+<h3 id="reverse">1. Reverse</h3>
+<p><span style="color:red">对于list, 可以使用 .reverse(), reversed(),
+和切片[::-1]</span> <span style="color:red">对于字符串和元组（都不可变），可以使用reversed()和切片[::-1]</span></p>
+<p>↑ .reverse()
+是列表的方法，是in-place的，会改变原列表，所以String和Tuple不能使用（切片操作实际是一种copy，会生成一个新的列表而不会改变原列表）</p>
+<h4 id="list">1.1 list</h4>
+<ul>
+<li>List type method <code>reverse()</code> reverses the original
+list.</li>
 </ul>
 <p>reverse()是列表的一个内置方法，改变原列表，reverse()返回None</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">org_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">org_list.reverse()</span><br><span class="line"><span class="built_in">print</span>(org_list)</span><br><span class="line"><span class="comment"># [5, 4, 3, 2, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(org_list.reverse())</span><br><span class="line"><span class="comment"># None</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>Built-in function <code>reversed()</code> returns a reverse iterator</li>
+<li>Built-in function <code>reversed()</code> returns a reverse
+iterator</li>
 </ul>
 <p>reversed()是python的一个内置方法，不会改变原列表，返回一个迭代器，可用list()获取作用后的值</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">org_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">reverse_iterator = <span class="built_in">reversed</span>(org_list)</span><br><span class="line"><span class="built_in">print</span>(org_list)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(reverse_iterator)</span><br><span class="line"><span class="comment">#&lt;list_reverseiterator object at 0x7fdd7151a940&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(reverse_iterator))</span><br><span class="line"><span class="comment"># &lt;class &#x27;list_reverseiterator&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line">new_list = <span class="built_in">list</span>(<span class="built_in">reversed</span>(org_list))</span><br><span class="line"><span class="built_in">print</span>(org_list)</span><br><span class="line"><span class="built_in">print</span>(new_list)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment"># [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>切片：$[start:end:step]$</li>
+<li>切片：<span class="math inline">\([start:end:step]\)</span></li>
 </ul>
 <p>忽略start和end时，选取整个list，step=-1，从后往前依次遍历</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">org_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">new_list = org_list[::-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(org_list)</span><br><span class="line"><span class="built_in">print</span>(new_list)</span><br><span class="line"><span class="comment"># [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment"># [5, 4, 3, 2, 1]</span></span><br></pre></td></tr></table></figure>
@@ -891,7 +931,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3186354240,3044449506&amp;fm=26&amp;gp=0.jpg" alt="图片"></p>
+          <figure>
+<img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3186354240,3044449506&amp;fm=26&amp;gp=0.jpg" alt="图片">
+<figcaption aria-hidden="true">图片</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/#more" rel="contents">
@@ -961,7 +1004,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-01 14:12:51" itemprop="dateModified" datetime="2024-08-01T14:12:51+08:00">2024-08-01</time>
+      <time title="修改时间：2024-08-05 19:00:41" itemprop="dateModified" datetime="2024-08-05T19:00:41+08:00">2024-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -983,7 +1026,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="/2020/10/19/entropy/1624781004437.png" alt="1624781004437"></p>
+          <figure>
+<img src="/2020/10/19/entropy/1624781004437.png" alt="1624781004437">
+<figcaption aria-hidden="true">1624781004437</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/10/19/entropy/#more" rel="contents">
@@ -1075,7 +1121,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="/2020/08/07/Precision-Recall-ROC-Curve/1596777109809.png" alt="1596777109809"></p>
+          <figure>
+<img src="/2020/08/07/Precision-Recall-ROC-Curve/1596777109809.png" alt="1596777109809">
+<figcaption aria-hidden="true">1596777109809</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/08/07/Precision-Recall-ROC-Curve/#more" rel="contents">
@@ -1169,17 +1218,23 @@
     <div class="post-body" itemprop="articleBody">
           <blockquote>
 <p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
 </blockquote>
-<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
-<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
-<ol>
+<p>冷启动（ cold start
+）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架
+会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
+<h3 id="用户冷启动">8.1 用户冷启动</h3>
+<p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我
+没有他的行为数据，所以也无法根据他的历史行为预
+其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
+<ol type="1">
 <li>利用用户的账号信息。</li>
 <li>利用用户的手机 IMEI 号进行冷启动。</li>
 <li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
 </ol>
-<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
-<ol>
+<h3 id="物品冷启动">8.2 物品冷启动</h3>
+<p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
+<ol type="1">
 <li>利用物品的内容、分类信息。</li>
 <li>利用专家标注的数据。</li>
 </ol>
@@ -1263,16 +1318,30 @@
     <div class="post-body" itemprop="articleBody">
           <blockquote>
 <p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
 </blockquote>
 <p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
 <p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
 <p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
-<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
+<h2 id="总体架构">1. 总体架构</h2>
+<p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思
+考，从而设计出适合自身业务的系统。</p>
 <p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
-<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
-<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
-<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
+<h3 id="离线推荐">1.1 离线推荐</h3>
+<p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（
+比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位
+）。模型拟合的是用户的中长期兴趣。</p>
+<p>如下图所示，
+一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和
+A/B
+测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和
+A/B
+测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过
+A/B 测试模块访问实时计算模块获取预测结果。</p>
+<figure>
+<img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/#more" rel="contents">

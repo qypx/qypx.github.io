@@ -275,22 +275,50 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/next-greater-element-i/">下一个更大元素1（难度：简单）</a></p>
-<p><img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1577281453752.jpg" alt="题目"></p>
-<p><img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1577281497407.jpg" alt="方法"></p>
-<p><img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1577281548614.jpg" alt="code"></p>
-<h4 id="图解"><a href="#图解" class="headerlink" title="图解"></a>图解</h4><p><img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/20191225-215434.jpg" alt="图解"></p>
+<figure>
+<img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1577281453752.jpg" alt="题目">
+<figcaption aria-hidden="true">题目</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1577281497407.jpg" alt="方法">
+<figcaption aria-hidden="true">方法</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1577281548614.jpg" alt="code">
+<figcaption aria-hidden="true">code</figcaption>
+</figure>
+<h4 id="图解">图解</h4>
+<figure>
+<img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/20191225-215434.jpg" alt="图解">
+<figcaption aria-hidden="true">图解</figcaption>
+</figure>
 <hr>
-<h4 id="另一种写法（从后往前）"><a href="#另一种写法（从后往前）" class="headerlink" title="另一种写法（从后往前）"></a>另一种写法（从后往前）</h4><p>转自：</p>
+<h4 id="另一种写法从后往前">另一种写法（从后往前）</h4>
+<p>转自：</p>
 <blockquote>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/">https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/</a><br>来源：力扣（LeetCode）</p>
+<p>作者：labuladong
+链接：https://leetcode-cn.com/problems/next-greater-element-i/solution/dan-diao-zhan-jie-jue-next-greater-number-yi-lei-w/
+来源：力扣（LeetCode）</p>
 </blockquote>
-<p><img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1.jpg" alt="1"></p>
+<figure>
+<img src="/2019/12/25/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A01/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">nextGreaterElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(nums.size())</span></span>; <span class="comment">// 存放答案的数组</span></span><br><span class="line">    stack&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = nums.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123; <span class="comment">// 倒着往栈里放</span></span><br><span class="line">        <span class="keyword">while</span> (!s.<span class="built_in">empty</span>() &amp;&amp; s.<span class="built_in">top</span>() &lt;= nums[i]) &#123; <span class="comment">// 判定个子高矮</span></span><br><span class="line">            s.<span class="built_in">pop</span>(); <span class="comment">// 矮个起开，反正也被挡着了。。。</span></span><br><span class="line">        &#125;</span><br><span class="line">        ans[i] = s.<span class="built_in">empty</span>() ? <span class="number">-1</span> : s.<span class="built_in">top</span>(); <span class="comment">// 这个元素身后的第一个高个</span></span><br><span class="line">        s.<span class="built_in">push</span>(nums[i]); <span class="comment">// 进队，接受之后的身高判定吧！</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>for 循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。while 循环是把两个“高个”元素之间的元素排除，因为他们的存在没有意义，前面挡着个“更高”的元素，所以他们不可能被作为后续进来的元素的 Next Great Number 了。</p>
-<p>这个算法的时间复杂度不是那么直观，如果你看到 for 循环嵌套 while 循环，可能认为这个算法的复杂度也是 O(n^2)，但是实际上这个算法的复杂度只有 O(n)。</p>
-<p>分析它的时间复杂度，要从整体来看：总共有 n 个元素，每个元素都被 push 入栈了一次，而最多会被 pop 一次，没有任何冗余操作。所以总的计算规模是和元素规模 n 成正比的，也就是 O(n) 的复杂度。</p>
-<h5 id="本题代码"><a href="#本题代码" class="headerlink" title="本题代码"></a>本题代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] nextGreaterElement(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[nums1.length];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> nums2.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123; <span class="comment">// 倒着往栈里放</span></span><br><span class="line">            <span class="keyword">while</span>(!stack.empty() &amp;&amp; nums2[i]&gt;=stack.peek())&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums2[i],stack.empty()?-<span class="number">1</span>:stack.peek());</span><br><span class="line">            stack.push(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums1.length; i++)</span><br><span class="line">            res[i] = map.get(nums1[i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>for
+循环要从后往前扫描元素，因为我们借助的是栈的结构，倒着入栈，其实是正着出栈。while
+循环是把两个“高个”元素之间的元素排除，因为他们的存在没有意义，前面挡着个“更高”的元素，所以他们不可能被作为后续进来的元素的
+Next Great Number 了。</p>
+<p>这个算法的时间复杂度不是那么直观，如果你看到 for 循环嵌套 while
+循环，可能认为这个算法的复杂度也是
+O(n^2)，但是实际上这个算法的复杂度只有 O(n)。</p>
+<p>分析它的时间复杂度，要从整体来看：总共有 n 个元素，每个元素都被 push
+入栈了一次，而最多会被 pop
+一次，没有任何冗余操作。所以总的计算规模是和元素规模 n 成正比的，也就是
+O(n) 的复杂度。</p>
+<h5 id="本题代码">本题代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] nextGreaterElement(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span>[] res = <span class="keyword">new</span> <span class="title class_">int</span>[nums1.length];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> nums2.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123; <span class="comment">// 倒着往栈里放</span></span><br><span class="line">            <span class="keyword">while</span>(!stack.empty() &amp;&amp; nums2[i]&gt;=stack.peek())&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums2[i],stack.empty()?-<span class="number">1</span>:stack.peek());</span><br><span class="line">            stack.push(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nums1.length; i++)</span><br><span class="line">            res[i] = map.get(nums1[i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -370,8 +398,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">删除列表中的节点（难度：简单）</a></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/捕获.JPG" alt="题目"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/1577280000099.jpg" alt="方法"></p>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/捕获.JPG" alt="题目">
+<figcaption aria-hidden="true">题目</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/1577280000099.jpg" alt="方法">
+<figcaption aria-hidden="true">方法</figcaption>
+</figure>
 
       
     </div>
@@ -451,12 +485,30 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/">删除排序链表中的重复元素2（难度：中等）</a></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278156148.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278207894.jpg" alt="1577278207894"></p>
-<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/20191225-210253.jpg" alt="画解"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>(Java)</p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279243671.jpg" alt="code"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279306551.jpg" alt="结果"></p>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278156148.jpg" alt="题目">
+<figcaption aria-hidden="true">题目</figcaption>
+</figure>
+<h4 id="思路">思路</h4>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577278207894.jpg" alt="1577278207894">
+<figcaption aria-hidden="true">1577278207894</figcaption>
+</figure>
+<h4 id="画解">画解</h4>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/20191225-210253.jpg" alt="画解">
+<figcaption aria-hidden="true">画解</figcaption>
+</figure>
+<h4 id="代码">代码</h4>
+<p>(Java)</p>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279243671.jpg" alt="code">
+<figcaption aria-hidden="true">code</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A02/1577279306551.jpg" alt="结果">
+<figcaption aria-hidden="true">结果</figcaption>
+</figure>
 
       
     </div>
@@ -536,14 +588,41 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/">删除排序链表中的重复元素（难度：简单）</a></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268363569.jpg" alt="题目"></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268482086.jpg" alt="思路"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268503067.jpg" alt="1577268503067"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268572469.jpg" alt="1577268572469"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268850082.jpg" alt="结果"></p>
-<h4 id="画解"><a href="#画解" class="headerlink" title="画解"></a>画解</h4><p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268614488.jpg" alt="画解1"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268643223.jpg" alt="画解2"></p>
-<p><img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268718737.jpg" alt="画解3"></p>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268363569.jpg" alt="题目">
+<figcaption aria-hidden="true">题目</figcaption>
+</figure>
+<h4 id="思路">思路</h4>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268482086.jpg" alt="思路">
+<figcaption aria-hidden="true">思路</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268503067.jpg" alt="1577268503067">
+<figcaption aria-hidden="true">1577268503067</figcaption>
+</figure>
+<h4 id="代码">代码</h4>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268572469.jpg" alt="1577268572469">
+<figcaption aria-hidden="true">1577268572469</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268850082.jpg" alt="结果">
+<figcaption aria-hidden="true">结果</figcaption>
+</figure>
+<h4 id="画解">画解</h4>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268614488.jpg" alt="画解1">
+<figcaption aria-hidden="true">画解1</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268643223.jpg" alt="画解2">
+<figcaption aria-hidden="true">画解2</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/1577268718737.jpg" alt="画解3">
+<figcaption aria-hidden="true">画解3</figcaption>
+</figure>
 
       
     </div>
@@ -623,10 +702,22 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/longest-palindrome/">最长回文串（难度：简单）</a></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/1577266515330.jpg" alt="题目"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/20191225-174159.jpg" alt="思路"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/1577267022201.jpg" alt="code"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/1577267058050.jpg" alt="结果"></p>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/1577266515330.jpg" alt="题目">
+<figcaption aria-hidden="true">题目</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/20191225-174159.jpg" alt="思路">
+<figcaption aria-hidden="true">思路</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/1577267022201.jpg" alt="code">
+<figcaption aria-hidden="true">code</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/1577267058050.jpg" alt="结果">
+<figcaption aria-hidden="true">结果</figcaption>
+</figure>
 
       
     </div>
@@ -706,8 +797,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/">最长回文子串（难度：中等）</a></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/0001.jpg" alt="0001"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/0002.jpg" alt="0002"></p>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/0001.jpg" alt="0001">
+<figcaption aria-hidden="true">0001</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/0002.jpg" alt="0002">
+<figcaption aria-hidden="true">0002</figcaption>
+</figure>
 
       
     </div>
@@ -793,21 +890,49 @@
     
     <div class="post-body" itemprop="articleBody">
           <p><a href="https://leetcode-cn.com/problems/longest-common-subsequence/">最长公共子序列（难度：中等）</a></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/question.JPG" alt="题目"></p>
-<h3 id="方法：动态规划"><a href="#方法：动态规划" class="headerlink" title="方法：动态规划"></a>方法：动态规划</h3><p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1.JPG" alt="图1"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/2.JPG" alt="图2"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/code.JPG" alt="code"></p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/3.JPG" alt="图3"></p>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>数据复杂度：O(mn)</p>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/question.JPG" alt="题目">
+<figcaption aria-hidden="true">题目</figcaption>
+</figure>
+<h3 id="方法动态规划">方法：动态规划</h3>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1.JPG" alt="图1">
+<figcaption aria-hidden="true">图1</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/2.JPG" alt="图2">
+<figcaption aria-hidden="true">图2</figcaption>
+</figure>
+<h5 id="代码">代码</h5>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/code.JPG" alt="code">
+<figcaption aria-hidden="true">code</figcaption>
+</figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/3.JPG" alt="图3">
+<figcaption aria-hidden="true">图3</figcaption>
+</figure>
+<h5 id="复杂度">复杂度</h5>
+<p>数据复杂度：O(mn)</p>
 <p>空间复杂度：O(mn)</p>
 <hr>
-<h4 id="最长公共子串"><a href="#最长公共子串" class="headerlink" title="最长公共子串"></a>最长公共子串</h4><p>最长公共子串（Longest Common Substring）与最长公共子序列（Longest Common Subsequence）的区别： <strong>子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续</strong>。例如X = {a, Q, 1, 1}; Y = {a, 1, 1, d, f}那么，{a, 1, 1}是X和Y的最长公共子序列，但不是它们的最长公共字串。</p>
+<h4 id="最长公共子串">最长公共子串</h4>
+<p>最长公共子串（Longest Common Substring）与最长公共子序列（Longest
+Common Subsequence）的区别：
+<strong>子串要求在原字符串中是连续的，而子序列则只需保持相对顺序一致，并不要求连续</strong>。例如X
+= {a, Q, 1, 1}; Y = {a, 1, 1, d, f}那么，{a, 1,
+1}是X和Y的最长公共子序列，但不是它们的最长公共字串。</p>
 <p><strong>描述：</strong></p>
-<p>计算两个字符串的最大公共子串（Longest Common Substring）的长度，字符不区分大小写。</p>
+<p>计算两个字符串的最大公共子串（Longest Common
+Substring）的长度，字符不区分大小写。</p>
 <p><strong>方法</strong></p>
 <p>求子串的方法和求子序列方法类似：</p>
-<p><img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1578644196190.png" alt="1578644196190"></p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestCommonSubsequence</span><span class="params">(String text1, String text2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> text1.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> text2.length();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> dp[][] = <span class="keyword">new</span> <span class="title class_">int</span>[n1+<span class="number">1</span>][n2+<span class="number">1</span>]; <span class="comment">//多增加一行一列</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">longest</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(text1.charAt(i-<span class="number">1</span>) == text2.charAt(j-<span class="number">1</span>))</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                    longest = Math.max(longest,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/12/25/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97/1578644196190.png" alt="1578644196190">
+<figcaption aria-hidden="true">1578644196190</figcaption>
+</figure>
+<h5 id="代码-1">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestCommonSubsequence</span><span class="params">(String text1, String text2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n1</span> <span class="operator">=</span> text1.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> text2.length();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> dp[][] = <span class="keyword">new</span> <span class="title class_">int</span>[n1+<span class="number">1</span>][n2+<span class="number">1</span>]; <span class="comment">//多增加一行一列</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">longest</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n1; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n2; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(text1.charAt(i-<span class="number">1</span>) == text2.charAt(j-<span class="number">1</span>))</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                    longest = Math.max(longest,dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -892,7 +1017,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><img src="/2019/12/16/HDFS-Overview/0001.jpg" alt="0001"></p>
+          <figure>
+<img src="/2019/12/16/HDFS-Overview/0001.jpg" alt="0001">
+<figcaption aria-hidden="true">0001</figcaption>
+</figure>
 
       
     </div>
@@ -977,8 +1105,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="History"><a href="#History" class="headerlink" title="History"></a>History</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history"></p>
-<h1 id="Hadoop-Ecosystem"><a href="#Hadoop-Ecosystem" class="headerlink" title="Hadoop Ecosystem"></a>Hadoop Ecosystem</h1><p><img src="/2019/12/15/Hadoop-Introduction/hadoop-ecosystem.JPG" alt="hadoop-ecosystem"></p>
+          <h1 id="history">History</h1>
+<figure>
+<img src="/2019/12/15/Hadoop-Introduction/hadoop-history.JPG" alt="hadoop-history">
+<figcaption aria-hidden="true">hadoop-history</figcaption>
+</figure>
+<h1 id="hadoop-ecosystem">Hadoop Ecosystem</h1>
+<figure>
+<img src="/2019/12/15/Hadoop-Introduction/hadoop-ecosystem.JPG" alt="hadoop-ecosystem">
+<figcaption aria-hidden="true">hadoop-ecosystem</figcaption>
+</figure>
 
       
     </div>
@@ -1063,18 +1199,34 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/"><strong>Machine Learing A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
-<p><a href="https://www.superdatascience.com/pages/machine-learning">datasets download</a></p>
+          <p>以下内容来自Udemy上的课程: <a href="https://www.udemy.com/machinelearning/"><strong>Machine Learing
+A-Z: Hands-On Python &amp; R in Data Science</strong></a>.</p>
+<p><a href="https://www.superdatascience.com/pages/machine-learning">datasets
+download</a></p>
 <p>使用数据：</p>
-<p><img src="/2019/09/21/Data-Preprocessing/data.JPG" alt="data"></p>
-<h3 id="1-Missing-data"><a href="#1-Missing-data" class="headerlink" title="1. Missing data"></a>1. Missing data</h3><p>Common strategy: replace the missing data by the mean, median, or most frequent value of the feature column.</p>
-<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p>1.以均值代替：</p>
+<figure>
+<img src="/2019/09/21/Data-Preprocessing/data.JPG" alt="data">
+<figcaption aria-hidden="true">data</figcaption>
+</figure>
+<h3 id="missing-data">1. Missing data</h3>
+<p>Common strategy: replace the missing data by the mean, median, or
+most frequent value of the feature column.</p>
+<h4 id="python">Python</h4>
+<p>1.以均值代替：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Importing the libraries</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Importing the dataset</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">&#x27;Data.csv&#x27;</span>)</span><br><span class="line">X = dataset.drop(columns=<span class="string">&#x27;Purchase&#x27;</span>)</span><br><span class="line">y = dataset[<span class="string">&#x27;Purchase&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Taking care of missing data</span></span><br><span class="line"><span class="comment"># 法一：SimpleImputer(新版sklearn，以前为 from sklearn.preprocessing import Imputer)</span></span><br><span class="line"><span class="keyword">from</span> sklearn.impute <span class="keyword">import</span> SimpleImputer</span><br><span class="line">imputer = SimpleImputer(missing_values=np.nan, strategy = <span class="string">&quot;mean&quot;</span>)</span><br><span class="line">imputer.fit(X.iloc[:, <span class="number">1</span>:<span class="number">3</span>]) </span><br><span class="line"><span class="comment"># ↑如果写作imputer.fit(X)，会报错：ValueError: Cannot use mean strategy with non-numeric data。得传入数值型的（去掉第一列）</span></span><br><span class="line">X.iloc[:, <span class="number">1</span>:<span class="number">3</span>] = imputer.transform(X.iloc[:, <span class="number">1</span>:<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 法二，replace</span></span><br><span class="line"><span class="comment">#以Age为例</span></span><br><span class="line">X[<span class="string">&quot;Age&quot;</span>].replace(np.nan, X[<span class="string">&quot;Age&quot;</span>].mean(), inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 法三，fillna</span></span><br><span class="line"><span class="comment"># 以Age为例</span></span><br><span class="line">X[<span class="string">&quot;Age&quot;</span>] = X[<span class="string">&quot;Age&quot;</span>].fillna(X[<span class="string">&quot;Age&quot;</span>].mean())</span><br><span class="line"><span class="comment"># 也可写作</span></span><br><span class="line">X[<span class="string">&quot;Age&quot;</span>].fillna(X[<span class="string">&quot;Age&quot;</span>].mean(), inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <p>2.以指定值替代</p>
 <p>例：现有 df_age 如下：</p>
-<p><img src="/2019/09/21/Data-Preprocessing/1607053623367.png" alt="1607053623367"></p>
-<p>Fill the missing data in column <strong>“age_boy”</strong> with 22 and fill the missing data in column <strong>“age_girl”</strong> with 21. The expected output is:</p>
-<p><img src="/2019/09/21/Data-Preprocessing/1607053581148.png" alt="1607053581148"></p>
+<figure>
+<img src="/2019/09/21/Data-Preprocessing/1607053623367.png" alt="1607053623367">
+<figcaption aria-hidden="true">1607053623367</figcaption>
+</figure>
+<p>Fill the missing data in column <strong>"age_boy"</strong> with 22
+and fill the missing data in column <strong>"age_girl"</strong> with 21.
+The expected output is:</p>
+<figure>
+<img src="/2019/09/21/Data-Preprocessing/1607053581148.png" alt="1607053581148">
+<figcaption aria-hidden="true">1607053581148</figcaption>
+</figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_age = df_age.fillna(value=&#123;<span class="string">&#x27;age_boy&#x27;</span>:<span class="number">22</span>,<span class="string">&#x27;age_girl&#x27;</span>:<span class="number">21</span>&#125;)</span><br></pre></td></tr></table></figure>
 <p>3.删掉有缺失值的行</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X.dropna(axis = <span class="number">0</span>, inplace = <span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 或写成 X = X.dropna(axis = 0)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 还可指定当哪一变量出现缺失值时，执行删除的操作</span></span><br><span class="line">X.dropna(subset=[<span class="string">&quot;Age&quot;</span>], axis = <span class="number">0</span>, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>

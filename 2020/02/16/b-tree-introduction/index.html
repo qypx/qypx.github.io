@@ -23,10 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="Related image">
+<meta property="og:type" content="article">
 <meta property="og:title" content="B树介绍">
 <meta property="og:url" content="http://qypx.github.io/2020/02/16/b-tree-introduction/index.html">
 <meta property="og:site_name" content="qypx の blog">
+<meta property="og:description" content="Related image">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/02/16/b-tree-introduction/1695630380486.png">
 <meta property="og:image" content="http://qypx.github.io/2020/02/16/b-tree-introduction/1695631109344.png">
@@ -151,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B%E6%A0%91"><span class="nav-text">B树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-%E6%A0%91"><span class="nav-text">B+树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-%E6%A0%91-1"><span class="nav-text">B*树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#b%E6%A0%91"><span class="nav-text">B树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b%E6%A0%91-1"><span class="nav-text">B+树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b%E6%A0%91-2"><span class="nav-text">B*树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -283,30 +285,30 @@
     
     
     <div class="post-body" itemprop="articleBody"><blockquote>
-<p>参考：<br><a href="https://blog.csdn.net/A_zhangq/article/details/99662693">https://blog.csdn.net/A_zhangq/article/details/99662693</a><br><a href="https://blog.csdn.net/qq_35571554/article/details/82759668">漫画叙述B+树和B-树，很值得看!</a></p>
+<p>参考： https://blog.csdn.net/A_zhangq/article/details/99662693 <a href="https://blog.csdn.net/qq_35571554/article/details/82759668">漫画叙述B+树和B-树，很值得看!</a></p>
 </blockquote>
-<h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><p>B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。<strong>B-树就是指的B树</strong>。</p>
-<p>B-树是一种多路搜索树（并不是二叉的）：    </p>
-<ol>
-<li><p>定义任意非叶子结点最多只有M个儿子，且M&gt;2；    </p>
-</li>
-<li><p>根结点的儿子数为 [2, M]；    </p>
-</li>
-<li><p>除根结点以外的非叶子结点的儿子数为 [M/2, M]；    </p>
-</li>
-<li><p>每个结点存放至少 M/2-1（取上整）和至多  M-1 个关键字；（至少 2个关键字）    </p>
-</li>
-<li><p>非叶子结点的关键字个数 = 指向儿子的指针个数 - 1；    </p>
-</li>
-<li><p>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且 K[i] &lt; K[i+1] ；（有序序列）    </p>
-</li>
-<li><p>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1] 指向关键字小于 K[1] 的子树，P[M] 指向关键字大于 K[M-1] 的子树，其它 P[i] 指向关键字属于(K[i-1], K[i]) 的子树；    </p>
-</li>
-<li><p>所有叶子结点位于同一层；    </p>
-</li>
+<h3 id="b树">B树</h3>
+<p>B-树就是B树（可能有部分人会习惯上把B-树读为B减树，其实并不存在B减树，只是读法上的不同而已），B就是balanced，平衡的意思。<strong>B-树就是指的B树</strong>。</p>
+<p>B-树是一种多路搜索树（并不是二叉的）：</p>
+<ol type="1">
+<li><p>定义任意非叶子结点最多只有M个儿子，且M&gt;2；</p></li>
+<li><p>根结点的儿子数为 [2, M]；</p></li>
+<li><p>除根结点以外的非叶子结点的儿子数为 [M/2, M]；</p></li>
+<li><p>每个结点存放至少 M/2-1（取上整）和至多 M-1 个关键字；（至少
+2个关键字）</p></li>
+<li><p>非叶子结点的关键字个数 = 指向儿子的指针个数 - 1；</p></li>
+<li><p>非叶子结点的关键字：K[1], K[2], …, K[M-1]；且 K[i] &lt; K[i+1]
+；（有序序列）</p></li>
+<li><p>非叶子结点的指针：P[1], P[2], …, P[M]；其中P[1] 指向关键字小于
+K[1] 的子树，P[M] 指向关键字大于 K[M-1] 的子树，其它 P[i]
+指向关键字属于(K[i-1], K[i]) 的子树；</p></li>
+<li><p>所有叶子结点位于同一层；</p></li>
 </ol>
 <p>如 (M = 3)：</p>
-<p><img src="/2020/02/16/b-tree-introduction/1695630380486.png" alt="1695630380486"></p>
+<figure>
+<img src="/2020/02/16/b-tree-introduction/1695630380486.png" alt="1695630380486">
+<figcaption aria-hidden="true">1695630380486</figcaption>
+</figure>
 <p><strong>B-树的搜索：</strong></p>
 <p>从根结点开始，对结点内的关键字（有序）序列进行二分查找，如果命中则结束，否则进入查询关键字所属范围的儿子结点；重复，直到所对应的儿子指针为空，或已经是叶子结点.</p>
 <p><strong>B-树的特性：</strong></p>
@@ -319,16 +321,21 @@
 </ul>
 <hr>
 <span id="more"></span>
-<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p>B+树是B-树的变体，也是一种多路搜索树：</p>
+<h3 id="b树-1">B+树</h3>
+<p>B+树是B-树的变体，也是一种多路搜索树：</p>
 <p>其定义基本与B-树同，除了：</p>
-<ol>
+<ol type="1">
 <li>非叶子结点的子树指针与关键字个数相同；</li>
-<li>非叶子结点的子树指针P[i]，指向关键字值属于[K[i], K[i+1]]的子树（B-树是开区间）；</li>
+<li>非叶子结点的子树指针P[i]，指向关键字值属于[K[i],
+K[i+1]]的子树（B-树是开区间）；</li>
 <li>为所有叶子结点增加一个链指针；</li>
 <li>所有关键字都在叶子结点出现；</li>
 </ol>
 <p>如（M=3）:</p>
-<p><img src="/2020/02/16/b-tree-introduction/1695631109344.png" alt="1695631109344"></p>
+<figure>
+<img src="/2020/02/16/b-tree-introduction/1695631109344.png" alt="1695631109344">
+<figcaption aria-hidden="true">1695631109344</figcaption>
+</figure>
 <p><strong>B+树的搜索</strong>：</p>
 <p>与B-树基本相同，区别是B+树只有达到叶子结点才命中（B-树可以在非叶子结点命中），其性能也等价于在关键字全集做一次二分查找；</p>
 <p><strong>B+树的特性：</strong></p>
@@ -339,33 +346,43 @@
 <li>更适合文件索引系统；</li>
 </ul>
 <blockquote>
-<p>关于稠密索引与稀疏索引：<a href="https://blog.csdn.net/Qmen_Crow/article/details/51052160">https://blog.csdn.net/Qmen_Crow/article/details/51052160</a></p>
+<p>关于稠密索引与稀疏索引：https://blog.csdn.net/Qmen_Crow/article/details/51052160</p>
 </blockquote>
 <p><strong>B+树的分裂：</strong></p>
 <p>当一个结点满时，分配一个新的结点，并将原结点中1/2的数据复制到新结点，最后在父结点中增加新结点的指针；B+树的分裂只影响原结点和父结点，而不会影响兄弟结点，所以它不需要指向兄弟的指针。</p>
 <hr>
-<h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B*树"></a>B*树</h3><p>B*树是B+树的一种变形，它是在B+树的基础上，将索引层以指针连接起来（在B+树的非根和非叶子结点再增加指向兄弟的指针），使搜索取值更加快捷。 </p>
+<h3 id="b树-2">B*树</h3>
+<p>B*树是B+树的一种变形，它是在B+树的基础上，将索引层以指针连接起来（在B+树的非根和非叶子结点再增加指向兄弟的指针），使搜索取值更加快捷。</p>
 <p>如下图（M = 3）：</p>
-<p><img src="/2020/02/16/b-tree-introduction/1695631313384.png" alt="1695631313384"></p>
+<figure>
+<img src="/2020/02/16/b-tree-introduction/1695631313384.png" alt="1695631313384">
+<figcaption aria-hidden="true">1695631313384</figcaption>
+</figure>
 <p>B*树在B+树的基础上产生了一系列的变化，如下：</p>
-<ol>
+<ol type="1">
 <li>B*树定义了非叶子结点关键字个数至少为(2/3)M，即块的最低使用率为2/3（代替B+树的1/2）；</li>
-<li><strong>B *树的分裂：</strong>当一个结点满时，如果它的下一个兄弟结点未满，那么将一部分数据移到兄弟结点中，再在原结点插入关键字，最后修改父结点中兄弟结点的关键字（因为兄弟结点的关键字范围改变了）；如果兄弟也满了，则在原结点与兄弟结点之间增加新结点，并各复制1/3的数据到新结点，最后在父结点增加新结点的指针。</li>
+<li>**B
+*树的分裂：**当一个结点满时，如果它的下一个兄弟结点未满，那么将一部分数据移到兄弟结点中，再在原结点插入关键字，最后修改父结点中兄弟结点的关键字（因为兄弟结点的关键字范围改变了）；如果兄弟也满了，则在原结点与兄弟结点之间增加新结点，并各复制1/3的数据到新结点，最后在父结点增加新结点的指针。</li>
 </ol>
 <p>B*树相对于B+树，空间利用率上有所提高，查询速率也有所提高。</p>
 <hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li><p>二叉搜索树：二叉树，每个结点只存储一个关键字且值大于左子树，小于右子树。</p>
-</li>
-<li><p>B（B-）树：多路搜索树，每个结点存储 M/2-1 到 M - 1 个关键字，非叶子结点存储指向关键字范围的子结点； 所有关键字在整颗树中出现，且只出现一次，非叶子结点可以命中；</p>
-</li>
-<li>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</li>
-<li>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</li>
+<h3 id="总结">总结</h3>
+<ul>
+<li><p>二叉搜索树：二叉树，每个结点只存储一个关键字且值大于左子树，小于右子树。</p></li>
+<li><p>B（B-）树：多路搜索树，每个结点存储 M/2-1 到 M - 1
+个关键字，非叶子结点存储指向关键字范围的子结点；
+所有关键字在整颗树中出现，且只出现一次，非叶子结点可以命中；</p></li>
+<li><p>B+树：在B-树基础上，为叶子结点增加链表指针，所有关键字都在叶子结点中出现，非叶子结点作为叶子结点的索引；B+树总是到叶子结点才命中；</p></li>
+<li><p>B*树：在B+树基础上，为非叶子结点也增加链表指针，将结点的最低利用率从1/2提高到2/3；</p></li>
 </ul>
-<p><img src="/2020/02/16/b-tree-introduction/1581863461822.png" alt="1581863461822"></p>
+<figure>
+<img src="/2020/02/16/b-tree-introduction/1581863461822.png" alt="1581863461822">
+<figcaption aria-hidden="true">1581863461822</figcaption>
+</figure>
 <p>这两种树都是平衡的多分树，它们都可以用于文件的索引结构，但B树只能支持随机检索，而B+树是有序的树，既能支持随机检索，又能支持顺序检索。</p>
 <blockquote>
-<p>B+树动画演示：<a href="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html">B+ Tree Visualization (usfca.edu)</a></p>
+<p>B+树动画演示：<a href="https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html">B+
+Tree Visualization (usfca.edu)</a></p>
 </blockquote>
     </div>
 

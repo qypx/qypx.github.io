@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="无重叠区间（难度：中等）  转自：  作者：labuladong链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;non-overlapping-intervals&#x2F;solution&#x2F;tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu&#x2F;来源：力扣（LeetCode）  本文解决一个很经典的贪心算法问题 Interval Sch">
+    <meta name="description" content="无重叠区间（难度：中等）   1  转自：  作者：labuladong 链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;non-overlapping-intervals&#x2F;solution&#x2F;tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu&#x2F; 来源：力扣（LeetCode）  本文解决一个很经典的贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无重叠区间">
 <meta property="og:url" content="http://qypx.github.io/2020/01/01/%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="无重叠区间（难度：中等）  转自：  作者：labuladong链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;non-overlapping-intervals&#x2F;solution&#x2F;tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu&#x2F;来源：力扣（LeetCode）  本文解决一个很经典的贪心算法问题 Interval Sch">
+<meta property="og:description" content="无重叠区间（难度：中等）   1  转自：  作者：labuladong 链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;non-overlapping-intervals&#x2F;solution&#x2F;tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu&#x2F; 来源：力扣（LeetCode）  本文解决一个很经典的贪心">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/01/%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4/1.jpg">
 <meta property="og:image" content="https://pic.leetcode-cn.com/678752f150168fc2e53a36d30e589b76ef81a95943c018b01bef6a548bfafeeb-file_1566313617208">
@@ -153,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%EF%BC%9A%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-text">方法：贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">复杂度</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-text">方法：贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">复杂度</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -288,23 +288,47 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a href="https://leetcode-cn.com/problems/non-overlapping-intervals/">无重叠区间（难度：中等）</a></p>
-<p><img src="/2020/01/01/%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4/1.jpg" alt="1"></p>
+<figure>
+<img src="/2020/01/01/%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
 <p>转自：</p>
 <blockquote>
-<p>作者：labuladong<br>链接：<a href="https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/">https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/</a><br>来源：力扣（LeetCode）</p>
+<p>作者：labuladong
+链接：https://leetcode-cn.com/problems/non-overlapping-intervals/solution/tan-xin-suan-fa-zhi-qu-jian-diao-du-wen-ti-by-labu/
+来源：力扣（LeetCode）</p>
 </blockquote>
-<p>本文解决一个很经典的贪心算法问题 Interval Scheduling（区间调度问题）。给你很多形如 <code>[start, end]</code>的闭区间，请你设计一个算法，算出这些区间中最多有几个互不相交的区间。<br>举个例子，<code>intvs = [[1,3], [2,4], [3,6]]</code>，这些区间最多有 2 个区间互不相交，即 <code>[[1,3], [3,6]]</code>，你的算法应该返回 2。注意边界相同并不算相交。</p>
-<p>这个问题在生活中的应用广泛，比如你今天有好几个活动，每个活动都可以用区间 [start, end] 表示开始和结束的时间，请问你今天最多能参加几个活动呢？显然你一个人不能同时参加两个活动，所以说这个问题就是求这些时间区间的最大不相交子集。</p>
-<h4 id="方法：贪心算法"><a href="#方法：贪心算法" class="headerlink" title="方法：贪心算法"></a>方法：贪心算法</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><ol>
-<li>从区间集合 intvs 中选择一个区间 x，这个 x 是在当前所有区间中结束最早的（end 最小）。</li>
+<p>本文解决一个很经典的贪心算法问题 Interval
+Scheduling（区间调度问题）。给你很多形如
+<code>[start, end]</code>的闭区间，请你设计一个算法，算出这些区间中最多有几个互不相交的区间。
+举个例子，<code>intvs = [[1,3], [2,4], [3,6]]</code>，这些区间最多有 2
+个区间互不相交，即 <code>[[1,3], [3,6]]</code>，你的算法应该返回
+2。注意边界相同并不算相交。</p>
+<p>这个问题在生活中的应用广泛，比如你今天有好几个活动，每个活动都可以用区间
+[start, end]
+表示开始和结束的时间，请问你今天最多能参加几个活动呢？显然你一个人不能同时参加两个活动，所以说这个问题就是求这些时间区间的最大不相交子集。</p>
+<h4 id="方法贪心算法">方法：贪心算法</h4>
+<h5 id="思路">思路</h5>
+<ol type="1">
+<li>从区间集合 intvs 中选择一个区间 x，这个 x
+是在当前所有区间中结束最早的（end 最小）。</li>
 <li>把所有与 x 区间相交的区间从区间集合 intvs 中删除。</li>
-<li>重复步骤 1 和 2，直到 intvs 为空为止。之前选出的那些 x 就是最大不相交子集。</li>
+<li>重复步骤 1 和 2，直到 intvs 为空为止。之前选出的那些 x
+就是最大不相交子集。</li>
 </ol>
-<p><img src="https://pic.leetcode-cn.com/678752f150168fc2e53a36d30e589b76ef81a95943c018b01bef6a548bfafeeb-file_1566313617208" alt="1"></p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">eraseOverlapIntervals</span><span class="params">(<span class="type">int</span>[][] intervals)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 按区间的end升序排列</span></span><br><span class="line">        Arrays.sort(intervals, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;<span class="type">int</span>[]&gt;()&#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span>[] b)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> a[<span class="number">1</span>] - b[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">x_end</span> <span class="operator">=</span> intervals[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span>[] intv:intervals)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> intv[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(x_end &lt;= start)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                x_end = intv[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intervals.length - count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(nlogn). 排序需要O(nlogn)的时间。</p>
+<figure>
+<img src="https://pic.leetcode-cn.com/678752f150168fc2e53a36d30e589b76ef81a95943c018b01bef6a548bfafeeb-file_1566313617208" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">eraseOverlapIntervals</span><span class="params">(<span class="type">int</span>[][] intervals)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.length == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 按区间的end升序排列</span></span><br><span class="line">        Arrays.sort(intervals, <span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;<span class="type">int</span>[]&gt;()&#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span>[] b)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> a[<span class="number">1</span>] - b[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">x_end</span> <span class="operator">=</span> intervals[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span>[] intv:intervals)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> intv[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(x_end &lt;= start)&#123;</span><br><span class="line">                count++;</span><br><span class="line">                x_end = intv[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intervals.length - count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(nlogn). 排序需要O(nlogn)的时间。</p>
 <p>空间复杂度：O(1). 不需要额外空间。</p>
-<p><img src="/2020/01/01/%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4/2.jpg" alt="2"></p>
+<figure>
+<img src="/2020/01/01/%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
     </div>
 

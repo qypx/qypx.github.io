@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1. 离散型分布1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​  P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p)1.2 二项分布n次独立的伯努利试验。如果事件发生的概率是 $">
+    <meta name="description" content="1. 离散型分布 1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布） 称随机变量 \(X\) 服从参数为 \(p\) 的伯努利分布，如果它分别以概率 \(p\) 和 \(1-p\) 取 1 和 0 为值。​ \[ P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p) \] 1.2 二项">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见的概率分布">
 <meta property="og:url" content="http://qypx.github.io/2023/08/17/common-probability-distribution/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="1. 离散型分布1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​  P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p)1.2 二项分布n次独立的伯努利试验。如果事件发生的概率是 $">
+<meta property="og:description" content="1. 离散型分布 1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布） 称随机变量 \(X\) 服从参数为 \(p\) 的伯努利分布，如果它分别以概率 \(p\) 和 \(1-p\) 取 1 和 0 为值。​ \[ P(X&#x3D;k)&#x3D;p^k(1-p)^{1-k}, \quad k&#x3D;0,1\\ X\sim B(1,p)\\ E(X)&#x3D;p\\ D(X)&#x3D;p(1-p) \] 1.2 二项">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2023/08/17/common-probability-distribution/1692263791721.png">
 <meta property="og:image" content="http://qypx.github.io/2023/08/17/common-probability-distribution/1692264048094.png">
@@ -155,7 +155,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A6%BB%E6%95%A3%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-text">1. 离散型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%B8%A4%E7%82%B9%E5%88%86%E5%B8%83%EF%BC%88%E4%BC%AF%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83-%E8%B4%9D%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83-0-1%E5%88%86%E5%B8%83%EF%BC%89"><span class="nav-text">1.1 两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="nav-text">1.2 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-text">1.3 几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E5%B8%95%E6%96%AF%E5%8D%A1%E5%88%86%E5%B8%83%EF%BC%88%E8%B4%9F%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%EF%BC%89"><span class="nav-text">1.4 帕斯卡分布（负二项分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-text">1.5 超几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="nav-text">1.6 泊松分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-text">2. 连续型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83-U-a-b"><span class="nav-text">2.1 均匀分布 $U(a,b)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83-E-lambda"><span class="nav-text">2.2 指数分布 $E(\lambda)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83-N-mu-sigma-2"><span class="nav-text">2.3 正态分布 $N(\mu, \sigma^2)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-chi-2-%E5%88%86%E5%B8%83"><span class="nav-text">2.4 $\chi^2$分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-t%E5%88%86%E5%B8%83"><span class="nav-text">2.5 t分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-F%E5%88%86%E5%B8%83"><span class="nav-text">2.6 F分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%A1%A5%E5%85%85%EF%BC%9A%E5%85%B3%E4%BA%8E%E4%B8%8D%E6%94%BE%E5%9B%9E%E6%8A%BD%E6%A0%B7"><span class="nav-text">3. 补充：关于不放回抽样</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-text">1. 离散型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E7%82%B9%E5%88%86%E5%B8%83%E4%BC%AF%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83%E8%B4%9D%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%830-1%E5%88%86%E5%B8%83"><span class="nav-text">1.1
+两点分布（伯努利分布&#x2F;贝努利分布&#x2F;0-1分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="nav-text">1.2 二项分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-text">1.3 几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%95%E6%96%AF%E5%8D%A1%E5%88%86%E5%B8%83%E8%B4%9F%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="nav-text">1.4 帕斯卡分布（负二项分布）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="nav-text">1.5 超几何分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="nav-text">1.6 泊松分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%88%86%E5%B8%83"><span class="nav-text">2. 连续型分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83-uab"><span class="nav-text">2.1 均匀分布 \(U(a,b)\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83-elambda"><span class="nav-text">2.2 指数分布 \(E(\lambda)\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83-nmu-sigma2"><span class="nav-text">2.3 正态分布 \(N(\mu, \sigma^2)\)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chi2%E5%88%86%E5%B8%83"><span class="nav-text">2.4 \(\chi^2\)分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#t%E5%88%86%E5%B8%83"><span class="nav-text">2.5 t分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f%E5%88%86%E5%B8%83"><span class="nav-text">2.6 F分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E5%85%B3%E4%BA%8E%E4%B8%8D%E6%94%BE%E5%9B%9E%E6%8A%BD%E6%A0%B7"><span class="nav-text">3.
+补充：关于不放回抽样</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -295,121 +297,203 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="1-离散型分布"><a href="#1-离散型分布" class="headerlink" title="1. 离散型分布"></a>1. 离散型分布</h3><h4 id="1-1-两点分布（伯努利分布-贝努利分布-0-1分布）"><a href="#1-1-两点分布（伯努利分布-贝努利分布-0-1分布）" class="headerlink" title="1.1 两点分布（伯努利分布/贝努利分布/0-1分布）"></a>1.1 两点分布（伯努利分布/贝努利分布/0-1分布）</h4><p>称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​</p>
-<script type="math/tex; mode=display">
+    <div class="post-body" itemprop="articleBody"><h3 id="离散型分布">1. 离散型分布</h3>
+<h4 id="两点分布伯努利分布贝努利分布0-1分布">1.1
+两点分布（伯努利分布/贝努利分布/0-1分布）</h4>
+<p>称随机变量 <span class="math inline">\(X\)</span> 服从参数为 <span class="math inline">\(p\)</span> 的伯努利分布，如果它分别以概率 <span class="math inline">\(p\)</span> 和 <span class="math inline">\(1-p\)</span> 取 1 和 0 为值。​ <span class="math display">\[
 P(X=k)=p^k(1-p)^{1-k}, \quad k=0,1\\
 X\sim B(1,p)\\
 E(X)=p\\
-D(X)=p(1-p)</script><h4 id="1-2-二项分布"><a href="#1-2-二项分布" class="headerlink" title="1.2 二项分布"></a>1.2 二项分布</h4><p>n次独立的伯努利试验。如果事件发生的概率是 $p$，n次独立重复试验中发生k次的概率是（有放回抽样）</p>
-<script type="math/tex; mode=display">
+D(X)=p(1-p)
+\]</span></p>
+<h4 id="二项分布">1.2 二项分布</h4>
+<p>n次独立的伯努利试验。如果事件发生的概率是 <span class="math inline">\(p\)</span>，n次独立重复试验中发生k次的概率是（有放回抽样）
+<span class="math display">\[
 P(X=k)=\mathrm C_n^k p^k(1-p)^{n-k},\quad k=0,1,...,n\\
 X\sim B(n,p)\\
 E(X)=np\\
-D(X)=np(1-p)</script><blockquote>
-<p>有  $n$ 件产品，其中  $m$ 件次品 ($m&lt;n$)，从中不放回地任意抽取 $k$ 件产品和有放回地任意抽取 $k$ 件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 $\frac{m}{n}$，抽得次品数的期望值也相同，都为 $k\frac{m}{n}$，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
+D(X)=np(1-p)
+\]</span></p>
+<blockquote>
+<p>有 <span class="math inline">\(n\)</span> 件产品，其中 <span class="math inline">\(m\)</span> 件次品 (<span class="math inline">\(m&lt;n\)</span>)，从中不放回地任意抽取 <span class="math inline">\(k\)</span> 件产品和有放回地任意抽取 <span class="math inline">\(k\)</span>
+件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 <span class="math inline">\(\frac{m}{n}\)</span>，抽得次品数的期望值也相同，都为
+<span class="math inline">\(k\frac{m}{n}\)</span>，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
 <p>关于为什么不放回抽样每次抽出次品的概率相同，见<a href="#jump">文末</a>。</p>
 </blockquote>
 <span id="more"></span>
-<h4 id="1-3-几何分布"><a href="#1-3-几何分布" class="headerlink" title="1.3 几何分布"></a>1.3 几何分布</h4><p>在n次伯努利试验中，试验k次才第一次成功的概率。几何分布是帕斯卡分布当 $r=1$ 时的特例</p>
-<script type="math/tex; mode=display">
+<h4 id="几何分布">1.3 几何分布</h4>
+<p>在n次伯努利试验中，试验k次才第一次成功的概率。几何分布是帕斯卡分布当
+<span class="math inline">\(r=1\)</span> 时的特例 <span class="math display">\[
 P(X=k)=(1-p)^{k-1}p,\quad k=1,2,...\\
 X \sim GE(p)\\
 E(X)=\frac{1}{p}\\
-D(X)=\frac{1-p}{p^2}</script><p>例：某产品的合格率为0.05，则首次查到不合格品的检查次数 $X\sim GE(0.05)$</p>
-<h4 id="1-4-帕斯卡分布（负二项分布）"><a href="#1-4-帕斯卡分布（负二项分布）" class="headerlink" title="1.4 帕斯卡分布（负二项分布）"></a>1.4 帕斯卡分布（负二项分布）</h4><p>在重复独立的伯努利试验中，设每次试验成功的概率为 $p$，若将试验进行到出现 $r$ ($r$ 为常数) 次成功为止，以随机变量 $X$ 表示所需试验次数，</p>
-<script type="math/tex; mode=display">
+D(X)=\frac{1-p}{p^2}
+\]</span> 例：某产品的合格率为0.05，则首次查到不合格品的检查次数 <span class="math inline">\(X\sim GE(0.05)\)</span></p>
+<h4 id="帕斯卡分布负二项分布">1.4 帕斯卡分布（负二项分布）</h4>
+<p>在重复独立的伯努利试验中，设每次试验成功的概率为 <span class="math inline">\(p\)</span>，若将试验进行到出现 <span class="math inline">\(r\)</span> (<span class="math inline">\(r\)</span>
+为常数) 次成功为止，以随机变量 <span class="math inline">\(X\)</span>
+表示所需试验次数， <span class="math display">\[
 P(X=k)=\mathrm C_{k-1}^{r-1}p^r(1-p)^{k-r}, \quad k=r,r+1,...\\
-E(X)=\frac{r}{p}</script><p>（当 $r$ 是整数时，负二项分布又称帕斯卡分布）</p>
-<h4 id="1-5-超几何分布"><a href="#1-5-超几何分布" class="headerlink" title="1.5 超几何分布"></a>1.5 超几何分布</h4><p>从 N 个物件中抽出 n 个物件，成功抽出指定种类的物件的次数（不放回抽样）。</p>
-<p>$X\sim H(N,M,n)$</p>
-<p>产品抽样检查中，假定在 N 件产品中有 M 件不合格品，即不合格率为 $\frac{M}{N}$，在产品中随机抽 n 件进行检查，发现 k 件不合格品的概率为</p>
-<script type="math/tex; mode=display">
-P(X=k)=\frac{\mathrm C_M^k \mathrm C_{N-M}^{n-k}}{\mathrm C_N^n},\quad k=0,1,...,min\{n,M\}\\
+E(X)=\frac{r}{p}
+\]</span> （当 <span class="math inline">\(r\)</span>
+是整数时，负二项分布又称帕斯卡分布）</p>
+<h4 id="超几何分布">1.5 超几何分布</h4>
+<p>从 N 个物件中抽出 n
+个物件，成功抽出指定种类的物件的次数（不放回抽样）。</p>
+<p><span class="math inline">\(X\sim H(N,M,n)\)</span></p>
+<p>产品抽样检查中，假定在 N 件产品中有 M 件不合格品，即不合格率为 <span class="math inline">\(\frac{M}{N}\)</span>，在产品中随机抽 n
+件进行检查，发现 k 件不合格品的概率为 <span class="math display">\[
+P(X=k)=\frac{\mathrm C_M^k \mathrm C_{N-M}^{n-k}}{\mathrm C_N^n},\quad
+k=0,1,...,min\{n,M\}\\
 E(X)=\frac{nM}{N}\\
-D(X)=n\frac{M}{N}(1-\frac{M}{N})\frac{N-m}{N-1}</script><h4 id="1-6-泊松分布"><a href="#1-6-泊松分布" class="headerlink" title="1.6 泊松分布"></a>1.6 泊松分布</h4><p>泊松分布适用于描述单位时间内随机事件发生的次数，泊松分布的参数 $\lambda$ 是单位时间内随机事件的平均发生次数。</p>
-<script type="math/tex; mode=display">
+D(X)=n\frac{M}{N}(1-\frac{M}{N})\frac{N-m}{N-1}
+\]</span></p>
+<h4 id="泊松分布">1.6 泊松分布</h4>
+<p>泊松分布适用于描述单位时间内随机事件发生的次数，泊松分布的参数 <span class="math inline">\(\lambda\)</span>
+是单位时间内随机事件的平均发生次数。 <span class="math display">\[
 P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda}, \quad k=0,1,...\\
 E(X)=\lambda\\
-D(X)=\lambda</script><p>特征函数：$\Psi(t)=\exp{\lambda(e^{it}-1)}$</p>
-<h3 id="2-连续型分布"><a href="#2-连续型分布" class="headerlink" title="2. 连续型分布"></a>2. 连续型分布</h3><h4 id="2-1-均匀分布-U-a-b"><a href="#2-1-均匀分布-U-a-b" class="headerlink" title="2.1 均匀分布 $U(a,b)$"></a>2.1 均匀分布 $U(a,b)$</h4><p>密度函数：</p>
-<script type="math/tex; mode=display">
+D(X)=\lambda
+\]</span> 特征函数：<span class="math inline">\(\Psi(t)=\exp\{\lambda(e^{it}-1)\}\)</span></p>
+<h3 id="连续型分布">2. 连续型分布</h3>
+<h4 id="均匀分布-uab">2.1 均匀分布 <span class="math inline">\(U(a,b)\)</span></h4>
+<p>密度函数： <span class="math display">\[
 f(x)=\left\{
-\begin{aligned} 
-&\frac{1}{b-a}&,&\quad a<x<b \\
-&0&,&\quad 其他
+\begin{aligned}
+&amp;\frac{1}{b-a}&amp;,&amp;\quad a&lt;x&lt;b \\
+&amp;0&amp;,&amp;\quad 其他
 \end{aligned}
-\right.</script><p>分布函数：</p>
-<script type="math/tex; mode=display">
+\right.
+\]</span> 分布函数： <span class="math display">\[
 F(x)=\left\{
 \begin{aligned}
-&0&,&\quad x<a \\
-&\frac{x-a}{b-a}&,&\quad a\leq x < b\\
-&1&,&\quad x\geq b
+&amp;0&amp;,&amp;\quad x&lt;a \\
+&amp;\frac{x-a}{b-a}&amp;,&amp;\quad a\leq x &lt; b\\
+&amp;1&amp;,&amp;\quad x\geq b
 \end{aligned}
-\right.</script><p>期望和方差：</p>
-<script type="math/tex; mode=display">
+\right.
+\]</span> 期望和方差：</p>
+<p><span class="math display">\[
 E(X)=\frac{a+b}{2}\\
-D(X)=\frac{(b-a)^2}{12}</script><h4 id="2-2-指数分布-E-lambda"><a href="#2-2-指数分布-E-lambda" class="headerlink" title="2.2 指数分布 $E(\lambda)$"></a>2.2 指数分布 $E(\lambda)$</h4><script type="math/tex; mode=display">
+D(X)=\frac{(b-a)^2}{12}
+\]</span></p>
+<h4 id="指数分布-elambda">2.2 指数分布 <span class="math inline">\(E(\lambda)\)</span></h4>
+<p><span class="math display">\[
 f(x)=\left\{
-\begin{aligned} 
-&\lambda e^{-\lambda x} &,&\quad x>0 \\
-&0&,&\quad 其他
+\begin{aligned}
+&amp;\lambda e^{-\lambda x} &amp;,&amp;\quad x&gt;0 \\
+&amp;0&amp;,&amp;\quad 其他
 \end{aligned}
-\right.</script><script type="math/tex; mode=display">
-F(x)=\left\{
-\begin{aligned} 
-&0&,&\quad x<0\\
-&1-e^{-\lambda x} &,&\quad x\geq0 \\
+\right.
+\]</span></p>
+$$ F(x)={
+<span class="math display">\[\begin{aligned}
+&amp;0&amp;,&amp;\quad x&lt;0\\
+&amp;1-e^{-\lambda x} &amp;,&amp;\quad x\geq0 \\
 
-\end{aligned}
-\right.</script><script type="math/tex; mode=display">
+\end{aligned}\]</span>
+<p>. $$</p>
+<p><span class="math display">\[
 E(X)=\frac 1\lambda\\
-D(X)=\frac {1}{\lambda^2}</script><h4 id="2-3-正态分布-N-mu-sigma-2"><a href="#2-3-正态分布-N-mu-sigma-2" class="headerlink" title="2.3 正态分布 $N(\mu, \sigma^2)$"></a>2.3 正态分布 $N(\mu, \sigma^2)$</h4><script type="math/tex; mode=display">
-f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty <x<+\infty\\
-F(x)=\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^x e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt\\</script><script type="math/tex; mode=display">
+D(X)=\frac {1}{\lambda^2}
+\]</span></p>
+<h4 id="正态分布-nmu-sigma2">2.3 正态分布 <span class="math inline">\(N(\mu, \sigma^2)\)</span></h4>
+<p><span class="math display">\[
+f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad
+-\infty &lt;x&lt;+\infty\\
+F(x)=\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^x
+e^{-\frac{(t-\mu)^2}{2\sigma^2}}dt\\
+\]</span></p>
+<p><span class="math display">\[
 E(X)=\mu\\
-D(X)=\sigma^2</script><p>一般来说，正态分布的密度曲线是以为中心，在 $\mu$ 的两侧呈对称的形状，曲线的形状像一个钟的剖面，故称为钟形曲线。 $\sigma$ 越大，密度曲线的峰度越低； $\sigma$ 越小，密度曲线的峰度越高。无论参数 $\mu$ 和 $\sigma$ 取何值，密度曲线下所覆盖的面积均于 1。 正态分布的密度曲线见图 1.4 。</p>
-<p><img src="/2023/08/17/common-probability-distribution/1692263791721.png" alt="1692263791721"></p>
-<p>正态分布曲线下，位于$\mu\pm \sigma, \mu\pm 2\sigma, \mu\pm 3\sigma$ 之间的面积分别约占总面积的 68.26%，95.45%， 99.73%， 如 图 1.5 所示 。</p>
-<p><img src="/2023/08/17/common-probability-distribution/1692264048094.png" alt="1692264048094"></p>
+D(X)=\sigma^2
+\]</span></p>
+<p>一般来说，正态分布的密度曲线是以为中心，在 <span class="math inline">\(\mu\)</span>
+的两侧呈对称的形状，曲线的形状像一个钟的剖面，故称为钟形曲线。 <span class="math inline">\(\sigma\)</span> 越大，密度曲线的峰度越低； <span class="math inline">\(\sigma\)</span> 越小，密度曲线的峰度越高。无论参数
+<span class="math inline">\(\mu\)</span> 和 <span class="math inline">\(\sigma\)</span> 取何值，密度曲线下所覆盖的面积均于
+1。 正态分布的密度曲线见图 1.4 。</p>
+<figure>
+<img src="/2023/08/17/common-probability-distribution/1692263791721.png" alt="1692263791721">
+<figcaption aria-hidden="true">1692263791721</figcaption>
+</figure>
+<p>正态分布曲线下，位于<span class="math inline">\(\mu\pm \sigma, \mu\pm
+2\sigma, \mu\pm 3\sigma\)</span> 之间的面积分别约占总面积的
+68.26%，95.45%， 99.73%， 如 图 1.5 所示 。</p>
+<figure>
+<img src="/2023/08/17/common-probability-distribution/1692264048094.png" alt="1692264048094">
+<figcaption aria-hidden="true">1692264048094</figcaption>
+</figure>
 <p>当总体概率分布为正态分布时，作为从中抽出的样本，其统计量的样本概率分布有卡方分布，t分布，F分布等。因此正态分布成为计量经济学乃至统计学中最重要的概念之一。</p>
-<h4 id="2-4-chi-2-分布"><a href="#2-4-chi-2-分布" class="headerlink" title="2.4 $\chi^2$分布"></a>2.4 $\chi^2$分布</h4><p>如果从标准正态分布 $N(0,1)$ 的总体中得到 n 个独立的随机变量分别为 $X<em>1, X_2, …, X_n$，则由 $\sum</em>{i=1}^n X_i^2$ 得到的分布称作自由度为 n 的 $\chi^2$ 分布，记为 $X\sim \chi^2(n)$.</p>
-<p>期望和方差：</p>
-<script type="math/tex; mode=display">
+<h4 id="chi2分布">2.4 <span class="math inline">\(\chi^2\)</span>分布</h4>
+<p>如果从标准正态分布 <span class="math inline">\(N(0,1)\)</span>
+的总体中得到 n 个独立的随机变量分别为 <span class="math inline">\(X_1,
+X_2, ..., X_n\)</span>，则由 <span class="math inline">\(\sum_{i=1}^n
+X_i^2\)</span> 得到的分布称作自由度为 n 的 <span class="math inline">\(\chi^2\)</span> 分布，记为 <span class="math inline">\(X\sim \chi^2(n)\)</span>.</p>
+<p>期望和方差： <span class="math display">\[
 E(X)=n\\
-D(X)=2n</script><p><img src="/2023/08/17/common-probability-distribution/1692265134303.png" alt="1692265134303"></p>
-<p>$\chi^2$ 分布的加法定理. 设 $X_1, X_2, …, X_k$ 是相互独立的随机变量，且 $X_i\sim \chi^2(n_i), i=1,2,…,k$，则</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^k X_i \sim \chi^2(n_1+n_2+...+n_k).</script><p>$\chi^2$分布与 $N(0,1)$ 分布之间有如下关系：</p>
-<p>设 $X_1, X_2, …, X_n$ 是相互独立的随机变量，并且 $X_i\sim  N(0,1), i=1,2,…,n$，则</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^n X_i^2\sim \chi^2(n).</script><h4 id="2-5-t分布"><a href="#2-5-t分布" class="headerlink" title="2.5 t分布"></a>2.5 t分布</h4><p>设随机变量 $X\sim N(0,1), Y\sim \chi^2(n)$，X 与 Y 相互独立，则随机变量</p>
-<script type="math/tex; mode=display">
-t=\frac{X}{\sqrt{Y/n}}</script><p>遵从自由度为n的t分布，记为 $t=\frac{X}{\sqrt{Y/n}}\sim t(n)$.</p>
+D(X)=2n
+\]</span> <img src="/2023/08/17/common-probability-distribution/1692265134303.png" alt="1692265134303"></p>
+<p><span class="math inline">\(\chi^2\)</span> 分布的加法定理. 设 <span class="math inline">\(X_1, X_2, ..., X_k\)</span>
+是相互独立的随机变量，且 <span class="math inline">\(X_i\sim
+\chi^2(n_i), i=1,2,...,k\)</span>，则 <span class="math display">\[
+\sum_{i=1}^k X_i \sim \chi^2(n_1+n_2+...+n_k).
+\]</span> <span class="math inline">\(\chi^2\)</span>分布与 <span class="math inline">\(N(0,1)\)</span> 分布之间有如下关系：</p>
+<p>设 <span class="math inline">\(X_1, X_2, ..., X_n\)</span>
+是相互独立的随机变量，并且 <span class="math inline">\(X_i\sim  N(0,1),
+i=1,2,...,n\)</span>，则 <span class="math display">\[
+\sum_{i=1}^n X_i^2\sim \chi^2(n).
+\]</span></p>
+<h4 id="t分布">2.5 t分布</h4>
+<p>设随机变量 <span class="math inline">\(X\sim N(0,1), Y\sim
+\chi^2(n)\)</span>，X 与 Y 相互独立，则随机变量 <span class="math display">\[
+t=\frac{X}{\sqrt{Y/n}}
+\]</span> 遵从自由度为n的t分布，记为 <span class="math inline">\(t=\frac{X}{\sqrt{Y/n}}\sim t(n)\)</span>.</p>
 <p>期望和方差：</p>
-<p>当n&gt;2时，$E(t)=0, D(t)=\frac{n}{n-2}$.</p>
-<p><img src="/2023/08/17/common-probability-distribution/1692265857319.png" alt="1692265857319"></p>
-<p>当n&lt;30时，t分布的分散程度比标准正态分布大，密度函数曲线比较平缓，随着n的增大，t分布逐渐接近标准正态分布；当 $n\rightarrow\infty$时，t分布渐进标准正态分布</p>
+<p>当n&gt;2时，<span class="math inline">\(E(t)=0,
+D(t)=\frac{n}{n-2}\)</span>.</p>
+<figure>
+<img src="/2023/08/17/common-probability-distribution/1692265857319.png" alt="1692265857319">
+<figcaption aria-hidden="true">1692265857319</figcaption>
+</figure>
+<p>当n&lt;30时，t分布的分散程度比标准正态分布大，密度函数曲线比较平缓，随着n的增大，t分布逐渐接近标准正态分布；当
+<span class="math inline">\(n\rightarrow\infty\)</span>时，t分布渐进标准正态分布</p>
 <blockquote>
-<p> t分布可用于方差未知时对有关均值的假设进行检验。关于回归系数的显著性检验就用到 t分布。</p>
+<p>t分布可用于方差未知时对有关均值的假设进行检验。关于回归系数的显著性检验就用到
+t分布。</p>
 </blockquote>
-<h4 id="2-6-F分布"><a href="#2-6-F分布" class="headerlink" title="2.6 F分布"></a>2.6 F分布</h4><p>设随机变量 $X\sim \chi^2(n_1), Y\sim \chi^2(n_2)$，且X与Y相互独立，则称随机变量</p>
-<script type="math/tex; mode=display">
-F=\frac{X/n_1}{Y/n_2}</script><p>遵从自由度为 $(n_1,n_2)$ 的F分布，记作 $F\sim F(n_1,n2)$.</p>
-<p>F分布的形状为正偏态分布，随着 $n_1,n_2$ 的增大，其概率密度曲线的偏斜度虽有所减缓却仍保持偏态分布，并不以正态分布为其极限分布形式。</p>
-<p><img src="/2023/08/17/common-probability-distribution/1692266232557.png" alt="1692266232557"></p>
-<p>如果 $t\sim t(n)$，则 $t^2\sim F(1,n)$；<br>如果 $F\sim F(n_1,n_2)$，则 $\frac1F \sim F(n_2, n_1)$.</p>
+<h4 id="f分布">2.6 F分布</h4>
+<p>设随机变量 <span class="math inline">\(X\sim \chi^2(n_1), Y\sim
+\chi^2(n_2)\)</span>，且X与Y相互独立，则称随机变量 <span class="math display">\[
+F=\frac{X/n_1}{Y/n_2}
+\]</span> 遵从自由度为 <span class="math inline">\((n_1,n_2)\)</span>
+的F分布，记作 <span class="math inline">\(F\sim F(n_1,n2)\)</span>.</p>
+<p>F分布的形状为正偏态分布，随着 <span class="math inline">\(n_1,n_2\)</span>
+的增大，其概率密度曲线的偏斜度虽有所减缓却仍保持偏态分布，并不以正态分布为其极限分布形式。</p>
+<figure>
+<img src="/2023/08/17/common-probability-distribution/1692266232557.png" alt="1692266232557">
+<figcaption aria-hidden="true">1692266232557</figcaption>
+</figure>
+<p>如果 <span class="math inline">\(t\sim t(n)\)</span>，则 <span class="math inline">\(t^2\sim F(1,n)\)</span>； 如果 <span class="math inline">\(F\sim F(n_1,n_2)\)</span>，则 <span class="math inline">\(\frac1F \sim F(n_2, n_1)\)</span>.</p>
 <blockquote>
 <p>F分布在回归方程的显著性检验中具有重要作用</p>
 </blockquote>
-<h3 id="3-补充：关于不放回抽样"><a href="#3-补充：关于不放回抽样" class="headerlink" title="3. 补充：关于不放回抽样"></a><span id="jump">3. 补充：关于不放回抽样</span></h3><p>为什么不放回抽样每次抽到次品的概率都是 $\frac{m}{n}$，因为不放回抽样，每次抽样，都是与前些次的抽样相关的，从相关性上，前面的人抽中，与抽不中，对后面都有影响，但是这种影响又相互抵消。</p>
-<p> 例如，有 10 件产品，其中 3 件次品，7件正品，不放回的取，求第3次取得次品的概率。应用全概率公式：</p>
-<p><img src="/2023/08/17/common-probability-distribution/302580097.png" alt="302580097"></p>
-<p> 同理计算可得，第一次取得次品的概率与第二次取得次品的概率都是 $\frac{3}{10}$<br> 这就叫抽签原理</p>
+<h3 id="补充关于不放回抽样"><span id="jump">3.
+补充：关于不放回抽样</span></h3>
+<p>为什么不放回抽样每次抽到次品的概率都是 <span class="math inline">\(\frac{m}{n}\)</span>，因为不放回抽样，每次抽样，都是与前些次的抽样相关的，从相关性上，前面的人抽中，与抽不中，对后面都有影响，但是这种影响又相互抵消。</p>
+<p>例如，有 10 件产品，其中 3
+件次品，7件正品，不放回的取，求第3次取得次品的概率。应用全概率公式：</p>
+<figure>
+<img src="/2023/08/17/common-probability-distribution/302580097.png" alt="302580097">
+<figcaption aria-hidden="true">302580097</figcaption>
+</figure>
+<p>同理计算可得，第一次取得次品的概率与第二次取得次品的概率都是 <span class="math inline">\(\frac{3}{10}\)</span> 这就叫抽签原理</p>
 <blockquote>
-<p>n个签，其中有m个是“上”签，第一个人抽到“上”签的概率是m/n，第k个人抽到“上”签的概率也是m/n<br>  <strong>前提是：每个人都不知道前面人的抽签结果，如果知道的话，就不是这样了</strong><br>  这也就说明了抽签先后顺序是不影响概率的，是公平的</p>
+<p>n个签，其中有m个是“上”签，第一个人抽到“上”签的概率是m/n，第k个人抽到“上”签的概率也是m/n
+<strong>前提是：每个人都不知道前面人的抽签结果，如果知道的话，就不是这样了</strong>
+这也就说明了抽签先后顺序是不影响概率的，是公平的</p>
 </blockquote>
-<p>参考：<br><a href="https://blog.csdn.net/IMWTJ123/article/details/79979120">https://blog.csdn.net/IMWTJ123/article/details/79979120</a><br><a href="https://blog.csdn.net/holly_Z_P_F/article/details/107556675">https://blog.csdn.net/holly_Z_P_F/article/details/107556675</a></p>
+<p>参考： https://blog.csdn.net/IMWTJ123/article/details/79979120
+https://blog.csdn.net/holly_Z_P_F/article/details/107556675</p>
 
     </div>
 

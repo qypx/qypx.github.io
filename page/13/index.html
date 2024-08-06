@@ -360,7 +360,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-创建dataframe"><a href="#1-创建dataframe" class="headerlink" title="1. 创建dataframe"></a>1. 创建dataframe</h4><ul>
+          <h4 id="创建dataframe">1. 创建dataframe</h4>
+<ul>
 <li>法一</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = pd.DataFrame(&#123;<span class="string">&#x27;id&#x27;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">&#x27;string&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]&#125;)</span><br></pre></td></tr></table></figure>
@@ -371,7 +372,10 @@
 <p>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">&#x27;!&#x27;</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">&#x27;?&#x27;</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">&#x27;EC&#x27;</span>:EC,<span class="string">&#x27;QC&#x27;</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">&quot;freqOf &quot;</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果"></p>
+<figure>
+<img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果">
+<figcaption aria-hidden="true">结果</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/09/02/dataframe-operation/#more" rel="contents">
@@ -463,9 +467,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="一、csv文件"><a href="#一、csv文件" class="headerlink" title="一、csv文件"></a>一、csv文件</h4><h5 id="1-读取"><a href="#1-读取" class="headerlink" title="1. 读取"></a>1. 读取</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_csv(<span class="string">&quot;Google_Stock_Price_Train.csv&quot;</span>)</span><br><span class="line">train.head()</span><br></pre></td></tr></table></figure>
+          <h4 id="一csv文件">一、csv文件</h4>
+<h5 id="读取">1. 读取</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">train = pd.read_csv(<span class="string">&quot;Google_Stock_Price_Train.csv&quot;</span>)</span><br><span class="line">train.head()</span><br></pre></td></tr></table></figure>
 <p><img src="/2019/09/02/Python-read-and-save-csv-txt-file/1594120531625.png" alt="1594120531625" style="zoom:80%;"></p>
-<p>若文件中无列表头，需设定header = None，否则第一行会被识别为标题（如下图）</p>
+<p>若文件中无列表头，需设定header =
+None，否则第一行会被识别为标题（如下图）</p>
 <p><img src="/2019/09/02/Python-read-and-save-csv-txt-file/1594120744906.png" alt="1594120744906" style="zoom:80%;"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">&quot;dataset.csv&quot;</span>, header=<span class="literal">None</span>)</span><br><span class="line">data.head()</span><br><span class="line"><span class="comment">#data.columns = [&#x27;date&#x27;,&#x27;open&#x27;,&#x27;high&#x27;,&#x27;low&#x27;,&#x27;close&#x27;,&#x27;volume&#x27;]</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2019/09/02/Python-read-and-save-csv-txt-file/1594120675413.png" alt="1594120675413" style="zoom:80%;"></p>
@@ -473,10 +480,10 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;dataset.csv&#x27;</span>, names =  [<span class="string">&#x27;date&#x27;</span>,<span class="string">&#x27;open&#x27;</span>,<span class="string">&#x27;high&#x27;</span>,<span class="string">&#x27;low&#x27;</span>,<span class="string">&#x27;close&#x27;</span>,<span class="string">&#x27;volume&#x27;</span>]) </span><br></pre></td></tr></table></figure>
 <p><strong>另：关于读取csv文件，报错：</strong></p>
 <blockquote>
-<p>参考 <a href="https://www.cnblogs.com/huangchenggener/p/10983812.html">https://www.cnblogs.com/huangchenggener/p/10983812.html</a></p>
+<p>参考 https://www.cnblogs.com/huangchenggener/p/10983812.html</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;utf-8&#x27; codec can&#x27;t decode byte 0xd4 in position 0: invalid continuation byte</span><br></pre></td></tr></table></figure>
-<p>法一：csv文件的保存格式改为 “CSV UTF-8 (逗号分割) (*.csv)”</p>
+<p>法一：csv文件的保存格式改为 "CSV UTF-8 (逗号分割) (*.csv)"</p>
 <p>法二：pd.read_csv()中加上编码方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(<span class="string">&quot;xxx.csv&quot;</span>, encoding=<span class="string">&#x27;gbk&#x27;</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -561,8 +568,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>(本文参考<a href="https://www.markdowntutorial.com/">Markdown Tutorial</a>)</p>
-<h4 id="1-加粗与斜体"><a href="#1-加粗与斜体" class="headerlink" title="1. 加粗与斜体"></a>1. 加粗与斜体</h4><ul>
+          <p>(本文参考<a href="https://www.markdowntutorial.com/">Markdown
+Tutorial</a>)</p>
+<h4 id="加粗与斜体">1. 加粗与斜体</h4>
+<ul>
 <li>斜体：在文本两侧加上一个星号或一个下划线，例如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_unknown_或*unkown*</span><br></pre></td></tr></table></figure>
@@ -577,33 +586,44 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**_of course_**</span><br></pre></td></tr></table></figure>
 <p>效果如下：<strong><em>of course</em></strong></p>
-<h4 id="2-标题-Headers"><a href="#2-标题-Headers" class="headerlink" title="2.标题(Headers)"></a>2.标题(Headers)</h4><p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（# 一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
+<h4 id="标题headers">2.标题(Headers)</h4>
+<p>在前面加#号, 一共有六级标题。一级标题为在前面加一个#号（#
+一级标题），二级标题为在前面加两个#号（## 二级标题）。效果如下：</p>
 <blockquote>
-<h1 id="Header-one"><a href="#Header-one" class="headerlink" title="Header one"></a>Header one</h1><h2 id="Header-two"><a href="#Header-two" class="headerlink" title="Header two"></a>Header two</h2><h3 id="Header-three"><a href="#Header-three" class="headerlink" title="Header three"></a>Header three</h3><h4 id="Header-four"><a href="#Header-four" class="headerlink" title="Header four"></a>Header four</h4><h5 id="Header-five"><a href="#Header-five" class="headerlink" title="Header five"></a>Header five</h5><h6 id="Header-six"><a href="#Header-six" class="headerlink" title="Header six"></a>Header six</h6><p>plain text</p>
+<h1 id="header-one">Header one</h1>
+<h2 id="header-two">Header two</h2>
+<h3 id="header-three">Header three</h3>
+<h4 id="header-four">Header four</h4>
+<h5 id="header-five">Header five</h5>
+<h6 id="header-six">Header six</h6>
+<p>plain text</p>
 </blockquote>
 <p>注：#号与文本之间有一个空格。</p>
-<h4 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h4><ul>
-<li><p>inline link</p>
-<p>语法如下：</p>
-</li>
+<h4 id="链接">3.链接</h4>
+<ul>
+<li>inline link</li>
 </ul>
+<p>语法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Visit GitHub!](www.github.com)</span><br></pre></td></tr></table></figure>
 <p><a href="www.github.com">Visit GitHub!</a></p>
 <p>再比如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Yo<span class="string">u&#x27;re **really, really** going to see this.](www.dailykitten.com)</span></span><br></pre></td></tr></table></figure>
-<p><a href="www.dailykitten.com">You’re <strong>really, really</strong> going to see this.</a></p>
+<p><a href="www.dailykitten.com">You're <strong>really, really</strong>
+going to see this.</a></p>
 <ul>
 <li>reference link</li>
 </ul>
-<p>语法如下：  </p>
+<p>语法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Do you want to [see something fun][a fun place]?  </span><br><span class="line"></span><br><span class="line">Well, I have [a website <span class="keyword">for</span> you][another fun place]!</span><br><span class="line"></span><br><span class="line">[a fun place]: www.zombo.com</span><br><span class="line">    </span><br><span class="line">[another fun place]: www.stumbleupon.com</span><br></pre></td></tr></table></figure>
-<p>效果如下：<br>Do you want to <a href="www.zombo.com">see something fun</a>?  </p>
+<p>效果如下：<br>
+Do you want to <a href="www.zombo.com">see something fun</a>?</p>
 <p>Well, I have <a href="www.stumbleupon.com">a website for you</a>!</p>
 <p>一般可将链接地址写在Markdown文件的最后。使用refrence的好处是如果有许多链接都是指向一个地方，那么需要更改的时候只需要修改一次就行了。</p>
-<h4 id="4-图片"><a href="#4-图片" class="headerlink" title="4.图片"></a>4.图片</h4><ul>
+<h4 id="图片">4.图片</h4>
+<ul>
 <li>inline link</li>
 </ul>
-<p>插入图片和插入链接类似，语法如下： </p>
+<p>插入图片和插入链接类似，语法如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![A pretty tiger](https://upload.wikimedia.org/wikipedia/commons/<span class="number">5</span>/<span class="number">56</span>/Tiger<span class="number">.50</span>.jpg)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
@@ -697,18 +717,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <ul>
-<li><p>shift+enter: 运行代码块</p>
-</li>
-<li><p>shift+tab: show the documentation pop up for the method</p>
-</li>
-<li><p>Esc+m: markdown语句</p>
-</li>
+<li><p>shift+enter: 运行代码块</p></li>
+<li><p>shift+tab: show the documentation pop up for the method</p></li>
+<li><p>Esc+m: markdown语句</p></li>
 <li><p>jupyter notebook中reload模块：</p>
 <blockquote>
-<p>参考 <a href="https://blog.csdn.net/ybdesire/article/details/86709727">https://blog.csdn.net/ybdesire/article/details/86709727</a></p>
+<p>参考 https://blog.csdn.net/ybdesire/article/details/86709727</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">#对于 python2.x</span></span><br><span class="line"><span class="keyword">import</span> some_module</span><br><span class="line">  reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于 Python 3.2 and 3.3:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> importlib</span><br><span class="line">  importlib.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#对于python3.4+:</span></span><br><span class="line">  <span class="keyword">import</span> some_module</span><br><span class="line">  <span class="keyword">import</span> imp</span><br><span class="line">  imp.reload(some_module)</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#例：修改了xgboost文件夹下core.py中的代码，重新加载：</span></span><br><span class="line">  importlib.reload(xgboost.core)</span><br><span class="line">  </span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -794,9 +810,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-List"><a href="#1-List" class="headerlink" title="1. List"></a>1. List</h3><p>Lists are mutable. </p>
+          <h3 id="list">1. List</h3>
+<p>Lists are mutable.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">amazon_cart = [</span><br><span class="line">    <span class="string">&#x27;notebooks&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;sunglasses&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;toys&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">amazon_cart[<span class="number">0</span>]=<span class="string">&#x27;laptop&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(amazon_cart)</span><br><span class="line"><span class="comment"># [&#x27;laptop&#x27;, &#x27;sunglasses&#x27;, &#x27;toys&#x27;]</span></span><br></pre></td></tr></table></figure>
-<h4 id="1-1-常见操作"><a href="#1-1-常见操作" class="headerlink" title="1.1 常见操作"></a>1.1 常见操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(x)</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片操作</span></span><br><span class="line">&gt;&gt;&gt;x[:<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&gt;&gt;&gt;x[<span class="number">3</span>:]</span><br><span class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;x[-<span class="number">2</span>:]</span><br><span class="line">[<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># extend</span></span><br><span class="line">&gt;&gt;&gt;x.extend([<span class="number">7</span>,<span class="number">8</span>])</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># append</span></span><br><span class="line">&gt;&gt;&gt;x.append(<span class="number">9</span>)</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;y=[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]</span><br><span class="line">&gt;&gt;&gt;listOfLists=[x,y]</span><br><span class="line">&gt;&gt;&gt;listiOfLists</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="常见操作">1.1 常见操作</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(x)</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片操作</span></span><br><span class="line">&gt;&gt;&gt;x[:<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&gt;&gt;&gt;x[<span class="number">3</span>:]</span><br><span class="line">[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;x[-<span class="number">2</span>:]</span><br><span class="line">[<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># extend</span></span><br><span class="line">&gt;&gt;&gt;x.extend([<span class="number">7</span>,<span class="number">8</span>])</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># append</span></span><br><span class="line">&gt;&gt;&gt;x.append(<span class="number">9</span>)</span><br><span class="line">&gt;&gt;&gt;x</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;y=[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]</span><br><span class="line">&gt;&gt;&gt;listOfLists=[x,y]</span><br><span class="line">&gt;&gt;&gt;listiOfLists</span><br><span class="line">[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/06/27/Advanced-Python-Types/#more" rel="contents">
@@ -888,18 +906,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><strong><em><span style="color:blue">缩进是 Python的灵魂</span></em></strong></p>
+          <p><strong><em><span style="color:blue">缩进是
+Python的灵魂</span></em></strong></p>
 <blockquote>
-<p>更多Python基础见我的onenote笔记本”Python学习笔记“<br>另：关于 Python 的教程可参考廖雪峰的网站 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
+<p>更多Python基础见我的onenote笔记本”Python学习笔记“ 另：关于 Python
+的教程可参考廖雪峰的网站
+https://www.liaoxuefeng.com/wiki/1016959663602400</p>
 </blockquote>
-<h3 id="1-逻辑运算符"><a href="#1-逻辑运算符" class="headerlink" title="1. 逻辑运算符"></a>1. 逻辑运算符</h3><p><img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符"></p>
+<h3 id="逻辑运算符">1. 逻辑运算符</h3>
+<figure>
+<img src="/2019/06/27/basic-python-type/logic-operator.jpg" alt="逻辑运算符">
+<figcaption aria-hidden="true">逻辑运算符</figcaption>
+</figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df[(df[<span class="string">&#x27;id&#x27;</span>]&gt;=<span class="number">1</span>) &amp; (df[<span class="string">&#x27;id&#x27;</span>]&lt;=<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上写法等价于：</span></span><br><span class="line">df.query(<span class="string">&#x27;id&gt;=1 &amp; id&lt;=2&#x27;</span>)</span><br><span class="line"><span class="comment"># (https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.query.html)</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-比较操作符"><a href="#2-比较操作符" class="headerlink" title="2. 比较操作符"></a>2. 比较操作符</h3><blockquote>
-<p>>, &lt;, &gt;=, &lt;=, ==, != </p>
+<h3 id="比较操作符">2. 比较操作符</h3>
+<blockquote>
+<p>&gt;, &lt;, &gt;=, &lt;=, ==, !=</p>
 </blockquote>
 <p>pandas进行条件筛选和组合筛选</p>
 <blockquote>
-<p>参考 <a href="https://www.cnblogs.com/qxh-beijing2016/p/15499009.html">https://www.cnblogs.com/qxh-beijing2016/p/15499009.html</a></p>
+<p>参考 https://www.cnblogs.com/qxh-beijing2016/p/15499009.html</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;A&#x27;</span>:[<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">500</span>],<span class="string">&#x27;B&#x27;</span>:[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>],<span class="string">&#x27;C&#x27;</span>:[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]&#125;)</span><br><span class="line"></span><br><span class="line">        A    B    C</span><br><span class="line"> <span class="number">0</span>    <span class="number">100</span>    a    <span class="number">1</span></span><br><span class="line"> <span class="number">1</span>    <span class="number">200</span>    b    <span class="number">2</span></span><br><span class="line"> <span class="number">2</span>    <span class="number">300</span>    c    <span class="number">3</span></span><br><span class="line"> <span class="number">3</span>    <span class="number">400</span>    d    <span class="number">4</span></span><br><span class="line"> <span class="number">4</span>    <span class="number">500</span>    e    <span class="number">5</span></span><br></pre></td></tr></table></figure>
 <p>（1）找出df中A列值为100、200、300的所有数据</p>
@@ -908,7 +934,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df[(df.A==<span class="number">100</span>)&amp;(df.B==<span class="string">&#x27;a&#x27;</span>)]</span><br><span class="line">        A    B    C</span><br><span class="line"> <span class="number">0</span>    <span class="number">100</span>    a    <span class="number">1</span></span><br><span class="line"></span><br><span class="line">也可写作：</span><br><span class="line">df.where((df.A==<span class="number">100</span>)&amp;(df.B==<span class="string">&#x27;a&#x27;</span>))</span><br></pre></td></tr></table></figure>
 <p>（3）找出df中A列值为100或B列值为‘b’的所有数据</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df[(df.A==<span class="number">100</span>)|(df.B==<span class="string">&#x27;b&#x27;</span>)]</span><br><span class="line">        A    B    C</span><br><span class="line"> <span class="number">0</span>    <span class="number">100</span>    a    <span class="number">1</span></span><br><span class="line"> <span class="number">1</span>    <span class="number">200</span>    b    <span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p><span style="color:red"><strong>注：多条件筛选的时候，必须加括号’()’</strong></span></p>
+<p><span style="color:red"><strong>注：多条件筛选的时候，必须加括号'()'</strong></span></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/06/27/basic-python-type/#more" rel="contents">

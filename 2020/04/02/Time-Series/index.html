@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="来源：Time Series Forecasting using Python - Analytics Vidhya 简介What is Time Series Analysis? As the name ‘time series forecasting’ suggests, it involves working on time (years, days, hours, minutes) bas">
+    <meta name="description" content="来源：Time Series Forecasting using Python - Analytics Vidhya 简介 What is Time Series Analysis? As the name ‘time series forecasting’ suggests, it involves working on time (years, days, hours, minute">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Time Series">
 <meta property="og:url" content="http://qypx.github.io/2020/04/02/Time-Series/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="来源：Time Series Forecasting using Python - Analytics Vidhya 简介What is Time Series Analysis? As the name ‘time series forecasting’ suggests, it involves working on time (years, days, hours, minutes) bas">
+<meta property="og:description" content="来源：Time Series Forecasting using Python - Analytics Vidhya 简介 What is Time Series Analysis? As the name ‘time series forecasting’ suggests, it involves working on time (years, days, hours, minute">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/04/02/Time-Series/1585797313470.png">
 <meta property="og:image" content="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/865/5c1/2c7/1549344770403.jpg">
@@ -157,7 +157,12 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Time-Series-Analysis"><span class="nav-text">What is Time Series Analysis?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Importance-of-Time-Series-Analysis"><span class="nav-text">Importance of Time Series Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-is-Time-Series-Forecasting-Challenging"><span class="nav-text">Why is Time Series Forecasting Challenging?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-Time-Series"><span class="nav-text">Introduction to Time Series</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trend"><span class="nav-text">Trend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Seasonality"><span class="nav-text">Seasonality</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Difference-between-a-time-series-and-regression-problem"><span class="nav-text">Difference between a time series and regression problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project"><span class="nav-text">Project</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Statement"><span class="nav-text">Problem Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploratory-Analysis"><span class="nav-text">Exploratory Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Split-data"><span class="nav-text">Split data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARIMA-model"><span class="nav-text">ARIMA model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-stationary-time-series"><span class="nav-text">What is a stationary time series?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-do-we-have-to-make-the-time-series-stationary"><span class="nav-text">Why do we have to make the time series stationary?</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#what-is-time-series-analysis"><span class="nav-text">What is Time Series Analysis?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#importance-of-time-series-analysis"><span class="nav-text">Importance of Time Series
+Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#why-is-time-series-forecasting-challenging"><span class="nav-text">Why is Time Series
+Forecasting Challenging?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction-to-time-series"><span class="nav-text">Introduction to Time Series</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#trend"><span class="nav-text">Trend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seasonality"><span class="nav-text">Seasonality</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#difference-between-a-time-series-and-regression-problem"><span class="nav-text">Difference
+between a time series and regression problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#project"><span class="nav-text">Project</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problem-statement"><span class="nav-text">Problem Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exploratory-analysis"><span class="nav-text">Exploratory Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split-data"><span class="nav-text">Split data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arima-model"><span class="nav-text">ARIMA model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-is-a-stationary-time-series"><span class="nav-text">What is a stationary time
+series?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why-do-we-have-to-make-the-time-series-stationary"><span class="nav-text">Why do we
+have to make the time series stationary?</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -297,11 +302,20 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>来源：<a href="https://courses.analyticsvidhya.com/courses/creating-time-series-forecast-using-python">Time Series Forecasting using Python - Analytics Vidhya</a></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="What-is-Time-Series-Analysis"><a href="#What-is-Time-Series-Analysis" class="headerlink" title="What is Time Series Analysis?"></a>What is Time Series Analysis?</h3><p> As the name ‘time series forecasting’ suggests, it involves working on time (years, days, hours, minutes) based data, to derive hidden insights to make informed decision making.</p>
-<h3 id="Importance-of-Time-Series-Analysis"><a href="#Importance-of-Time-Series-Analysis" class="headerlink" title="Importance of Time Series Analysis"></a>Importance of Time Series Analysis</h3><p>Time series models are very useful models when you have serially correlated data as shown above. Most businesses work on time series data to analyze </p>
+    <div class="post-body" itemprop="articleBody"><p>来源：<a href="https://courses.analyticsvidhya.com/courses/creating-time-series-forecast-using-python">Time
+Series Forecasting using Python - Analytics Vidhya</a></p>
+<h2 id="简介">简介</h2>
+<h3 id="what-is-time-series-analysis">What is Time Series Analysis?</h3>
+<p>As the name ‘time series forecasting’ suggests, it involves working
+on time (years, days, hours, minutes) based data, to derive hidden
+insights to make informed decision making.</p>
+<h3 id="importance-of-time-series-analysis">Importance of Time Series
+Analysis</h3>
+<p>Time series models are very useful models when you have serially
+correlated data as shown above. Most businesses work on time series data
+to analyze</p>
 <ul>
-<li>Sales numbers for the next year </li>
+<li>Sales numbers for the next year</li>
 <li>Website Traffic</li>
 <li>Competition Position</li>
 <li>Demand of products</li>
@@ -309,70 +323,171 @@
 <li>Census Analysis</li>
 <li>Budgetary Analysis</li>
 </ul>
-<p>This is just the tip of the iceberg and there are numerous prediction problems that involve a time component and concepts of time series analysis come into picture.</p>
-<h3 id="Why-is-Time-Series-Forecasting-Challenging"><a href="#Why-is-Time-Series-Forecasting-Challenging" class="headerlink" title="Why is Time Series Forecasting Challenging?"></a>Why is Time Series Forecasting Challenging?</h3><p>But what makes a time series more challenging than say a regular regression problem? There are 2 things:</p>
+<p>This is just the tip of the iceberg and there are numerous prediction
+problems that involve a time component and concepts of time series
+analysis come into picture.</p>
+<h3 id="why-is-time-series-forecasting-challenging">Why is Time Series
+Forecasting Challenging?</h3>
+<p>But what makes a time series more challenging than say a regular
+regression problem? There are 2 things:</p>
 <ul>
-<li><strong>Time Dependence of a time series -</strong> The basic assumption of a linear regression model that the observations are independent doesn’t hold in this case.</li>
-<li><strong>Seasonality in a time series -</strong> Along with an increasing or decreasing trend, most time series have some form of seasonal trends, i.e. variations specific to a particular time frame. </li>
+<li><strong>Time Dependence of a time series -</strong> The basic
+assumption of a linear regression model that the observations are
+independent doesn’t hold in this case.</li>
+<li><strong>Seasonality in a time series -</strong> Along with an
+increasing or decreasing trend, most time series have some form of
+seasonal trends, i.e. variations specific to a particular time
+frame.</li>
 </ul>
 <span id="more"></span>
-<h2 id="Introduction-to-Time-Series"><a href="#Introduction-to-Time-Series" class="headerlink" title="Introduction to Time Series"></a>Introduction to Time Series</h2><p><em>Time Series is generally data which is collected over time and is dependent on it.</em></p>
-<p><img src="/2020/04/02/Time-Series/1585797313470.png" alt="1585797313470"></p>
-<p>Here we see that the count of cars is independent of time, hence it is not a time series. While the CO2 level increases with respect to time, hence it is a time series.</p>
+<h2 id="introduction-to-time-series">Introduction to Time Series</h2>
+<p><em>Time Series is generally data which is collected over time and is
+dependent on it.</em></p>
+<figure>
+<img src="/2020/04/02/Time-Series/1585797313470.png" alt="1585797313470">
+<figcaption aria-hidden="true">1585797313470</figcaption>
+</figure>
+<p>Here we see that the count of cars is independent of time, hence it
+is not a time series. While the CO2 level increases with respect to
+time, hence it is a time series.</p>
 <p>Some of the examples of time series are:</p>
 <p>Stock Price :</p>
-<p><img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/865/5c1/2c7/1549344770403.jpg" alt="img"></p>
+<figure>
+<img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/865/5c1/2c7/1549344770403.jpg" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>Passenger Count of an airlines :</p>
-<p><img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/a5d/87f/854/1549344770489.jpg" alt="img"></p>
+<figure>
+<img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/a5d/87f/854/1549344770489.jpg" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>Temperature over time :</p>
-<p><img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/1e6/e15/479/1549344770578.jpg" alt="img"></p>
+<figure>
+<img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/1e6/e15/479/1549344770578.jpg" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <p>Number of visitors in a hotel :</p>
-<p><img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/8e3/d40/890/1549344770669.jpg" alt="img"></p>
-<h3 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h3><p>Trend is a general direction in which something is developing or changing.</p>
-<p><img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/7d7/791/f5e/1549344821475.jpg" alt="Example"></p>
+<figure>
+<img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/8e3/d40/890/1549344770669.jpg" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="trend">Trend</h3>
+<p>Trend is a general direction in which something is developing or
+changing.</p>
+<figure>
+<img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/7d7/791/f5e/1549344821475.jpg" alt="Example">
+<figcaption aria-hidden="true">Example</figcaption>
+</figure>
 <p>Example</p>
-<p>Here the red line represents an increasing trend of the time series.</p>
-<h3 id="Seasonality"><a href="#Seasonality" class="headerlink" title="Seasonality"></a><strong>Seasonality</strong></h3><p>Another clear pattern can also be seen in the above time series, i.e., the pattern is repeating at regular time interval which is known as the seasonality. Any predictable change or pattern in a time series that recurs or repeats over a specific time period can be said to be seasonality. </p>
-<p><img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/115/9ee/826/1549344821557.jpg" alt="Example"></p>
+<p>Here the red line represents an increasing trend of the time
+series.</p>
+<h3 id="seasonality"><strong>Seasonality</strong></h3>
+<p>Another clear pattern can also be seen in the above time series,
+i.e., the pattern is repeating at regular time interval which is known
+as the seasonality. Any predictable change or pattern in a time series
+that recurs or repeats over a specific time period can be said to be
+seasonality.</p>
+<figure>
+<img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/115/9ee/826/1549344821557.jpg" alt="Example">
+<figcaption aria-hidden="true">Example</figcaption>
+</figure>
 <p>Example</p>
-<p>We can see that the time series is repeating its pattern after every 12 months i.e there is a peak every year during the month of January and a trough every year in the month of September, hence this time series has a seasonality of 12 months.</p>
-<h3 id="Difference-between-a-time-series-and-regression-problem"><a href="#Difference-between-a-time-series-and-regression-problem" class="headerlink" title="Difference between a time series and regression problem"></a><strong>Difference between a time series and regression problem</strong></h3><ul>
-<li>The main difference is that a time series is time dependent. So the basic assumption of a linear regression model that the observations are independent doesn’t hold in this case.</li>
-<li>Along with an increasing or decreasing trend, most Time Series have some form of seasonality trends,i.e. variations specific to a particular time frame.</li>
+<p>We can see that the time series is repeating its pattern after every
+12 months i.e there is a peak every year during the month of January and
+a trough every year in the month of September, hence this time series
+has a seasonality of 12 months.</p>
+<h3 id="difference-between-a-time-series-and-regression-problem"><strong>Difference
+between a time series and regression problem</strong></h3>
+<ul>
+<li>The main difference is that a time series is time dependent. So the
+basic assumption of a linear regression model that the observations are
+independent doesn’t hold in this case.</li>
+<li>Along with an increasing or decreasing trend, most Time Series have
+some form of seasonality trends,i.e. variations specific to a particular
+time frame.</li>
 </ul>
-<p>So, predicting a time series using regression techniques is not a good approach.</p>
-<p>Time series analysis comprises methods for analyzing time series data in order to extract meaningful statistics and other characteristics of the data. Time series forecasting is the use of a model to predict future values based on previously observed values.</p>
-<h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><p> <a href="https://datahack.analyticsvidhya.com/contest/practice-problem-time-series-2/">https://datahack.analyticsvidhya.com/contest/practice-problem-time-series-2/</a></p>
-<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p>Unicorn Investors wants to make an investment in a new form of transportation - JetRail. JetRail uses Jet propulsion technology to run rails and move people at a high speed! The investment would only make sense, if they can get more than 1 Million monthly users with in next 18 months. In order to help Unicorn Ventures in their decision, you need to forecast the traffic on JetRail for the next 7 months. You are provided with traffic data of JetRail since inception in the test file.</p>
-<h3 id="Exploratory-Analysis"><a href="#Exploratory-Analysis" class="headerlink" title="Exploratory Analysis"></a>Exploratory Analysis</h3><p>原本的datetime: train.Datetime是Object格式，首先change the data type to datetime format</p>
+<p>So, predicting a time series using regression techniques is not a
+good approach.</p>
+<p>Time series analysis comprises methods for analyzing time series data
+in order to extract meaningful statistics and other characteristics of
+the data. Time series forecasting is the use of a model to predict
+future values based on previously observed values.</p>
+<h2 id="project">Project</h2>
+<p>https://datahack.analyticsvidhya.com/contest/practice-problem-time-series-2/</p>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>Unicorn Investors wants to make an investment in a new form of
+transportation - JetRail. JetRail uses Jet propulsion technology to run
+rails and move people at a high speed! The investment would only make
+sense, if they can get more than 1 Million monthly users with in next 18
+months. In order to help Unicorn Ventures in their decision, you need to
+forecast the traffic on JetRail for the next 7 months. You are provided
+with traffic data of JetRail since inception in the test file.</p>
+<h3 id="exploratory-analysis">Exploratory Analysis</h3>
+<p>原本的datetime: train.Datetime是Object格式，首先change the data type
+to datetime format</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train[<span class="string">&#x27;Datetime&#x27;</span>] = pd.to_datetime(train.Datetime,<span class="built_in">format</span>=<span class="string">&#x27;%d-%m-%Y %H:%M&#x27;</span>) </span><br><span class="line"><span class="comment"># format是原格式的形式</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.index = train[<span class="string">&#x27;Datetime&#x27;</span>] <span class="comment"># indexing the Datetime to get the time period on the x-axis. </span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">ts = df[<span class="string">&#x27;Count&#x27;</span>] </span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>,<span class="number">8</span>)) </span><br><span class="line">plt.plot(ts, label=<span class="string">&#x27;Passenger Count&#x27;</span>) </span><br><span class="line">plt.title(<span class="string">&#x27;Time Series&#x27;</span>) </span><br><span class="line">plt.xlabel(<span class="string">&quot;Time(year-month)&quot;</span>) </span><br><span class="line">plt.ylabel(<span class="string">&quot;Passenger count&quot;</span>) </span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/a58/220/12e/1549346696050.jpg" alt="png"></p>
-<h3 id="Split-data"><a href="#Split-data" class="headerlink" title="Split data"></a>Split data</h3><p>将训练数据划分为训练集与验证集</p>
-<p>The starting date of the dataset is 25-08-2012 as we have seen in the exploration part and the end date is 25-09-2014.</p>
+<figure>
+<img src="https://s3.amazonaws.com/thinkific/file_uploads/118220/images/a58/220/12e/1549346696050.jpg" alt="png">
+<figcaption aria-hidden="true">png</figcaption>
+</figure>
+<h3 id="split-data">Split data</h3>
+<p>将训练数据划分为训练集与验证集</p>
+<p>The starting date of the dataset is 25-08-2012 as we have seen in the
+exploration part and the end date is 25-09-2014.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Train=train.ix[<span class="string">&#x27;2012-08-25&#x27;</span>:<span class="string">&#x27;2014-06-24&#x27;</span>] valid=train.ix[<span class="string">&#x27;2014-06-25&#x27;</span>:<span class="string">&#x27;2014-09-25&#x27;</span>]</span><br></pre></td></tr></table></figure>
 <ul>
-<li>We have done time based validation here by selecting the last 3 months for the validation data and rest in the train data. If we would have done it randomly it may work well for the train dataset but will not work effectively on validation dataset.</li>
-<li>Lets understand it in this way: If we choose the split randomly it will take some values from the starting and some from the last years as well. It is similar to predicting the old values based on the future values which is not the case in real scenario. So, this kind of split is used while working with time related problems.</li>
+<li>We have done time based validation here by selecting the last 3
+months for the validation data and rest in the train data. If we would
+have done it randomly it may work well for the train dataset but will
+not work effectively on validation dataset.</li>
+<li>Lets understand it in this way: If we choose the split randomly it
+will take some values from the starting and some from the last years as
+well. It is similar to predicting the old values based on the future
+values which is not the case in real scenario. So, this kind of split is
+used while working with time related problems.</li>
 </ul>
-<p>划分标准：将最后3个月的数据划分为验证集，而不是随机划分。因为若是随机划分，则存在用future value去预测old value的情况，而这在现实情况中是不可能的。</p>
-<h3 id="ARIMA-model"><a href="#ARIMA-model" class="headerlink" title="ARIMA model"></a>ARIMA model</h3><p>ARIMA Model的介绍可见：<a href="https://www.youtube.com/watch?v=0xHf-SJ9Z9U">https://www.youtube.com/watch?v=0xHf-SJ9Z9U</a></p>
+<p>划分标准：将最后3个月的数据划分为验证集，而不是随机划分。因为若是随机划分，则存在用future
+value去预测old value的情况，而这在现实情况中是不可能的。</p>
+<h3 id="arima-model">ARIMA model</h3>
+<p>ARIMA
+Model的介绍可见：https://www.youtube.com/watch?v=0xHf-SJ9Z9U</p>
 <ul>
-<li>ARIMA stands for Auto Regression Integrated Moving Average. It is specified by three ordered parameters (p,d,q).</li>
-<li>Here p is the order of the autoregressive model(number of time lags)</li>
-<li>d is the degree of differencing(number of times the data have had past values subtracted)</li>
-<li>q is the order of moving average model. We will discuss more about these parameters in next section.</li>
+<li>ARIMA stands for Auto Regression Integrated Moving Average. It is
+specified by three ordered parameters (p,d,q).</li>
+<li>Here p is the order of the autoregressive model(number of time
+lags)</li>
+<li>d is the degree of differencing(number of times the data have had
+past values subtracted)</li>
+<li>q is the order of moving average model. We will discuss more about
+these parameters in next section.</li>
 </ul>
-<p>The ARIMA forecasting for a stationary time series is nothing but a linear (like a linear regression) equation.</p>
-<h4 id="What-is-a-stationary-time-series"><a href="#What-is-a-stationary-time-series" class="headerlink" title="What is a stationary time series?"></a>What is a stationary time series?</h4><p>There are three basic criterion for a series to be classified as stationary series :</p>
+<p>The ARIMA forecasting for a stationary time series is nothing but a
+linear (like a linear regression) equation.</p>
+<h4 id="what-is-a-stationary-time-series">What is a stationary time
+series?</h4>
+<p>There are three basic criterion for a series to be classified as
+stationary series :</p>
 <ul>
-<li>The mean of the time series should not be a function of time. It should be constant.</li>
-<li>The variance of the time series should not be a function of time.</li>
-<li>THe covariance of the ith term and the (i+m)th term should not be a function of time.</li>
+<li>The mean of the time series should not be a function of time. It
+should be constant.</li>
+<li>The variance of the time series should not be a function of
+time.</li>
+<li>THe covariance of the ith term and the (i+m)th term should not be a
+function of time.</li>
 </ul>
-<h4 id="Why-do-we-have-to-make-the-time-series-stationary"><a href="#Why-do-we-have-to-make-the-time-series-stationary" class="headerlink" title="Why do we have to make the time series stationary?"></a>Why do we have to make the time series stationary?</h4><p>We make the series stationary to make the variables independent. Variables can be dependent in various ways, but can only be independent in one way. So, we will get more information when they are independent. Hence the time series must be stationary.</p>
-<p>If the time series is not stationary, firstly we have to make it stationary. For doing so, we need to remove the trend and seasonality from the data. To learn more about stationarity you can refer this article: <a href="https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/">https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/</a></p>
+<h4 id="why-do-we-have-to-make-the-time-series-stationary">Why do we
+have to make the time series stationary?</h4>
+<p>We make the series stationary to make the variables independent.
+Variables can be dependent in various ways, but can only be independent
+in one way. So, we will get more information when they are independent.
+Hence the time series must be stationary.</p>
+<p>If the time series is not stationary, firstly we have to make it
+stationary. For doing so, we need to remove the trend and seasonality
+from the data. To learn more about stationarity you can refer this
+article:
+https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/</p>
 
     </div>
 

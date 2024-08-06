@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。 常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。">
+    <meta name="description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。 常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近">
 <meta property="og:type" content="article">
 <meta property="og:title" content="推荐系统总体架构及特征数据">
 <meta property="og:url" content="http://qypx.github.io/2020/07/29/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E5%8F%8A%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。 常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。">
+<meta property="og:description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。 常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67">
 <meta property="og:image" content="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67">
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-text">1. 总体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%A6%BB%E7%BA%BF%E6%8E%A8%E8%8D%90"><span class="nav-text">1.1 离线推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%9C%A8%E7%BA%BF%E8%AE%AD%E7%BB%83"><span class="nav-text">2.2 在线训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE"><span class="nav-text">2. 特征数据</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-text">1. 总体架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E6%8E%A8%E8%8D%90"><span class="nav-text">1.1 离线推荐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E8%AE%AD%E7%BB%83"><span class="nav-text">2.2 在线训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E6%95%B0%E6%8D%AE"><span class="nav-text">2. 特征数据</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -288,44 +288,71 @@
     
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
 </blockquote>
 <p><strong>个性化推荐系统是建立在海量数据挖掘基础上的一种高级商务智能平台，以帮助电子商务网站为其顾客购物提供完全个性化的决策支持和信息服务。</strong></p>
 <p>常见的推荐栏位例如：淘宝的猜你喜欢、看了又看、推荐商品，美团的首页推荐、附近推荐等。</p>
 <p>推荐系统是比较偏向于工程类的系统，要做得更加的精确，需要的不仅仅是推荐算法，还有用户意图识别、文本分析、行为分析等，是一个综合性很强的系统。</p>
-<h2 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h2><p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思 考，从而设计出适合自身业务的系统。</p>
+<h2 id="总体架构">1. 总体架构</h2>
+<p>本节介绍的几种推荐系统架构，并不是互相独立的关系，实际的推荐系统可能会用到其中一种或者几种的架构。在实际设计的过程中，读者可以把本文介绍的架构作为一个设计的起点，更多地结合自身业务特点进行独立思
+考，从而设计出适合自身业务的系统。</p>
 <p>根据响应用户行为的速度不同，推荐系统可以大致分为基于<strong>离线训练和在线训练</strong>的推荐系统。</p>
-<h3 id="1-1-离线推荐"><a href="#1-1-离线推荐" class="headerlink" title="1.1 离线推荐"></a>1.1 离线推荐</h3><p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（ 比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位 ）。模型拟合的是用户的中长期兴趣。</p>
-<p>如下图所示， 一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和 A/B 测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和 A/B 测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过 A/B 测试模块访问实时计算模块获取预测结果。</p>
-<p><img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img"></p>
+<h3 id="离线推荐">1.1 离线推荐</h3>
+<p>基于离线训练的推荐系统架构是最常见的一种推荐系统架构。这里的“离线”训练指的是使用历史一段时间（
+比如周或者几周 ）的数据进行训练，模型迭代的周期较长（一般以小时为单位
+）。模型拟合的是用户的中长期兴趣。</p>
+<p>如下图所示，
+一个典型的基于离线训练的推荐系统架构由<strong>数据上报、离线训练、在线存储、实时计算和
+A/B
+测试</strong>这几个模块组成。其中，数据上报和离线训练组成了监督学习中的学习系统，而实时计算和
+A/B
+测试组成了预测系统。另外，除了模型之外，还有一个在线存储模块，用于存储模型和模型需要的特征信息供实时计算模块调用。图中的各个模块组成了训练和预测两条数据流，训练的数据流搜集业务的数据最后生成模型存储于在线存储模块；预测的数据流接受业务的预测请求，通过
+A/B 测试模块访问实时计算模块获取预测结果。</p>
+<figure>
+<img src="https://camo.githubusercontent.com/256d4abf6809d771af7205fd18eadae4e12936c2/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32322d302e706e67" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 <span id="more"></span>
-<ol>
+<ol type="1">
 <li><p><strong>数据上报</strong>：数据上报模块的作用是搜集业务数据组成训练样本。一般分为收集、验证、清洗和转换几个步骤。将收集的数据转化为训练所需要的样本格式，保存到离线存储模块。</p>
-<p><a href="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67"><img src="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" alt="img"></a></p>
-</li>
-<li><p><strong>离线训练</strong>：离线训练模块又细分为<strong>离线存储</strong>和<strong>离线计算</strong>。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p>
-</li>
-<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机 APP ，他肯定希望APP 能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据 。</p>
-</li>
+<p><a href="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67"><img src="https://camo.githubusercontent.com/04a5b6b6717428ef7ffd4e9e139239bbf0072422/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d33332d34362e706e67" alt="img"></a></p></li>
+<li><p><strong>离线训练</strong>：离线训练模块又细分为<strong>离线存储</strong>和<strong>离线计算</strong>。实际业务中使用的推荐系统一般都需要处理海量的用户行为数据，所以离线存储模块需要有一个分布式的文件系统或者存储平台来存储这些数据。离线计算常见的操作有：样本抽样、特征工程、模型训练、相似度计算等。</p></li>
+<li><p><strong>在线存储</strong>：因为线上的服务对于时延都有严格的要求。比如，某个用户打开手机
+APP ，他肯定希望APP
+能够快速响应，如果耗时过长，就会影响用户的体验。一般来说，这就要求推荐系统在几十毫秒以内处理完用户请求返回推荐结果，所以，针对线上的服务，需要有一个专门的在线存储模块，负责存储用于线上的模型和特征数据
+。</p></li>
 <li><p><strong>实时推荐</strong>：实时推荐模块的功能是对来自业务的新请求进行预测。1.获取用户特征；2.调用推荐模型；3.结果排序。</p>
-<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为<strong>召回</strong>和<strong>排序</strong>两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集 （一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p>
-</li>
-<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B 测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了 离线的指标外，一个新的推荐算法上线之前一般都会经过 A/B 测试来测试新算法的有效性。</p>
-</li>
+<p>在实际应用中，因为业务的物品列表太大，如果实时计算对每个物品使用复杂的模型进行打分，就有可能耗时过长而影响用户满意度。所以，一种常见的做法是将推荐列表生成分为<strong>召回</strong>和<strong>排序</strong>两步。召回的作用是从大量的候选物品中（例如上百万）筛选出一批用户较可能喜欢的候选集
+（一般是几百）。排序的作用是对召回得到的相对较小的候选集使用排序模型进行打分。更进一步，在排序得到推荐列表后，为了多样性和运营的一些考虑，还会加上第三步重排过滤，用于对精排后的推荐列表进行处理。</p></li>
+<li><p><strong>A/B测试</strong>：对于互联网产品来说， A/B
+测试基本上是一个必备的模块，对于推荐系统来说也不例外，它可以帮助开发人员评估新算法对客户行为的影响。除了
+离线的指标外，一个新的推荐算法上线之前一般都会经过 A/B
+测试来测试新算法的有效性。</p></li>
 </ol>
 <p>下图是与之对应的实际系统中各个组件的流转过程。<strong>需要注意的是生成推荐列表就已经做完了召回和排序的操作，业务层直接调用API就可以得到这个推荐列表。</strong></p>
-<p><img src="https://camo.githubusercontent.com/e00fb75f81bd5377bcfd1de0cdb3891a7790b134/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32352d32372e706e67" alt="img"></p>
-<h3 id="2-2-在线训练"><a href="#2-2-在线训练" class="headerlink" title="2.2 在线训练"></a>2.2 在线训练</h3><p>对于业务来说，我们希望用户对于上个广告的反馈 （喜欢或者不喜欢，有没有点击），可以很快地用于下 一个广告的推荐中。这就要求我们用另一种方法来解决这个问题，这个方法就是在线训练。</p>
-<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景，相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。 一方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
-<p><img src="https://camo.githubusercontent.com/6d0bf23d50bf62aaf218595a74437800ae143d01/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31312d31312d31312e706e67" alt="img"></p>
-<ol>
+<figure>
+<img src="https://camo.githubusercontent.com/e00fb75f81bd5377bcfd1de0cdb3891a7790b134/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31302d32352d32372e706e67" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h3 id="在线训练">2.2 在线训练</h3>
+<p>对于业务来说，我们希望用户对于上个广告的反馈
+（喜欢或者不喜欢，有没有点击），可以很快地用于下
+一个广告的推荐中。这就要求我们用另一种方法来解决这个问题，这个方法就是在线训练。</p>
+<p>基于在线训练的推荐系统架构适合于广告和电商等高维度大数据量且对实时性要求很高的场景，相比较基于离线训练的推荐系统，基于在线训练的推荐系统不区分训练和测试阶段，每个回合都在学习，通过实时的反馈来调整策略。
+一方面，在线训练要求其样本、特征和模型的处理都是实时的，以便推荐的内容更快地反映用户实时的喜好；另一方面，因为在线训练井不需要将所有的训练数据都存储下来，所以不需要巨大的离线存储开销，使得系统具有很好的伸缩性，可以支持超大的数据量和模型。</p>
+<figure>
+<img src="https://camo.githubusercontent.com/6d0bf23d50bf62aaf218595a74437800ae143d01/68747470733a2f2f67697465652e636f6d2f6b6b7765697368652f696d616765732f7261772f6d61737465722f4d4c2f323031392d392d385f31312d31312d31312e706e67" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<ol type="1">
 <li><strong>样本处理</strong>：和基于离线训练的推荐系统相比，在线训练在数据上报阶段的主要不同体现在样本处理上。对于离线训练来说，上报后的数据先是被存储到一个分布式文件系统，然后等待离线计算任务来对样本进行处理；对于在线训练来说，对样本的去重、过滤和采样等计算都需要实时进行。</li>
 <li><strong>实时特性</strong>：实时特征模块通过实时处理样本数据拼接训练需要的特征构造训练样本，输入流式训练模块用于更新模型。该模块的主要的功能是特征拼接和特征工程。</li>
 <li><strong>流式训练</strong>：流式训练模块的主要作用是使用实时训练样本来更新模型。推荐算法中增量更新部分的计算，通过流式计算的方式来进行更新。在线训练的优势之一，是可以支持模型的稀疏存储。训练方面，在线模型不一定都是从零开始训练，而是可以将离线训练得到的模型参数作为基础，在这个基础上进行增量训练。</li>
 <li><strong>模型存储和加载</strong>：模型一般存储在参数服务器中。模型更新后，将模型文件推送到线上存储，并由线上服务模块动态加载。</li>
 </ol>
-<h2 id="2-特征数据"><a href="#2-特征数据" class="headerlink" title="2. 特征数据"></a>2. 特征数据</h2><p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
-<ol>
+<h2 id="特征数据">2. 特征数据</h2>
+<p>要训练推荐模型，就需要先收集用户的行为数据生成特征向量以后才能进行训练，而一个特征向量由特征以及特征的权重组成，在利用用户行为计算特征向量时需要考虑以下因素。</p>
+<ol type="1">
 <li><strong>用户行为的种类</strong>：在一个网站中，用户可以对物品产生很多不同种类的行为。用户可以浏览物品、单击物品的链接、收藏物品、给物品打分、购买物品、评论物品、给物品打上不同的标签、和好友分享物品、搜索不同的关键词等。这些行为都会对物品特征的权重产生影响，但不同行为的影响不同，大多时候很难确定什么行为更加重要，一般的标准就是用户付出代价越大的行为权重越高。</li>
 <li><strong>用户行为产生的时间</strong>：一般来说，用户近期的行为比较重要，而用户很久之前的行为相对比较次要。因此，如果用户最近购买过某一个物品，那么这个物品对应的特征将会具有比较高的权重。</li>
 <li><strong>用户行为的次数</strong>：有时用户对一个物品会产生很多次行为。比如用户会听一首歌很多次，看一部电视剧的很多集等。因此用户对同一个物品的同一种行为发生的次数也反映了用户对物品的兴趣，行为次数多的物品对应的特征权重越高。</li>

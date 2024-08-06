@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有">
+    <meta name="description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="推荐系统冷启动问题">
 <meta property="og:url" content="http://qypx.github.io/2020/07/30/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E5%86%B7%E5%90%AF%E5%8A%A8%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有">
+<meta property="og:description" content="来源于 https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-29T17:00:59.000Z">
 <meta property="article:modified_time" content="2020-07-29T15:02:09.405Z">
@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E7%94%A8%E6%88%B7%E5%86%B7%E5%90%AF%E5%8A%A8"><span class="nav-text">8.1 用户冷启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A8"><span class="nav-text">8.2 物品冷启动</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%86%B7%E5%90%AF%E5%8A%A8"><span class="nav-text">8.1 用户冷启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E5%93%81%E5%86%B7%E5%90%AF%E5%8A%A8"><span class="nav-text">8.2 物品冷启动</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -289,17 +289,23 @@
     
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p>来源于</p>
-<p><a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
 </blockquote>
-<p>冷启动（ cold start ）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架 会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
-<h3 id="8-1-用户冷启动"><a href="#8-1-用户冷启动" class="headerlink" title="8.1 用户冷启动"></a>8.1 用户冷启动</h3><p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我 没有他的行为数据，所以也无法根据他的历史行为预 其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
-<ol>
+<p>冷启动（ cold start
+）在推荐系统中表示该系统积累数据量过少，无法给新用户作个性化推荐的问题，这是产品推荐的一大难题。每个有推荐功能的产品都会遇到冷启动的问题。一方面，当新商品时上架
+会遇到冷启动的问题，没有收集到任何一个用户对其浏览、点击或者购买的行为，也无从判断如何将商品进行推荐；另一方面，新用户到来的时候，如果没有他在应用上的行为数据，也无法预测其兴趣，如果给用户的推荐千篇律，没有亮点，会使用户在一开始就对产品失去兴趣，从而放弃使用。所以在冷启动的时候要同时<strong>考虑用户的冷启动和物品的冷启动。</strong></p>
+<h3 id="用户冷启动">8.1 用户冷启动</h3>
+<p>用户冷启动主要解决如何给新用户作个性化推荐的问题。当新用户到来时，我
+没有他的行为数据，所以也无法根据他的历史行为预
+其兴趣，从而无法借此给他做个性化推荐。解决方法参考以下：</p>
+<ol type="1">
 <li>利用用户的账号信息。</li>
 <li>利用用户的手机 IMEI 号进行冷启动。</li>
 <li>制造选工页，让用户选择自己感兴趣的点后，即时生成粗粒度的推荐。</li>
 </ol>
-<h3 id="8-2-物品冷启动"><a href="#8-2-物品冷启动" class="headerlink" title="8.2 物品冷启动"></a>8.2 物品冷启动</h3><p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
-<ol>
+<h3 id="物品冷启动">8.2 物品冷启动</h3>
+<p>物品冷启动主要解决如何将新的物品推荐给可能对它感兴趣的用户这一问题。解决方法参考以下：</p>
+<ol type="1">
 <li>利用物品的内容、分类信息。</li>
 <li>利用专家标注的数据。</li>
 </ol>

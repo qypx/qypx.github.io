@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="来源于:  https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  1. 基本思想推荐系统中一个重要的分支，隐语义建模。隐语义模型LFM：Latent Factor Model，其核心思想就是通过隐含特征联系用户兴趣和物品。 过程分为三个部分，将物品映射到隐含分类，确定用户对隐含分">
+    <meta name="description" content="来源于: https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  1. 基本思想 推荐系统中一个重要的分支，隐语义建模。隐语义模型LFM：Latent Factor Model，其核心思想就是通过隐含特征联系用户兴趣和物品。 过程分为三个部分，将物品映射到隐含分类，确">
 <meta property="og:type" content="article">
 <meta property="og:title" content="隐语义模型">
 <meta property="og:url" content="http://qypx.github.io/2020/07/29/%E9%9A%90%E8%AF%AD%E4%B9%89%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="来源于:  https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  1. 基本思想推荐系统中一个重要的分支，隐语义建模。隐语义模型LFM：Latent Factor Model，其核心思想就是通过隐含特征联系用户兴趣和物品。 过程分为三个部分，将物品映射到隐含分类，确定用户对隐含分">
+<meta property="og:description" content="来源于: https:&#x2F;&#x2F;github.com&#x2F;NLP-LOVE&#x2F;ML-NLP&#x2F;tree&#x2F;master&#x2F;Project&#x2F;17.%20Recommendation%20System  1. 基本思想 推荐系统中一个重要的分支，隐语义建模。隐语义模型LFM：Latent Factor Model，其核心思想就是通过隐含特征联系用户兴趣和物品。 过程分为三个部分，将物品映射到隐含分类，确">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://camo.githubusercontent.com/7f94ca282d949c428b6c6021803daa14f88d61fb/68747470733a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f707265666572656e636528752c69293d725f25374275692537443d705f7525354554715f693d25354373756d5f253742663d3125374425354546705f253742752c6b253744715f253742692c6b253744">
 <meta property="article:published_time" content="2020-07-29T11:13:28.000Z">
@@ -149,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">1. 基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A8%A1%E5%9E%8B%E7%90%86%E8%A7%A3"><span class="nav-text">2 模型理解</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-text">1. 基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%90%86%E8%A7%A3"><span class="nav-text">2 模型理解</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -285,24 +285,38 @@
     
     <div class="post-body" itemprop="articleBody"><blockquote>
 <p>来源于:</p>
-<p> <a href="https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System">https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</a></p>
+<p>https://github.com/NLP-LOVE/ML-NLP/tree/master/Project/17.%20Recommendation%20System</p>
 </blockquote>
-<h3 id="1-基本思想"><a href="#1-基本思想" class="headerlink" title="1. 基本思想"></a>1. 基本思想</h3><p>推荐系统中一个重要的分支，隐语义建模。隐语义模型<strong>LFM</strong>：Latent Factor Model，其核心思想就是<span style="color:red">通过隐含特征联系用户兴趣和物品</span>。</p>
+<h3 id="基本思想">1. 基本思想</h3>
+<p>推荐系统中一个重要的分支，隐语义建模。隐语义模型<strong>LFM</strong>：Latent
+Factor Model，其核心思想就是<span style="color:red">通过隐含特征联系用户兴趣和物品</span>。</p>
 <p><strong>过程分为三个部分，将物品映射到隐含分类，确定用户对隐含分类的兴趣，然后选择用户感兴趣的分类中的物品推荐给用户。它是基于用户行为统计的自动聚类。</strong></p>
-<p>隐语义模型在Top-N推荐中的应用十分广泛。常用的隐语义模型，LSA(Latent Semantic Analysis)，LDA(Latent Dirichlet Allocation)，主题模型(Topic Model)，矩阵分解(Matrix Factorization)等等。</p>
+<p>隐语义模型在Top-N推荐中的应用十分广泛。常用的隐语义模型，LSA(Latent
+Semantic Analysis)，LDA(Latent Dirichlet Allocation)，主题模型(Topic
+Model)，矩阵分解(Matrix Factorization)等等。</p>
 <p>首先通过一个例子来理解一下这个模型，比如说有两个用户A和B，目前有用户的阅读列表，用户A的兴趣涉及侦探小说，科普图书以及一些计算机技术书，而用户B的兴趣比较集中在数学和机器学习方面。那么如何给A和B推荐图书呢？</p>
-<p>对于UserCF，首先需要找到和他们看了同样书的其他用户(兴趣相似的用户)，然后在给他们推荐那些用户喜欢的其他书。 对于ItemCF, 需要给他们推荐和他们已经看的书相似的书，比如用户B 看了很多数据挖掘方面的书，那么可以给他推荐机器学习或者模式识别方面的书。</p>
+<p>对于UserCF，首先需要找到和他们看了同样书的其他用户(兴趣相似的用户)，然后在给他们推荐那些用户喜欢的其他书。
+对于ItemCF, 需要给他们推荐和他们已经看的书相似的书，比如用户B
+看了很多数据挖掘方面的书，那么可以给他推荐机器学习或者模式识别方面的书。</p>
 <p>还有一种方法就是使用隐语义模型，可以对书和物品的兴趣进行分类。对于某个用户，首先得到他的兴趣分类，然后从分类中挑选他可能喜欢的物品。</p>
 <span id="more"></span>
-<h3 id="2-模型理解"><a href="#2-模型理解" class="headerlink" title="2 模型理解"></a>2 模型理解</h3><ol>
+<h3 id="模型理解">2 模型理解</h3>
+<ol type="1">
 <li>如何给物品进行分类？</li>
 <li>如何确定用户对哪些类的物品感兴趣，以及感兴趣的程度？</li>
 <li>对于一个给定的类，选择哪些属于这个类的物品推荐给用户，以及如何确定这些物品在一个类中的权重？</li>
 </ol>
-<p>为了解决上面的问题，研究人员提出：为什么我们不从数据出发，自动地找到那些类，然后进行个性化推荐，隐语义分析技术因为采取基于用户行为统计的自动聚类，较好地解决了上面的问题。隐语义分析技术从诞生到今天产生了很多著名的模型和方法，其中和推荐技术相关的有pLSA，LDA，隐含类别模型（latent class model）, 隐含主题模型（latent topic model）, 矩阵分解（matrix factorization）。</p>
+<p>为了解决上面的问题，研究人员提出：为什么我们不从数据出发，自动地找到那些类，然后进行个性化推荐，隐语义分析技术因为采取基于用户行为统计的自动聚类，较好地解决了上面的问题。隐语义分析技术从诞生到今天产生了很多著名的模型和方法，其中和推荐技术相关的有pLSA，LDA，隐含类别模型（latent
+class model）, 隐含主题模型（latent topic model）, 矩阵分解（matrix
+factorization）。</p>
 <p>LFM通过如下公式计算用户 u 对物品 i 的兴趣：</p>
-<p><img src="https://camo.githubusercontent.com/7f94ca282d949c428b6c6021803daa14f88d61fb/68747470733a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f707265666572656e636528752c69293d725f25374275692537443d705f7525354554715f693d25354373756d5f253742663d3125374425354546705f253742752c6b253744715f253742692c6b253744" alt="img"></p>
-<p>这个公式中 $p<em>{u,k}$ 和 $q</em>{i,k}$ 是模型的参数，其中 $p<em>{u,k}$  度量了用户 u 的兴趣和第 k 个隐类的关系，而 $q</em>{i,k}$  度量了第 k 个隐类和物品 i 之间的关系。那么，下面的问题就是如何计算这两个参数。</p>
+<figure>
+<img src="https://camo.githubusercontent.com/7f94ca282d949c428b6c6021803daa14f88d61fb/68747470733a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f707265666572656e636528752c69293d725f25374275692537443d705f7525354554715f693d25354373756d5f253742663d3125374425354546705f253742752c6b253744715f253742692c6b253744" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p>这个公式中 <span class="math inline">\(p_{u,k}\)</span> 和 <span class="math inline">\(q_{i,k}\)</span> 是模型的参数，其中 <span class="math inline">\(p_{u,k}\)</span> 度量了用户 u 的兴趣和第 k
+个隐类的关系，而 <span class="math inline">\(q_{i,k}\)</span> 度量了第 k
+个隐类和物品 i 之间的关系。那么，下面的问题就是如何计算这两个参数。</p>
 <p>对最优化理论或者机器学习有所了解的读者，可能对如何计算这两个参数都比较清楚。这两个参数是从数据集中计算出来的。要计算这两个参数，需要一个训练集，对于每个用户u，训练集里都包含了用户u喜欢的物品和不感兴趣的物品，通过学习这个数据集，就可以获得上面的模型参数。</p>
 
     </div>

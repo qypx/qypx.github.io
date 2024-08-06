@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1. 创建dataframe 法一  1dat &#x3D; pd.DataFrame(&#123;&#x27;id&#x27;:[1,2,3], &#x27;string&#x27;: [&#x27;a&#x27;, &#x27;b&#x27;,&#x27;c&#x27;]&#125;)  法二（若已有现成的list）  123dat &#x3D; pd.DataFrame([n_clusters_start, s">
+    <meta name="description" content="1. 创建dataframe  法一  1dat &#x3D; pd.DataFrame(&#123;&#x27;id&#x27;:[1,2,3], &#x27;string&#x27;: [&#x27;a&#x27;, &#x27;b&#x27;,&#x27;c&#x27;]&#125;)  法二（若已有现成的list）  123dat &#x3D; pd.DataFrame([n_clusters">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据框操作">
 <meta property="og:url" content="http://qypx.github.io/2019/09/02/dataframe-operation/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="1. 创建dataframe 法一  1dat &#x3D; pd.DataFrame(&#123;&#x27;id&#x27;:[1,2,3], &#x27;string&#x27;: [&#x27;a&#x27;, &#x27;b&#x27;,&#x27;c&#x27;]&#125;)  法二（若已有现成的list）  123dat &#x3D; pd.DataFrame([n_clusters_start, s">
+<meta property="og:description" content="1. 创建dataframe  法一  1dat &#x3D; pd.DataFrame(&#123;&#x27;id&#x27;:[1,2,3], &#x27;string&#x27;: [&#x27;a&#x27;, &#x27;b&#x27;,&#x27;c&#x27;]&#125;)  法二（若已有现成的list）  123dat &#x3D; pd.DataFrame([n_clusters">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2019/09/02/dataframe-operation/outcome.JPG">
 <meta property="og:image" content="http://qypx.github.io/2019/09/02/dataframe-operation/image-20210717004007434.png">
@@ -156,7 +156,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BAdataframe"><span class="nav-text">1. 创建dataframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E6%A1%86%E6%8B%BC%E6%8E%A5"><span class="nav-text">2.  数据框拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-append"><span class="nav-text">2.1 append</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-concat"><span class="nav-text">2.2 concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-merge"><span class="nav-text">2.3 merge</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-%E5%B0%86%E6%95%B0%E6%8D%AE%E6%A1%86%E4%B8%AD%E7%9A%84%E5%87%A0%E5%88%97%E6%8B%BC%E6%8E%A5%E4%B8%BA%E6%96%B0%E7%9A%84%E4%B8%80%E5%88%97"><span class="nav-text">2.4 将数据框中的几列拼接为新的一列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%A0%E6%8E%89%E5%88%97"><span class="nav-text">3. 删掉列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%88%A0%E6%8E%89%E8%A1%8C"><span class="nav-text">4. 删掉行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%8F%90%E5%8F%96%E8%A1%8C%E7%B4%A2%E5%BC%95"><span class="nav-text">5. 提取行索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%8F%90%E5%8F%96%E7%89%B9%E5%AE%9A%E7%9A%84%E8%A1%8C"><span class="nav-text">6. 提取特定的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-DataFrame-%E4%B8%AD-axis-%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-text">7. DataFrame 中 axis 的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E9%87%8D%E5%91%BD%E5%90%8D%E5%88%97"><span class="nav-text">8. 重命名列</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAdataframe"><span class="nav-text">1. 创建dataframe</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A1%86%E6%8B%BC%E6%8E%A5"><span class="nav-text">2. 数据框拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#append"><span class="nav-text">2.1 append</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#concat"><span class="nav-text">2.2 concat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#merge"><span class="nav-text">2.3 merge</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E6%A1%86%E4%B8%AD%E7%9A%84%E5%87%A0%E5%88%97%E6%8B%BC%E6%8E%A5%E4%B8%BA%E6%96%B0%E7%9A%84%E4%B8%80%E5%88%97"><span class="nav-text">2.4
+将数据框中的几列拼接为新的一列</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E6%8E%89%E5%88%97"><span class="nav-text">3. 删掉列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E6%8E%89%E8%A1%8C"><span class="nav-text">4. 删掉行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E8%A1%8C%E7%B4%A2%E5%BC%95"><span class="nav-text">5. 提取行索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E7%89%B9%E5%AE%9A%E7%9A%84%E8%A1%8C"><span class="nav-text">6. 提取特定的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dataframe-%E4%B8%AD-axis-%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-text">7. DataFrame 中 axis 的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E5%88%97"><span class="nav-text">8. 重命名列</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -296,7 +297,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h4 id="1-创建dataframe"><a href="#1-创建dataframe" class="headerlink" title="1. 创建dataframe"></a>1. 创建dataframe</h4><ul>
+    <div class="post-body" itemprop="articleBody"><h4 id="创建dataframe">1. 创建dataframe</h4>
+<ul>
 <li>法一</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = pd.DataFrame(&#123;<span class="string">&#x27;id&#x27;</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="string">&#x27;string&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>]&#125;)</span><br></pre></td></tr></table></figure>
@@ -307,44 +309,83 @@
 <p>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exclamationCount = <span class="keyword">lambda</span> text: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">&#x27;!&#x27;</span>])</span><br><span class="line">EC = tweet.apply(<span class="keyword">lambda</span> x:exclamationCount(x))</span><br><span class="line">EC = EC.tolist()</span><br><span class="line">questionMarkCount = <span class="keyword">lambda</span> text: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text <span class="keyword">if</span> x == <span class="string">&#x27;?&#x27;</span>])</span><br><span class="line">QC = tweet.apply(<span class="keyword">lambda</span> x:questionMarkCount(x))</span><br><span class="line">QC = QC.tolist()</span><br><span class="line">dat = pd.DataFrame(&#123;<span class="string">&#x27;EC&#x27;</span>:EC,<span class="string">&#x27;QC&#x27;</span>:QC&#125;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">eachLetterCount = <span class="keyword">lambda</span> text,letter: <span class="built_in">sum</span>([<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> text.lower() <span class="keyword">if</span> x == letter])</span><br><span class="line"></span><br><span class="line">FList = []</span><br><span class="line">pattern = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">j=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  F = tweet.apply(<span class="keyword">lambda</span> x:eachLetterCount(x,i))</span><br><span class="line">  F = F.tolist()</span><br><span class="line">  FList.append(F)</span><br><span class="line"></span><br><span class="line">res = pd.DataFrame(FList)</span><br><span class="line">res = res.transpose()</span><br><span class="line"></span><br><span class="line">pattern = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">name = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> pattern:</span><br><span class="line">  name.append(<span class="string">&quot;freqOf &quot;</span> + i)</span><br><span class="line">res.columns = name</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果"></p>
+<figure>
+<img src="/2019/09/02/dataframe-operation/outcome.JPG" alt="结果">
+<figcaption aria-hidden="true">结果</figcaption>
+</figure>
 <span id="more"></span>
-<h4 id="2-数据框拼接"><a href="#2-数据框拼接" class="headerlink" title="2.  数据框拼接"></a>2.  数据框拼接</h4><p><strong>ignore_index = True, 重新分配索引</strong></p>
-<h5 id="2-1-append"><a href="#2-1-append" class="headerlink" title="2.1 append"></a>2.1 append</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = result1.append(result2, ignore_index = <span class="literal">True</span>) <span class="comment"># 粘贴行</span></span><br></pre></td></tr></table></figure>
-<h5 id="2-2-concat"><a href="#2-2-concat" class="headerlink" title="2.2 concat"></a>2.2 concat</h5><blockquote>
-<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html">pandas.concat — pandas 1.3.0 documentation (pydata.org)</a></p>
+<h4 id="数据框拼接">2. 数据框拼接</h4>
+<p><strong>ignore_index = True, 重新分配索引</strong></p>
+<h5 id="append">2.1 append</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = result1.append(result2, ignore_index = <span class="literal">True</span>) <span class="comment"># 粘贴行</span></span><br></pre></td></tr></table></figure>
+<h5 id="concat">2.2 concat</h5>
+<blockquote>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html">pandas.concat
+— pandas 1.3.0 documentation (pydata.org)</a></p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result = pd.concat([result1, result2], ignore_index = <span class="literal">True</span>) <span class="comment"># 默认axis = 0, 粘贴行 </span></span><br><span class="line">RF_eval = pd.concat([RF_eval, eval_raw], axis = <span class="number">1</span>) <span class="comment"># 粘贴列</span></span><br></pre></td></tr></table></figure>
-<h5 id="2-3-merge"><a href="#2-3-merge" class="headerlink" title="2.3 merge"></a>2.3 merge</h5><blockquote>
-<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html">pandas.merge — pandas 1.3.0 documentation (pydata.org)</a></p>
+<h5 id="merge">2.3 merge</h5>
+<blockquote>
+<p><a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html">pandas.merge
+— pandas 1.3.0 documentation (pydata.org)</a></p>
 </blockquote>
-<p><img src="/2019/09/02/dataframe-operation/image-20210717004007434.png" alt="image-20210717004007434"></p>
-<h5 id="2-4-将数据框中的几列拼接为新的一列"><a href="#2-4-将数据框中的几列拼接为新的一列" class="headerlink" title="2.4 将数据框中的几列拼接为新的一列"></a><span id="jump2.4">2.4 将数据框中的几列拼接为新的一列</span></h5><p>例如有数据如下：</p>
+<figure>
+<img src="/2019/09/02/dataframe-operation/image-20210717004007434.png" alt="image-20210717004007434">
+<figcaption aria-hidden="true">image-20210717004007434</figcaption>
+</figure>
+<h5 id="将数据框中的几列拼接为新的一列"><span id="jump2.4">2.4
+将数据框中的几列拼接为新的一列</span></h5>
+<p>例如有数据如下：</p>
 <p><img src="/2019/09/02/dataframe-operation/1721804568199.png" width="85%" height="85%"></p>
-<p>现想生成一列Combination，将Search Bar Shape, Search Button Design, Background Color三列的内容拼接起来：</p>
+<p>现想生成一列Combination，将Search Bar Shape, Search Button Design,
+Background Color三列的内容拼接起来：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Creating a new variable represing the 8 combinations</span></span><br><span class="line">df[<span class="string">&#x27;Combination&#x27;</span>] = df[<span class="string">&#x27;Search Bar Shape&#x27;</span>] + <span class="string">&quot;_&quot;</span> + df[<span class="string">&#x27;Search Button Design&#x27;</span>] + <span class="string">&quot;_&quot;</span> + df[<span class="string">&#x27;Background Color&#x27;</span>]</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/dataframe-operation/1721804733929.png" alt="1721804733929"></p>
-<h4 id="3-删掉列"><a href="#3-删掉列" class="headerlink" title="3. 删掉列"></a>3. 删掉列</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RF_eval.drop([<span class="string">&#x27;raw&#x27;</span>], axis = <span class="number">1</span>, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="4-删掉行"><a href="#4-删掉行" class="headerlink" title="4. 删掉行"></a>4. 删掉行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = dat.drop(<span class="number">0</span>) <span class="comment"># 删掉第一行</span></span><br></pre></td></tr></table></figure>
-<h4 id="5-提取行索引"><a href="#5-提取行索引" class="headerlink" title="5. 提取行索引"></a>5. 提取行索引</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index0 = res.index[res[<span class="string">&#x27;label&#x27;</span>] == <span class="number">0</span>].tolist()</span><br><span class="line">X0 = X[index0] <span class="comment"># X为矩阵</span></span><br></pre></td></tr></table></figure>
-<h4 id="6-提取特定的行"><a href="#6-提取特定的行" class="headerlink" title="6. 提取特定的行"></a>6. 提取特定的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">&#x27;id&#x27;</span>]==<span class="number">1</span>] <span class="comment"># 提取id为1的行</span></span><br><span class="line">df[(df[<span class="string">&#x27;id&#x27;</span>]&gt;=<span class="number">1</span>) &amp; (df[<span class="string">&#x27;id&#x27;</span>]&lt;=<span class="number">5</span>)] <span class="comment"># 提取id在[1,5]之间的行(同理，&#x27;或&#x27;使用‘|’)</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;id&#x27;</span>]==<span class="number">1</span>, <span class="string">&#x27;age&#x27;</span>] <span class="comment">#提取id为1的行的人的年龄</span></span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/09/02/dataframe-operation/1721804733929.png" alt="1721804733929">
+<figcaption aria-hidden="true">1721804733929</figcaption>
+</figure>
+<h4 id="删掉列">3. 删掉列</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RF_eval.drop([<span class="string">&#x27;raw&#x27;</span>], axis = <span class="number">1</span>, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="删掉行">4. 删掉行</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat = dat.drop(<span class="number">0</span>) <span class="comment"># 删掉第一行</span></span><br></pre></td></tr></table></figure>
+<h4 id="提取行索引">5. 提取行索引</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index0 = res.index[res[<span class="string">&#x27;label&#x27;</span>] == <span class="number">0</span>].tolist()</span><br><span class="line">X0 = X[index0] <span class="comment"># X为矩阵</span></span><br></pre></td></tr></table></figure>
+<h4 id="提取特定的行">6. 提取特定的行</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">&#x27;id&#x27;</span>]==<span class="number">1</span>] <span class="comment"># 提取id为1的行</span></span><br><span class="line">df[(df[<span class="string">&#x27;id&#x27;</span>]&gt;=<span class="number">1</span>) &amp; (df[<span class="string">&#x27;id&#x27;</span>]&lt;=<span class="number">5</span>)] <span class="comment"># 提取id在[1,5]之间的行(同理，&#x27;或&#x27;使用‘|’)</span></span><br><span class="line">df.loc[df[<span class="string">&#x27;id&#x27;</span>]==<span class="number">1</span>, <span class="string">&#x27;age&#x27;</span>] <span class="comment">#提取id为1的行的人的年龄</span></span><br></pre></td></tr></table></figure>
 <p><code>isin()</code>:</p>
 <p>以<a href="#jump2.4">2.4</a>中的数据为例，只取Combination为以下这些取值的行</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">selection = [<span class="string">&#x27;Original_Original_Original&#x27;</span>,</span><br><span class="line">             <span class="string">&#x27;Rectangle_Original_Light Pink&#x27;</span>,</span><br><span class="line">             <span class="string">&#x27;Rectangle_Star_Light Pink&#x27;</span>,</span><br><span class="line">             <span class="string">&#x27;Original_Star_Original&#x27;</span>]</span><br><span class="line"></span><br><span class="line">df_partial = df[df[<span class="string">&#x27;Combination&#x27;</span>].isin(selection)]</span><br><span class="line">df_partial</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/dataframe-operation/1721806042111.png" alt="1721806042111"></p>
-<p>↑注意：此时index还和原来的一样，如果想重新设置索引，使用 <code>rest_index=True</code>：</p>
+<figure>
+<img src="/2019/09/02/dataframe-operation/1721806042111.png" alt="1721806042111">
+<figcaption aria-hidden="true">1721806042111</figcaption>
+</figure>
+<p>↑注意：此时index还和原来的一样，如果想重新设置索引，使用
+<code>rest_index=True</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df_partial.reset_index(drop=<span class="literal">True</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">df_partital</span><br><span class="line"></span><br><span class="line"><span class="comment"># drop: 重新设置索引后，是否将原索引作为新的一列并入dataframe，默认为False</span></span><br><span class="line"><span class="comment"># inplace: 是否在原dataframe上改动，默认为False</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/dataframe-operation/1721806817599.png" alt="1721806817599"></p>
-<h4 id="7-DataFrame-中-axis-的概念"><a href="#7-DataFrame-中-axis-的概念" class="headerlink" title="7. DataFrame 中 axis 的概念"></a>7. DataFrame 中 axis 的概念</h4><blockquote>
-<p><a href="https://zhuanlan.zhihu.com/p/100064394">Pandas教程 | 数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)</a></p>
+<figure>
+<img src="/2019/09/02/dataframe-operation/1721806817599.png" alt="1721806817599">
+<figcaption aria-hidden="true">1721806817599</figcaption>
+</figure>
+<h4 id="dataframe-中-axis-的概念">7. DataFrame 中 axis 的概念</h4>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/100064394">Pandas教程 |
+数据处理三板斧——map、apply、applymap详解 - 知乎 (zhihu.com)</a></p>
 </blockquote>
-<p>在 DataFrame 对象的大多数方法中，都会有 <code>axis</code> 这个参数，它控制了你指定的操作是沿着0轴还是1轴进行。<strong><code>axis=0</code>代表操作对列<code>columns</code>进行，<code>axis=1</code>代表操作对行<code>row</code>进行</strong>，如下图所示。</p>
-<p><img src="/2019/09/02/dataframe-operation/image-20210717170137958.png" alt="image-20210717170137958"></p>
-<p><strong><span style="color:red">换言之，如果想增加一列（如把两个数据框横向拼接在一起(沿着axis=1的方向)），则选择axis=1，如果想增加一行（如对以上数据，对height求和(结果将显示在最下方，即”增加了一行”(沿着axis=0的方向))），则选择axis=0</span></strong></p>
+<p>在 DataFrame 对象的大多数方法中，都会有 <code>axis</code>
+这个参数，它控制了你指定的操作是沿着0轴还是1轴进行。<strong><code>axis=0</code>代表操作对列<code>columns</code>进行，<code>axis=1</code>代表操作对行<code>row</code>进行</strong>，如下图所示。</p>
+<figure>
+<img src="/2019/09/02/dataframe-operation/image-20210717170137958.png" alt="image-20210717170137958">
+<figcaption aria-hidden="true">image-20210717170137958</figcaption>
+</figure>
+<p><strong><span style="color:red">换言之，如果想增加一列（如把两个数据框横向拼接在一起(沿着axis=1的方向)），则选择axis=1，如果想增加一行（如对以上数据，对height求和(结果将显示在最下方，即"增加了一行"(沿着axis=0的方向))），则选择axis=0</span></strong></p>
 <p>假设现在需要对上述数据框中的数值列分别进行<strong>取对数</strong>和<strong>求和</strong>的操作，这时可以用<code>apply</code>进行相应的操作，因为是对列进行操作，所以需要指定<code>axis=0</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 沿着0轴求和</span></span><br><span class="line">data[[<span class="string">&quot;height&quot;</span>,<span class="string">&quot;weight&quot;</span>,<span class="string">&quot;age&quot;</span>]].apply(np.<span class="built_in">sum</span>, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 沿着0轴取对数</span></span><br><span class="line">data[[<span class="string">&quot;height&quot;</span>,<span class="string">&quot;weight&quot;</span>,<span class="string">&quot;age&quot;</span>]].apply(np.log, axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/09/02/dataframe-operation/image-20210717171536577.png" alt="image-20210717171536577"></p>
-<h4 id="8-重命名列"><a href="#8-重命名列" class="headerlink" title="8. 重命名列"></a>8. 重命名列</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Change variable: Date -&gt; ds, time-series (Udemy) -&gt; y</span></span><br><span class="line">df = df.rename(columns = &#123;<span class="string">&#x27;Date&#x27;</span>: <span class="string">&#x27;ds&#x27;</span>,</span><br><span class="line">                          <span class="string">&#x27;Udemy&#x27;</span>: <span class="string">&#x27;y&#x27;</span>&#125;)</span><br><span class="line">                          </span><br><span class="line"><span class="comment"># 或使用inplace=True</span></span><br><span class="line">df.rename(columns = &#123;<span class="string">&#x27;InvoiceDate&#x27;</span>: <span class="string">&#x27;Recency&#x27;</span>,</span><br><span class="line">                     <span class="string">&#x27;InvoiceNo&#x27;</span>: <span class="string">&#x27;Frequency&#x27;</span>&#125;, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2019/09/02/dataframe-operation/image-20210717171536577.png" alt="image-20210717171536577">
+<figcaption aria-hidden="true">image-20210717171536577</figcaption>
+</figure>
+<h4 id="重命名列">8. 重命名列</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Change variable: Date -&gt; ds, time-series (Udemy) -&gt; y</span></span><br><span class="line">df = df.rename(columns = &#123;<span class="string">&#x27;Date&#x27;</span>: <span class="string">&#x27;ds&#x27;</span>,</span><br><span class="line">                          <span class="string">&#x27;Udemy&#x27;</span>: <span class="string">&#x27;y&#x27;</span>&#125;)</span><br><span class="line">                          </span><br><span class="line"><span class="comment"># 或使用inplace=True</span></span><br><span class="line">df.rename(columns = &#123;<span class="string">&#x27;InvoiceDate&#x27;</span>: <span class="string">&#x27;Recency&#x27;</span>,</span><br><span class="line">                     <span class="string">&#x27;InvoiceNo&#x27;</span>: <span class="string">&#x27;Frequency&#x27;</span>&#125;, inplace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 
     </div>
 

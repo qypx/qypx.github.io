@@ -266,14 +266,22 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>来自：<a href="https://zhuanlan.zhihu.com/p/433308577">浅谈P、NP、NP-Complate和NP-Hard问题</a></p>
-<h2 id="多项式级时间复杂度与非多项式级时间度"><a href="#多项式级时间复杂度与非多项式级时间度" class="headerlink" title="多项式级时间复杂度与非多项式级时间度"></a>多项式级时间复杂度与非多项式级时间度</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。</p>
+<h2 id="多项式级时间复杂度与非多项式级时间度">多项式级时间复杂度与非多项式级时间度</h2>
+<h3 id="时间复杂度">时间复杂度</h3>
+<p>时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。</p>
 <p>也就是说，对于某一个程序，其处理某一个特定数据的效率不能衡量该程序的好坏，而应该看当这个数据的规模变大到数百倍后，程序运行时间是否还是一样，或者也跟着慢了数百倍，或者变慢了数万倍。</p>
-<p>不管数据有多大，程序处理所花的时间始终是那么多的，我们就说这个程序很好，具 $O(1)$ 的时间复杂度，也称常数级复杂度；</p>
-<p>数据规模变得有多大，花的时间也跟着变得有多长，比如找n个数中的最大值这个程序的时间复杂度就是$O(n)$，为线性级复杂度，</p>
-<p>而像冒泡排序、插入排序等，数据扩大2倍，时间变慢4倍的，时间复杂度是$O(n^2)$，为平方级复杂度。</p>
-<p>还有一些穷举类的算法，所需时间长度成几何阶数上涨，这就是$O(a^n)$的指数级复杂度，甚至$O(n!)$的阶乘级复杂度。</p>
-<h3 id="多项式级时间复杂度"><a href="#多项式级时间复杂度" class="headerlink" title="多项式级时间复杂度"></a>多项式级时间复杂度</h3><p>像$O(1), O(ln(n)), O(n^a)$等，我们把它叫做多项式级时间复杂度，因为它的规模n出现在底数的位置；</p>
-<h3 id="非多项式级时间时间度"><a href="#非多项式级时间时间度" class="headerlink" title="非多项式级时间时间度"></a>非多项式级时间时间度</h3><p>另一种像是 $O(a^n)$ 和 $O(n!)$ 等，是非多项式级的时间复杂度，其复杂度计算机往往不能承受。</p>
+<p>不管数据有多大，程序处理所花的时间始终是那么多的，我们就说这个程序很好，具
+<span class="math inline">\(O(1)\)</span>
+的时间复杂度，也称常数级复杂度；</p>
+<p>数据规模变得有多大，花的时间也跟着变得有多长，比如找n个数中的最大值这个程序的时间复杂度就是<span class="math inline">\(O(n)\)</span>，为线性级复杂度，</p>
+<p>而像冒泡排序、插入排序等，数据扩大2倍，时间变慢4倍的，时间复杂度是<span class="math inline">\(O(n^2)\)</span>，为平方级复杂度。</p>
+<p>还有一些穷举类的算法，所需时间长度成几何阶数上涨，这就是<span class="math inline">\(O(a^n)\)</span>的指数级复杂度，甚至<span class="math inline">\(O(n!)\)</span>的阶乘级复杂度。</p>
+<h3 id="多项式级时间复杂度">多项式级时间复杂度</h3>
+<p>像<span class="math inline">\(O(1), O(ln(n)),
+O(n^a)\)</span>等，我们把它叫做多项式级时间复杂度，因为它的规模n出现在底数的位置；</p>
+<h3 id="非多项式级时间时间度">非多项式级时间时间度</h3>
+<p>另一种像是 <span class="math inline">\(O(a^n)\)</span> 和 <span class="math inline">\(O(n!)\)</span>
+等，是非多项式级的时间复杂度，其复杂度计算机往往不能承受。</p>
 <p>当我们在解决一个问题时，我们选择的算法通常都需要是多项式级的复杂度，非多项式级的复杂度需要的时间太多，往往会超时。</p>
           <!--noindex-->
             <div class="post-button">
@@ -366,18 +374,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="1-离散型分布"><a href="#1-离散型分布" class="headerlink" title="1. 离散型分布"></a>1. 离散型分布</h3><h4 id="1-1-两点分布（伯努利分布-贝努利分布-0-1分布）"><a href="#1-1-两点分布（伯努利分布-贝努利分布-0-1分布）" class="headerlink" title="1.1 两点分布（伯努利分布/贝努利分布/0-1分布）"></a>1.1 两点分布（伯努利分布/贝努利分布/0-1分布）</h4><p>称随机变量 $X$ 服从参数为 $p$ 的伯努利分布，如果它分别以概率 $p$ 和 $1-p$ 取 1 和 0 为值。​</p>
-<script type="math/tex; mode=display">
+          <h3 id="离散型分布">1. 离散型分布</h3>
+<h4 id="两点分布伯努利分布贝努利分布0-1分布">1.1
+两点分布（伯努利分布/贝努利分布/0-1分布）</h4>
+<p>称随机变量 <span class="math inline">\(X\)</span> 服从参数为 <span class="math inline">\(p\)</span> 的伯努利分布，如果它分别以概率 <span class="math inline">\(p\)</span> 和 <span class="math inline">\(1-p\)</span> 取 1 和 0 为值。​ <span class="math display">\[
 P(X=k)=p^k(1-p)^{1-k}, \quad k=0,1\\
 X\sim B(1,p)\\
 E(X)=p\\
-D(X)=p(1-p)</script><h4 id="1-2-二项分布"><a href="#1-2-二项分布" class="headerlink" title="1.2 二项分布"></a>1.2 二项分布</h4><p>n次独立的伯努利试验。如果事件发生的概率是 $p$，n次独立重复试验中发生k次的概率是（有放回抽样）</p>
-<script type="math/tex; mode=display">
+D(X)=p(1-p)
+\]</span></p>
+<h4 id="二项分布">1.2 二项分布</h4>
+<p>n次独立的伯努利试验。如果事件发生的概率是 <span class="math inline">\(p\)</span>，n次独立重复试验中发生k次的概率是（有放回抽样）
+<span class="math display">\[
 P(X=k)=\mathrm C_n^k p^k(1-p)^{n-k},\quad k=0,1,...,n\\
 X\sim B(n,p)\\
 E(X)=np\\
-D(X)=np(1-p)</script><blockquote>
-<p>有  $n$ 件产品，其中  $m$ 件次品 ($m&lt;n$)，从中不放回地任意抽取 $k$ 件产品和有放回地任意抽取 $k$ 件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 $\frac{m}{n}$，抽得次品数的期望值也相同，都为 $k\frac{m}{n}$，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
+D(X)=np(1-p)
+\]</span></p>
+<blockquote>
+<p>有 <span class="math inline">\(n\)</span> 件产品，其中 <span class="math inline">\(m\)</span> 件次品 (<span class="math inline">\(m&lt;n\)</span>)，从中不放回地任意抽取 <span class="math inline">\(k\)</span> 件产品和有放回地任意抽取 <span class="math inline">\(k\)</span>
+件产品，在这两种抽取方法中每次抽出次品的概率相同，都为 <span class="math inline">\(\frac{m}{n}\)</span>，抽得次品数的期望值也相同，都为
+<span class="math inline">\(k\frac{m}{n}\)</span>，但抽到的次品数的分布列不同，方差不同（超几何分布与二项分布）</p>
 <p>关于为什么不放回抽样每次抽出次品的概率相同，见<a href="#jump">文末</a>。</p>
 </blockquote>
           <!--noindex-->
@@ -472,7 +489,7 @@ D(X)=np(1-p)</script><blockquote>
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考 <a href="https://www.zybuluo.com/vivounicorn/note/446479">https://www.zybuluo.com/vivounicorn/note/446479</a></p>
+<p>参考 https://www.zybuluo.com/vivounicorn/note/446479</p>
 </blockquote>
 <p>强化学习是最接近人类学习过程的，很多情况下我们无法直接表达什么是正确的什么是错误的（比如：我正在爬山，迈了一大步，又迈了一小步，那么没法儿说我迈了大步正确还是错误），但是可以通过<strong>惩罚不好的结果或者奖励好的结果</strong>来强化学习的效果（我迈了个大步，导致没有站稳，那么对迈大步做惩罚，然后接下来我会迈小一点）。所以强化学习是一个<strong>序列的决策过程</strong>，学习器的学习目标是通过在给定状态下选择某种动作，寻找合适动作的策略序列使得它可以获得某种最优结果的过程。</p>
 <p>强化学习的几个要素，体现其序列、交互性：</p>
@@ -481,9 +498,12 @@ D(X)=np(1-p)</script><blockquote>
 <li>学习器(agent)：与环境的交互并学习的对象，具有主动性；</li>
 <li>动作(action)：处于环境下的可行动作集合；</li>
 <li>反馈(feedback)：对动作的回报或惩罚；</li>
-<li>策略(policy)：学习到的策略链。 </li>
+<li>策略(policy)：学习到的策略链。</li>
 </ul>
-<p><img src="/2023/08/17/reinforcement-learning-introduction/1692255003996.png" alt="1692255003996"></p>
+<figure>
+<img src="/2023/08/17/reinforcement-learning-introduction/1692255003996.png" alt="1692255003996">
+<figcaption aria-hidden="true">1692255003996</figcaption>
+</figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/17/reinforcement-learning-introduction/#more" rel="contents">
@@ -576,10 +596,15 @@ D(X)=np(1-p)</script><blockquote>
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考 <a href="https://www.zybuluo.com/vivounicorn/note/446479">https://www.zybuluo.com/vivounicorn/note/446479</a></p>
+<p>参考 https://www.zybuluo.com/vivounicorn/note/446479</p>
 </blockquote>
 <p><strong>从参数与样本的关系角度看待模型。</strong></p>
-<h4 id="1、参数学习"><a href="#1、参数学习" class="headerlink" title="1、参数学习"></a>1、参数学习</h4><p>参数学习的特点是：<br>1、选择某种形式的函数并通过机器学习用一系列固定个数的参数尽可能表征这些数据的某种模式；<br>2、<strong>不管数据量有多大，函数参数的个数是固定的</strong>，即参数个数不随着样本量的增大而增加，从关系上说它们相互独立；<br>3、往往<strong>对数据有较强的假设</strong>，如分布的假设，空间的假设等。<br>4、常用参数学习的模型有： </p>
+<h4 id="参数学习">1、参数学习</h4>
+<p>参数学习的特点是：
+1、选择某种形式的函数并通过机器学习用一系列固定个数的参数尽可能表征这些数据的某种模式；
+2、<strong>不管数据量有多大，函数参数的个数是固定的</strong>，即参数个数不随着样本量的增大而增加，从关系上说它们相互独立；
+3、往往<strong>对数据有较强的假设</strong>，如分布的假设，空间的假设等。
+4、常用参数学习的模型有：</p>
 <blockquote>
 <ul>
 <li>Logistic Regression</li>
@@ -688,19 +713,23 @@ D(X)=np(1-p)</script><blockquote>
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考：<a href="https://www.zybuluo.com/vivounicorn/note/446479">https://www.zybuluo.com/vivounicorn/note/446479</a></p>
+<p>参考：https://www.zybuluo.com/vivounicorn/note/446479</p>
 </blockquote>
 <p><strong>从概率分布的角度看待模型。</strong></p>
 <p>例如，如果我想知道一个人A说的是哪个国家的语言，我应该怎么办呢?</p>
 <blockquote>
 <ul>
-<li>生成式模型<br>我把每个国家的语言都学一遍，这样我就能很容易知道A说的是哪国语言，并且C、D说的是哪国的我也可以知道，进一步我还能自己讲不同国家语言。</li>
-</ul>
-<ul>
-<li>判别式模型<br>我只需要学习语言之间的差别是什么，学到了这个界限自然就能区分不同语言，我能说出不同语言的区别，但我哦可能不会讲。</li>
+<li><p>生成式模型
+我把每个国家的语言都学一遍，这样我就能很容易知道A说的是哪国语言，并且C、D说的是哪国的我也可以知道，进一步我还能自己讲不同国家语言。</p></li>
+<li><p>判别式模型
+我只需要学习语言之间的差别是什么，学到了这个界限自然就能区分不同语言，我能说出不同语言的区别，但我哦可能不会讲。</p></li>
 </ul>
 </blockquote>
-<p>如果我有输入数据 $x$, 并且想通过标注 $y$ 去区分不同数据属于哪一类，<strong>生成式模型是在学习样本和标注的联合概率分布 $p(x,y)$，而判别式模型是在学习条件概率 $p(y|x)$</strong> 。</p>
+<p>如果我有输入数据 <span class="math inline">\(x\)</span>,
+并且想通过标注 <span class="math inline">\(y\)</span>
+去区分不同数据属于哪一类，<strong>生成式模型是在学习样本和标注的联合概率分布
+<span class="math inline">\(p(x,y)\)</span>，而判别式模型是在学习条件概率
+<span class="math inline">\(p(y|x)\)</span></strong> 。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/08/16/%E7%94%9F%E6%88%90%E5%BC%8F%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%A4%E5%88%AB%E5%BC%8F%E6%A8%A1%E5%9E%8B/#more" rel="contents">
@@ -792,8 +821,10 @@ D(X)=np(1-p)</script><blockquote>
     
     
     <div class="post-body" itemprop="articleBody">
-          <h4 id="1-筛选后求和、求平均值"><a href="#1-筛选后求和、求平均值" class="headerlink" title="1.筛选后求和、求平均值"></a>1.筛选后求和、求平均值</h4><blockquote>
-<p> 参考：subtotal函数，<a href="https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939">SUBTOTAL function - Microsoft Support</a></p>
+          <h4 id="筛选后求和求平均值">1.筛选后求和、求平均值</h4>
+<blockquote>
+<p>参考：subtotal函数，<a href="https://support.microsoft.com/en-us/office/subtotal-function-7b027003-f060-4ade-9040-e478765b9939">SUBTOTAL
+function - Microsoft Support</a></p>
 </blockquote>
 <p>在经过筛选后，如果使用sum()函数进行求和，选择的其实包含了被筛选掉的列。也即选中时并没有选中筛选后的列，这样求出来的和不是想要的。注：在选中筛选的内容后，excel右下角的求和是正确的。</p>
 <p>改用subtotal函数：</p>
@@ -802,8 +833,15 @@ D(X)=np(1-p)</script><blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBTOTAL(109,选中列)</span><br></pre></td></tr></table></figure>
 <p>求均值：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUBTOTAL(101,选中列)</span><br></pre></td></tr></table></figure>
-<p><strong>Function_num</strong>     Required. The number 1-11 or 101-111 that specifies the function to use for the subtotal. 1-11 includes manually-hidden rows, while 101-111 excludes them; filtered-out cells are always excluded. （1-11包含了hidden rows，101-111剔除了filtered-out cells）</p>
-<p><img src="/2023/06/12/Excel-common-operation/1680515921780.png" alt="1680515921780"></p>
+<p><strong>Function_num</strong> Required. The number 1-11 or 101-111
+that specifies the function to use for the subtotal. 1-11 includes
+manually-hidden rows, while 101-111 excludes them; filtered-out cells
+are always excluded. （1-11包含了hidden rows，101-111剔除了filtered-out
+cells）</p>
+<figure>
+<img src="/2023/06/12/Excel-common-operation/1680515921780.png" alt="1680515921780">
+<figcaption aria-hidden="true">1680515921780</figcaption>
+</figure>
 <p>注：且筛选内容变了后，对应的结果也会跟着变，不用把函数删掉再重写。</p>
           <!--noindex-->
             <div class="post-button">
@@ -891,11 +929,15 @@ D(X)=np(1-p)</script><blockquote>
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p> 参考<br><a href="https://zhuanlan.zhihu.com/p/484290987">https://zhuanlan.zhihu.com/p/484290987</a><br><a href="https://blog.csdn.net/a11112244444/article/details/80453397">SqlServer四种排序：ROW_NUMBER()/RANK()/DENSE_RANK()/ntile() over()</a></p>
+<p>参考 https://zhuanlan.zhihu.com/p/484290987 <a href="https://blog.csdn.net/a11112244444/article/details/80453397">SqlServer四种排序：ROW_NUMBER()/RANK()/DENSE_RANK()/ntile()
+over()</a></p>
 </blockquote>
 <p>总结：</p>
-<div class="table-container">
 <table>
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
 <thead>
 <tr>
 <th>使用方法</th>
@@ -905,15 +947,18 @@ D(X)=np(1-p)</script><blockquote>
 <tbody>
 <tr>
 <td>row_number() over(partition by col1 order by col2)</td>
-<td>若有并列的排名，序号递增。序号从1到n连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,4,…</td>
+<td>若有并列的排名，序号递增。序号从1到n连续。<br>e.g.,
+两个人都排第3，则排序为：1,2,3,4,...</td>
 </tr>
 <tr>
 <td>rank() over(partition by col1 order by col2)</td>
-<td>若有并列的排名，会占用下一名次的。序号从1到n不连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,3,5,…</td>
+<td>若有并列的排名，会占用下一名次的。序号从1到n不连续。<br>e.g.,
+两个人都排第3，则排序为：1,2,3,3,5,...</td>
 </tr>
 <tr>
 <td>dense_rank() over(partition by col1 order by col2)</td>
-<td>若有并列的排名，不会占用下一名次的。序号从1到n连续。<br>e.g., 两个人都排第3，则排序为：1,2,3,3,4,…</td>
+<td>若有并列的排名，不会占用下一名次的。序号从1到n连续。<br>e.g.,
+两个人都排第3，则排序为：1,2,3,3,4,...</td>
 </tr>
 <tr>
 <td>ntile(n) over(partition by col1 order by col2)</td>
@@ -921,7 +966,6 @@ D(X)=np(1-p)</script><blockquote>
 </tr>
 </tbody>
 </table>
-</div>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/06/09/%E5%9B%9B%E7%A7%8D%E6%8E%92%E5%BA%8F%E5%BC%80%E7%AA%97%E5%87%BD%E6%95%B0/#more" rel="contents">
@@ -1014,9 +1058,10 @@ D(X)=np(1-p)</script><blockquote>
     
     <div class="post-body" itemprop="articleBody">
           <blockquote>
-<p>参考 <a href="https://www.cnblogs.com/cwp-bg/p/8465566.html">https://www.cnblogs.com/cwp-bg/p/8465566.html</a></p>
+<p>参考 https://www.cnblogs.com/cwp-bg/p/8465566.html</p>
 </blockquote>
-<h3 id="os的system原理"><a href="#os的system原理" class="headerlink" title="os的system原理"></a>os的system原理</h3><p>system函数可以将字符串转化成命令在服务器上运行；其原理是每一条system函数执行时，其会创建一个子进程在系统上执行命令行，子进程的执行结果无法影响主进程；</p>
+<h3 id="os的system原理">os的system原理</h3>
+<p>system函数可以将字符串转化成命令在服务器上运行；其原理是每一条system函数执行时，其会创建一个子进程在系统上执行命令行，子进程的执行结果无法影响主进程；</p>
 <p>示例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.system(<span class="string">&#x27;mkdir /usr/local&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>使用system执行多条命令时，为保证命令可以成功，多条命令需要在同一个子进程中运行：</p>
@@ -1109,12 +1154,17 @@ D(X)=np(1-p)</script><blockquote>
     
     <div class="post-body" itemprop="articleBody">
           <p>主要对比版本：python27与python36</p>
-<h4 id="1-关于copy"><a href="#1-关于copy" class="headerlink" title="1. 关于copy()"></a>1. 关于copy()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy() </span><br></pre></td></tr></table></figure>
+<h4 id="关于copy">1. 关于copy()</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">values2 = values.copy() </span><br></pre></td></tr></table></figure>
 <p>python3中没问题，python2中报错：</p>
-<p><img src="/2022/01/05/Python2-Python3-difference/image-20220105160555692.png" alt="image-20220105160555692"></p>
+<figure>
+<img src="/2022/01/05/Python2-Python3-difference/image-20220105160555692.png" alt="image-20220105160555692">
+<figcaption aria-hidden="true">image-20220105160555692</figcaption>
+</figure>
 <p>解决方法：改为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">values2 = <span class="built_in">list</span>(values)</span><br><span class="line"><span class="comment"># 或 values2 = values[:]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-Python2-不支持中文问题"><a href="#2-Python2-不支持中文问题" class="headerlink" title="2. Python2 不支持中文问题"></a>2. Python2 不支持中文问题</h4><p>创建test.py程序如下：</p>
+<h4 id="python2-不支持中文问题">2. Python2 不支持中文问题</h4>
+<p>创建test.py程序如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;你好&quot;)</span><br></pre></td></tr></table></figure>
 <p>python3运行时，输出 你好，python2运行时，输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: Non-ASCII character &#x27;\xe4&#x27; in file e:/pycharmProject/ml_module/main5.py on line 7, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details</span><br></pre></td></tr></table></figure>
@@ -1214,18 +1264,27 @@ D(X)=np(1-p)</script><blockquote>
           <blockquote>
 <p>参考 <a href="http://c.biancheng.net/view/2259.html">Python变量作用域（全局变量和局部变量）</a></p>
 </blockquote>
-<h4 id="1-局部变量"><a href="#1-局部变量" class="headerlink" title="1. 局部变量"></a>1. 局部变量</h4><p>在函数内部定义的变量，它的作用域也仅限于函数内部，出了函数就不能使用了，我们将这样的变量称为局部变量（Local Variable）。</p>
-<p>当函数被执行时，Python 会为其分配一块临时的存储空间，所有在函数内部定义的变量，都会存储在这块空间中。而在函数执行完毕后，这块临时存储空间随即会被释放并回收，该空间中存储的变量自然也就无法再被使用。</p>
-<h4 id="2-全局变量"><a href="#2-全局变量" class="headerlink" title="2. 全局变量"></a>2. 全局变量</h4><p>除了在函数内部定义变量，Python 还允许在所有函数的外部定义变量，这样的变量称为全局变量（Global Variable）。<br>和局部变量不同，全局变量的默认作用域是整个程序，即全局变量既可以在各个函数的外部使用，也可以在各函数内部使用。</p>
+<h4 id="局部变量">1. 局部变量</h4>
+<p>在函数内部定义的变量，它的作用域也仅限于函数内部，出了函数就不能使用了，我们将这样的变量称为局部变量（Local
+Variable）。</p>
+<p>当函数被执行时，Python
+会为其分配一块临时的存储空间，所有在函数内部定义的变量，都会存储在这块空间中。而在函数执行完毕后，这块临时存储空间随即会被释放并回收，该空间中存储的变量自然也就无法再被使用。</p>
+<h4 id="全局变量">2. 全局变量</h4>
+<p>除了在函数内部定义变量，Python
+还允许在所有函数的外部定义变量，这样的变量称为全局变量（Global
+Variable）。
+和局部变量不同，全局变量的默认作用域是整个程序，即全局变量既可以在各个函数的外部使用，也可以在各函数内部使用。</p>
 <p>定义全局变量的方式有以下 2 种：</p>
 <ul>
 <li>在函数体外定义的变量，一定是全局变量；</li>
-<li>在函数体内定义全局变量。即使用 global 关键字对变量进行修饰后，该变量就会变为全局变量。例如：</li>
+<li>在函数体内定义全局变量。即使用 global
+关键字对变量进行修饰后，该变量就会变为全局变量。例如：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">text</span>():</span><br><span class="line">    <span class="keyword">global</span> add</span><br><span class="line">    add= <span class="string">&quot;http://c.biancheng.net/java/&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;函数体内访问：&quot;</span>,add)</span><br><span class="line">    </span><br><span class="line">text()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;函数体外访问：&#x27;</span>,add)</span><br></pre></td></tr></table></figure>
 <p>运行结果为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">函数体内访问： http://c.biancheng.net/java/</span><br><span class="line">函数体外访问： http://c.biancheng.net/java/</span><br></pre></td></tr></table></figure>
-<p>注：在使用 global 关键字修饰变量名时，不能直接给变量赋初值，否则会引发语法错误</p>
+<p>注：在使用 global
+关键字修饰变量名时，不能直接给变量赋初值，否则会引发语法错误</p>
 
       
     </div>

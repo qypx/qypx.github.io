@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="盛最多水的容器（难度：中等）  方法：双指针思路两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。 算法 在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 使用变量 max_area来持续存储到目前为止所获得的最大面积。  在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area，并将指向较短线段的指针向较长线段那端">
+    <meta name="description" content="盛最多水的容器（难度：中等）   1  方法：双指针 思路 两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。 算法  在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 使用变量 max_area来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area">
 <meta property="og:type" content="article">
 <meta property="og:title" content="盛最多水的容器">
 <meta property="og:url" content="http://qypx.github.io/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="盛最多水的容器（难度：中等）  方法：双指针思路两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。 算法 在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 使用变量 max_area来持续存储到目前为止所获得的最大面积。  在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area，并将指向较短线段的指针向较长线段那端">
+<meta property="og:description" content="盛最多水的容器（难度：中等）   1  方法：双指针 思路 两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。 算法  在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾。 使用变量 max_area来持续存储到目前为止所获得的最大面积。 在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/1.jpg">
 <meta property="og:image" content="http://qypx.github.io/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/2.jpg">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">方法：双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-text">算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">复杂度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">方法：双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-text">算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">复杂度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -286,17 +286,29 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><a href="https://leetcode-cn.com/problems/container-with-most-water/">盛最多水的容器（难度：中等）</a></p>
-<p><img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/1.jpg" alt="1"></p>
-<h4 id="方法：双指针"><a href="#方法：双指针" class="headerlink" title="方法：双指针"></a>方法：双指针</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。</p>
-<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
+<figure>
+<img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/1.jpg" alt="1">
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="方法双指针">方法：双指针</h4>
+<h5 id="思路">思路</h5>
+<p>两线段之间形成的区域总是会受到其中较短那条长度的限制。此外，两线段距离越远，得到的面积就越大。</p>
+<h5 id="算法">算法</h5>
+<ul>
 <li><strong>在由线段长度构成的数组中使用两个指针，一个放在开始，一个置于末尾</strong>。</li>
-<li>使用变量 max_area来持续存储到目前为止所获得的最大面积。 </li>
-<li>在每一步中，我们会找出指针所指向的两条线段形成的区域，更新 max_area，<strong>并将指向较短线段的指针向较长线段那端移动一步</strong>。</li>
+<li>使用变量 max_area来持续存储到目前为止所获得的最大面积。</li>
+<li>在每一步中，我们会找出指针所指向的两条线段形成的区域，更新
+max_area，<strong>并将指向较短线段的指针向较长线段那端移动一步</strong>。</li>
 </ul>
-<h5 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h5><p>时间复杂度：O(n)，一次扫描。</p>
+<h5 id="复杂度">复杂度</h5>
+<p>时间复杂度：O(n)，一次扫描。</p>
 <p>空间复杂度：O(1)，使用恒定的空间。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxArea</span><span class="params">(<span class="type">int</span>[] height)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max_area</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            max_area = Math.max(max_area, Math.min(height[left],height[right]) * (right-left));</span><br><span class="line">            <span class="keyword">if</span>(height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/2.jpg" alt="2"></p>
+<h5 id="代码">代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxArea</span><span class="params">(<span class="type">int</span>[] height)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max_area</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            max_area = Math.max(max_area, Math.min(height[left],height[right]) * (right-left));</span><br><span class="line">            <span class="keyword">if</span>(height[left] &lt; height[right])</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="/2020/01/02/%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/2.jpg" alt="2">
+<figcaption aria-hidden="true">2</figcaption>
+</figure>
 
     </div>
 

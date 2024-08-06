@@ -23,12 +23,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Odds And Log Odds In Logistic RegressionWHAT and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush Agarwal | Towards Data ScienceLogit究竟是个啥？——离散选择模型之三   1. probability, odds 与 log odds">
+    <meta name="description" content="Odds And Log Odds In Logistic Regression WHAT and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush Agarwal | Towards Data Science Logit究竟是个啥？——离散选择模型之三  1. probability, odds 与 l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probability, odds与logodds">
 <meta property="og:url" content="http://qypx.github.io/2021/07/17/Probability-odds%E4%B8%8Elogodds/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="Odds And Log Odds In Logistic RegressionWHAT and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush Agarwal | Towards Data ScienceLogit究竟是个啥？——离散选择模型之三   1. probability, odds 与 log odds">
+<meta property="og:description" content="Odds And Log Odds In Logistic Regression WHAT and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush Agarwal | Towards Data Science Logit究竟是个啥？——离散选择模型之三  1. probability, odds 与 l">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-16T17:13:16.000Z">
 <meta property="article:modified_time" content="2023-10-24T03:11:25.076Z">
@@ -148,7 +148,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-probability-odds-%E4%B8%8E-log-odds"><span class="nav-text">1. probability, odds 与 log odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-logistic-regression"><span class="nav-text">2. logistic regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-logodds-%E4%B8%8E-sigmoid"><span class="nav-text">3. logodds 与 sigmoid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-xgboost%E4%B8%8Elightgbm%E7%9A%84%E5%87%A0%E7%A7%8D%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="nav-text">4. xgboost与lightgbm的几种输出结果</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#probability-odds-%E4%B8%8E-log-odds"><span class="nav-text">1. probability, odds 与 log
+odds</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logistic-regression"><span class="nav-text">2. logistic regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logodds-%E4%B8%8E-sigmoid"><span class="nav-text">3. logodds 与 sigmoid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xgboost%E4%B8%8Elightgbm%E7%9A%84%E5%87%A0%E7%A7%8D%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="nav-text">4.
+xgboost与lightgbm的几种输出结果</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -289,32 +291,62 @@
     
     
     <div class="post-body" itemprop="articleBody"><blockquote>
-<p><a href="https://dataunbox.com/odds-and-log-odds/">Odds And Log Odds In Logistic Regression</a><br><a href="https://towardsdatascience.com/https-towardsdatascience-com-what-and-why-of-log-odds-64ba988bf704">WHAT and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush Agarwal | Towards Data Science</a><br><a href="https://zhuanlan.zhihu.com/p/27188729">Logit究竟是个啥？——离散选择模型之三 </a></p>
+<p><a href="https://dataunbox.com/odds-and-log-odds/">Odds And Log Odds
+In Logistic Regression</a> <a href="https://towardsdatascience.com/https-towardsdatascience-com-what-and-why-of-log-odds-64ba988bf704">WHAT
+and WHY of Log Odds. WHAT are Log Odds and WHY are they… | by Piyush
+Agarwal | Towards Data Science</a> <a href="https://zhuanlan.zhihu.com/p/27188729">Logit究竟是个啥？——离散选择模型之三</a></p>
 </blockquote>
-<h4 id="1-probability-odds-与-log-odds"><a href="#1-probability-odds-与-log-odds" class="headerlink" title="1. probability, odds 与 log odds"></a>1. probability, odds 与 log odds</h4><p>（1）probability 是某件事与所有可能发生的事的比率。（p）</p>
+<h4 id="probability-odds-与-log-odds">1. probability, odds 与 log
+odds</h4>
+<p>（1）probability 是某件事与所有可能发生的事的比率。（p）</p>
 <p>（2）odds 是某件事发生和某件事没有发生的比率。</p>
-<script type="math/tex; mode=display">
-odds = \frac{p}{1-p}</script><p>（3）log odds 即对odds取对数， log(odds)</p>
+<p><span class="math display">\[
+odds = \frac{p}{1-p}
+\]</span> （3）log odds 即对odds取对数， log(odds)</p>
 <p>例如我与人工智能(AI)系统下了10局棋，并有4次能够打败它：</p>
-<p><em>Probability of winning: 4/10 = 0.40</em><br><em>Odds of winning: 4/6 = 0.6666</em><br><em>log(Odds of winning) = log(0.6666) = -0.176</em></p>
+<p><em>Probability of winning: 4/10 = 0.40</em> <em>Odds of winning: 4/6
+= 0.6666</em> <em>log(Odds of winning) = log(0.6666) = -0.176</em></p>
 <p>从（1）到（3），就是 Logit 变换。</p>
-<h4 id="2-logistic-regression"><a href="#2-logistic-regression" class="headerlink" title="2. logistic regression"></a>2. logistic regression</h4><p>p 与 logodds 的相互转换关系</p>
-<script type="math/tex; mode=display">
-p = \frac{1}{1+e^{-(\beta_0+\beta_1x)}}\quad\quad(1)</script><p>则有，</p>
-<script type="math/tex; mode=display">
-1-p = \frac{e^{-(\beta_0+\beta_1x)}}{1+e^{-(\beta_0+\beta_1x)}}</script><script type="math/tex; mode=display">
-odds=\frac{p}{1-p}=e^{\beta_0+\beta_1x}</script><script type="math/tex; mode=display">
-log odds = ln(\frac{p}{1-p})=\beta_0+\beta_1x \quad \quad (2)</script><p>带入(1)中，可得</p>
-<script type="math/tex; mode=display">
-p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad (3)</script><h4 id="3-logodds-与-sigmoid"><a href="#3-logodds-与-sigmoid" class="headerlink" title="3. logodds 与 sigmoid"></a>3. logodds 与 sigmoid</h4><script type="math/tex; mode=display">
-logodds操作：logodds(p) = log(\frac{p}{1-p})</script><script type="math/tex; mode=display">
-sigmoid function: sigmoid(x) = \frac{1}{1+e^{-x}}</script><script type="math/tex; mode=display">
-p=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}，其中\beta_0+\beta_1x为原始输出，即sigmoid作用在原始输出上得到概率值</script><script type="math/tex; mode=display">
-logodds = ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上得到原始输出</script><p>一句话概括：<span style="color:red">sigmoid与logodds为相反操作。</span></p>
+<h4 id="logistic-regression">2. logistic regression</h4>
+<p>p 与 logodds 的相互转换关系 <span class="math display">\[
+p = \frac{1}{1+e^{-(\beta_0+\beta_1x)}}\quad\quad(1)
+\]</span></p>
+<p>则有，</p>
+<p><span class="math display">\[
+1-p = \frac{e^{-(\beta_0+\beta_1x)}}{1+e^{-(\beta_0+\beta_1x)}}
+\]</span></p>
+<p><span class="math display">\[
+odds=\frac{p}{1-p}=e^{\beta_0+\beta_1x}
+\]</span></p>
+<p><span class="math display">\[
+log odds = ln(\frac{p}{1-p})=\beta_0+\beta_1x \quad \quad (2)
+\]</span></p>
+<p>带入(1)中，可得 <span class="math display">\[
+p=\frac{1}{1+e^{-logodds}}=\frac{e^{logodds}}{1+e^{logodds}} \quad \quad
+(3)
+\]</span></p>
+<h4 id="logodds-与-sigmoid">3. logodds 与 sigmoid</h4>
+<p><span class="math display">\[
+logodds操作：logodds(p) = log(\frac{p}{1-p})
+\]</span></p>
+<p><span class="math display">\[
+sigmoid function: sigmoid(x) = \frac{1}{1+e^{-x}}
+\]</span></p>
+<p><span class="math display">\[
+p=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}，其中\beta_0+\beta_1x为原始输出，即sigmoid作用在原始输出上得到概率值
+\]</span></p>
+<p><span class="math display">\[
+logodds =
+ln(\frac{p}{1-p})=\beta_0+\beta_1x，即logodds作用在概率值上得到原始输出
+\]</span></p>
+<p>一句话概括：<span style="color:red">sigmoid与logodds为相反操作。</span></p>
 <blockquote>
-<p>logodds 就是 logit。Odds 的对数称之为 logit。从概率 P → Odds → Logit，这就是一个 Logit 变化。</p>
+<p>logodds 就是 logit。Odds 的对数称之为 logit。从概率 P → Odds →
+Logit，这就是一个 Logit 变化。</p>
 </blockquote>
-<h4 id="4-xgboost与lightgbm的几种输出结果"><a href="#4-xgboost与lightgbm的几种输出结果" class="headerlink" title="4. xgboost与lightgbm的几种输出结果"></a>4. xgboost与lightgbm的几种输出结果</h4><p>对于xgboost:</p>
+<h4 id="xgboost与lightgbm的几种输出结果">4.
+xgboost与lightgbm的几种输出结果</h4>
+<p>对于xgboost:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.predict(,output_margin=<span class="literal">True</span>)  <span class="comment">#原始值(output the raw untransformed margin value)(每个样本在xgboost生成的所有树中叶子节点的累加值)</span></span><br><span class="line">model.predict_proba()[:,<span class="number">1</span>]  <span class="comment"># 取1的概率</span></span><br><span class="line">model.predict()  <span class="comment"># 结果为0,1</span></span><br></pre></td></tr></table></figure>
 <p>对于lightgbm:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.predict(,raw_score=<span class="literal">True</span>)  <span class="comment"># 原始值</span></span><br><span class="line">model.predict_proba()[:,<span class="number">1</span>]  <span class="comment"># 取1的概率</span></span><br><span class="line">model.predict()  <span class="comment"># 结果为0,1 </span></span><br></pre></td></tr></table></figure>
