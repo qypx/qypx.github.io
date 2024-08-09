@@ -119,7 +119,7 @@
 <meta property="og:image" content="http://qypx.github.io/2021/02/21/Linux-common-command/1649857332971.png">
 <meta property="og:image" content="http://qypx.github.io/2021/02/21/Linux-common-command/1650364215210.png">
 <meta property="article:published_time" content="2021-02-21T09:36:29.000Z">
-<meta property="article:modified_time" content="2024-07-31T10:58:15.945Z">
+<meta property="article:modified_time" content="2024-08-09T01:48:59.115Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -352,7 +352,7 @@ tar、zip、unzip</span></a><ol class="nav-child"><li class="nav-item nav-level-
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-31 18:58:15" itemprop="dateModified" datetime="2024-07-31T18:58:15+08:00">2024-07-31</time>
+      <time title="修改时间：2024-08-09 09:48:59" itemprop="dateModified" datetime="2024-08-09T09:48:59+08:00">2024-08-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -382,97 +382,73 @@ tar、zip、unzip</span></a><ol class="nav-child"><li class="nav-item nav-level-
     
     <div class="post-body" itemprop="articleBody"><h3 id="在线使用-linux-shell">0. 在线使用 Linux Shell</h3>
 <blockquote>
-<p>参考 https://www.sohu.com/a/343421845_298038</p>
+<p>参考 <a href="https://www.sohu.com/a/343421845_298038" class="uri">https://www.sohu.com/a/343421845_298038</a></p>
 </blockquote>
 <p>JS/UIX - Terminal</p>
-<p>地址：https://www.masswerk.at/jsuix/index.html</p>
+<p>地址：<a href="https://www.masswerk.at/jsuix/index.html" class="uri">https://www.masswerk.at/jsuix/index.html</a></p>
 <p>进入后，点击open
 terminal即可。它提供简单的终端环境，没有自带gcc等编译套件，不过练习基本命令和shell脚本还是可以的。</p>
 <h3 id="常用命令">1. 常用命令</h3>
 <h4 id="ls-命令---显示指定工作目录下的内容">1.1 ls 命令 -
 显示指定工作目录下的内容</h4>
 <blockquote>
-<p>详见 https://www.runoob.com/linux/linux-comm-ls.html</p>
+<p>详见 <a href="https://www.runoob.com/linux/linux-comm-ls.html" class="uri">https://www.runoob.com/linux/linux-comm-ls.html</a></p>
 </blockquote>
 <p>显示指定工作目录下的内容（列出目前工作目录所含之文件及子目录)</p>
 <p>语法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ls [-alrtAFR] [name...]</span><br><span class="line"> </span><br><span class="line">参数：</span><br><span class="line">-a： 显示所有文件及目录 (.开头的隐藏文件也会列出)</span><br><span class="line">-l： 除文件名称外，亦将文件型态、权限、拥有者、文件大小等资讯详细列出</span><br><span class="line"></span><br><span class="line">ls -l  可写作 ll</span><br><span class="line"></span><br><span class="line">常用写法：</span><br><span class="line">ll</span><br><span class="line">ls -al</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613903492422.png" alt="1613903492422">
-<figcaption aria-hidden="true">1613903492422</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613903492422.png" alt="1613903492422"><br>
+</p>
 <p>结合 <code>grep</code> 使用：</p>
 <p>查看文件 log.txt 是否存在于当前目录下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="built_in">ls</span> | grep log.txt</span><br><span class="line">log.txt</span><br><span class="line">&gt;<span class="built_in">ls</span> -al | grep log.txt</span><br><span class="line">-rw-rw-r--.  1 mozhiyan mozhiyan    0 4月  15 17:26 log.txt</span><br></pre></td></tr></table></figure>
 <h4 id="查看文件内容cat">1.2 查看文件内容：cat</h4>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613903531146.png" alt="1613903531146">
-<figcaption aria-hidden="true">1613903531146</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613903531146.png" alt="1613903531146"><br>
+</p>
 <span id="more"></span>
 <h4 id="创建文件-touch">1.3 创建文件： touch</h4>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613903625026.png" alt="1613903625026">
-<figcaption aria-hidden="true">1613903625026</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613903625026.png" alt="1613903625026"><br>
+</p>
 <p>此时，若想往text2中写入内容，可用
 <code>echo "hello word"&gt;&gt;text2</code></p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613903728662.png" alt="1613903728662">
-<figcaption aria-hidden="true">1613903728662</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613903728662.png" alt="1613903728662"><br>
+</p>
 <p><code>&gt;&gt;</code>代表在末尾追加，若使用<code>&gt;</code>则会把之前的内容覆盖</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613903859605.png" alt="1613903859605">
-<figcaption aria-hidden="true">1613903859605</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613903859605.png" alt="1613903859605"><br>
+</p>
 <p>当然，也可直接<code>vim text2</code>对文件进行编辑</p>
 <p>注：无论是 <code>echo "hello"&gt;file</code> 还是
 <code>echo "hello"&gt;&gt;file</code>
 ，如果file不存在都会先创建file文件</p>
 <p>类似的用法有：<code>cat ./result.lst&gt;&gt;aa.txt</code>（将result.lst文件中的内容追加到aa.txt的末尾）</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613904004258.png" alt="1613904004258">
-<figcaption aria-hidden="true">1613904004258</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613904004258.png" alt="1613904004258"><br>
+</p>
 <h4 id="mv---为文件或目录改名或将文件或目录移入其它位置">1.4 mv -
 为文件或目录改名、或将文件或目录移入其它位置</h4>
 <blockquote>
-<p>详见 https://www.runoob.com/linux/linux-comm-mv.html</p>
+<p>详见 <a href="https://www.runoob.com/linux/linux-comm-mv.html" class="uri">https://www.runoob.com/linux/linux-comm-mv.html</a></p>
 </blockquote>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613904102186.png" alt="1613904102186">
-<figcaption aria-hidden="true">1613904102186</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613904249971.png" alt="1613904249971">
-<figcaption aria-hidden="true">1613904249971</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613904102186.png" alt="1613904102186"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613904249971.png" alt="1613904249971"><br>
+</p>
 <p>👆注：若test目录不存在，则该命令将text4重命名为test</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613904395981.png" alt="1613904395981">
-<figcaption aria-hidden="true">1613904395981</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613904395981.png" alt="1613904395981"><br>
+</p>
 <h4 id="rm---删除一个文件或者目录">1.5 rm - 删除一个文件或者目录</h4>
 <blockquote>
-<p>详见 https://www.runoob.com/linux/linux-comm-rm.html</p>
+<p>详见 <a href="https://www.runoob.com/linux/linux-comm-rm.html" class="uri">https://www.runoob.com/linux/linux-comm-rm.html</a></p>
 </blockquote>
 <p>删除文件：<code>rm 文件名</code></p>
 <p>删除文件夹：<code>rm -r 文件夹名</code>。-r
 将目录及以下之档案亦逐一删除</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613904534240.png" alt="1613904534240">
-<figcaption aria-hidden="true">1613904534240</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613904600604.png" alt="1613904600604">
-<figcaption aria-hidden="true">1613904600604</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613904534240.png" alt="1613904534240"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613904600604.png" alt="1613904600604"><br>
+</p>
 <p><code>-f</code> 直接删除，无需逐一确认，见如下示例：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613904845877.png" alt="1613904845877">
-<figcaption aria-hidden="true">1613904845877</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613904845877.png" alt="1613904845877"><br>
+</p>
 <h4 id="cp---复制文件或文件夹">1.6 cp - 复制文件或文件夹</h4>
 <p>语法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cp [options] source dest</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</span><br><span class="line">-d：复制时保留链接。这里所说的链接相当于 Windows 系统中的快捷方式。</span><br><span class="line">-f：覆盖已经存在的目标文件而不给出提示。</span><br><span class="line">-i：与 -f 选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答 y 时目标文件将被覆盖。</span><br><span class="line">-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</span><br><span class="line">-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</span><br><span class="line">-l：不复制文件，只是生成链接文件。</span><br></pre></td></tr></table></figure>
@@ -485,8 +461,7 @@ terminal即可。它提供简单的终端环境，没有自带gcc等编译套件
 <h3 id="压缩打包命令---tarzipunzip">2. 压缩打包命令 -
 tar、zip、unzip</h3>
 <blockquote>
-<p>来自
-https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
+<p>来自 <a href="https://blog.csdn.net/weixin_44901564/article/details/99682926" class="uri">https://blog.csdn.net/weixin_44901564/article/details/99682926</a></p>
 </blockquote>
 <p>打包与压缩的区别：</p>
 <p>打包是指将多个文件或者目录放在一起，形成一个总的包，这样便于保存和传输，但是大小是没有变化的，压缩是指将一个或者多个大文件或者目录通过压缩算法使文件的体积变小以达到压缩的目的，可以节省存储空间。</p>
@@ -554,10 +529,8 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 </tbody>
 </table>
 <h5 id="打包">2.1.1 打包</h5>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613918040999.png" alt="1613918040999">
-<figcaption aria-hidden="true">1613918040999</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613918040999.png" alt="1613918040999"><br>
+</p>
 <h5 id="压缩">2.1.2 压缩</h5>
 <p>linux主要有三种压缩方式：
 1.gzip：是公认的压缩速度最快，压缩大文件的时候与其他的压缩方式相比更加明显，历史最久，应用最广泛的压缩方式
@@ -590,48 +563,32 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 </tr>
 </tbody>
 </table>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613918385198.png" alt="1613918385198">
-<figcaption aria-hidden="true">1613918385198</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613918409030.png" alt="1613918409030">
-<figcaption aria-hidden="true">1613918409030</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613918385198.png" alt="1613918385198"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613918409030.png" alt="1613918409030"><br>
+</p>
 <h5 id="解压">2.1.3 解压</h5>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613918570956.png" alt="1613918570956">
-<figcaption aria-hidden="true">1613918570956</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613918570956.png" alt="1613918570956"><br>
+</p>
 <p>tar命令在解压时不需要指明压缩的方式，它会自己选择跟压缩方式对应的方式去解压</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613918627839.png" alt="1613918627839">
-<figcaption aria-hidden="true">1613918627839</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613918627839.png" alt="1613918627839"><br>
+</p>
 <p>👆原文中未给出命令，猜测为 <code>tar -xf Golden.apk.tar.gz</code></p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613918698529.png" alt="1613918698529">
-<figcaption aria-hidden="true">1613918698529</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613918698529.png" alt="1613918698529"><br>
+</p>
 <h5 id="补充">2.1.4 补充</h5>
 <p>a.在打包和压缩的过程中，我们有时会看到这样的语句：<strong>tar:
 从成员名中删除开头的“/”</strong>，这个并不是报错，是因为没有加上-P选项，没有保留原来的绝对路径去打包或者压缩，提取打包的内容跟解压一样，下面举一个例子：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919006930.png" alt="1613919006930">
-<figcaption aria-hidden="true">1613919006930</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919034567.png" alt="1613919034567">
-<figcaption aria-hidden="true">1613919034567</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613919006930.png" alt="1613919006930"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613919034567.png" alt="1613919034567"><br>
+</p>
 <p>解压的时候同理，如果在压缩文件的时候使用了-P选项，那么在解压时也要加上-P选项，不然也会出现<strong>tar:
 从成员名中删除开头的“/”</strong></p>
 <p>b.在使用tar压缩或者打包的时候，可以通过增加 <code>--exclude</code>
 来达到排除指定的文件的目的</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919127279.png" alt="1613919127279">
-<figcaption aria-hidden="true">1613919127279</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613919127279.png" alt="1613919127279"><br>
+</p>
 <p>压缩文件 与 想要排除指定的目录压缩或者打包 同理</p>
 <ol start="3" type="a">
 <li>使用 <code>-r</code> 选项增加.tar归档文件的内容</li>
@@ -639,38 +596,26 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 <p>通过 <code>tar --help</code> 命令查看帮助</p>
 <p><code>-r</code>
 选项的作用：把要存档的文件追加到档案文件的未尾。例如用户已经作好备份文件，又发现还有一个目录或是一些文件忘记备份了，这时可以使用该选项，将忘记的目录或文件追加到备份文件中</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920583973.png" alt="1613920583973">
-<figcaption aria-hidden="true">1613920583973</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920583973.png" alt="1613920583973"><br>
+</p>
 <p>使用实例：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920618990.png" alt="1613920618990">
-<figcaption aria-hidden="true">1613920618990</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920618990.png" alt="1613920618990"><br>
+</p>
 <p>（先将1进行归档，再追加2）</p>
 <p>1.归档操作</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920677791.png" alt="1613920677791">
-<figcaption aria-hidden="true">1613920677791</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920677791.png" alt="1613920677791"><br>
+</p>
 <p>生成.tar文件，目录归档完毕</p>
 <p>2.将calculating_time.sh追加进入.tar文件中</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920716990.png" alt="1613920716990">
-<figcaption aria-hidden="true">1613920716990</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920716990.png" alt="1613920716990"><br>
+</p>
 <p>查看.tar文件的归档信息：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920751128.png" alt="1613920751128">
-<figcaption aria-hidden="true">1613920751128</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920751128.png" alt="1613920751128"><br>
+</p>
 <p>可以看到calculating_time.sh文件已经被追加到档案的末尾了</p>
 <p>提取Check_Configuration_20201118_PM.tar 到/mnt目录下：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920796143.png" alt="1613920796143">
-<figcaption aria-hidden="true">1613920796143</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920796143.png" alt="1613920796143"><br>
+</p>
 <p>使用-r选项追加文件至.tar文件成功</p>
 <h4 id="zip命令和unzip命令">2.2 zip命令和unzip命令</h4>
 <p>在使用 zip 跟 unzip
@@ -678,10 +623,8 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 查看有没有安装zip跟unzip命令的命令：</p>
 <p><code>rpm -q zip unzip</code></p>
 <p>如果安装了，则会显示出命令的版本号</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919407899.png" alt="1613919407899">
-<figcaption aria-hidden="true">1613919407899</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613919407899.png" alt="1613919407899"><br>
+</p>
 <h5 id="zip命令">2.2.1 zip命令</h5>
 <p>基本用法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip [参数] [压缩包名] [压缩的目录或者文件的路径]</span><br></pre></td></tr></table></figure>
@@ -690,11 +633,15 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 <table>
 <thead>
 <tr>
-<th>-m</th>
-<th>将文件压缩后，删除原文件</th>
+<th>参数</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>-m</td>
+<td>将文件压缩后，删除原文件</td>
+</tr>
 <tr>
 <td>-o</td>
 <td>将压缩文件内的所有文件的最新变动时间设为压缩的时间</td>
@@ -714,22 +661,14 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 </tbody>
 </table>
 <p><strong>实例</strong></p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919749742.png" alt="1613919749742">
-<figcaption aria-hidden="true">1613919749742</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919795113.png" alt="1613919795113">
-<figcaption aria-hidden="true">1613919795113</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919829367.png" alt="1613919829367">
-<figcaption aria-hidden="true">1613919829367</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613919855669.png" alt="1613919855669">
-<figcaption aria-hidden="true">1613919855669</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613919749742.png" alt="1613919749742"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613919795113.png" alt="1613919795113"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613919829367.png" alt="1613919829367"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613919855669.png" alt="1613919855669"><br>
+</p>
 <h5 id="unzip命令">2.2.2 unzip命令</h5>
 <p>直接使用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip xxx.zip</span><br></pre></td></tr></table></figure>
@@ -744,11 +683,15 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 </colgroup>
 <thead>
 <tr>
-<th>-c</th>
-<th>将解压缩的结果显示到屏幕上（显示每一个目录下的每一个文件的内容），同时对字符做适当的转换，但是并没有解压压缩包</th>
+<th>参数</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>-c</td>
+<td>将解压缩的结果显示到屏幕上（显示每一个目录下的每一个文件的内容），同时对字符做适当的转换，但是并没有解压压缩包</td>
+</tr>
 <tr>
 <td>-l</td>
 <td>显示压缩文件内所包含的文件</td>
@@ -777,104 +720,67 @@ https://blog.csdn.net/weixin_44901564/article/details/99682926</p>
 </table>
 <p><strong>实例</strong></p>
 <p>a.将harry.zip压缩包解压缩的结果显示出来：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920145339.png" alt="1613920145339">
-<figcaption aria-hidden="true">1613920145339</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920145339.png" alt="1613920145339"><br>
+</p>
 <p>具体会显示到每一个文件跟每一个文件的内容</p>
 <p>b.显示jihe.zip压缩包里面所包含的文件</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920185552.png" alt="1613920185552">
-<figcaption aria-hidden="true">1613920185552</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920185552.png" alt="1613920185552"><br>
+</p>
 <p>c.检查dajihe.zip压缩文件是否正确</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920223598.png" alt="1613920223598">
-<figcaption aria-hidden="true">1613920223598</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920223598.png" alt="1613920223598"><br>
+</p>
 <p>全部OK表示全部文件都是正确的</p>
 <p>d.不解压压缩文件dajihe.zip，查看压缩包里面的内容（查看显示的文件列表还包含压缩比率）</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920257695.png" alt="1613920257695">
-<figcaption aria-hidden="true">1613920257695</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920257695.png" alt="1613920257695"><br>
+</p>
 <p>使用<code>-v</code>显示的信息比使用<code>-l</code>显示的信息更加详细</p>
 <p>e.将dajihe.zip压缩包解压到/opt/目录下：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613920322610.png" alt="1613920322610">
-<figcaption aria-hidden="true">1613920322610</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613920322610.png" alt="1613920322610"><br>
+</p>
 <p>注：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">unzip -l dajihe.zip</span><br><span class="line">unzip -v dajihe.zip</span><br><span class="line">unzip -c dajihe.zip</span><br><span class="line">都不会解压，只是查看</span><br><span class="line">unzip dajihe.zip会解压</span><br></pre></td></tr></table></figure>
 <h3 id="linux属主权限chgrpchownchmod">3.Linux属主权限，chgrp，chown，chmod</h3>
 <blockquote>
-<p>来自 https://www.cnblogs.com/CYHISTW/p/11031429.html</p>
+<p>来自 <a href="https://www.cnblogs.com/CYHISTW/p/11031429.html" class="uri">https://www.cnblogs.com/CYHISTW/p/11031429.html</a></p>
 </blockquote>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905079507.png" alt="1613905079507">
-<figcaption aria-hidden="true">1613905079507</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905119945.png" alt="1613905119945">
-<figcaption aria-hidden="true">1613905119945</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905151971.png" alt="1613905151971">
-<figcaption aria-hidden="true">1613905151971</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905209772.png" alt="1613905209772">
-<figcaption aria-hidden="true">1613905209772</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905243202.png" alt="1613905243202">
-<figcaption aria-hidden="true">1613905243202</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905317808.png" alt="1613905317808">
-<figcaption aria-hidden="true">1613905317808</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905345753.png" alt="1613905345753">
-<figcaption aria-hidden="true">1613905345753</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905383386.png" alt="1613905383386">
-<figcaption aria-hidden="true">1613905383386</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905411968.png" alt="1613905411968">
-<figcaption aria-hidden="true">1613905411968</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613905079507.png" alt="1613905079507"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905119945.png" alt="1613905119945"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905151971.png" alt="1613905151971"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905209772.png" alt="1613905209772"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905243202.png" alt="1613905243202"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905317808.png" alt="1613905317808"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905345753.png" alt="1613905345753"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905383386.png" alt="1613905383386"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905411968.png" alt="1613905411968"><br>
+</p>
 <p>可使用 <code>chmod +x 文件名</code> 使文件变为可执行文件，例如：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905651103.png" alt="1613905651103">
-<figcaption aria-hidden="true">1613905651103</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905697607.png" alt="1613905697607">
-<figcaption aria-hidden="true">1613905697607</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613905651103.png" alt="1613905651103"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905697607.png" alt="1613905697607"><br>
+</p>
 <p>输入<code>i</code>进行编辑模式，完成后，按<code>esc</code>再输入<code>:wq</code>
 保存并退出</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905784062.png" alt="1613905784062">
-<figcaption aria-hidden="true">1613905784062</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613905784062.png" alt="1613905784062"><br>
+</p>
 <p>👆可以看到此时run.sh处于不可执行状态</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905838720.png" alt="1613905838720">
-<figcaption aria-hidden="true">1613905838720</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1613905867580.png" alt="1613905867580">
-<figcaption aria-hidden="true">1613905867580</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1613905838720.png" alt="1613905838720"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/1613905867580.png" alt="1613905867580"><br>
+</p>
 <p>成功执行</p>
 <h3 id="shell-命令行参数">4. shell 命令行参数</h3>
 <blockquote>
-<p>参考 http://c.biancheng.net/cpp/view/2739.html
-http://blog.csdn.net/jake_tian/article/details/97274630</p>
+<p>参考<br>
+<a href="http://c.biancheng.net/cpp/view/2739.html" class="uri">http://c.biancheng.net/cpp/view/2739.html</a><br>
+<a href="http://blog.csdn.net/jake_tian/article/details/97274630" class="uri">http://blog.csdn.net/jake_tian/article/details/97274630</a></p>
 </blockquote>
 <p>运行脚本时传递给脚本的参数称为命令行参数。</p>
 <table>
@@ -922,18 +828,19 @@ http://blog.csdn.net/jake_tian/article/details/97274630</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$./test.sh Zara Ali</span><br><span class="line">File Name : ./test.sh</span><br><span class="line">First Parameter : Zara</span><br><span class="line">Second Parameter : Ali</span><br><span class="line">Quoted Values: Zara Ali</span><br><span class="line">Quoted Values: Zara Ali</span><br><span class="line">Total Number of Parameters : 2</span><br></pre></td></tr></table></figure>
 <p>关于<code>$?</code>：上条命令的返回值。0表示没有错误，其他任何数值表示有错误。</p>
 <blockquote>
-<p>参考 https://blog.csdn.net/aLLLiyyy/article/details/103184367
-https://blog.csdn.net/weixin_39928768/article/details/111582889</p>
+<p>参考<br>
+<a href="https://blog.csdn.net/aLLLiyyy/article/details/103184367" class="uri">https://blog.csdn.net/aLLLiyyy/article/details/103184367</a><br>
+<a href="https://blog.csdn.net/weixin_39928768/article/details/111582889" class="uri">https://blog.csdn.net/weixin_39928768/article/details/111582889</a></p>
 </blockquote>
 <p>例如：如果上条命令执行失败，则重复执行，shell脚本如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">while(($</span><span class="language-bash">?==1))</span></span><br><span class="line">do </span><br><span class="line">	sleep 30   # 休眠30s</span><br><span class="line">	python test.py</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">while(($</span><span class="language-bash">?==1))</span></span><br><span class="line">do </span><br><span class="line">    sleep 30   # 休眠30s</span><br><span class="line">    python test.py</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <h3 id="shell-日期加减运算">5. shell 日期加减运算</h3>
 <blockquote>
 <p>参考<br>
-http://blog.sina.com.cn/s/blog_ad6555610101b5ud.html
-https://www.cnblogs.com/zhzhang/p/6846300.html
-https://www.cnblogs.com/simple-li/p/14040777.html
-http://www.dutycode.com/post-60.html</p>
+<a href="http://blog.sina.com.cn/s/blog_ad6555610101b5ud.html" class="uri">http://blog.sina.com.cn/s/blog_ad6555610101b5ud.html</a><br>
+<a href="https://www.cnblogs.com/zhzhang/p/6846300.html" class="uri">https://www.cnblogs.com/zhzhang/p/6846300.html</a><br>
+<a href="https://www.cnblogs.com/simple-li/p/14040777.html" class="uri">https://www.cnblogs.com/simple-li/p/14040777.html</a><br>
+<a href="http://www.dutycode.com/post-60.html" class="uri">http://www.dutycode.com/post-60.html</a></p>
 </blockquote>
 <p>假如今天是 2012-04-22</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ date -d &quot;+1 day&quot; +%Y-%m-%d</span><br><span class="line">2012-04-23</span><br><span class="line"></span><br><span class="line">$ date -d &quot;-1 day&quot; +%Y-%m-%d</span><br><span class="line">2012-04-21</span><br><span class="line"></span><br><span class="line">$ date -d &quot;2012-04-10 -1 day&quot; +%Y-%m-%d</span><br><span class="line">2012-04-09</span><br><span class="line"></span><br><span class="line">$ date -d &quot;+1 week&quot; +%Y-%m-%d</span><br><span class="line">2012-04-29</span><br><span class="line"></span><br><span class="line">同理还可 month, year</span><br></pre></td></tr></table></figure>
@@ -944,16 +851,18 @@ http://www.dutycode.com/post-60.html</p>
 <p>注：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fi                    容易忘记判断结束标记</span><br><span class="line">done                  容易忘记循环执行结束标记</span><br><span class="line">i=$[$i + 1]           变量加减运算要写在 $[] 里面。</span><br><span class="line">if [ $i -eq 201913 ]  条件必须写在 [] 里</span><br></pre></td></tr></table></figure>
 <p>附：数值比较：</p>
-<p><code>-eq</code> 相等（equal） <code>-ne</code> 不等（not equal）
-<code>-gt</code> 大于（greater than） <code>-lt</code> 小于（less than）
-<code>-ge</code> 大于等于 （greater than or equal） <code>-le</code>
-小于等于 （less than or equal）</p>
+<p><code>-eq</code> 相等（equal）<br>
+<code>-ne</code> 不等（not equal）<br>
+<code>-gt</code> 大于（greater than）<br>
+<code>-lt</code> 小于（less than）<br>
+<code>-ge</code> 大于等于 （greater than or equal）<br>
+<code>-le</code> 小于等于 （less than or equal）</p>
 <p>注：crontab任务调度中，%是个特殊字符，要在前加""进行转义</p>
 <p>例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 10 * * * cd /home/zzh &amp;&amp; sh test.sh $(date -d &quot;1 day ago&quot; +&quot;\%Y\%m\%d&quot;) &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
 <h3 id="shell-变量">6. shell 变量</h3>
 <blockquote>
-<p>参考 runoob.com/linux/linux-shell-variable.html</p>
+<p>参考 <a href="https://www.runoob.com/linux/linux-shell-variable.html" class="uri">https://www.runoob.com/linux/linux-shell-variable.html</a></p>
 </blockquote>
 <p>定义变量时，变量名不加<code>$</code>，如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=10</span><br></pre></td></tr></table></figure>
@@ -982,7 +891,7 @@ http://www.dutycode.com/post-60.html</p>
 </ul>
 <h3 id="shell-基本运算符">8. shell 基本运算符</h3>
 <blockquote>
-<p>参考 runoob.com/linux/linux-shell-basic-operators.html</p>
+<p>参考 <a href="https://www.runoob.com/linux/linux-shell-basic-operators.html" class="uri">https://www.runoob.com/linux/linux-shell-basic-operators.html</a></p>
 </blockquote>
 <p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如expr。expr是一款表达式计算工具，使用它能完成表达式的求值操作。</p>
 <p>例如，两个数相加：</p>
@@ -990,62 +899,45 @@ http://www.dutycode.com/post-60.html</p>
 <p>注：表达式和运算符之间要有空格，例如 <code>2+2</code>
 是不对的，必须写成 <code>2 + 2</code></p>
 <h4 id="算数运算符">8.1 算数运算符</h4>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904144648161.png" alt="image-20210904144648161">
-<figcaption aria-hidden="true">image-20210904144648161</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904144648161.png" alt="image-20210904144648161"><br>
+</p>
 <p>注：<span style="color:red">条件表达式要放在方括号之间，并且要有空格</span>，例如:
 <code>[$a==$b]</code> 是错误的，必须写成
 <code>[ $a == $b ]</code>。（方括号之间要有空格，运算符和变量之间也要有空格）</p>
-<p><img src="/2021/02/21/Linux-common-command/image-20210904145343228.png" alt="image-20210904145343228" style="zoom: 67%;"></p>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904145343228.png" alt="image-20210904145343228" style="zoom: 60%;"></p>
 <h4 id="关系运算符">8.2 关系运算符</h4>
 <p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904145650517.png" alt="image-20210904145650517">
-<figcaption aria-hidden="true">image-20210904145650517</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904145812074.png" alt="image-20210904145812074">
-<figcaption aria-hidden="true">image-20210904145812074</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904145650517.png" alt="image-20210904145650517"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904145812074.png" alt="image-20210904145812074"><br>
+</p>
 <h4 id="布尔运算符">8.3 布尔运算符</h4>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904150231679.png" alt="image-20210904150231679">
-<figcaption aria-hidden="true">image-20210904150231679</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904150309883.png" alt="image-20210904150309883">
-<figcaption aria-hidden="true">image-20210904150309883</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904150231679.png" alt="image-20210904150231679"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904150309883.png" alt="image-20210904150309883"><br>
+</p>
 <h4 id="逻辑运算符">8.4 逻辑运算符</h4>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904150411459.png" alt="image-20210904150411459">
-<figcaption aria-hidden="true">image-20210904150411459</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904150440602.png" alt="image-20210904150440602">
-<figcaption aria-hidden="true">image-20210904150440602</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904150411459.png" alt="image-20210904150411459"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904150440602.png" alt="image-20210904150440602"><br>
+</p>
 <h4 id="字符串运算符">8.5 字符串运算符</h4>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904150658570.png" alt="image-20210904150658570">
-<figcaption aria-hidden="true">image-20210904150658570</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904150725984.png" alt="image-20210904150725984">
-<figcaption aria-hidden="true">image-20210904150725984</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904150658570.png" alt="image-20210904150658570"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904150725984.png" alt="image-20210904150725984"><br>
+</p>
 <h3 id="shell-中各种括号的作用">9. shell 中各种括号的作用</h3>
 <blockquote>
-<p>参考 https://www.jb51.net/article/123081.htm
-https://www.jianshu.com/p/3e1eaaa3fee8</p>
+<p>参考<br>
+<a href="https://www.jb51.net/article/123081.htm" class="uri">https://www.jb51.net/article/123081.htm</a><br>
+<a href="https://www.jianshu.com/p/3e1eaaa3fee8" class="uri">https://www.jianshu.com/p/3e1eaaa3fee8</a></p>
 </blockquote>
 <h4 id="单小括号">9.1 单小括号 ()</h4>
 <p>一般在命令替换的时候使用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">today=$(date +%y%m%d)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">shell扫描一遍命令，发现了$()结构，便将$()中的命令执行一次，得到其标准输出，再将此输出赋值给today</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">等同于today=`<span class="built_in">date</span> +%y%m%d`</span></span><br></pre></td></tr></table></figure>
 <h4 id="双小括号">9.2 双小括号 (())</h4>
 <blockquote>
-<p>参考 http://c.biancheng.net/view/2480.html</p>
+<p>参考 <a href="http://c.biancheng.net/view/2480.html" class="uri">http://c.biancheng.net/view/2480.html</a></p>
 </blockquote>
 <p>使用双括号，在比较过程中使用<strong>高级数学表达式</strong></p>
 <table>
@@ -1110,33 +1002,23 @@ https://www.jianshu.com/p/3e1eaaa3fee8</p>
 中使用变量无需加上<code>$</code>前缀，(( ))
 会自动解析变量名，这使得代码更加简洁，也符合程序员的书写习惯。</span></p>
 <p>【实例1】利用 (( )) 进行简单的数值计算。</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905111242247.png" alt="image-20210905111242247">
-<figcaption aria-hidden="true">image-20210905111242247</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905111242247.png" alt="image-20210905111242247"><br>
+</p>
 <p>【实例2】利用 (( )) 进行逻辑运算。</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905111449347.png" alt="image-20210905111449347">
-<figcaption aria-hidden="true">image-20210905111449347</figcaption>
-</figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905115217853.png" alt="image-20210905115217853">
-<figcaption aria-hidden="true">image-20210905115217853</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905111449347.png" alt="image-20210905111449347"><br>
+</p>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905115217853.png" alt="image-20210905115217853"><br>
+</p>
 <p>运行结果如下：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905115317618.png" alt="image-20210905115317618">
-<figcaption aria-hidden="true">image-20210905115317618</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905115317618.png" alt="image-20210905115317618"><br>
+</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以直接使用if (($i&lt;5)), 如果不使用双括号, 则为if [ $i -lt 5 ]。</span><br></pre></td></tr></table></figure>
 <p>【实例3】利用 (( )) 进行自增（++）和自减（--）运算。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val=10     </span><br><span class="line">((val++))  </span><br><span class="line">echo $val  </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出 11</span></span><br></pre></td></tr></table></figure>
 <p><img src="/2021/02/21/Linux-common-command/image-20210905111705126.png" alt="image-20210905111705126" style="zoom:150%;"></p>
 <p>【实例4】利用 (( )) 同时对多个表达式进行计算。</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905112032741.png" alt="image-20210905112032741">
-<figcaption aria-hidden="true">image-20210905112032741</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905112032741.png" alt="image-20210905112032741"><br>
+</p>
 <h4 id="单方括号">9.3 单方括号 []</h4>
 <p>方括号定义了测试条件。第一个方括号 (<code>[</code>) 后和第二个方括号
 (<code>]</code>)
@@ -1146,32 +1028,22 @@ https://www.jianshu.com/p/3e1eaaa3fee8</p>
 <p>（2）字符串比较：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if [ $str1 = $str2 ]</span><br><span class="line">if [ $str1 != $str2 ]</span><br><span class="line">if [ -n $str1 ]   # 检查str1的长度是否非0</span><br><span class="line">if [ -z $str1 ]   # 检查str1的长度是否为0</span><br></pre></td></tr></table></figure>
 <p>例：test.sh脚本如下：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904182927259.png" alt="image-20210904182927259">
-<figcaption aria-hidden="true">image-20210904182927259</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904182927259.png" alt="image-20210904182927259"><br>
+</p>
 <p>运行结果：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904183031882.png" alt="image-20210904183031882">
-<figcaption aria-hidden="true">image-20210904183031882</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904183031882.png" alt="image-20210904183031882"><br>
+</p>
 <p>经过测试，数值也可以使用=,
 !=，且对于数值与字符串，=与==效果貌似一样？</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904190918657.png" alt="image-20210904190918657">
-<figcaption aria-hidden="true">image-20210904190918657</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904190918657.png" alt="image-20210904190918657"><br>
+</p>
 <p>运行结果：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904190947396.png" alt="image-20210904190947396">
-<figcaption aria-hidden="true">image-20210904190947396</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904190947396.png" alt="image-20210904190947396"><br>
+</p>
 <p>（3）文件比较</p>
-<p><img src="/2021/02/21/Linux-common-command/image-20210904190420085.png" alt="image-20210904190420085" style="zoom:80%;"></p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904190456860.png" alt="image-20210904190456860">
-<figcaption aria-hidden="true">image-20210904190456860</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904190420085.png" alt="image-20210904190420085" width="75%" height="75%"></p>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904190456860.png" alt="image-20210904190456860"><br>
+</p>
 <p>（4）符合条件比较</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ condition1 ] &amp;&amp; [ condition2 ]</span><br><span class="line">[ condition1 ] || [ condition2 ]</span><br></pre></td></tr></table></figure>
 <p>注：[ ]中的 逻辑与 和 逻辑或 使用 -a 和 -o 表示，例：
@@ -1182,10 +1054,8 @@ https://www.jianshu.com/p/3e1eaaa3fee8</p>
 <li>括号中可以定义一些正则表达式来匹配字符串</li>
 <li>注意不是所有的shell都支持双方括号</li>
 </ul>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210904190701945.png" alt="image-20210904190701945">
-<figcaption aria-hidden="true">image-20210904190701945</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210904190701945.png" alt="image-20210904190701945"><br>
+</p>
 <p>注：&amp;&amp;、||、&lt; 和 &gt; 操作符能够正常存在于[[
 ]]条件判断结构中，比如可以直接使用
 <code>if [[ $a != 1 &amp;&amp; $a != 2 ]]</code></p>
@@ -1193,63 +1063,51 @@ https://www.jianshu.com/p/3e1eaaa3fee8</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if ($i&lt;5) </span><br><span class="line">if [ $i -lt 5 ] </span><br><span class="line">if [ $a -ne 1 -a $a != 2 ] </span><br><span class="line">if [ $a -ne 1] &amp;&amp; [ $a != 2 ] </span><br><span class="line">if [[ $a != 1 &amp;&amp; $a != 2 ]] </span><br><span class="line">for i in $(seq 0 4);do echo $i;done</span><br><span class="line">for i in `seq 0 4`;do echo $i;done</span><br><span class="line">for ((i=0;i&lt;5;i++));do echo $i;done</span><br><span class="line">for i in &#123;0..4&#125;;do echo $i;done</span><br></pre></td></tr></table></figure>
 <h3 id="shell-if-else-语句">10. shell if else 语句</h3>
 <blockquote>
-<p>参考 http://c.biancheng.net/view/1262.html</p>
+<p>参考 <a href="http://c.biancheng.net/view/1262.html" class="uri">http://c.biancheng.net/view/1262.html</a></p>
 </blockquote>
 <h4 id="if-语句">10.1 if 语句</h4>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if condition</span><br><span class="line">then </span><br><span class="line">    statement(s)</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <p>如果要将then 和 if 写在一行，要加个分号：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if  condition;  then</span><br><span class="line">    statement(s)</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 <p>实例1：下面的例子使用 if 语句来比较两个数字的大小：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905110030266.png" alt="image-20210905110030266">
-<figcaption aria-hidden="true">image-20210905110030266</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905110030266.png" alt="image-20210905110030266"><br>
+</p>
 <p>实例2：在判断条件中也可以使用逻辑运算符，例如：</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905112205882.png" alt="image-20210905112205882">
-<figcaption aria-hidden="true">image-20210905112205882</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905112205882.png" alt="image-20210905112205882"><br>
+</p>
 <h4 id="if-else-语句">10.2 if else 语句</h4>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if  condition</span><br><span class="line">then</span><br><span class="line">   statement1</span><br><span class="line">else</span><br><span class="line">   statement2</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905113102953.png" alt="image-20210905113102953">
-<figcaption aria-hidden="true">image-20210905113102953</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905113102953.png" alt="image-20210905113102953"><br>
+</p>
 <h4 id="if-elif-else-语句">10.3 if elif else 语句</h4>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if  condition1</span><br><span class="line">then</span><br><span class="line">   statement1</span><br><span class="line">elif condition2</span><br><span class="line">then</span><br><span class="line">    statement2</span><br><span class="line">elif condition3</span><br><span class="line">then</span><br><span class="line">    statement3</span><br><span class="line">...</span><br><span class="line">else</span><br><span class="line">   statementn</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905113316626.png" alt="image-20210905113316626">
-<figcaption aria-hidden="true">image-20210905113316626</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905113316626.png" alt="image-20210905113316626"><br>
+</p>
 <p>例2:</p>
 <blockquote>
-<p>来自 https://www.tutorialspoint.com/unix/if-elif-statement.htm</p>
+<p>来自 <a href="https://www.tutorialspoint.com/unix/if-elif-statement.htm" class="uri">https://www.tutorialspoint.com/unix/if-elif-statement.htm</a></p>
 </blockquote>
 <p><img src="/2021/02/21/Linux-common-command/image-20210905113545472.png" alt="image-20210905113545472" style="zoom:67%;"></p>
 <h3 id="shell-while">11. shell while</h3>
 <blockquote>
-<p>参考 http://c.biancheng.net/view/2804.html
-https://blog.csdn.net/weixin_44324367/article/details/111312156 <a href="https://www.cnblogs.com/simple-li/p/14040777.html">shell 之
+<p>参考<br>
+<a href="http://c.biancheng.net/view/2804.html" class="uri">http://c.biancheng.net/view/2804.html</a><br>
+<a href="https://blog.csdn.net/weixin_44324367/article/details/111312156" class="uri">https://blog.csdn.net/weixin_44324367/article/details/111312156</a><br>
+<a href="https://www.cnblogs.com/simple-li/p/14040777.html">shell 之
 循环执行某操作 - Simple-Sir - 博客园 (cnblogs.com)</a></p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while condition</span><br><span class="line">do</span><br><span class="line">    statements</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 <p>while 语句和 if else 语句中的 condition 用法都是一样的，可以使用 test
 或 [] 命令，也可以使用 (()) 或 [[]]</p>
 <p>【实例1】计算从 1 加到 100 的和。</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905114028564.png" alt="image-20210905114028564">
-<figcaption aria-hidden="true">image-20210905114028564</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905114028564.png" alt="image-20210905114028564"><br>
+</p>
 <p>【实例2】计算从 m 加到 n 的值。</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905115543470.png" alt="image-20210905115543470">
-<figcaption aria-hidden="true">image-20210905115543470</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905115543470.png" alt="image-20210905115543470"><br>
+</p>
 <p>【实例3】输出0~10的所有整数</p>
-<figure>
-<img src="/2021/02/21/Linux-common-command/image-20210905115630118.png" alt="image-20210905115630118">
-<figcaption aria-hidden="true">image-20210905115630118</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/image-20210905115630118.png" alt="image-20210905115630118"><br>
+</p>
 <h3 id="重定向">12. 重定向 &gt;</h3>
 <p>参考 <a href="https://www.cnblogs.com/zhenghongxin/p/7029173.html">linux
 shell中"2&gt;&amp;1"含义 - hongxinerke - 博客园 (cnblogs.com)</a></p>
@@ -1264,8 +1122,10 @@ shell中"2&gt;&amp;1"含义 - hongxinerke - 博客园 (cnblogs.com)</a></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;./pythonsql.sh | <span class="built_in">tee</span> pythonsql.log</span><br></pre></td></tr></table></figure>
 <h3 id="crontab-定时执行shell脚本">13. crontab 定时执行shell脚本</h3>
 <blockquote>
-<p>参考 <a href="https://www.cnblogs.com/chen-lhx/p/5996781.html">linux
-crontab定时执行shell脚本 - 龙昊雪 - 博客园 (cnblogs.com)</a> <a href="https://blog.csdn.net/ithomer/article/details/6817019">linux定时运行命令脚本——crontab_阳光岛主-CSDN博客</a></p>
+<p>参考<br>
+<a href="https://www.cnblogs.com/chen-lhx/p/5996781.html">linux
+crontab定时执行shell脚本 - 龙昊雪 - 博客园 (cnblogs.com)</a><br>
+<a href="https://blog.csdn.net/ithomer/article/details/6817019">linux定时运行命令脚本——crontab_阳光岛主-CSDN博客</a></p>
 </blockquote>
 <p>crontab命令说明：
 crontab命令被用来提交和管理用户的需要周期性执行的任务，与windows下的计划任务类似，当安装完成操作系统后，默认会安装此服务工具，并且会自动启动crond进程，crond进程每分钟会定期检查是否有要执行的任务，如果有要执行的任务，则自动执行该任务。</p>
@@ -1286,7 +1146,7 @@ crontab命令被用来提交和管理用户的需要周期性执行的任务，�
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15 4 * * * /home/temp/post_analysis/post_analysis_sqoop.sh $(date -d &quot;1 day ago&quot; +&quot;\%Y-\%m-\%d&quot;) &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
 <h3 id="linux-shell-管道">14 Linux shell 管道 |</h3>
 <blockquote>
-<p>参考 http://c.biancheng.net/view/3131.html</p>
+<p>参考 <a href="http://c.biancheng.net/view/3131.html" class="uri">http://c.biancheng.net/view/3131.html</a></p>
 </blockquote>
 <p>Shell
 有一种功能，就是可以将两个或者多个命令（程序或者进程）连接到一起，把一个命令的输出作为下一个命令的输入，以这种方式连接的两个或者多个命令就形成了<strong>管道（pipe）</strong>。</p>
@@ -1313,7 +1173,7 @@ output.txt 中：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/message | less</span><br></pre></td></tr></table></figure>
 <h4 id="grep">15.2 grep</h4>
 <blockquote>
-<p>参考 https://www.runoob.com/linux/linux-comm-grep.html</p>
+<p>参考 <a href="https://www.runoob.com/linux/linux-comm-grep.html" class="uri">https://www.runoob.com/linux/linux-comm-grep.html</a></p>
 </blockquote>
 <p>grep 命令用于查找文件里符合条件的字符串。</p>
 <p>语法：</p>
@@ -1328,27 +1188,21 @@ output.txt 中：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -r update /etc/acpi </span><br></pre></td></tr></table></figure>
 <p>【示例3】查看result.csv中出现100001的行并输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;cat result.csv | grep 100001</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1649855242323.png" alt="1649855242323">
-<figcaption aria-hidden="true">1649855242323</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1649855242323.png" alt="1649855242323"><br>
+</p>
 <p>将输出结果存入文件：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="built_in">cat</span> result.csv | grep 100001 &gt;output.txt</span><br></pre></td></tr></table></figure>
 <p>查找并返回行号：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;cat result.csv | grep -n 100001</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1649856944592.png" alt="1649856944592">
-<figcaption aria-hidden="true">1649856944592</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1649856944592.png" alt="1649856944592"><br>
+</p>
 <p>若想在另一个文件中查看相同行号的内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; cat result2.csv | sed -n &#x27;334007p&#x27;</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1649858199759.png" alt="1649858199759">
-<figcaption aria-hidden="true">1649858199759</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1649858199759.png" alt="1649858199759"><br>
+</p>
 <h4 id="wc">15.3 wc</h4>
 <blockquote>
-<p>参考 https://www.runoob.com/linux/linux-comm-wc.html</p>
+<p>参考 <a href="https://www.runoob.com/linux/linux-comm-wc.html" class="uri">https://www.runoob.com/linux/linux-comm-wc.html</a></p>
 </blockquote>
 <p>wc命令用于计算字数</p>
 <p>语法：</p>
@@ -1357,10 +1211,8 @@ output.txt 中：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> testfile  </span><br><span class="line">Linux networks are becoming more and more common, but scurity is often an overlooked  </span><br><span class="line">issue. Unfortunately, <span class="keyword">in</span> today’s environment all networks are potential hacker targets,  </span><br><span class="line">fro0m tp-secret military research networks to small home LANs.  </span><br><span class="line">Linux Network Securty focuses on securing Linux <span class="keyword">in</span> a networked environment, <span class="built_in">where</span> the  </span><br><span class="line">security of the entire network needs to be considered rather than just isolated machines.  </span><br><span class="line">It uses a mix of theory and practicl techniques to teach administrators how to install and  </span><br><span class="line">use security applications, as well as how the applcations work and why they are necesary. </span><br><span class="line"></span><br><span class="line">$ <span class="built_in">wc</span> testfile           <span class="comment"># testfile文件的统计信息  </span></span><br><span class="line">3 92 598 testfile       <span class="comment"># testfile文件的行数为3、单词数92、字节数598 </span></span><br></pre></td></tr></table></figure>
 <p>【示例2】查看文件中包含多少个逗号，结合 <code>grep</code>：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="built_in">cat</span> result.txt | grep -o <span class="string">&#x27;,&#x27;</span> | <span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1649857332971.png" alt="1649857332971">
-<figcaption aria-hidden="true">1649857332971</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1649857332971.png" alt="1649857332971"><br>
+</p>
 <h4 id="sed">15.4 sed</h4>
 <p>sed 可依照脚本的指令来处理、编辑文本文件。</p>
 <p>语法：</p>
@@ -1394,23 +1246,21 @@ output.txt 中：</p>
 <h4 id="关于vim">15.5 关于vim</h4>
 <h5 id="快速清空文件内容">15.5.1 快速清空文件内容</h5>
 <blockquote>
-<p>参考 https://blog.csdn.net/qq_21238607/article/details/119541193</p>
+<p>参考 <a href="https://blog.csdn.net/qq_21238607/article/details/119541193" class="uri">https://blog.csdn.net/qq_21238607/article/details/119541193</a></p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#命令模式下</span><br><span class="line">G # 跳至文件最后一行</span><br><span class="line">d1G # 删除首行至光标所在行的所有数据</span><br></pre></td></tr></table></figure>
 <p>👆 注：输入完
 <code>d1G</code>后，会立马清空，不会要求确认等操作。</p>
 <h5 id="撤销与恢复">15.5.2 撤销与恢复</h5>
 <blockquote>
-<p>参考 http://c.biancheng.net/view/6332.html</p>
+<p>参考 <a href="http://c.biancheng.net/view/6332.html" class="uri">http://c.biancheng.net/view/6332.html</a></p>
 </blockquote>
-<figure>
-<img src="/2021/02/21/Linux-common-command/1650364215210.png" alt="1650364215210">
-<figcaption aria-hidden="true">1650364215210</figcaption>
-</figure>
+<p><img src="/2021/02/21/Linux-common-command/1650364215210.png" alt="1650364215210"><br>
+</p>
 <p>注意，以上这 3 种命令都必须在 Vim 编辑器处于命令模式时才能使用。</p>
 <h4 id="上传与下载文件">15.6 上传与下载文件</h4>
 <blockquote>
-<p>参考 https://blog.51cto.com/superw/1943250</p>
+<p>参考 <a href="https://blog.51cto.com/superw/1943250" class="uri">https://blog.51cto.com/superw/1943250</a></p>
 </blockquote>
 <ol type="1">
 <li>上传到服务器：</li>

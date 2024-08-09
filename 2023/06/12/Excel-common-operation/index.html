@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://qypx.github.io/2023/06/12/Excel-common-operation/1689911322928.png">
 <meta property="og:image" content="http://qypx.github.io/2023/06/12/Excel-common-operation/1689921595413.png">
 <meta property="article:published_time" content="2023-06-12T08:32:42.000Z">
-<meta property="article:modified_time" content="2024-07-31T09:37:27.177Z">
+<meta property="article:modified_time" content="2024-08-08T08:45:13.593Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Excel">
 <meta name="twitter:card" content="summary">
@@ -263,7 +263,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-31 17:37:27" itemprop="dateModified" datetime="2024-07-31T17:37:27+08:00">2024-07-31</time>
+      <time title="修改时间：2024-08-08 16:45:13" itemprop="dateModified" datetime="2024-08-08T16:45:13+08:00">2024-08-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -308,15 +308,13 @@ that specifies the function to use for the subtotal. 1-11 includes
 manually-hidden rows, while 101-111 excludes them; filtered-out cells
 are always excluded. （1-11包含了hidden rows，101-111剔除了filtered-out
 cells）</p>
-<figure>
-<img src="/2023/06/12/Excel-common-operation/1680515921780.png" alt="1680515921780">
-<figcaption aria-hidden="true">1680515921780</figcaption>
-</figure>
+<p><img src="/2023/06/12/Excel-common-operation/1680515921780.png" alt="1680515921780"><br>
+</p>
 <p>注：且筛选内容变了后，对应的结果也会跟着变，不用把函数删掉再重写。</p>
 <span id="more"></span>
 <h4 id="vlookup根据两列数据匹配">2.vlookup根据两列数据匹配</h4>
 <blockquote>
-<p>参考：https://zhuanlan.zhihu.com/p/68744986</p>
+<p>参考 <a href="https://zhuanlan.zhihu.com/p/68744986" class="uri">https://zhuanlan.zhihu.com/p/68744986</a></p>
 </blockquote>
 <p>当两列数据确定唯一值时，例如：有数据：</p>
 <table>
@@ -378,10 +376,8 @@ cells）</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">countif(range, criteria)</span><br></pre></td></tr></table></figure>
 <p>示例1：</p>
-<figure>
-<img src="/2023/06/12/Excel-common-operation/1689911322928.png" alt="1689911322928">
-<figcaption aria-hidden="true">1689911322928</figcaption>
-</figure>
+<p><img src="/2023/06/12/Excel-common-operation/1689911322928.png" alt="1689911322928"><br>
+</p>
 <p>计算电脑的销售数量：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=COUNTIF(C2:C7,&quot;电脑&quot;)</span><br></pre></td></tr></table></figure>
 <p>另：可结合通配符使用。例如统计包含”电脑“的销售数量：</p>
@@ -396,10 +392,8 @@ cells）</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SUMIF(range,criteria,[sum_range])</span><br><span class="line"></span><br><span class="line">range:用于条件计算的单元格</span><br><span class="line">criteria:用于确定对求和单元格的田间</span><br><span class="line">sum_range:要求和的实际单元格。如果省略sum_range参数，Excel会对在range参数中指定的单元格（即应用条件的单元格）求和。</span><br></pre></td></tr></table></figure>
 <p>示例1：</p>
-<figure>
-<img src="/2023/06/12/Excel-common-operation/1689921595413.png" alt="1689921595413">
-<figcaption aria-hidden="true">1689921595413</figcaption>
-</figure>
+<p><img src="/2023/06/12/Excel-common-operation/1689921595413.png" alt="1689921595413"><br>
+</p>
 <p>求女生成绩之和：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=SUMIF(C2:D6,&quot;女&quot;,D2:D6)</span><br><span class="line">也可写作</span><br><span class="line">=SUMIF(C2:C6,&quot;女&quot;,D2:D6)</span><br></pre></td></tr></table></figure>
 <p>示例2：</p>

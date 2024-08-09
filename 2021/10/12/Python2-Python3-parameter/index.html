@@ -23,15 +23,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="参考： https:&#x2F;&#x2F;blog.csdn.net&#x2F;Alian_W&#x2F;article&#x2F;details&#x2F;105131376 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;98f7e34845b5  1. 位置参数 (Positional) 位置参数顾名思义就是与位置有关的参数，在调用函数的时候需要根据传入参数的位置来一一对应参数。并且，位置参数是不可缺省的，即不传入完整的参数是会报错">
+    <meta name="description" content="参考： https:&#x2F;&#x2F;blog.csdn.net&#x2F;Alian_W&#x2F;article&#x2F;details&#x2F;105131376 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;98f7e34845b5  1. 位置参数 (Positional) 位置参数顾名思义就是与位置有关的参数，在调用函数的时候需要根据传入参数的位置来一一对应参数。并且，位置参数是不可缺省的，即不传入完整的参数是会报">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于python2与python3中的位置参数，可变参数，默认参数，关键字参数">
 <meta property="og:url" content="http://qypx.github.io/2021/10/12/Python2-Python3-parameter/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="参考： https:&#x2F;&#x2F;blog.csdn.net&#x2F;Alian_W&#x2F;article&#x2F;details&#x2F;105131376 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;98f7e34845b5  1. 位置参数 (Positional) 位置参数顾名思义就是与位置有关的参数，在调用函数的时候需要根据传入参数的位置来一一对应参数。并且，位置参数是不可缺省的，即不传入完整的参数是会报错">
+<meta property="og:description" content="参考： https:&#x2F;&#x2F;blog.csdn.net&#x2F;Alian_W&#x2F;article&#x2F;details&#x2F;105131376 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;98f7e34845b5  1. 位置参数 (Positional) 位置参数顾名思义就是与位置有关的参数，在调用函数的时候需要根据传入参数的位置来一一对应参数。并且，位置参数是不可缺省的，即不传入完整的参数是会报">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-12T09:42:18.000Z">
-<meta property="article:modified_time" content="2024-07-26T08:09:26.213Z">
+<meta property="article:modified_time" content="2024-08-08T09:30:25.623Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -261,7 +261,7 @@ Python2 与 Python3 中参数定义顺序的差异</span></a><ol class="nav-chil
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-26 16:09:26" itemprop="dateModified" datetime="2024-07-26T16:09:26+08:00">2024-07-26</time>
+      <time title="修改时间：2024-08-08 17:30:25" itemprop="dateModified" datetime="2024-08-08T17:30:25+08:00">2024-08-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -290,8 +290,9 @@ Python2 与 Python3 中参数定义顺序的差异</span></a><ol class="nav-chil
     
     
     <div class="post-body" itemprop="articleBody"><blockquote>
-<p>参考： https://blog.csdn.net/Alian_W/article/details/105131376
-https://www.jianshu.com/p/98f7e34845b5</p>
+<p>参考：<br>
+<a href="https://blog.csdn.net/Alian_W/article/details/105131376" class="uri">https://blog.csdn.net/Alian_W/article/details/105131376</a><br>
+<a href="https://www.jianshu.com/p/98f7e34845b5" class="uri">https://www.jianshu.com/p/98f7e34845b5</a></p>
 </blockquote>
 <h4 id="位置参数-positional">1. 位置参数 (Positional)</h4>
 <p>位置参数顾名思义就是<strong>与位置有关的参数，在调用函数的时候需要根据传入参数的位置来一一对应参数</strong>。并且，<strong>位置参数是不可缺省的</strong>，即不传入完整的参数是会报错的。位置参数是最为常见的一种参数，例如：</p>
@@ -305,6 +306,7 @@ https://www.jianshu.com/p/98f7e34845b5</p>
 <p><strong>注意：定义函数时默认参数一定要在位置参数之后。</strong>其实很好理解，若默认参数可以放在位置参数之前，那当传参的个数少于参数个数，解释器到底是将参数给位置参数还是给默认参数？如下所示：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">minus2</span>(<span class="params">num1=<span class="number">1</span>, num2</span>):</span><br><span class="line">    <span class="keyword">return</span> num1 - num2</span><br><span class="line"><span class="comment"># 定义时会报错：SyntaxError: non-default argument follows default argument</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 若给num1，则num2缺省了，不就报错了？</span></span><br><span class="line"><span class="comment"># 若给num2，我怎么知道你是不是要给num1赋值？</span></span><br><span class="line">minus2(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <p>小结：<strong>默认参数就是需要设置默认值的参数，默认参数必须放在位置参数之后，当需要使用默认值时可以不传默认参数</strong></p>
+<span id="more"></span>
 <h4 id="可变参数">3. 可变参数</h4>
 <p>在定义函数时有可能出现不确定需要传递的参数的个数的情况，这时可变参数将会给我们带来极大的便利。顾名思义，可变参数就是传入的参数个数是可变的，可以是1个、2个到任意个，还可以是0个。</p>
 <p>示例1：</p>
@@ -352,8 +354,9 @@ age，通过字典的方式可以获取关键字对应的值。</p>
 Python2 与 Python3 中参数定义顺序的差异</span></h4>
 <h5 id="函数定义中的与">5.1 函数定义中的*与**</h5>
 <blockquote>
-<p>参考 <a href="https://www.it1352.com/734786.html">python2和python3中的可变参数有什么不同?</a>
-https://www.zhihu.com/question/21099657</p>
+<p>参考<br>
+<a href="https://www.it1352.com/734786.html">python2和python3中的可变参数有什么不同?</a><br>
+<a href="https://www.zhihu.com/question/21099657" class="uri">https://www.zhihu.com/question/21099657</a></p>
 </blockquote>
 <p>python2中参数定义的顺序必须是：位置参数、默认参数、可变参数和关键字参数。python3中不一定要如此。</p>
 <p>例：</p>
@@ -411,7 +414,7 @@ appear after keyword arguments（python2, python3 中均如此）</p>
 <h4 id="题外话parameter和argument的区别">6.
 题外话：parameter和argument的区别</h4>
 <blockquote>
-<p>参考 https://blog.csdn.net/it1988888/article/details/8871895</p>
+<p>参考 <a href="https://blog.csdn.net/it1988888/article/details/8871895" class="uri">https://blog.csdn.net/it1988888/article/details/8871895</a></p>
 </blockquote>
 <ol type="1">
 <li>parameter是指函数定义中参数，而argument指的是函数调用时的实际参数。</li>
