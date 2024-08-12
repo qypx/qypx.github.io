@@ -23,18 +23,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"qypx.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"default"},"fold":{"enable":true,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="缩进是 Python的灵魂  更多Python基础见我的onenote笔记本”Python学习笔记“ 另：关于 Python 的教程可参考廖雪峰的网站 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1016959663602400  1. 逻辑运算符   逻辑运算符  12345df[(df[&#x27;id&#x27;]&gt;&#x3D;1) &amp; (d">
+    <meta name="description" content="缩进是 Python的灵魂  关于 Python 的教程可参考廖雪峰的网站 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1016959663602400  1. 逻辑运算符   逻辑运算符  12345df[(df[&#x27;id&#x27;]&gt;&#x3D;1) &amp; (df[&#x27;id&#x27;]&lt;&#x3D;2)]# 以上写法等价于：df.q">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python中的简单语法与常见操作">
 <meta property="og:url" content="http://qypx.github.io/2019/06/27/basic-python-type/index.html">
 <meta property="og:site_name" content="qypx の blog">
-<meta property="og:description" content="缩进是 Python的灵魂  更多Python基础见我的onenote笔记本”Python学习笔记“ 另：关于 Python 的教程可参考廖雪峰的网站 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1016959663602400  1. 逻辑运算符   逻辑运算符  12345df[(df[&#x27;id&#x27;]&gt;&#x3D;1) &amp; (d">
+<meta property="og:description" content="缩进是 Python的灵魂  关于 Python 的教程可参考廖雪峰的网站 https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1016959663602400  1. 逻辑运算符   逻辑运算符  12345df[(df[&#x27;id&#x27;]&gt;&#x3D;1) &amp; (df[&#x27;id&#x27;]&lt;&#x3D;2)]# 以上写法等价于：df.q">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/logic-operator.jpg">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/1605268940795.png">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/basic-python-type/1701332841052.png">
 <meta property="article:published_time" content="2019-06-26T18:35:13.000Z">
-<meta property="article:modified_time" content="2024-06-20T09:22:01.508Z">
+<meta property="article:modified_time" content="2024-08-09T07:14:10.662Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -264,7 +264,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-20 17:22:01" itemprop="dateModified" datetime="2024-06-20T17:22:01+08:00">2024-06-20</time>
+      <time title="修改时间：2024-08-09 15:14:10" itemprop="dateModified" datetime="2024-08-09T15:14:10+08:00">2024-08-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -295,9 +295,8 @@
     <div class="post-body" itemprop="articleBody"><p><strong><em><span style="color:blue">缩进是
 Python的灵魂</span></em></strong></p>
 <blockquote>
-<p>更多Python基础见我的onenote笔记本”Python学习笔记“ 另：关于 Python
-的教程可参考廖雪峰的网站
-https://www.liaoxuefeng.com/wiki/1016959663602400</p>
+<p>关于 Python 的教程可参考廖雪峰的网站<br>
+<a href="https://www.liaoxuefeng.com/wiki/1016959663602400" class="uri">https://www.liaoxuefeng.com/wiki/1016959663602400</a></p>
 </blockquote>
 <h3 id="逻辑运算符">1. 逻辑运算符</h3>
 <figure>
@@ -354,12 +353,13 @@ another location).</p>
 <li><p>所有位置：<code>[i for i,v in enumerate(listA) if v == min(listA)]</code></p></li>
 </ul>
 <h3 id="取top-n">7. 取top n</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写法一：</span></span><br><span class="line">df[[<span class="string">&#x27;Country name&#x27;</span>, <span class="string">&#x27;happiness&#x27;</span>]].sort_values(by=<span class="string">&#x27;happiness&#x27;</span>, ascending=<span class="literal">False</span>)[:<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写法二：</span></span><br><span class="line">df[[<span class="string">&#x27;Country name&#x27;</span>,</span><br><span class="line">           <span class="string">&#x27;happiness&#x27;</span>]].nlargest(<span class="number">10</span>, <span class="string">&#x27;happiness&#x27;</span>)</span><br><span class="line"></span><br><span class="line">nlargest: Return the first `n` rows ordered by `columns` <span class="keyword">in</span> descending order.</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写法一：</span></span><br><span class="line">df[[<span class="string">&#x27;Country name&#x27;</span>, <span class="string">&#x27;happiness&#x27;</span>]].sort_values(by=<span class="string">&#x27;happiness&#x27;</span>, ascending=<span class="literal">False</span>)[:<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写法二：</span></span><br><span class="line">df[[<span class="string">&#x27;Country name&#x27;</span>, <span class="string">&#x27;happiness&#x27;</span>]].nlargest(<span class="number">10</span>, <span class="string">&#x27;happiness&#x27;</span>)</span><br><span class="line"></span><br><span class="line">nlargest: Return the first `n` rows ordered by `columns` <span class="keyword">in</span> descending order.</span><br></pre></td></tr></table></figure>
 <h3 id="输出">8. 输出</h3>
 <blockquote>
-<p>参考： https://www.runoob.com/w3cnote/python3-print-func-b.html
-https://www.cnblogs.com/penphy/p/10028546.html
-https://www.cnblogs.com/lovejh/p/9201219.html</p>
+<p>参考：<br>
+<a href="https://www.runoob.com/w3cnote/python3-print-func-b.html" class="uri">https://www.runoob.com/w3cnote/python3-print-func-b.html</a><br>
+<a href="https://www.cnblogs.com/penphy/p/10028546.html" class="uri">https://www.cnblogs.com/penphy/p/10028546.html</a><br>
+<a href="https://www.cnblogs.com/lovejh/p/9201219.html" class="uri">https://www.cnblogs.com/lovejh/p/9201219.html</a></p>
 </blockquote>
 <p>简单的输出：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(<span class="string">&#x27;My name is&#x27;</span>, <span class="string">&#x27;John&#x27;</span>)</span><br><span class="line">My name <span class="keyword">is</span> John</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;student = (<span class="number">30</span>,<span class="string">&quot;University of Oxford&quot;</span>,<span class="string">&quot;1 High Street, London, W1 1PP&quot;</span>, <span class="string">&quot;John Cameron&quot;</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(student[<span class="number">3</span>]+ <span class="string">&quot;, &quot;</span>+student[<span class="number">1</span>] + <span class="string">&quot;, &quot;</span> + student[<span class="number">2</span>] + <span class="string">&quot;,&quot;</span> + <span class="built_in">str</span>(student[<span class="number">0</span>]))</span><br><span class="line">John Cameron, University of Oxford, <span class="number">1</span> High Street, London, W1 1PP,<span class="number">30</span></span><br></pre></td></tr></table></figure>
@@ -487,23 +487,26 @@ https://www.cnblogs.com/lovejh/p/9201219.html</p>
 </tbody>
 </table>
 <h5 id="格式化输出整数">8.1.1 格式化输出整数</h5>
-<p><strong>%x</strong> --- hex 十六进制 <strong>%d</strong> --- dec
-十进制 <strong>%o</strong> --- oct 八进制</p>
+<p><strong>%x</strong> --- hex 十六进制<br>
+<strong>%d</strong> --- dec 十进制<br>
+<strong>%o</strong> --- oct 八进制</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;nHex = <span class="number">0xFF</span></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(<span class="string">&quot;nHex = %x,nDec = %d,nOct = %o&quot;</span> %(nHex,nHex,nHex))</span><br><span class="line">nHex = ff,nDec = <span class="number">255</span>,nOct = <span class="number">377</span></span><br></pre></td></tr></table></figure>
 <h5 id="格式化输出浮点数">8.1.2 格式化输出浮点数</h5>
-<p><strong>%f</strong> --- 保留小数点后面六位有效数字
+<p><strong>%f</strong> --- 保留小数点后面六位有效数字<br>
 <strong>%.3f</strong>，保留3位小数位</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;pi = <span class="number">3.141592653</span>  </span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(<span class="string">&#x27;%10.3f&#x27;</span> % pi) <span class="comment">#字段宽10，精度3 (整个数包括小数点后的位数一共为10位) </span></span><br><span class="line">     <span class="number">3.142</span>  </span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(<span class="string">&quot;pi = %.*f&quot;</span> % (<span class="number">3</span>,pi)) <span class="comment">#用*从后面的元组中读取字段宽度或精度  </span></span><br><span class="line">pi = <span class="number">3.142</span>  </span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(<span class="string">&#x27;%010.3f&#x27;</span> % pi) <span class="comment">#用0填充空白  </span></span><br><span class="line"><span class="number">000003.142</span>  </span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(<span class="string">&#x27;%-10.3f&#x27;</span> % pi) <span class="comment">#左对齐  </span></span><br><span class="line"><span class="number">3.142</span>       </span><br><span class="line">&gt;&gt;&gt;<span class="built_in">print</span>(<span class="string">&#x27;%+f&#x27;</span> % pi) <span class="comment">#在正数前面显示加号( + )</span></span><br><span class="line">+<span class="number">3.141593</span></span><br></pre></td></tr></table></figure>
 <h5 id="格式化输出字符串">8.1.3 格式化输出字符串</h5>
-<p><strong>%s</strong> <strong>%10s</strong> --- 右对齐，占位符10位
-<strong>%-10s</strong> --- 左对齐，占位符10位 <strong>%.2s</strong> ---
-截取2位字符串 <strong>%10.2s</strong> ---10位占位符，截取两位字符串</p>
+<p><strong>%s</strong><br>
+<strong>%10s</strong> --- 右对齐，占位符10位<br>
+<strong>%-10s</strong> --- 左对齐，占位符10位<br>
+<strong>%.2s</strong> --- 截取2位字符串<br>
+<strong>%10.2s</strong> ---10位占位符，截取两位字符串</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%s&#x27;</span> % <span class="string">&#x27;hello world&#x27;</span>)  <span class="comment"># 字符串输出</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%20s&#x27;</span> % <span class="string">&#x27;hello world&#x27;</span>)  <span class="comment"># 右对齐，取20位，不够则补位</span></span><br><span class="line">         hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%-20s&#x27;</span> % <span class="string">&#x27;hello world&#x27;</span>)  <span class="comment"># 左对齐，取20位，不够则补位</span></span><br><span class="line">hello world         </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%.2s&#x27;</span> % <span class="string">&#x27;hello world&#x27;</span>)  <span class="comment"># 取2位</span></span><br><span class="line">he</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%10.2s&#x27;</span> % <span class="string">&#x27;hello world&#x27;</span>)  <span class="comment"># 右对齐，取2位</span></span><br><span class="line">        he</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;%-10.2s&#x27;</span> % <span class="string">&#x27;hello world&#x27;</span>)  <span class="comment"># 左对齐，取2位</span></span><br><span class="line">he</span><br><span class="line"></span><br><span class="line">三个双引号中也可以使用：</span><br><span class="line">sql = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">	select *</span></span><br><span class="line"><span class="string">	from dws_base.t_table</span></span><br><span class="line"><span class="string">	where dt=%(end_date)s</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>%&#123;<span class="string">&quot;end_date&quot;</span>:<span class="number">20231203</span>&#125;</span><br><span class="line"></span><br><span class="line">另外的变量替换方法：</span><br><span class="line">&gt;&gt;&gt;<span class="keyword">from</span> string <span class="keyword">import</span> Template</span><br><span class="line">&gt;&gt;&gt;s = Template(<span class="string">&#x27;$who like $what&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt;s.substitute(who=<span class="string">&#x27;tim&#x27;</span>, what=<span class="string">&#x27;kung pao&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;tim likes kung pao&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="format用法">8.2 format用法</h4>
 <p>相对基本格式化输出采用‘%’的方法，format()功能更强大，该函数把字符串当成一个模板，通过传入的参数进行格式化，并且使用大括号‘{}’作为特殊字符代替‘%’</p>
 <p>位置匹配</p>
-<p><strong>（1）不带编号，即“{}”</strong>
-<strong>（2）带数字编号，可调换顺序，即“{1}”、“{2}”</strong>
+<p><strong>（1）不带编号，即“{}” </strong><br>
+<strong>（2）带数字编号，可调换顺序，即“{1}”、“{2}”</strong><br>
 <strong>（3）带关键字，即“{a}”、“{tom}”</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>))  <span class="comment"># 不带字段</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125; &#123;1&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>))  <span class="comment"># 带数字编号</span></span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125; &#123;1&#125; &#123;0&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>))  <span class="comment"># 打乱顺序</span></span><br><span class="line">hello world hello</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;a&#125; &#123;tom&#125; &#123;a&#125;&#x27;</span>.<span class="built_in">format</span>(tom=<span class="string">&#x27;hello&#x27;</span>,a=<span class="string">&#x27;world&#x27;</span>))  <span class="comment"># 带关键字</span></span><br><span class="line">world hello world</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125; is &#123;:.2f&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="number">1.123</span>,<span class="number">1.123</span>))  <span class="comment"># 取2位小数</span></span><br><span class="line"><span class="number">1.123</span> <span class="keyword">is</span> <span class="number">1.12</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;&#123;:,&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="number">1234567890</span>)</span><br><span class="line"><span class="string">&#x27;1,234,567,890&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>想输出：The percentage of female students is 68.85%.👇</p>
@@ -512,16 +515,12 @@ https://www.cnblogs.com/lovejh/p/9201219.html</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>points = <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>total = <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;Correct answers: &#123;:.2%&#125;&#x27;</span>.<span class="built_in">format</span>(points/total)</span><br><span class="line"><span class="string">&#x27;Correct answers: 50.00%&#x27;</span></span><br><span class="line"></span><br><span class="line">注：python3中可以更加简洁：在开头加f:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">f&#x27;Correct answers: <span class="subst">&#123;points/total:<span class="number">.2</span>%&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="切片操作">9. 切片操作</h3>
 <blockquote>
-<p>参考
-https://www.liaoxuefeng.com/wiki/1016959663602400/1017269965565856</p>
+<p>参考 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017269965565856" class="uri">https://www.liaoxuefeng.com/wiki/1016959663602400/1017269965565856</a></p>
 </blockquote>
 <p><span style="color:blue">Python切片操作可作用于list (包括tuple,
 string)</span></p>
 <p>可以想象为每个位置有两个编号：</p>
-<figure>
-<img src="/2019/06/27/basic-python-type/1605268940795.png" alt="1605268940795">
-<figcaption aria-hidden="true">1605268940795</figcaption>
-</figure>
+<p><img src="/2019/06/27/basic-python-type/1605268940795.png"></p>
 <p><strong><code>b = a[i:j]</code></strong> - 表示复制 a[i] 到
 a[j-1]，以生成新的list对象。例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">a[<span class="number">1</span>:<span class="number">3</span>] <span class="comment"># [1,2]</span></span><br><span class="line">a[:-<span class="number">2</span>] <span class="comment"># [0,1,2,3,4,5,6,7]</span></span><br><span class="line">a[-<span class="number">2</span>:-<span class="number">1</span>] <span class="comment"># [8]</span></span><br><span class="line">a[:<span class="number">2</span>] <span class="comment"># [0,1]，前2个数</span></span><br><span class="line">a[-<span class="number">2</span>:] <span class="comment">#[8,9]，后2个数</span></span><br></pre></td></tr></table></figure>
@@ -543,11 +542,8 @@ a[-1:-len(a)-1:-1]，即从最后一个元素f复制到第一个元素，即<str
 </ul>
 <p>练习：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">python = <span class="string">&#x27;I am PYHTON&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(python[<span class="number">1</span>:<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(python[<span class="number">1</span>:])</span><br><span class="line"><span class="built_in">print</span>(python[:])</span><br><span class="line"><span class="built_in">print</span>(python[<span class="number">1</span>:<span class="number">100</span>])</span><br><span class="line"><span class="built_in">print</span>(python[-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(python[-<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(python[:-<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(python[-<span class="number">3</span>:])</span><br><span class="line"><span class="built_in">print</span>(python[::-<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<p>答案：</p>
-<figure>
-<img src="/2019/06/27/basic-python-type/1701332841052.png" alt="1701332841052">
-<figcaption aria-hidden="true">1701332841052</figcaption>
-</figure>
+<p>结果：</p>
+<p><img src="/2019/06/27/basic-python-type/1701332841052.png"></p>
 <hr>
 <p>另：dataframe中：</p>
 <ul>
@@ -566,8 +562,9 @@ Overflow</a></p>
 </ul>
 <h3 id="日期操作">10. 日期操作</h3>
 <blockquote>
-<p>参考： https://blog.csdn.net/u010159842/article/details/78331490
-https://blog.csdn.net/sinat_30715661/article/details/82534033</p>
+<p>参考：<br>
+<a href="https://blog.csdn.net/u010159842/article/details/78331490" class="uri">https://blog.csdn.net/u010159842/article/details/78331490</a>
+<a href="https://blog.csdn.net/sinat_30715661/article/details/82534033" class="uri">https://blog.csdn.net/sinat_30715661/article/details/82534033</a></p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line">print(datetime.time(5,42,2))</span><br><span class="line">#05:42:02</span><br><span class="line"># ↑get time object</span><br><span class="line"></span><br><span class="line">print(datetime.date.today())</span><br><span class="line">#2023-12-23</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>字符转日期：</p>

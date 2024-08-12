@@ -31,7 +31,7 @@
 <meta property="og:description" content="参考 https:&#x2F;&#x2F;blog.csdn.net&#x2F;Destiny_zz&#x2F;article&#x2F;details&#x2F;88634513  conda -V 检查是否安装以及当前conda的版本 conda list 查看安装了哪些包 conda update conda 检查更新当前conda 下载新版本的Anaconda: https:&#x2F;&#x2F;repo.anaconda.com&#x2F;archive&#x2F;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-15T03:56:36.000Z">
-<meta property="article:modified_time" content="2024-01-19T02:45:58.533Z">
+<meta property="article:modified_time" content="2024-08-09T06:24:04.091Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Jupyter Notebook">
 <meta name="twitter:card" content="summary">
@@ -259,7 +259,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-19 10:45:58" itemprop="dateModified" datetime="2024-01-19T10:45:58+08:00">2024-01-19</time>
+      <time title="修改时间：2024-08-09 14:24:04" itemprop="dateModified" datetime="2024-08-09T14:24:04+08:00">2024-08-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,23 +288,23 @@
     
     
     <div class="post-body" itemprop="articleBody"><blockquote>
-<p>参考 https://blog.csdn.net/Destiny_zz/article/details/88634513</p>
+<p>参考 <a href="https://blog.csdn.net/Destiny_zz/article/details/88634513" class="uri">https://blog.csdn.net/Destiny_zz/article/details/88634513</a></p>
 </blockquote>
 <p><code>conda -V</code> 检查是否安装以及当前conda的版本
 <code>conda list</code> 查看安装了哪些包 <code>conda update conda</code>
 检查更新当前conda</p>
-<p>下载新版本的Anaconda: https://repo.anaconda.com/archive/</p>
+<p>下载新版本的Anaconda: <a href="https://repo.anaconda.com/archive/" class="uri">https://repo.anaconda.com/archive/</a></p>
 <h3 id="虚拟环境">虚拟环境</h3>
 <h4 id="创建python虚拟环境">1. 创建python虚拟环境</h4>
 <p><code>conda create -n your_env_name python=X.X (2.7、3.6等)</code>
 创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可在Anaconda安装目录envs文件夹下找到。</p>
 <p>如果报错：Conda创建环境失败：CondaHTTPError: HTTP 000 CONNECTION
 FAILED</p>
-<p>（参考：https://blog.csdn.net/sinat_38079265/article/details/121163019）</p>
+<p>（参考：<a href="https://blog.csdn.net/sinat_38079265/article/details/121163019" class="uri">https://blog.csdn.net/sinat_38079265/article/details/121163019</a>）</p>
 <p>错误原因：默认镜像源访问速度过慢，会导致超时从而导致更新和下载失败。</p>
 <p>解决方法为：<strong>更换conda镜像源为国内镜像源。</strong></p>
 <p>以清华镜像源为例，依次执行以下四步命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/</span><br><span class="line">conda config --set show_channel_urls yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
 <p>后续步骤见上面链接</p>
 <h4 id="激活或切换不同的虚拟环境">2. 激活或切换不同的虚拟环境</h4>
 <p><code>python --version</code> 检查当前 python 版本</p>

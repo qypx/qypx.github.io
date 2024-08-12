@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1584001175719.png">
 <meta property="og:image" content="http://qypx.github.io/2019/06/27/Advanced-Python-Types/1584001276582.png">
 <meta property="article:published_time" content="2019-06-27T06:23:36.000Z">
-<meta property="article:modified_time" content="2023-12-15T08:29:28.180Z">
+<meta property="article:modified_time" content="2024-08-09T07:06:32.610Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -164,7 +164,7 @@ Comprehension</span></a></li><li class="nav-item nav-level-4"><a class="nav-link
 Python中的defaultdict</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E5%AD%97%E5%85%B8%E7%9A%84%E9%94%AE%E6%88%96%E8%80%85%E5%80%BC%E6%8E%92%E5%BA%8F"><span class="nav-text">3.6 按照字典的键或者值排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E4%B8%80%E4%BA%9B%E5%AD%97%E5%85%B8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95"><span class="nav-text">3.7 其他一些字典内置函数&amp;方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%88%97%E8%A1%A8%E5%90%88%E5%B9%B6%E6%88%90%E4%B8%80%E4%B8%AA%E5%AD%97%E5%85%B8"><span class="nav-text">3.8 两个列表合并成一个字典</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E5%AD%97%E5%85%B8"><span class="nav-text">3.9 合并两个字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string"><span class="nav-text">4. String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#endswith"><span class="nav-text">4.1 endswith()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strip"><span class="nav-text">4.2 strip()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99"><span class="nav-text">4.3 大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8D"><span class="nav-text">4.4 判断是否为数字、字母</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2strings"><span class="nav-text">4.5 替换strings</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#replace-substrings-replace"><span class="nav-text">4.5.1 Replace substrings:
 replace()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replace-multiple-different-characters-translate"><span class="nav-text">4.5.2 Replace
 multiple different characters: translate()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replace-by-regex-re.sub-re.subn"><span class="nav-text">4.5.3 Replace by regex:
-re.sub(), re.subn()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replace-by-position-slice"><span class="nav-text">4.5.4 Replace by position: slice</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-text">4.6 find()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-text">5. Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E9%9B%86%E5%90%88%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-text">5.1 向集合中添加元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">5.2 移除元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array"><span class="nav-text">6. Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#array%E7%9A%84%E5%90%88%E5%B9%B6"><span class="nav-text">6.1 Array的合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="nav-text">6.2 矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#array%E4%B8%AD%E7%9A%84nan"><span class="nav-text">6.3 Array中的nan</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%9C%89%E5%BA%8F%E6%97%A0%E5%BA%8F%E5%8F%AF%E5%8F%98%E4%B8%8D%E5%8F%AF%E5%8F%98"><span class="nav-text">7.
+re.sub(), re.subn()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replace-by-position-slice"><span class="nav-text">4.5.4 Replace by position: slice</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-text">4.6 find()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-text">5. Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91%E9%9B%86%E5%90%88%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-text">5.1 向集合中添加元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">5.2 移除元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">5.3 集合的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array"><span class="nav-text">6. Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#array%E7%9A%84%E5%90%88%E5%B9%B6"><span class="nav-text">6.1 Array的合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="nav-text">6.2 矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#array%E4%B8%AD%E7%9A%84nan"><span class="nav-text">6.3 Array中的nan</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%9C%89%E5%BA%8F%E6%97%A0%E5%BA%8F%E5%8F%AF%E5%8F%98%E4%B8%8D%E5%8F%AF%E5%8F%98"><span class="nav-text">7.
 python的数据类型的有序无序&amp;可变不可变</span></a></li></ol></div>
         </div>
         <!--/noindex-->
@@ -277,7 +277,7 @@ python的数据类型的有序无序&amp;可变不可变</span></a></li></ol></d
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-15 16:29:28" itemprop="dateModified" datetime="2023-12-15T16:29:28+08:00">2023-12-15</time>
+      <time title="修改时间：2024-08-09 15:06:32" itemprop="dateModified" datetime="2024-08-09T15:06:32+08:00">2024-08-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -364,8 +364,7 @@ code that confirms the list of numbers are over 10.</p>
 <h4 id="列表生成式-list-comprehension">1.9 列表生成式 List
 Comprehension</h4>
 <blockquote>
-<p>参考
-https://www.liaoxuefeng.com/wiki/1016959663602400/1017317609699776</p>
+<p>参考 <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017317609699776" class="uri">https://www.liaoxuefeng.com/wiki/1016959663602400/1017317609699776</a></p>
 </blockquote>
 <p>A quick way for us to generate list.</p>
 <p>关于列表生成式中的 <code>if ... else</code> 的用法：</p>
@@ -373,18 +372,12 @@ https://www.liaoxuefeng.com/wiki/1016959663602400/1017317609699776</p>
 时的正确写法：</span></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">11</span>) <span class="keyword">if</span> x%<span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>]</span><br></pre></td></tr></table></figure>
 <p>但是，不能在最后的 <code>if</code> 加上 <code>else</code>：</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1605269674893.png" alt="1605269674893">
-<figcaption aria-hidden="true">1605269674893</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1605269674893.png"></p>
 <p>这是因为跟在 <code>for</code> 后面的 <code>if</code>
 是一个筛选条件，不能带 <code>else</code>，否则如何筛选？</p>
 <p>而如果把 <code>if</code> 写在 <code>for</code> 前面，必须加
 <code>else</code>，否则报错：</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1605269903917.png" alt="1605269903917">
-<figcaption aria-hidden="true">1605269903917</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1605269903917.png"></p>
 <p>这是因为 <code>for</code> 前面的部分是一个表达式，它必须根据
 <code>x</code> 计算出一个结果。因此，考察表达式：
 <code>x if x%2 == 0</code>，它无法根据 <code>x</code>
@@ -457,10 +450,7 @@ sorted():</p>
 <h3 id="tuple">2. Tuple</h3>
 <p>Tuple很像List，只是tuple是<strong>immutable</strong>的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;my_tuple=(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">&gt;&gt;&gt;my_tuple[<span class="number">1</span>]=<span class="string">&#x27;z</span></span><br><span class="line"><span class="string">Traceback (most recent call last):</span></span><br><span class="line"><span class="string">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span></span><br><span class="line"><span class="string">TypeError: &#x27;</span><span class="built_in">tuple</span><span class="string">&#x27; object does not support item assignment</span></span><br></pre></td></tr></table></figure>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1578054069373.jpg" alt="1578054069373">
-<figcaption aria-hidden="true">1578054069373</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054069373.jpg"></p>
 <p>向tuple添加元素：
 注：由于元组是不可变的，您不能直接向元素例添加元素，但可以将元组连接在一起</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">primes = (<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>, <span class="number">17</span>, <span class="number">19</span>, <span class="number">23</span>)</span><br><span class="line">primes = primes + (<span class="number">29</span>, <span class="number">31</span>)</span><br><span class="line">primes</span><br><span class="line"><span class="comment"># (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)</span></span><br></pre></td></tr></table></figure>
@@ -471,22 +461,25 @@ sorted():</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my_tuple=(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(my_tuple.count(<span class="number">5</span>))</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line"><span class="built_in">print</span>(my_tuple.index(<span class="number">5</span>))</span><br><span class="line"><span class="comment">#4 </span></span><br><span class="line"><span class="comment"># ↑first occurence</span></span><br></pre></td></tr></table></figure>
 <p>另：有了list为什么还需要tuple</p>
 <blockquote>
-<p>tuple的优点： 1、immutable. Makes things easier. It tells other
-programmers, hey ,this shouldn't be changed. 2、More efficient. They are
-usually faster that lists.
+<p>tuple的优点：<br>
+1、immutable. Makes things easier. It tells other programmers, hey ,this
+shouldn't be changed.<br>
+2、More efficient. They are usually faster that lists.<br>
 3、可以当作字典的key（字典的key必须是immutable的，list不能作为key）</p>
 </blockquote>
 <p>If you don't need a list to change, use a tuple.</p>
 <h3 id="dictionary">3. Dictionary</h3>
 <p><span style="color:red">注：3.6版本后Python的dict就是有序的了，顺序就是插入的顺序。</span></p>
 <blockquote>
-<p>在Python3.6及之后的版本中，字典变得更加智能，使用了一种称为“<strong>保留插入顺序</strong>”的技术来存储键值对。这种技术确保在字典中添加新键时，它们被添加到最后，并且在迭代字典时按照它们在字典中添加的顺序返回。这也就意味着，在Python3.6及之后的版本中，字典的迭代顺序是可以预测的。
-(https://geek-docs.com/python/python-dictionary-tutorials/109_is_the_python_dictionary_ordered_or_unordered.html)</p>
+<p>在Python3.6及之后的版本中，字典变得更加智能，使用了一种称为“<strong>保留插入顺序</strong>”的技术来存储键值对。这种技术确保在字典中添加新键时，它们被添加到最后，并且在迭代字典时按照它们在字典中添加的顺序返回。这也就意味着，在Python3.6及之后的版本中，字典的迭代顺序是可以预测的。</p>
+<p>(<a href="https://geek-docs.com/python/python-dictionary-tutorials/109_is_the_python_dictionary_ordered_or_unordered.html" class="uri">https://geek-docs.com/python/python-dictionary-tutorials/109_is_the_python_dictionary_ordered_or_unordered.html</a>)</p>
 </blockquote>
 <p>In other languages, you might know this as a map, or a hash table.
 It's basically a lookup table, where you store values associated with
 some unique set of key values.</p>
-<p>参考 https://www.runoob.com/python/python-dictionary.html</p>
+<blockquote>
+<p>参考 <a href="https://www.runoob.com/python/python-dictionary.html" class="uri">https://www.runoob.com/python/python-dictionary.html</a></p>
+</blockquote>
 <p>字典是一种可变容器模型，且可存储任意类型对象。</p>
 <p>字典的每个键值 <strong>key=&gt;value</strong> 对用冒号
 <strong>:</strong> 分割，每个键值对之间用逗号 <strong>,</strong>
@@ -500,19 +493,13 @@ some unique set of key values.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;[<span class="string">&#x27;Name&#x27;</span>]: <span class="string">&#x27;Zara&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>: <span class="number">7</span>&#125; </span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;dict1[&#x27;Name&#x27;]: &quot;</span>, dict1[<span class="string">&#x27;Name&#x27;</span>])</span><br><span class="line"></span><br><span class="line">以上实例输出结果：</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;test.py&quot;</span>, line <span class="number">3</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    dict1 = &#123;[<span class="string">&#x27;Name&#x27;</span>]: <span class="string">&#x27;Zara&#x27;</span>, <span class="string">&#x27;Age&#x27;</span>: <span class="number">7</span>&#125; </span><br><span class="line">TypeError: <span class="built_in">list</span> objects are unhashable</span><br></pre></td></tr></table></figure>
 <h4 id="访问字典里的值">3.1 访问字典里的值</h4>
 <p>把相应的键放入方括弧</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg" alt="1578054637299">
-<figcaption aria-hidden="true">1578054637299</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054637299.jpg"></p>
 <p>如果访问字典中没有的key，会报错：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">captains[<span class="string">&#x27;NX-01&#x27;</span>]</span><br><span class="line">输出：</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;test.py&quot;</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    captains[<span class="string">&#x27;NX-01&#x27;</span>]</span><br><span class="line">KeyError: <span class="string">&#x27;NX-01&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>避免报错的一个方法是使用 <code>get</code> .
 <code>get</code>是Python字典内置方法。<a href="https://www.runoob.com/python/att-dictionary-get.html">dict.get(key,
 default=None)</a> 返回指定键的值，如果值不在字典中返回default值</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg" alt="1578054512678">
-<figcaption aria-hidden="true">1578054512678</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054512678.jpg"></p>
 <p><code>get</code>还可指定不存在时的默认返回值，如</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(captains.get(<span class="string">&quot;NX-01&quot;</span>,<span class="number">0</span>))</span><br><span class="line"><span class="comment"># 0</span></span><br></pre></td></tr></table></figure>
 <h4 id="修改字典">3.2 修改字典</h4>
@@ -527,37 +514,27 @@ default=None)</a> 返回指定键的值，如果值不在字典中返回default�
 <h4 id="遍历字典-keys-values-items">3.4 遍历字典： keys() 、values()
 、items()</h4>
 <p>Iterate:</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg" alt="1578054588653">
-<figcaption aria-hidden="true">1578054588653</figcaption>
-</figure>
-<p>https://www.cnblogs.com/FlyingLiao/p/11192330.html</p>
+<p><img src="/2019/06/27/Advanced-Python-Types/1578054588653.jpg"></p>
+<blockquote>
+<p>参考 <a href="https://www.cnblogs.com/FlyingLiao/p/11192330.html" class="uri">https://www.cnblogs.com/FlyingLiao/p/11192330.html</a></p>
+</blockquote>
 <ul>
 <li>xxx.keys() : 返回字典的所有的key.
 返回一个序列，序列中保存有字典的所有的键</li>
 </ul>
 <p>例：</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1584001011558.png" alt="1584001011558">
-<figcaption aria-hidden="true">1584001011558</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001011558.png"></p>
 <ul>
 <li>xxx.values() : 返回字典所有的值.</li>
 </ul>
 <p>例：</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1584001175719.png" alt="1584001175719">
-<figcaption aria-hidden="true">1584001175719</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001175719.png"></p>
 <ul>
 <li>xxx.items() : 返回字典中所有的key和values.
 返回一个序列，序列中包含所有双值子序列</li>
 </ul>
 <p>例：</p>
-<figure>
-<img src="/2019/06/27/Advanced-Python-Types/1584001276582.png" alt="1584001276582">
-<figcaption aria-hidden="true">1584001276582</figcaption>
-</figure>
+<p><img src="/2019/06/27/Advanced-Python-Types/1584001276582.png"></p>
 <h4 id="python中的defaultdict">3.5
 Python中的<code>defaultdict</code></h4>
 <p>dict subclass that calls a factory function to supply missing
@@ -568,7 +545,9 @@ values.</p>
 的实例，而且就算是一个不存在的 <em>key</em>, <em>d[key]</em>
 也有一个默认值，这个默认值是 <em>int()</em> 的默认值0.</p>
 <h4 id="按照字典的键或者值排序">3.6 按照字典的键或者值排序</h4>
-<p>https://blog.csdn.net/leokingszx/article/details/81154681</p>
+<blockquote>
+<p>参考 <a href="https://blog.csdn.net/leokingszx/article/details/81154681" class="uri">https://blog.csdn.net/leokingszx/article/details/81154681</a></p>
+</blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y = &#123;<span class="number">1</span>:<span class="number">3</span>, <span class="number">2</span>:<span class="number">2</span>, <span class="number">3</span>:<span class="number">1</span>&#125;</span><br><span class="line">by_key =  <span class="built_in">sorted</span>(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line">by_value = <span class="built_in">sorted</span>(y.items(),key = <span class="keyword">lambda</span> item:item[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(by_key)   <span class="comment">#结果为[(1, 3), (2, 2), (3, 1)]，即按照键名排列</span></span><br><span class="line"><span class="built_in">print</span>(by_value) <span class="comment">#结果为[(3, 1), (2, 2), (1, 3)]，即按照键值排列</span></span><br></pre></td></tr></table></figure>
 <p>当然，在这样处理后，得到的结果将变成元组。这样也可以理解，毕竟对于字典而言，本身是不提供排序的需求的。如果想按照里面的元素进行排列，那么将不得不对其类型进行转化。</p>
 <p>另：Python中多条件排序：</p>
@@ -582,8 +561,7 @@ values.</p>
 <p>两个列表合并成一个字典，一个列表里的值为 <em>key</em>，一个列表里的为
 <em>Value</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">b = [<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line">c = <span class="built_in">dict</span>(<span class="built_in">zip</span>(a,b))</span><br><span class="line">c</span><br><span class="line"><span class="comment"># &#123;1: 6, 2: 7, 3: 8, 4: 9&#125;</span></span><br></pre></td></tr></table></figure>
-<p>补充1：关于zip()函数：</p>
-<p>https://www.runoob.com/python/python-func-zip.html</p>
+<p>补充1：关于zip()函数：<a href="https://www.runoob.com/python/python-func-zip.html" class="uri">https://www.runoob.com/python/python-func-zip.html</a></p>
 <p><strong>zip()</strong>
 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表(python2中返回的是列表，python3中返回的是对象）。</p>
 <p>如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用
@@ -596,9 +574,11 @@ values.</p>
 <p>补充2：字典还可以这样定义：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dict</span>([(<span class="number">1</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">4</span>)])</span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">2</span>, <span class="number">3</span>: <span class="number">4</span>&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="合并两个字典">3.9 合并两个字典</h4>
-<p>Combine below dictionaries in order to add values for common keys:
-<code>dict1 = &#123;'alpha': 50,'beta': 200, 'gamma':300&#125;  dict2 = &#123;'alpha': 300, 'b': 200, 'beta': 120, 'delta':400&#125;</code>
-Expected output:
+<p>Combine below dictionaries in order to add values for common
+keys:<br>
+<code>dict1 = &#123;'alpha': 50,'beta': 200, 'gamma':300&#125;</code><br>
+<code>dict2 = &#123;'alpha': 300, 'b': 200, 'beta': 120, 'delta':400&#125;</code><br>
+Expected output:<br>
 <code>&#123;'alpha': 350, 'beta': 320, 'gamma': 300, 'b': 200, 'delta': 400&#125;</code>.</p>
 <p>法一：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&#x27;alpha&#x27;</span>: <span class="number">50</span>,<span class="string">&#x27;beta&#x27;</span>: <span class="number">200</span>, <span class="string">&#x27;gamma&#x27;</span>:<span class="number">300</span>&#125; </span><br><span class="line">dict2 = &#123;<span class="string">&#x27;alpha&#x27;</span>: <span class="number">300</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">200</span>, <span class="string">&#x27;beta&#x27;</span>: <span class="number">120</span>, <span class="string">&#x27;delta&#x27;</span>:<span class="number">400</span>&#125; </span><br><span class="line"></span><br><span class="line">dict3 = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> dict1.items():</span><br><span class="line">    dict3[k] = v + dict2.get(k,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> dict2.items():</span><br><span class="line">    <span class="keyword">if</span> k <span class="keyword">not</span> <span class="keyword">in</span> dict1:</span><br><span class="line">        dict3[k] = v</span><br><span class="line"><span class="built_in">print</span>(dict3)</span><br><span class="line"><span class="comment"># &#123;&#x27;beta&#x27;: 320, &#x27;gamma&#x27;: 300, &#x27;b&#x27;: 200, &#x27;delta&#x27;: 400, &#x27;alpha&#x27;: 350&#125;</span></span><br></pre></td></tr></table></figure>
@@ -657,7 +637,7 @@ from the list. Print the list, the expected output is:
 <p>注：Python官方定义中的字母：可默认为英文字母+汉字；Python官方定义中的数字：可默认为阿拉伯数字+带圈的数字（如①）</p>
 <h4 id="替换strings">4.5 替换strings</h4>
 <blockquote>
-<p>参考 https://note.nkmk.me/en/python-str-replace-translate-re-sub/</p>
+<p>参考 <a href="https://note.nkmk.me/en/python-str-replace-translate-re-sub/" class="uri">https://note.nkmk.me/en/python-str-replace-translate-re-sub/</a></p>
 </blockquote>
 <p>在Python中，有许多替换strings的方法，可以使用
 <code>replace()</code>进行简单的替换，使用 <code>translate()</code> 进行
@@ -721,7 +701,7 @@ string后，可直接写作 <code>\1</code>。（因为 <code>\1</code>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fruits = &#123;<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;cherry&quot;</span>&#125;</span><br><span class="line">more_fruits = [<span class="string">&quot;orange&quot;</span>, <span class="string">&quot;mango&quot;</span>, <span class="string">&quot;grapes&quot;</span>]</span><br><span class="line">fruits.update(more_fruits)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(fruits)</span><br><span class="line"><span class="comment"># &#123;&#x27;mango&#x27;, &#x27;banana&#x27;, &#x27;grapes&#x27;, &#x27;apple&#x27;, &#x27;cherry&#x27;, &#x27;orange&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
 <h4 id="移除元素">5.2 移除元素</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># discard</span></span><br><span class="line">my_set=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line">my_set.discard(<span class="number">5</span>) <span class="comment">#无返回值</span></span><br><span class="line"><span class="built_in">print</span>(my_set)</span><br><span class="line"><span class="comment">#&#123;1,2,3,4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者使用remove,一样的效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#清空集合</span></span><br><span class="line">my_set.clear()</span><br><span class="line"><span class="built_in">print</span>(my_set)</span><br><span class="line"><span class="comment">#&#123;&#125;</span></span><br></pre></td></tr></table></figure>
-<p>5.3 集合的方法</p>
+<h4 id="集合的方法">5.3 集合的方法</h4>
 <ul>
 <li>.difference()</li>
 </ul>
@@ -811,7 +791,7 @@ look like this:</p>
 <h3 id="python的数据类型的有序无序可变不可变">7.
 python的数据类型的有序无序&amp;可变不可变</h3>
 <blockquote>
-<p>参考 https://www.cnblogs.com/z-x-y/p/10090749.html</p>
+<p>参考 <a href="https://www.cnblogs.com/z-x-y/p/10090749.html" class="uri">https://www.cnblogs.com/z-x-y/p/10090749.html</a></p>
 </blockquote>
 <ul>
 <li>列表list有序可变</li>
