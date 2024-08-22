@@ -26,25 +26,25 @@
     <meta name="description" content="图片">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据仓库简介">
-<meta property="og:url" content="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:url" content="http://qypx.github.io/2020/10/27/data-warehouse-introduction/index.html">
 <meta property="og:site_name" content="qypx の blog">
 <meta property="og:description" content="图片">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/1603782098335.png">
+<meta property="og:image" content="http://qypx.github.io/2020/10/27/data-warehouse-introduction/1603782098335.png">
 <meta property="article:published_time" content="2020-10-27T04:11:13.000Z">
-<meta property="article:modified_time" content="2024-08-09T06:27:32.665Z">
+<meta property="article:modified_time" content="2024-08-22T06:48:55.951Z">
 <meta property="article:author" content="qypx">
 <meta property="article:tag" content="Hadoop">
 <meta property="article:tag" content="数据仓库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/1603782098335.png">
+<meta name="twitter:image" content="http://qypx.github.io/2020/10/27/data-warehouse-introduction/1603782098335.png">
 
 
-<link rel="canonical" href="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/">
+<link rel="canonical" href="http://qypx.github.io/2020/10/27/data-warehouse-introduction/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/","path":"2020/10/27/数据仓库简介/","title":"数据仓库简介"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://qypx.github.io/2020/10/27/data-warehouse-introduction/","path":"2020/10/27/data-warehouse-introduction/","title":"数据仓库简介"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>数据仓库简介 | qypx の blog</title>
@@ -229,7 +229,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/">
+    <link itemprop="mainEntityOfPage" href="http://qypx.github.io/2020/10/27/data-warehouse-introduction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -265,7 +265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-09 14:27:32" itemprop="dateModified" datetime="2024-08-09T14:27:32+08:00">2024-08-09</time>
+      <time title="修改时间：2024-08-22 14:48:55" itemprop="dateModified" datetime="2024-08-22T14:48:55+08:00">2024-08-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,7 +307,7 @@
 <ul>
 <li>面向主题</li>
 </ul>
-<p>数据仓库被设计成辅助人们分析数据。例如，一个公司要分析销售数据，就可以建立一个专注于销售的数据仓库，使用这个数据仓库，就可以回答类似于”去年谁是我们这款产品的最佳用户“这样的问题。<strong><span id="jump_zhutiyu">主题域</span></strong>是对某个主题进行分析后确定的主题的边界，如客户、销售、产品都是主题域的例子。</p>
+<p>数据仓库被设计成<strong>辅助人们分析数据</strong>。例如，一个公司要分析销售数据，就可以建立一个专注于销售的数据仓库，使用这个数据仓库，就可以回答类似于”去年谁是我们这款产品的最佳用户“这样的问题。<strong><span id="jump_zhutiyu">主题域</span></strong>是对某个主题进行分析后确定的主题的边界，如客户、销售、产品都是主题域的例子。</p>
 <ul>
 <li>集成</li>
 </ul>
@@ -315,7 +315,7 @@
 <ul>
 <li>随时间变化</li>
 </ul>
-<p>为了发现业务变化的趋势、存在的问题，或者新的机会，需要分析大量的历史数据。这与联机事务处理（OLTP）系统形成鲜明的对比。联机事务处理反应的是当前时间点的数据情况，要求高性能、高并发和极短的响应时间。而数据仓库关注的是数据随时间变化的情况，并且能反映再过去某个时间点的数据是怎样的。</p>
+<p>为了发现业务变化的趋势、存在的问题，或者新的机会，需要分析大量的历史数据。这与联机事务处理（OLTP）系统形成鲜明的对比。OLTP反应的是当前时间点的数据情况，要求高性能、高并发和极短的响应时间。而数据仓库关注的是数据随时间变化的情况，并且能反映在过去某个时间点的数据是怎样的。</p>
 <ul>
 <li>非易失</li>
 </ul>
@@ -357,8 +357,11 @@ hoc)查询、分析系统、数据集市、报表系统、数据挖掘系统等�
 <h5 id="操作型系统的数据库操作">2.1.1 操作型系统的数据库操作</h5>
 <p>常用操作：<strong>增、改、查</strong>。通常是插入与更新密集型的，同时会对数据库进行大量并发查询，而删除操作相对较少。</p>
 <h5 id="操作型系统的数据库设计">2.1.2 操作型系统的数据库设计</h5>
-<p>操作型系统的特征是大量短的事务，并强调快速处理查询。每秒事务数是操作型系统的一个有效度量指标。</p>
-<p>在数据库<strong>逻辑设计</strong>上，操作型系统的应用数据库大都使用规范化设计方法，通常要满足第三范式。这是因为规范化设计能最大限度地数据冗余，提供更快更高效的方式执行数据库写操作。</p>
+<p>操作型系统的特征是大量短的事务，并强调<strong>快速处理查询</strong>。每秒事务数是操作型系统的一个有效度量指标。</p>
+<p>在数据库<strong>逻辑设计</strong>上，操作型系统的应用数据库大都使用规范化设计方法，通常要满足第三范式。这是因为规范化设计能最大限度地减少数据冗余，提供更快更高效的方式执行数据库写操作。</p>
+<blockquote>
+<p>关于数据库的三大范式的介绍可见： <a href="https://blog.csdn.net/ddzzz_/article/details/119277573" class="uri">https://blog.csdn.net/ddzzz_/article/details/119277573</a></p>
+</blockquote>
 <p>在数据库<strong>物理设计</strong>上，以Oracle数据库为例，简要说明在设计操作型系统数据库时应考虑的问题：</p>
 <ul>
 <li>合理使用聚簇。聚簇是一种数据库模式，其中包含有共用一列或多列的多个表。数据库中的聚簇表用于提高连接操作的性能。</li>
@@ -368,28 +371,27 @@ hoc)查询、分析系统、数据集市、报表系统、数据挖掘系统等�
 <li>SQL优化。有效利用数据库管理系统的优化器，使用最佳的数据访问路径。</li>
 <li>避免过度使用索引。大量的数据修改会给索引维护带来压力，从而对整个系统的性能产生负面影响。</li>
 </ul>
-<p>以上所讲的操作型系统都是以数据据系统为核心，而数据库系统为了保持ACID特性，本质上是单一集中式系统。在当今这个信息爆炸的时代，集中式数据库往往已无法支撑业务的需要。分布式事务、去中心化、CAP与最终一致性等一些列新的理论和技术为解决系统扩展问题应运而生。这里不做展开。</p>
+<p>以上所讲的操作型系统都是以数据库系统为核心，而数据库系统为了保持ACID特性，本质上是单一集中式系统。在当今这个信息爆炸的时代，集中式数据库往往已无法支撑业务的需要。分布式事务、去中心化、CAP与最终一致性等一些列新的理论和技术为解决系统扩展问题应运而生。这里不做展开。</p>
 <h4 id="分析型系统">2.2 分析型系统</h4>
 <p>分析型系统是一种快速回答多维分析查询的实现方式。</p>
 <h5 id="分析型系统的数据库操作">2.2.1 分析型系统的数据库操作</h5>
 <p>在数据库层面，分析型系统操作被定义为少量的事务，复杂的查询，处理归档和历史数据。这些数据很少被修改，从数据库抽取数据是最多的操作。分析型数据库基本上都是<strong>读操作</strong>。</p>
 <h5 id="分析型系统的数据库设计">2.2.2 分析型系统的数据库设计</h5>
-<p>分析型系统的特征是相对少量的事务，但查询通常非常复杂且会包含聚合计算。吞吐量是一个有效的性能度量指标。</p>
+<p>分析型系统的特征是相对少量的事务，但查询通常非常复杂且会包含聚合计算。<strong>吞吐量</strong>是一个有效的性能度量指标。</p>
 <p>在数据库<strong>逻辑设计</strong>上，分析型数据库使用多维数据模型，通常是设计成<span style="color:blue">星型模式</span>或<span style="color:blue">雪花模式</span>。</p>
 <p>在数据库物理设计上，依然以Oracle数据库为例，简要说明在设计分析型系统数据库时应该考虑的一些问题。</p>
 <ul>
 <li>表分区。可以独立定义表分区的物理存储属性，将不同分区的数据存放到多个物理文件上，这样做一方面可以分散I/O；另一方面，当数据量非常大时，方便数据维护；再有就是利用分区消除查询数据时，不用扫描整张表，从而提高查询性能。</li>
 <li>位图索引。当查询条件中包含低基数（不同值很少，例如性别）的列，尤其是包含有这些列上的or、and或not这样的逻辑运算时，或者从有大量行的表中返回大量的行时，应考虑位图索引。</li>
 <li>物化视图。物化视图物理存储查询所定义的数据，能够自动增量刷新数据，并且可以利用查询重写特性极大地提高查询速度。</li>
-<li>并行化操作。可以在查询大量数据时执行并行化操作，这样会导致多个服务器进程为同一个查询语句工作，使用该查询可以快速完成，但会耗费更多的资源。</li>
+<li>并行化操作。可以在查询大量数据时执行并行化操作，这样会使多个服务器进程为同一个查询语句工作，使得该查询可以快速完成，但会耗费更多的资源。</li>
 </ul>
 <blockquote>
-<p>分析型系统更加注重数据分析和报表，而操作型系统的目标时一个伴有大量数据改变的事务优化系统。</p>
+<p>分析型系统更加注重数据分析和报表，而操作型系统的目标是一个伴有大量数据改变的事务优化系统。</p>
 </blockquote>
 <h3 id="数据仓库架构">3. 数据仓库架构</h3>
 <h4 id="基本架构">3.1 基本架构</h4>
-<p><img src="/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/1603782098335.png" alt="1603782098335"><br>
-</p>
+<p><img src="/2020/10/27/data-warehouse-introduction/1603782098335.png" alt="img"></p>
 <p>整个数据仓库环境包括操作型系统和数据仓库系统两大部分。操作型系统的数据由各种形式的业务数据组成（数据可能是结构化、半结构化、非结构化的）。<span style="color:red">这些数据经过抽取、转换和装载（ETL）过程进入数据仓库系统。</span></p>
 <p>这里把ETL过程分成了抽取和转换装载两个部分。<strong>抽取</strong>过程负责从操作型系统获取数据，该过程一般不做数据聚合和汇总，但是会按照主题进行集成，物理上是将操作型系统的数据全量或增量复制到数据仓库系统的RDS中。</p>
 <blockquote>
@@ -442,14 +444,16 @@ files、text files、CSV、JSON等。</p>
 </blockquote>
 <p><strong>查询引擎</strong>组件负责实际执行用户查询。</p>
 <blockquote>
-<p>由于最终用户经常需要进行交互式的即席查询，并随时动态改变和组合他们的查询条件，因此要求查询引擎具有很高的查询性能和较短的响应时间。
+<p>由于最终用户经常需要进行交互式的即席查询，并随时动态改变和组合他们的查询条件，因此要求查询引擎具有很高的查询性能和较短的响应时间。<br>
 Hadoop生态圈中的主要SQL查询引擎有基于 MapReduce 的
 <strong>Hive</strong>、基于 RDD 的 <strong>SparkSQL</strong> 和 Cloudera
-公司的 <strong>Impala</strong>。
+公司的 <strong>Impala</strong>。<br>
 Hive可以在四种主流计算框架的三种，分别是 Tez、MapReduce 和
-Spark（还有一种是Storm）上执行类SQL查询。
+Spark（还有一种是Storm）上执行类SQL查询。(关于三种计算框架的介绍见：<a href="https://www.jianshu.com/p/357fceaa4042">hive的引擎mapreduce、tez和spark三者比较
+- 简书</a>)<br>
 SparkSQL是Hadoop中另一个著名的SQL引擎，它实际上是一个Scala程序语言的子集。正如SparkSQL这个名字所暗示的，它以
-Spark 作为底层的计算框架。 Impala 是 Cloudera 公司的查询系统，它提供 SQL
+Spark 作为底层的计算框架。<br>
+Impala 是 Cloudera 公司的查询系统，它提供 SQL
 语言，最大的特点是速度快，主要用于 OLAP。</p>
 </blockquote>
 <p><strong>用户界面</strong>指的是最终用户所使用的接口程序。可能是一个GUI软件，如BI套件中的客户端软件，也可能是一个浏览器。</p>
@@ -465,7 +469,7 @@ notebook，用于做数据分析和可视化。Zeppelin 默认只支持 SparkSQL
 </blockquote>
 <p><span style="color:blue">可以看到，普通数据仓库的8个组成部分都有相对应的
 Hadoop 组件作为支撑。Hadoop
-生态圈中众多更具提供的功能，完全可以满足创建传统数据仓库的需要。使用
+生态圈中众多工具提供的功能，完全可以满足创建传统数据仓库的需要。使用
 Hadoop 建立数据仓库不仅是必要，而且是充分的。</span></p>
 <h4 id="操作数据存储ods"><span id="jump_ODS">3.2
 操作数据存储（ODS）</span></h4>
@@ -477,7 +481,7 @@ Sore)，定义：一个<strong><span style="color:red">面向主题的、集成�
 <li>数据是当前的，这与数据仓库存储历史数据的性质明显不同。ODS具有最少的历史数据（一般是30天到60天），而尽可能接近实时地展示数据的状态。</li>
 <li>数据是可更新的，ODS就如同一个事务处理系统，当新的数据流进ODS时，受其影响的字段被新信息覆盖。</li>
 <li>数据几乎完全是细节数据，仅具有少量的动态聚集或汇总数据。通常将ODS设计成包含事务级的数据，即包含该主题域中最低粒度级别的数据。</li>
-<li>在数据仓库中，几乎没有针对其本身的报表，报表均放到数据级市中完成；在ODS中，业务用户频繁地直接访问ODS。</li>
+<li>在数据仓库中，几乎没有针对其本身的报表，报表均放到数据集市中完成；在ODS中，业务用户频繁地直接访问ODS。</li>
 </ul>
 <p>在一个数据仓库环境中，ODS具有如下几个作用：</p>
 <ul>
@@ -491,7 +495,7 @@ Sore)，定义：一个<strong><span style="color:red">面向主题的、集成�
 <ul>
 <li>抽取：从操作型数据源获取数据。</li>
 <li>转换：转换数据，使之转变为适用于查询和分析的形式和结构。</li>
-<li>装载：将转换后的数据导入道最终的目标数据仓库。</li>
+<li>装载：将转换后的数据导入到最终的目标数据仓库。</li>
 </ul>
 <p>建立一个数据仓库就是要把来自于多个异构的源系统的数据集成在一起，放置于一个集中的位置用于数据分析。ETL系统的工作就是把异构的数据转换成同构的。</p>
 <h4 id="数据抽取">4.1 数据抽取</h4>
@@ -539,9 +543,9 @@ Sore)，定义：一个<strong><span style="color:red">面向主题的、集成�
 <li>首先保证足够的系统资源。数据仓厍存储的都是海量数据，所以要配置高性能的服务器，并且要独占资源，不要与别的系统共用。</li>
 <li>在进行数据装载时，要禁用数据库约束（唯一性、非空性，检查约束等）和索引，当装载过程完全结束后，再启用这些约束，重建索引，这种方法会很大的提高装载速度。在数据仓库环境中，一般不使用数据库来保证数据的参考完整性，即不使用数据库的外键约束，它应该由ETL工具或程序来维护。</li>
 </ul>
-<p>数据装载过程可能由于多种原因而失败，比如装载过程中某些源表和目标表的结构不一致而导致失败，而这时己经有部分表装载成功了。在数据量很大的情况下，如何能在重新执行装致过程时只装载失败的部分是一个不小的挑战。对于这种情况，实现可重复装载的关键是要<strong>记录下失败点，并在装载程序中处理相关的逻辑</strong>。还有一种情况，就是<strong>装载成功，数据又发生了改变</strong>（比如有些滞后的数据在ETL执行完才进入系统，就会带来数据的更新或新增），这时需要重新再执行一遍装载过程，己经正确装载的数据可以被覆盖，但相同数据不能重复新增。简单的实现方式是<strong>先删除再插入</strong>，或者用replace
+<p>数据装载过程可能由于多种原因而失败，比如装载过程中某些源表和目标表的结构不一致而导致失败，而这时己经有部分表装载成功了。在数据量很大的情况下，如何能在重新执行装载过程时只装载失败的部分是一个不小的挑战。对于这种情况，实现可重复装载的关键是要<strong>记录下失败点，并在装载程序中处理相关的逻辑</strong>。还有一种情况，就是<strong>装载成功，数据又发生了改变</strong>（比如有些滞后的数据在ETL执行完才进入系统，就会带来数据的更新或新增），这时需要重新再执行一遍装载过程，己经正确装载的数据可以被覆盖，但相同数据不能重复新增。简单的实现方式是<strong>先删除再插入</strong>，或者用replace
 into、merge into等类似功能的操作。</p>
-<p>装载到数据仓库里的数据，经过汇总、聚合等处理后交付给多维立方体或数据可视化、仪表盘等报表工其、Bl工具做进一步的数据分析。</p>
+<p>装载到数据仓库里的数据，经过汇总、聚合等处理后交付给多维立方体或数据可视化、仪表盘等报表工具、Bl工具做进一步的数据分析。</p>
     </div>
 
     
@@ -558,7 +562,7 @@ into、merge into等类似功能的操作。</p>
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://qypx.github.io/2020/10/27/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%AE%80%E4%BB%8B/" title="数据仓库简介">http://qypx.github.io/2020/10/27/数据仓库简介/</a>
+      <a href="http://qypx.github.io/2020/10/27/data-warehouse-introduction/" title="数据仓库简介">http://qypx.github.io/2020/10/27/data-warehouse-introduction/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
