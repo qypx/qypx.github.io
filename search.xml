@@ -2960,7 +2960,7 @@ argument at the end of the formula.</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=XLOOKUP(123, A:A, B:B, &quot;Not found&quot;)</span><br></pre></td></tr></table></figure>
 <p>If Excel doesn’t find a match, it returns the message “Not found”
 instead of showing an error like <code>#N/A</code>.</p>
-<h5 id="vlookup根据两列数据匹配">2.1vlookup根据两列数据匹配</h5>
+<h5 id="vlookup根据两列数据匹配">2.1 vlookup根据两列数据匹配</h5>
 <blockquote>
 <p>参考 <a href="https://zhuanlan.zhihu.com/p/68744986" class="uri">https://zhuanlan.zhihu.com/p/68744986</a></p>
 </blockquote>
