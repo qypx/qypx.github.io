@@ -2905,7 +2905,62 @@ cells）</p>
 </p>
 <p>注：且筛选内容变了后，对应的结果也会跟着变，不用把函数删掉再重写。</p>
 <span id="more"></span>
-<h4 id="vlookup根据两列数据匹配">2.vlookup根据两列数据匹配</h4>
+<h4 id="vlookup-与-xlookup">2. vlookup 与 xlookup</h4>
+<p>参考：<a href="https://zerotomastery.io/blog/xlookup-vs-vlookup/">Beginner’s
+Guide to XLOOKUP vs VLOOKUP in Excel | Zero To Mastery</a></p>
+<p>Both <code>VLOOKUP</code> and <code>XLOOKUP</code> are made for a
+single task - finding information in a table.</p>
+<p>You’re telling Excel,</p>
+<p>“<em>Find this thing, then give me the matching value.</em>”</p>
+<p>Both <code>VLOOKUP</code> and <code>XLOOKUP</code> do the same job.
+The difference is how they do it, and how much control they give you.
+That’s where things start to get interesting.</p>
+<p>VLOOKUP: The name stands for “vertical lookup,” and that’s exactly
+what it does: it searches down the first column of a table to find a
+match, then returns a value from another column in the same row.</p>
+<p>例如：Let’s say you have a table with product IDs in column A and
+prices in column B. If you want to look up the price for product ID 123
+in that table, you’d write:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=VLOOKUP(123, A:B, 2, FALSE)</span><br><span class="line">或写成：</span><br><span class="line">=VLOOKUP(123, A:B, 2, 0)</span><br></pre></td></tr></table></figure>
+<p>缺点：</p>
+<ul>
+<li><strong>The first issue is that the column number is
+hard-coded</strong>. If you add or remove columns later, the formula
+might break or pull the wrong value （要数第几列是想返回的）</li>
+<li>Not only that but <strong>VLOOKUP only searches from left to
+right</strong>. If your return value is in a column to the left of what
+you’re searching, it won’t work
+（搜索是从左到右的，要查找的列得在第一列，返回列得在查找列的右边）</li>
+<li>And finally, if you forget to include <code>FALSE</code> at the end,
+<strong>Excel will try to return an approximate match instead of an
+exact one</strong>. That can lead to subtle, frustrating errors</li>
+</ul>
+<p>新版本的excel引入了XLOOKUP (If you’re using Excel 2016 or earlier,
+<code>XLOOKUP</code> won’t work. <strong>It was introduced in Excel 365
+and Excel 2019</strong>, so older versions won’t recognize the function
+at all.)</p>
+<p>At its core, <code>XLOOKUP</code> is still about matching a value and
+returning related data. But <code>XLOOKUP</code> formulas are easier to
+read, easier to write, and a lot less fragile.</p>
+<p>还是之前的例子，用XLOOKUP来写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=XLOOKUP(123, A:A, B:B)</span><br></pre></td></tr></table></figure>
+<p>Instead of counting columns, you tell Excel exactly where to look and
+exactly where to return the value from. <code>A:A</code> is your lookup
+range. <code>B:B</code> is your return range.
+（A:A代表查找的范围，B:B代表返回的范围，并且还支持返回多列，例如B:C则会返回B,C两列的内容）</p>
+<p>That’s it. There’s no need to worry about moving columns around, OR
+fetching values from the <em>wrong</em> column because you miscounted by
+one or two (which, believe me, is surprisingly easy to do!).</p>
+<p>You can also search from right to left, something
+<code>VLOOKUP</code> can’t do. And by default, <code>XLOOKUP</code>
+looks for an exact match, so you don’t need that extra TRUE/FALSE
+argument at the end of the formula.</p>
+<p>Oh, and it also has built-in error handling!</p>
+<p><strong>For example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=XLOOKUP(123, A:A, B:B, &quot;Not found&quot;)</span><br></pre></td></tr></table></figure>
+<p>If Excel doesn’t find a match, it returns the message “Not found”
+instead of showing an error like <code>#N/A</code>.</p>
+<h5 id="vlookup根据两列数据匹配">2.1vlookup根据两列数据匹配</h5>
 <blockquote>
 <p>参考 <a href="https://zhuanlan.zhihu.com/p/68744986" class="uri">https://zhuanlan.zhihu.com/p/68744986</a></p>
 </blockquote>
@@ -2959,10 +3014,12 @@ cells）</p>
 </tbody>
 </table>
 <p>此时想根据季度与客户经理去匹配另一张表中的开户数时，有如下方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">VLOOKUP(E2&amp;F2,IF(&#123;1,0&#125;,A1:A13&amp;B1:B13,C1:C13),2,FALSE)</span><br></pre></td></tr></table></figure>
-<p>↑在开户数这一列，写入上面的公式，其中E2与F2指季度与客户经理这两列(单元格)，A1:A13与B1:B13指有开户数的那张表中的季度与客户经理两列（用&amp;拼接起来），C1:C13为开户数那一列。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=VLOOKUP(E2&amp;F2,IF(&#123;1,0&#125;,A1:A13&amp;B1:B13,C1:C13),2,FALSE)</span><br></pre></td></tr></table></figure>
+<p>↑在开户数这一列，写入上面的公式，再双击填充。其中E2与F2指季度与客户经理这两列(单元格)，A1:A13与B1:B13指有开户数的那张表中的季度与客户经理两列（用&amp;拼接起来），C1:C13为开户数那一列。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">IF(&#123;1,0&#125;,A1:A13&amp;B1:B13,C1:C13) 的含义：</span><br><span class="line">IF(条件,返回值1,返回值2)，如果条件为真，返回&quot;返回值1&quot;，如果条件为假，返回&quot;返回值2&quot;。</span><br><span class="line">&#123;1,0&#125;，则代表选择一个数组，第一列为真，即第一列返回&quot;返回值1&quot;，A1:A13&amp;B1:B13，第二列为假，即第二列返回&quot;返回值2&quot;，C1:C13</span><br><span class="line"></span><br><span class="line">可以认为IF(&#123;1,0&#125;)的写法是为了选取不连续的列(拼接后的数组看成一列，并再选中其他列)放到一个参数中</span><br></pre></td></tr></table></figure>
 <p>倒数第二个参数2代表C1:C13开户数这列，位于选取的范围中的第2列（A1:A13&amp;B1:B13视为第1列）</p>
+<h5 id="xlookup根据两列数据匹配">2.2 xlookup根据两列数据匹配</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=xlookup(E2&amp;F2,A:A&amp;B:B,C:C,&quot;&quot;)  # 如果没有匹配的返回空</span><br></pre></td></tr></table></figure>
 <h4 id="countif函数">3.countif函数</h4>
 <blockquote>
 <p>参考 <a href="https://zhuanlan.zhihu.com/p/32591692">Excel函数公式：关于Countif函数的用法，你知道多少？</a></p>
